@@ -176,7 +176,7 @@ get_ipython().system('cat ~/git/blog/.gitignore')
 # ### quarto publish
 # 
 # ```bash
-# quarto publish
+# quarto publish gh-pages
 # ```
 # 
 # :heavy_check_mark: This is ok when publishing with home PC. 
@@ -202,6 +202,14 @@ get_ipython().system('cat ~/git/blog/.gitignore')
 # ```
 # 
 # but what is this id? https://github.com/quarto-dev/quarto-web/issues/404
+
+# # Current publication process
+
+# In[1]:
+
+
+get_ipython().system('cat ../publish.sh')
+
 
 # # Issues / improvments
 
