@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.189">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2022-09-12">
+<meta name="description" content="by Jeremy Howard and Hamel Hussain">
+
+<title>blog - nbdev2 - first steps</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">blog</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html">About</a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/"><i class="bi bi-github" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com"><i class="bi bi-twitter" role="img">
+</i> 
+ </a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">nbdev2 - first steps</h1>
+                  <div>
+        <div class="description">
+          by Jeremy Howard and Hamel Hussain
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">nbdev</div>
+                <div class="quarto-category">jupyter</div>
+                <div class="quarto-category">fastai</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">September 12, 2022</p>
+      </div>
+    </div>
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#support" id="toc-support" class="nav-link active" data-scroll-target="#support">Support</a></li>
+  <li><a href="#walkthrough" id="toc-walkthrough" class="nav-link" data-scroll-target="#walkthrough">Walkthrough</a>
+  <ul class="collapse">
+  <li><a href="#create-github-project" id="toc-create-github-project" class="nav-link" data-scroll-target="#create-github-project">create github project</a></li>
+  <li><a href="#integrate-nbdev-in-your-python-environment" id="toc-integrate-nbdev-in-your-python-environment" class="nav-link" data-scroll-target="#integrate-nbdev-in-your-python-environment">integrate <code>nbdev</code> in your python environment</a></li>
+  <li><a href="#clone-repo-and-turned-it-into-a-nbdev-repo" id="toc-clone-repo-and-turned-it-into-a-nbdev-repo" class="nav-link" data-scroll-target="#clone-repo-and-turned-it-into-a-nbdev-repo">clone repo and turned it into a nbdev repo</a></li>
+  <li><a href="#nbdev_-commands-are-ready-to-be-used" id="toc-nbdev_-commands-are-ready-to-be-used" class="nav-link" data-scroll-target="#nbdev_-commands-are-ready-to-be-used">nbdev_ commands are ready to be used</a></li>
+  <li><a href="#and-prefix-in-notebooks-as-well" id="toc-and-prefix-in-notebooks-as-well" class="nav-link" data-scroll-target="#and-prefix-in-notebooks-as-well">and <code>#|</code> prefix in notebooks as well</a>
+  <ul class="collapse">
+  <li><a href="#show_doc" id="toc-show_doc" class="nav-link" data-scroll-target="#show_doc">show_doc</a></li>
+  <li><a href="#unit-testing" id="toc-unit-testing" class="nav-link" data-scroll-target="#unit-testing">unit testing</a></li>
+  <li><a href="#patch---define-method-out-of-its-class" id="toc-patch---define-method-out-of-its-class" class="nav-link" data-scroll-target="#patch---define-method-out-of-its-class"><span class="citation" data-cites="patch">@patch</span> - define method out of its class</a></li>
+  <li><a href="#nbdev_export" id="toc-nbdev_export" class="nav-link" data-scroll-target="#nbdev_export"><code>nbdev_export</code></a></li>
+  <li><a href="#index.ipynb" id="toc-index.ipynb" class="nav-link" data-scroll-target="#index.ipynb">index.ipynb</a></li>
+  <li><a href="#nbdev_preview" id="toc-nbdev_preview" class="nav-link" data-scroll-target="#nbdev_preview"><code>nbdev_preview</code></a></li>
+  <li><a href="#nbdev_test" id="toc-nbdev_test" class="nav-link" data-scroll-target="#nbdev_test"><code>nbdev_test</code></a></li>
+  <li><a href="#golden-rule-dont-mix-imports-and-code" id="toc-golden-rule-dont-mix-imports-and-code" class="nav-link" data-scroll-target="#golden-rule-dont-mix-imports-and-code">Golden rule: don’t mix imports and code</a></li>
+  <li><a href="#nbdev_clean" id="toc-nbdev_clean" class="nav-link" data-scroll-target="#nbdev_clean"><code>nbdev_clean</code></a></li>
+  <li><a href="#push-to-github" id="toc-push-to-github" class="nav-link" data-scroll-target="#push-to-github">push to github</a></li>
+  <li><a href="#define-dep" id="toc-define-dep" class="nav-link" data-scroll-target="#define-dep">define dep</a></li>
+  <li><a href="#publish-to-pypi-conda" id="toc-publish-to-pypi-conda" class="nav-link" data-scroll-target="#publish-to-pypi-conda">publish to Pypi, conda, …</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#gitlab-integration" id="toc-gitlab-integration" class="nav-link" data-scroll-target="#gitlab-integration">Gitlab integration</a>
+  <ul class="collapse">
+  <li><a href="#my-tests-with-our-internal-gitlab" id="toc-my-tests-with-our-internal-gitlab" class="nav-link" data-scroll-target="#my-tests-with-our-internal-gitlab">my tests with our internal gitlab</a>
+  <ul class="collapse">
+  <li><a href="#create-project-in-gitlab" id="toc-create-project-in-gitlab" class="nav-link" data-scroll-target="#create-project-in-gitlab">create project in gitlab</a></li>
+  <li><a href="#clone-it" id="toc-clone-it" class="nav-link" data-scroll-target="#clone-it">clone it</a></li>
+  <li><a href="#nbdev_new" id="toc-nbdev_new" class="nav-link" data-scroll-target="#nbdev_new">nbdev_new</a></li>
+  <li><a href="#change-in-settings.ini" id="toc-change-in-settings.ini" class="nav-link" data-scroll-target="#change-in-settings.ini">change in <code>settings.ini</code></a></li>
+  <li><a href="#change-in-_quarto.yml" id="toc-change-in-_quarto.yml" class="nav-link" data-scroll-target="#change-in-_quarto.yml">change in <code>_quarto.yml</code></a></li>
+  <li><a href="#create-.gitlab-ci.yml-buildpublish-documentation-push-to-artifactory" id="toc-create-.gitlab-ci.yml-buildpublish-documentation-push-to-artifactory" class="nav-link" data-scroll-target="#create-.gitlab-ci.yml-buildpublish-documentation-push-to-artifactory">create <code>.gitlab-ci.yml</code> –&gt; build/publish documentation, push to artifactory</a></li>
+  <li><a href="#commit-to-gitlab" id="toc-commit-to-gitlab" class="nav-link" data-scroll-target="#commit-to-gitlab">commit to gitlab</a></li>
+  <li><a href="#setup-online-documentation-badge" id="toc-setup-online-documentation-badge" class="nav-link" data-scroll-target="#setup-online-documentation-badge">setup online-documentation badge</a></li>
+  <li><a href="#create-a-new-version-tag-publication-to-artifactory" id="toc-create-a-new-version-tag-publication-to-artifactory" class="nav-link" data-scroll-target="#create-a-new-version-tag-publication-to-artifactory">create a new version, tag, publication to artifactory</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#nbdev-v2.3" id="toc-nbdev-v2.3" class="nav-link" data-scroll-target="#nbdev-v2.3">nbdev v2.3</a></li>
+  <li><a href="#open-questions" id="toc-open-questions" class="nav-link" data-scroll-target="#open-questions">Open questions</a>
+  <ul class="collapse">
+  <li><a href="#fixed-nbdev_clean-fails" id="toc-fixed-nbdev_clean-fails" class="nav-link" data-scroll-target="#fixed-nbdev_clean-fails">[fixed] nbdev_clean fails</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<p>fastai has just released <a href="https://nbdev.fast.ai/">nbdev2</a>.</p>
+<p>This is a complete rewrite with quarto. I like how they displayed features in that card</p>
+<p><img src="https://nbdev.fast.ai/images/card.png" class="img-fluid"></p>
+<section id="support" class="level1">
+<h1>Support</h1>
+<p>There is a <a href="https://forums.fast.ai/c/nbdev/48">nbdev section</a> in fastai forum.</p>
+<p>There is a channel <a href="https://discord.com/channels/689892369998676007/887694559952400424">#nbdev-help</a> at fastai discord.</p>
+<p>And <a href="https://github.com/fastai/nbdev/issues">issues page</a> in github fastai/nbdev repo.</p>
+</section>
+<section id="walkthrough" class="level1">
+<h1>Walkthrough</h1>
+<p>There is a 90 min video: <a href="https://www.youtube.com/watch?v=l7zS8Ld4_iA&amp;ab_channel=JeremyHoward">nbdev tutorial</a> – zero to published project in 90 minutes</p>
+<p>I follow here this tutorial.</p>
+<p>Here are the big steps:</p>
+<section id="create-github-project" class="level2">
+<h2 class="anchored" data-anchor-id="create-github-project">create github project</h2>
+<ul>
+<li>create a new project with github: <a href="https://github.com/castorfou/dataset_tools">dataset_tools</a>. Give a description it will be reused by nbdev</li>
+</ul>
+</section>
+<section id="integrate-nbdev-in-your-python-environment" class="level2">
+<h2 class="anchored" data-anchor-id="integrate-nbdev-in-your-python-environment">integrate <code>nbdev</code> in your python environment</h2>
+<ul>
+<li>create a local conda env <code>dataset_tools</code> with what is required to develop this library</li>
+</ul>
+<div class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cat <span class="op">/</span>home<span class="op">/</span>guillaume<span class="op">/</span>_conda_env<span class="op">/</span>dataset_tools.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>conda remove --name dataset_tools --all
+conda create --name dataset_tools python=3.9
+conda activate dataset_tools
+conda install ipykernel
+python -m ipykernel install --user --name=dataset_tools
+pip install nbdev -U
+pip install pandas</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>{sys.prefix}<span class="op">/</span><span class="bu">bin</span><span class="op">/</span>pip <span class="bu">list</span><span class="op">|</span>grep nbdev</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>nbdev              2.2.10</code></pre>
+</div>
+</div>
+</section>
+<section id="clone-repo-and-turned-it-into-a-nbdev-repo" class="level2">
+<h2 class="anchored" data-anchor-id="clone-repo-and-turned-it-into-a-nbdev-repo">clone repo and turned it into a nbdev repo</h2>
+<ul>
+<li>clone repo <code>dataset_tools</code> and turn it into a nbdev repo</li>
+</ul>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone git@github.com:castorfou/dataset_tools.git</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate dataset_tools</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> dataset_tools</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="nbdev_-commands-are-ready-to-be-used" class="level2">
+<h2 class="anchored" data-anchor-id="nbdev_-commands-are-ready-to-be-used">nbdev_ commands are ready to be used</h2>
+<ul>
+<li>nbdev can be used from here. For example <code>nbdev_help</code> to display all nbdev_ commands and what it does. And more detail can be got with <code>-h</code>: <code>nbdev_new -h</code></li>
+</ul>
+<div class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>{sys.prefix}<span class="op">/</span><span class="bu">bin</span><span class="op">/</span>nbdev_help</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>nbdev_bump_version              Increment version in settings.ini by one
+nbdev_changelog                 Create a CHANGELOG.md file from closed and labeled GitHub issues
+nbdev_clean                     Clean all notebooks in `fname` to avoid merge conflicts
+nbdev_conda                     Create a `meta.yaml` file ready to be built into a package, and optionally build and upload it
+nbdev_create_config             Create a config file.
+nbdev_deploy                    Deploy docs to GitHub Pages
+nbdev_docs                      Create Quarto docs and README.md
+nbdev_export                    Export notebooks in `path` to Python modules
+nbdev_filter                    A notebook filter for Quarto
+nbdev_fix                       Create working notebook from conflicted notebook `nbname`
+nbdev_help                      Show help for all console scripts
+nbdev_install                   Install Quarto and the current library
+nbdev_install_hooks             Install Jupyter and git hooks to automatically clean, trust, and fix merge conflicts in notebooks
+nbdev_install_quarto            Install latest Quarto on macOS or Linux, prints instructions for Windows
+nbdev_merge                     Git merge driver for notebooks
+nbdev_migrate                   Convert all directives and callouts in `fname` from v1 to v2
+nbdev_new                       Create an nbdev project.
+nbdev_prepare                   Export, test, and clean notebooks, and render README if needed
+nbdev_preview                   Preview docs locally
+nbdev_pypi                      Create and upload Python package to PyPI
+nbdev_quarto                    Create Quarto docs and README.md
+nbdev_readme                    Render README.md from index.ipynb
+nbdev_release_both              Release both conda and PyPI packages
+nbdev_release_gh                Calls `nbdev_changelog`, lets you edit the result, then pushes to git and calls `nbdev_release_git`
+nbdev_release_git               Tag and create a release in GitHub for the current version
+nbdev_sidebar                   Create sidebar.yml
+nbdev_test                      Test in parallel notebooks matching `path`, passing along `flags`
+nbdev_trust                     Trust notebooks matching `fname`
+nbdev_update                    Propagate change in modules matching `fname` to notebooks that created them</code></pre>
+</div>
+</div>
+<ul>
+<li><code>nbdev_new</code>. It is creating the structure and files such as settings.ini.</li>
+<li>from base environment we can start <code>jupyter notebook</code>. It is advised to install nb_extensions (<code>pip install jupyter_contrib_nbextensions</code>), and activate TOC2. Open <code>00_core.ipynb</code> with <code>dataset_tools</code> kernel. Rename <code>00_core.ipynb</code> –&gt; <code>00_container.ipynb</code></li>
+</ul>
+</section>
+<section id="and-prefix-in-notebooks-as-well" class="level2">
+<h2 class="anchored" data-anchor-id="and-prefix-in-notebooks-as-well">and <code>#|</code> prefix in notebooks as well</h2>
+<p>Jeremy explains then what are <code>#|</code> used by quarto and nbdev.</p>
+<p>And for example <code>#| hide</code> will allow to be executed but hide in your documentation.</p>
+<p>Actually from a single notebook, you have 3 usages: * the notebook by itself - all cells are executed, whatever are the prefix <code>#|</code> that you display on cells * the python file - only the cells with <code>#| export</code> will be published in a python file referenced as <code>#| default_exp &lt;name of python file&gt;</code>. A new file is genreated when <code>nbdev_export</code> is called. * the documentation - all cells are used, except the one started with <code>#| hide</code>. Seems to be dynamically generated (when <code>nbdev_preview</code> is running?). <code>#| export</code> are handled specifically: if you have import, nothing is displayed. If you have code, definitions and docstrings are exported, and arguments as well.</p>
+<p>There is an easy way to describe arguments of a function.</p>
+<p>Just make some indentation with comments such as in</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>                 cle : <span class="bu">str</span>, <span class="co"># la clé du container</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>                 dataset : pd.DataFrame <span class="op">=</span> <span class="va">None</span>, <span class="co"># le dataset</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>                 colonnes_a_masquer : <span class="bu">list</span> <span class="op">=</span> [], <span class="co"># les colonnes à masquer</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>                 colonnes_a_conserver : <span class="bu">list</span> <span class="op">=</span> [] <span class="co"># les colonnes qui ne seront pas transformées</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>                ):</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="show_doc" class="level3">
+<h3 class="anchored" data-anchor-id="show_doc">show_doc</h3>
+<p>and we can directly see the effect of it by calling <code>show_doc</code> (<code>show_doc(Container)</code>). You can even call show_doc on code not written with nbdev, or not even written by you.</p>
+<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2022-09-12T09:01:42.139428Z&quot;,&quot;start_time&quot;:&quot;2022-09-12T09:01:41.974851Z&quot;}" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nbdev.showdoc <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>show_doc(pd.DataFrame)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/home/guillaume/miniconda/envs/dataset_tools/lib/python3.9/site-packages/fastcore/docscrape.py:225: UserWarning: Unknown section See Also
+  else: warn(msg)
+/home/guillaume/miniconda/envs/dataset_tools/lib/python3.9/site-packages/fastcore/docscrape.py:225: UserWarning: Unknown section Examples
+  else: warn(msg)</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="17">
+<hr>
+<section id="dataframe" class="level3">
+<h3 class="anchored" data-anchor-id="dataframe">DataFrame</h3>
+<blockquote class="blockquote">
+<pre><code> DataFrame (data=None, index:Axes|None=None, columns:Axes|None=None,
+            dtype:Dtype|None=None, copy:bool|None=None)</code></pre>
+</blockquote>
+<p>Two-dimensional, size-mutable, potentially heterogeneous tabular data.</p>
+<p>Data structure also contains labeled axes (rows and columns). Arithmetic operations align on both row and column labels. Can be thought of as a dict-like container for Series objects. The primary pandas data structure.</p>
+<table class="table table-sm table-striped">
+<colgroup>
+<col style="width: 6%">
+<col style="width: 25%">
+<col style="width: 34%">
+<col style="width: 34%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>data</td>
+<td>NoneType</td>
+<td>None</td>
+<td>Dict can contain Series, arrays, constants, dataclass or list-like objects. If<br>data is a dict, column order follows insertion-order. If a dict contains Series<br>which have an index defined, it is aligned by its index.<br><br>.. versionchanged:: 0.25.0<br> If data is a list of dicts, column order follows insertion-order.</td>
+</tr>
+<tr class="even">
+<td>index</td>
+<td>Axes | None</td>
+<td>None</td>
+<td>Index to use for resulting frame. Will default to RangeIndex if<br>no indexing information part of input data and no index provided.</td>
+</tr>
+<tr class="odd">
+<td>columns</td>
+<td>Axes | None</td>
+<td>None</td>
+<td>Column labels to use for resulting frame when data does not have them,<br>defaulting to RangeIndex(0, 1, 2, …, n). If data contains column labels,<br>will perform column selection instead.</td>
+</tr>
+<tr class="even">
+<td>dtype</td>
+<td>Dtype | None</td>
+<td>None</td>
+<td>Data type to force. Only a single dtype is allowed. If None, infer.</td>
+</tr>
+<tr class="odd">
+<td>copy</td>
+<td>bool | None</td>
+<td>None</td>
+<td>Copy data from inputs.<br>For dict data, the default of None behaves like <code>copy=True</code>. For DataFrame<br>or 2d ndarray input, the default of None behaves like <code>copy=False</code>.<br><br>.. versionchanged:: 1.3.0</td>
+</tr>
+</tbody>
+</table>
+</section>
+</div>
+</div>
+</section>
+<section id="unit-testing" class="level3">
+<h3 class="anchored" data-anchor-id="unit-testing">unit testing</h3>
+<p>There are some basic testing functionalty available by importing fastcore. <code>from fastcore.test import *</code></p>
+<p>With <code>test_eq</code> very closed to <code>assert</code> and <code>test_ne</code> closed to <code>assert not</code></p>
+<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2022-09-12T09:27:07.251089Z&quot;,&quot;start_time&quot;:&quot;2022-09-12T09:27:07.243921Z&quot;}" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastcore.test <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>show_doc(test_eq)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>show_doc(test_ne)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="20">
+<hr>
+<p><a href="https://github.com/fastai/fastcore/blob/master/fastcore/test.py#LNone" target="_blank" style="float:right; font-size:smaller">source</a></p>
+<section id="test_ne" class="level3">
+<h3 class="anchored" data-anchor-id="test_ne">test_ne</h3>
+<blockquote class="blockquote">
+<pre><code> test_ne (a, b)</code></pre>
+</blockquote>
+<p><code>test</code> that <code>a!=b</code></p>
+</section>
+</div>
+</div>
+<p>This is convenient to integrate all the unit tests that way. When you will export by running <code>Restart &amp; Run All</code>, if an error is met, export won’t be done.</p>
+<p>And one can run <code>nbdev_test</code> from the command line.</p>
+</section>
+<section id="patch---define-method-out-of-its-class" class="level3">
+<h3 class="anchored" data-anchor-id="patch---define-method-out-of-its-class"><span class="citation" data-cites="patch">@patch</span> - define method out of its class</h3>
+<p>Just by adding this import</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastcore.utils <span class="im">import</span> <span class="op">*</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>one can use</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="at">@patch</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> new_method(<span class="va">self</span>:myclass):</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">pass</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="nbdev_export" class="level3">
+<h3 class="anchored" data-anchor-id="nbdev_export"><code>nbdev_export</code></h3>
+<p>from command line, one can run <code>nbdev_export</code></p>
+<p>or directly from jupyter, for example will be executing <code>Restart &amp; Run All</code></p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| hide</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> nbdev<span class="op">;</span> nbdev.nbdev_export()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>And we can install it to be used directly by running <code>pip install -e .</code></p>
+<p>It means that you can now import your project with</p>
+<p><code>from dataset_tools.container import *</code></p>
+<p>When it will be published (pypi or conda), it will be installable by calling</p>
+<p><code>pip install dataset-tools</code></p>
+<p>or</p>
+<p><code>conda install -c fastai dataset-tools</code></p>
+<p>NB: see how <code>_</code> has been turned into <code>-</code>, and for that to happen we have to update <code>lib_name</code> and <code>lib_path</code> in <code>settings.ini</code> by replacing <code>_</code>with <code>-</code></p>
+<p>NB2: it is still confusing for me. It looks like modifying <code>lib_path</code> is not a good optiom.</p>
+</section>
+<section id="index.ipynb" class="level3">
+<h3 class="anchored" data-anchor-id="index.ipynb">index.ipynb</h3>
+<p>Here it is a good idea to give overview about how to use it.</p>
+<p>By importing your library and start using it.</p>
+<p>And it will be exported as the homepage of your lib.</p>
+<p>Just have to decide what should land in index and what should land in module page.</p>
+</section>
+<section id="nbdev_preview" class="level3">
+<h3 class="anchored" data-anchor-id="nbdev_preview"><code>nbdev_preview</code></h3>
+<p>Just run it from command line</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">nbdev_preview</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>and it is accessible from http://localhost:3000.</p>
+<p>This is a quarto webserver. The 1st time you launch it it will install quarto for you. On ubuntu this is a standard package so it will be updated regularly.</p>
+<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2022-09-12T10:00:57.349093Z&quot;,&quot;start_time&quot;:&quot;2022-09-12T10:00:53.838159Z&quot;}" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> getpass <span class="im">import</span> getpass</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>echo {getpass()} <span class="op">|</span> sudo <span class="op">-</span>S apt<span class="op">-</span>cache show quarto</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>········
+[sudo] password for guillaume: Package: quarto
+Status: install ok installed
+Priority: optional
+Section: user/text
+Installed-Size: 242759
+Maintainer: RStudio, PBC &lt;quarto@rstudio.org&gt;
+Architecture: amd64
+Version: 1.1.189
+Description: Quarto is an academic, scientific, and technical publishing system built on Pandoc.
+Description-md5: 516c872f9c3577457bbd01eac38f8130
+Homepage: https://github.com/quarto-dev/quarto-cli
+</code></pre>
+</div>
+</div>
+</section>
+<section id="nbdev_test" class="level3">
+<h3 class="anchored" data-anchor-id="nbdev_test"><code>nbdev_test</code></h3>
+<p>As mentionned earlier, one can run <code>nbdev_test</code> to execute all tests in all notebooks.</p>
+<p>If it fails, Hamel has shared his dev workflow. He runs <code>Restart kernel &amp; run All</code>, and use <code>%debug</code> magic command to enter debug mode.</p>
+<p>You then have access to all <code>ipdb</code> commands such as h for help, p <code>var</code> to print content of <code>var</code>, w for stacktraces</p>
+<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2022-09-12T12:46:31.638551Z&quot;,&quot;start_time&quot;:&quot;2022-09-12T12:44:45.229875Z&quot;}" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>debug</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&gt; /tmp/ipykernel_2453/349085080.py(1)&lt;cell line: 1&gt;()
+----&gt; 1 show_doc(test_eq)
+
+ipdb&gt; h
+
+Documented commands (type help &lt;topic&gt;):
+========================================
+EOF    commands   enable    ll        pp       s                until 
+a      condition  exit      longlist  psource  skip_hidden      up    
+alias  cont       h         n         q        skip_predicates  w     
+args   context    help      next      quit     source           whatis
+b      continue   ignore    p         r        step             where 
+break  d          interact  pdef      restart  tbreak         
+bt     debug      j         pdoc      return   u              
+c      disable    jump      pfile     retval   unalias        
+cl     display    l         pinfo     run      undisplay      
+clear  down       list      pinfo2    rv       unt            
+
+Miscellaneous help topics:
+==========================
+exec  pdb
+
+ipdb&gt; q</code></pre>
+</div>
+</div>
+</section>
+<section id="golden-rule-dont-mix-imports-and-code" class="level3">
+<h3 class="anchored" data-anchor-id="golden-rule-dont-mix-imports-and-code">Golden rule: don’t mix imports and code</h3>
+<p>For a reason it is asked not to mix cells with imports and code.</p>
+<p>I am not sure what is the core reason for that. Something due to show_doc or doc generation?</p>
+<p>During my tests, I have seen something complaining about it after running <code>nbdev_export</code> or <code>nbdev_test</code> but cannot reproduce that. Hmmm</p>
+</section>
+<section id="nbdev_clean" class="level3">
+<h3 class="anchored" data-anchor-id="nbdev_clean"><code>nbdev_clean</code></h3>
+<p>Just to remove unnecessary metadata in ipynb files.</p>
+<p>Will open an issue, because it fails to run here</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">dataset_tools</span><span class="kw">)</span> <span class="ex">guillaume@LK06LPF2LTSSL:~/git/dataset_tools$</span> nbdev_clean</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/home/guillaume/miniconda/envs/dataset_tools/lib/python3.9/site-packages/nbdev/clean.py:110:</span> UserWarning: Failed to clean notebook</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">warn</span><span class="er">(</span><span class="ex">f</span><span class="st">'{warn_msg}'</span><span class="kw">)</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="ex">/home/guillaume/miniconda/envs/dataset_tools/lib/python3.9/site-packages/nbdev/clean.py:111:</span> UserWarning: clean_ids</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="ex">warn</span><span class="er">(</span><span class="ex">e</span><span class="kw">)</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="ex">/home/guillaume/miniconda/envs/dataset_tools/lib/python3.9/site-packages/nbdev/clean.py:111:</span> UserWarning: clean_ids</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>  <span class="ex">warn</span><span class="er">(</span><span class="ex">e</span><span class="kw">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="push-to-github" class="level3">
+<h3 class="anchored" data-anchor-id="push-to-github">push to github</h3>
+<p>Not a bad thing to run all these stuff</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="ex">nbdev_clean</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> diff</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add <span class="at">-A</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="ex">nbdev_export</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="ex">nbdev_test</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="ex">nbdev_docs</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-am</span><span class="st">'init version'</span></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Note that for a reason nbdev_clean is failing</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="ex">/home/guillaume/miniconda/envs/dataset_tools/lib/python3.9/site-packages/nbdev/clean.py:110:</span> UserWarning: Failed to clean notebook</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="ex">warn</span><span class="er">(</span><span class="ex">f</span><span class="st">'{warn_msg}'</span><span class="kw">)</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="ex">/home/guillaume/miniconda/envs/dataset_tools/lib/python3.9/site-packages/nbdev/clean.py:111:</span> UserWarning: clean_ids</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="ex">warn</span><span class="er">(</span><span class="ex">e</span><span class="kw">)</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="ex">/home/guillaume/miniconda/envs/dataset_tools/lib/python3.9/site-packages/nbdev/clean.py:111:</span> UserWarning: clean_ids</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>  <span class="ex">warn</span><span class="er">(</span><span class="ex">e</span><span class="kw">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>And Hamel suggests to add <code>clean_ids = True</code> in settings.ini</p>
+<p><code>nbdev_docs</code>is pushing the content of index.ipynb to README.md</p>
+</section>
+<section id="define-dep" class="level3">
+<h3 class="anchored" data-anchor-id="define-dep">define dep</h3>
+<p>Just modify <code>settings.ini</code>to add dependancies (here pandas)</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># end of settings.ini</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="ex">[..]</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co">### Optional </span><span class="al">###</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="ex">requirements</span> = fastcore pandas</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="co"># dev_requirements =</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="co"># console_scripts =</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="ex">clean_ids</span> = True</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Et voila!, doc is available at https://castorfou.github.io/dataset_tools/ and you can push that address to your repo settings</p>
+</section>
+<section id="publish-to-pypi-conda" class="level3">
+<h3 class="anchored" data-anchor-id="publish-to-pypi-conda">publish to Pypi, conda, …</h3>
+<p>This is done by calling <code>nbdev_pypi</code>or <code>nbdev_conda</code>. And it is modifying settings.ini to increment version number. (very much as <code>nbdev_bump_version</code> does)</p>
+<p>There are other commands such as <code>nbdev_release_xxx</code> the seems to do quite the same for git.</p>
+</section>
+</section>
+</section>
+<section id="gitlab-integration" class="level1">
+<h1>Gitlab integration</h1>
+<p>because this is the platform we use at Michelin, I will need to make it work with our internal gitlab instance.</p>
+<p>There is on-going work to make it happen:</p>
+<ul>
+<li>from Hamel Husain - enhancement request <a href="https://github.com/fastai/nbdev/issues/945">Support gitlab</a></li>
+<li>and from fastai community in forum: <a href="https://forums.fast.ai/t/nbdev-and-gitlab-source-links/98867">Nbdev and Gitlab (source links)</a>, <a href="https://forums.fast.ai/t/example-nbdev-on-gitlab/98890">Example: nbdev on Gitlab</a></li>
+</ul>
+<p>I have published this version to <a href="https://forums.fast.ai/t/example-nbdev-on-gitlab/98890/2">nbdev forum</a></p>
+<section id="my-tests-with-our-internal-gitlab" class="level2">
+<h2 class="anchored" data-anchor-id="my-tests-with-our-internal-gitlab">my tests with our internal gitlab</h2>
+<section id="create-project-in-gitlab" class="level3">
+<h3 class="anchored" data-anchor-id="create-project-in-gitlab">create project in gitlab</h3>
+<p>Project name : <code>nbdev_gitlab</code></p>
+<p>Project URL : <code>https://gitlab.michelin.com</code> <code>janus</code> <code>nbdev_gitlab</code></p>
+<p>Project description : <code>This is the smallest project to make nbdev working with gitlab</code></p>
+<blockquote class="blockquote">
+<p>Create project</p>
+</blockquote>
+</section>
+<section id="clone-it" class="level3">
+<h3 class="anchored" data-anchor-id="clone-it">clone it</h3>
+<div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate dataset_tools</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/git</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone git@gitlab.michelin.com:janus/nbdev_gitlab.git</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="nbdev_new" class="level3">
+<h3 class="anchored" data-anchor-id="nbdev_new">nbdev_new</h3>
+<div class="sourceCode" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">SSL_CERT_FILE</span><span class="op">=</span><span class="st">'/home/guillaume/miniconda/envs/dataset_tools/lib/python3.9/site-packages/certifi/cacert.pem'</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="ex">nbdev_new</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="ex">/home/guillaume/miniconda/envs/dataset_tools/lib/python3.9/site-packages/ghapi/core.py:99:</span> UserWarning: Neither GITHUB_TOKEN nor GITHUB_JWT_TOKEN found: running as unauthenticated</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="ex">else:</span> warn<span class="er">(</span><span class="st">'Neither GITHUB_TOKEN nor GITHUB_JWT_TOKEN found: running as unauthenticated'</span><span class="kw">)</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Could</span> not access repo: janus/nbdev_gitlab to find your default branch <span class="at">-</span> <span class="kw">`</span><span class="ex">main</span><span class="kw">`</span> assumed.</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="ex">Edit</span> <span class="kw">`</span><span class="ex">settings.ini</span><span class="kw">`</span> if this is incorrect.</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="ex">In</span> the future, you can allow nbdev to see private repos by setting the environment variable GITHUB_TOKEN as described here:</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="ex">https://nbdev.fast.ai/cli.html#Using-nbdev_new-with-private-repos</span></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="ex">repo</span> = nbdev_gitlab <span class="co"># Automatically inferred from git</span></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a><span class="ex">user</span> = janus <span class="co"># Automatically inferred from git</span></span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a><span class="ex">author</span> = guillaume <span class="co"># Automatically inferred from git</span></span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a><span class="ex">author_email</span> = guillaume.ramelet@michelin.com <span class="co"># Automatically inferred from git</span></span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Please enter a value for description</span></span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a><span class="ex">description</span> = This is the smallest project to make nbdev working with gitlab</span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a><span class="ex">settings.ini</span> created.</span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a><span class="ex">/home/guillaume/miniconda/envs/dataset_tools/lib/python3.9/site-packages/ghapi/core.py:99:</span> UserWarning: Neither GITHUB_TOKEN nor GITHUB_JWT_TOKEN found: running as unauthenticated</span>
+<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a>  <span class="ex">else:</span> warn<span class="er">(</span><span class="st">'Neither GITHUB_TOKEN nor GITHUB_JWT_TOKEN found: running as unauthenticated'</span><span class="kw">)</span></span>
+<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a><span class="ex">pandoc</span> <span class="at">-o</span> README.md</span>
+<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a>  <span class="ex">to:</span> gfm+footnotes+tex_math_dollars-yaml_metadata_block</span>
+<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a>  <span class="ex">standalone:</span> true</span>
+<span id="cb28-19"><a href="#cb28-19" aria-hidden="true" tabindex="-1"></a>  <span class="ex">default-image-extension:</span> png</span>
+<span id="cb28-20"><a href="#cb28-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-21"><a href="#cb28-21" aria-hidden="true" tabindex="-1"></a><span class="ex">metadata</span></span>
+<span id="cb28-22"><a href="#cb28-22" aria-hidden="true" tabindex="-1"></a>  <span class="ex">description:</span> This is the smallest project to make nbdev working with gitlab</span>
+<span id="cb28-23"><a href="#cb28-23" aria-hidden="true" tabindex="-1"></a>  <span class="ex">title:</span> nbdev_gitlab</span>
+<span id="cb28-24"><a href="#cb28-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-25"><a href="#cb28-25" aria-hidden="true" tabindex="-1"></a><span class="ex">Output</span> created: _docs/README.md</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>ls <span class="op">-</span>l <span class="op">~/</span>git<span class="op">/</span>nbdev_gitlab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>total 36
+-rwxrwxrwx 1 guillaume guillaume   978 Sep  5 18:31 00_core.ipynb
+-rwxrwxrwx 1 guillaume guillaume 11337 Sep  5 18:31 LICENSE
+-rwxrwxrwx 1 guillaume guillaume   111 Sep  5 18:31 MANIFEST.in
+-rwxrwxrwx 1 guillaume guillaume   309 Sep 13 14:02 README.md
+drwxrwxrwx 1 guillaume guillaume  4096 Sep 13 14:02 _docs
+-rwxrwxrwx 1 guillaume guillaume   728 Sep 13 14:02 _quarto.yml
+-rwxrwxrwx 1 guillaume guillaume  1561 Sep 13 14:02 index.ipynb
+drwxrwxrwx 1 guillaume guillaume  4096 Sep 13 14:02 nbdev_gitlab
+-rwxrwxrwx 1 guillaume guillaume   945 Sep 13 14:02 settings.ini
+-rwxrwxrwx 1 guillaume guillaume  2541 Sep  5 18:31 setup.py
+-rwxrwxrwx 1 guillaume guillaume   600 Sep  5 18:31 styles.css</code></pre>
+</div>
+</div>
+</section>
+<section id="change-in-settings.ini" class="level3">
+<h3 class="anchored" data-anchor-id="change-in-settings.ini">change in <code>settings.ini</code></h3>
+<ul>
+<li><p>set company_name = michelin</p></li>
+<li><p>set doc_path = public</p></li>
+<li><p>set branch = main instead of master</p></li>
+<li><p>doc_host = https://%(user)s.pages.gitlab.%(company_name)s.com/</p></li>
+<li><p>git_url = https://gitlab.%(company_name)s.com/%(user)s/%(repo)s</p></li>
+<li><p>doc_baseurl = /%(repo)s</p></li>
+</ul>
+</section>
+<section id="change-in-_quarto.yml" class="level3">
+<h3 class="anchored" data-anchor-id="change-in-_quarto.yml">change in <code>_quarto.yml</code></h3>
+<p>nothing to be done with nbdev &gt; v2.3.3</p>
+</section>
+<section id="create-.gitlab-ci.yml-buildpublish-documentation-push-to-artifactory" class="level3">
+<h3 class="anchored" data-anchor-id="create-.gitlab-ci.yml-buildpublish-documentation-push-to-artifactory">create <code>.gitlab-ci.yml</code> –&gt; build/publish documentation, push to artifactory</h3>
+<p>With gitlab you have a nice editor to edit pipelines (CI lint)</p>
+<p>One way to debug is to insert <code>sleep xx</code> and then click debug.</p>
+<p>You then have access to your docker image.</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="ex">default:</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="ex">image:</span> <span class="st">'docker.artifactory.michelin.com/michelin/hub/ubuntu20.04:bib-1.1'</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">tags:</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>    <span class="ex">-</span> k8s</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>  <span class="ex">interruptible:</span> true</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>  <span class="ex">retry:</span></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>    <span class="ex">max:</span> 2</span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>    <span class="ex">when:</span></span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>      <span class="ex">-</span> runner_system_failure</span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>      <span class="ex">-</span> stuck_or_timeout_failure</span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Functions that should be executed before the build script is run</span></span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a><span class="ex">before_script:</span></span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-</span> apt <span class="at">-y</span> install wget</span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-</span> wget <span class="st">"https://github.com/quarto-dev/quarto-cli/releases/download/v1.1.189/quarto-1.1.189-linux-amd64.deb"</span></span>
+<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-</span> dpkg <span class="at">-i</span> quarto-1.1.189-linux-amd64.deb</span>
+<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-</span> apt <span class="at">-y</span> install python3-pip</span>
+<span id="cb31-18"><a href="#cb31-18" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-</span> wget <span class="at">--no-check-certificate</span> <span class="at">--content-disposition</span> <span class="at">-O</span> <span class="at">-</span> https://raw.githubusercontent.com/castorfou/guillaume_blog/master/files/setup_wsl_08_pip.sh <span class="kw">|</span> <span class="fu">bash</span></span>
+<span id="cb31-19"><a href="#cb31-19" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-</span> pip3 install nbdev</span>
+<span id="cb31-20"><a href="#cb31-20" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-</span> nbdev_install</span>
+<span id="cb31-21"><a href="#cb31-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-22"><a href="#cb31-22" aria-hidden="true" tabindex="-1"></a><span class="ex">stages:</span></span>
+<span id="cb31-23"><a href="#cb31-23" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-</span> test</span>
+<span id="cb31-24"><a href="#cb31-24" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-</span> build_doc</span>
+<span id="cb31-25"><a href="#cb31-25" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-</span> build</span>
+<span id="cb31-26"><a href="#cb31-26" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-</span> deploy_artifactory</span>
+<span id="cb31-27"><a href="#cb31-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-28"><a href="#cb31-28" aria-hidden="true" tabindex="-1"></a><span class="ex">tests:</span></span>
+<span id="cb31-29"><a href="#cb31-29" aria-hidden="true" tabindex="-1"></a>  <span class="ex">stage:</span> test</span>
+<span id="cb31-30"><a href="#cb31-30" aria-hidden="true" tabindex="-1"></a>  <span class="ex">script:</span></span>
+<span id="cb31-31"><a href="#cb31-31" aria-hidden="true" tabindex="-1"></a>    <span class="ex">-</span> nbdev_test</span>
+<span id="cb31-32"><a href="#cb31-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-33"><a href="#cb31-33" aria-hidden="true" tabindex="-1"></a><span class="ex">pages:</span></span>
+<span id="cb31-34"><a href="#cb31-34" aria-hidden="true" tabindex="-1"></a>  <span class="ex">stage:</span> build_doc</span>
+<span id="cb31-35"><a href="#cb31-35" aria-hidden="true" tabindex="-1"></a>  <span class="ex">script:</span></span>
+<span id="cb31-36"><a href="#cb31-36" aria-hidden="true" tabindex="-1"></a>    <span class="ex">-</span> nbdev_docs</span>
+<span id="cb31-37"><a href="#cb31-37" aria-hidden="true" tabindex="-1"></a>  <span class="ex">artifacts:</span></span>
+<span id="cb31-38"><a href="#cb31-38" aria-hidden="true" tabindex="-1"></a>    <span class="ex">paths:</span></span>
+<span id="cb31-39"><a href="#cb31-39" aria-hidden="true" tabindex="-1"></a>      <span class="co"># The folder that contains the files to be exposed at the Page URL</span></span>
+<span id="cb31-40"><a href="#cb31-40" aria-hidden="true" tabindex="-1"></a>      <span class="ex">-</span> public</span>
+<span id="cb31-41"><a href="#cb31-41" aria-hidden="true" tabindex="-1"></a>  <span class="ex">rules:</span></span>
+<span id="cb31-42"><a href="#cb31-42" aria-hidden="true" tabindex="-1"></a>    <span class="co"># This ensures that only pushes to the default branch will trigger</span></span>
+<span id="cb31-43"><a href="#cb31-43" aria-hidden="true" tabindex="-1"></a>    <span class="co"># a pages deploy</span></span>
+<span id="cb31-44"><a href="#cb31-44" aria-hidden="true" tabindex="-1"></a>    <span class="ex">-</span> if: <span class="va">$CI_COMMIT_REF_NAME</span> == <span class="va">$CI_DEFAULT_BRANCH</span></span>
+<span id="cb31-45"><a href="#cb31-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-46"><a href="#cb31-46" aria-hidden="true" tabindex="-1"></a><span class="ex">wheel:</span></span>
+<span id="cb31-47"><a href="#cb31-47" aria-hidden="true" tabindex="-1"></a>  <span class="ex">stage:</span> build</span>
+<span id="cb31-48"><a href="#cb31-48" aria-hidden="true" tabindex="-1"></a>  <span class="ex">script:</span></span>
+<span id="cb31-49"><a href="#cb31-49" aria-hidden="true" tabindex="-1"></a>    <span class="ex">-</span> mkdir <span class="at">-p</span> public</span>
+<span id="cb31-50"><a href="#cb31-50" aria-hidden="true" tabindex="-1"></a>    <span class="ex">-</span> echo <span class="st">"Build wheel with python version </span><span class="kw">`</span><span class="ex">python3</span> <span class="at">--version</span><span class="kw">`</span><span class="st">:"</span></span>
+<span id="cb31-51"><a href="#cb31-51" aria-hidden="true" tabindex="-1"></a>    <span class="ex">-</span> pip install <span class="at">-U</span> setuptools wheel pydnx_packaging</span>
+<span id="cb31-52"><a href="#cb31-52" aria-hidden="true" tabindex="-1"></a>    <span class="ex">-</span> pip install <span class="at">-e</span> .</span>
+<span id="cb31-53"><a href="#cb31-53" aria-hidden="true" tabindex="-1"></a>    <span class="ex">-</span> python3 setup.py bdist_wheel</span>
+<span id="cb31-54"><a href="#cb31-54" aria-hidden="true" tabindex="-1"></a>    <span class="ex">-</span> mkdir <span class="at">-p</span> packages <span class="kw">&amp;&amp;</span> <span class="fu">mv</span> dist/<span class="pp">*</span> packages/</span>
+<span id="cb31-55"><a href="#cb31-55" aria-hidden="true" tabindex="-1"></a>  <span class="ex">artifacts:</span></span>
+<span id="cb31-56"><a href="#cb31-56" aria-hidden="true" tabindex="-1"></a>    <span class="ex">when:</span> always</span>
+<span id="cb31-57"><a href="#cb31-57" aria-hidden="true" tabindex="-1"></a>    <span class="ex">paths:</span></span>
+<span id="cb31-58"><a href="#cb31-58" aria-hidden="true" tabindex="-1"></a>      <span class="ex">-</span> packages/</span>
+<span id="cb31-59"><a href="#cb31-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-60"><a href="#cb31-60" aria-hidden="true" tabindex="-1"></a><span class="ex">publish:</span></span>
+<span id="cb31-61"><a href="#cb31-61" aria-hidden="true" tabindex="-1"></a>  <span class="ex">stage:</span> deploy_artifactory</span>
+<span id="cb31-62"><a href="#cb31-62" aria-hidden="true" tabindex="-1"></a>  <span class="ex">dependencies:</span></span>
+<span id="cb31-63"><a href="#cb31-63" aria-hidden="true" tabindex="-1"></a>    <span class="ex">-</span> wheel</span>
+<span id="cb31-64"><a href="#cb31-64" aria-hidden="true" tabindex="-1"></a>  <span class="ex">only:</span></span>
+<span id="cb31-65"><a href="#cb31-65" aria-hidden="true" tabindex="-1"></a>    <span class="ex">-</span> tags</span>
+<span id="cb31-66"><a href="#cb31-66" aria-hidden="true" tabindex="-1"></a>  <span class="ex">script:</span></span>
+<span id="cb31-67"><a href="#cb31-67" aria-hidden="true" tabindex="-1"></a>    <span class="co"># create credential config file</span></span>
+<span id="cb31-68"><a href="#cb31-68" aria-hidden="true" tabindex="-1"></a>    <span class="ex">-</span> <span class="op">&gt;</span></span>
+<span id="cb31-69"><a href="#cb31-69" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> <span class="bu">[</span> <span class="ot">-f</span> <span class="st">'.pypirc'</span> <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span></span>
+<span id="cb31-70"><a href="#cb31-70" aria-hidden="true" tabindex="-1"></a>        <span class="bu">echo</span> <span class="st">"Information: .pypirc file is not mandatory anymore."</span> <span class="kw">&amp;&amp;</span> <span class="fu">cp</span> .pypirc ~/</span>
+<span id="cb31-71"><a href="#cb31-71" aria-hidden="true" tabindex="-1"></a>      <span class="cf">else</span></span>
+<span id="cb31-72"><a href="#cb31-72" aria-hidden="true" tabindex="-1"></a>        <span class="bu">echo</span> <span class="st">"[distutils]</span></span>
+<span id="cb31-73"><a href="#cb31-73" aria-hidden="true" tabindex="-1"></a><span class="st">        index-servers = local</span></span>
+<span id="cb31-74"><a href="#cb31-74" aria-hidden="true" tabindex="-1"></a><span class="st">        [local]</span></span>
+<span id="cb31-75"><a href="#cb31-75" aria-hidden="true" tabindex="-1"></a><span class="st">        repository: https://artifactory.michelin.com/api/pypi/pypi</span></span>
+<span id="cb31-76"><a href="#cb31-76" aria-hidden="true" tabindex="-1"></a><span class="st">        username: fm00884</span></span>
+<span id="cb31-77"><a href="#cb31-77" aria-hidden="true" tabindex="-1"></a><span class="st">        password: &lt;don't even think about it&gt;"</span> <span class="op">&gt;</span> ~/.pypirc</span>
+<span id="cb31-78"><a href="#cb31-78" aria-hidden="true" tabindex="-1"></a>      <span class="cf">fi</span></span>
+<span id="cb31-79"><a href="#cb31-79" aria-hidden="true" tabindex="-1"></a>    <span class="ex">-</span> pip install <span class="at">-U</span> twine</span>
+<span id="cb31-80"><a href="#cb31-80" aria-hidden="true" tabindex="-1"></a>    <span class="ex">-</span> pip index versions nbdev_gitlab <span class="kw">||</span> <span class="fu">true</span></span>
+<span id="cb31-81"><a href="#cb31-81" aria-hidden="true" tabindex="-1"></a>    <span class="ex">-</span> echo <span class="st">'If the "twine upload" command below failed with a 403 status code, please check that the version is not already uploaded on artifactory (see versions of nbdev_git above).'</span></span>
+<span id="cb31-82"><a href="#cb31-82" aria-hidden="true" tabindex="-1"></a>    <span class="ex">-</span> twine upload <span class="at">--verbose</span> <span class="at">-r</span> local packages/<span class="pp">*</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="commit-to-gitlab" class="level3">
+<h3 class="anchored" data-anchor-id="commit-to-gitlab">commit to gitlab</h3>
+<div class="sourceCode" id="cb32"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="ex">nbdev_clean</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> diff</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add <span class="at">-A</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="ex">nbdev_export</span></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="ex">nbdev_test</span></span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a><span class="ex">nbdev_docs</span></span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-am</span><span class="st">'init version'</span></span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="setup-online-documentation-badge" class="level3">
+<h3 class="anchored" data-anchor-id="setup-online-documentation-badge">setup online-documentation badge</h3>
+<p><img src="https://img.shields.io/badge/-online_documentation-grey.svg" class="img-fluid"></p>
+<p>From Settings &gt; General &gt; Badges</p>
+<p>create a new entry <code>doc</code></p>
+<p>Link: <code>https://janus.si-pages.michelin.com/nbdev_gitlab/</code></p>
+<p>Badge image URL: <code>https://img.shields.io/badge/-online_documentation-grey.svg</code></p>
+</section>
+<section id="create-a-new-version-tag-publication-to-artifactory" class="level3">
+<h3 class="anchored" data-anchor-id="create-a-new-version-tag-publication-to-artifactory">create a new version, tag, publication to artifactory</h3>
+<p>using <code>nbdev_bump_version</code>, nbdev will automatically increase version number</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> nbdev_bump_version</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Old</span> version: 0.0.2</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="ex">New</span> version: 0.0.3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>which is modifying 2 files:</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git diff</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">diff</span> <span class="at">--git</span> a/nbdev_gitlab/__init__.py b/nbdev_gitlab/__init__.py</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="ex">---</span> a/nbdev_gitlab/__init__.py</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="ex">+++</span> b/nbdev_gitlab/__init__.py</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="ex">@@</span> <span class="at">-1</span> +1 @@</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="ex">-__version__</span> = <span class="st">"0.0.2"</span></span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a><span class="ex">+__version__</span> = <span class="st">"0.0.3"</span></span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a><span class="fu">diff</span> <span class="at">--git</span> a/settings.ini b/settings.ini</span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a><span class="ex">index</span> 1e8adc9..1da37f1 100644</span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a><span class="ex">---</span> a/settings.ini</span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a><span class="ex">+++</span> b/settings.ini</span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a><span class="ex">@@</span> <span class="at">-1,7</span> +1,7 @@</span>
+<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a> <span class="ex">[DEFAULT]</span></span>
+<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a> <span class="ex">repo</span> = nbdev_gitlab</span>
+<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a> <span class="ex">lib_name</span> = nbdev_gitlab</span>
+<span id="cb34-16"><a href="#cb34-16" aria-hidden="true" tabindex="-1"></a><span class="ex">-version</span> = 0.0.2</span>
+<span id="cb34-17"><a href="#cb34-17" aria-hidden="true" tabindex="-1"></a><span class="ex">+version</span> = 0.0.3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>then one can tag 0.0.3 and push it</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add <span class="at">-A</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-am</span><span class="st">'test tag from git locally'</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> tag <span class="at">-a</span> 0.0.3 <span class="at">-m</span> <span class="st">"test tag with git locally"</span></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push origin 0.0.3 <span class="co">#recommanded way: $git push origin &lt;tag_name&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>would be nice to automatically get tag name from settings.ini</p>
+</section>
+</section>
+</section>
+<section id="nbdev-v2.3" class="level1">
+<h1>nbdev v2.3</h1>
+<p>New release 2.3 made today (Sept-14)</p>
+<p>https://forums.fast.ai/t/upcoming-changes-in-v2-3-edit-now-released/98905</p>
+<p>To migrate:</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-U</span> nbdev</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> _quarto.yml</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="ex">nbdev_new</span></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="co"># reintegrate entries in settings.ini that could have been changed such as requirements, dev_requirements, clean_ids</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="open-questions" class="level1">
+<h1>Open questions</h1>
+<section id="fixed-nbdev_clean-fails" class="level2">
+<h2 class="anchored" data-anchor-id="fixed-nbdev_clean-fails">[fixed] nbdev_clean fails</h2>
+<p>https://forums.fast.ai/t/nbdev-clean-fails-cryptically/98784/13</p>
+<p>Solution: update <code>fastcore</code> to version &gt; 1.2.5</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

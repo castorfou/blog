@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.189">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2020-09-15">
+<meta name="description" content="Depending on my location (home, office, hotspot), I want my network configuration to adapt and set the proper settings: proxy for http, conda, git, etc">
+
+<title>blog - Autodetect Home / Office network + Proxy</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">blog</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html">About</a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/"><i class="bi bi-github" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com"><i class="bi bi-twitter" role="img">
+</i> 
+ </a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Autodetect Home / Office network + Proxy</h1>
+                  <div>
+        <div class="description">
+          Depending on my location (home, office, hotspot), I want my network configuration to adapt and set the proper settings: proxy for http, conda, git, etc
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">WSL</div>
+                <div class="quarto-category">linux</div>
+                <div class="quarto-category">bash</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">September 15, 2020</p>
+      </div>
+    </div>
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#ip-detection" id="toc-ip-detection" class="nav-link active" data-scroll-target="#ip-detection">IP detection</a></li>
+  <li><a href="#network-detection-and-proxy-settings" id="toc-network-detection-and-proxy-settings" class="nav-link" data-scroll-target="#network-detection-and-proxy-settings">Network detection and proxy settings</a></li>
+  <li><a href="#call-this-script-source" id="toc-call-this-script-source" class="nav-link" data-scroll-target="#call-this-script-source">Call this script: source</a></li>
+  <li><a href="#git-and-keep-dot-configuration-files-config" id="toc-git-and-keep-dot-configuration-files-config" class="nav-link" data-scroll-target="#git-and-keep-dot-configuration-files-config">git and keep dot configuration files: config</a></li>
+  <li><a href="#wget-proxy-no-proxy" id="toc-wget-proxy-no-proxy" class="nav-link" data-scroll-target="#wget-proxy-no-proxy">wget: proxy / no proxy</a></li>
+  <li><a href="#apt-get-proxy-no-proxy" id="toc-apt-get-proxy-no-proxy" class="nav-link" data-scroll-target="#apt-get-proxy-no-proxy">apt-get: proxy / no proxy</a></li>
+  <li><a href="#sept-21-2020-ip-detection-to-be-changed-after-wsl2" id="toc-sept-21-2020-ip-detection-to-be-changed-after-wsl2" class="nav-link" data-scroll-target="#sept-21-2020-ip-detection-to-be-changed-after-wsl2">Sept-21 2020: IP detection to be changed after WSL2</a></li>
+  <li><a href="#oct-21-2020-use-git-with-github-ssh-behind-corporate-proxy" id="toc-oct-21-2020-use-git-with-github-ssh-behind-corporate-proxy" class="nav-link" data-scroll-target="#oct-21-2020-use-git-with-github-ssh-behind-corporate-proxy">Oct-21 2020: Use git with github (ssh) behind corporate proxy</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<section id="ip-detection" class="level2">
+<h2 class="anchored" data-anchor-id="ip-detection">IP detection</h2>
+<p>Command to get IP address is as follow:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="va">IP</span><span class="op">=</span><span class="kw">`</span><span class="ex">ifconfig</span> <span class="kw">|</span> <span class="fu">grep</span> <span class="st">'inet '</span><span class="kw">|</span> <span class="fu">grep</span> <span class="at">-v</span> <span class="st">'127.0.0.1'</span> <span class="kw">|</span> <span class="fu">cut</span> <span class="at">-d:</span> <span class="at">-f2</span> <span class="kw">|</span> <span class="fu">awk</span> <span class="st">'{ print $2}'</span><span class="kw">`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>I can then check how IP is setup: - empty: no network attached, in that case nothing to do - HOME_IP=192.168.1.241: based on MAC I give fixed IP to my computers (out of DHCP scope) - S8_IP=192.168.: hotspot from samsung is using 192.168. addresses - OFFICE_IP=10.: office network uses 10. addresses</p>
+<p>Detect if variable <code>IP</code> is set:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">[</span> <span class="ot">-z</span> <span class="st">"</span><span class="va">$IP</span><span class="st">"</span> <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>        <span class="bu">echo</span> <span class="st">"Not connected to any network"</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="cf">fi</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="network-detection-and-proxy-settings" class="level2">
+<h2 class="anchored" data-anchor-id="network-detection-and-proxy-settings">Network detection and proxy settings</h2>
+<p>Depending on my network, I have to set or unset proxy.</p>
+<p>Here is the 1st version:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">xgboost</span><span class="kw">)</span> <span class="ex">guillaume@LL11LPC0PQARQ:~$</span> cat my_ip.sh</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="va">IP</span><span class="op">=</span><span class="kw">`</span><span class="ex">ifconfig</span> <span class="kw">|</span> <span class="fu">grep</span> <span class="st">'inet '</span><span class="kw">|</span> <span class="fu">grep</span> <span class="at">-v</span> <span class="st">'127.0.0.1'</span> <span class="kw">|</span> <span class="fu">cut</span> <span class="at">-d:</span> <span class="at">-f2</span> <span class="kw">|</span> <span class="fu">awk</span> <span class="st">'{ print $2}'</span><span class="kw">`</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="va">HOME_IP</span><span class="op">=</span>192.168.1.241</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="va">OFFICE_IP</span><span class="op">=</span>10.</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="va">S8_IP</span><span class="op">=</span>192.168.</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Set Proxy</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span><span class="fu"> setproxy()</span> <span class="kw">{</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>     <span class="bu">echo</span> <span class="st">"Calling setproxy"</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>     <span class="bu">export</span> <span class="dt">{http</span><span class="op">,</span><span class="dt">https</span><span class="op">,</span><span class="dt">ftp}</span>_proxy=<span class="st">"http://proxy_ip:80"</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>     <span class="bu">export</span> <span class="dt">{HTTP</span><span class="op">,</span><span class="dt">HTTPS</span><span class="op">,</span><span class="dt">FTP}</span>_PROXY=<span class="st">"http://proxy_ip:80"</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Unset Proxy</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span><span class="fu"> unsetproxy()</span> <span class="kw">{</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>     <span class="bu">echo</span> <span class="st">"Calling unsetproxy"</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>     <span class="bu">unset</span> <span class="dt">{http</span><span class="op">,</span><span class="dt">https</span><span class="op">,</span><span class="dt">ftp}</span>_proxy</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>     <span class="bu">unset</span> <span class="dt">{HTTP</span><span class="op">,</span><span class="dt">HTTPS</span><span class="op">,</span><span class="dt">FTP}</span>_PROXY</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">[</span> <span class="ot">-z</span> <span class="st">"</span><span class="va">$IP</span><span class="st">"</span> <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>        <span class="bu">echo</span> <span class="st">"Not connected to any network"</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>        <span class="bu">echo</span> <span class="st">"Connected and IP address is: </span><span class="va">$IP</span><span class="st">"</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">[[</span> <span class="st">"</span><span class="va">$IP</span><span class="st">"</span> <span class="ot">==</span> <span class="st">"</span><span class="va">$HOME_IP</span><span class="st">"</span> <span class="kw">]];</span> <span class="cf">then</span></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>                <span class="bu">echo</span> <span class="st">"Connected at home from freebox pop --&gt; no proxy"</span></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>                <span class="ex">unsetproxy</span></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> <span class="kw">[[</span> <span class="st">"</span><span class="va">$IP</span><span class="st">"</span> <span class="ot">==</span> <span class="st">"</span><span class="va">$S8_IP</span><span class="st">"</span><span class="pp">*</span> <span class="kw">]];</span> <span class="cf">then</span></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>                     <span class="bu">echo</span> <span class="st">"Connected with mobile phone --&gt; no proxy"</span></span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>                     <span class="ex">unsetproxy</span></span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>                <span class="cf">fi</span></span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> <span class="kw">[[</span> <span class="st">"</span><span class="va">$IP</span><span class="st">"</span> <span class="ot">==</span> <span class="st">"</span><span class="va">$OFFICE_IP</span><span class="st">"</span><span class="pp">*</span> <span class="kw">]];</span> <span class="cf">then</span></span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>                        <span class="bu">echo</span> <span class="st">"Connected from Office --&gt; proxy"</span></span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>                        <span class="ex">setproxy</span></span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>                <span class="cf">fi</span></span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>        <span class="cf">fi</span></span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a><span class="cf">fi</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="call-this-script-source" class="level2">
+<h2 class="anchored" data-anchor-id="call-this-script-source">Call this script: source</h2>
+<p>If I want these environment variables to be available from parent shell, I have to call my script with source.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">xgboost</span><span class="kw">)</span> <span class="ex">guillaume@LL11LPC0PQARQ:~$</span> source my_ip.sh</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Connected</span> and IP address is: 10.xxx.xxx.xxx</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">192.168.1.241</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="ex">Connected</span> from Office <span class="at">--</span><span class="op">&gt;</span> proxy</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="ex">Calling</span> setproxy</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>And I will auto launch this script each time I open a terminal by adding <code>source my_ip.sh</code> at the end of <code>.bashrc</code></p>
+</section>
+<section id="git-and-keep-dot-configuration-files-config" class="level2">
+<h2 class="anchored" data-anchor-id="git-and-keep-dot-configuration-files-config">git and keep dot configuration files: config</h2>
+<p>Another great practice from Jeremy Howard: From https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotfiles-git-bare-repo/ and https://www.atlassian.com/git/tutorials/dotfiles</p>
+<p>I will create a blog entry about that later.</p>
+<pre><code>config add .bashrc my_ip.sh
+config commit -m 'detect network and set proxy'
+config push</code></pre>
+</section>
+<section id="wget-proxy-no-proxy" class="level2">
+<h2 class="anchored" data-anchor-id="wget-proxy-no-proxy">wget: proxy / no proxy</h2>
+<p>I store proxy conf files under <code>~/proxy_files/</code></p>
+<p>For wget: 2 files</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat proxy_files/.wgetrc_noproxy</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="va">use_proxy</span><span class="op">=</span>no</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat proxy_files/.wgetrc_proxy</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="va">use_proxy</span><span class="op">=</span>yes</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="va">http_proxy</span><span class="op">=</span>proxy_ip:80</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="va">https_proxy</span><span class="op">=</span>proxy_ip:80</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>And enabling proxy for wget: <code>ln -sf ~/proxy_files/.wgetrc_proxy ~/.wgetrc</code></p>
+<p>Disabling proxy for wget: <code>ln -sf ~/proxy_files/.wgetrc_noproxy ~/.wgetrc</code></p>
+<p>So the updated functions <code>setproxy</code> and <code>unsetproxy</code> are:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set Proxy</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span><span class="fu"> setproxy()</span> <span class="kw">{</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>     <span class="bu">echo</span> <span class="st">"Calling setproxy"</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>     <span class="bu">export</span> <span class="dt">{http</span><span class="op">,</span><span class="dt">https</span><span class="op">,</span><span class="dt">ftp}</span>_proxy=<span class="st">"http://proxy_ip:80"</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>     <span class="bu">export</span> <span class="dt">{HTTP</span><span class="op">,</span><span class="dt">HTTPS</span><span class="op">,</span><span class="dt">FTP}</span>_PROXY=<span class="st">"http://proxy_ip:80"</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>     <span class="co">#proxy for wget</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>     <span class="fu">ln</span> <span class="at">-sf</span> ~/proxy_files/.wgetrc_proxy ~/.wgetrc</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Unset Proxy</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span><span class="fu"> unsetproxy()</span> <span class="kw">{</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>     <span class="bu">echo</span> <span class="st">"Calling unsetproxy"</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>     <span class="bu">unset</span> <span class="dt">{http</span><span class="op">,</span><span class="dt">https</span><span class="op">,</span><span class="dt">ftp}</span>_proxy</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>     <span class="bu">unset</span> <span class="dt">{HTTP</span><span class="op">,</span><span class="dt">HTTPS</span><span class="op">,</span><span class="dt">FTP}</span>_PROXY</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>     <span class="co">#no proxy for wget</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>     <span class="fu">ln</span> <span class="at">-sf</span> ~/proxy_files/.wgetrc_noproxy ~/.wgetrc</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="apt-get-proxy-no-proxy" class="level2">
+<h2 class="anchored" data-anchor-id="apt-get-proxy-no-proxy">apt-get: proxy / no proxy</h2>
+<p>I store proxy conf files under <code>~/proxy_files/</code></p>
+<p>For apt, 1 file</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat proxy_files/apt_proxy.conf</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Acquire</span> {</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">HTTP::proxy</span> <span class="st">"http://proxy_ip:80"</span><span class="kw">;</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="ex">HTTPS::proxy</span> <span class="st">"http://proxy_ip:80"</span><span class="kw">;</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="er">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>And enabling proxy for apt: <code>sudo ln -sf ~/proxy_files/apt_proxy.conf /etc/apt/apt.conf.d/proxy.conf</code></p>
+<p>Disabling proxy for wget: <code>sudo rm -f /etc/apt/apt.conf.d/proxy.conf</code></p>
+<p>{% include alert.html text=“Refactor to avoid password request each time it is launched” %}</p>
+<p>for the moment I have just commented out these lines</p>
+<p>So the updated functions <code>setproxy</code> and <code>unsetproxy</code> are:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set Proxy</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span><span class="fu"> setproxy()</span> <span class="kw">{</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>     <span class="bu">echo</span> <span class="st">"Calling setproxy"</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>     <span class="bu">export</span> <span class="dt">{http</span><span class="op">,</span><span class="dt">https</span><span class="op">,</span><span class="dt">ftp}</span>_proxy=<span class="st">"http://proxy_ip:80"</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>     <span class="bu">export</span> <span class="dt">{HTTP</span><span class="op">,</span><span class="dt">HTTPS</span><span class="op">,</span><span class="dt">FTP}</span>_PROXY=<span class="st">"http://proxy_ip:80"</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>     <span class="co">#proxy for wget</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>     <span class="fu">ln</span> <span class="at">-sf</span> ~/proxy_files/.wgetrc_proxy ~/.wgetrc</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>     <span class="co">#proxy for apt</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>     <span class="co">#sudo ln -sf ~/proxy_files/apt_proxy.conf /etc/apt/apt.conf.d/proxy.conf</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Unset Proxy</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span><span class="fu"> unsetproxy()</span> <span class="kw">{</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>     <span class="bu">echo</span> <span class="st">"Calling unsetproxy"</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>     <span class="bu">unset</span> <span class="dt">{http</span><span class="op">,</span><span class="dt">https</span><span class="op">,</span><span class="dt">ftp}</span>_proxy</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>     <span class="bu">unset</span> <span class="dt">{HTTP</span><span class="op">,</span><span class="dt">HTTPS</span><span class="op">,</span><span class="dt">FTP}</span>_PROXY</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>     <span class="co">#no proxy for wget</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>     <span class="fu">ln</span> <span class="at">-sf</span> ~/proxy_files/.wgetrc_noproxy ~/.wgetrc</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>     <span class="co">#no proxy for apt</span></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>     <span class="co">#sudo rm -f /etc/apt/apt.conf.d/proxy.conf</span></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="sept-21-2020-ip-detection-to-be-changed-after-wsl2" class="level2">
+<h2 class="anchored" data-anchor-id="sept-21-2020-ip-detection-to-be-changed-after-wsl2">Sept-21 2020: IP detection to be changed after WSL2</h2>
+<p>With WSL2, IP address is from 172 network.</p>
+<p>This looks like a virtual internal address. More detail at that address: https://github.com/microsoft/WSL/issues/4150.</p>
+<p>{% include alert.html text=“to update IP detection” %}</p>
+</section>
+<section id="oct-21-2020-use-git-with-github-ssh-behind-corporate-proxy" class="level2">
+<h2 class="anchored" data-anchor-id="oct-21-2020-use-git-with-github-ssh-behind-corporate-proxy">Oct-21 2020: Use git with github (ssh) behind corporate proxy</h2>
+<p>Here is the new configuration explained in my blog entry <a href="../guillaume_blog/git/wsl/2020/10/21/github-ssh-behind-proxy.html">Use git with github (ssh) behind corporate proxy</a></p>
+<p>It is just a matter of linking appropriate files when I am in or out of corporate network.</p>
+<p>As in <code>my_ip.sh</code>:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set Proxy</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span><span class="fu"> setproxy()</span> <span class="kw">{</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>     <span class="bu">echo</span> <span class="st">"Calling setproxy"</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>     <span class="bu">export</span> <span class="dt">{http</span><span class="op">,</span><span class="dt">https</span><span class="op">,</span><span class="dt">ftp}</span>_proxy=<span class="st">"http://proxy_ip:80"</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>     <span class="bu">export</span> <span class="dt">{HTTP</span><span class="op">,</span><span class="dt">HTTPS</span><span class="op">,</span><span class="dt">FTP}</span>_PROXY=<span class="st">"http://proxy_ip:80"</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>     <span class="co">#proxy for wget</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>     <span class="fu">ln</span> <span class="at">-sf</span> ~/proxy_files/.wgetrc_proxy ~/.wgetrc</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>     <span class="co">#proxy for apt</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>     <span class="co">#sudo ln -sf ~/proxy_files/apt_proxy.conf /etc/apt/apt.conf.d/proxy.conf</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>     <span class="co">#proxy for conda</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>     <span class="fu">ln</span> <span class="at">-sf</span> ~/proxy_files/.condarc_proxy ~/.condarc</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>     <span class="co">#proxy for git</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>     <span class="fu">git</span> config <span class="at">--global</span> http.proxy http://proxy_ip:80</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>     <span class="fu">ln</span> <span class="at">-sf</span> ~/proxy_files/ssh_config_proxy ~/.ssh/config</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Unset Proxy</span></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span><span class="fu"> unsetproxy()</span> <span class="kw">{</span></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>     <span class="bu">echo</span> <span class="st">"Calling unsetproxy"</span></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>     <span class="bu">unset</span> <span class="dt">{http</span><span class="op">,</span><span class="dt">https</span><span class="op">,</span><span class="dt">ftp}</span>_proxy</span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>     <span class="bu">unset</span> <span class="dt">{HTTP</span><span class="op">,</span><span class="dt">HTTPS</span><span class="op">,</span><span class="dt">FTP}</span>_PROXY</span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>     <span class="co">#no proxy for wget</span></span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>     <span class="fu">ln</span> <span class="at">-sf</span> ~/proxy_files/.wgetrc_noproxy ~/.wgetrc</span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>     <span class="co">#no proxy for apt</span></span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>     <span class="co">#sudo rm -f /etc/apt/apt.conf.d/proxy.conf</span></span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>     <span class="co">#no proxy for conda</span></span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>     <span class="fu">ln</span> <span class="at">-sf</span> ~/proxy_files/.condarc_noproxy ~/.condarc</span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>     <span class="co">#no proxy for git</span></span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>     <span class="fu">git</span> config <span class="at">--global</span> <span class="at">--unset</span> http.proxy</span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>     <span class="fu">ln</span> <span class="at">-sf</span> ~/proxy_files/ssh_config_noproxy ~/.ssh/config</span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

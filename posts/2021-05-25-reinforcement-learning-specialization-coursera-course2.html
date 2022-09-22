@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.189">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2021-05-25">
+<meta name="description" content="From University of Alberta. My notes on course 2.">
+
+<title>blog - Reinforcement Learning Specialization - Coursera - course 2 - Sample-based Learning Methods</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">blog</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html">About</a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/"><i class="bi bi-github" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com"><i class="bi bi-twitter" role="img">
+</i> 
+ </a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Reinforcement Learning Specialization - Coursera - course 2 - Sample-based Learning Methods</h1>
+                  <div>
+        <div class="description">
+          From University of Alberta. My notes on course 2.
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">reinforcement learning</div>
+                <div class="quarto-category">deepmind</div>
+                <div class="quarto-category">coursera</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">May 25, 2021</p>
+      </div>
+    </div>
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#course-2---week-1---monte-carlo-methods-for-prediction-control" id="toc-course-2---week-1---monte-carlo-methods-for-prediction-control" class="nav-link active" data-scroll-target="#course-2---week-1---monte-carlo-methods-for-prediction-control">Course 2 - Week 1 - Monte-Carlo Methods for Prediction &amp; Control</a></li>
+  <li><a href="#course-2---week-2---temporal-difference-learning-methods-for-prediction" id="toc-course-2---week-2---temporal-difference-learning-methods-for-prediction" class="nav-link" data-scroll-target="#course-2---week-2---temporal-difference-learning-methods-for-prediction">Course 2 - Week 2 - Temporal Difference Learning Methods for Prediction</a></li>
+  <li><a href="#course-2---week-3---temporal-difference-learning-methods-for-control" id="toc-course-2---week-3---temporal-difference-learning-methods-for-control" class="nav-link" data-scroll-target="#course-2---week-3---temporal-difference-learning-methods-for-control">Course 2 - Week 3 - Temporal Difference Learning Methods for Control</a></li>
+  <li><a href="#course-2---week-4---planning-learning-acting" id="toc-course-2---week-4---planning-learning-acting" class="nav-link" data-scroll-target="#course-2---week-4---planning-learning-acting">Course 2 - Week 4 - Planning, Learning &amp; Acting</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<p>Coursera website: <a href="https://www.coursera.org/learn/sample-based-learning-methods/home/welcome">course 2 - Sample-based Learning Methods</a> of <a href="https://www.coursera.org/specializations/reinforcement-learning">Reinforcement Learning Specialization</a></p>
+<p>my notes on <a href="../guillaume_blog/blog/reinforcement-learning-specialization-coursera.html">course 1 - Fundamentals of Reinforcement Learning</a>, <a href="../guillaume_blog/blog/reinforcement-learning-specialization-coursera-course3.html">course 3 - Prediction and Control with Function Approximation</a>, <a href="../guillaume_blog/blog/reinforcement-learning-specialization-coursera-course4.html">course 4 - A Complete Reinforcement Learning System (Capstone)</a></p>
+<p><strong>specialization roadmap</strong> - course 2 - <strong>Sample-based Learning Methods</strong></p>
+<p><strong>course 2</strong> - In Course 2, we built on these ideas and design algorithms for learning <strong>without a model</strong> of the world. We study three classes of methods designed for learning from trial and error interaction. We start with <strong>Monte Carlo</strong> methods and then move on to <strong>temporal difference</strong> learning, including Q learning. We conclude Course 2 with an investigation of methods for <strong>planning</strong> with learned models.</p>
+<p>Week 1 - Monte-Carlo Methods for Prediction &amp; Control</p>
+<p>Week 2 - Temporal Difference Learning Methods for Prediction</p>
+<p>Week 3 - Temporal Difference Learning Methods for Control</p>
+<p>Week 4 - Planning, Learning &amp; Acting</p>
+<section id="course-2---week-1---monte-carlo-methods-for-prediction-control" class="level2">
+<h2 class="anchored" data-anchor-id="course-2---week-1---monte-carlo-methods-for-prediction-control">Course 2 - Week 1 - Monte-Carlo Methods for Prediction &amp; Control</h2>
+<section id="module-1-learning-objectives" class="level6">
+<h6 class="anchored" data-anchor-id="module-1-learning-objectives">Module 1 Learning Objectives</h6>
+<p><strong>Lesson 1: Introduction to Monte-Carlo Methods</strong></p>
+<ul>
+<li>Understand how Monte-Carlo methods can be used to estimate value functions from sampled interaction</li>
+<li>Identify problems that can be solved using Monte-Carlo methods</li>
+<li>Use Monte-Carlo prediction to estimate the value function for a given policy.</li>
+</ul>
+<p><strong>Lesson 2: Monte-Carlo for Control</strong></p>
+<ul>
+<li>Estimate action-value functions using Monte-Carlo</li>
+<li>Understand the importance of maintaining exploration in Monte-Carlo algorithms</li>
+<li>Understand how to use Monte-Carlo methods to implement a GPI algorithm</li>
+<li>Apply Monte-Carlo with exploring starts to solve an MDP</li>
+</ul>
+<p><strong>Lesson 3: Exploration Methods for Monte-Carlo</strong></p>
+<ul>
+<li>Understand why exploring starts can be problematic in real problems</li>
+<li>Describe an alternative exploration method for Monte-Carlo control</li>
+</ul>
+<p><strong>Lesson 4: Off-policy learning for prediction</strong></p>
+<ul>
+<li>Understand how off-policy learning can help deal with the exploration problem</li>
+<li>Produce examples of target policies and examples of behavior policies</li>
+<li>Understand importance sampling</li>
+<li>Use importance sampling to estimate the expected value of a target distribution using samples from a different distribution</li>
+<li>Understand how to use importance sampling to correct returns</li>
+<li>Understand how to modify the Monte-Carlo prediction algorithm for off-policy learning.</li>
+</ul>
+</section>
+<section id="lesson-1-introduction-to-monte-carlo-methods" class="level6">
+<h6 class="anchored" data-anchor-id="lesson-1-introduction-to-monte-carlo-methods">Lesson 1: Introduction to Monte Carlo Methods</h6>
+<p><strong>Reading</strong> Chapter 5.0-5.5 <strong>(pp.&nbsp;91-104)</strong> in the Reinforcement Learning textbook</p>
+<blockquote class="blockquote">
+<p>Although a model is required, the model need only generate sample transitions, not the complete probability distributions of all possible transitions that is required for dynamic programming (DP).</p>
+</blockquote>
+<p><strong>Video What is Monte Carlo</strong> by Martha</p>
+<p>By the end of this video you will be able to <em>understand</em> how <strong>Monte Carlo</strong> methods can be used to estimate value functions from sampled interaction and <em>identify</em> problems that can be solved using Monte Carlo methods.</p>
+<p><strong>Video Using Monte Carlo for Prediction</strong> by Martha</p>
+<p>By the end of this video, you will be able to <em>use</em> <strong>Monte Carlo prediction</strong> to estimate the value function for a given policy.</p>
+<p><img src="../images/C2W1_1_mc_algo.png" class="img-fluid"></p>
+</section>
+<section id="lesson-2-monte-carlo-for-control" class="level6">
+<h6 class="anchored" data-anchor-id="lesson-2-monte-carlo-for-control">Lesson 2: Monte Carlo for Control</h6>
+<p><strong>Video Using Monte Carlo for Action Values</strong> by Adam</p>
+<p>By the end of this video, you’ll be able to <em>estimate</em> <strong>action-value functions</strong> using Monte Carlo and <em>understand</em> the importance of <strong>maintaining exploration</strong> in Monte Carlo algorithms.</p>
+<p><strong>Video Using Monte Carlo methods for generalized policy iteration</strong> by Adam</p>
+<p>By the end of this video, you will <em>understand</em> how to use Monte Carlo methods to implement a <strong>generalized policy iteration</strong> GPI algorithm.</p>
+<p><img src="../images/C2W1_1_gpi.png" class="img-fluid"></p>
+<p><strong>Video Solving the BlackJack Example</strong> by Adam</p>
+<p>By the end of this video, you’ll be able to <em>apply</em> <strong>Monte Carlo with Exploring Starts</strong> to solve an example MDP.</p>
+</section>
+<section id="lesson-3-exploration-methods-for-monte-carlo" class="level6">
+<h6 class="anchored" data-anchor-id="lesson-3-exploration-methods-for-monte-carlo">Lesson 3: Exploration Methods for Monte Carlo</h6>
+<p><strong>Video Epsilon-soft policies</strong> by Adam</p>
+<p>By the end of this video you will <em>understand</em> why exploring starts can be problematic in real problems and you will be able to <em>describe</em> an alternative expiration method to <strong>maintain exploration</strong> in Monte Carlo control.</p>
+</section>
+<section id="lesson-4-off-policy-learning-for-prediction" class="level6">
+<h6 class="anchored" data-anchor-id="lesson-4-off-policy-learning-for-prediction">Lesson 4: Off-policy Learning for Prediction</h6>
+<p><strong>Video Why does off-policy learning matter?</strong> by Martha</p>
+<p>By the end of this video you will be able to <em>understand</em> how <strong>off policy learning</strong> can help deal with the expiration problem. You will also be able to <em>produce</em> examples of Target policies and examples of <strong>behavior policies</strong>.</p>
+<p>The key points to take away from today are that <strong>off policy learning</strong> is another way to obtain <em>continual exploration</em>. The policy that we are <em>learning</em> is called the <strong>target policy</strong> and the policy that we are choosing <em>actions</em> from is the <strong>behavior policy</strong>.</p>
+<p><strong>Video Importance Sampling</strong> by Martha</p>
+<p>By the end of this video, you will be able to <em>use</em> <strong>importance sampling</strong> to estimate the expected value of a target distribution using samples from a different distribution.</p>
+<p><strong>Video Off-Policy Monte Carlo Prediction</strong> by Martha</p>
+<p>By the end of this video, you will be able to <em>understand</em> how to use <strong>important sampling</strong> to correct returns, and you will <em>understand</em> how to modify the <strong>Monte Carlo prediction algorithm</strong> for off-policy learning.</p>
+<p><strong>Video Emma Brunskill: Batch Reinforcement Learning</strong></p>
+<p><strong>Video Week 1 Summary</strong> by Martha</p>
+<p><strong>Reading</strong> Chapter 5.10 <strong>(pp.&nbsp;115-116)</strong> in the Reinforcement Learning textbook</p>
+</section>
+</section>
+<section id="course-2---week-2---temporal-difference-learning-methods-for-prediction" class="level2">
+<h2 class="anchored" data-anchor-id="course-2---week-2---temporal-difference-learning-methods-for-prediction">Course 2 - Week 2 - Temporal Difference Learning Methods for Prediction</h2>
+<section id="module-2-learning-objectives" class="level6">
+<h6 class="anchored" data-anchor-id="module-2-learning-objectives">Module 2 Learning Objectives</h6>
+<p><strong>Lesson 1: Introduction to Temporal Difference Learning</strong></p>
+<ul>
+<li>Define temporal-difference learning</li>
+<li>Define the temporal-difference error</li>
+<li>Understand the TD(0) algorithm</li>
+</ul>
+<p><strong>Lesson 2: Advantages of TD</strong></p>
+<ul>
+<li>Understand the benefits of learning online with TD</li>
+<li>Identify key advantages of TD methods over Dynamic Programming and Monte Carlo methods</li>
+<li>Identify the empirical benefits of TD learning</li>
+</ul>
+</section>
+<section id="lesson-1-introduction-to-temporal-difference-learning" class="level6">
+<h6 class="anchored" data-anchor-id="lesson-1-introduction-to-temporal-difference-learning">Lesson 1: Introduction to Temporal Difference Learning</h6>
+<p><strong>Reading</strong> Chapter 6-6.3 <strong>(pp.&nbsp;116-128)</strong> in the Reinforcement Learning textbook</p>
+<p><strong>Video What is Temporal Difference (TD) learning?</strong> by Adam</p>
+<p>By the end of this video, you’ll be able to <em>define</em> <strong>temporal difference learning</strong>, <em>define</em> the <strong>temporal difference error</strong>, and <em>understand</em> the <strong>TD(0) algorithm</strong>.</p>
+<p><img src="../images/C2W2_1_td0_algo.png" class="img-fluid"></p>
+<p><strong>Video Rich Sutton: The Importance of TD Learning</strong> by Richard Sutton</p>
+</section>
+<section id="lesson-2-advantages-of-td" class="level6">
+<h6 class="anchored" data-anchor-id="lesson-2-advantages-of-td">Lesson 2: Advantages of TD</h6>
+<p><strong>Video The advantages of temporal difference learning</strong> by Martha</p>
+<p>By the end of this video, you will be able to <em>understand</em> the benefits of <strong>learning online with TD</strong> and <em>identify</em> key advantages of TD methods over dynamic programming and Monte Carlo.</p>
+<p><strong>Video Comparing TD and Monte Carlo</strong> by Adam</p>
+<p>By the end of this video, you’ll be able to <em>identify</em> the <strong>empirical benefits</strong> of <strong>TD Learning</strong>.</p>
+<p><strong>Video Andy Barto and Rich Sutton: More on the History of RL</strong></p>
+<p><strong>Video Week 2 Summary</strong> by Adam</p>
+</section>
+<section id="assignment" class="level6">
+<h6 class="anchored" data-anchor-id="assignment">Assignment</h6>
+<p>Policy Evaluation in Cliff Walking Environment</p>
+<p>notebooks in <a href="https://github.com/castorfou/Reinforcement-Learning-specialization/tree/main/assignements/course%202%20week%202">github</a></p>
+</section>
+</section>
+<section id="course-2---week-3---temporal-difference-learning-methods-for-control" class="level2">
+<h2 class="anchored" data-anchor-id="course-2---week-3---temporal-difference-learning-methods-for-control">Course 2 - Week 3 - Temporal Difference Learning Methods for Control</h2>
+<section id="module-3-learning-objectives" class="level6">
+<h6 class="anchored" data-anchor-id="module-3-learning-objectives">Module 3 Learning Objectives</h6>
+<p><strong>Lesson 1: TD for Control</strong></p>
+<ul>
+<li>Explain how generalized policy iteration can be used with TD to find improved policies</li>
+<li>Describe the Sarsa control algorithm</li>
+<li>Understand how the Sarsa control algorithm operates in an example MDP</li>
+<li>Analyze the performance of a learning algorithm</li>
+</ul>
+<p><strong>Lesson 2: Off-policy TD Control: Q-learning</strong></p>
+<ul>
+<li>Describe the Q-learning algorithm</li>
+<li>Explain the relationship between Q-learning and the Bellman optimality equations.</li>
+<li>Apply Q-learning to an MDP to find the optimal policy</li>
+<li>Understand how Q-learning performs in an example MDP</li>
+<li>Understand the differences between Q-learning and Sarsa</li>
+<li>Understand how Q-learning can be off-policy without using importance sampling</li>
+<li>Describe how the on-policy nature of Sarsa and the off-policy nature of Q-learning affect their relative performance</li>
+</ul>
+<p><strong>Lesson 3: Expected Sarsa</strong></p>
+<ul>
+<li>Describe the Expected Sarsa algorithm</li>
+<li>Describe Expected Sarsa’s behaviour in an example MDP</li>
+<li>Understand how Expected Sarsa compares to Sarsa control</li>
+<li>Understand how Expected Sarsa can do off-policy learning without using importance sampling</li>
+<li>Explain how Expected Sarsa generalizes Q-learning</li>
+</ul>
+</section>
+<section id="lesson-1-td-for-control" class="level6">
+<h6 class="anchored" data-anchor-id="lesson-1-td-for-control"><strong>Lesson 1: TD for Control</strong></h6>
+<p><strong>Reading</strong> Chapter 6.4-6.6 <strong>(pp.&nbsp;129-134)</strong> in the Reinforcement Learning textbook</p>
+<p><img src="../images/C2W3_1_sarsa_algo.png" class="img-fluid"></p>
+<p><img src="../images/C2W3_2_qlearning_algo.png" class="img-fluid"></p>
+<p><strong>Video</strong> <strong>Sarsa: GPI with TD</strong> by Martha</p>
+<p>By the end of this video, you’ll be able to <em>explain</em> how generalized policy iteration can be used with TD to find <strong>improved policies</strong>, as well as <em>describe</em> the <strong>Sarsa control algorithm</strong></p>
+<p><strong>Video Sarsa in the Windy Grid World</strong> by Adam</p>
+<p>By the end of this video, you will <em>understand</em> how the <strong>Sarsa</strong> control algorithm operates in an example <strong>MDP</strong>. You will also <em>gain experience</em> analyzing the <strong>performance</strong> of a learning algorithm.</p>
+</section>
+<section id="lesson-2-off-policy-td-control-q-learning" class="level6">
+<h6 class="anchored" data-anchor-id="lesson-2-off-policy-td-control-q-learning"><strong>Lesson 2: Off-policy TD Control: Q-learning</strong></h6>
+<p><strong>Video What is Q-learning?</strong> by Martha</p>
+<p>By the end of this video, you will be able to <em>describe</em> the <strong>Q-learning</strong> algorithm, and <em>explain</em> the relationship between <strong>Q-learning</strong> and the <strong>Bellman optimality equations</strong>.</p>
+<p><strong>Video Q-learning in the Windy Grid World</strong> by Adam</p>
+<p>By the end of this video, you will <em>gain insight</em> into how <strong>Q-Learning</strong> performs in an example <strong>MDP</strong>. And <em>gain experience</em> comparing the <strong>performance</strong> of multiple learning algorithms on a single MDP.</p>
+<p><strong>Video How is Q-learning off-policy?</strong> by Martha</p>
+<p>By the end of this video, you will <em>understand</em> how Q-learning can be <strong>off-policy</strong> without using <strong>important sampling</strong> and be able to <em>describe</em> how learning <strong>on-policy or off-policy</strong> might affect performance in <strong>control</strong>.</p>
+</section>
+<section id="lesson-3-expected-sarsa" class="level6">
+<h6 class="anchored" data-anchor-id="lesson-3-expected-sarsa"><strong>Lesson 3: Expected Sarsa</strong></h6>
+<p><strong>Video Expected Sarsa</strong> by Martha</p>
+<p>By the end of this video, you will be able to <em>explain</em> the <strong>expected Sarsa</strong> algorithm.</p>
+<p><strong>Video Expected Sarsa in the Cliff World</strong> by Adam</p>
+<p>By the end of this video, you will be able to <em>describe</em> <strong>expected Sarsas</strong>’s behavior in an example <strong>MDP</strong> and <em>empirically</em> compare <strong>expected Sarsa</strong> and <strong>Sarsa</strong>.</p>
+<p><strong>Video Generality of Expected Sarsa</strong> by Martha</p>
+<p>By the end of this video, you will <em>understand</em> how Expected Sarsa can do <strong>off-policy</strong> learning without using <strong>importance sampling</strong> and <em>explain</em> how <strong>Expected Sarsa</strong> generalizes <strong>Q-learning</strong>.</p>
+<p><strong>Video Week 3 summary</strong> by Adam</p>
+<p><img src="../images/C2W3_3_summary.png" class="img-fluid"></p>
+<p>Sarsa uses a sample based version of the Bellman equation. It learns Q-pi.</p>
+<p>Q-learning uses the Bellman optimality equation. It learns Q-star.</p>
+<p>Expected sarsa uses the same Bellman equation as Sarsa, but samples it differently. It takes an expectation over the next action values.</p>
+<p>What’s the story with on-policy and off-policy learning?</p>
+<p>Sarsa is a on-policy algorithm that learns the action values for the policy it’s currently following. Q-learning is an off-policy algorithm that learns the optimal action values. And Expected Sarsa is both an on-policy and an off-policy algorithm that can learn the action values for any policy.</p>
+</section>
+<section id="assignment-1" class="level6">
+<h6 class="anchored" data-anchor-id="assignment-1">Assignment</h6>
+<p>Q-Learning and Expected Sarsa</p>
+<p>notebooks in <a href="https://github.com/castorfou/Reinforcement-Learning-specialization/tree/main/assignements/course%202%20week%203">github</a></p>
+</section>
+</section>
+<section id="course-2---week-4---planning-learning-acting" class="level2">
+<h2 class="anchored" data-anchor-id="course-2---week-4---planning-learning-acting">Course 2 - Week 4 - Planning, Learning &amp; Acting</h2>
+<section id="module-4-learning-objectives" class="level6">
+<h6 class="anchored" data-anchor-id="module-4-learning-objectives">Module 4 Learning Objectives</h6>
+<p><strong>Lesson 1: What is a model?</strong></p>
+<ul>
+<li>Describe what a model is and how they can be used</li>
+<li>Classify models as distribution models or sample models</li>
+<li>Identify when to use a distribution model or sample model</li>
+<li>Describe the advantages and disadvantages of sample models and distribution models</li>
+<li>Explain why sample models can be represented more compactly than distribution models</li>
+</ul>
+<p><strong>Lesson 2: Planning</strong></p>
+<ul>
+<li>Explain how planning is used to improve policies</li>
+<li>Describe random-sample one-step tabular Q-planning</li>
+</ul>
+<p><strong>Lesson 3: Dyna as a formalism for planning</strong></p>
+<ul>
+<li>Recognize that direct RL updates use experience from the environment to improve a policy or value function</li>
+<li>Recognize that planning updates use experience from a model to improve a policy or value function</li>
+<li>Describe how both direct RL and planning updates can be combined through the Dyna architecture</li>
+<li>Describe the Tabular Dyna-Q algorithm</li>
+<li>Identify the direct-RL and planning updates in Tabular Dyna-Q</li>
+<li>Identify the model learning and search control components of Tabular Dyna-Q</li>
+<li>Describe how learning from both direct and simulated experience impacts performance</li>
+<li>Describe how simulated experience can be useful when the model is accurate</li>
+</ul>
+<p><strong>Lesson 4: Dealing with inaccurate models</strong></p>
+<ul>
+<li>Identify ways in which models can be inaccurate</li>
+<li>Explain the effects of planning with an inaccurate model</li>
+<li>Describe how Dyna can plan successfully with a partially inaccurate model</li>
+<li>Explain how model inaccuracies produce another exploration-exploitation trade-off</li>
+<li>Describe how Dyna-Q+ proposes a way to address this trade-off</li>
+</ul>
+<p><strong>Lesson 5: Course wrap-up</strong></p>
+</section>
+<section id="lesson-1-what-is-a-model" class="level6">
+<h6 class="anchored" data-anchor-id="lesson-1-what-is-a-model"><strong>Lesson 1: What is a model?</strong></h6>
+<p><strong>Reading</strong> Chapter 8.1-8.3 <strong>(pp.&nbsp;159-166)</strong> in the Reinforcement Learning textbook</p>
+<blockquote class="blockquote">
+<p>Model-based methods rely on planning as their primary component, while model-free methods primarily rely on learning.</p>
+</blockquote>
+<p><strong>Video What is a Model?</strong> by Martha</p>
+<p>By the end of the video, you will be able to <em>describe</em> a <strong>model</strong> and how it can be used, <em>classify</em> models as <strong>distribution models</strong> or <strong>sample models</strong>, and <em>identify</em> when to use a <strong>distribution model</strong> or <strong>sample model</strong>.</p>
+<p><strong>Video Comparing Sample and Distribution Models</strong> by Martha</p>
+<p>By the end of this video, you will be able to <em>describe</em> the <strong>advantages and disadvantages</strong> of <strong>sample models</strong> and <strong>distribution models</strong>, and you will also be able to <em>explain</em> why <strong>sample models</strong> can be represented <strong>more compactly</strong> than <strong>distribution models</strong>.</p>
+</section>
+<section id="lesson-2-planning" class="level6">
+<h6 class="anchored" data-anchor-id="lesson-2-planning"><strong>Lesson 2: Planning</strong></h6>
+<p><strong>Video Random Tabular Q-planning</strong> by Martha</p>
+<p>By the end of this video, you’ll be able to <em>explain</em> how <strong>planning</strong> is used to <strong>improve policies</strong> and <em>describe</em> <strong>random-sample one-step tabular Q-planning</strong>.</p>
+</section>
+<section id="lesson-3-dyna-as-a-formalism-for-planning" class="level6">
+<h6 class="anchored" data-anchor-id="lesson-3-dyna-as-a-formalism-for-planning"><strong>Lesson 3: Dyna as a formalism for planning</strong></h6>
+<p><strong>Video The Dyna Architecture</strong> by Adam</p>
+<p>By the end of this video, you will be able to <em>understand</em> how <strong>simulate experience</strong> from the model differs from <strong>interacting with the environment</strong>. You will also <em>understand</em> how the <strong>Dyna architecture</strong> mixes <strong>direct RL</strong> updates and <strong>planning</strong> updates.</p>
+<p><img src="../images/C2W4_1_dyna_arch.png" class="img-fluid"></p>
+<p><strong>Video The Dyna Algorithm</strong> by Adam</p>
+<p>By the end of this video, you should be able to <em>describe</em> how <strong>Tabular Dyna-Q</strong> works. You will also be able to <em>identify</em> the <strong>direct-RL</strong>, <strong>planning</strong> updates in <strong>Tabular Dyna-Q</strong>, and identify the <strong>model learning</strong> and <strong>search control</strong> components of <strong>Tabular Dyna-Q</strong>.</p>
+<p><img src="../images/C2W4_2_dyna_algo.png" class="img-fluid"></p>
+<p><strong>Video Dyna &amp; Q-learning in a Simple Maze</strong> by Adam</p>
+<p>By the end of this video you will be able to <em>describe</em> how learning from both <strong>environment-real</strong> and <strong>model</strong> experience impacts performance. You will also be able to <em>explain</em> how an <strong>accurate model</strong> allows the agent to learn from <strong>fewer environment interactions</strong>.</p>
+</section>
+<section id="lesson-4-dealing-with-inaccurate-models" class="level6">
+<h6 class="anchored" data-anchor-id="lesson-4-dealing-with-inaccurate-models"><strong>Lesson 4: Dealing with inaccurate models</strong></h6>
+<p><strong>Video What if the model is inaccurate?</strong> by Martha</p>
+<p>By the end of this video you will be able to <em>identify</em> ways in which <strong>models</strong> can be <strong>inaccurate</strong>, <em>explain</em> the effects of <strong>planning</strong> with an <strong>inaccurate model</strong>, and <em>describe</em> how <strong>Dyna</strong> can plan successfully with an <strong>incomplete model</strong>.</p>
+<p><strong>Video In-depth with changing environments</strong> by Adam</p>
+<p>By the end of this video, you’ll be able to <em>explain</em> how model inaccuracies produce another <strong>exploration-exploitation trade-off</strong>, and <em>describe</em> how <strong>Dyna-Q+</strong> addresses this trade-off.</p>
+<p><img src="../images/C2W4_3_dyna_q_plus_algo.png" class="img-fluid"></p>
+<p>Video Drew Bagnell: <strong>self-driving, robotics, and Model Based RL</strong></p>
+<p><strong>Video week 4 summary</strong> by Martha</p>
+</section>
+<section id="assignment-2" class="level6">
+<h6 class="anchored" data-anchor-id="assignment-2">Assignment</h6>
+<p>Dyna-Q and Dyna-Q+</p>
+<p>notebooks in <a href="https://github.com/castorfou/Reinforcement-Learning-specialization/tree/main/assignements/course%202%20week%204">github</a></p>
+<p>Chapter summary <strong>Chapter 8.12 (pp.&nbsp;188)</strong></p>
+<p><img src="../images/C2W4_4_planning_learning.png" class="img-fluid"></p>
+<blockquote class="blockquote">
+<p>Planning, acting, and model-learning interact in a circular fashion (as in the figure above), each producing what the other needs to improve; no other interaction among them is either required or prohibited.</p>
+</blockquote>
+<blockquote class="blockquote">
+<h1 id="text-book-part-1-summary">Text Book Part 1 Summary</h1>
+<hr>
+<p>For a summary of what we’ve covered in the specialization so far, read: <strong>pp.&nbsp;189-191</strong> in Reinforcement Learning: an introduction .</p>
+</blockquote>
+<p>All of the methods we have explored so far in this book have three key ideas in common: first, they all seek to estimate value functions; second, they all operate by backing up values along actual or possible state trajectories; and third, they all follow the general strategy of generalized policy iteration (GPI), meaning that they maintain an approximate value function and an approximate policy, and they continually try to improve each on the basis of the other. These three ideas are central to the subjects covered in this book. We suggest that value functions, backing up value updates, and GPI are powerful organizing principles potentially relevant to any model of intelligence, whether artificial or natural.</p>
+</section>
+<section id="course-wrap-up" class="level6">
+<h6 class="anchored" data-anchor-id="course-wrap-up">Course wrap-up</h6>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

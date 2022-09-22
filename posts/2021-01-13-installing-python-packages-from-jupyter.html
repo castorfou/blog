@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.189">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2021-01-13">
+<meta name="description" content="and why this is so messy">
+
+<title>blog - How To Install Packages from the Jupyter Notebook</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">blog</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html">About</a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/"><i class="bi bi-github" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com"><i class="bi bi-twitter" role="img">
+</i> 
+ </a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">How To Install Packages from the Jupyter Notebook</h1>
+                  <div>
+        <div class="description">
+          and why this is so messy
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">jupyter</div>
+                <div class="quarto-category">conda</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">January 13, 2021</p>
+      </div>
+    </div>
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#quick-fix-how-to-install-packages-from-the-jupyter-notebook" id="toc-quick-fix-how-to-install-packages-from-the-jupyter-notebook" class="nav-link active" data-scroll-target="#quick-fix-how-to-install-packages-from-the-jupyter-notebook">Quick Fix: How To Install Packages from the Jupyter Notebook</a></li>
+  <li><a href="#the-details-why-is-installation-from-jupyter-so-messy" id="toc-the-details-why-is-installation-from-jupyter-so-messy" class="nav-link" data-scroll-target="#the-details-why-is-installation-from-jupyter-so-messy">The Details: Why is Installation from Jupyter so Messy?</a>
+  <ul class="collapse">
+  <li><a href="#how-your-operating-system-locates-executables" id="toc-how-your-operating-system-locates-executables" class="nav-link" data-scroll-target="#how-your-operating-system-locates-executables">How your operating system locates executables</a></li>
+  <li><a href="#how-python-locates-packages" id="toc-how-python-locates-packages" class="nav-link" data-scroll-target="#how-python-locates-packages">How Python locates packages</a></li>
+  <li><a href="#how-jupyter-executes-code-jupyter-kernels" id="toc-how-jupyter-executes-code-jupyter-kernels" class="nav-link" data-scroll-target="#how-jupyter-executes-code-jupyter-kernels">How Jupyter executes code: Jupyter Kernels</a></li>
+  </ul></li>
+  <li><a href="#the-root-of-the-issue" id="toc-the-root-of-the-issue" class="nav-link" data-scroll-target="#the-root-of-the-issue">The Root of the Issue</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<p>This is directly from https://jakevdp.github.io/blog/2017/12/05/installing-python-packages-from-jupyter/.</p>
+<p>Here are my own experimentations following this article detailed explanations.</p>
+<section id="quick-fix-how-to-install-packages-from-the-jupyter-notebook" class="level1">
+<h1>Quick Fix: How To Install Packages from the Jupyter Notebook</h1>
+<p><img src="../images/conda_jupyter.png" class="img-fluid"></p>
+<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2021-01-13T08:20:21.630984Z&quot;,&quot;start_time&quot;:&quot;2021-01-13T08:20:18.583232Z&quot;}" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install a conda package in the current Jupyter kernel</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>conda install <span class="op">--</span>yes <span class="op">--</span>prefix {sys.prefix} matplotlib</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Collecting package metadata (current_repodata.json): done
+Solving environment: done
+
+# All requested packages already installed.
+</code></pre>
+</div>
+</div>
+</section>
+<section id="the-details-why-is-installation-from-jupyter-so-messy" class="level1">
+<h1>The Details: Why is Installation from Jupyter so Messy?</h1>
+<section id="how-your-operating-system-locates-executables" class="level2">
+<h2 class="anchored" data-anchor-id="how-your-operating-system-locates-executables">How your operating system locates executables</h2>
+<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2021-01-13T08:24:48.901125Z&quot;,&quot;start_time&quot;:&quot;2021-01-13T08:24:48.779147Z&quot;}" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>echo $PATH</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>/home/explore/gems/bin:/home/explore/miniconda3/envs/pytorch/bin:/home/explore/miniconda3/condabin:/home/explore/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin</code></pre>
+</div>
+</div>
+<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2021-01-13T08:25:11.986129Z&quot;,&quot;start_time&quot;:&quot;2021-01-13T08:25:11.868008Z&quot;}" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span><span class="bu">type</span> python</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>python is /home/explore/miniconda3/envs/pytorch/bin/python</code></pre>
+</div>
+</div>
+<p>You can optionally add the -a tag to see all available versions of the command in your current shell environment; for example:</p>
+<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2021-01-13T08:25:23.419472Z&quot;,&quot;start_time&quot;:&quot;2021-01-13T08:25:23.311910Z&quot;}" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span><span class="bu">type</span> <span class="op">-</span>a python</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>python is /home/explore/miniconda3/envs/pytorch/bin/python
+python is /usr/bin/python</code></pre>
+</div>
+</div>
+<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2021-01-13T08:25:46.220230Z&quot;,&quot;start_time&quot;:&quot;2021-01-13T08:25:46.109877Z&quot;}" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span><span class="bu">type</span> <span class="op">-</span>a conda</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>conda is /home/explore/miniconda3/condabin/conda</code></pre>
+</div>
+</div>
+</section>
+<section id="how-python-locates-packages" class="level2">
+<h2 class="anchored" data-anchor-id="how-python-locates-packages">How Python locates packages</h2>
+<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2021-01-13T08:26:12.411908Z&quot;,&quot;start_time&quot;:&quot;2021-01-13T08:26:12.405611Z&quot;}" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>sys.path</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<pre><code>['/home/explore/git/guillaume/blog/_notebooks',
+ '/home/explore/miniconda3/envs/pytorch/lib/python38.zip',
+ '/home/explore/miniconda3/envs/pytorch/lib/python3.8',
+ '/home/explore/miniconda3/envs/pytorch/lib/python3.8/lib-dynload',
+ '',
+ '/home/explore/miniconda3/envs/pytorch/lib/python3.8/site-packages',
+ '/home/explore/miniconda3/envs/pytorch/lib/python3.8/site-packages/IPython/extensions',
+ '/home/explore/.ipython']</code></pre>
+</div>
+</div>
+<p>By default, the first place Python looks for a module is an empty path, meaning the current working directory. If the module is not found there, it goes down the list of locations until the module is found. You can find out which location has been used using the <code>__path__</code> attribute of an imported module:</p>
+<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2021-01-13T08:28:31.196407Z&quot;,&quot;start_time&quot;:&quot;2021-01-13T08:28:31.143317Z&quot;}" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>numpy.__path__</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<pre><code>['/home/explore/miniconda3/envs/pytorch/lib/python3.8/site-packages/numpy']</code></pre>
+</div>
+</div>
+<p>by printing the sys.path variables for each of the available python executables in my path, using Jupyter’s delightful ability to mix Python and bash commands in a single code block:</p>
+<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2021-01-13T08:29:19.648869Z&quot;,&quot;start_time&quot;:&quot;2021-01-13T08:29:19.366058Z&quot;}" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>paths <span class="op">=</span> <span class="op">!</span><span class="bu">type</span> <span class="op">-</span>a python</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> path <span class="kw">in</span> <span class="bu">set</span>(paths):</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    path <span class="op">=</span> path.split()[<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(path)</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">!</span>{path} <span class="op">-</span>c <span class="st">"import sys; print(sys.path)"</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>/usr/bin/python
+['', '/usr/lib/python2.7', '/usr/lib/python2.7/plat-x86_64-linux-gnu', '/usr/lib/python2.7/lib-tk', '/usr/lib/python2.7/lib-old', '/usr/lib/python2.7/lib-dynload', '/home/explore/.local/lib/python2.7/site-packages', '/usr/local/lib/python2.7/dist-packages', '/usr/local/lib/python2.7/dist-packages/PyCapture2-0.0.0-py2.7-linux-x86_64.egg', '/usr/lib/python2.7/dist-packages']
+
+/home/explore/miniconda3/envs/pytorch/bin/python
+['', '/home/explore/miniconda3/envs/pytorch/lib/python38.zip', '/home/explore/miniconda3/envs/pytorch/lib/python3.8', '/home/explore/miniconda3/envs/pytorch/lib/python3.8/lib-dynload', '/home/explore/miniconda3/envs/pytorch/lib/python3.8/site-packages']
+</code></pre>
+</div>
+</div>
+<p><code>pip install</code> will install in the Python in the same path:</p>
+<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2021-01-13T08:31:18.885538Z&quot;,&quot;start_time&quot;:&quot;2021-01-13T08:31:18.778292Z&quot;}" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span><span class="bu">type</span> pip</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>pip is /home/explore/miniconda3/envs/pytorch/bin/pip</code></pre>
+</div>
+</div>
+<p><code>conda install</code> will install in the active conda envt</p>
+<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2021-01-13T08:31:48.077781Z&quot;,&quot;start_time&quot;:&quot;2021-01-13T08:31:47.714550Z&quot;}" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>conda env <span class="bu">list</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># conda environments:
+#
+base                     /home/explore/miniconda3
+d059                     /home/explore/miniconda3/envs/d059
+datacamp                 /home/explore/miniconda3/envs/datacamp
+deeplearning_specialization     /home/explore/miniconda3/envs/deeplearning_specialization
+deeplearning_specialization_keras     /home/explore/miniconda3/envs/deeplearning_specialization_keras
+deeplearning_specialization_tf1     /home/explore/miniconda3/envs/deeplearning_specialization_tf1
+drl_handson              /home/explore/miniconda3/envs/drl_handson
+fastai                   /home/explore/miniconda3/envs/fastai
+gan                      /home/explore/miniconda3/envs/gan
+gan_tensorflow           /home/explore/miniconda3/envs/gan_tensorflow
+mit_6002x                /home/explore/miniconda3/envs/mit_6002x
+pytorch               *  /home/explore/miniconda3/envs/pytorch
+squeezebox               /home/explore/miniconda3/envs/squeezebox
+</code></pre>
+</div>
+</div>
+<p>The reason both pip and conda default to the conda pytorch environment is that this is the Python environment I used to launch the notebook.</p>
+</section>
+<section id="how-jupyter-executes-code-jupyter-kernels" class="level2">
+<h2 class="anchored" data-anchor-id="how-jupyter-executes-code-jupyter-kernels">How Jupyter executes code: Jupyter Kernels</h2>
+<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2021-01-13T08:33:24.149405Z&quot;,&quot;start_time&quot;:&quot;2021-01-13T08:33:23.778109Z&quot;}" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>jupyter kernelspec <span class="bu">list</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Available kernels:
+  python2    /home/explore/.local/share/jupyter/kernels/python2
+  python3    /home/explore/miniconda3/envs/pytorch/share/jupyter/kernels/python3</code></pre>
+</div>
+</div>
+<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2021-01-13T08:34:05.394293Z&quot;,&quot;start_time&quot;:&quot;2021-01-13T08:34:05.283318Z&quot;}" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cat <span class="op">/</span>home<span class="op">/</span>explore<span class="op">/</span>miniconda3<span class="op">/</span>envs<span class="op">/</span>pytorch<span class="op">/</span>share<span class="op">/</span>jupyter<span class="op">/</span>kernels<span class="op">/</span>python3<span class="op">/</span>kernel.json</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>{
+ "argv": [
+  "/home/explore/miniconda3/envs/pytorch/bin/python",
+  "-m",
+  "ipykernel_launcher",
+  "-f",
+  "{connection_file}"
+ ],
+ "display_name": "Python 3",
+ "language": "python"
+}</code></pre>
+</div>
+</div>
+<p>If you’d like to create a new kernel, you can do so using the jupyter ipykernel command; for example, I created the above kernels for my primary conda environments using the following as a template:</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> source activate myenv</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> python <span class="at">-m</span> ipykernel install <span class="at">--user</span> <span class="at">--name</span> myenv <span class="at">--display-name</span> <span class="st">"Python (myenv)"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="the-root-of-the-issue" class="level1">
+<h1>The Root of the Issue</h1>
+<p>The root of the issue is this: the shell environment is determined when the Jupyter notebook is launched, while the Python executable is determined by the kernel, and the two do not necessarily match. In other words, there is no guarantee that the python, pip, and conda in your $PATH will be compatible with the python executable used by the notebook.</p>
+<p>Recall that the <code>python</code> in your path can be determined using</p>
+<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2021-01-13T08:37:57.772335Z&quot;,&quot;start_time&quot;:&quot;2021-01-13T08:37:57.656705Z&quot;}" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span><span class="bu">type</span> python</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>python is /home/explore/miniconda3/envs/pytorch/bin/python</code></pre>
+</div>
+</div>
+<p>The Python executable being used in the notebook can be determined using</p>
+<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2021-01-13T08:37:06.146914Z&quot;,&quot;start_time&quot;:&quot;2021-01-13T08:37:06.144200Z&quot;}" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>sys.executable</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="14">
+<pre><code>'/home/explore/miniconda3/envs/pytorch/bin/python'</code></pre>
+</div>
+</div>
+<div class="alert alert-info">
+Note
+<p>
+when the 2 differs, boom!
+</p>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

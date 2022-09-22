@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.189">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2021-02-05">
+<meta name="description" content="My notes/thoughts about the lecture">
+
+<title>blog - Learning: MIT 6.S191 Introduction to Deep Learning - 2021</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">blog</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html">About</a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/"><i class="bi bi-github" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com"><i class="bi bi-twitter" role="img">
+</i> 
+ </a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Learning: MIT 6.S191 Introduction to Deep Learning - 2021</h1>
+                  <div>
+        <div class="description">
+          My notes/thoughts about the lecture
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">deep learning</div>
+                <div class="quarto-category">MIT</div>
+                <div class="quarto-category">tensorflow</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">February 5, 2021</p>
+      </div>
+    </div>
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#intro-to-deep-learning---lecture-1" id="toc-intro-to-deep-learning---lecture-1" class="nav-link active" data-scroll-target="#intro-to-deep-learning---lecture-1">2/5/21 - Intro to Deep Learning - lecture 1</a></li>
+  <li><a href="#deep-sequence-modeling---lecture-2" id="toc-deep-sequence-modeling---lecture-2" class="nav-link" data-scroll-target="#deep-sequence-modeling---lecture-2">2/15/21 - Deep Sequence Modeling - lecture 2</a></li>
+  <li><a href="#intro-to-tensorflow-music-generation---software-lab-1" id="toc-intro-to-tensorflow-music-generation---software-lab-1" class="nav-link" data-scroll-target="#intro-to-tensorflow-music-generation---software-lab-1">2/16/21 - Intro to TensorFlow; Music Generation - software lab 1</a></li>
+  <li><a href="#deep-computer-vision---lecture-3" id="toc-deep-computer-vision---lecture-3" class="nav-link" data-scroll-target="#deep-computer-vision---lecture-3">2/22/21 - Deep Computer Vision - lecture 3</a></li>
+  <li><a href="#deep-generative-modeling---lecture-4" id="toc-deep-generative-modeling---lecture-4" class="nav-link" data-scroll-target="#deep-generative-modeling---lecture-4">3/1/21 - Deep Generative Modeling - lecture 4</a></li>
+  <li><a href="#de-biasing-facial-recognition-systems---software-lab-2" id="toc-de-biasing-facial-recognition-systems---software-lab-2" class="nav-link" data-scroll-target="#de-biasing-facial-recognition-systems---software-lab-2">3/1/21 - De-biasing Facial Recognition Systems - Software Lab 2</a></li>
+  <li><a href="#deep-reinforcement-learning---lecture-5" id="toc-deep-reinforcement-learning---lecture-5" class="nav-link" data-scroll-target="#deep-reinforcement-learning---lecture-5">3/8/21 - Deep Reinforcement Learning - lecture 5</a></li>
+  <li><a href="#limitations-and-new-frontiers---lecture-6" id="toc-limitations-and-new-frontiers---lecture-6" class="nav-link" data-scroll-target="#limitations-and-new-frontiers---lecture-6">3/15/21 - Limitations and New Frontiers - lecture 6</a></li>
+  <li><a href="#pixels-to-control-learning---software-lab-3" id="toc-pixels-to-control-learning---software-lab-3" class="nav-link" data-scroll-target="#pixels-to-control-learning---software-lab-3">3/15/21 - Pixels-to-Control Learning - Software Lab 3</a></li>
+  <li><a href="#evidential-deep-learning-and-uncertainty---lecture-7" id="toc-evidential-deep-learning-and-uncertainty---lecture-7" class="nav-link" data-scroll-target="#evidential-deep-learning-and-uncertainty---lecture-7">3/22/21 - Evidential Deep Learning and Uncertainty - lecture 7</a></li>
+  <li><a href="#bias-and-fairness---lecture-8" id="toc-bias-and-fairness---lecture-8" class="nav-link" data-scroll-target="#bias-and-fairness---lecture-8">3/29/21 - Bias and Fairness - lecture 8</a></li>
+  <li><a href="#learning-for-information-extraction---lecture-9." id="toc-learning-for-information-extraction---lecture-9." class="nav-link" data-scroll-target="#learning-for-information-extraction---lecture-9.">4/15/21 - Learning for Information Extraction - lecture 9.</a></li>
+  <li><a href="#taming-dataset-bias---lecture-10" id="toc-taming-dataset-bias---lecture-10" class="nav-link" data-scroll-target="#taming-dataset-bias---lecture-10">4/27/21 - Taming Dataset Bias - lecture 10</a></li>
+  <li><a href="#towards-ai-for-3d-content-creation---lecture-11" id="toc-towards-ai-for-3d-content-creation---lecture-11" class="nav-link" data-scroll-target="#towards-ai-for-3d-content-creation---lecture-11">4/30/21 - Towards AI for 3D Content Creation - lecture 11</a></li>
+  <li><a href="#ai-in-healthcare---lecture-12" id="toc-ai-in-healthcare---lecture-12" class="nav-link" data-scroll-target="#ai-in-healthcare---lecture-12">4/30/21 - AI in Healthcare - lecture 12</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<p>From <a href="http://introtodeeplearning.com/">http://introtodeeplearning.com/</a></p>
+<p>I keep all content (lectures, notebooks) in <a href="https://github.com/castorfou/mit_6s191">github</a></p>
+<p>This is done with google contribution, and therefore all examples are in tensorflow. I will try to adapt notebooks in PyTorch.</p>
+<section id="intro-to-deep-learning---lecture-1" class="level2">
+<h2 class="anchored" data-anchor-id="intro-to-deep-learning---lecture-1">2/5/21 - Intro to Deep Learning - lecture 1</h2>
+<p>Lecturer: Alexander Amini</p>
+<p>Intro is just jaw-dropping!</p>
+<p><a href="https://youtu.be/5tvmMX8r_OM?list=PLtBw6njQRU-rwp5__7C0oIVt26ZgjG9NI&amp;t=40">2020 intro</a> was top.</p>
+<p><a href="https://youtu.be/5tvmMX8r_OM?list=PLtBw6njQRU-rwp5__7C0oIVt26ZgjG9NI&amp;t=149">2021 intro</a> is just awesome.</p>
+<p>It is a standard overview of simple deep learning concepts: Perceptron, multi-perceptron, dense layers, loss, gradient-descent, backprop, SGD, regularization, dropout, early stoppping</p>
+</section>
+<section id="deep-sequence-modeling---lecture-2" class="level2">
+<h2 class="anchored" data-anchor-id="deep-sequence-modeling---lecture-2">2/15/21 - Deep Sequence Modeling - lecture 2</h2>
+<p>New lecturer: Ava Soleimany</p>
+<p>Nice introduction to sequence modeling with Many-to-One, One-to-Many, Many-to-Many.</p>
+<p>RNN and implementation in TensorFlow. And NLP examples: next word problem. (and NLP concepts such as Vocabulary, Indexing, Embedding)</p>
+<p>And what we need for sequence modeling:</p>
+<ul>
+<li>handle variable-length sequences</li>
+<li>track long-term dependencies</li>
+<li>maintain information about order</li>
+<li>share parameters across the sequence</li>
+</ul>
+<p>Backpropagation through time and problem of exploding/vanishing gradients.</p>
+<p>Against exploding: gradient clipping. Against vanishing: 3 ways explained - activation functions, weight init, network arch.</p>
+<p>Gated cell: to control what information is passed through. Ex: LSTM Long Short Term Memory. They support something closed to Forget Store Update Output. Ava explains graphically which part of LSTM cells is providing which function.</p>
+<p>And then examples: Music generation (to generate 4th movement of last symphony from Schubert!), sentiment classification, machine translation (with Attention mechanisms which provide learnable memory access to solve Not long memory), trajectory prediction, environmental modeling.</p>
+</section>
+<section id="intro-to-tensorflow-music-generation---software-lab-1" class="level2">
+<h2 class="anchored" data-anchor-id="intro-to-tensorflow-music-generation---software-lab-1">2/16/21 - Intro to TensorFlow; Music Generation - software lab 1</h2>
+<p>As an exercise I have completed labs in TensorFlow and adapted them in <a href="https://github.com/castorfou/mit_6s191/blob/main/introtodeeplearning/lab1/Part1_TensorFlow_transposed%20to%20PyTorch.ipynb">PyTorch</a>.</p>
+<p>With LSTM, I ran into this error: <code>UnknownError: Fail to find the dnn implementation. [Op:CudnnRNN]</code></p>
+<p>Which is solved by calling <a href="https://www.tensorflow.org/api_docs/python/tf/config/experimental/set_memory_growth"><code>tf.config.experimental.set_memory_growth</code></a>.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> tensorflow <span class="im">as</span> tf </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>gpus <span class="op">=</span> tf.config.list_physical_devices(<span class="st">'GPU'</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> gpus:</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">try</span>:</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Currently, memory growth needs to be the same across GPUs</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> gpu <span class="kw">in</span> gpus:</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>      tf.config.experimental.set_memory_growth(gpu, <span class="va">True</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    logical_gpus <span class="op">=</span> tf.config.experimental.list_logical_devices(<span class="st">'GPU'</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="bu">len</span>(gpus), <span class="st">"Physical GPUs,"</span>, <span class="bu">len</span>(logical_gpus), <span class="st">"Logical GPUs"</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">except</span> <span class="pp">RuntimeError</span> <span class="im">as</span> e:</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Memory growth must be set before GPUs have been initialized</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(e)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Music lab is nice to play with. I am not sure I would be able to convert to PyTorch. It would require time!</p>
+</section>
+<section id="deep-computer-vision---lecture-3" class="level2">
+<h2 class="anchored" data-anchor-id="deep-computer-vision---lecture-3">2/22/21 - Deep Computer Vision - lecture 3</h2>
+<p>I have never been a big fan of computer vision.</p>
+<p>I like the idea developed by Alexander Amini about <strong>hierarchy of features</strong>. (low level: edges, spots; mid level: eyes, noses)</p>
+<p>And how he explains limitation of FC layers for visual detection, and introduction of spatial structure (feature extraction with convolutions)</p>
+<p>Some nice examples of hand-engineered convolution filters for different needs: sharpen, edge detect, strong edge detect.</p>
+<p>Then classic explanations of CNN with convolution, max pooling.</p>
+<p>I like the way classification problems are broken down between feature learning (convolution+relu, pooling, repeated several times) and classification (flatten, FC, softmax) which is a task learning part.</p>
+<p>The second part (task learning part) can be anything: classification, object detection, segmentation, probabilistic control, …</p>
+<p><img src="../images/mit_6S191_lec3_cnn_architectures.png" class="img-fluid"></p>
+<p>Nice explanation of R-CNN to learn region proposals.</p>
+<p>Introduction to Software lab2: de-biaising facial recognition systems.</p>
+</section>
+<section id="deep-generative-modeling---lecture-4" class="level2">
+<h2 class="anchored" data-anchor-id="deep-generative-modeling---lecture-4">3/1/21 - Deep Generative Modeling - lecture 4</h2>
+<p>From pattern discovered from data (underlying structure of the data), generate examples following these patterns.</p>
+<p><strong>Autoencoder</strong>: foundational generative model which builds up latent variable representation by self-encoding the input. To train such network, we create a decoder to go from latent variable to generated output, and then compare input to generated output.</p>
+<p><img src="../images/mit_6S191_lec4_autoencoders.png" class="img-fluid"></p>
+<p><strong>Variational autoencoder (vae)</strong>: with vae we try to encode inputs as distributions defined by mean <span class="math display">\[\mu\]</span> and variance <span class="math display">\[\sigma\]</span>. And we want to achieve continuity and completeness:</p>
+<ul>
+<li>continuity: points that are close in latent space –&gt; similar content after decoding</li>
+<li>completeness: sampling from latent space –&gt; ‘meaningful’ content after decoding</li>
+</ul>
+<p>Regularization is pushing to get these properties.</p>
+<p><img src="../images/mit_6S191_lec4_vae_regularization.png" class="img-fluid"></p>
+<p>And the learning process is about minimizing reconstruction loss + a regularization term:</p>
+<p><img src="../images/mit_6S191_lec4_vae_loss.png" class="img-fluid"></p>
+<p>Ava is then explaining the smart trick to allow backpropagation to happen. Indeed by introducing stochastic term in the sampling layer, we are breaking the backpropagation logic.</p>
+<p>We are moving z from a normal distribution to <span class="math display">\[\mu\]</span>+<span class="math display">\[\sigma\]</span>.<span class="math display">\[\epsilon\]</span> where <span class="math display">\[\epsilon\]</span> follow a normal distribution of mean 0, std 1.</p>
+<p>Explanation then of space disentanglement via <span class="math display">\[\beta\]</span>-VAEs. It allows latent variables to be independent.</p>
+<p><img src="../images/mit_6S191_lec4_vae_beta.png" class="img-fluid"></p>
+<p>And then some introduction about **GANs* (Generative Adversarial Network) which are a way to make a generative model by having 2 neural networks (generator and discriminator) compete with each other.</p>
+<p>And share some recent advances on GAN such as StyleGAN(2), conditional GAN, CycleGAN. CycleGAN is famous for turning horses in zebras, but it can be used to transform speech as well (used in the synthesis of Obama’s voice)</p>
+<p><img src="../images/mit_6S191_lec4_generative_summary.png" class="img-fluid"></p>
+</section>
+<section id="de-biasing-facial-recognition-systems---software-lab-2" class="level2">
+<h2 class="anchored" data-anchor-id="de-biasing-facial-recognition-systems---software-lab-2">3/1/21 - De-biasing Facial Recognition Systems - Software Lab 2</h2>
+<p><a href="https://github.com/castorfou/mit_6s191/blob/main/introtodeeplearning/lab2/Part1_MNIST.ipynb">Part 1 MNIST</a></p>
+<p>starts with FC layers. With some overfitting but a good accuracy of 96%.</p>
+<p>then move to a CNN architecture. I ran into <a href="https://github.com/tensorflow/tensorflow/issues/24828">gpu issues</a>. Accuracy is now 99%.</p>
+<p>I didn’t manage to make the last part working. (using tape.gradient)</p>
+<p><a href="https://github.com/castorfou/mit_6s191/blob/main/introtodeeplearning/lab2/Part2_Debiasing.ipynb">Part 2 Debiasing</a></p>
+<p>Fit a CNN model to classify faces based on celebA dataset. And see the bias effect by predicting on Fitzpatrick scale skin type classification system.</p>
+<p>Use VAE to learn latent structure.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://i.ibb.co/3s4S6Gc/vae.jpg" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">The concept of a VAE</figcaption><p></p>
+</figure>
+</div>
+<p>To then debias using DB-VAE model.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://raw.githubusercontent.com/aamini/introtodeeplearning/2019/lab2/img/DB-VAE.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">DB-VAE</figcaption><p></p>
+</figure>
+</div>
+<p>There is a lack of progressive unit tests to validate each step. Cannot go to the end.</p>
+<p>Would be interested to see how to apply to non computer vision problems.</p>
+</section>
+<section id="deep-reinforcement-learning---lecture-5" class="level2">
+<h2 class="anchored" data-anchor-id="deep-reinforcement-learning---lecture-5">3/8/21 - Deep Reinforcement Learning - lecture 5</h2>
+<p>Q-function captures the expected total future reward an agent in state <em>s</em> can receive by executing a certain action <em>a</em>.</p>
+<p>Distinction between <strong>Value Learning</strong> (learn Q function) and <strong>Policy Learning</strong> (find directly <span class="math display">\[\pi\]</span>(s)).</p>
+<p><img src="../images/mit_6S191_lec5_pg_dqn.png" class="img-fluid"></p>
+<p><strong>Value Learning or DQN</strong></p>
+<p><img src="../images/mit_6S191_lec5_dqn_summary.png" class="img-fluid"></p>
+<p><img src="../images/mit_6S191_lec5_dqn_downsides.png" class="img-fluid"></p>
+<p>The key thing is about handling of continuous actions.</p>
+<p>Let’s see how to do it with policy learning:</p>
+<p><strong>Policy learning or Policy Gradient (PG)</strong></p>
+<p><img src="../images/mit_6S191_lec5_pg_key_idea.png" class="img-fluid"></p>
+<p><img src="../images/mit_6S191_lec5_pg_training.png" class="img-fluid"></p>
+<p>Alexanders ends the lecture by discussing about Deepmind progress:</p>
+<ul>
+<li>alphaGo - 2016: with a pretrain in supervised mode then standard DRL</li>
+<li>alphaGo Zero - 2017: standard DRL without pretraining</li>
+<li>alphaZero - 2018: standard DRL without pretraining and applied to several games (Go, Chess, Shogi)</li>
+<li>MuZero - 2020: learns the rules of the game by itself, create unknown dynamics</li>
+</ul>
+</section>
+<section id="limitations-and-new-frontiers---lecture-6" class="level2">
+<h2 class="anchored" data-anchor-id="limitations-and-new-frontiers---lecture-6">3/15/21 - Limitations and New Frontiers - lecture 6</h2>
+<p><strong>Universal Approximation Theorem</strong>: A feedforward network with a single layer is sufficient to approximate, to an arbitrary precision, any continuous function.</p>
+<p>Ava emphasizes importance of training data (e.g.&nbsp;for generalization) and mentions a paper called “<a href="https://arxiv.org/abs/1611.03530">Understanding Deep Neural Networks Requires Rethinking Generalization</a>”.</p>
+<p>Some fail examples with dogs colorization (BW -&gt; colors) creating pink zone under the mouth.</p>
+<p>And another one with Tesla autopilot. It motivates working on <strong>uncertainty in Deep Learning</strong>.</p>
+<ul>
+<li>we need uncertainty metrics to assess the noise inherent to the data: <em>aleatoric uncertainty</em></li>
+<li>we need uncertainty metrics to assess the network’s confidence in its predictions: <em>epistemic uncertainty</em></li>
+</ul>
+<p>Ava cites an example of a real 3D printed turtle designed to fool a classifier from turtle to rifle.</p>
+<p><strong>New frontier: Encoding Structure into Deep Learning.</strong></p>
+<p>CNN is a nice way to extract features from an image. But not all kind of data can express features in an euclidean way. Graphs is used as a structure for representing data in a lot of cases.</p>
+<p>It drives us to <strong>Graph Convolutional Networks</strong> (GCNs). The graph convolutional operator is going to associate weights with each of the edges and apply the weights across the graph and then the kernel is going to be moved to the next node in the graph extracting information about its local connectivity. That local information is going to be aggregated and the NN is going to then learn a function that encodes that local information into a higher level representation.</p>
+<p><strong>New frontier: Automated Machine Learning &amp; AI.</strong></p>
+<p>Using a neural architecture search algorithm. At each step the model samples a brand new network. For each layer, defines number of fileters, filet height, width, stride height, width, nbr of fileters, etc. Update RNN controller based on the accuracy of the child network after training.</p>
+<p>From autoML to autoAI: an automated complete pipeline for designing and deploying ML and AI models.</p>
+</section>
+<section id="pixels-to-control-learning---software-lab-3" class="level2">
+<h2 class="anchored" data-anchor-id="pixels-to-control-learning---software-lab-3">3/15/21 - Pixels-to-Control Learning - Software Lab 3</h2>
+<p>This is about reinforcement learning.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://www.kdnuggets.com/images/reinforcement-learning-fig1-700.jpg" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">alt text</figcaption><p></p>
+</figure>
+</div>
+<p>We install (apt) xvfb and python-opengl.</p>
+<p>And will learn with cartpole and pong.</p>
+<p>Still this issue</p>
+<blockquote class="blockquote">
+<p>UnknownError: Failed to get convolution algorithm. This is probably because cuDNN failed to initialize, so try looking to see if a warning log message was printed above. [[node sequential_8/conv2d_4/Conv2D (defined at <ipython-input-21-f109a85f869a>:19) ]] [Op:__inference_distributed_function_2442603]</ipython-input-21-f109a85f869a></p>
+</blockquote>
+<p>Solved by running</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> tensorflow <span class="im">as</span> tf</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>gpus <span class="op">=</span> tf.config.list_physical_devices(<span class="st">'GPU'</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> gpus:</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Currently, memory growth needs to be the same across GPUs</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> gpu <span class="kw">in</span> gpus:</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>            tf.config.experimental.set_memory_growth(gpu, <span class="va">True</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        logical_gpus <span class="op">=</span> tf.config.experimental.list_logical_devices(<span class="st">'GPU'</span>)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="bu">len</span>(gpus), <span class="st">"Physical GPUs,"</span>, <span class="bu">len</span>(logical_gpus), <span class="st">"Logical GPUs"</span>)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">RuntimeError</span> <span class="im">as</span> e:</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Memory growth must be set before GPUs have been initialized</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(e)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>I couldn’t go through the training of Pong agent due to GPU limitation?</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">2021-03-15</span> 10:54:19.479775: W tensorflow/core/framework/op_kernel.cc:1655] OP_REQUIRES failed at conv_grad_input_ops.cc:1254 : Resource exhausted: OOM when allocating tensor with shape[3944,48,10,10] and type float on /job:localhost/replica:0/task:0/device:GPU:0 by allocator GPU_0_bfcbash</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="evidential-deep-learning-and-uncertainty---lecture-7" class="level2">
+<h2 class="anchored" data-anchor-id="evidential-deep-learning-and-uncertainty---lecture-7">3/22/21 - Evidential Deep Learning and Uncertainty - lecture 7</h2>
+<p><img src="../images/mit_6S191_lec7_continuous.png" class="img-fluid"></p>
+<p><img src="../images/mit_6S191_lec7_likelihood.png" class="img-fluid"></p>
+<p><img src="../images/mit_6S191_lec7_wrapup.png" class="img-fluid"></p>
+</section>
+<section id="bias-and-fairness---lecture-8" class="level2">
+<h2 class="anchored" data-anchor-id="bias-and-fairness---lecture-8">3/29/21 - Bias and Fairness - lecture 8</h2>
+<p>This starts as a standard lecture about bias.</p>
+<p>I like emphasis about bias that could stand in all stages of AI life cycle:</p>
+<ul>
+<li>data (obviously)</li>
+<li>model</li>
+<li>training and deployment</li>
+<li>evaluation</li>
+<li>interpretation</li>
+</ul>
+<p>Good explanation about biases due to <strong>class imbalance</strong>. It develops my intuition about it.</p>
+<p><strong>Balanced batches</strong> can be the answer.</p>
+<p><strong>Example weighting</strong> is another option using inverse frequency as a weight.</p>
+<p><img src="../images/mit_6S191_lec8_fairness.png" class="img-fluid"></p>
+<p>Adversarial learning to mitiage Bias.</p>
+<p>Application in NLP to complete analogies. He is to she, as doctor is to ?</p>
+<p>Same thing with Learned Latent Structure. (can be used to create fair and representative dataset)</p>
+<p><img src="../images/mit_6S191_lec8_summary.png" class="img-fluid"></p>
+</section>
+<section id="learning-for-information-extraction---lecture-9." class="level2">
+<h2 class="anchored" data-anchor-id="learning-for-information-extraction---lecture-9.">4/15/21 - Learning for Information Extraction - lecture 9.</h2>
+<p><a href="https://www.youtube.com/watch?v=WkUYsVC3hKI&amp;list=PLtBw6njQRU-rwp5__7C0oIVt26ZgjG9NI&amp;index=9">Deep CPCFG for Information Extraction</a></p>
+<p>Lecturer: Nigel Duffy and Freddy Chua, Ernst &amp; Young AI Labs</p>
+<p>Focus is about document intelligence (extract info from business documents)</p>
+<p>e.g.&nbsp;extract information from semi-structured documents such as tax forms (souvenirs ;))</p>
+<p><img src="../images/mit_6S191_lec9_endtoend_training.png" class="img-fluid"></p>
+</section>
+<section id="taming-dataset-bias---lecture-10" class="level2">
+<h2 class="anchored" data-anchor-id="taming-dataset-bias---lecture-10">4/27/21 - Taming Dataset Bias - lecture 10</h2>
+<p><a href="https://www.youtube.com/watch?v=eS-OHAHOqU0&amp;list=PLtBw6njQRU-rwp5__7C0oIVt26ZgjG9NI&amp;index=11">video</a></p>
+<p>dataset bias and training shift</p>
+<p>(from one city to another (summer vs winter), from simulated to real control, from one culture to another)</p>
+<p>Can fix with more data …(can be very expensive if we want to address all combinations) or use unlabeled data ?</p>
+<p><img src="../images/mit_6S191_lec10_domain_adaptation.png" class="img-fluid"></p>
+<p>Adversarial approach to fool a domain discriminator. (domain discriminator trained to distinguished source and target domains)</p>
+<p>Another approach is pixel alignment.</p>
+</section>
+<section id="towards-ai-for-3d-content-creation---lecture-11" class="level2">
+<h2 class="anchored" data-anchor-id="towards-ai-for-3d-content-creation---lecture-11">4/30/21 - Towards AI for 3D Content Creation - lecture 11</h2>
+<p><a href="https://www.youtube.com/watch?v=lkkFcg9k9ho&amp;list=PLtBw6njQRU-rwp5__7C0oIVt26ZgjG9NI&amp;index=12">video</a></p>
+<section id="sanja-fidler-professor-u.-of-toronto-and-head-of-ai-at-nvidia" class="level5">
+<h5 class="anchored" data-anchor-id="sanja-fidler-professor-u.-of-toronto-and-head-of-ai-at-nvidia">Sanja Fidler; Professor U. of Toronto and Head of AI at NVIDIA</h5>
+</section>
+</section>
+<section id="ai-in-healthcare---lecture-12" class="level2">
+<h2 class="anchored" data-anchor-id="ai-in-healthcare---lecture-12">4/30/21 - AI in Healthcare - lecture 12</h2>
+<p><a href="https://www.youtube.com/watch?v=cvXVK8oqU4Q&amp;list=PLtBw6njQRU-rwp5__7C0oIVt26ZgjG9NI&amp;index=13">video</a></p>
+<section id="katherine-chou-director-of-research-and-innovations-google" class="level5">
+<h5 class="anchored" data-anchor-id="katherine-chou-director-of-research-and-innovations-google">Katherine Chou; Director of Research and Innovations, Google</h5>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

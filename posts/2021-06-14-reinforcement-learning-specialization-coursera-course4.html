@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.189">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2021-06-14">
+<meta name="description" content="From University of Alberta. My notes on course 4.">
+
+<title>blog - Reinforcement Learning Specialization - Coursera - course 4 - A Complete Reinforcement Learning System (Capstone)</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">blog</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html">About</a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/"><i class="bi bi-github" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com"><i class="bi bi-twitter" role="img">
+</i> 
+ </a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Reinforcement Learning Specialization - Coursera - course 4 - A Complete Reinforcement Learning System (Capstone)</h1>
+                  <div>
+        <div class="description">
+          From University of Alberta. My notes on course 4.
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">reinforcement learning</div>
+                <div class="quarto-category">deepmind</div>
+                <div class="quarto-category">coursera</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">June 14, 2021</p>
+      </div>
+    </div>
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#course-4---week-2---formalize-word-problem-as-mdp" id="toc-course-4---week-2---formalize-word-problem-as-mdp" class="nav-link active" data-scroll-target="#course-4---week-2---formalize-word-problem-as-mdp">Course 4 - Week 2 - Formalize Word Problem as MDP</a></li>
+  <li><a href="#course-4---week-3---choosing-the-right-algorithm" id="toc-course-4---week-3---choosing-the-right-algorithm" class="nav-link" data-scroll-target="#course-4---week-3---choosing-the-right-algorithm">Course 4 - Week 3 - Choosing The Right Algorithm</a></li>
+  <li><a href="#course-4---week-4---identify-key-performance-parameters" id="toc-course-4---week-4---identify-key-performance-parameters" class="nav-link" data-scroll-target="#course-4---week-4---identify-key-performance-parameters">Course 4 - Week 4 - Identify Key Performance Parameters</a></li>
+  <li><a href="#course-4---week-5---implement-your-agent" id="toc-course-4---week-5---implement-your-agent" class="nav-link" data-scroll-target="#course-4---week-5---implement-your-agent">Course 4 - Week 5 - Implement your agent</a></li>
+  <li><a href="#course-4---week-6---submit-your-parameter-study" id="toc-course-4---week-6---submit-your-parameter-study" class="nav-link" data-scroll-target="#course-4---week-6---submit-your-parameter-study">Course 4 - Week 6 - Submit your Parameter Study!</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<p>Coursera website: <a href="https://www.coursera.org/learn/complete-reinforcement-learning-system?specialization=reinforcement-learning">course 4 - A Complete Reinforcement Learning System (Capstone)</a> of <a href="https://www.coursera.org/specializations/reinforcement-learning">Reinforcement Learning Specialization</a></p>
+<p>my notes on <a href="../guillaume_blog/blog/reinforcement-learning-specialization-coursera.html">course 1 - Fundamentals of Reinforcement Learning</a>, <a href="../guillaume_blog/blog/reinforcement-learning-specialization-coursera-course2.html">course 2 - Sample-based Learning Methods</a>, <a href="../guillaume_blog/blog/reinforcement-learning-specialization-coursera-course3.html">course 3 - Prediction and Control with Function Approximation</a></p>
+<p><strong>specialization roadmap</strong> - course 4 - <strong>A Complete Reinforcement Learning System (Capstone)</strong> <a href="https://github.com/castorfou/Reinforcement-Learning-specialization/blob/main/course%204%20-%20complete%20reinforcement%20learning%20system/A-Complete-Reinforcement-Learning-System-Capstone-_-Learning-Objectives.pdf">(syllabus)</a></p>
+<p>Week 1 - Welcome to the Course Week 2 - Formalize Word Problem as MDP Week 3 - Choosing The Right Algorithm Week 4 - Identify Key Performance Parameters Week 5 - Implement Your Agent Week 6 - Submit Your Parameter Study!</p>
+<section id="course-4---week-2---formalize-word-problem-as-mdp" class="level2">
+<h2 class="anchored" data-anchor-id="course-4---week-2---formalize-word-problem-as-mdp">Course 4 - Week 2 - Formalize Word Problem as MDP</h2>
+<section id="final-project-milestone-1" class="level6">
+<h6 class="anchored" data-anchor-id="final-project-milestone-1">Final Project: Milestone 1</h6>
+<p><strong>Video Initial Project Meeting with Martha: Formalizing the Problem</strong></p>
+<p><img src="../images/C4W2_reward_function.png" class="img-fluid"></p>
+<p><strong>Video Andy Barto on What are Eligibility Traces and Why are they so named?</strong></p>
+<p>By the end of this video, you’ll <em>understand</em> the <strong>origin</strong> of the idea of <strong>eligibility traces</strong> and you’ll actually <em>see</em> that you’ve been <strong>using a variant of eligibility traces</strong> all along.</p>
+<p><img src="../images/C4W2_actor_critic_architecture.png" class="img-fluid"></p>
+</section>
+<section id="project-resources" class="level6">
+<h6 class="anchored" data-anchor-id="project-resources">Project Resources</h6>
+<p><strong>Video Let’s Review: Markov Decision Processes</strong></p>
+<p>By the end of this video, you’ll be able to <em>understand</em> <strong>Markov decision processes or MDPs</strong> and <em>describe</em> how the <strong>dynamics of MDP</strong> are defined.</p>
+<p><strong>Video Let’s Review: Examples of Episodic and Continuing Tasks</strong></p>
+<p>By the end of this video, you will be able to <em>understand</em> when to formalize a task as <strong>episodic or continuing</strong>.</p>
+</section>
+<section id="assignment" class="level6">
+<h6 class="anchored" data-anchor-id="assignment">Assignment</h6>
+<p>MoonShot Technologies</p>
+<p>notebooks in <a href="https://github.com/castorfou/Reinforcement-Learning-specialization/tree/main/assignements/course%204%20week%202">github</a></p>
+</section>
+</section>
+<section id="course-4---week-3---choosing-the-right-algorithm" class="level2">
+<h2 class="anchored" data-anchor-id="course-4---week-3---choosing-the-right-algorithm">Course 4 - Week 3 - Choosing The Right Algorithm</h2>
+<section id="weekly-learning-goals" class="level6">
+<h6 class="anchored" data-anchor-id="weekly-learning-goals">Weekly Learning Goals</h6>
+<p><strong>Video Meeting with Niko: Choosing the Learning Algorithm</strong></p>
+<p><img src="../images/C4W3_expected_sarsa.png" class="img-fluid"></p>
+</section>
+<section id="project-resources-1" class="level6">
+<h6 class="anchored" data-anchor-id="project-resources-1">Project Resources</h6>
+<p><strong>Video Let’s Review: Expected Sarsa</strong></p>
+<p><img src="../images/C2W3_3_summary.png" class="img-fluid"></p>
+<p><strong>Video Let’s Review: What is Q-learning?</strong></p>
+<p><strong>Video Let’s Review: Average Reward- A New Way of Formulating Control Problems</strong></p>
+<p><strong>Video Let’s Review: Actor-Critic Algorithm</strong></p>
+<p><strong>Video Csaba Szepesvari on Problem Landscape</strong></p>
+<p><strong>Video Andy and Rich: Advice for Students</strong></p>
+</section>
+</section>
+<section id="course-4---week-4---identify-key-performance-parameters" class="level2">
+<h2 class="anchored" data-anchor-id="course-4---week-4---identify-key-performance-parameters">Course 4 - Week 4 - Identify Key Performance Parameters</h2>
+<section id="weekly-learning-goals-1" class="level6">
+<h6 class="anchored" data-anchor-id="weekly-learning-goals-1">Weekly Learning Goals</h6>
+<p><strong>Video Agent Architecture Meeting with Martha: Overview of Design Choices</strong></p>
+<p>Now, let’s discuss the meta parameter choices that you will have to make to fully implement the agent. This means we need to decide on the <strong>function approximator</strong>, choices in the optimizer for <strong>updating the action values</strong>, and how to <strong>do exploration</strong>.</p>
+</section>
+<section id="project-resources-2" class="level6">
+<h6 class="anchored" data-anchor-id="project-resources-2">Project Resources</h6>
+<p><strong>Video Let’s Review: Non-linear Approximation with Neural Networks</strong></p>
+<p>By the end of this video, you will <em>understand</em> how neural networks do <strong>feature construction</strong>, and you will <em>understand</em> how neural networks are a <strong>non-linear function</strong> of state.</p>
+<p><strong>Video Drew Bagnell on System ID + Optimal Control</strong></p>
+<p><strong>Video Susan Murphy on RL in Mobile Health</strong></p>
+</section>
+</section>
+<section id="course-4---week-5---implement-your-agent" class="level2">
+<h2 class="anchored" data-anchor-id="course-4---week-5---implement-your-agent">Course 4 - Week 5 - Implement your agent</h2>
+<section id="weekly-learning-goals-2" class="level6">
+<h6 class="anchored" data-anchor-id="weekly-learning-goals-2">Weekly Learning Goals</h6>
+<p><strong>Video Meeting with Adam: Getting the Agent Details Right</strong></p>
+</section>
+<section id="project-resources-3" class="level6">
+<h6 class="anchored" data-anchor-id="project-resources-3">Project Resources</h6>
+<p><strong>Video Let’s Review: Optimization Strategies for NNs</strong></p>
+<p>By the end of this video, you will be able to <em>understand</em> the importance of <strong>initialization</strong> for neural networks and <em>describe</em> <strong>optimization techniques</strong> for training neural networks.</p>
+<p>One simple yet effective initialization strategy, is to randomly sample the initial weights from a normal distribution with small variance. This way, each neuron has a different output from other neurons within its layer. This provides a more diverse set of potential features. By keeping the variants small, we ensure that the output of each neuron is within the same range as its neighbors. One downside to this strategy is that, as we add more inputs to a neuron, the variance of the output grows. We can get around this issue by scaling the variance of the weights, by one over the square root of the number of inputs.</p>
+<p><img src="../images/C4W4_weight_initialization.png" class="img-fluid"></p>
+<p>Here’s the stochastic gradient descent update rule and here’s the update modified to include momentum. Notice, it is similar to the regular stochastic gradient descent update plus an extra term called the momentum M. The momentum term summarizes the history of the gradients using a decaying sum of gradients with decay rate Lambda. If recent gradients have all been in similar directions, then we gained momentum in that direction. This means, we make a large step in that direction. If recent updates have conflicting directions, then it kills the momentum. The momentum term will have little impact on the update and we will make a regular gradient descent step. Momentum provably accelerates learning, meaning it gets to a stationary point more quickly.</p>
+<p><img src="../images/C4W4_update_momentum.png" class="img-fluid"></p>
+<p>So far, we have only talked about a global scalar step size. This is well-known to be problematic because this can result in updates that are too big for some weights and too small for other weights. Adapting the step sizes for each weight, based on statistics about the learning process in practice results in much better performance. Now, how does the update change? The change is very simple. Instead of updating with a scalar Alpha, there’s a vector of step sizes indexed by t to indicate that it can change on each time-step. Each dimension of the gradient, is scaled by its corresponding step size instead of the global step size. There are a variety of methods to adapt a vector of step sizes. You’ll get to implement one in your assignment.</p>
+<p><img src="../images/C4W4_vector_step_sizes.png" class="img-fluid"></p>
+<p><strong>Video Let’s Review: Expected Sarsa with Function Approximation</strong></p>
+<p>By the end of this video, you’ll be able to <em>explain</em> the update for <strong>expected Sarsa</strong> with <strong>function approximation</strong>, and <em>explain</em> the update for <strong>Q-learning</strong> with <strong>function approximation</strong>.</p>
+<p><img src="../images/C4W4_expected_sarsa_function_approximation.png" class="img-fluid"></p>
+<p><img src="../images/C4W4_q_learning_function_approximation.png" class="img-fluid"></p>
+<p><strong>Video Let’s Review: Dyna &amp; Q-learning in a Simple Maze</strong></p>
+<p>By the end of this video you will be able to <em>describe</em> how learning from both <strong>real</strong> and <strong>model</strong> experience impacts performance. You will also be able to <em>explain</em> how a model allows the agent to learn from <strong>fewer interactions with the environment</strong>.</p>
+<p><strong>Video Meeting with Martha: In-depth on Experience Replay</strong></p>
+<p>In Course 3, the agents you implemented update the value function or policy only once with each sample. But this is likely not the most sample efficient way to use our data. You have actually seen a smarter approach in Course 2 where we talked about Dyna as a way to be more sample efficient. But we only talked about Dyna for the tabular setting.</p>
+<p>In this video, we will talk about how to make your agent more sample efficient when using function approximation. We will discuss a simple method called <strong>experience replay</strong> and how it relates to Dyna. To get some intuition for experience replay, let’s first remember a method that we know well, Dyna-Q. The idea is to learn a model using sample experience. Then simulated experience can be obtained from this model to update the values. This procedure of using simulated experience to improve the value estimates is called planning.</p>
+<p>Experience replay is a simple method for trying to get the advantages of Dyna. The basic idea is to save a buffer of experience and let the data be the model. We sample experience from this buffer and update the value function with those samples similarly to how we sample from the model and update the values in Dyna.</p>
+<p><img src="../images/C4W4_experience_replay.png" class="img-fluid"></p>
+<p><strong>Video Martin Riedmiller on The ‘Collect and Infer’ framework for data-efficient RL</strong></p>
+<p>Martin Riedmiller, head of the control team at Deepmind has been working for more than 20 years on New Reinforcement Learning Agents for the control of dynamical systems.</p>
+<p>The control of dynamical systems is an attractive application area for reinforcement learning controllers. They all share the same principle feedback control structure, a controller gets the observation, computes an action and applies it to the environment. Classical control theory would first model the process as a set of differential equations for which then a control law must be analytically derived. A tedious job in particular if the systems are complex or highly nonlinear. Reinforcement learning in contrast promises to be able to learn the controller autonomously. If only the overall control goal is specified. This is typically done by defining the immediate reward. The RL controller optimizes the expected cumulated sum of rewards over time.</p>
+<p><img src="../images/C4W4_infer.png" class="img-fluid"></p>
+<p>These two steps together build the so-called collecting and infer framework of reinforcement learning. This perspective keeps us focused on the two main question of data efficient RL. Infer, which means squeezing out the most of a given set of transition data. And collect, which means sampling the most formative data from the environment.</p>
+<p><img src="../images/C4W4_collect_infer.png" class="img-fluid"></p>
+<p><img src="../images/C4W4_nfq_dqn.png" class="img-fluid"></p>
+</section>
+<section id="assignment-1" class="level6">
+<h6 class="anchored" data-anchor-id="assignment-1">Assignment</h6>
+<p>Implement your agent</p>
+<p>notebooks in <a href="https://github.com/castorfou/Reinforcement-Learning-specialization/tree/main/assignements/course%204%20week%205">github</a></p>
+</section>
+</section>
+<section id="course-4---week-6---submit-your-parameter-study" class="level2">
+<h2 class="anchored" data-anchor-id="course-4---week-6---submit-your-parameter-study">Course 4 - Week 6 - Submit your Parameter Study!</h2>
+<section id="weekly-learning-goals-3" class="level6">
+<h6 class="anchored" data-anchor-id="weekly-learning-goals-3">Weekly Learning Goals</h6>
+<p><strong>Video Meeting with Adam: Parameter Studies in RL</strong></p>
+</section>
+<section id="project-resources-4" class="level6">
+<h6 class="anchored" data-anchor-id="project-resources-4">Project Resources</h6>
+<p><strong>Video Let’s Review: Comparing TD and Monte Carlo</strong></p>
+<p><strong>Video Joelle Pineau about RL that Matters</strong></p>
+</section>
+<section id="assignment-2" class="level6">
+<h6 class="anchored" data-anchor-id="assignment-2">Assignment</h6>
+<p>Completing the parameter study</p>
+<p>notebooks in <a href="https://github.com/castorfou/Reinforcement-Learning-specialization/tree/main/assignements/course%204%20week%206">github</a></p>
+</section>
+<section id="congratulations" class="level6">
+<h6 class="anchored" data-anchor-id="congratulations">Congratulations!</h6>
+<p><strong>Video Meeting with Martha: Discussing Your Results</strong></p>
+<p><strong>Video Course Wrap-up</strong></p>
+<p><strong>Video Specialization Wrap-up</strong></p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
