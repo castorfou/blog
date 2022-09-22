@@ -1,0 +1,32 @@
+---
+title: "About"
+image: profile.jpg
+about:
+  template: jolla
+  links:
+    - icon: twitter
+      text: Twitter
+      href: https://twitter.com/GuillaumeRamel1
+    - icon: linkedin
+      text: LinkedIn
+      href: https://linkedin.com/in/guillaume-ramelet-7696081/
+    - icon: github
+      text: Github
+      href: https://github.com/castorfou
+
+---
+
+# About
+
+## This blog
+
+This is more a journal where I am adding entries about my (baby steps) learnings. It is likely to be centered around python, git, data-science, ...
+I have been strongly inspired by [Rachel Thomas](https://www.fast.ai/about/#rachel) explaining why [I should blog](https://www.fast.ai/2020/01/16/fast_template/#you-should-blog). Specially when starting such a journey to turn a datascientist.
+
+My intent would be to regularly add entries to this blog. Ideally at least once a week. Maybe only short ones, the point being to stick on this frequent activity. If it takes days to write posts I am pretty sure I won't do it.
+Those entries are personnal thoughts and not those of my employer [Michelin](https://www.michelin.com/).
+
+## Me
+
+I am Guillaume Ramelet. I am 46 (in 2022). Father of 3. And have been working for a French tire company for 15+ years.
+I am French and as you can read English is not my mother tongue (but using English is a good exercise, isn't it)

@@ -1,0 +1,50 @@
+---
+aliases:
+- /git/2022/05/03/save git https credentials under wsl
+categories:
+- git
+date: '2022-05-03'
+description: git-credential-manager
+image: images/git.png
+layout: post
+title: save git https credentials under wsl
+toc: true
+
+---
+
+## source of inspiration
+
+Microsoft has released a tool to securely keep https credentials:
+
+[git-credential-manager](https://github.com/GitCredentialManager/git-credential-manager)
+
+Usefull when one has to use https instead of git(ssl) to connect to git repos. My case when I am behing my corporate firewall and has to link to github repos (such as this blog)
+
+
+
+## How to setup it
+
+#### create token in github
+
+I have to create a token at Settings > Developer Settings > Personal Access Tokens
+
+#### installation of git-credential-manager inside WSL
+
+Download the latest (v2.0.696 at May/3rd 2022) [.deb package](https://github.com/GitCredentialManager/git-credential-manager/releases/latest), and run the following:
+
+```bash
+sudo dpkg -i <path-to-package>
+git-credential-manager-core configure
+git config --global credential.credentialStore gpg
+export GPG_TTY=$(tty)
+gpg --full-generate-key
+sudo apt install -y pass
+key_id=`gpg --list-keys | awk -F: '/^ / { print $0 }' | cut -d" " -f7`
+pass init $key_id
+```
+
+or see the step 06 in [install ubuntu 22.04 on WSL](https://castorfou.github.io/guillaume_blog/blog/install-ubuntu-22.04-on-WSL.html)
+
+
+
+
