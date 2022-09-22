@@ -221,6 +221,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#github-actions" id="toc-github-actions" class="nav-link" data-scroll-target="#github-actions">github actions</a></li>
   </ul></li>
   </ul></li>
+  <li><a href="#current-publication-process" id="toc-current-publication-process" class="nav-link" data-scroll-target="#current-publication-process">Current publication process</a></li>
   <li><a href="#issues-improvments" id="toc-issues-improvments" class="nav-link" data-scroll-target="#issues-improvments">Issues / improvments</a>
   <ul class="collapse">
   <li><a href="#quarto-publishing-issue-behind-firewall" id="toc-quarto-publishing-issue-behind-firewall" class="nav-link" data-scroll-target="#quarto-publishing-issue-behind-firewall">quarto publishing issue behind firewall</a></li>
@@ -351,7 +352,7 @@ _site/
 <p>Using my corporate PC, <code>quarto publish</code> fails so I will give github actions a try.</p>
 <section id="quarto-publish" class="level3">
 <h3 class="anchored" data-anchor-id="quarto-publish">quarto publish</h3>
-<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> publish</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> publish gh-pages</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>:heavy_check_mark: This is ok when publishing with home PC.</p>
 <p>:x: But fails when publishing with corporate PC.</p>
 <p>shared it with community at discord: https://discord.com/channels/689892369998676007/1020178609605984267/1020631703653462038</p>
@@ -371,29 +372,42 @@ _site/
 </section>
 </section>
 </section>
+<section id="current-publication-process" class="level1">
+<h1>Current publication process</h1>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cat ..<span class="op">/</span>publish.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>NOW=`date '+%F_%H:%M'`;
+git add .
+git commit -m "$NOW"
+git push
+quarto publish gh-pages</code></pre>
+</div>
+</div>
+</section>
 <section id="issues-improvments" class="level1">
 <h1>Issues / improvments</h1>
 <section id="quarto-publishing-issue-behind-firewall" class="level2">
 <h2 class="anchored" data-anchor-id="quarto-publishing-issue-behind-firewall">quarto publishing issue behind firewall</h2>
 <p>Identical to error happening when installing quarto extension</p>
 <p>https://github.com/quarto-ext/video/issues/27</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> quarto publish</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="ex">?</span> Publish update to: › https://castorfou.github.io/blog/ <span class="er">(</span><span class="ex">GitHub</span> Pages<span class="kw">)</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="ex">From</span> https://github.com/castorfou/blog</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a> <span class="ex">*</span> branch            gh-pages   <span class="at">-</span><span class="op">&gt;</span> FETCH_HEAD</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="ex">origin</span>  https://github.com/castorfou/blog.git <span class="er">(</span><span class="ex">fetch</span><span class="kw">)</span></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="ex">origin</span>  https://github.com/castorfou/blog.git <span class="er">(</span><span class="ex">push</span><span class="kw">)</span></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="ex">To</span> https://github.com/castorfou/blog.git</span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a> <span class="ex">+</span> 0a3710d...1aeaf23 HEAD <span class="at">-</span><span class="op">&gt;</span> gh-pages <span class="er">(</span><span class="ex">forced</span> update<span class="kw">)</span></span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="ex">fatal:</span> <span class="st">'fadc274b'</span> is not a working tree</span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="ex">NOTE:</span> GitHub Pages sites use caching so you might need to click the refresh</span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a><span class="ex">button</span> within your web browser to see changes after deployment.</span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">\)</span> Deploying gh-pages branch to website <span class="er">(</span><span class="ex">this</span> may take a few minutes<span class="kw">)</span><span class="ex">Sending</span> fatal alert BadCertificate</span>
-<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a><span class="ex">[✓]</span> Deploying gh-pages branch to website <span class="er">(</span><span class="ex">this</span> may take a few minutes<span class="kw">)</span></span>
-<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a><span class="ex">ERROR:</span> TypeError: error sending request for url <span class="er">(</span><span class="ex">https://castorfou.github.io/blog/.nojekyll</span><span class="kw">)</span><span class="bu">:</span> error trying to connect: invalid peer certificate contents: invalid peer certificate: UnknownIssuer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> quarto publish</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="ex">?</span> Publish update to: › https://castorfou.github.io/blog/ <span class="er">(</span><span class="ex">GitHub</span> Pages<span class="kw">)</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="ex">From</span> https://github.com/castorfou/blog</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a> <span class="ex">*</span> branch            gh-pages   <span class="at">-</span><span class="op">&gt;</span> FETCH_HEAD</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="ex">origin</span>  https://github.com/castorfou/blog.git <span class="er">(</span><span class="ex">fetch</span><span class="kw">)</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="ex">origin</span>  https://github.com/castorfou/blog.git <span class="er">(</span><span class="ex">push</span><span class="kw">)</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="ex">To</span> https://github.com/castorfou/blog.git</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a> <span class="ex">+</span> 0a3710d...1aeaf23 HEAD <span class="at">-</span><span class="op">&gt;</span> gh-pages <span class="er">(</span><span class="ex">forced</span> update<span class="kw">)</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="ex">fatal:</span> <span class="st">'fadc274b'</span> is not a working tree</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a><span class="ex">NOTE:</span> GitHub Pages sites use caching so you might need to click the refresh</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="ex">button</span> within your web browser to see changes after deployment.</span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">\)</span> Deploying gh-pages branch to website <span class="er">(</span><span class="ex">this</span> may take a few minutes<span class="kw">)</span><span class="ex">Sending</span> fatal alert BadCertificate</span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a><span class="ex">[✓]</span> Deploying gh-pages branch to website <span class="er">(</span><span class="ex">this</span> may take a few minutes<span class="kw">)</span></span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a><span class="ex">ERROR:</span> TypeError: error sending request for url <span class="er">(</span><span class="ex">https://castorfou.github.io/blog/.nojekyll</span><span class="kw">)</span><span class="bu">:</span> error trying to connect: invalid peer certificate contents: invalid peer certificate: UnknownIssuer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>For context, I use quarto as a replacement of fastai/fastpages and followed a migration guide from Hamel Hussain asking for this installation.</p>
 <p>And I’m in a corporate environment with transparent proxies and self signed certificates. My system has updated CERT in /usr/local/share/ca-certificates/, and SSL_CERT_FILE environment variable pointing to updated corporate pem.</p>
 <pre><code>$ quarto install extension quarto-ext/lightbox
