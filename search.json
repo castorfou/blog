@@ -1939,6 +1939,13 @@
     "text": "preview\nquarto preview\nHere we can fix many thinks, and auto update rendered pages is just excellent!\n\nmove images from posts to posts/images (have to restart quarto preview after that)\ndelete the 2 examples (welcome and post-with-code)\n\nWill have to browse through all the site to see if all is properly rendered. > fix for broken links or Jekyll shortcodes (things with {% … %}) that need to be converted to Quarto. Search the the Quarto documentation if you need help locating specific Quarto features."
   },
   {
+    "objectID": "posts/2022-09-16-migrate blog from nbdev to quarto.html#keep-git-repo-in-sync",
+    "href": "posts/2022-09-16-migrate blog from nbdev to quarto.html#keep-git-repo-in-sync",
+    "title": "Blog - migrate to quarto",
+    "section": "keep git repo in sync",
+    "text": "keep git repo in sync\nNOW=`date '+%F_%H:%M'`;\ngit add .\ngit commit -m \"$NOW\"\ngit push"
+  },
+  {
     "objectID": "posts/2022-09-16-migrate blog from nbdev to quarto.html#publication",
     "href": "posts/2022-09-16-migrate blog from nbdev to quarto.html#publication",
     "title": "Blog - migrate to quarto",
