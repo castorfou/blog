@@ -1,16 +1,24 @@
 #!/usr/bin/env python
 # coding: utf-8
+---
+aliases:
+- /fastpages/nbdev/quarto/2022/09/16/migrate blog from nbdev to quarto
+badges: false
+branch: master
+categories:
+- nbdev
+- quarto
+- fastpages
+date: '2022-09-16'
+description: following migration guide from Hamel Hussain
+image: images/icons/fastai.png
+output-file: 2022-09-16-migrate blog from nbdev to quarto.html
+show_tags: true
+title: Blog - migrate to quarto
+toc: true
 
-# # "Blog - migrate to quarto"
-# > "following migration guide from Hamel Hussain"
-# - show_tags: true
-# - toc: true
-# - branch: master
-# - badges: false
-# - comments: true
-# - categories: [nbdev, quarto, fastpages]
-# - image: images/icons/fastai.png
-# 
+---
+
 
 # # Inspiration
 
@@ -150,6 +158,15 @@ get_ipython().system('cat ~/git/blog/.gitignore')
 # 
 # 
 
+# ## keep git repo in sync
+
+# ```bash
+# NOW=`date '+%F_%H:%M'`;
+# git add .
+# git commit -m "$NOW"
+# git push
+# ```
+
 # ## publication
 
 # There are 2 ways to publish. A straightforword one by calling `quarto publish`. And a more advanced one with github actions.
@@ -190,8 +207,6 @@ get_ipython().system('cat ~/git/blog/.gitignore')
 
 # ## quarto publishing issue behind firewall
 
-# 
-# 
 # Identical to error happening when installing quarto extension
 # 
 # https://github.com/quarto-ext/video/issues/27
