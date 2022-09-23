@@ -80,7 +80,7 @@ Install of wsl2 following [corporate instructions](https://dev.michelin.com/wsl2
 ## Week 37 - September 22
 
 **Thursday 9/15**    
-Played a lot with [nbdev2](/guillaume_blog/blog/nbdev2.html). Most thinks work now with gitlab. That's great
+Played a lot with [nbdev2](/posts/2022-09-12-nbdev2.html). Most thinks work now with gitlab. That's great
     
 **Friday 9/16**
 Hamel just announced that [fastpages will be discontinued](https://forums.fast.ai/t/fastpages-deprecating-fastpages-in-favor-of-quarto/99095) as nbdev+quarto is now a valid option to provide a blogging platform.
