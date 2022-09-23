@@ -90,8 +90,8 @@ He has written a [migration guide](https://nbdev.fast.ai/tutorials/blogging.html
 ## Week 38 - September 22
 
 **Thursday 9/22**
-I have completed migration of my blog to quarto as explaine in [Blog - migrate to quarto](/blog/posts/2022-09-16-migrate blog from nbdev to quarto.html)
+I have completed migration of my blog to quarto as explaine in [Blog - migrate to quarto](/posts/2022-09-16-migrate blog from nbdev to quarto.html)
 
 **Friday 9/23**
-Activate [Auto export python code from jupyter lab](/blog/posts/2022-07-21-jupyter-export-lab-as-py.html)
-Remove [previous hack](/blog/posts/2021-01-05-jupyter-export-notebook-as-py.html) (jupyter_notebook_config.py)
+Activate [Auto export python code from jupyter lab](/posts/2022-07-21-jupyter-export-lab-as-py.html)
+Remove [previous hack](/posts/2021-01-05-jupyter-export-notebook-as-py.html) (jupyter_notebook_config.py)
