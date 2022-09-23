@@ -245,6 +245,13 @@
     "text": "Week 37 - September 22\nThursday 9/15\nPlayed a lot with nbdev2. Most thinks work now with gitlab. That’s great\nFriday 9/16 Hamel just announced that fastpages will be discontinued as nbdev+quarto is now a valid option to provide a blogging platform. He has written a migration guide for that. Will have to follow that."
   },
   {
+    "objectID": "posts/2022-09-01-logbook-September-22.html#week-38---september-22",
+    "href": "posts/2022-09-01-logbook-September-22.html#week-38---september-22",
+    "title": "Logbook for September 22",
+    "section": "Week 38 - September 22",
+    "text": "Week 38 - September 22\nThursday 9/22 I have completed migration of my blog to quarto as explaine in Blog - migrate to quarto\nFriday 9/23 Activate Auto export python code from jupyter lab Remove previous hack (jupyter_notebook_config.py)"
+  },
+  {
     "objectID": "posts/2020-10-06-gan-specialization-course1-week1-intro_to_gan.html",
     "href": "posts/2020-10-06-gan-specialization-course1-week1-intro_to_gan.html",
     "title": "GAN Specialization course 1 week 1 - intro to GAN",
@@ -1967,11 +1974,11 @@
     "text": "quarto publishing issue behind firewall\nIdentical to error happening when installing quarto extension\nhttps://github.com/quarto-ext/video/issues/27\n$ quarto publish\n? Publish update to: › https://castorfou.github.io/blog/ (GitHub Pages)\nFrom https://github.com/castorfou/blog\n * branch            gh-pages   -> FETCH_HEAD\n \norigin  https://github.com/castorfou/blog.git (fetch)\norigin  https://github.com/castorfou/blog.git (push)\nTo https://github.com/castorfou/blog.git\n + 0a3710d...1aeaf23 HEAD -> gh-pages (forced update)\nfatal: 'fadc274b' is not a working tree\n\nNOTE: GitHub Pages sites use caching so you might need to click the refresh\nbutton within your web browser to see changes after deployment.\n\n(\\) Deploying gh-pages branch to website (this may take a few minutes)Sending fatal alert BadCertificate\n[✓] Deploying gh-pages branch to website (this may take a few minutes)\nERROR: TypeError: error sending request for url (https://castorfou.github.io/blog/.nojekyll): error trying to connect: invalid peer certificate contents: invalid peer certificate: UnknownIssuer\nFor context, I use quarto as a replacement of fastai/fastpages and followed a migration guide from Hamel Hussain asking for this installation.\nAnd I’m in a corporate environment with transparent proxies and self signed certificates. My system has updated CERT in /usr/local/share/ca-certificates/, and SSL_CERT_FILE environment variable pointing to updated corporate pem.\n$ quarto install extension quarto-ext/lightbox\nSending fatal alert BadCertificate\nERROR: TypeError: error sending request for url (https://github.com/quarto-ext/lightbox/archive/refs/heads/main.tar.gz): error trying to connect: invalid peer certificate contents: invalid peer certificate: UnknownIssuer\nIt fails with the same message. When I run quarto publish I have the same issue.\nOne option is to use github actions. Need to find what is this id used in _publish.yml"
   },
   {
-    "objectID": "posts/2022-09-16-migrate blog from nbdev to quarto.html#inline-images-are-not-properly-rendered",
-    "href": "posts/2022-09-16-migrate blog from nbdev to quarto.html#inline-images-are-not-properly-rendered",
+    "objectID": "posts/2022-09-16-migrate blog from nbdev to quarto.html#workaround-inline-images-are-not-properly-rendered",
+    "href": "posts/2022-09-16-migrate blog from nbdev to quarto.html#workaround-inline-images-are-not-properly-rendered",
     "title": "Blog - migrate to quarto",
-    "section": "inline images are not properly rendered",
-    "text": "inline images are not properly rendered\nif I have 2 images in 2 cells, it works in jupyter notebook but it is not rendered properly when published."
+    "section": "[workaround] inline images are not properly rendered",
+    "text": "[workaround] inline images are not properly rendered\nanalysis made at inline images from jupyter with quarto\nshort answer: use jupyter lab to blog"
   },
   {
     "objectID": "posts/2022-09-16-migrate blog from nbdev to quarto.html#albert-rapp-as-an-example",
