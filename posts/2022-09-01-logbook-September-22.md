@@ -95,3 +95,13 @@ I have completed migration of my blog to quarto as explaine in [Blog - migrate t
 **Friday 9/23**
 Activate [Auto export python code from jupyter lab](/posts/2022-07-21-jupyter-export-lab-as-py.html)
 Remove [previous hack](/posts/2021-01-05-jupyter-export-notebook-as-py.html) (jupyter_notebook_config.py)
+    
+## Week 39 - September 22
+    
+**Monday 9/26**
+Just tested way to install last (untagged) version of a lib from gitlab with
+    
+```bash
+pip uninstall janus-tools
+pip install git+https://gitlab.michelin.com/janus/janus_tools.git
+```
