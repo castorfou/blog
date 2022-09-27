@@ -227,7 +227,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#quarto-publishing-issue-behind-firewall" id="toc-quarto-publishing-issue-behind-firewall" class="nav-link" data-scroll-target="#quarto-publishing-issue-behind-firewall">quarto publishing issue behind firewall</a></li>
   <li><a href="#workaround-inline-images-are-not-properly-rendered" id="toc-workaround-inline-images-are-not-properly-rendered" class="nav-link" data-scroll-target="#workaround-inline-images-are-not-properly-rendered">[workaround] inline images are not properly rendered</a></li>
   <li><a href="#albert-rapp-as-an-example" id="toc-albert-rapp-as-an-example" class="nav-link" data-scroll-target="#albert-rapp-as-an-example">Albert Rapp as an example</a></li>
-  <li><a href="#links-are-not-rendered-as-links" id="toc-links-are-not-rendered-as-links" class="nav-link" data-scroll-target="#links-are-not-rendered-as-links">links are not rendered as links</a></li>
+  <li><a href="#links-are-not-rendered-as-links" id="toc-links-are-not-rendered-as-links" class="nav-link" data-scroll-target="#links-are-not-rendered-as-links">links are not rendered as links</a>
+  <ul class="collapse">
+  <li><a href="#suggestions" id="toc-suggestions" class="nav-link" data-scroll-target="#suggestions">suggestions</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -432,8 +435,14 @@ ERROR: TypeError: error sending request for url (https://github.com/quarto-ext/l
 <p>in jupyter, just typing url turns it into a link. Not with quarto.</p>
 <p>anyway to do it ?</p>
 <p><a href="https://github.com/quarto-dev/quarto-cli/discussions/2609">https://github.com/quarto-dev/quarto-cli/discussions/2609</a></p>
+<section id="suggestions" class="level3">
+<h3 class="anchored" data-anchor-id="suggestions">suggestions</h3>
+<p>First one is to surround url with pointy braces ‘&lt;&gt;’</p>
+<p>Does it work: <a href="https://pandoc.org/MANUAL.html#links-1" class="uri">https://pandoc.org/MANUAL.html#links-1</a></p>
+<p>And better one (?) would be to run pandoc with <a href="https://pandoc.org/MANUAL.html#extension-autolink_bare_uris">autolink_bare_uris</a></p>
 
 
+</section>
 </section>
 </section>
 
