@@ -502,7 +502,7 @@ nbdev_update                    Propagate change in modules matching `fname` to 
 <h3 class="anchored" data-anchor-id="nbdev_preview"><code>nbdev_preview</code></h3>
 <p>Just run it from command line</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">nbdev_preview</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>and it is accessible from http://localhost:3000.</p>
+<p>and it is accessible from <a href="http://localhost:3000" class="uri">http://localhost:3000</a>.</p>
 <p>This is a quarto webserver. The 1st time you launch it it will install quarto for you. On ubuntu this is a standard package so it will be updated regularly.</p>
 <div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2022-09-12T10:00:57.349093Z&quot;,&quot;start_time&quot;:&quot;2022-09-12T10:00:53.838159Z&quot;}" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> getpass <span class="im">import</span> getpass</span>
@@ -608,7 +608,7 @@ ipdb&gt; q</code></pre>
 <span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="co"># dev_requirements =</span></span>
 <span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="co"># console_scripts =</span></span>
 <span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="ex">clean_ids</span> = True</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Et voila!, doc is available at https://castorfou.github.io/dataset_tools/ and you can push that address to your repo settings</p>
+<p>Et voila!, doc is available at <a href="https://castorfou.github.io/dataset_tools/" class="uri">https://castorfou.github.io/dataset_tools/</a> and you can push that address to your repo settings</p>
 </section>
 <section id="publish-to-pypi-conda" class="level3">
 <h3 class="anchored" data-anchor-id="publish-to-pypi-conda">publish to Pypi, conda, …</h3>
@@ -692,14 +692,13 @@ drwxrwxrwx 1 guillaume guillaume  4096 Sep 13 14:02 nbdev_gitlab
 </section>
 <section id="change-in-settings.ini" class="level3">
 <h3 class="anchored" data-anchor-id="change-in-settings.ini">change in <code>settings.ini</code></h3>
-<ul>
-<li><p>set company_name = michelin</p></li>
-<li><p>set doc_path = public</p></li>
-<li><p>set branch = main instead of master</p></li>
-<li><p>doc_host = https://%(user)s.pages.gitlab.%(company_name)s.com/</p></li>
-<li><p>git_url = https://gitlab.%(company_name)s.com/%(user)s/%(repo)s</p></li>
-<li><p>doc_baseurl = /%(repo)s</p></li>
-</ul>
+<pre class="text"><code>- set company_name = acme
+
+- set doc_path = public
+- set branch = main instead of master
+- doc_host = https://%(user)s.pages.gitlab.%(company_name)s.com/
+- git_url = https://gitlab.%(company_name)s.com/%(user)s/%(repo)s
+- doc_baseurl = /%(repo)s</code></pre>
 </section>
 <section id="change-in-_quarto.yml" class="level3">
 <h3 class="anchored" data-anchor-id="change-in-_quarto.yml">change in <code>_quarto.yml</code></h3>
@@ -710,100 +709,100 @@ drwxrwxrwx 1 guillaume guillaume  4096 Sep 13 14:02 nbdev_gitlab
 <p>With gitlab you have a nice editor to edit pipelines (CI lint)</p>
 <p>One way to debug is to insert <code>sleep xx</code> and then click debug.</p>
 <p>You then have access to your docker image.</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="ex">default:</span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="ex">image:</span> <span class="st">'docker.artifactory.michelin.com/michelin/hub/ubuntu20.04:bib-1.1'</span></span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">tags:</span></span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>    <span class="ex">-</span> k8s</span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>  <span class="ex">interruptible:</span> true</span>
-<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>  <span class="ex">retry:</span></span>
-<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>    <span class="ex">max:</span> 2</span>
-<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>    <span class="ex">when:</span></span>
-<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>      <span class="ex">-</span> runner_system_failure</span>
-<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>      <span class="ex">-</span> stuck_or_timeout_failure</span>
-<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Functions that should be executed before the build script is run</span></span>
-<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a><span class="ex">before_script:</span></span>
-<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-</span> apt <span class="at">-y</span> install wget</span>
-<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-</span> wget <span class="st">"https://github.com/quarto-dev/quarto-cli/releases/download/v1.1.189/quarto-1.1.189-linux-amd64.deb"</span></span>
-<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-</span> dpkg <span class="at">-i</span> quarto-1.1.189-linux-amd64.deb</span>
-<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-</span> apt <span class="at">-y</span> install python3-pip</span>
-<span id="cb31-18"><a href="#cb31-18" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-</span> wget <span class="at">--no-check-certificate</span> <span class="at">--content-disposition</span> <span class="at">-O</span> <span class="at">-</span> https://raw.githubusercontent.com/castorfou/guillaume_blog/master/files/setup_wsl_08_pip.sh <span class="kw">|</span> <span class="fu">bash</span></span>
-<span id="cb31-19"><a href="#cb31-19" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-</span> pip3 install nbdev</span>
-<span id="cb31-20"><a href="#cb31-20" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-</span> nbdev_install</span>
-<span id="cb31-21"><a href="#cb31-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-22"><a href="#cb31-22" aria-hidden="true" tabindex="-1"></a><span class="ex">stages:</span></span>
-<span id="cb31-23"><a href="#cb31-23" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-</span> test</span>
-<span id="cb31-24"><a href="#cb31-24" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-</span> build_doc</span>
-<span id="cb31-25"><a href="#cb31-25" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-</span> build</span>
-<span id="cb31-26"><a href="#cb31-26" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-</span> deploy_artifactory</span>
-<span id="cb31-27"><a href="#cb31-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-28"><a href="#cb31-28" aria-hidden="true" tabindex="-1"></a><span class="ex">tests:</span></span>
-<span id="cb31-29"><a href="#cb31-29" aria-hidden="true" tabindex="-1"></a>  <span class="ex">stage:</span> test</span>
-<span id="cb31-30"><a href="#cb31-30" aria-hidden="true" tabindex="-1"></a>  <span class="ex">script:</span></span>
-<span id="cb31-31"><a href="#cb31-31" aria-hidden="true" tabindex="-1"></a>    <span class="ex">-</span> nbdev_test</span>
-<span id="cb31-32"><a href="#cb31-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-33"><a href="#cb31-33" aria-hidden="true" tabindex="-1"></a><span class="ex">pages:</span></span>
-<span id="cb31-34"><a href="#cb31-34" aria-hidden="true" tabindex="-1"></a>  <span class="ex">stage:</span> build_doc</span>
-<span id="cb31-35"><a href="#cb31-35" aria-hidden="true" tabindex="-1"></a>  <span class="ex">script:</span></span>
-<span id="cb31-36"><a href="#cb31-36" aria-hidden="true" tabindex="-1"></a>    <span class="ex">-</span> nbdev_docs</span>
-<span id="cb31-37"><a href="#cb31-37" aria-hidden="true" tabindex="-1"></a>  <span class="ex">artifacts:</span></span>
-<span id="cb31-38"><a href="#cb31-38" aria-hidden="true" tabindex="-1"></a>    <span class="ex">paths:</span></span>
-<span id="cb31-39"><a href="#cb31-39" aria-hidden="true" tabindex="-1"></a>      <span class="co"># The folder that contains the files to be exposed at the Page URL</span></span>
-<span id="cb31-40"><a href="#cb31-40" aria-hidden="true" tabindex="-1"></a>      <span class="ex">-</span> public</span>
-<span id="cb31-41"><a href="#cb31-41" aria-hidden="true" tabindex="-1"></a>  <span class="ex">rules:</span></span>
-<span id="cb31-42"><a href="#cb31-42" aria-hidden="true" tabindex="-1"></a>    <span class="co"># This ensures that only pushes to the default branch will trigger</span></span>
-<span id="cb31-43"><a href="#cb31-43" aria-hidden="true" tabindex="-1"></a>    <span class="co"># a pages deploy</span></span>
-<span id="cb31-44"><a href="#cb31-44" aria-hidden="true" tabindex="-1"></a>    <span class="ex">-</span> if: <span class="va">$CI_COMMIT_REF_NAME</span> == <span class="va">$CI_DEFAULT_BRANCH</span></span>
-<span id="cb31-45"><a href="#cb31-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-46"><a href="#cb31-46" aria-hidden="true" tabindex="-1"></a><span class="ex">wheel:</span></span>
-<span id="cb31-47"><a href="#cb31-47" aria-hidden="true" tabindex="-1"></a>  <span class="ex">stage:</span> build</span>
-<span id="cb31-48"><a href="#cb31-48" aria-hidden="true" tabindex="-1"></a>  <span class="ex">script:</span></span>
-<span id="cb31-49"><a href="#cb31-49" aria-hidden="true" tabindex="-1"></a>    <span class="ex">-</span> mkdir <span class="at">-p</span> public</span>
-<span id="cb31-50"><a href="#cb31-50" aria-hidden="true" tabindex="-1"></a>    <span class="ex">-</span> echo <span class="st">"Build wheel with python version </span><span class="kw">`</span><span class="ex">python3</span> <span class="at">--version</span><span class="kw">`</span><span class="st">:"</span></span>
-<span id="cb31-51"><a href="#cb31-51" aria-hidden="true" tabindex="-1"></a>    <span class="ex">-</span> pip install <span class="at">-U</span> setuptools wheel pydnx_packaging</span>
-<span id="cb31-52"><a href="#cb31-52" aria-hidden="true" tabindex="-1"></a>    <span class="ex">-</span> pip install <span class="at">-e</span> .</span>
-<span id="cb31-53"><a href="#cb31-53" aria-hidden="true" tabindex="-1"></a>    <span class="ex">-</span> python3 setup.py bdist_wheel</span>
-<span id="cb31-54"><a href="#cb31-54" aria-hidden="true" tabindex="-1"></a>    <span class="ex">-</span> mkdir <span class="at">-p</span> packages <span class="kw">&amp;&amp;</span> <span class="fu">mv</span> dist/<span class="pp">*</span> packages/</span>
-<span id="cb31-55"><a href="#cb31-55" aria-hidden="true" tabindex="-1"></a>  <span class="ex">artifacts:</span></span>
-<span id="cb31-56"><a href="#cb31-56" aria-hidden="true" tabindex="-1"></a>    <span class="ex">when:</span> always</span>
-<span id="cb31-57"><a href="#cb31-57" aria-hidden="true" tabindex="-1"></a>    <span class="ex">paths:</span></span>
-<span id="cb31-58"><a href="#cb31-58" aria-hidden="true" tabindex="-1"></a>      <span class="ex">-</span> packages/</span>
-<span id="cb31-59"><a href="#cb31-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-60"><a href="#cb31-60" aria-hidden="true" tabindex="-1"></a><span class="ex">publish:</span></span>
-<span id="cb31-61"><a href="#cb31-61" aria-hidden="true" tabindex="-1"></a>  <span class="ex">stage:</span> deploy_artifactory</span>
-<span id="cb31-62"><a href="#cb31-62" aria-hidden="true" tabindex="-1"></a>  <span class="ex">dependencies:</span></span>
-<span id="cb31-63"><a href="#cb31-63" aria-hidden="true" tabindex="-1"></a>    <span class="ex">-</span> wheel</span>
-<span id="cb31-64"><a href="#cb31-64" aria-hidden="true" tabindex="-1"></a>  <span class="ex">only:</span></span>
-<span id="cb31-65"><a href="#cb31-65" aria-hidden="true" tabindex="-1"></a>    <span class="ex">-</span> tags</span>
-<span id="cb31-66"><a href="#cb31-66" aria-hidden="true" tabindex="-1"></a>  <span class="ex">script:</span></span>
-<span id="cb31-67"><a href="#cb31-67" aria-hidden="true" tabindex="-1"></a>    <span class="co"># create credential config file</span></span>
-<span id="cb31-68"><a href="#cb31-68" aria-hidden="true" tabindex="-1"></a>    <span class="ex">-</span> <span class="op">&gt;</span></span>
-<span id="cb31-69"><a href="#cb31-69" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> <span class="bu">[</span> <span class="ot">-f</span> <span class="st">'.pypirc'</span> <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span></span>
-<span id="cb31-70"><a href="#cb31-70" aria-hidden="true" tabindex="-1"></a>        <span class="bu">echo</span> <span class="st">"Information: .pypirc file is not mandatory anymore."</span> <span class="kw">&amp;&amp;</span> <span class="fu">cp</span> .pypirc ~/</span>
-<span id="cb31-71"><a href="#cb31-71" aria-hidden="true" tabindex="-1"></a>      <span class="cf">else</span></span>
-<span id="cb31-72"><a href="#cb31-72" aria-hidden="true" tabindex="-1"></a>        <span class="bu">echo</span> <span class="st">"[distutils]</span></span>
-<span id="cb31-73"><a href="#cb31-73" aria-hidden="true" tabindex="-1"></a><span class="st">        index-servers = local</span></span>
-<span id="cb31-74"><a href="#cb31-74" aria-hidden="true" tabindex="-1"></a><span class="st">        [local]</span></span>
-<span id="cb31-75"><a href="#cb31-75" aria-hidden="true" tabindex="-1"></a><span class="st">        repository: https://artifactory.michelin.com/api/pypi/pypi</span></span>
-<span id="cb31-76"><a href="#cb31-76" aria-hidden="true" tabindex="-1"></a><span class="st">        username: fm00884</span></span>
-<span id="cb31-77"><a href="#cb31-77" aria-hidden="true" tabindex="-1"></a><span class="st">        password: &lt;don't even think about it&gt;"</span> <span class="op">&gt;</span> ~/.pypirc</span>
-<span id="cb31-78"><a href="#cb31-78" aria-hidden="true" tabindex="-1"></a>      <span class="cf">fi</span></span>
-<span id="cb31-79"><a href="#cb31-79" aria-hidden="true" tabindex="-1"></a>    <span class="ex">-</span> pip install <span class="at">-U</span> twine</span>
-<span id="cb31-80"><a href="#cb31-80" aria-hidden="true" tabindex="-1"></a>    <span class="ex">-</span> pip index versions nbdev_gitlab <span class="kw">||</span> <span class="fu">true</span></span>
-<span id="cb31-81"><a href="#cb31-81" aria-hidden="true" tabindex="-1"></a>    <span class="ex">-</span> echo <span class="st">'If the "twine upload" command below failed with a 403 status code, please check that the version is not already uploaded on artifactory (see versions of nbdev_git above).'</span></span>
-<span id="cb31-82"><a href="#cb31-82" aria-hidden="true" tabindex="-1"></a>    <span class="ex">-</span> twine upload <span class="at">--verbose</span> <span class="at">-r</span> local packages/<span class="pp">*</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="ex">default:</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="ex">image:</span> <span class="st">'docker.artifactory.michelin.com/michelin/hub/ubuntu20.04:bib-1.1'</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">tags:</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>    <span class="ex">-</span> k8s</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>  <span class="ex">interruptible:</span> true</span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>  <span class="ex">retry:</span></span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>    <span class="ex">max:</span> 2</span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>    <span class="ex">when:</span></span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a>      <span class="ex">-</span> runner_system_failure</span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a>      <span class="ex">-</span> stuck_or_timeout_failure</span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Functions that should be executed before the build script is run</span></span>
+<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a><span class="ex">before_script:</span></span>
+<span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-</span> apt <span class="at">-y</span> install wget</span>
+<span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-</span> wget <span class="st">"https://github.com/quarto-dev/quarto-cli/releases/download/v1.1.189/quarto-1.1.189-linux-amd64.deb"</span></span>
+<span id="cb32-16"><a href="#cb32-16" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-</span> dpkg <span class="at">-i</span> quarto-1.1.189-linux-amd64.deb</span>
+<span id="cb32-17"><a href="#cb32-17" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-</span> apt <span class="at">-y</span> install python3-pip</span>
+<span id="cb32-18"><a href="#cb32-18" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-</span> wget <span class="at">--no-check-certificate</span> <span class="at">--content-disposition</span> <span class="at">-O</span> <span class="at">-</span> https://raw.githubusercontent.com/castorfou/guillaume_blog/master/files/setup_wsl_08_pip.sh <span class="kw">|</span> <span class="fu">bash</span></span>
+<span id="cb32-19"><a href="#cb32-19" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-</span> pip3 install nbdev</span>
+<span id="cb32-20"><a href="#cb32-20" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-</span> nbdev_install</span>
+<span id="cb32-21"><a href="#cb32-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-22"><a href="#cb32-22" aria-hidden="true" tabindex="-1"></a><span class="ex">stages:</span></span>
+<span id="cb32-23"><a href="#cb32-23" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-</span> test</span>
+<span id="cb32-24"><a href="#cb32-24" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-</span> build_doc</span>
+<span id="cb32-25"><a href="#cb32-25" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-</span> build</span>
+<span id="cb32-26"><a href="#cb32-26" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-</span> deploy_artifactory</span>
+<span id="cb32-27"><a href="#cb32-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-28"><a href="#cb32-28" aria-hidden="true" tabindex="-1"></a><span class="ex">tests:</span></span>
+<span id="cb32-29"><a href="#cb32-29" aria-hidden="true" tabindex="-1"></a>  <span class="ex">stage:</span> test</span>
+<span id="cb32-30"><a href="#cb32-30" aria-hidden="true" tabindex="-1"></a>  <span class="ex">script:</span></span>
+<span id="cb32-31"><a href="#cb32-31" aria-hidden="true" tabindex="-1"></a>    <span class="ex">-</span> nbdev_test</span>
+<span id="cb32-32"><a href="#cb32-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-33"><a href="#cb32-33" aria-hidden="true" tabindex="-1"></a><span class="ex">pages:</span></span>
+<span id="cb32-34"><a href="#cb32-34" aria-hidden="true" tabindex="-1"></a>  <span class="ex">stage:</span> build_doc</span>
+<span id="cb32-35"><a href="#cb32-35" aria-hidden="true" tabindex="-1"></a>  <span class="ex">script:</span></span>
+<span id="cb32-36"><a href="#cb32-36" aria-hidden="true" tabindex="-1"></a>    <span class="ex">-</span> nbdev_docs</span>
+<span id="cb32-37"><a href="#cb32-37" aria-hidden="true" tabindex="-1"></a>  <span class="ex">artifacts:</span></span>
+<span id="cb32-38"><a href="#cb32-38" aria-hidden="true" tabindex="-1"></a>    <span class="ex">paths:</span></span>
+<span id="cb32-39"><a href="#cb32-39" aria-hidden="true" tabindex="-1"></a>      <span class="co"># The folder that contains the files to be exposed at the Page URL</span></span>
+<span id="cb32-40"><a href="#cb32-40" aria-hidden="true" tabindex="-1"></a>      <span class="ex">-</span> public</span>
+<span id="cb32-41"><a href="#cb32-41" aria-hidden="true" tabindex="-1"></a>  <span class="ex">rules:</span></span>
+<span id="cb32-42"><a href="#cb32-42" aria-hidden="true" tabindex="-1"></a>    <span class="co"># This ensures that only pushes to the default branch will trigger</span></span>
+<span id="cb32-43"><a href="#cb32-43" aria-hidden="true" tabindex="-1"></a>    <span class="co"># a pages deploy</span></span>
+<span id="cb32-44"><a href="#cb32-44" aria-hidden="true" tabindex="-1"></a>    <span class="ex">-</span> if: <span class="va">$CI_COMMIT_REF_NAME</span> == <span class="va">$CI_DEFAULT_BRANCH</span></span>
+<span id="cb32-45"><a href="#cb32-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-46"><a href="#cb32-46" aria-hidden="true" tabindex="-1"></a><span class="ex">wheel:</span></span>
+<span id="cb32-47"><a href="#cb32-47" aria-hidden="true" tabindex="-1"></a>  <span class="ex">stage:</span> build</span>
+<span id="cb32-48"><a href="#cb32-48" aria-hidden="true" tabindex="-1"></a>  <span class="ex">script:</span></span>
+<span id="cb32-49"><a href="#cb32-49" aria-hidden="true" tabindex="-1"></a>    <span class="ex">-</span> mkdir <span class="at">-p</span> public</span>
+<span id="cb32-50"><a href="#cb32-50" aria-hidden="true" tabindex="-1"></a>    <span class="ex">-</span> echo <span class="st">"Build wheel with python version </span><span class="kw">`</span><span class="ex">python3</span> <span class="at">--version</span><span class="kw">`</span><span class="st">:"</span></span>
+<span id="cb32-51"><a href="#cb32-51" aria-hidden="true" tabindex="-1"></a>    <span class="ex">-</span> pip install <span class="at">-U</span> setuptools wheel pydnx_packaging</span>
+<span id="cb32-52"><a href="#cb32-52" aria-hidden="true" tabindex="-1"></a>    <span class="ex">-</span> pip install <span class="at">-e</span> .</span>
+<span id="cb32-53"><a href="#cb32-53" aria-hidden="true" tabindex="-1"></a>    <span class="ex">-</span> python3 setup.py bdist_wheel</span>
+<span id="cb32-54"><a href="#cb32-54" aria-hidden="true" tabindex="-1"></a>    <span class="ex">-</span> mkdir <span class="at">-p</span> packages <span class="kw">&amp;&amp;</span> <span class="fu">mv</span> dist/<span class="pp">*</span> packages/</span>
+<span id="cb32-55"><a href="#cb32-55" aria-hidden="true" tabindex="-1"></a>  <span class="ex">artifacts:</span></span>
+<span id="cb32-56"><a href="#cb32-56" aria-hidden="true" tabindex="-1"></a>    <span class="ex">when:</span> always</span>
+<span id="cb32-57"><a href="#cb32-57" aria-hidden="true" tabindex="-1"></a>    <span class="ex">paths:</span></span>
+<span id="cb32-58"><a href="#cb32-58" aria-hidden="true" tabindex="-1"></a>      <span class="ex">-</span> packages/</span>
+<span id="cb32-59"><a href="#cb32-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-60"><a href="#cb32-60" aria-hidden="true" tabindex="-1"></a><span class="ex">publish:</span></span>
+<span id="cb32-61"><a href="#cb32-61" aria-hidden="true" tabindex="-1"></a>  <span class="ex">stage:</span> deploy_artifactory</span>
+<span id="cb32-62"><a href="#cb32-62" aria-hidden="true" tabindex="-1"></a>  <span class="ex">dependencies:</span></span>
+<span id="cb32-63"><a href="#cb32-63" aria-hidden="true" tabindex="-1"></a>    <span class="ex">-</span> wheel</span>
+<span id="cb32-64"><a href="#cb32-64" aria-hidden="true" tabindex="-1"></a>  <span class="ex">only:</span></span>
+<span id="cb32-65"><a href="#cb32-65" aria-hidden="true" tabindex="-1"></a>    <span class="ex">-</span> tags</span>
+<span id="cb32-66"><a href="#cb32-66" aria-hidden="true" tabindex="-1"></a>  <span class="ex">script:</span></span>
+<span id="cb32-67"><a href="#cb32-67" aria-hidden="true" tabindex="-1"></a>    <span class="co"># create credential config file</span></span>
+<span id="cb32-68"><a href="#cb32-68" aria-hidden="true" tabindex="-1"></a>    <span class="ex">-</span> <span class="op">&gt;</span></span>
+<span id="cb32-69"><a href="#cb32-69" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> <span class="bu">[</span> <span class="ot">-f</span> <span class="st">'.pypirc'</span> <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span></span>
+<span id="cb32-70"><a href="#cb32-70" aria-hidden="true" tabindex="-1"></a>        <span class="bu">echo</span> <span class="st">"Information: .pypirc file is not mandatory anymore."</span> <span class="kw">&amp;&amp;</span> <span class="fu">cp</span> .pypirc ~/</span>
+<span id="cb32-71"><a href="#cb32-71" aria-hidden="true" tabindex="-1"></a>      <span class="cf">else</span></span>
+<span id="cb32-72"><a href="#cb32-72" aria-hidden="true" tabindex="-1"></a>        <span class="bu">echo</span> <span class="st">"[distutils]</span></span>
+<span id="cb32-73"><a href="#cb32-73" aria-hidden="true" tabindex="-1"></a><span class="st">        index-servers = local</span></span>
+<span id="cb32-74"><a href="#cb32-74" aria-hidden="true" tabindex="-1"></a><span class="st">        [local]</span></span>
+<span id="cb32-75"><a href="#cb32-75" aria-hidden="true" tabindex="-1"></a><span class="st">        repository: https://artifactory.michelin.com/api/pypi/pypi</span></span>
+<span id="cb32-76"><a href="#cb32-76" aria-hidden="true" tabindex="-1"></a><span class="st">        username: fm00884</span></span>
+<span id="cb32-77"><a href="#cb32-77" aria-hidden="true" tabindex="-1"></a><span class="st">        password: &lt;don't even think about it&gt;"</span> <span class="op">&gt;</span> ~/.pypirc</span>
+<span id="cb32-78"><a href="#cb32-78" aria-hidden="true" tabindex="-1"></a>      <span class="cf">fi</span></span>
+<span id="cb32-79"><a href="#cb32-79" aria-hidden="true" tabindex="-1"></a>    <span class="ex">-</span> pip install <span class="at">-U</span> twine</span>
+<span id="cb32-80"><a href="#cb32-80" aria-hidden="true" tabindex="-1"></a>    <span class="ex">-</span> pip index versions nbdev_gitlab <span class="kw">||</span> <span class="fu">true</span></span>
+<span id="cb32-81"><a href="#cb32-81" aria-hidden="true" tabindex="-1"></a>    <span class="ex">-</span> echo <span class="st">'If the "twine upload" command below failed with a 403 status code, please check that the version is not already uploaded on artifactory (see versions of nbdev_git above).'</span></span>
+<span id="cb32-82"><a href="#cb32-82" aria-hidden="true" tabindex="-1"></a>    <span class="ex">-</span> twine upload <span class="at">--verbose</span> <span class="at">-r</span> local packages/<span class="pp">*</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="commit-to-gitlab" class="level3">
 <h3 class="anchored" data-anchor-id="commit-to-gitlab">commit to gitlab</h3>
-<div class="sourceCode" id="cb32"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="ex">nbdev_prepare</span></span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-rf</span> index_files</span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="ex">nbdev_docs</span> <span class="co">#optionnal if nbdev_preview was used</span></span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="ex">nbdev_proc_nbs</span></span>
-<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> diff</span>
-<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span>
-<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add <span class="at">-A</span></span>
-<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-am</span><span class="st">'&lt;proper comment&gt;'</span></span>
-<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="ex">nbdev_prepare</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-rf</span> index_files</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="ex">nbdev_docs</span> <span class="co">#optionnal if nbdev_preview was used</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="ex">nbdev_proc_nbs</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> diff</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add <span class="at">-A</span></span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-am</span><span class="st">'&lt;proper comment&gt;'</span></span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="setup-online-documentation-badge" class="level3">
 <h3 class="anchored" data-anchor-id="setup-online-documentation-badge">setup online-documentation badge</h3>
@@ -816,31 +815,31 @@ drwxrwxrwx 1 guillaume guillaume  4096 Sep 13 14:02 nbdev_gitlab
 <section id="manual-way-create-a-new-version-tag-publication-to-artifactory" class="level3">
 <h3 class="anchored" data-anchor-id="manual-way-create-a-new-version-tag-publication-to-artifactory">[manual way] create a new version, tag, publication to artifactory</h3>
 <p>To summarize, here is the publishing process</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="ex">nbdev_bump_version</span></span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add <span class="at">-A</span></span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-am</span><span class="st">'&lt;my tag changelog&gt;'</span></span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> tag <span class="at">-a</span> 0.0.3 <span class="at">-m</span> <span class="st">"&lt;my tag changelog&gt;"</span></span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push origin 0.0.3 </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="ex">nbdev_bump_version</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add <span class="at">-A</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-am</span><span class="st">'&lt;my tag changelog&gt;'</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> tag <span class="at">-a</span> 0.0.3 <span class="at">-m</span> <span class="st">"&lt;my tag changelog&gt;"</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push origin 0.0.3 </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>And it will be published at: <a href="https://artifactory.michelin.com/ui/packages/pypi:%2F%2Fjanus-tools?name=janus-tools&amp;type=packages">artifactory janus-tools package</a></p>
 <p>to automatically reuse tag name from settings.ini, just use <a href="#script-way-create-a-new-version-tag-publication-to-artifactory">(script way) create a new version, tag, publication to artifactory</a></p>
 <p><code>nbdev_bump_version</code> increases version number (in settings.ini and <strong>ini</strong>.py)</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> nbdev_bump_version</span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Old</span> version: 0.0.2</span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="ex">New</span> version: 0.0.3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> nbdev_bump_version</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Old</span> version: 0.0.2</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="ex">New</span> version: 0.0.3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>which is modifying 2 files:</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git diff</span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">diff</span> <span class="at">--git</span> a/nbdev_gitlab/__init__.py b/nbdev_gitlab/__init__.py</span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="ex">-__version__</span> = <span class="st">"0.0.2"</span></span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="ex">+__version__</span> = <span class="st">"0.0.3"</span></span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="fu">diff</span> <span class="at">--git</span> a/settings.ini b/settings.ini</span>
-<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a><span class="ex">-version</span> = 0.0.2</span>
-<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a><span class="ex">+version</span> = 0.0.3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git diff</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">diff</span> <span class="at">--git</span> a/nbdev_gitlab/__init__.py b/nbdev_gitlab/__init__.py</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="ex">-__version__</span> = <span class="st">"0.0.2"</span></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="ex">+__version__</span> = <span class="st">"0.0.3"</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="fu">diff</span> <span class="at">--git</span> a/settings.ini b/settings.ini</span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a><span class="ex">-version</span> = 0.0.2</span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a><span class="ex">+version</span> = 0.0.3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="script-way-create-a-new-version-tag-publication-to-artifactory" class="level3">
 <h3 class="anchored" data-anchor-id="script-way-create-a-new-version-tag-publication-to-artifactory">[script way] create a new version, tag, publication to artifactory</h3>
 <p>just call <code>push_tag.sh</code>, it will increase version (calling nbdev_bump_version), and create/push tag with this version and last git commit</p>
 <div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-09-27T07:06:09.426148Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-09-27T07:06:09.425342Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-09-27T07:06:09.540285Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-09-27T07:06:09.539373Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2022-09-27T07:06:09.426121Z&quot;}" data-tags="[]" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cat ..<span class="op">/</span>files<span class="op">/</span>push_tag.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cat ..<span class="op">/</span>files<span class="op">/</span>push_tag.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#!/bin/bash
 nbdev_bump_version
@@ -861,27 +860,27 @@ git push origin $VERSION_TO_TAG</code></pre>
 <section id="nbdev-v2.3" class="level1">
 <h1>nbdev v2.3</h1>
 <p>New release 2.3 made Sept-14</p>
-<p>https://forums.fast.ai/t/upcoming-changes-in-v2-3-edit-now-released/98905</p>
+<p><a href="https://forums.fast.ai/t/upcoming-changes-in-v2-3-edit-now-released/98905" class="uri">https://forums.fast.ai/t/upcoming-changes-in-v2-3-edit-now-released/98905</a></p>
 <p>To migrate:</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-U</span> nbdev</span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> _quarto.yml</span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="ex">nbdev_new</span></span>
-<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="co"># reintegrate entries in settings.ini that could have been changed such as requirements, dev_requirements, clean_ids</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-U</span> nbdev</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> _quarto.yml</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="ex">nbdev_new</span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="co"># reintegrate entries in settings.ini that could have been changed such as requirements, dev_requirements, clean_ids</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="nbdev-v2.3.7" class="level1">
 <h1>nbdev v2.3.7</h1>
-<p>changelog: https://github.com/fastai/nbdev/releases/tag/2.3.7</p>
+<p>changelog: <a href="https://github.com/fastai/nbdev/releases/tag/2.3.7" class="uri">https://github.com/fastai/nbdev/releases/tag/2.3.7</a></p>
 <p>applying these changes: - recursive = True - notebooks in nbs folder - not understood what nbdev_proc_nbs is compared to nbdev_docs</p>
 <p>To move notebooks to nbs:</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> <span class="pp">*</span>.ipynb nbs/</span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> _quarto.yml nbs/</span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> styles.css nbs/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> <span class="pp">*</span>.ipynb nbs/</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> _quarto.yml nbs/</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> styles.css nbs/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="open-questions" class="level1">
 <h1>Open questions</h1>
 <section id="fixed-nbdev_clean-fails" class="level2">
 <h2 class="anchored" data-anchor-id="fixed-nbdev_clean-fails">[fixed] nbdev_clean fails</h2>
-<p>https://forums.fast.ai/t/nbdev-clean-fails-cryptically/98784/13</p>
+<p><a href="https://forums.fast.ai/t/nbdev-clean-fails-cryptically/98784/13" class="uri">https://forums.fast.ai/t/nbdev-clean-fails-cryptically/98784/13</a></p>
 <p>Solution: update <code>fastcore</code> to version &gt; 1.2.5</p>
 
 

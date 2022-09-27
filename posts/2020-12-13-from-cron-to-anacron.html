@@ -222,7 +222,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1>Current config</h1>
 <p>I run <code>generate_plots.sh</code> daily at 9:30 AM. However what happens if my PC is off at that time, will have to wait another uptime at 9:30 AM.</p>
 <p>Solution is to move from cron to anacron.</p>
-<p>From https://www.putorius.net/cron-vs-anacron.html:</p>
+<p>From <a href="https://www.putorius.net/cron-vs-anacron.html" class="uri">https://www.putorius.net/cron-vs-anacron.html</a>:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <figure class="figure">
@@ -236,7 +236,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1>Anacron as user</h1>
 <p>Anacron is already setup on ubuntu. Actually cron.daily is managed by anacron therefore everything under <code>/etc/cron.daily</code> is run even if your system was off at the time by crontab.</p>
 <p>But it is true for root, and has to be setup for users.</p>
-<p>I will follow these recommandations: https://askubuntu.com/a/235090</p>
+<p>I will follow these recommandations: <a href="https://askubuntu.com/a/235090" class="uri">https://askubuntu.com/a/235090</a></p>
 <section id="anacron-folders" class="level2">
 <h2 class="anchored" data-anchor-id="anacron-folders">.anacron folders</h2>
 <p>Create a <code>.anacron</code> folder in your home directory and in it two subfolders, <code>etc</code> and <code>spool</code></p>

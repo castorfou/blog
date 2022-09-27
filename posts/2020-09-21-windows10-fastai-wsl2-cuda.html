@@ -239,13 +239,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
-<p>This is based on what is explained in https://forums.fast.ai/t/fastai-on-wsl-2-ubuntu-0-7-0-or-any-version/76651</p>
+<p>This is based on what is explained in <a href="https://forums.fast.ai/t/fastai-on-wsl-2-ubuntu-0-7-0-or-any-version/76651" class="uri">https://forums.fast.ai/t/fastai-on-wsl-2-ubuntu-0-7-0-or-any-version/76651</a></p>
 <section id="install-update-of-nvidia-drivers" class="level2">
 <h2 class="anchored" data-anchor-id="install-update-of-nvidia-drivers">install update of nvidia drivers</h2>
 <p>Based on <a href="https://forums.fast.ai/t/platform-windows-10-using-wsl2-w-gpu/73521">Deep Learning Course Forums Platform: Windows 10 using WSL2 w/GPU fastai users</a></p>
 <ul>
 <li>create nvidia account</li>
-<li>download quadro driver from https://developer.nvidia.com/cuda/wsl/download (460.15)</li>
+<li>download quadro driver from <a href="https://developer.nvidia.com/cuda/wsl/download" class="uri">https://developer.nvidia.com/cuda/wsl/download</a> (460.15)</li>
 <li>install</li>
 </ul>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">xgboost</span><span class="kw">)</span> <span class="ex">guillaume@LL11LPC0PQARQ:~/git/guillaume_blog$</span> nvidia-smi.exe</span>
@@ -271,8 +271,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="update-kernel-version" class="level3">
 <h3 class="anchored" data-anchor-id="update-kernel-version">update kernel version</h3>
-<p>If you see this message after running the command: WSL 2 requires an update to its kernel component. For information please visit https://aka.ms/wsl2kernel. You still need to install the MSI Linux kernel update package.</p>
-<p>Download from https://docs.microsoft.com/en-us/windows/wsl/install-win10#step-4—download-the-linux-kernel-update-package</p>
+<p>If you see this message after running the command: WSL 2 requires an update to its kernel component. For information please visit <a href="https://aka.ms/wsl2kernel" class="uri">https://aka.ms/wsl2kernel</a>. You still need to install the MSI Linux kernel update package.</p>
+<p>Download from <a href="https://docs.microsoft.com/en-us/windows/wsl/install-win10#step-4---download-the-linux-kernel-update-package" class="uri">https://docs.microsoft.com/en-us/windows/wsl/install-win10#step-4---download-the-linux-kernel-update-package</a></p>
 </section>
 <section id="set-default-wsl-to-be-version-2" class="level3">
 <h3 class="anchored" data-anchor-id="set-default-wsl-to-be-version-2">set default WSL to be version 2</h3>
@@ -296,7 +296,7 @@ La conversion est terminée.</code></pre>
 </section>
 <section id="install-of-nvidia-drivers-under-ubuntu" class="level2">
 <h2 class="anchored" data-anchor-id="install-of-nvidia-drivers-under-ubuntu">install of nvidia drivers under ubuntu</h2>
-<p>[Installation instructions)(https://developer.nvidia.com/cuda-downloads?target_os=Linux&amp;target_arch=x86_64&amp;target_distro=Ubuntu&amp;target_version=1804&amp;target_type=deblocal)</p>
+<p>[Installation instructions)(<a href="https://developer.nvidia.com/cuda-downloads?target_os=Linux&amp;target_arch=x86_64&amp;target_distro=Ubuntu&amp;target_version=1804&amp;target_type=deblocal" class="uri">https://developer.nvidia.com/cuda-downloads?target_os=Linux&amp;target_arch=x86_64&amp;target_distro=Ubuntu&amp;target_version=1804&amp;target_type=deblocal</a>)</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-ubuntu1804.pin</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> mv cuda-ubuntu1804.pin /etc/apt/preferences.d/cuda-repository-pin-600</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://developer.download.nvidia.com/compute/cuda/11.0.3/local_installers/cuda-repo-ubuntu1804-11-0-local_11.0.3-450.51.06-1_amd64.deb</span>
@@ -318,12 +318,12 @@ CUDA error at ../../common/inc/helper_cuda.h:777 code=35(cudaErrorInsufficientDr
 </div>
 </div>
 <p>There is an error when launching CUDA samples. Googling that error maybe my video card is running on low driver version?</p>
-<p>I have posted on nvidia (cuda+wsl) forum: https://forums.developer.nvidia.com/t/cuda-sample-throwing-error/142537/18</p>
+<p>I have posted on nvidia (cuda+wsl) forum: <a href="https://forums.developer.nvidia.com/t/cuda-sample-throwing-error/142537/18" class="uri">https://forums.developer.nvidia.com/t/cuda-sample-throwing-error/142537/18</a></p>
 <p>(update 09-22: it is not possible to have cuda on wsl2 if not in Windows Insider build from Dev Channel. (20145 or higher))</p>
 <p>{% include alert.html text=“because I am in version 1909 (<strong>18363</strong>.1049), it won’t work for me. ;(” %}</p>
 <section id="cuda-for-wsl" class="level3">
 <h3 class="anchored" data-anchor-id="cuda-for-wsl">cuda for WSL</h3>
-<p>Here is a link that could be interesting: https://docs.nvidia.com/cuda/wsl-user-guide/index.html</p>
+<p>Here is a link that could be interesting: <a href="https://docs.nvidia.com/cuda/wsl-user-guide/index.html" class="uri">https://docs.nvidia.com/cuda/wsl-user-guide/index.html</a></p>
 <p>According to this, I should not have installed cuda but cuda-toolkit. <code>Do not choose the cuda, cuda-11-0, or cuda-drivers meta-packages under WSL 2 since these packages will result in an attempt to install the Linux NVIDIA driver under WSL 2.</code></p>
 <p>Is it causing my issue?</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apt-get</span> install <span class="at">-y</span> cuda-toolkit-11-0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -341,7 +341,7 @@ Build cuda_11.0_bu.TC445_37.28845127_0</code></pre>
 </section>
 <section id="install-a-new-distro-ubuntu-20.04" class="level2">
 <h2 class="anchored" data-anchor-id="install-a-new-distro-ubuntu-20.04">install a new distro (ubuntu 20.04)</h2>
-<p>Because I cannot use windows store, I have to manually install https://docs.microsoft.com/fr-fr/windows/wsl/install-manual</p>
+<p>Because I cannot use windows store, I have to manually install <a href="https://docs.microsoft.com/fr-fr/windows/wsl/install-manual" class="uri">https://docs.microsoft.com/fr-fr/windows/wsl/install-manual</a></p>
 <p>Installation by just launching Ubuntu_2004.2020.424.0_x64.appx.</p>
 <p>I have now 2 distros,</p>
 <pre><code>PS C:\WINDOWS\system32&gt; wsl --list -v
@@ -399,13 +399,13 @@ La conversion est terminée.</code></pre>
 </section>
 <section id="workaround-network-issue-with-wsl2" class="level2">
 <h2 class="anchored" data-anchor-id="workaround-network-issue-with-wsl2">Workaround network issue with WSL2</h2>
-<p>https://github.com/sakai135/wsl-vpnkit</p>
+<p><a href="https://github.com/sakai135/wsl-vpnkit" class="uri">https://github.com/sakai135/wsl-vpnkit</a></p>
 <section id="installation-setup" class="level3">
 <h3 class="anchored" data-anchor-id="installation-setup">installation setup</h3>
 <section id="vpnkit" class="level4">
 <h4 class="anchored" data-anchor-id="vpnkit">vpnkit</h4>
 <p>install <a href="https://hub.docker.com/editions/community/docker-ce-desktop-windows/">docker</a> for windows</p>
-<p>install genisoimage in ubuntu (from http://archive.ubuntu.com/ubuntu/pool/main/c/cdrkit/genisoimage_1.1.11-3.1ubuntu1_amd64.deb)</p>
+<p>install genisoimage in ubuntu (from <a href="http://archive.ubuntu.com/ubuntu/pool/main/c/cdrkit/genisoimage_1.1.11-3.1ubuntu1_amd64.deb" class="uri">http://archive.ubuntu.com/ubuntu/pool/main/c/cdrkit/genisoimage_1.1.11-3.1ubuntu1_amd64.deb</a>)</p>
 <p>install vpnkit</p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">isoinfo</span> <span class="at">-i</span> /mnt/c/Program\ Files/Docker/Docker/resources/wsl/docker-for-wsl.iso <span class="at">-R</span> <span class="at">-x</span> /containers/services/vpnkit-tap-vsockd/lower/sbin/vpnkit-tap-vsockd <span class="op">&gt;</span> ./vpnkit-tap-vsockd</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> +x vpnkit-tap-vsockd</span>
@@ -414,8 +414,8 @@ La conversion est terminée.</code></pre>
 </section>
 <section id="npiperelay" class="level4">
 <h4 class="anchored" data-anchor-id="npiperelay">npiperelay</h4>
-<p>install unzip in ubuntu (from http://archive.ubuntu.com/ubuntu/pool/main/u/unzip/unzip_6.0-25ubuntu1_amd64.deb)</p>
-<p>download npiprelay (from https://github.com/jstarks/npiperelay/releases/download/v0.1.0/npiperelay_windows_amd64.zip )</p>
+<p>install unzip in ubuntu (from <a href="http://archive.ubuntu.com/ubuntu/pool/main/u/unzip/unzip_6.0-25ubuntu1_amd64.deb" class="uri">http://archive.ubuntu.com/ubuntu/pool/main/u/unzip/unzip_6.0-25ubuntu1_amd64.deb</a>)</p>
+<p>download npiprelay (from <a href="https://github.com/jstarks/npiperelay/releases/download/v0.1.0/npiperelay_windows_amd64.zip" class="uri">https://github.com/jstarks/npiperelay/releases/download/v0.1.0/npiperelay_windows_amd64.zip</a> )</p>
 <p>install npiprelay</p>
 <div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unzip</span> npiperelay_windows_amd64.zip npiperelay.exe</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> npiperelay_windows_amd64.zip</span>
@@ -425,7 +425,7 @@ La conversion est terminée.</code></pre>
 </section>
 <section id="socat" class="level4">
 <h4 class="anchored" data-anchor-id="socat">socat</h4>
-<p>install socat in ubuntu (from http://archive.ubuntu.com/ubuntu/pool/main/s/socat/socat_1.7.3.3-2_amd64.deb)</p>
+<p>install socat in ubuntu (from <a href="http://archive.ubuntu.com/ubuntu/pool/main/s/socat/socat_1.7.3.3-2_amd64.deb" class="uri">http://archive.ubuntu.com/ubuntu/pool/main/s/socat/socat_1.7.3.3-2_amd64.deb</a>)</p>
 </section>
 <section id="configure-dns-for-wsl" class="level4">
 <h4 class="anchored" data-anchor-id="configure-dns-for-wsl">Configure DNS for WSL</h4>
@@ -441,7 +441,7 @@ La conversion est terminée.</code></pre>
 </section>
 <section id="wsl-vpnkit" class="level4">
 <h4 class="anchored" data-anchor-id="wsl-vpnkit">wsl-vpnkit</h4>
-<p>from https://github.com/sakai135/wsl-vpnkit/archive/refs/heads/main.zip</p>
+<p>from <a href="https://github.com/sakai135/wsl-vpnkit/archive/refs/heads/main.zip" class="uri">https://github.com/sakai135/wsl-vpnkit/archive/refs/heads/main.zip</a></p>
 <p>unzip ~/git/wsl-vpnkit-main.zip -d ~/Applications/wsl-vpnkit</p>
 </section>
 </section>
