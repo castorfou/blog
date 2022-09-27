@@ -822,7 +822,7 @@ drwxrwxrwx 1 guillaume guillaume  4096 Sep 13 14:02 nbdev_gitlab
 <span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> tag <span class="at">-a</span> 0.0.3 <span class="at">-m</span> <span class="st">"&lt;my tag changelog&gt;"</span></span>
 <span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push origin 0.0.3 </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>And it will be published at: <a href="https://artifactory.michelin.com/ui/packages/pypi:%2F%2Fjanus-tools?name=janus-tools&amp;type=packages">artifactory janus-tools package</a></p>
-<p>For later: would be nice to automatically get tag name from settings.ini</p>
+<p>to automatically reuse tag name from settings.ini, just use <a href="#script-way-create-a-new-version-tag-publication-to-artifactory">(script way) create a new version, tag, publication to artifactory</a></p>
 <p><code>nbdev_bump_version</code> increases version number (in settings.ini and <strong>ini</strong>.py)</p>
 <div class="sourceCode" id="cb34"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> nbdev_bump_version</span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Old</span> version: 0.0.2</span>
