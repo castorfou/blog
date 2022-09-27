@@ -238,7 +238,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#create-.gitlab-ci.yml-buildpublish-documentation-push-to-artifactory" id="toc-create-.gitlab-ci.yml-buildpublish-documentation-push-to-artifactory" class="nav-link" data-scroll-target="#create-.gitlab-ci.yml-buildpublish-documentation-push-to-artifactory">create <code>.gitlab-ci.yml</code> –&gt; build/publish documentation, push to artifactory</a></li>
   <li><a href="#commit-to-gitlab" id="toc-commit-to-gitlab" class="nav-link" data-scroll-target="#commit-to-gitlab">commit to gitlab</a></li>
   <li><a href="#setup-online-documentation-badge" id="toc-setup-online-documentation-badge" class="nav-link" data-scroll-target="#setup-online-documentation-badge">setup online-documentation badge</a></li>
-  <li><a href="#create-a-new-version-tag-publication-to-artifactory" id="toc-create-a-new-version-tag-publication-to-artifactory" class="nav-link" data-scroll-target="#create-a-new-version-tag-publication-to-artifactory">create a new version, tag, publication to artifactory</a></li>
+  <li><a href="#manual-way-create-a-new-version-tag-publication-to-artifactory" id="toc-manual-way-create-a-new-version-tag-publication-to-artifactory" class="nav-link" data-scroll-target="#manual-way-create-a-new-version-tag-publication-to-artifactory">[manual way] create a new version, tag, publication to artifactory</a></li>
+  <li><a href="#script-way-create-a-new-version-tag-publication-to-artifactory" id="toc-script-way-create-a-new-version-tag-publication-to-artifactory" class="nav-link" data-scroll-target="#script-way-create-a-new-version-tag-publication-to-artifactory">[script way] create a new version, tag, publication to artifactory</a></li>
   </ul></li>
   </ul></li>
   <li><a href="#nbdev-v2.3" id="toc-nbdev-v2.3" class="nav-link" data-scroll-target="#nbdev-v2.3">nbdev v2.3</a></li>
@@ -812,8 +813,8 @@ drwxrwxrwx 1 guillaume guillaume  4096 Sep 13 14:02 nbdev_gitlab
 <p>Link: <code>https://janus.si-pages.michelin.com/nbdev_gitlab/</code></p>
 <p>Badge image URL: <code>https://img.shields.io/badge/-online_documentation-grey.svg</code></p>
 </section>
-<section id="create-a-new-version-tag-publication-to-artifactory" class="level3">
-<h3 class="anchored" data-anchor-id="create-a-new-version-tag-publication-to-artifactory">create a new version, tag, publication to artifactory</h3>
+<section id="manual-way-create-a-new-version-tag-publication-to-artifactory" class="level3">
+<h3 class="anchored" data-anchor-id="manual-way-create-a-new-version-tag-publication-to-artifactory">[manual way] create a new version, tag, publication to artifactory</h3>
 <p>To summarize, here is the publishing process</p>
 <div class="sourceCode" id="cb33"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="ex">nbdev_bump_version</span></span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add <span class="at">-A</span></span>
@@ -835,6 +836,26 @@ drwxrwxrwx 1 guillaume guillaume  4096 Sep 13 14:02 nbdev_gitlab
 <span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a><span class="ex">-version</span> = 0.0.2</span>
 <span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a><span class="ex">+version</span> = 0.0.3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
+<section id="script-way-create-a-new-version-tag-publication-to-artifactory" class="level3">
+<h3 class="anchored" data-anchor-id="script-way-create-a-new-version-tag-publication-to-artifactory">[script way] create a new version, tag, publication to artifactory</h3>
+<p>just call <code>push_tag.sh</code>, it will increase version (calling nbdev_bump_version), and create/push tag with this version and last git commit</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-09-27T07:06:09.426148Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-09-27T07:06:09.425342Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-09-27T07:06:09.540285Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-09-27T07:06:09.539373Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2022-09-27T07:06:09.426121Z&quot;}" data-tags="[]" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cat ..<span class="op">/</span>files<span class="op">/</span>push_tag.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#!/bin/bash
+nbdev_bump_version
+LAST_GIT_COMMENT=`git log -1 --pretty=%B`
+VERSION_TO_TAG=`grep "version " settings.ini | cut -d '=' -f 2`
+
+echo "Tag: $VERSION_TO_TAG - Comment: $LAST_GIT_COMMENT"
+
+git add -A
+git commit -am"$LAST_GIT_COMMENT"
+git tag -a $VERSION_TO_TAG -m "$LAST_GIT_COMMENT"
+git push origin $VERSION_TO_TAG</code></pre>
+</div>
+</div>
+</section>
 </section>
 </section>
 <section id="nbdev-v2.3" class="level1">
@@ -842,19 +863,19 @@ drwxrwxrwx 1 guillaume guillaume  4096 Sep 13 14:02 nbdev_gitlab
 <p>New release 2.3 made Sept-14</p>
 <p>https://forums.fast.ai/t/upcoming-changes-in-v2-3-edit-now-released/98905</p>
 <p>To migrate:</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-U</span> nbdev</span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> _quarto.yml</span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="ex">nbdev_new</span></span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="co"># reintegrate entries in settings.ini that could have been changed such as requirements, dev_requirements, clean_ids</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-U</span> nbdev</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> _quarto.yml</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="ex">nbdev_new</span></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="co"># reintegrate entries in settings.ini that could have been changed such as requirements, dev_requirements, clean_ids</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="nbdev-v2.3.7" class="level1">
 <h1>nbdev v2.3.7</h1>
 <p>changelog: https://github.com/fastai/nbdev/releases/tag/2.3.7</p>
 <p>applying these changes: - recursive = True - notebooks in nbs folder - not understood what nbdev_proc_nbs is compared to nbdev_docs</p>
 <p>To move notebooks to nbs:</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> <span class="pp">*</span>.ipynb nbs/</span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> _quarto.yml nbs/</span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> styles.css nbs/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> <span class="pp">*</span>.ipynb nbs/</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> _quarto.yml nbs/</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> styles.css nbs/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="open-questions" class="level1">
 <h1>Open questions</h1>
