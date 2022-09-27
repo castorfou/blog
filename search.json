@@ -228,7 +228,7 @@
     "href": "posts/2022-09-23-inline-images-with-quarto.html",
     "title": "inline images from jupyter with quarto",
     "section": "",
-    "text": "using jupyter notebook\n1st image\n\n\n\nimage.png\n\n\n2nd image\n\n\n\nimage.png\n\n\nif we see a 2 on the first image, we have a problem\n\n\nanalysis\nwhen using jupyter lab, cell code for images are like that\n![image.png](attachment:71a4fc95-5776-4180-ae3a-b815bbf1b7a0.png)\nand with jupyter notebook or vscode, it is like that\n![image.png](attachment:image.png)\nThere is an enhancement request at vscode to support it\nhttps://github.com/microsoft/vscode/issues/151408\n\n\nworkaround\nuse jupyter lab to blog"
+    "text": "using jupyter notebook\n1st image\n\n\n\nimage.png\n\n\n2nd image\n\n\n\nimage.png\n\n\nif we see a the same image, we have a problem\n\n\nanalysis\nwhen using jupyter lab, cell code for images are like that\n![image.png](attachment:71a4fc95-5776-4180-ae3a-b815bbf1b7a0.png)\nand with jupyter notebook or vscode, it is like that\n![image.png](attachment:image.png)\nThere is an enhancement request at vscode to support it\nhttps://github.com/microsoft/vscode/issues/151408\nand quarto when creating _site, is saving these images in this structure:\n\n!tree ../_site/posts/2022-09-23-inline-images-with-quarto_files/\n\n../_site/posts/2022-09-23-inline-images-with-quarto_files/\n└── figure-html\n    ├── 71a4fc95-5776-4180-ae3a-b815bbf1b7a0.png\n    ├── 74e0d8d8-ad0f-4eca-b52b-167ac518d0e9.png\n    └── image.png\n\n1 directory, 3 files\n\n\nonly one image.png for 2 files, that cannot work :(\n\n\nworkaround\nuse jupyter lab to blog"
   },
   {
     "objectID": "posts/2022-09-01-logbook-September-22.html",

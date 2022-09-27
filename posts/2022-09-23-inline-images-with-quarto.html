@@ -224,8 +224,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
 </figure>
 </div>
-<p>this cell code is</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="al">![image.png](attachment:71a4fc95-5776-4180-ae3a-b815bbf1b7a0.png)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>and here the second one</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -233,9 +231,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
 </figure>
 </div>
-<p>this cell code is</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="al">![image.png](attachment:74e0d8d8-ad0f-4eca-b52b-167ac518d0e9.png)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>if we see a 2 on the first image, we have a problem</p>
+<p>if we see a the same image, we have a problem</p>
 </section>
 <section id="using-jupyter-notebook" class="level1">
 <h1>using jupyter notebook</h1>
@@ -253,16 +249,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
 </figure>
 </div>
-<p>if we see a 2 on the first image, we have a problem</p>
+<p>if we see a the same image, we have a problem</p>
 </section>
 <section id="analysis" class="level1">
 <h1>analysis</h1>
 <p>when using jupyter lab, cell code for images are like that</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="al">![image.png](attachment:71a4fc95-5776-4180-ae3a-b815bbf1b7a0.png)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="al">![image.png](attachment:71a4fc95-5776-4180-ae3a-b815bbf1b7a0.png)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>and with jupyter notebook or vscode, it is like that</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="al">![image.png](attachment:image.png)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="al">![image.png](attachment:image.png)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>There is an enhancement request at vscode to support it</p>
 <p>https://github.com/microsoft/vscode/issues/151408</p>
+<p>and quarto when creating _site, is saving these images in this structure:</p>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>tree ..<span class="op">/</span>_site<span class="op">/</span>posts<span class="op">/</span><span class="dv">2022</span><span class="op">-</span><span class="dv">0</span><span class="er">9</span><span class="op">-</span><span class="dv">23</span><span class="op">-</span>inline<span class="op">-</span>images<span class="op">-</span><span class="cf">with</span><span class="op">-</span>quarto_files<span class="op">/</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>../_site/posts/2022-09-23-inline-images-with-quarto_files/
+└── figure-html
+    ├── 71a4fc95-5776-4180-ae3a-b815bbf1b7a0.png
+    ├── 74e0d8d8-ad0f-4eca-b52b-167ac518d0e9.png
+    └── image.png
+
+1 directory, 3 files</code></pre>
+</div>
+</div>
+<p>only one image.png for 2 files, that cannot work :(</p>
 </section>
 <section id="workaround" class="level1">
 <h1>workaround</h1>
