@@ -251,7 +251,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#toc" id="toc-toc" class="nav-link" data-scroll-target="#toc">toc</a></li>
   <li><a href="#export-module" id="toc-export-module" class="nav-link" data-scroll-target="#export-module">export module</a></li>
   </ul></li>
-  <li><a href="#exporti---used-in-combination-of-show_doc" id="toc-exporti---used-in-combination-of-show_doc" class="nav-link" data-scroll-target="#exporti---used-in-combination-of-show_doc"><code>#| exporti</code> - used in combination of <code>show_doc</code></a></li>
+  <li><a href="#exporti---used-in-combination-of-patch-and-show_doc" id="toc-exporti---used-in-combination-of-patch-and-show_doc" class="nav-link" data-scroll-target="#exporti---used-in-combination-of-patch-and-show_doc"><code>#| exporti</code> - used in combination of <code>@patch</code> and <code>show_doc</code></a></li>
   </ul></li>
   <li><a href="#nbdev-v2.3" id="toc-nbdev-v2.3" class="nav-link" data-scroll-target="#nbdev-v2.3">nbdev v2.3</a></li>
   <li><a href="#nbdev-v2.3.7" id="toc-nbdev-v2.3.7" class="nav-link" data-scroll-target="#nbdev-v2.3.7">nbdev v2.3.7</a></li>
@@ -916,11 +916,12 @@ git push origin $VERSION_TO_TAG</code></pre>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> nbdev<span class="op">;</span> nbdev.nbdev_export()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
-<section id="exporti---used-in-combination-of-show_doc" class="level2">
-<h2 class="anchored" data-anchor-id="exporti---used-in-combination-of-show_doc"><code>#| exporti</code> - used in combination of <code>show_doc</code></h2>
+<section id="exporti---used-in-combination-of-patch-and-show_doc" class="level2">
+<h2 class="anchored" data-anchor-id="exporti---used-in-combination-of-patch-and-show_doc"><code>#| exporti</code> - used in combination of <code>@patch</code> and <code>show_doc</code></h2>
 <p>exporti will export code but not doc - I use show_doc below</p>
 <p>without exporti I would have 2 entries in doc</p>
 <p>I prefer it like that to have a toc entry in jupyter</p>
+<p>And only with methods from a class. (otherwise it won’t be exposed)</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-09-12-nbdev2_files/figure-html/9296aaf7-8d34-481b-b18a-d9949d99faad.png" class="img-fluid figure-img"></p>

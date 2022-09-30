@@ -2226,11 +2226,11 @@
     "text": "#| hide\nnot exported, not displayed in doc, executed in jupyter\nSome examples:\n\nimports\nimports that I need for development that I don’t need in my lib\nhere it will be used later in internal tests (and will be executed with nbdev_test)\n#| hide\n#not exported, not displayed in doc, executed in jupyter\n# I need this to develop but not to be found in my lib (actuelly my lib should not depend on nbdev)\nfrom nbdev.showdoc import *\nimport tempfile\nfrom sklearn.datasets import load_diabetes\n\n\ntests\nsome internal tests that I don’t wand in doc\n#| hide\nwith tempfile.TemporaryDirectory(dir=root_data) as tmpdirname:\n    temp_mixpath = MixPath(tmpdirname.split(os.sep)[-1])\n    print(temp_mixpath, temp_mixpath.OBF_DIRECTORY)\nor\n#| hide\ntest_eq(ml25625,MixPath('25625'))\n\n\ntoc\nsome markdown that will appear in jupyter’s TOC\nbut not in doc because I have some export after that\n#| hide\n\n### DatasetObf.get_dataset_initial_filtré\n\n\nexport module\nat the end of notebook\nhere to have an entry in TOC\n#| hide\n# Export module\nand here to export notebook code when restart kernel and run all\n#| hide\nimport nbdev; nbdev.nbdev_export()"
   },
   {
-    "objectID": "posts/2022-09-12-nbdev2.html#exporti---used-in-combination-of-show_doc",
-    "href": "posts/2022-09-12-nbdev2.html#exporti---used-in-combination-of-show_doc",
+    "objectID": "posts/2022-09-12-nbdev2.html#exporti---used-in-combination-of-patch-and-show_doc",
+    "href": "posts/2022-09-12-nbdev2.html#exporti---used-in-combination-of-patch-and-show_doc",
     "title": "nbdev2 - first steps",
-    "section": "#| exporti - used in combination of show_doc",
-    "text": "#| exporti - used in combination of show_doc\nexporti will export code but not doc - I use show_doc below\nwithout exporti I would have 2 entries in doc\nI prefer it like that to have a toc entry in jupyter\n\n\n\nimage.png"
+    "section": "#| exporti - used in combination of @patch and show_doc",
+    "text": "#| exporti - used in combination of @patch and show_doc\nexporti will export code but not doc - I use show_doc below\nwithout exporti I would have 2 entries in doc\nI prefer it like that to have a toc entry in jupyter\nAnd only with methods from a class. (otherwise it won’t be exposed)\n\n\n\nimage.png"
   },
   {
     "objectID": "posts/2022-09-12-nbdev2.html#fixed-nbdev_clean-fails",
