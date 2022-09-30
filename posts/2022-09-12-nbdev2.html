@@ -242,6 +242,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#script-way-create-a-new-version-tag-publication-to-artifactory" id="toc-script-way-create-a-new-version-tag-publication-to-artifactory" class="nav-link" data-scroll-target="#script-way-create-a-new-version-tag-publication-to-artifactory">[script way] create a new version, tag, publication to artifactory</a></li>
   </ul></li>
   </ul></li>
+  <li><a href="#directives-from-quarto-and-nbdev" id="toc-directives-from-quarto-and-nbdev" class="nav-link" data-scroll-target="#directives-from-quarto-and-nbdev"><code>#|</code> directives from quarto and nbdev</a>
+  <ul class="collapse">
+  <li><a href="#hide" id="toc-hide" class="nav-link" data-scroll-target="#hide"><code>#| hide</code></a>
+  <ul class="collapse">
+  <li><a href="#imports" id="toc-imports" class="nav-link" data-scroll-target="#imports">imports</a></li>
+  <li><a href="#tests" id="toc-tests" class="nav-link" data-scroll-target="#tests">tests</a></li>
+  <li><a href="#toc" id="toc-toc" class="nav-link" data-scroll-target="#toc">toc</a></li>
+  <li><a href="#export-module" id="toc-export-module" class="nav-link" data-scroll-target="#export-module">export module</a></li>
+  </ul></li>
+  <li><a href="#exporti---used-in-combination-of-show_doc" id="toc-exporti---used-in-combination-of-show_doc" class="nav-link" data-scroll-target="#exporti---used-in-combination-of-show_doc"><code>#| exporti</code> - used in combination of <code>show_doc</code></a></li>
+  </ul></li>
   <li><a href="#nbdev-v2.3" id="toc-nbdev-v2.3" class="nav-link" data-scroll-target="#nbdev-v2.3">nbdev v2.3</a></li>
   <li><a href="#nbdev-v2.3.7" id="toc-nbdev-v2.3.7" class="nav-link" data-scroll-target="#nbdev-v2.3.7">nbdev v2.3.7</a></li>
   <li><a href="#open-questions" id="toc-open-questions" class="nav-link" data-scroll-target="#open-questions">Open questions</a>
@@ -857,24 +868,85 @@ git push origin $VERSION_TO_TAG</code></pre>
 </section>
 </section>
 </section>
+<section id="directives-from-quarto-and-nbdev" class="level1">
+<h1><code>#|</code> directives from quarto and nbdev</h1>
+<p>This is detailed at <a href="https://nbdev.fast.ai/explanations/directives.html" class="uri">https://nbdev.fast.ai/explanations/directives.html</a></p>
+<section id="hide" class="level2">
+<h2 class="anchored" data-anchor-id="hide"><code>#| hide</code></h2>
+<p>not exported, not displayed in doc, executed in jupyter</p>
+<p>Some examples:</p>
+<section id="imports" class="level3">
+<h3 class="anchored" data-anchor-id="imports">imports</h3>
+<p>imports that I need for development that I don’t need in my lib</p>
+<p>here it will be used later in internal tests (and will be executed with nbdev_test)</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| hide</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="co">#not exported, not displayed in doc, executed in jupyter</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="co"># I need this to develop but not to be found in my lib (actuelly my lib should not depend on nbdev)</span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nbdev.showdoc <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> tempfile</span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> load_diabetes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="tests" class="level3">
+<h3 class="anchored" data-anchor-id="tests">tests</h3>
+<p>some internal tests that I don’t wand in doc</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| hide</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> tempfile.TemporaryDirectory(<span class="bu">dir</span><span class="op">=</span>root_data) <span class="im">as</span> tmpdirname:</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>    temp_mixpath <span class="op">=</span> MixPath(tmpdirname.split(os.sep)[<span class="op">-</span><span class="dv">1</span>])</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(temp_mixpath, temp_mixpath.OBF_DIRECTORY)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>or</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| hide</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>test_eq(ml25625,MixPath(<span class="st">'25625'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="toc" class="level3">
+<h3 class="anchored" data-anchor-id="toc">toc</h3>
+<p>some markdown that will appear in jupyter’s TOC</p>
+<p>but not in doc because I have some export after that</p>
+<pre class="text"><code>#| hide
+
+### DatasetObf.get_dataset_initial_filtré</code></pre>
+</section>
+<section id="export-module" class="level3">
+<h3 class="anchored" data-anchor-id="export-module">export module</h3>
+<p>at the end of notebook</p>
+<p>here to have an entry in TOC</p>
+<pre class="text"><code>#| hide
+# Export module</code></pre>
+<p>and here to export notebook code when <code>restart kernel and run all</code></p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| hide</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> nbdev<span class="op">;</span> nbdev.nbdev_export()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="exporti---used-in-combination-of-show_doc" class="level2">
+<h2 class="anchored" data-anchor-id="exporti---used-in-combination-of-show_doc"><code>#| exporti</code> - used in combination of <code>show_doc</code></h2>
+<p>exporti will export code but not doc - I use show_doc below</p>
+<p>without exporti I would have 2 entries in doc</p>
+<p>I prefer it like that to have a toc entry in jupyter</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2022-09-12-nbdev2_files/figure-html/9296aaf7-8d34-481b-b18a-d9949d99faad.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+</section>
+</section>
 <section id="nbdev-v2.3" class="level1">
 <h1>nbdev v2.3</h1>
 <p>New release 2.3 made Sept-14</p>
 <p><a href="https://forums.fast.ai/t/upcoming-changes-in-v2-3-edit-now-released/98905" class="uri">https://forums.fast.ai/t/upcoming-changes-in-v2-3-edit-now-released/98905</a></p>
 <p>To migrate:</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-U</span> nbdev</span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> _quarto.yml</span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="ex">nbdev_new</span></span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="co"># reintegrate entries in settings.ini that could have been changed such as requirements, dev_requirements, clean_ids</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-U</span> nbdev</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> _quarto.yml</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="ex">nbdev_new</span></span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="co"># reintegrate entries in settings.ini that could have been changed such as requirements, dev_requirements, clean_ids</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="nbdev-v2.3.7" class="level1">
 <h1>nbdev v2.3.7</h1>
 <p>changelog: <a href="https://github.com/fastai/nbdev/releases/tag/2.3.7" class="uri">https://github.com/fastai/nbdev/releases/tag/2.3.7</a></p>
 <p>applying these changes: - recursive = True - notebooks in nbs folder - not understood what nbdev_proc_nbs is compared to nbdev_docs</p>
 <p>To move notebooks to nbs:</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> <span class="pp">*</span>.ipynb nbs/</span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> _quarto.yml nbs/</span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> styles.css nbs/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> <span class="pp">*</span>.ipynb nbs/</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> _quarto.yml nbs/</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> styles.css nbs/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="open-questions" class="level1">
 <h1>Open questions</h1>
