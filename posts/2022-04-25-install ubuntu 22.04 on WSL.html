@@ -175,7 +175,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       </div>
                           <div class="quarto-categories">
                 <div class="quarto-category">wsl</div>
-                <div class="quarto-category">wsl_last</div>
+                <div class="quarto-category">wsl_latest</div>
               </div>
                   </div>
   </div>
@@ -304,7 +304,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="automatic-setup" class="level2">
 <h2 class="anchored" data-anchor-id="automatic-setup">Automatic setup</h2>
-<p>copy these 2 <a href="https://github.com/castorfou/guillaume_blog/tree/master/files">scripts</a> in /root/ (given they are in <code>D:\wsl\ubuntu-22.04\download</code>)</p>
+<p>copy these 2 <a href="https://github.com/castorfou/blog/tree/master/files">scripts</a> in /root/ (given they are in <code>D:\wsl\ubuntu-22.04\download</code>)</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> /mnt/d/wsl/Ubuntu-22.04/download/setup_wsl_<span class="pp">*</span> .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>setup_wsl_root.sh</code> <a href="../files/setup_wsl_root.sh">download</a></p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
@@ -416,29 +416,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="and-now-we-can-install-other-parts" class="level2">
 <h2 class="anchored" data-anchor-id="and-now-we-can-install-other-parts">And now we can install other parts</h2>
-<p>all the scripts are in <a href="https://github.com/castorfou/guillaume_blog/tree/master/files">https://github.com/castorfou/guillaume_blog/tree/master/files</a></p>
+<p>all the scripts are in <a href="https://github.com/castorfou/blog/tree/master/files">https://github.com/castorfou/blog/tree/master/files</a></p>
 <section id="keep-config-files-in-git" class="level3">
 <h3 class="anchored" data-anchor-id="keep-config-files-in-git">00 - keep config files in git</h3>
-<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">--no-check-certificate</span> <span class="at">--content-disposition</span> <span class="at">-O</span> <span class="at">-</span> https://raw.githubusercontent.com/castorfou/guillaume_blog/master/files/setup_wsl_00_config_files_in_git.sh <span class="kw">|</span> <span class="fu">bash</span></span>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">--no-check-certificate</span> <span class="at">--content-disposition</span> <span class="at">-O</span> <span class="at">-</span> https://raw.githubusercontent.com/castorfou/blog/master/files/setup_wsl_00_config_files_in_git.sh <span class="kw">|</span> <span class="fu">bash</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> .bashrc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="automount-secured-vbox" class="level3">
 <h3 class="anchored" data-anchor-id="automount-secured-vbox">01 - automount secured vbox</h3>
-<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">--no-check-certificate</span> <span class="at">--content-disposition</span> <span class="at">-O</span> <span class="at">-</span> https://raw.githubusercontent.com/castorfou/guillaume_blog/master/files/setup_wsl_01_automount_secured_vbox.sh <span class="kw">|</span> <span class="fu">bash</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">--no-check-certificate</span> <span class="at">--content-disposition</span> <span class="at">-O</span> <span class="at">-</span> https://raw.githubusercontent.com/castorfou/blog/master/files/setup_wsl_01_automount_secured_vbox.sh <span class="kw">|</span> <span class="fu">bash</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="python-with-conda-and-configure-base-environment-jupyterlab-mamba" class="level3">
 <h3 class="anchored" data-anchor-id="python-with-conda-and-configure-base-environment-jupyterlab-mamba">02 - python with conda and configure base environment (jupyterlab, mamba)</h3>
-<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">--no-check-certificate</span> <span class="at">--content-disposition</span> <span class="at">-O</span> <span class="at">-</span> https://raw.githubusercontent.com/castorfou/guillaume_blog/master/files/setup_wsl_02_install_python_conda_part1.sh <span class="kw">|</span> <span class="fu">bash</span></span>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">--no-check-certificate</span> <span class="at">--content-disposition</span> <span class="at">-O</span> <span class="at">-</span> https://raw.githubusercontent.com/castorfou/blog/master/files/setup_wsl_02_install_python_conda_part1.sh <span class="kw">|</span> <span class="fu">bash</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> </span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> .bashrc</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">--no-check-certificate</span> <span class="at">--content-disposition</span> <span class="at">-O</span> <span class="at">-</span> https://raw.githubusercontent.com/castorfou/guillaume_blog/master/files/setup_wsl_02_install_python_conda_part2.sh <span class="kw">|</span> <span class="fu">bash</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">--no-check-certificate</span> <span class="at">--content-disposition</span> <span class="at">-O</span> <span class="at">-</span> https://raw.githubusercontent.com/castorfou/blog/master/files/setup_wsl_02_install_python_conda_part2.sh <span class="kw">|</span> <span class="fu">bash</span></span>
 <span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> .bashrc</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">--no-check-certificate</span> <span class="at">--content-disposition</span> <span class="at">-O</span> <span class="at">-</span> https://raw.githubusercontent.com/castorfou/guillaume_blog/master/files/setup_wsl_02_install_python_conda_part3.sh <span class="kw">|</span> <span class="fu">bash</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">--no-check-certificate</span> <span class="at">--content-disposition</span> <span class="at">-O</span> <span class="at">-</span> https://raw.githubusercontent.com/castorfou/blog/master/files/setup_wsl_02_install_python_conda_part3.sh <span class="kw">|</span> <span class="fu">bash</span></span>
 <span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> .bashrc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="bat-cat" class="level3">
 <h3 class="anchored" data-anchor-id="bat-cat">03 - bat cat</h3>
-<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">--no-check-certificate</span> <span class="at">--content-disposition</span> <span class="at">-O</span> <span class="at">-</span> https://raw.githubusercontent.com/castorfou/guillaume_blog/master/files/setup_wsl_03_install_batcat.sh <span class="kw">|</span> <span class="fu">bash</span></span>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">--no-check-certificate</span> <span class="at">--content-disposition</span> <span class="at">-O</span> <span class="at">-</span> https://raw.githubusercontent.com/castorfou/blog/master/files/setup_wsl_03_install_batcat.sh <span class="kw">|</span> <span class="fu">bash</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> .bashrc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="git-access" class="level3">
@@ -454,12 +454,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="git-credential-manager" class="level3">
 <h3 class="anchored" data-anchor-id="git-credential-manager">06 - git credential manager</h3>
-<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">--no-check-certificate</span> <span class="at">--content-disposition</span> <span class="at">-O</span> <span class="at">-</span> https://raw.githubusercontent.com/castorfou/guillaume_blog/master/files/setup_wsl_06_git_credential_manager.sh <span class="kw">|</span> <span class="fu">bash</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">--no-check-certificate</span> <span class="at">--content-disposition</span> <span class="at">-O</span> <span class="at">-</span> https://raw.githubusercontent.com/castorfou/blog/master/files/setup_wsl_06_git_credential_manager.sh <span class="kw">|</span> <span class="fu">bash</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="install-wslu" class="level3">
 <h3 class="anchored" data-anchor-id="install-wslu">07 - install wslu</h3>
 <p><a href="https://wslutiliti.es/wslu/">wslu</a></p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">--no-check-certificate</span> <span class="at">--content-disposition</span> <span class="at">-O</span> <span class="at">-</span> https://raw.githubusercontent.com/castorfou/guillaume_blog/master/files/setup_wsl_07_wslu.sh <span class="kw">|</span> <span class="fu">bash</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">--no-check-certificate</span> <span class="at">--content-disposition</span> <span class="at">-O</span> <span class="at">-</span> https://raw.githubusercontent.com/castorfou/blog/master/files/setup_wsl_07_wslu.sh <span class="kw">|</span> <span class="fu">bash</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Some examples:</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> wslfetch</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -489,7 +489,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="configure-pip" class="level3">
 <h3 class="anchored" data-anchor-id="configure-pip">08 - configure pip</h3>
-<div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">--no-check-certificate</span> <span class="at">--content-disposition</span> <span class="at">-O</span> <span class="at">-</span> https://raw.githubusercontent.com/castorfou/guillaume_blog/master/files/setup_wsl_08_pip.sh <span class="kw">|</span> <span class="fu">bash</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">--no-check-certificate</span> <span class="at">--content-disposition</span> <span class="at">-O</span> <span class="at">-</span> https://raw.githubusercontent.com/castorfou/blog/master/files/setup_wsl_08_pip.sh <span class="kw">|</span> <span class="fu">bash</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="install-vscode" class="level3">
 <h3 class="anchored" data-anchor-id="install-vscode">09 - install vscode</h3>
@@ -572,7 +572,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="setup-config-dotfiles-with-whole-filesystem" class="level3">
 <h3 class="anchored" data-anchor-id="setup-config-dotfiles-with-whole-filesystem">Setup config dotfiles with whole filesystem (/)</h3>
-<p>as detailed in <a href="https://castorfou.github.io/guillaume_blog/blog/keep-dotfiles-in-git.html">keep dotfiles in git</a></p>
+<p>as detailed in <a href="../blog/posts/2022-04-07-keep dotfiles in git.html">keep dotfiles in git</a></p>
 <p>but to manage the whole filesystem.</p>
 <section id="init-local-repo" class="level4">
 <h4 class="anchored" data-anchor-id="init-local-repo">init local repo</h4>
