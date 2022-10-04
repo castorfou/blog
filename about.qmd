@@ -16,8 +16,6 @@ about:
 
 ---
 
-# About
-
 ## This blog
 
 This is more a journal where I am adding entries about my (baby steps) learnings. It is likely to be centered around python, git, data-science, ...
