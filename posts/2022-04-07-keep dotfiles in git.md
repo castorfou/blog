@@ -3,6 +3,7 @@ aliases:
 - /git/2022/04/07/keep dotfiles in git
 categories:
 - git
+- bash
 date: '2022-04-07'
 description: as pointed by Jeremy Howard
 image: images/git.png
