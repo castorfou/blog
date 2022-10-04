@@ -3,7 +3,7 @@ aliases:
 - /MIT/deep learning/tensorflow/2021/02/05/learning-MIT-6.S191-2021
 categories:
 - deep learning
-- MIT
+- mit
 - tensorflow
 date: '2021-02-05'
 description: My notes/thoughts about the lecture
