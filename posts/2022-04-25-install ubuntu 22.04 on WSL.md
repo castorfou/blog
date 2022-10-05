@@ -142,9 +142,9 @@ cp setup_wsl_user.sh /home/$user_name
 chown $user_name:users /home/$user_name/setup_wsl_user.sh
 chmod 750  /home/$user_name/setup_wsl_user.sh
 tee -a /home/$user_name/.bashrc << EOF
-if [ ! -e ".wsl_configured" ]; then
-		./setup_wsl_user.sh
-        touch .wsl_configured
+if [ ! -f ~/".wsl_configured" ]; then
+		~/setup_wsl_user.sh
+        touch ~/.wsl_configured
 fi
 EOF
 echo
@@ -183,6 +183,7 @@ fi
 echo
 
 echo "3. update certificates"
+if [ ! -n "$(grep "^gitlab.michelin.com " ~/.ssh/known_hosts)" ]; then ssh-keyscan gitlab.michelin.com >> ~/.ssh/known_hosts 2>/dev/null; fi
 git clone git@gitlab.michelin.com:devops-foundation/devops_environment.git /tmp/devops_environment
 sudo cp /tmp/devops_environment/certs/* /usr/local/share/ca-certificates/
 sudo update-ca-certificates
