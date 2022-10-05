@@ -29,7 +29,7 @@ cp setup_wsl_user.sh /home/$user_name
 chown $user_name:users /home/$user_name/setup_wsl_user.sh
 chmod 750  /home/$user_name/setup_wsl_user.sh
 tee -a /home/$user_name/.bashrc << EOF
-if [ ! -e "~/.wsl_configured" ]; then
+if [ ! -f ~/".wsl_configured" ]; then
 		~/setup_wsl_user.sh
         touch ~/.wsl_configured
 fi
