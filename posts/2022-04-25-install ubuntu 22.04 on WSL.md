@@ -351,6 +351,14 @@ code .
 
 (and if needed install [Remote development](https://aka.ms/vscode-remote/download/extension))
 
+
+### 10 - docker
+
+```bash
+wget --no-check-certificate --content-disposition -O - https://raw.githubusercontent.com/castorfou/blog/master/files/setup_wsl_10_docker.sh | bash
+```
+
+
 ## Manual setup (skip if to follow automatic setup)
 
 ### basic setup
