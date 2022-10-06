@@ -237,6 +237,7 @@ It restarts from your user and it will install:
 all the scripts are in [https://github.com/castorfou/blog/tree/master/files](https://github.com/castorfou/blog/tree/master/files)
 
 ### 00 - keep config files in git
+[view](https://github.com/castorfou/blog/blob/main/files/setup_wsl_00_config_files_in_git.sh)
 
 ```bash
 wget --no-check-certificate --content-disposition -O - https://raw.githubusercontent.com/castorfou/blog/master/files/setup_wsl_00_config_files_in_git.sh | bash
@@ -244,12 +245,16 @@ source .bashrc
 ```
 
 ### 01 - automount secured vbox
+[view](https://github.com/castorfou/blog/blob/main/files/setup_wsl_01_automount_secured_vbox.sh)
 
 ```bash
 wget --no-check-certificate --content-disposition -O - https://raw.githubusercontent.com/castorfou/blog/master/files/setup_wsl_01_automount_secured_vbox.sh | bash
 ```
 
 ### 02 - python with conda and configure base environment (jupyterlab, mamba)
+[view1](https://github.com/castorfou/blog/blob/main/files/setup_wsl_02_install_python_conda_part1.sh)
+[view2](https://github.com/castorfou/blog/blob/main/files/setup_wsl_02_install_python_conda_part2.sh)
+[view3](https://github.com/castorfou/blog/blob/main/files/setup_wsl_02_install_python_conda_part3.sh)
 
 ```bash
 wget --no-check-certificate --content-disposition -O - https://raw.githubusercontent.com/castorfou/blog/master/files/setup_wsl_02_install_python_conda_part1.sh | bash
@@ -262,11 +267,15 @@ source .bashrc
 ```
 
 ### 03 - bat cat
+[view](https://github.com/castorfou/blog/blob/main/files/setup_wsl_06_git_credential_manager.sh)
 
 ```bash
 wget --no-check-certificate --content-disposition -O - https://raw.githubusercontent.com/castorfou/blog/master/files/setup_wsl_03_install_batcat.sh | bash
 source .bashrc
 ```
+
+To use `batcat` but not display line numbers, just use `-p` option
+`cat .bashrc -p`
 
 ### 04 - git access
 
@@ -287,12 +296,14 @@ Or alternate download are possible.
 
 
 ### 06 - git credential manager
+[view](https://github.com/castorfou/blog/blob/main/files/setup_wsl_06_git_credential_manager.sh)
 
 ```bash
 wget --no-check-certificate --content-disposition -O - https://raw.githubusercontent.com/castorfou/blog/master/files/setup_wsl_06_git_credential_manager.sh | bash
 ```
 
 ### 07 - install wslu
+[view](https://github.com/castorfou/blog/blob/main/files/setup_wsl_07_wslu.sh)
 
 [wslu](https://wslutiliti.es/wslu/)
 ```bash
@@ -334,6 +345,7 @@ $ wslpath -u "C:\Program Files\Typora\Typora.exe"
 
 
 ### 08 - configure pip
+[view](https://github.com/castorfou/blog/blob/main/files/setup_wsl_08_pip.sh)
 
 ```bash
 wget --no-check-certificate --content-disposition -O - https://raw.githubusercontent.com/castorfou/blog/master/files/setup_wsl_08_pip.sh | bash
@@ -353,9 +365,16 @@ code .
 
 
 ### 10 - docker
+[view](https://github.com/castorfou/blog/blob/main/files/setup_wsl_10_docker.sh)
 
 ```bash
 wget --no-check-certificate --content-disposition -O - https://raw.githubusercontent.com/castorfou/blog/master/files/setup_wsl_10_docker.sh | bash
+```
+when relogging, docker service will be added
+to test docker
+```bash
+docker ps
+docker run docker.artifactory.michelin.com/hello-world
 ```
 
 

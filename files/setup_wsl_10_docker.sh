@@ -16,3 +16,21 @@ sudo usermod -aG docker $USER
 sudo service docker start
 sudo curl -L "https://github.com/docker/compose/releases/download/v2.11.2/docker-compose-linux-x86_64" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
+
+sudo update-alternatives --set iptables /usr/sbin/iptables-legacy
+sudo update-alternatives --set ip6tables /usr/sbin/ip6tables-legacy
+
+
+tee -a ~/.bashrc << EOF
+# start docker service
+# I don't need to enter password due to my entry in /etc/sudoers.d/guillaume
+# guillaume ALL=(ALL) NOPASSWD: /usr/sbin/service
+sudo /usr/sbin/service docker start
+EOF
+
+if [ -e "/.cfg" ]; then
+		config='/usr/bin/git --git-dir=/.cfg/ --work-tree=/'
+		$config add ~/.bashrc
+		$config commit -m'docker service'
+		$config push		
+fi
