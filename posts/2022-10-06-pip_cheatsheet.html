@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.189">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2022-10-06">
+<meta name="description" content="and other things I would have liked to know earlier">
+
+<title>blog - pip cheatsheet</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">blog</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html">About</a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/"><i class="bi bi-github" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com"><i class="bi bi-twitter" role="img">
+</i> 
+ </a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">pip cheatsheet</h1>
+                  <div>
+        <div class="description">
+          and other things I would have liked to know earlier
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">pip</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">October 6, 2022</p>
+      </div>
+    </div>
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#cheatsheet" id="toc-cheatsheet" class="nav-link active" data-scroll-target="#cheatsheet">Cheatsheet</a></li>
+  <li><a href="#thinks-to-know" id="toc-thinks-to-know" class="nav-link" data-scroll-target="#thinks-to-know">thinks to know</a>
+  <ul class="collapse">
+  <li><a href="#install-last-versions" id="toc-install-last-versions" class="nav-link" data-scroll-target="#install-last-versions">install last versions</a></li>
+  <li><a href="#freeze" id="toc-freeze" class="nav-link" data-scroll-target="#freeze">freeze</a></li>
+  <li><a href="#pip-upgrader" id="toc-pip-upgrader" class="nav-link" data-scroll-target="#pip-upgrader">pip-upgrader</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<section id="cheatsheet" class="level1">
+<h1>Cheatsheet</h1>
+<p>I like this version</p>
+<p><a href="http://dcjtech.info/wp-content/uploads/2015/10/Pip-Cheatsheet.pdf" class="uri">http://dcjtech.info/wp-content/uploads/2015/10/Pip-Cheatsheet.pdf</a></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2022-10-06-pip_cheatsheet_files/figure-html/e3170f1f-5427-4556-9c61-66bdd784da1e.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="thinks-to-know" class="level1">
+<h1>thinks to know</h1>
+<section id="install-last-versions" class="level2">
+<h2 class="anchored" data-anchor-id="install-last-versions">install last versions</h2>
+<p>Didn’t know that to specify to install at least a given version, one need quotes</p>
+<pre class="text"><code>pip install 'PKG&gt;=1.0'</code></pre>
+</section>
+<section id="freeze" class="level2">
+<h2 class="anchored" data-anchor-id="freeze">freeze</h2>
+<p>to generate <code>requirements.txt</code></p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-10-06T07:14:41.980492Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-10-06T07:14:41.979925Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-10-06T07:14:42.319878Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-10-06T07:14:42.318870Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2022-10-06T07:14:41.980449Z&quot;}" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip freeze <span class="op">&gt;</span> <span class="op">~/</span>temp<span class="op">/</span>requirements.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-10-06T07:15:08.879099Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-10-06T07:15:08.878735Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-10-06T07:15:08.992290Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-10-06T07:15:08.991363Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2022-10-06T07:15:08.879070Z&quot;}" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cat <span class="op">~/</span>temp<span class="op">/</span>requirements.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>certifi @ file:///opt/conda/conda-bld/certifi_1663615672595/work/certifi
+numpy==1.23.3
+pandas==1.4.0
+python-dateutil==2.8.2
+pytz==2022.4
+six==1.16.0</code></pre>
+</div>
+</div>
+</section>
+<section id="pip-upgrader" class="level2">
+<h2 class="anchored" data-anchor-id="pip-upgrader">pip-upgrader</h2>
+<p>Playing with pip-upgrader</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-10-06T07:19:50.865047Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-10-06T07:19:50.864351Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-10-06T07:19:53.210489Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-10-06T07:19:53.209436Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2022-10-06T07:19:50.865023Z&quot;}" data-tags="[]" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>{sys.executable} <span class="op">-</span>m pip install pip<span class="op">-</span>upgrader</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Looking in indexes: https://pypi.org/simple/, https://artifactory.michelin.com/api/pypi/pypi/simple
+Collecting pip-upgrader
+  Using cached https://artifactory.michelin.com/api/pypi/pypi/packages/packages/b2/42/36c09ad93ddbf10406e301f3d4d7d063cf27fa5cf7a881ccea78bb22cdc7/pip_upgrader-1.4.15-py2.py3-none-any.whl (16 kB)
+Collecting packaging
+  Using cached https://artifactory.michelin.com/api/pypi/pypi/packages/packages/05/8e/8de486cbd03baba4deef4142bd643a3e7bbe954a784dc1bb17142572d127/packaging-21.3-py3-none-any.whl (40 kB)
+Collecting requests
+  Using cached https://artifactory.michelin.com/api/pypi/pypi/packages/packages/ca/91/6d9b8ccacd0412c08820f72cebaa4f0c0441b5cda699c90f618b6f8a1b42/requests-2.28.1-py3-none-any.whl (62 kB)
+Collecting colorclass
+  Using cached https://artifactory.michelin.com/api/pypi/pypi/packages/packages/30/b6/daf3e2976932da4ed3579cff7a30a53d22ea9323ee4f0d8e43be60454897/colorclass-2.2.2-py2.py3-none-any.whl (18 kB)
+Collecting docopt
+  Using cached docopt-0.6.2-py2.py3-none-any.whl
+Collecting terminaltables
+  Using cached https://artifactory.michelin.com/api/pypi/pypi/packages/packages/c4/fb/ea621e0a19733e01fe4005d46087d383693c0f4a8f824b47d8d4122c87e0/terminaltables-3.1.10-py2.py3-none-any.whl (15 kB)
+Collecting pyparsing!=3.0.5,&gt;=2.0.2
+  Using cached https://artifactory.michelin.com/api/pypi/pypi/packages/packages/6c/10/a7d0fa5baea8fe7b50f448ab742f26f52b80bfca85ac2be9d35cdd9a3246/pyparsing-3.0.9-py3-none-any.whl (98 kB)
+Collecting urllib3&lt;1.27,&gt;=1.21.1
+  Using cached https://artifactory.michelin.com/api/pypi/pypi/packages/packages/6f/de/5be2e3eed8426f871b170663333a0f627fc2924cc386cd41be065e7ea870/urllib3-1.26.12-py2.py3-none-any.whl (140 kB)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /home/guillaume/miniconda/envs/poubelle/lib/python3.9/site-packages (from requests-&gt;pip-upgrader) (2022.9.14)
+Collecting charset-normalizer&lt;3,&gt;=2
+  Using cached https://artifactory.michelin.com/api/pypi/pypi/packages/packages/db/51/a507c856293ab05cdc1db77ff4bc1268ddd39f29e7dc4919aa497f0adbec/charset_normalizer-2.1.1-py3-none-any.whl (39 kB)
+Collecting idna&lt;4,&gt;=2.5
+  Using cached https://artifactory.michelin.com/api/pypi/pypi/packages/packages/fc/34/3030de6f1370931b9dbb4dad48f6ab1015ab1d32447850b9fc94e60097be/idna-3.4-py3-none-any.whl (61 kB)
+Installing collected packages: docopt, urllib3, terminaltables, pyparsing, idna, colorclass, charset-normalizer, requests, packaging, pip-upgrader
+Successfully installed charset-normalizer-2.1.1 colorclass-2.2.2 docopt-0.6.2 idna-3.4 packaging-21.3 pip-upgrader-1.4.15 pyparsing-3.0.9 requests-2.28.1 terminaltables-3.1.10 urllib3-1.26.12</code></pre>
+</div>
+</div>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-10-06T07:20:49.231819Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-10-06T07:20:49.231539Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-10-06T07:20:59.399512Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-10-06T07:20:59.398684Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2022-10-06T07:20:49.231796Z&quot;}" data-tags="[]" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>{sys.prefix}<span class="op">/</span><span class="bu">bin</span><span class="op">/</span>pip<span class="op">-</span>upgrade <span class="op">--</span>skip<span class="op">-</span>package<span class="op">-</span>installation <span class="op">~/</span>temp<span class="op">/</span>requirements.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Found valid requirements file(s): 
+/home/guillaume/temp/requirements.txt
+Setting API url to https://pypi.org/simple/{package}/ as found in /home/guillaume/.config/pip/pip.conf. Use --default-index-url to use pypi default index
+2/6: numpy ... up to date: 1.23.3
+3/6: pandas ... upgrade available: 1.4.0 ==&gt; 1.5.0 (uploaded on -)
+4/6: python-dateutil ... up to date: 2.8.2
+5/6: pytz ... up to date: 2022.4
+6/6: six ... up to date: 1.16.0
+
+Available upgrades:
++-----+----------+-----------------+----------------+--------------+
+| No. | Package  | Current version | Latest version | Release date |
++-----+----------+-----------------+----------------+--------------+
+|  1  |  pandas  | 1.4.0           | 1.5.0          | -            |
++-----+----------+-----------------+----------------+--------------+
+
+Please choose which packages should be upgraded. Choices: "all", "q" (quit), "x" (exit) or "1 2 3"
+Choice: ^C
+
+Upgrade interrupted.</code></pre>
+</div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

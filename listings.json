@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/2022-10-06-pip_cheatsheet.html",
       "/posts/2022-09-23-inline-images-with-quarto.html",
       "/posts/2022-09-16-migrate blog from nbdev to quarto.html",
       "/posts/2022-09-12-nbdev2.html",
