@@ -2254,6 +2254,13 @@
     "text": "[fixed] nbdev_clean fails\nhttps://forums.fast.ai/t/nbdev-clean-fails-cryptically/98784/13\nSolution: update fastcore to version > 1.2.5"
   },
   {
+    "objectID": "posts/2022-09-12-nbdev2.html#nbdev_prepare-typeerror-exception-when-parsing-pycaret-import",
+    "href": "posts/2022-09-12-nbdev2.html#nbdev_prepare-typeerror-exception-when-parsing-pycaret-import",
+    "title": "nbdev2 - first steps",
+    "section": "nbdev_prepare TypeError exception when parsing pycaret import",
+    "text": "nbdev_prepare TypeError exception when parsing pycaret import\nas explained in https://github.com/fastai/nbdev/issues/1150"
+  },
+  {
     "objectID": "posts/2022-07-21-install docker on linux.html",
     "href": "posts/2022-07-21-install docker on linux.html",
     "title": "install docker within linux",
