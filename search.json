@@ -893,7 +893,7 @@
     "href": "posts/2022-10-01-logbook-October-22.html",
     "title": "Logbook for October 22",
     "section": "",
-    "text": "Friday 10/7\nJust playing with huggingface projects.\nWeekly someone from HF publishes news of the week\nLast 2 weeks, Thomas Simonini has sent updates on Transformers, Stable Diffusion.\nAnd just playing with these apps, I realize it has been developped using gradio. Should be nice to give a test. Could be usefull for this project: drag&drop badminton players spreadsheet, and return one with uptodate ranks"
+    "text": "Friday 10/7\nJust playing with huggingface projects.\nWeekly someone from HF publishes news of the week\nLast 2 weeks, Thomas Simonini has sent updates on Transformers, Stable Diffusion. 09/27 10/03\nAnd just playing with these apps, I realize it has been developped using gradio. Should be nice to give a test. Could be usefull for this project: drag&drop badminton players spreadsheet, and return one with uptodate ranks"
   },
   {
     "objectID": "posts/2021-06-25-slide-show-jupyter.html",
