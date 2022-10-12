@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/2022-10-12-gradio_huggingface.html",
       "/posts/2022-10-06-pip_cheatsheet.html",
       "/posts/2022-10-01-logbook-October-22.html",
       "/posts/2022-09-23-inline-images-with-quarto.html",
