@@ -893,7 +893,14 @@
     "href": "posts/2022-10-01-logbook-October-22.html",
     "title": "Logbook for October 22",
     "section": "",
-    "text": "Friday 10/7\nJust playing with huggingface projects.\nWeekly someone from HF publishes news of the week\nLast 2 weeks, Thomas Simonini has sent updates on Transformers, Stable Diffusion. 09/27 10/03\nAnd just playing with these apps, I realize it has been developped using gradio. Should be nice to give a test. Could be usefull for this project: drag&drop badminton players spreadsheet, and return one with uptodate ranks"
+    "text": "Just playing with huggingface projects.\nWeekly someone from HF publishes news of the week\nLast 2 weeks, Thomas Simonini has sent updates on Transformers, Stable Diffusion. 09/27 10/03\nAnd just playing with these apps, I realize it has been developped using gradio. Should be nice to give a test. Could be usefull for this project: drag&drop badminton players spreadsheet, and return one with uptodate ranks"
+  },
+  {
+    "objectID": "posts/2022-10-01-logbook-October-22.html#week-41---october-22",
+    "href": "posts/2022-10-01-logbook-October-22.html#week-41---october-22",
+    "title": "Logbook for October 22",
+    "section": "Week 41 - October 22",
+    "text": "Week 41 - October 22\n\nWednesday 10/12\nI am interested since a while to skip execution of some cells in notebooks.\nI usually have to rerun (most parts of) a notebook when reopen it, in order to get access to previously defined variables and go on working.\n\nHowever, sometimes I'd like to skip some of the cells, which have no influence to subsequent cells (e.g., they might comprise a branch of analysis that is finished) and could take very long time to run. These cells can be scattered throughout the notebook, so that something like \"Run All Below\" won't help much.\nI had used freeze extension a while ago when using exclusively jupyter notebook, and now I use jupyter lab and I have not found any alternative\nThere is a solution proposed here https://stackoverflow.com/questions/19309287/how-to-intermittently-skip-certain-cells-when-running-ipython-notebook that could be of interest:\nusing %%cache"
   },
   {
     "objectID": "posts/2021-06-25-slide-show-jupyter.html",
