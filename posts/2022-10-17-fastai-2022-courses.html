@@ -157,6 +157,8 @@ ul.task-list li input[type="checkbox"] {
 <section id="lesson-1" class="level2">
 <h2 class="anchored" data-anchor-id="lesson-1">Lesson 1</h2>
 <p><a href="https://course.fast.ai/Lessons/lesson1.html" class="uri">https://course.fast.ai/Lessons/lesson1.html</a></p>
+<section id="deep-learning-introduction" class="level4">
+<h4 class="anchored" data-anchor-id="deep-learning-introduction">Deep learning introduction</h4>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-10-17-fastai-2022-courses_files/figure-html/d9a38f06-b9ab-4b1c-8dca-8187fbb0355c.png" class="img-fluid figure-img"></p>
@@ -164,11 +166,17 @@ ul.task-list li input[type="checkbox"] {
 </figure>
 </div>
 <p>In 2015, nearly impossible to recognize a bird with CS. And Jeremy doing that in 2 minutes ;)</p>
+</section>
+<section id="recent-progress" class="level4">
+<h4 class="anchored" data-anchor-id="recent-progress">Recent progress</h4>
 <p>After this brief demonstration, Jeremy shared what he remmbers about recent progress in AI such as:</p>
 <ul>
-<li><p>Dall-e, midjourney to create images from text</p></li>
-<li><p>Google Pathways Language Model (PaLM) to explain jokes or run mathematical proof</p></li>
+<li><p>artworks: Dall-e, midjourney to create images from text</p></li>
+<li><p>explaining jokes: Google Pathways Language Model (PaLM) to explain jokes or run mathematical proof</p></li>
 </ul>
+</section>
+<section id="self-learning-of-features" class="level4">
+<h4 class="anchored" data-anchor-id="self-learning-of-features">Self learning of features</h4>
 <p>Then classical but nice explanation that NN learns features (features are not given or coded) and illustrates that with Matt Zeiler and Rob Fergus works</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -176,6 +184,9 @@ ul.task-list li input[type="checkbox"] {
 <p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
 </figure>
 </div>
+</section>
+<section id="vision-can-be-used-in-many-different-ways" class="level4">
+<h4 class="anchored" data-anchor-id="vision-can-be-used-in-many-different-ways">Vision can be used in many different ways</h4>
 <p>And it is of course used to classify images, but all these techniques can be combined out of this field for example:</p>
 <ul>
 <li>recognize sound by transforming sound waves into pictures (<a href="https://forums.fast.ai/t/share-your-work-here/27676/40">Ethan Sutin</a>)</li>
@@ -204,8 +215,61 @@ ul.task-list li input[type="checkbox"] {
 <p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
 </figure>
 </div>
+</section>
+<section id="tools---pytorch-jupyter-notebooks-kaggle" class="level4">
+<h4 class="anchored" data-anchor-id="tools---pytorch-jupyter-notebooks-kaggle">Tools - pytorch, jupyter notebooks, kaggle</h4>
+<p>For this course Jeremy suggests to use the kaggle cloud server.</p>
+<p>If using someone else notebook, just upvote and click <code>Copy &amp; Edit</code></p>
+<p><a href="https://www.kaggle.com/code/guillaumeramelet/jupyter-notebook-101/edit" class="uri">https://www.kaggle.com/code/guillaumeramelet/jupyter-notebook-101/edit</a></p>
+<p>And now some hands-on starting with <code>Is it a bird?</code> <a href="https://www.kaggle.com/code/guillaumeramelet/is-it-a-bird-creating-a-model-from-your-own-data/edit">notebook</a>.</p>
+<p>It’s a good idea to ensure you’re running the latest version of any libraries you need.</p>
+<p><code>!pip install -Uqq libraries</code> upgrades to the latest version of libraries (fastai for example)</p>
+</section>
+<section id="going-through-this-notebook" class="level4">
+<h4 class="anchored" data-anchor-id="going-through-this-notebook">going through this notebook</h4>
+<p>Jeremy shares best practices and steps</p>
+<p>Such as viewing your data between each steps</p>
+<p>Jeremy uses a lot of functional programming it is why we see things like <a href="https://www.geeksforgeeks.org/python-map-function/">map</a> used a lot.</p>
+<section id="datablock" class="level5">
+<h5 class="anchored" data-anchor-id="datablock">DataBlock</h5>
+<p>Using Datablocks API</p>
+<blockquote class="blockquote">
+<p>To train a model, we’ll need DataLoaders, which is an object that contains a training set (the images used to create a model) and a validation set (the images used to check the accuracy of a model – not used during training). In fastai we can create that easily using a DataBlock, and view sample images from it:</p>
+</blockquote>
+<p>And Jeremy explains the logic between the 5 arguments needed to create a DataBlock:</p>
+<ul>
+<li><p>blocks: tupple with type of inputs and output</p></li>
+<li><p>get_items: to get all data, here it points to a function to get list of image fileS</p></li>
+<li><p>splitter: method to split between training set and validation set</p></li>
+<li><p>get_y: to kown labels, here it is a function</p></li>
+<li><p>item_tfms: which transformation to apply</p></li>
+</ul>
+<p>And from a DataBlock you create dataloaders (dls) provding (path for images; and bs (batch size))</p>
+</section>
+<section id="learners" class="level5">
+<h5 class="anchored" data-anchor-id="learners">learners</h5>
+<p>This is a key part.</p>
+<p>Learners are taking 3 arguments: dataloaders, model, metric</p>
+<p>And vision models can be from <a href="https://timm.fast.ai/">timm</a>.</p>
+<p>Here we train a pre-trained model, which is called fine_tune and we do it on 3 epochs.</p>
+</section>
+<section id="predict" class="level5">
+<h5 class="anchored" data-anchor-id="predict">predict</h5>
+<p>Just providing an item to <code>lean.predict</code> will return <code>label</code>, <code>tensor value</code>, <code>probability</code></p>
+<p>And it is why we have such outputs</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2022-10-17-fastai-2022-courses_files/figure-html/18981c69-5b80-4d5b-a8c6-24710ba3d0fb.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+</section>
+</section>
+<section id="and-beyond-image-recognition" class="level4">
+<h4 class="anchored" data-anchor-id="and-beyond-image-recognition">and beyond image recognition</h4>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
