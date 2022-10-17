@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.189">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2020-09-10">
+
+<title>blog - Blog from jupyter notebook</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">blog</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html">About</a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/"><i class="bi bi-github" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com"><i class="bi bi-twitter" role="img">
+</i> 
+ </a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Blog from jupyter notebook</h1>
+                      </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">September 10, 2020</p>
+      </div>
+    </div>
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<p>That will be great if I can simply write blog entries using Jupyter Notebook.</p>
+<p>That way I could simply use markdown and insert images <img src="2020-09-10-blog-from-jupyter_files/figure-html/image.png" class="img-fluid" alt="image.png"></p>
+<p>And directly see rendered impact before commiting and pushing to my blog.</p>
+<section id="get-local-repo-from-github" class="level2">
+<h2 class="anchored" data-anchor-id="get-local-repo-from-github">get local repo from github</h2>
+<p>As I am behind a proxy most of my time when working from office, the easiest way for me is to work from <a href="https://en.wikipedia.org/wiki/Windows_Subsystem_for_Linux">WSL</a>.</p>
+<section id="wsl" class="level3">
+<h3 class="anchored" data-anchor-id="wsl">WSL</h3>
+<p>I won’t detail how to install WSL on Windows.</p>
+<p>I use ubuntu images (18.04) on my PC.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2020-09-10-blog-from-jupyter_files/figure-html/image.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="set-unset-proxy-in-wsl" class="level3">
+<h3 class="anchored" data-anchor-id="set-unset-proxy-in-wsl">set unset proxy in WSL</h3>
+<p>I have just added some bash commands at the end of my <code>.bashrc</code> file.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set Proxy</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span><span class="fu"> setproxy()</span> <span class="kw">{</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">export</span> <span class="dt">{http</span><span class="op">,</span><span class="dt">https</span><span class="op">,</span><span class="dt">ftp}</span>_proxy=<span class="st">"http://&lt;my proxy ip address&gt;:80"</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">export</span> <span class="dt">{HTTP</span><span class="op">,</span><span class="dt">HTTPS</span><span class="op">,</span><span class="dt">FTP}</span>_PROXY=<span class="st">"http://&lt;my proxy ip address&gt;:80"</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Unset Proxy</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span><span class="fu"> unsetproxy()</span> <span class="kw">{</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">unset</span> <span class="dt">{http</span><span class="op">,</span><span class="dt">https</span><span class="op">,</span><span class="dt">ftp}</span>_proxy</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">unset</span> <span class="dt">{HTTP</span><span class="op">,</span><span class="dt">HTTPS</span><span class="op">,</span><span class="dt">FTP}</span>_PROXY</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="git-clone-castorfou.github.io" class="level3">
+<h3 class="anchored" data-anchor-id="git-clone-castorfou.github.io">git clone castorfou.github.io</h3>
+<p>I keep most of my local repos under <code>~/git/</code></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/git</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">setproxy</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/castorfou/castorfou.github.io.git</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2020-09-10-blog-from-jupyter_files/figure-html/image.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+</section>
+</section>
+<section id="create-a-blog-entry-with-jupyter-notebook" class="level2">
+<h2 class="anchored" data-anchor-id="create-a-blog-entry-with-jupyter-notebook">create a blog entry with Jupyter Notebook</h2>
+</section>
+<section id="commit-and-push-to-github" class="level2">
+<h2 class="anchored" data-anchor-id="commit-and-push-to-github">commit and push to github</h2>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">guillaume@LL11LPC0PQARQ:~$</span> cd git</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">guillaume@LL11LPC0PQARQ:~/git$</span> cd castorfou.github.io/</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">guillaume@LL11LPC0PQARQ:~/git/castorfou.github.io$</span> git add .</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">guillaume@LL11LPC0PQARQ:~/git/castorfou.github.io$</span> git commit <span class="at">-m</span> <span class="st">'new blog entry: blog from jupyter'</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="ex">[master</span> 6b7460a] new blog entry: blog from jupyter</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a> <span class="ex">4</span> files changed, 516 insertions<span class="er">(</span><span class="ex">+</span><span class="kw">)</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a> <span class="ex">create</span> mode 100644 _posts/.ipynb_checkpoints/2020-09-10-blog-from-jupyter-checkpoint.ipynb</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a> <span class="ex">create</span> mode 100644 _posts/2020-09-10-blog-from-jupyter.ipynb</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a> <span class="ex">create</span> mode 100644 _posts/2020-09-10-blog-from-jupyter.py</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a> <span class="ex">create</span> mode 100644 _posts/Untitled.txt</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">guillaume@LL11LPC0PQARQ:~/git/castorfou.github.io$</span> git push</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="ex">fatal:</span> unable to access <span class="st">'https://github.com/castorfou/castorfou.github.io.git/'</span>: gnutls_handshake<span class="er">(</span><span class="kw">)</span> <span class="ex">failed:</span> The TLS connection was non-properly terminated.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="error-gnutls_handshake-failed-the-tls-connection-was-non-properly-terminated." class="level3">
+<h3 class="anchored" data-anchor-id="error-gnutls_handshake-failed-the-tls-connection-was-non-properly-terminated.">error: gnutls_handshake() failed: The TLS connection was non-properly terminated.</h3>
+<p>Just googling this error gives some insight: <a href="https://github.community/t/unable-to-push-to-repo-gnutls-handshake-failed/885" class="uri">https://github.community/t/unable-to-push-to-repo-gnutls-handshake-failed/885</a></p>
+<p>It is likely some local firewell issue.</p>
+<p>{% include alert.html text=“To be fixed later” %}</p>
+</section>
+<section id="switch-to-mobile-wifi-without-need-of-proxy" class="level3">
+<h3 class="anchored" data-anchor-id="switch-to-mobile-wifi-without-need-of-proxy">switch to mobile wifi without need of proxy</h3>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">guillaume@LL11LPC0PQARQ:~/git/castorfou.github.io$</span> unsetproxy</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">guillaume@LL11LPC0PQARQ:~/git/castorfou.github.io$</span> git push</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Username</span> for <span class="st">'https://github.com'</span>: castorfou</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="ex">Password</span> for <span class="st">'https://castorfou@github.com'</span>:</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="ex">Counting</span> objects: 7, done.</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="ex">Delta</span> compression using up to 8 threads.</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="ex">Compressing</span> objects: 100% <span class="er">(</span><span class="ex">6/6</span><span class="kw">)</span><span class="ex">,</span> done.</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="ex">Writing</span> objects: 100% <span class="er">(</span><span class="ex">7/7</span><span class="kw">)</span><span class="ex">,</span> 141.26 KiB <span class="kw">|</span> <span class="ex">10.09</span> MiB/s, done.</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="ex">Total</span> 7 <span class="er">(</span><span class="ex">delta</span> 1<span class="kw">)</span><span class="ex">,</span> reused 0 <span class="er">(</span><span class="ex">delta</span> 0<span class="kw">)</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="ex">remote:</span> Resolving deltas: 100% <span class="er">(</span><span class="ex">1/1</span><span class="kw">)</span><span class="ex">,</span> completed with 1 local object.</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="ex">remote:</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="ex">remote:</span> GitHub found 3 vulnerabilities on castorfou/castorfou.github.io<span class="st">'s default branch (2 high, 1 moderate). To find out more, visit:</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="st">remote:      https://github.com/castorfou/castorfou.github.io/network/alerts</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="st">remote:</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="st">To https://github.com/castorfou/castorfou.github.io.git</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="st">   6adeb02..6b7460a  master -&gt; master</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="check-entries-into-blog" class="level2">
+<h2 class="anchored" data-anchor-id="check-entries-into-blog">check entries into blog</h2>
+<section id="double-entries" class="level3">
+<h3 class="anchored" data-anchor-id="double-entries">double entries</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2020-09-10-blog-from-jupyter_files/figure-html/image.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+<p>Double entries: one for the notebook (.ipynb) and one for the auto python export (.py). I will have to update my jupyter settings to avoid this python file creation. In the meantime I can just delete the python file, and commit.</p>
+<p>{% include alert.html text=“Change settings of jupyter + <code>.gitignore</code> to avoid these double entries” %}</p>
+</section>
+<section id="cannot-open-notebook-into-browser" class="level3">
+<h3 class="anchored" data-anchor-id="cannot-open-notebook-into-browser">cannot open notebook into browser</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2020-09-10-blog-from-jupyter_files/figure-html/image.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+<p>Clicking just ask me to download the notebook, it doesn’t display it into the browser.</p>
+</section>
+<section id="checking-.gitignore" class="level3">
+<h3 class="anchored" data-anchor-id="checking-.gitignore">checking .gitignore</h3>
+<p>Just by looking into <code>.gitignore</code>, there is an interesting entry:</p>
+<pre><code>*.swp
+~*
+*~
+_site
+.sass-cache
+.jekyll-cache
+.jekyll-metadata
+vendor
+_notebooks/.ipynb_checkpoints</code></pre>
+<p>Wait what is in this last line.</p>
+<p>Let’s create <code>_notebooks</code> directory and move my notebook in that directory.</p>
+</section>
+<section id="notebooks-from-_notebooks-not-rendered" class="level3">
+<h3 class="anchored" data-anchor-id="notebooks-from-_notebooks-not-rendered">notebooks from _notebooks not rendered</h3>
+<p><img src="2020-09-10-blog-from-jupyter_files/figure-html/image.png" class="img-fluid" alt="image.png"> No entries, I guess there is some additional settings to do…</p>
+<p>{% include alert.html text=“Why notebooks are not rendered by Jekyl” %}</p>
+</section>
+<section id="test-entry-from-md-using-local-repo" class="level3">
+<h3 class="anchored" data-anchor-id="test-entry-from-md-using-local-repo">test entry from md using local repo</h3>
+<p>There is no problem with that.</p>
+<p>Creating a local md file in <code>_posts</code>then pushing to github is creating the right entry blog.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2020-09-10-blog-from-jupyter_files/figure-html/image.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="following-fastpages-troubleshooting-guide" class="level3">
+<h3 class="anchored" data-anchor-id="following-fastpages-troubleshooting-guide">following fastpages <a href="https://github.com/fastai/fastpages/blob/master/_fastpages_docs/TROUBLESHOOTING.md">troubleshooting guide</a></h3>
+<section id="upgrade-fastpages" class="level4">
+<h4 class="anchored" data-anchor-id="upgrade-fastpages">upgrade fastpages</h4>
+<p>Try the automated upgrade as described in <a href="https://github.com/fastai/fastpages/blob/master/_fastpages_docs/UPGRADE.md" class="uri">https://github.com/fastai/fastpages/blob/master/_fastpages_docs/UPGRADE.md</a></p>
+<p>Unfortunately I don’t see <img src="2020-09-10-blog-from-jupyter_files/figure-html/image.png" class="img-fluid" alt="image.png"></p>
+<p>I have to follow the manual upgrade.</p>
+</section>
+<section id="manual-fastpages-upgrade" class="level4">
+<h4 class="anchored" data-anchor-id="manual-fastpages-upgrade"><a href="https://github.com/fastai/fastpages/blob/master/_fastpages_docs/UPGRADE.md#manual-upgrade">manual fastpages upgrade</a></h4>
+<p>I am surprised because the 1st step from manual upgrade is to copy the fastpages repo. It is what I did 2 days ago. I doubt having an outdated version of fastpages.</p>
+</section>
+</section>
+<section id="fastai-forum-fastpages-category" class="level3">
+<h3 class="anchored" data-anchor-id="fastai-forum-fastpages-category">fastai forum: <a href="https://forums.fast.ai/c/fastai-users/nbdev/48">fastpages category</a></h3>
+<p>I will browse through <a href="https://forums.fast.ai/c/fastai-users/nbdev/48">nbdev &amp; faspages category</a> in fastai forums. I should see people with the same issue.</p>
+<p>I have created an entry, into fastai forums: <a href="https://forums.fast.ai/t/fastpages-cannot-see-build-process-of-github-actions/78719">Fastpages - cannot see build process of GitHub Actions</a></p>
+<p>And quite immediately Hamel Hussain answered guiding to the write direction:</p>
+<p>I misread the Settings instruction: my github repo should explicitely <em>NOT</em> include my github username and I did exactly the opposite.</p>
+<p>{% include alert.html text=“I have to create a new repo: guillaume_blog” %}</p>
+</section>
+<section id="nothing-visible-from-actions-tab" class="level3">
+<h3 class="anchored" data-anchor-id="nothing-visible-from-actions-tab">nothing visible from Actions tab</h3>
+<p>And another surprising subject: at github in Actions tab. I have a kind of default page. I expect something like an execution journal of Actions. <img src="2020-09-10-blog-from-jupyter_files/figure-html/image.png" class="img-fluid" alt="image.png"></p>
+</section>
+<section id="page-build-failure" class="level3">
+<h3 class="anchored" data-anchor-id="page-build-failure">Page build failure</h3>
+<p>Received a notification by email:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2020-09-10-blog-from-jupyter_files/figure-html/image.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+<p>The page build failed for the <code>master</code> branch with the following error:</p>
+<p>Page build failed. For more information, see <a href="https://docs.github.com/github/working-with-github-pages/troubleshooting-jekyll-build-errors-for-github-pages-sites#troubleshooting-build-errors" class="uri">https://docs.github.com/github/working-with-github-pages/troubleshooting-jekyll-build-errors-for-github-pages-sites#troubleshooting-build-errors</a>.</p>
+<p>For information on troubleshooting Jekyll see:</p>
+<p><a href="https://docs.github.com/articles/troubleshooting-jekyll-builds" class="uri">https://docs.github.com/articles/troubleshooting-jekyll-builds</a></p>
+<p>If you have any questions you can submit a request on the Contact GitHub page at <a href="https://support.github.com/contact?repo_id=293820308&amp;page_build_id=202240535" class="uri">https://support.github.com/contact?repo_id=293820308&amp;page_build_id=202240535</a></p>
+</section>
+</section>
+<section id="move-to-another-repo" class="level2">
+<h2 class="anchored" data-anchor-id="move-to-another-repo">Move to another repo</h2>
+<section id="repo-creation" class="level3">
+<h3 class="anchored" data-anchor-id="repo-creation">repo creation</h3>
+<p>It was just a matter of creating a new repo: <img src="2020-09-10-blog-from-jupyter_files/figure-html/image.png" class="img-fluid" alt="image.png"></p>
+</section>
+<section id="actions-monitoring" class="level3">
+<h3 class="anchored" data-anchor-id="actions-monitoring">actions monitoring</h3>
+<p>Monitoring is effective <img src="2020-09-10-blog-from-jupyter_files/figure-html/image.png" class="img-fluid" alt="image.png"></p>
+</section>
+<section id="merge-pull-request" class="level3">
+<h3 class="anchored" data-anchor-id="merge-pull-request">merge pull request</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2020-09-10-blog-from-jupyter_files/figure-html/image.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+<section id="actions-around-ssh-keys" class="level4">
+<h4 class="anchored" data-anchor-id="actions-around-ssh-keys">actions around ssh keys</h4>
+<p>Following the steps: - Create keys using <a href="https://8gwifi.org/sshfunctions.jsp">ssh utility</a> - Enter Secret Key - Enter Deploy Key</p>
+</section>
+<section id="merge-pr" class="level4">
+<h4 class="anchored" data-anchor-id="merge-pr">merge PR</h4>
+<p>There are conflicts to be fixed before that.</p>
+</section>
+</section>
+<section id="and-it-works-httpscastorfou.github.ioguillaume_blog" class="level3">
+<h3 class="anchored" data-anchor-id="and-it-works-httpscastorfou.github.ioguillaume_blog">And it works: <a href="https://castorfou.github.io/guillaume_blog/">https://castorfou.github.io/guillaume_blog/</a></h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2020-09-10-blog-from-jupyter_files/figure-html/image.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+</section>
+</section>
+<section id="get-local-repo" class="level2">
+<h2 class="anchored" data-anchor-id="get-local-repo">Get local repo</h2>
+<pre><code>cd ~/git
+unsetproxy
+git clone https://github.com/castorfou/guillaume_blog.git</code></pre>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

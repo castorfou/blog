@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.189">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2022-09-16">
+<meta name="description" content="following migration guide from Hamel Hussain">
+
+<title>blog - Blog - migrate to quarto</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">blog</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html">About</a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/"><i class="bi bi-github" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com"><i class="bi bi-twitter" role="img">
+</i> 
+ </a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Blog - migrate to quarto</h1>
+                  <div>
+        <div class="description">
+          following migration guide from Hamel Hussain
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">nbdev</div>
+                <div class="quarto-category">quarto</div>
+                <div class="quarto-category">fastpages</div>
+                <div class="quarto-category">blog</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">September 16, 2022</p>
+      </div>
+    </div>
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#inspiration" id="toc-inspiration" class="nav-link active" data-scroll-target="#inspiration">Inspiration</a></li>
+  <li><a href="#walkthrough" id="toc-walkthrough" class="nav-link" data-scroll-target="#walkthrough">Walkthrough</a>
+  <ul class="collapse">
+  <li><a href="#install-quarto" id="toc-install-quarto" class="nav-link" data-scroll-target="#install-quarto">install quarto</a></li>
+  <li><a href="#create-repo-blog" id="toc-create-repo-blog" class="nav-link" data-scroll-target="#create-repo-blog">create repo <code>blog</code></a></li>
+  <li><a href="#create-a-quarto-blog" id="toc-create-a-quarto-blog" class="nav-link" data-scroll-target="#create-a-quarto-blog">create a quarto blog</a></li>
+  <li><a href="#copy-former-blog-content---notebooks-and-markdown-files" id="toc-copy-former-blog-content---notebooks-and-markdown-files" class="nav-link" data-scroll-target="#copy-former-blog-content---notebooks-and-markdown-files">copy former blog content - notebooks and markdown files</a></li>
+  <li><a href="#copy-former-blog-content---images" id="toc-copy-former-blog-content---images" class="nav-link" data-scroll-target="#copy-former-blog-content---images">copy former blog content - images</a></li>
+  <li><a href="#migrate-posts-to-quarto" id="toc-migrate-posts-to-quarto" class="nav-link" data-scroll-target="#migrate-posts-to-quarto">migrate posts to quarto</a></li>
+  <li><a href="#update-some-files" id="toc-update-some-files" class="nav-link" data-scroll-target="#update-some-files">update some files</a></li>
+  <li><a href="#preview" id="toc-preview" class="nav-link" data-scroll-target="#preview">preview</a></li>
+  <li><a href="#keep-git-repo-in-sync" id="toc-keep-git-repo-in-sync" class="nav-link" data-scroll-target="#keep-git-repo-in-sync">keep git repo in sync</a></li>
+  <li><a href="#publication" id="toc-publication" class="nav-link" data-scroll-target="#publication">publication</a>
+  <ul class="collapse">
+  <li><a href="#quarto-publish" id="toc-quarto-publish" class="nav-link" data-scroll-target="#quarto-publish">quarto publish</a></li>
+  <li><a href="#github-actions" id="toc-github-actions" class="nav-link" data-scroll-target="#github-actions">github actions</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#current-publication-process" id="toc-current-publication-process" class="nav-link" data-scroll-target="#current-publication-process">Current publication process</a></li>
+  <li><a href="#issues-improvments" id="toc-issues-improvments" class="nav-link" data-scroll-target="#issues-improvments">Issues / improvments</a>
+  <ul class="collapse">
+  <li><a href="#quarto-publishing-issue-behind-firewall" id="toc-quarto-publishing-issue-behind-firewall" class="nav-link" data-scroll-target="#quarto-publishing-issue-behind-firewall">quarto publishing issue behind firewall</a></li>
+  <li><a href="#workaround-inline-images-are-not-properly-rendered" id="toc-workaround-inline-images-are-not-properly-rendered" class="nav-link" data-scroll-target="#workaround-inline-images-are-not-properly-rendered">[workaround] inline images are not properly rendered</a></li>
+  <li><a href="#albert-rapp-as-an-example" id="toc-albert-rapp-as-an-example" class="nav-link" data-scroll-target="#albert-rapp-as-an-example">Albert Rapp as an example</a></li>
+  <li><a href="#workaround-links-are-not-rendered-as-links" id="toc-workaround-links-are-not-rendered-as-links" class="nav-link" data-scroll-target="#workaround-links-are-not-rendered-as-links">[workaround] links are not rendered as links</a>
+  <ul class="collapse">
+  <li><a href="#suggestions" id="toc-suggestions" class="nav-link" data-scroll-target="#suggestions">suggestions</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<section id="inspiration" class="level1">
+<h1>Inspiration</h1>
+<p>Hamel just announced that <a href="https://forums.fast.ai/t/fastpages-deprecating-fastpages-in-favor-of-quarto/99095">fastpages will be discontinued</a> as nbdev+quarto is now a valid option to provide a blogging platform. He has written a <a href="https://nbdev.fast.ai/tutorials/blogging.html">migration guide</a> for that.</p>
+<p>This is my walkthrough.</p>
+</section>
+<section id="walkthrough" class="level1">
+<h1>Walkthrough</h1>
+<p>Main software needed are: * <a href="https://quarto.org/docs/websites/website-blog.html">quarto</a> * python env with jupyter (can blog from <code>base</code>)</p>
+<section id="install-quarto" class="level2">
+<h2 class="anchored" data-anchor-id="install-quarto">install quarto</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> sudo apt install quarto</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">[sudo]</span> password for guillaume:</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Reading</span> package lists... Done</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">Building</span> dependency tree... Done</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">Reading</span> state information... Done</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> is already the newest version <span class="er">(</span><span class="ex">1.1.189</span><span class="kw">)</span><span class="bu">.</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="ex">0</span> upgraded, 0 newly installed, 0 to remove and 0 not upgraded.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>will have to see what will happen on platforms where I don’t have admin rights.</p>
+<p>Here Quarto is already present because I use it for nbdev2.</p>
+</section>
+<section id="create-repo-blog" class="level2">
+<h2 class="anchored" data-anchor-id="create-repo-blog">create repo <code>blog</code></h2>
+<p>I create <code>blog</code> repo on github.</p>
+<p>And I can now get it locally: <code>git clone https://github.com/castorfou/blog.git</code> (I am from office, only https is accepted)</p>
+</section>
+<section id="create-a-quarto-blog" class="level2">
+<h2 class="anchored" data-anchor-id="create-a-quarto-blog">create a quarto blog</h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/git/blog</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> create-project <span class="at">--type</span> website:blog .</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> install extension quarto-ext/video</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Issue here with <code>quarto install</code> when running from a corporate pc</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> quarto install extension quarto-ext/video</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Sending</span> fatal alert BadCertificate</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">ERROR:</span> TypeError: error sending request for url <span class="er">(</span><span class="ex">https://github.com/quarto-ext/video/archive/refs/heads/main.tar.gz</span><span class="kw">)</span><span class="bu">:</span> error trying to connect: invalid peer certificate contents: invalid peer certificate: UnknownIssuer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>I have opened an issue at <a href="https://github.com/quarto-ext/video/issues/27" class="uri">https://github.com/quarto-ext/video/issues/27</a></p>
+</section>
+<section id="copy-former-blog-content---notebooks-and-markdown-files" class="level2">
+<h2 class="anchored" data-anchor-id="copy-former-blog-content---notebooks-and-markdown-files">copy former blog content - notebooks and markdown files</h2>
+<p>Your new repo will have a <code>posts/</code> directory.</p>
+<p>This is where you will copy all of your notebook and markdown posts from fastpages.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> ../guillaume_blog/_notebooks/<span class="pp">*</span> posts/</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> ../guillaume_blog/_posts/<span class="pp">*</span> posts/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>I have to fix some stuff here,</p>
+<p>some markdown posts have empty description which is not allowed by the migration process.</p>
+<p>To fix that I will run <code>sed -i -- 's/^description:[[:space:]*]$/description:\ \"\"/' ~/git/blog/posts/*.md</code></p>
+<p>Globally to identify culprit, I executed this:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="va">chemin</span><span class="op">=</span><span class="kw">`</span><span class="bu">pwd</span><span class="kw">`</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> FILE <span class="kw">in</span> ../guillaume_blog/_posts/<span class="pp">*</span><span class="kw">;</span> <span class="dt">\</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span> <span class="bu">echo</span> <span class="va">$FILE</span><span class="kw">;</span> <span class="dt">\</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="st">"</span><span class="va">$FILE</span><span class="st">"</span> posts/<span class="kw">;</span> <span class="dt">\</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sed</span> <span class="at">-i</span> <span class="at">--</span> <span class="st">'s/^description:[[:space:]*]$/description:\ \"\"/'</span> <span class="va">$chemin</span>/posts/<span class="pp">*</span>.md<span class="kw">;</span> <span class="dt">\</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="ex">nbdev_migrate</span> <span class="at">--path</span> posts<span class="kw">;</span> <span class="dt">\</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-f</span> posts/<span class="pp">*</span> <span class="dv">2</span><span class="op">&gt;</span> /dev/null<span class="kw">;</span> <span class="dt">\</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span><span class="kw">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>but now that I know the migration issues, I can just execute:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># handle empty description in markdown files</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="va">chemin</span><span class="op">=</span><span class="kw">`</span><span class="bu">pwd</span><span class="kw">`</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sed</span> <span class="at">-i</span> <span class="at">--</span> <span class="st">'s/^description:[[:space:]*]$/description:\ \"\"/'</span> <span class="va">$chemin</span>/posts/<span class="pp">*</span>.md</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># code should not be here</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> posts/notebook2script.py </span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-rf</span> posts/exp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>What was wrong with <code>2021-02-10-college-de-france-representations-parcimonieuses.md</code> was accents in title. Removing é with e fixed it.</p>
+</section>
+<section id="copy-former-blog-content---images" class="level2">
+<h2 class="anchored" data-anchor-id="copy-former-blog-content---images">copy former blog content - images</h2>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> images</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> ../guillaume_blog/images/<span class="pp">*</span> images</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> ../guillaume_blog/images/copied_from_nb/<span class="pp">*</span> images</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="migrate-posts-to-quarto" class="level2">
+<h2 class="anchored" data-anchor-id="migrate-posts-to-quarto">migrate posts to quarto</h2>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate dataset_tools <span class="co">#this is an env with nbdev installed</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co">#install last version of nbdev</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-U</span> nbdev</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="ex">nbdev_migrate</span> <span class="at">--path</span> posts</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="update-some-files" class="level2">
+<h2 class="anchored" data-anchor-id="update-some-files">update some files</h2>
+<ul>
+<li><code>.gitignore</code>: we suggest adding <code>_site/</code> as well as dot files <code>.*</code></li>
+<li><code>about.qmd</code>: I reuse my former <code>_pages/about.md</code></li>
+<li><code>profile.jpg</code>: and use my profile picture</li>
+</ul>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cat <span class="op">~/</span>git<span class="op">/</span>blog<span class="op">/</span>.gitignore</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>/.quarto/
+_site/
+.*
+!.gitignore</code></pre>
+</div>
+</div>
+</section>
+<section id="preview" class="level2">
+<h2 class="anchored" data-anchor-id="preview">preview</h2>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> preview</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Here we can fix many thinks, and auto update rendered pages is just excellent!</p>
+<ul>
+<li>move images from posts to posts/images (have to restart quarto preview after that)</li>
+<li>delete the 2 examples (welcome and post-with-code)</li>
+</ul>
+<p>Will have to browse through all the site to see if all is properly rendered. &gt; fix for broken links or Jekyll shortcodes (things with {% … %}) that need to be converted to Quarto. Search the the Quarto documentation if you need help locating specific Quarto features.</p>
+</section>
+<section id="keep-git-repo-in-sync" class="level2">
+<h2 class="anchored" data-anchor-id="keep-git-repo-in-sync">keep git repo in sync</h2>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="va">NOW</span><span class="op">=</span><span class="kw">`</span><span class="fu">date</span> <span class="st">'+%F_%H:%M'</span><span class="kw">`;</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"</span><span class="va">$NOW</span><span class="st">"</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="publication" class="level2">
+<h2 class="anchored" data-anchor-id="publication">publication</h2>
+<p>There are 2 ways to publish. A straightforword one by calling <code>quarto publish</code>. And a more advanced one with github actions.</p>
+<p>Using my corporate PC, <code>quarto publish</code> fails so I will give github actions a try.</p>
+<section id="quarto-publish" class="level3">
+<h3 class="anchored" data-anchor-id="quarto-publish">quarto publish</h3>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> publish gh-pages</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>:heavy_check_mark: This is ok when publishing with home PC.</p>
+<p>:x: But fails when publishing with corporate PC.see below <a href="#quarto-publishing-issue-behind-firewall">quarto publishing issue behind firewall</a></p>
+<p>shared it with community at discord: <a href="https://discord.com/channels/689892369998676007/1020178609605984267/1020631703653462038" class="uri">https://discord.com/channels/689892369998676007/1020178609605984267/1020631703653462038</a></p>
+</section>
+<section id="github-actions" class="level3">
+<h3 class="anchored" data-anchor-id="github-actions">github actions</h3>
+<p>as explained in <a href="https://quarto.org/docs/publishing/github-pages.html#github-action" class="uri">https://quarto.org/docs/publishing/github-pages.html#github-action</a></p>
+<p>1st step is to decide where code is executed: * local execution and rendering * local execution with CI rendering * CI execution and rendering</p>
+<p>I think I will go for local execution and rendering.</p>
+<section id="freezing-computations" class="level4">
+<h4 class="anchored" data-anchor-id="freezing-computations">freezing computations</h4>
+<p>To be added to <code>_quarto.yml</code></p>
+<pre class="text"><code>execute:
+  freeze: auto</code></pre>
+<p>And then <code>quarto render</code></p>
+</section>
+<section id="publish-actions" class="level4">
+<h4 class="anchored" data-anchor-id="publish-actions">publish actions</h4>
+<p>Add a publish.yml GitHub Action to your project by creating this YAML file and saving it to .github/workflows/publish.yml:</p>
+<pre class="text"><code>on:
+  workflow_dispatch:
+  push:
+    branches: main
+
+name: Quarto Publish
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+
+      - name: Set up Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+
+      - name: Render and Publish
+        uses: quarto-dev/quarto-actions/publish@v2
+        with:
+          target: gh-pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}</code></pre>
+<p>We can now remove the publish command from <code>publish.sh</code></p>
+<p>And remove _site/ from <code>.gitignore</code></p>
+</section>
+</section>
+</section>
+</section>
+<section id="current-publication-process" class="level1">
+<h1>Current publication process</h1>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cat ..<span class="op">/</span>publish.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>NOW=`date '+%F_%H:%M'`;
+git add .
+git commit -m "$NOW"
+git push
+quarto publish gh-pages</code></pre>
+</div>
+</div>
+</section>
+<section id="issues-improvments" class="level1">
+<h1>Issues / improvments</h1>
+<section id="quarto-publishing-issue-behind-firewall" class="level2">
+<h2 class="anchored" data-anchor-id="quarto-publishing-issue-behind-firewall">quarto publishing issue behind firewall</h2>
+<p>Identical to error happening when installing quarto extension</p>
+<p><a href="https://github.com/quarto-ext/video/issues/27" class="uri">https://github.com/quarto-ext/video/issues/27</a></p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> quarto publish</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="ex">?</span> Publish update to: › https://castorfou.github.io/blog/ <span class="er">(</span><span class="ex">GitHub</span> Pages<span class="kw">)</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="ex">From</span> https://github.com/castorfou/blog</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a> <span class="ex">*</span> branch            gh-pages   <span class="at">-</span><span class="op">&gt;</span> FETCH_HEAD</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="ex">origin</span>  https://github.com/castorfou/blog.git <span class="er">(</span><span class="ex">fetch</span><span class="kw">)</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="ex">origin</span>  https://github.com/castorfou/blog.git <span class="er">(</span><span class="ex">push</span><span class="kw">)</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="ex">To</span> https://github.com/castorfou/blog.git</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a> <span class="ex">+</span> 0a3710d...1aeaf23 HEAD <span class="at">-</span><span class="op">&gt;</span> gh-pages <span class="er">(</span><span class="ex">forced</span> update<span class="kw">)</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="ex">fatal:</span> <span class="st">'fadc274b'</span> is not a working tree</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="ex">NOTE:</span> GitHub Pages sites use caching so you might need to click the refresh</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a><span class="ex">button</span> within your web browser to see changes after deployment.</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">\)</span> Deploying gh-pages branch to website <span class="er">(</span><span class="ex">this</span> may take a few minutes<span class="kw">)</span><span class="ex">Sending</span> fatal alert BadCertificate</span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a><span class="ex">[✓]</span> Deploying gh-pages branch to website <span class="er">(</span><span class="ex">this</span> may take a few minutes<span class="kw">)</span></span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a><span class="ex">ERROR:</span> TypeError: error sending request for url <span class="er">(</span><span class="ex">https://castorfou.github.io/blog/.nojekyll</span><span class="kw">)</span><span class="bu">:</span> error trying to connect: invalid peer certificate contents: invalid peer certificate: UnknownIssuer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>For context, I use quarto as a replacement of fastai/fastpages and followed a migration guide from Hamel Hussain asking for this installation.</p>
+<p>And I’m in a corporate environment with transparent proxies and self signed certificates. My system has updated CERT in /usr/local/share/ca-certificates/, and SSL_CERT_FILE environment variable pointing to updated corporate pem.</p>
+<pre><code>$ quarto install extension quarto-ext/lightbox
+Sending fatal alert BadCertificate
+ERROR: TypeError: error sending request for url (https://github.com/quarto-ext/lightbox/archive/refs/heads/main.tar.gz): error trying to connect: invalid peer certificate contents: invalid peer certificate: UnknownIssuer</code></pre>
+<p>It fails with the same message. When I run <code>quarto publish</code> I have the same issue.</p>
+<p>One option is to use github actions. Need to find what is this id used in _publish.yml</p>
+</section>
+<section id="workaround-inline-images-are-not-properly-rendered" class="level2">
+<h2 class="anchored" data-anchor-id="workaround-inline-images-are-not-properly-rendered">[workaround] inline images are not properly rendered</h2>
+<p>analysis made at <a href="../posts/2022-09-23-inline-images-with-quarto.html">inline images from jupyter with quarto</a></p>
+<p>short answer: use jupyter lab to blog</p>
+</section>
+<section id="albert-rapp-as-an-example" class="level2">
+<h2 class="anchored" data-anchor-id="albert-rapp-as-an-example">Albert Rapp as an example</h2>
+<p><a href="https://albert-rapp.de/posts/13_quarto_blog_writing_guide/13_quarto_blog_writing_guide.html" class="uri">https://albert-rapp.de/posts/13_quarto_blog_writing_guide/13_quarto_blog_writing_guide.html</a></p>
+</section>
+<section id="workaround-links-are-not-rendered-as-links" class="level2">
+<h2 class="anchored" data-anchor-id="workaround-links-are-not-rendered-as-links">[workaround] links are not rendered as links</h2>
+<p>in jupyter, just typing url turns it into a link. Not with quarto: <a href="https://castorfou.github.io/blog/" class="uri">https://castorfou.github.io/blog/</a></p>
+<p>anyway to do it ?</p>
+<p><a href="https://github.com/quarto-dev/quarto-cli/discussions/2609">https://github.com/quarto-dev/quarto-cli/discussions/2609</a></p>
+<section id="suggestions" class="level3">
+<h3 class="anchored" data-anchor-id="suggestions">suggestions</h3>
+<p>First one is to surround url with pointy braces ‘&lt;&gt;’</p>
+<p>Does it work: <a href="https://pandoc.org/MANUAL.html#links-1" class="uri">https://pandoc.org/MANUAL.html#links-1</a></p>
+<p>And better one (?) would be to run pandoc with <a href="https://pandoc.org/MANUAL.html#extension-autolink_bare_uris">autolink_bare_uris</a></p>
+<p>Just modifying <code>_quarto.yml</code> in ( format &gt; html &gt; from ) option</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2022-09-16-migrate%20blog%20from%20nbdev%20to%20quarto_files/figure-html/98d6bda2-f07a-4b7d-bfaf-68dc5f46130f.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

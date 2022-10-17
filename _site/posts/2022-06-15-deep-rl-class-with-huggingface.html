@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.189">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2022-06-15">
+<meta name="description" content="par Thomas Simonini">
+
+<title>blog - Deep RL class - huggingface</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">blog</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html">About</a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/"><i class="bi bi-github" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com"><i class="bi bi-twitter" role="img">
+</i> 
+ </a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Deep RL class - huggingface</h1>
+                  <div>
+        <div class="description">
+          par Thomas Simonini
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">reinforcement learning</div>
+                <div class="quarto-category">huggingface</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">June 15, 2022</p>
+      </div>
+    </div>
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#unit-1---introduction-to-deep-reinforcement-learning" id="toc-unit-1---introduction-to-deep-reinforcement-learning" class="nav-link active" data-scroll-target="#unit-1---introduction-to-deep-reinforcement-learning">Unit 1 - Introduction to Deep Reinforcement Learning</a></li>
+  <li><a href="#unit-2---introduction-to-q-learning" id="toc-unit-2---introduction-to-q-learning" class="nav-link" data-scroll-target="#unit-2---introduction-to-q-learning">Unit 2 - Introduction to Q-Learning</a></li>
+  <li><a href="#unit-3---deep-q-learning-with-atari-games" id="toc-unit-3---deep-q-learning-with-atari-games" class="nav-link" data-scroll-target="#unit-3---deep-q-learning-with-atari-games">Unit 3 - Deep Q-Learning with Atari Games</a></li>
+  <li><a href="#unit-4---an-introduction-to-unity-ml-agents-with-hugging-face" id="toc-unit-4---an-introduction-to-unity-ml-agents-with-hugging-face" class="nav-link" data-scroll-target="#unit-4---an-introduction-to-unity-ml-agents-with-hugging-face">Unit 4 - An Introduction to <strong>Unity ML-Agents with Hugging Face 🤗</strong></a></li>
+  <li><a href="#unit-5---policy-gradient-with-pytorch" id="toc-unit-5---policy-gradient-with-pytorch" class="nav-link" data-scroll-target="#unit-5---policy-gradient-with-pytorch">Unit 5 - Policy Gradient with PyTorch</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<p>Didn’t mention that but I have started <a href="https://github.com/huggingface/deep-rl-class">The Hugging Face Deep Reinforcement Learning Class</a> by Thomas Simonini.</p>
+<p>Thomas is now part of HuggingFace.</p>
+<p>1st step is to fork the repo, and for mine it is <a href="https://github.com/castorfou/deep-rl-class">here</a>.</p>
+<p>And clone it locally: <code>git clone git@github.com:castorfou/deep-rl-class.git</code> ou <code>git clone https://github.com/castorfou/deep-rl-class.git</code></p>
+<p>I followed the 1st unit in May/11.</p>
+<p>there is a community on discord at <a href="https://discord.gg/aYka4Yhff9">https://discord.gg/aYka4Yhff9</a>, with a lounge about RL.</p>
+<section id="unit-1---introduction-to-deep-reinforcement-learning" class="level1">
+<h1><a href="https://github.com/huggingface/deep-rl-class/tree/main/unit1">Unit 1</a> - Introduction to Deep Reinforcement Learning</h1>
+<section id="it-starts-with-some-general-introduction-to-deep-rl-and-then-a-quizz." class="level6">
+<h6 class="anchored" data-anchor-id="it-starts-with-some-general-introduction-to-deep-rl-and-then-a-quizz.">📖 It starts with some <a href="https://huggingface.co/blog/deep-rl-intro">general introduction to deep RL</a> and then a quizz.</h6>
+</section>
+<section id="st-practice-uses-this-lunar-lander-environment-and-you-train-a-ppo-agent-to-get-the-highest-score" class="level6">
+<h6 class="anchored" data-anchor-id="st-practice-uses-this-lunar-lander-environment-and-you-train-a-ppo-agent-to-get-the-highest-score">👩‍💻 1st practice uses this lunar lander environment, and you train a PPO agent to get the highest score,</h6>
+<ul>
+<li>and this runs on colab : <a href="https://github.com/huggingface/deep-rl-class/blob/main/unit1/unit1.ipynb">https://github.com/huggingface/deep-rl-class/blob/main/unit1/unit1.ipynb</a> (just by clicking on <img src="https://camo.githubusercontent.com/84f0493939e0c4de4e6dbe113251b4bfb5353e57134ffd9fcab6b8714514d4d1/68747470733a2f2f636f6c61622e72657365617263682e676f6f676c652e636f6d2f6173736574732f636f6c61622d62616467652e737667.png" class="img-fluid" alt="https://camo.githubusercontent.com/84f0493939e0c4de4e6dbe113251b4bfb5353e57134ffd9fcab6b8714514d4d1/68747470733a2f2f636f6c61622e72657365617263682e676f6f676c652e636f6d2f6173736574732f636f6c61622d62616467652e737667">)</li>
+<li>there is a leaderboard running under huggingface (one can publish models to huggingface) <a href="https://huggingface.co/spaces/chrisjay/Deep-Reinforcement-Learning-Leaderboard">https://huggingface.co/spaces/chrisjay/Deep-Reinforcement-Learning-Leaderboard</a> . Just need an huggingface account for that (used my Michelin account)</li>
+</ul>
+<p>A guide has been recently added explaining how to tune hyperparameters using optuna. 👉 <a href="https://github.com/huggingface/deep-rl-class/blob/main/unit1/unit1_optuna_guide.ipynb">https://github.com/huggingface/deep-rl-class/blob/main/unit1/unit1_optuna_guide.ipynb</a>. Should do it!</p>
+<p>To start unit2. Introduction to Q-Learning</p>
+<ul>
+<li>first update from fork just by clicking<img src="https://docs.github.com/assets/cb-33131/images/help/repository/fetch-upstream-drop-down.png" alt="&quot;Fetch upstream&quot; drop-down" style="zoom:15%;"></li>
+<li>and update your local repo (<code>git fetch</code> <code>git pull</code>)</li>
+</ul>
+</section>
+</section>
+<section id="unit-2---introduction-to-q-learning" class="level1">
+<h1><a href="https://github.com/huggingface/deep-rl-class/tree/main/unit2">Unit 2</a> - Introduction to Q-Learning</h1>
+<section id="part-1---we-learned-about-the-value-based-methods-and-the-difference-between-monte-carlo-and-temporal-difference-learning.-then-a-quizz-easy-one" class="level6">
+<h6 class="anchored" data-anchor-id="part-1---we-learned-about-the-value-based-methods-and-the-difference-between-monte-carlo-and-temporal-difference-learning.-then-a-quizz-easy-one">📖 <a href="https://huggingface.co/blog/deep-rl-q-part1">part 1</a> - we learned about the value-based methods and the difference between Monte Carlo and Temporal Difference Learning. Then a quizz (easy one)</h6>
+</section>
+<section id="part-2---and-then-q-learning-which-is-an-off-policy-value-based-method-that-uses-a-td-approach-to-train-its-action-value-function.-then-a-quizz-less-easier" class="level6">
+<h6 class="anchored" data-anchor-id="part-2---and-then-q-learning-which-is-an-off-policy-value-based-method-that-uses-a-td-approach-to-train-its-action-value-function.-then-a-quizz-less-easier">📖 <a href="https://huggingface.co/blog/deep-rl-q-part2">part 2</a> - and then Q-learning which is an <strong>off-policy value-based method that uses a TD approach to train its action-value function</strong>. Then a quizz (less easier)</h6>
+</section>
+<section id="hands-on.-1st-algo-frozenlake-is-published-in-guillaume63q-frozenlake-v1-4x4-noslippery.-2nd-algo-taxi-is-published-in-guillaume63q-taxi-v3.-leaderboard-is-here" class="level6">
+<h6 class="anchored" data-anchor-id="hands-on.-1st-algo-frozenlake-is-published-in-guillaume63q-frozenlake-v1-4x4-noslippery.-2nd-algo-taxi-is-published-in-guillaume63q-taxi-v3.-leaderboard-is-here">👩‍💻 <a href="https://colab.research.google.com/github/huggingface/deep-rl-class/blob/main/unit2/unit2.ipynb">hands-on</a>. 1st algo (FrozenLake) is published in <a href="https://huggingface.co/Guillaume63/q-FrozenLake-v1-4x4-noSlippery">Guillaume63/q-FrozenLake-v1-4x4-noSlippery</a>. 2nd algo (Taxi) is published in <a href="https://huggingface.co/Guillaume63/q-Taxi-v3">Guillaume63/q-Taxi-v3</a>. Leaderboard is <a href="https://huggingface.co/spaces/chrisjay/Deep-Reinforcement-Learning-Leaderboard">here</a></h6>
+</section>
+</section>
+<section id="unit-3---deep-q-learning-with-atari-games" class="level1">
+<h1><a href="https://github.com/huggingface/deep-rl-class/tree/main/unit3">Unit 3</a> - Deep Q-Learning with Atari Games</h1>
+<section id="the-deep-q-learning-chapter-httpshuggingface.coblogdeep-rl-dqn" class="level6">
+<h6 class="anchored" data-anchor-id="the-deep-q-learning-chapter-httpshuggingface.coblogdeep-rl-dqn">📖 The Deep Q-Learning chapter 👾 👉 <a href="https://huggingface.co/blog/deep-rl-dqn">https://huggingface.co/blog/deep-rl-dqn</a></h6>
+</section>
+<section id="start-the-hands-on-here-httpscolab.research.google.comgithubhuggingfacedeep-rl-classblobmainunit3unit3.ipynb" class="level6">
+<h6 class="anchored" data-anchor-id="start-the-hands-on-here-httpscolab.research.google.comgithubhuggingfacedeep-rl-classblobmainunit3unit3.ipynb">👩‍💻 Start the hands-on here 👉 <a href="https://colab.research.google.com/github/huggingface/deep-rl-class/blob/main/unit3/unit3.ipynb">https://colab.research.google.com/github/huggingface/deep-rl-class/blob/main/unit3/unit3.ipynb</a></h6>
+<p>from discord, a video (30’) by Antonin Raffin about <a href="https://www.youtube.com/watch?v=AidFTOdGNFQ">Automatic Hyperparameter Optimization @ ICRA 22 - Tools for Robotic RL 6/8</a>. Never thought about it that way, it can help to speed training phase.</p>
+<p>from discord as well a video to build a <a href="https://www.youtube.com/watch?v=eBCU-tqLGfQ">doom ai model</a> (3 hours!)</p>
+<p>and from discord a lecture from Pieter Abbeel explaining Q-value to DQN and why we have this double network at <a href="https://www.youtube.com/watch?v=Psrhxy88zww">L2 Deep Q-Learning (Foundations of Deep RL Series</a>. This is part of a larger lecture available at <a href="https://www.youtube.com/watch?v=2GwBez0D20A&amp;list=PLwRJQ4m4UJjNymuBM9RdmB3Z9N5-0IlY0">Foundations of Deep RL – 6-lecture series by Pieter Abbeel</a></p>
+<p>And then a video explaining <a href="https://agarwl.github.io/rliable/">Deep RL at the Edge of the Statistical Precipice</a>. This was from a paper at Neurips.</p>
+</section>
+</section>
+<section id="unit-4---an-introduction-to-unity-ml-agents-with-hugging-face" class="level1">
+<h1><a href="https://github.com/huggingface/deep-rl-class/tree/main/unit4">Unit 4</a> - An Introduction to <strong>Unity ML-Agents with Hugging Face 🤗</strong></h1>
+<section id="tutorial-httpslink.medium.comkopvpdyz4qb" class="level6">
+<h6 class="anchored" data-anchor-id="tutorial-httpslink.medium.comkopvpdyz4qb">📖 <strong>tutorial</strong> 👉 <a href="https://link.medium.com/KOpvPdyz4qb" class="uri">https://link.medium.com/KOpvPdyz4qb</a></h6>
+<p>Thomas starts with evolutions on RL domain, citing <a href="https://huggingface.co/blog/decision-transformers">Decision Transformers</a> as one of the last hot topic. And then introduces Unity and how it can now be used with RL agents.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://miro.medium.com/max/1400/0*kYixBHKWwmY65Mg_.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">unity ML-Agents toolkit</figcaption><p></p>
+</figure>
+</div>
+<p>Interesting idea to introduce <a href="https://medium.com/data-from-the-trenches/curiosity-driven-learning-through-next-state-prediction-f7f4e2f592fa">curiosity</a> and to make it real as an intrinsic reward.</p>
+<blockquote class="blockquote">
+<p><em>Note: It guided me to gentle introductions to <a href="https://machinelearningmastery.com/cross-entropy-for-machine-learning/">cross-entropy for machine learning</a> and <a href="https://machinelearningmastery.com/what-is-information-entropy/">information entropy</a>.</em></p>
+<ul>
+<li><p><em><strong>Low Probability Event</strong> (surprising): More information. High entropy.</em></p></li>
+<li><p><em><strong>Higher Probability Event</strong> (unsurprising): Less information. Low entropy.</em></p></li>
+<li><p><em><strong>Skewed Probability Distribution</strong> (unsurprising): Low entropy.</em></p></li>
+<li><p><em><strong>Balanced Probability Distribution</strong> (surprising): High entropy.</em></p></li>
+</ul>
+<p>$$ Information:</p>
+<p>\h(x)=-(P(x)) $$</p>
+<p><span class="math display">\[
+Entropy:
+\\H(X) = – \sum_{x \in X} P(x)  \log(P(x))
+\]</span></p>
+<p><span class="math display">\[
+Cross-Entropy:\\H(P, Q) = – \sum_{x \in X} P(x)  \log(Q(x))
+\]</span></p>
+<p>Cross-Entropy and KL divergence are similar but not exactly the same. Specifically, the KL divergence measures a very similar quantity to cross-entropy. It measures the average number of extra bits required to represent a message with Q instead of P, not the total number of bits.</p>
+<p><span class="math display">\[
+KL\ Divergence\ (relative\ entropy):
+\\KL(P||Q)=– \sum_{x \in X} P(x)  \frac{\log(Q(x))}{\log(P(x))}
+\\H(P, Q) = H(P) + KL(P || Q)
+\]</span></p>
+</blockquote>
+</section>
+<section id="here-are-the-steps-for-the-training" class="level6">
+<h6 class="anchored" data-anchor-id="here-are-the-steps-for-the-training">👩‍💻 Here are the steps for the training:</h6>
+<ul>
+<li>clone repo and install environment</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># from ~/git/guillaume</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/huggingface/ml-agents/</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># bug with python 3.9 - https://github.com/Unity-Technologies/ml-agents/issues/5689</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> create  <span class="at">--name</span> ml-agents python=3.8</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate ml-agents</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Go inside the repository and install the package </span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ml-agents </span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-e</span> ./ml-agents-envs </span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-e</span> ./ml-agents</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>download the Environment Executable (pyramids from <a href="https://drive.google.com/drive/folders/1cjUOCB6gikJHmOnoQ5R9oM7-_zAFXuA2">google drive</a>)</li>
+</ul>
+<p>Unzip it and place it inside the MLAgents cloned repo <strong>in a new folder called trained-envs-executables/linux</strong></p>
+<ul>
+<li>modify nbr of steps to 1000000 in <code>config/ppo/PyramidsRND.yaml</code></li>
+<li>train</li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mlagents-learn</span> config/ppo/PyramidsRND.yaml <span class="at">--env</span><span class="op">=</span>training-envs-executables/linux/Pyramids/Pyramids <span class="at">--run-id</span><span class="op">=</span><span class="st">"First Training"</span> <span class="at">--no-graphics</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>monitor training</li>
+</ul>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">tensorboard</span> <span class="at">--logdir</span> results <span class="at">--port</span> 6006</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>(auto reload is off by default this day, click settings and check Reload data) (because I have installed v2.3.0 and not 2.4.0, there is <a href="https://github.com/tensorflow/tensorboard/issues/1946">no autofit domain to data</a> and it is annoying)</p>
+<ul>
+<li>push to 🤗 Hub</li>
+</ul>
+<p>Create a new token (<a href="https://huggingface.co/settings/tokens" class="uri">https://huggingface.co/settings/tokens</a>) <strong>with write role</strong></p>
+<p>Copy the token, Run this and past the token <code>huggingface-cli login</code></p>
+<p>Push to Hub</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mlagents-push-to-hf</span> <span class="at">--run-id</span><span class="op">=</span><span class="st">'First Training'</span> <span class="at">--local-dir</span><span class="op">=</span><span class="st">'results/First Training'</span> <span class="at">--repo-id</span><span class="op">=</span><span class="st">'Guillaume63/MLAgents-Pyramids'</span> <span class="at">--commit-message</span><span class="op">=</span><span class="st">'Trained pyramids agent upload'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>and now I can play it from <a href="https://huggingface.co/Guillaume63/MLAgents-Pyramids">https://huggingface.co/Guillaume63/MLAgents-Pyramids</a> and watch your Agent play…</p>
+</section>
+</section>
+<section id="unit-5---policy-gradient-with-pytorch" class="level1">
+<h1><a href="https://github.com/huggingface/deep-rl-class/tree/main/unit5">Unit 5</a> - Policy Gradient with PyTorch</h1>
+<section id="read-policy-gradient-with-pytorch-chapter." class="level6">
+<h6 class="anchored" data-anchor-id="read-policy-gradient-with-pytorch-chapter.">1️⃣ 📖 <strong>Read <a href="https://huggingface.co/blog/deep-rl-pg">Policy Gradient with PyTorch Chapter</a></strong>.</h6>
+<p>Advantage and disadvantage of policy gradient vs DQN.</p>
+<p>Reinforce algorithm (Monte Carlo policy gradient): it uses an estimated return from an entire episode to update the policy parameters.</p>
+<p>The output of it is a probability distribution of actions. And we try to maximize J(θ) which is this estimated return. (details of Policy Gradient theorem in this <a href="https://www.youtube.com/watch?v=AKbX1Zvo7r8&amp;ab_channel=PieterAbbeel">video</a> from Pieter Abbeel)</p>
+<p>We will update weights using this gradient: <span class="math display">\[
+\theta \gets  \theta + \alpha\nabla_\theta J(\theta)
+\]</span> <img src="https://huggingface.co/blog/assets/85_policy_gradient/pg.jpg" class="img-fluid"></p>
+<ul>
+<li><p><span class="math inline">\(\nabla_\theta\log\pi_\theta(a_t \| s_t)\)</span> is the direction of <strong>steepest increase of the (log) probability</strong> of selecting action at from state <span class="math inline">\(s_t\)</span>. =&gt; This tells use <strong>how we should change the weights of policy</strong> if we want to increase/decrease the log probability of selecting action at state <span class="math inline">\(s_t\)</span>.</p></li>
+<li><p><span class="math inline">\(R(\tau)\)</span> is the scoring function:</p>
+<ul>
+<li>If the return is high, it will push up the probabilities of the (state, action) combinations.</li>
+<li>Else, if the return is low, it will push down the probabilities of the (state, action) combinations.</li>
+</ul></li>
+</ul>
+</section>
+<section id="then-dive-on-the-hands-on-where-youll-code-your-first-deep-reinforcement-learning-algorithm-from-scratch-reinforce." class="level6">
+<h6 class="anchored" data-anchor-id="then-dive-on-the-hands-on-where-youll-code-your-first-deep-reinforcement-learning-algorithm-from-scratch-reinforce.">2️⃣ 👩‍💻 Then dive on the hands-on where you’ll <strong>code your first Deep Reinforcement Learning algorithm from scratch: Reinforce</strong>.</h6>
+<p>👉 <a href="https://colab.research.google.com/github/huggingface/deep-rl-class/blob/main/unit5/unit5.ipynb">https://colab.research.google.com/github/huggingface/deep-rl-class/blob/main/unit5/unit5.ipynb</a></p>
+<p>1st model is Cartpole. After training on 10’000 episodes, perfect score of 500 +- 0. Thomas pointed me to a <a href="https://www.youtube.com/watch?v=Ikngt0_DXJg&amp;ab_channel=ANITIToulouse">video</a> (3h) from Aniti where Antonin Raffin gives some tips and tricks. And points to many papers such as <a href="https://arxiv.org/abs/1709.06560">Deep Reinforcement Learning that Matters</a> (in zotero)</p>
+<p>2nd model is Pixelcopter. High level of variance in perf. Recommended by Thomas to tune hyper parameters (optuna?).</p>
+<p>3rd model is Pong.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

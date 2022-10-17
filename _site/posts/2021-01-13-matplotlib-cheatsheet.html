@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.189">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2021-01-13">
+<meta name="description" content="so much options">
+
+<title>blog - matplotlib cheatsheet</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">blog</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html">About</a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/"><i class="bi bi-github" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com"><i class="bi bi-twitter" role="img">
+</i> 
+ </a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">matplotlib cheatsheet</h1>
+                  <div>
+        <div class="description">
+          so much options
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">visualization</div>
+                <div class="quarto-category">matplotlib</div>
+                <div class="quarto-category">cheatsheet</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">January 13, 2021</p>
+      </div>
+    </div>
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction-to-data-visualization-with-matplotlib" id="toc-introduction-to-data-visualization-with-matplotlib" class="nav-link active" data-scroll-target="#introduction-to-data-visualization-with-matplotlib">Introduction to Data Visualization with Matplotlib</a>
+  <ul class="collapse">
+  <li><a href="#introduction-to-matplotlib" id="toc-introduction-to-matplotlib" class="nav-link" data-scroll-target="#introduction-to-matplotlib">Introduction to Matplotlib</a>
+  <ul class="collapse">
+  <li><a href="#introduction-to-data-visualization-with-matplotlib-1" id="toc-introduction-to-data-visualization-with-matplotlib-1" class="nav-link" data-scroll-target="#introduction-to-data-visualization-with-matplotlib-1">Introduction to data visualization with Matplotlib</a></li>
+  <li><a href="#customizing-your-plots" id="toc-customizing-your-plots" class="nav-link" data-scroll-target="#customizing-your-plots">Customizing your plots</a></li>
+  <li><a href="#small-multiples" id="toc-small-multiples" class="nav-link" data-scroll-target="#small-multiples">Small multiples</a></li>
+  </ul></li>
+  <li><a href="#plotting-time-series" id="toc-plotting-time-series" class="nav-link" data-scroll-target="#plotting-time-series">Plotting time-series</a>
+  <ul class="collapse">
+  <li><a href="#plotting-time-series-data" id="toc-plotting-time-series-data" class="nav-link" data-scroll-target="#plotting-time-series-data">Plotting time-series data</a></li>
+  <li><a href="#plotting-time-series-with-different-variables" id="toc-plotting-time-series-with-different-variables" class="nav-link" data-scroll-target="#plotting-time-series-with-different-variables">Plotting time-series with different variables</a></li>
+  <li><a href="#annotating-time-series-data" id="toc-annotating-time-series-data" class="nav-link" data-scroll-target="#annotating-time-series-data">Annotating time-series data</a></li>
+  </ul></li>
+  <li><a href="#quantitative-comparisons-and-statistical-visualizations" id="toc-quantitative-comparisons-and-statistical-visualizations" class="nav-link" data-scroll-target="#quantitative-comparisons-and-statistical-visualizations">Quantitative comparisons and statistical visualizations</a>
+  <ul class="collapse">
+  <li><a href="#quantitative-comparisons-bar-charts" id="toc-quantitative-comparisons-bar-charts" class="nav-link" data-scroll-target="#quantitative-comparisons-bar-charts">Quantitative comparisons: bar-charts</a></li>
+  <li><a href="#quantitative-comparisons-histograms" id="toc-quantitative-comparisons-histograms" class="nav-link" data-scroll-target="#quantitative-comparisons-histograms">Quantitative comparisons: histograms</a></li>
+  <li><a href="#statistical-plotting" id="toc-statistical-plotting" class="nav-link" data-scroll-target="#statistical-plotting">Statistical plotting</a></li>
+  <li><a href="#quantitative-comparisons-scatter-plots" id="toc-quantitative-comparisons-scatter-plots" class="nav-link" data-scroll-target="#quantitative-comparisons-scatter-plots">Quantitative comparisons: scatter plots</a></li>
+  </ul></li>
+  <li><a href="#sharing-visualizations-with-others" id="toc-sharing-visualizations-with-others" class="nav-link" data-scroll-target="#sharing-visualizations-with-others">Sharing visualizations with others</a>
+  <ul class="collapse">
+  <li><a href="#preparing-your-figures-to-share-with-others" id="toc-preparing-your-figures-to-share-with-others" class="nav-link" data-scroll-target="#preparing-your-figures-to-share-with-others">Preparing your figures to share with others</a></li>
+  <li><a href="#saving-your-visualizations" id="toc-saving-your-visualizations" class="nav-link" data-scroll-target="#saving-your-visualizations">Saving your visualizations</a></li>
+  <li><a href="#automating-figures-from-data" id="toc-automating-figures-from-data" class="nav-link" data-scroll-target="#automating-figures-from-data">Automating figures from data</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<section id="introduction-to-data-visualization-with-matplotlib" class="level1">
+<h1>Introduction to Data Visualization with Matplotlib</h1>
+<p><a href="../files/matplotlib_cheatsheet.pdf">matplotlib cheatsheet</a> in pdf</p>
+<p><a href="https://github.com/castorfou/data-scientist-skills/tree/master/04%20-%20data-scientist-with-python%20new-track/Introduction%20to%20Data%20Visualization%20with%20Matplotlib">pdf lecture in github</a></p>
+<section id="introduction-to-matplotlib" class="level2">
+<h2 class="anchored" data-anchor-id="introduction-to-matplotlib">Introduction to Matplotlib</h2>
+<section id="introduction-to-data-visualization-with-matplotlib-1" class="level3">
+<h3 class="anchored" data-anchor-id="introduction-to-data-visualization-with-matplotlib-1">Introduction to data visualization with Matplotlib</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Introducing the pyplot interface</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Adding data to axes</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>ax.plot(seattle_weather[<span class="st">"MONTH"</span>], seattle_weather[<span class="st">"MLY-TAVG-NORMAL"</span>])</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="customizing-your-plots" class="level3">
+<h3 class="anchored" data-anchor-id="customizing-your-plots">Customizing your plots</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Adding markers</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>ax.plot(seattle_weather[<span class="st">"MONTH"</span>],</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>seattle_weather[<span class="st">"MLY-PRCP-NORMAL"</span>],</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>marker<span class="op">=</span><span class="st">"o"</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Choosing markers</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>ax.plot(seattle_weather[<span class="st">"MONTH"</span>],</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>seattle_weather[<span class="st">"MLY-PRCP-NORMAL"</span>],</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>marker<span class="op">=</span><span class="st">"v"</span>)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><a href="https://matplotlib.org/api/markers_api.html">markers</a></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Setting the linestyle</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>ax.plot(seattle_weather[<span class="st">"MONTH"</span>],</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>seattle_weather[<span class="st">"MLY-TAVG-NORMAL"</span>],</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>marker<span class="op">=</span><span class="st">"v"</span>, linestyle<span class="op">=</span><span class="st">"--"</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><a href="https://matplotlib.org/gallery/lines_bars_and_markers/line_styles_reference.html">line style</a></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Eliminating lines with linestyle</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>ax.plot(seattle_weather[<span class="st">"MONTH"</span>],</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>seattle_weather[<span class="st">"MLY-TAVG-NORMAL"</span>],</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>marker<span class="op">=</span><span class="st">"v"</span>, linestyle<span class="op">=</span><span class="st">"None"</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Choosing color</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>ax.plot(seattle_weather[<span class="st">"MONTH"</span>],</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>seattle_weather[<span class="st">"MLY-TAVG-NORMAL"</span>],</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>marker<span class="op">=</span><span class="st">"v"</span>, linestyle<span class="op">=</span><span class="st">"--"</span>, color<span class="op">=</span><span class="st">"r"</span>)</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Customizing the axes labels</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">"Time (months)"</span>)</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Setting the y axis label</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">"Time (months)"</span>)</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"Average temperature (Fahrenheit degrees)"</span>)</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Adding a title</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">"Weather in Seattle"</span>)</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="small-multiples" class="level3">
+<h3 class="anchored" data-anchor-id="small-multiples">Small multiples</h3>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Small multiples with plt.subplots</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">3</span>, <span class="dv">2</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Adding data to subplots</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>ax.shape</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>(<span class="dv">3</span>, <span class="dv">2</span>)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>, <span class="dv">0</span>].plot(seattle_weather[<span class="st">"MONTH"</span>],seattle_weather[<span class="st">"MLY-PRCP-NORMAL"</span>],color<span class="op">=</span><span class="st">'b'</span>)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Subplots with data</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">1</span>)</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].plot(seattle_weather[<span class="st">"MONTH"</span>], seattle_weather[<span class="st">"MLY-PRCP-NORMAL"</span>],color<span class="op">=</span><span class="st">'b'</span>)</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].plot(seattle_weather[<span class="st">"MONTH"</span>], seattle_weather[<span class="st">"MLY-PRCP-25PCTL"</span>],linestyle<span class="op">=</span><span class="st">'--'</span>, color<span class="op">=</span><span class="st">'b'</span>)</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].plot(seattle_weather[<span class="st">"MONTH"</span>], seattle_weather[<span class="st">"MLY-PRCP-75PCTL"</span>],linestyle<span class="op">=</span><span class="st">'--'</span>, color<span class="op">=</span><span class="st">'b'</span>)</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].plot(austin_weather[<span class="st">"MONTH"</span>], austin_weather[<span class="st">"MLY-PRCP-NORMAL"</span>],color<span class="op">=</span><span class="st">'r'</span>)</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].plot(austin_weather[<span class="st">"MONTH"</span>], austin_weather[<span class="st">"MLY-PRCP-25PCTL"</span>],linestyle<span class="op">=</span><span class="st">'--'</span>, color<span class="op">=</span><span class="st">'r'</span>)</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].plot(austin_weather[<span class="st">"MONTH"</span>], austin_weather[<span class="st">"MLY-PRCP-75PCTL"</span>],linestyle<span class="op">=</span><span class="st">'--'</span>, color<span class="op">=</span><span class="st">'r'</span>)</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_ylabel(<span class="st">"Precipitation (inches)"</span>)</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_ylabel(<span class="st">"Precipitation (inches)"</span>)</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_xlabel(<span class="st">"Time (months)"</span>)</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Sharing the y-axis range</span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">1</span>, sharey<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="plotting-time-series" class="level2">
+<h2 class="anchored" data-anchor-id="plotting-time-series">Plotting time-series</h2>
+<section id="plotting-time-series-data" class="level3">
+<h3 class="anchored" data-anchor-id="plotting-time-series-data">Plotting time-series data</h3>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># DateTimeIndex</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>climate_change.index</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>DatetimeIndex([<span class="st">'1958-03-06'</span>, <span class="st">'1958-04-06'</span>, <span class="st">'1958-05-06'</span>, <span class="st">'1958-06-06'</span>,</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>     dtype<span class="op">=</span><span class="st">'datetime64[ns]'</span>, name<span class="op">=</span><span class="st">'date'</span>, length<span class="op">=</span><span class="dv">706</span>, freq<span class="op">=</span><span class="va">None</span>)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>               </span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>               </span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting time-series data</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>ax.plot(climate_change.index, climate_change[<span class="st">'co2'</span>])</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'Time'</span>)</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'CO2 (ppm)'</span>)</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Zooming in on a decade</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>sixties <span class="op">=</span> climate_change[<span class="st">"1960-01-01"</span>:<span class="st">"1969-12-31"</span>]</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>ax.plot(sixties.index, sixties[<span class="st">'co2'</span>])</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'Time'</span>)</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'CO2 (ppm)'</span>)</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Zooming in on one year</span></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>sixty_nine <span class="op">=</span> climate_change[<span class="st">"1969-01-01"</span>:<span class="st">"1969-12-31"</span>]</span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>ax.plot(sixty_nine.index, sixty_nine[<span class="st">'co2'</span>])</span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'Time'</span>)</span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'CO2 (ppm)'</span>)</span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="plotting-time-series-with-different-variables" class="level3">
+<h3 class="anchored" data-anchor-id="plotting-time-series-with-different-variables">Plotting time-series with different variables</h3>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting two time-series together</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>ax.plot(climate_change.index, climate_change[<span class="st">"co2"</span>])</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>ax.plot(climate_change.index, climate_change[<span class="st">"relative_temp"</span>])</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'Time'</span>)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'CO2 (ppm) / Relative temperature'</span>)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Using twin axes</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>ax.plot(climate_change.index, climate_change[<span class="st">"co2"</span>])</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'Time'</span>)</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'CO2 (ppm)'</span>)</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>ax2 <span class="op">=</span> ax.twinx()</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>ax2.plot(climate_change.index, climate_change[<span class="st">"relative_temp"</span>])</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>ax2.set_ylabel(<span class="st">'Relative temperature (Celsius)'</span>)</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Separating variables by color</span></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>ax.plot(climate_change.index, climate_change[<span class="st">"co2"</span>], color<span class="op">=</span><span class="st">'blue'</span>)</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'Time'</span>)</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'CO2 (ppm)'</span>, color<span class="op">=</span><span class="st">'blue'</span>)</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>ax2 <span class="op">=</span> ax.twinx()</span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>ax2.plot(climate_change.index, climate_change[<span class="st">"relative_temp"</span>],</span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>color<span class="op">=</span><span class="st">'red'</span>)</span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>ax2.set_ylabel(<span class="st">'Relative temperature (Celsius)'</span>, color<span class="op">=</span><span class="st">'red'</span>)</span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Coloring the ticks</span></span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>ax.plot(climate_change.index, climate_change[<span class="st">"co2"</span>],</span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>color<span class="op">=</span><span class="st">'blue'</span>)</span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'Time'</span>)</span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'CO2 (ppm)'</span>, color<span class="op">=</span><span class="st">'blue'</span>)</span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a>ax.tick_params(<span class="st">'y'</span>, colors<span class="op">=</span><span class="st">'blue'</span>)</span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a>ax2 <span class="op">=</span> ax.twinx()</span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a>ax2.plot(climate_change.index,</span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a>climate_change[<span class="st">"relative_temp"</span>],</span>
+<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a>color<span class="op">=</span><span class="st">'red'</span>)</span>
+<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a>ax2.set_ylabel(<span class="st">'Relative temperature (Celsius)'</span>,</span>
+<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a>color<span class="op">=</span><span class="st">'red'</span>)</span>
+<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a>ax2.tick_params(<span class="st">'y'</span>, colors<span class="op">=</span><span class="st">'red'</span>)</span>
+<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a><span class="co"># A function that plots time-series</span></span>
+<span id="cb7-48"><a href="#cb7-48" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_timeseries(axes, x, y, color, xlabel, ylabel):</span>
+<span id="cb7-49"><a href="#cb7-49" aria-hidden="true" tabindex="-1"></a>    axes.plot(x, y, color<span class="op">=</span>color)</span>
+<span id="cb7-50"><a href="#cb7-50" aria-hidden="true" tabindex="-1"></a>    axes.set_xlabel(xlabel)</span>
+<span id="cb7-51"><a href="#cb7-51" aria-hidden="true" tabindex="-1"></a>    axes.set_ylabel(ylabel, color<span class="op">=</span>color)</span>
+<span id="cb7-52"><a href="#cb7-52" aria-hidden="true" tabindex="-1"></a>    axes.tick_params(<span class="st">'y'</span>, colors<span class="op">=</span>color)</span>
+<span id="cb7-53"><a href="#cb7-53" aria-hidden="true" tabindex="-1"></a><span class="co"># Using our function</span></span>
+<span id="cb7-54"><a href="#cb7-54" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb7-55"><a href="#cb7-55" aria-hidden="true" tabindex="-1"></a>plot_timeseries(ax, climate_change.index, climate_change[<span class="st">'co2'</span>],<span class="st">'blue'</span>, <span class="st">'Time'</span>, <span class="st">'CO2 (ppm)'</span>)</span>
+<span id="cb7-56"><a href="#cb7-56" aria-hidden="true" tabindex="-1"></a>ax2 <span class="op">=</span> ax.twinx()</span>
+<span id="cb7-57"><a href="#cb7-57" aria-hidden="true" tabindex="-1"></a>plot_timeseries(ax, climate_change.index,climate_change[<span class="st">'relative_temp'</span>],<span class="st">'red'</span>, <span class="st">'Time'</span>, <span class="st">'Relative temperature (Celsius)'</span>)</span>
+<span id="cb7-58"><a href="#cb7-58" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="annotating-time-series-data" class="level3">
+<h3 class="anchored" data-anchor-id="annotating-time-series-data">Annotating time-series data</h3>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Annotation</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>plot_timeseries(ax, climate_change.index, climate_change[<span class="st">'co2'</span>],</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="st">'blue'</span>, <span class="st">'Time'</span>, <span class="st">'CO2 (ppm)'</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>ax2 <span class="op">=</span> ax.twinx()</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>plot_timeseries(ax2, climate_change.index,</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>climate_change[<span class="st">'relative_temp'</span>],</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="st">'red'</span>, <span class="st">'Time'</span>, <span class="st">'Relative temperature (Celsius)'</span>)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>ax2.annotate(<span class="st">"&gt;1 degree"</span>,</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>xy<span class="op">=</span>[pd.TimeStamp(<span class="st">"2015-10-06"</span>), <span class="dv">1</span>])</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Positioning the text</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>ax2.annotate(<span class="st">"&gt;1 degree"</span>,</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>xy<span class="op">=</span>(pd.Timestamp(<span class="st">'2015-10-06'</span>), <span class="dv">1</span>),</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>xytext<span class="op">=</span>(pd.Timestamp(<span class="st">'2008-10-06'</span>), <span class="op">-</span><span class="fl">0.2</span>))</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Adding arrows to annotation</span></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>ax2.annotate(<span class="st">"&gt;1 degree"</span>,</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>xy<span class="op">=</span>(pd.Timestamp(<span class="st">'2015-10-06'</span>), <span class="dv">1</span>),</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>xytext<span class="op">=</span>(pd.Timestamp(<span class="st">'2008-10-06'</span>), <span class="op">-</span><span class="fl">0.2</span>),</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>arrowprops<span class="op">=</span>{})</span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Customizing arrow properties</span></span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>ax2.annotate(<span class="st">"&gt;1 degree"</span>,</span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>xy<span class="op">=</span>(pd.Timestamp(<span class="st">'2015-10-06'</span>), <span class="dv">1</span>),</span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>xytext<span class="op">=</span>(pd.Timestamp(<span class="st">'2008-10-06'</span>), <span class="op">-</span><span class="fl">0.2</span>),</span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>arrowprops<span class="op">=</span>{<span class="st">"arrowstyle"</span>:<span class="st">"-&gt;"</span>, <span class="st">"color"</span>:<span class="st">"gray"</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><a href="https://matplotlib.org/tutorials/text/annotations.html">Customizing annotations</a></p>
+</section>
+</section>
+<section id="quantitative-comparisons-and-statistical-visualizations" class="level2">
+<h2 class="anchored" data-anchor-id="quantitative-comparisons-and-statistical-visualizations">Quantitative comparisons and statistical visualizations</h2>
+<section id="quantitative-comparisons-bar-charts" class="level3">
+<h3 class="anchored" data-anchor-id="quantitative-comparisons-bar-charts">Quantitative comparisons: bar-charts</h3>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Olympic medals: visualizing the data</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>medals <span class="op">=</span> pd.read_csv(<span class="st">'medals_by_country_2016.csv'</span>, index_col<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>ax.bar(medals.index, medals[<span class="st">"Gold"</span>])</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Interlude: rotate the tick labels</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>ax.bar(medals.index, medals[<span class="st">"Gold"</span>])</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>ax.set_xticklabels(medals.index, rotation<span class="op">=</span><span class="dv">90</span>)</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"Number of medals"</span>)</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Olympic medals: visualizing the other medals : stacked bar chart</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>ax.bar(medals.index, medals[<span class="st">"Gold"</span>])</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>ax.bar(medals.index, medals[<span class="st">"Silver"</span>], bottom<span class="op">=</span>medals[<span class="st">"Gold"</span>])</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>ax.set_xticklabels(medals.index, rotation<span class="op">=</span><span class="dv">90</span>)</span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"Number of medals"</span>)</span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Olympic medals: visualizing all three</span></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots</span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>ax.bar(medals.index, medals[<span class="st">"Gold"</span>])</span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>ax.bar(medals.index, medals[<span class="st">"Silver"</span>], bottom<span class="op">=</span>medals[<span class="st">"Gold"</span>])</span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>ax.bar(medals.index, medals[<span class="st">"Bronze"</span>],</span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>bottom<span class="op">=</span>medals[<span class="st">"Gold"</span>] <span class="op">+</span> medals[<span class="st">"Silver"</span>])</span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>ax.set_xticklabels(medals.index, rotation<span class="op">=</span><span class="dv">90</span>)</span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"Number of medals"</span>)</span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Adding a legend</span></span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots</span>
+<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>ax.bar(medals.index, medals[<span class="st">"Gold"</span>], label<span class="op">=</span><span class="st">"Gold"</span>)</span>
+<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a>ax.bar(medals.index, medals[<span class="st">"Silver"</span>], bottom<span class="op">=</span>medals[<span class="st">"Gold"</span>],</span>
+<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a>label<span class="op">=</span><span class="st">"Silver"</span>)</span>
+<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a>ax.bar(medals.index, medals[<span class="st">"Bronze"</span>],</span>
+<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a>bottom<span class="op">=</span>medals[<span class="st">"Gold"</span>] <span class="op">+</span> medals[<span class="st">"Silver"</span>],</span>
+<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a>label<span class="op">=</span><span class="st">"Bronze"</span>)</span>
+<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a>ax.set_xticklabels(medals.index, rotation<span class="op">=</span><span class="dv">90</span>)</span>
+<span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"Number of medals"</span>)</span>
+<span id="cb9-43"><a href="#cb9-43" aria-hidden="true" tabindex="-1"></a>ax.legend()</span>
+<span id="cb9-44"><a href="#cb9-44" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="quantitative-comparisons-histograms" class="level3">
+<h3 class="anchored" data-anchor-id="quantitative-comparisons-histograms">Quantitative comparisons: histograms</h3>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Introducing histograms</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>ax.hist(mens_rowing[<span class="st">"Height"</span>])</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>ax.hist(mens_gymnastic[<span class="st">"Height"</span>])</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">"Height (cm)"</span>)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"# of observations"</span>)</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Labels are needed</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>ax.hist(mens_rowing[<span class="st">"Height"</span>], label<span class="op">=</span><span class="st">"Rowing"</span>)</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>ax.hist(mens_gymnastic[<span class="st">"Height"</span>], label<span class="op">=</span><span class="st">"Gymnastics"</span>)</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">"Height (cm)"</span>)</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"# of observations"</span>)</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>ax.legend()</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Customizing histograms: setting the number of bins</span></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>ax.hist(mens_rowing[<span class="st">"Height"</span>], label<span class="op">=</span><span class="st">"Rowing"</span>, bins<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>ax.hist(mens_gymnastic[<span class="st">"Height"</span>], label<span class="op">=</span><span class="st">"Gymnastics"</span>, bins<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">"Height (cm)"</span>)</span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"# of observations"</span>)</span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>ax.legend()</span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Customizing histograms: setting bin boundaries</span></span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>ax.hist(mens_rowing[<span class="st">"Height"</span>], label<span class="op">=</span><span class="st">"Rowing"</span>,</span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>bins<span class="op">=</span>[<span class="dv">150</span>, <span class="dv">160</span>, <span class="dv">170</span>, <span class="dv">180</span>, <span class="dv">190</span>, <span class="dv">200</span>, <span class="dv">210</span>])</span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>ax.hist(mens_gymnastic[<span class="st">"Height"</span>], label<span class="op">=</span><span class="st">"Gymnastics"</span>,</span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>bins<span class="op">=</span>[<span class="dv">150</span>, <span class="dv">160</span>, <span class="dv">170</span>, <span class="dv">180</span>, <span class="dv">190</span>, <span class="dv">200</span>, <span class="dv">210</span>])</span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">"Height (cm)"</span>)</span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"# of observations"</span>)</span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a>ax.legend()</span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a><span class="co"># Customizing histograms: transparency</span></span>
+<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a>ax.hist(mens_rowing[<span class="st">"Height"</span>], label<span class="op">=</span><span class="st">"Rowing"</span>,</span>
+<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a>bins<span class="op">=</span>[<span class="dv">150</span>, <span class="dv">160</span>, <span class="dv">170</span>, <span class="dv">180</span>, <span class="dv">190</span>, <span class="dv">200</span>, <span class="dv">210</span>],</span>
+<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a>histtype<span class="op">=</span><span class="st">"step"</span>)</span>
+<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a>ax.hist(mens_gymnastic[<span class="st">"Height"</span>], label<span class="op">=</span><span class="st">"Gymnastics"</span>,</span>
+<span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a>bins<span class="op">=</span>[<span class="dv">150</span>, <span class="dv">160</span>, <span class="dv">170</span>, <span class="dv">180</span>, <span class="dv">190</span>, <span class="dv">200</span>, <span class="dv">210</span>],</span>
+<span id="cb10-42"><a href="#cb10-42" aria-hidden="true" tabindex="-1"></a>histtype<span class="op">=</span><span class="st">"step"</span>)</span>
+<span id="cb10-43"><a href="#cb10-43" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">"Height (cm)"</span>)</span>
+<span id="cb10-44"><a href="#cb10-44" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"# of observations"</span>)</span>
+<span id="cb10-45"><a href="#cb10-45" aria-hidden="true" tabindex="-1"></a>ax.legend()</span>
+<span id="cb10-46"><a href="#cb10-46" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="statistical-plotting" class="level3">
+<h3 class="anchored" data-anchor-id="statistical-plotting">Statistical plotting</h3>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Adding error bars to bar charts</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>ax.bar(<span class="st">"Rowing"</span>,mens_rowing[<span class="st">"Height"</span>].mean(),</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>yerr<span class="op">=</span>mens_rowing[<span class="st">"Height"</span>].std())</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>ax.bar(<span class="st">"Gymnastics"</span>,mens_gymnastics[<span class="st">"Height"</span>].mean(),</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>yerr<span class="op">=</span>mens_gymnastics[<span class="st">"Height"</span>].std())</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"Height (cm)"</span>)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Adding error bars to plots</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>ax.errorbar(seattle_weather[<span class="st">"MONTH"</span>],</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>seattle_weather[<span class="st">"MLY-TAVG-NORMAL"</span>],</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>yerr<span class="op">=</span>seattle_weather[<span class="st">"MLY-TAVG-STDDEV"</span>])</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>ax.errorbar(austin_weather[<span class="st">"MONTH"</span>],</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>austin_weather[<span class="st">"MLY-TAVG-NORMAL"</span>],</span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>yerr<span class="op">=</span>austin_weather[<span class="st">"MLY-TAVG-STDDEV"</span>])</span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"Temperature (Fahrenheit)"</span>)</span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Adding boxplots</span></span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>ax.boxplot([mens_rowing[<span class="st">"Height"</span>],</span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>mens_gymnastics[<span class="st">"Height"</span>]])</span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>ax.set_xticklabels([<span class="st">"Rowing"</span>, <span class="st">"Gymnastics"</span>])</span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"Height (cm)"</span>)</span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="quantitative-comparisons-scatter-plots" class="level3">
+<h3 class="anchored" data-anchor-id="quantitative-comparisons-scatter-plots">Quantitative comparisons: scatter plots</h3>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Introducing scatter plots</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>ax.scatter(climate_change[<span class="st">"co2"</span>], climate_change[<span class="st">"relative_temp"</span>])</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">"CO2 (ppm)"</span>)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"Relative temperature (Celsius)"</span>)</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Customizing scatter plots</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>eighties <span class="op">=</span> climate_change[<span class="st">"1980-01-01"</span>:<span class="st">"1989-12-31"</span>]</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>nineties <span class="op">=</span> climate_change[<span class="st">"1990-01-01"</span>:<span class="st">"1999-12-31"</span>]</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>ax.scatter(eighties[<span class="st">"co2"</span>], eighties[<span class="st">"relative_temp"</span>],</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>color<span class="op">=</span><span class="st">"red"</span>, label<span class="op">=</span><span class="st">"eighties"</span>)</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>ax.scatter(nineties[<span class="st">"co2"</span>], nineties[<span class="st">"relative_temp"</span>],</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>color<span class="op">=</span><span class="st">"blue"</span>, label<span class="op">=</span><span class="st">"nineties"</span>)</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>ax.legend()</span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">"CO2 (ppm)"</span>)</span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"Relative temperature (Celsius)"</span>)</span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Encoding a third variable by color</span></span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>ax.scatter(climate_change[<span class="st">"co2"</span>], climate_change[<span class="st">"relative_temp"</span>],</span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>c<span class="op">=</span>climate_change.index)</span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">"CO2 (ppm)"</span>)</span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"Relative temperature (Celsius)"</span>)</span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="sharing-visualizations-with-others" class="level2">
+<h2 class="anchored" data-anchor-id="sharing-visualizations-with-others">Sharing visualizations with others</h2>
+<section id="preparing-your-figures-to-share-with-others" class="level3">
+<h3 class="anchored" data-anchor-id="preparing-your-figures-to-share-with-others">Preparing your figures to share with others</h3>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Choosing a style</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>plt.style.use(<span class="st">"ggplot"</span>)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>ax.plot(seattle_weather[<span class="st">"MONTH"</span>], seattle_weather[<span class="st">"MLY-TAVG-NORMAL"</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>ax.plot(austin_weather[<span class="st">"MONTH"</span>], austin_weather[<span class="st">"MLY-TAVG-NORMAL"</span>])</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">"Time (months)"</span>)</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"Average temperature (Fahrenheit degrees)"</span>)</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>                                                  </span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Back to the default</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>plt.style.use(<span class="st">"default"</span>)                                                  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><a href="https://matplotlib.org/gallery/style_sheets/style_sheets_reference.html">available styles</a></p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The "bmh" style</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>plt.style.use(<span class="st">"bmh"</span>)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>ax.plot(seattle_weather[<span class="st">"MONTH"</span>], seattle_weather[<span class="st">"MLY-TAVG-NORMAL"</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>ax.plot(austin_weather[<span class="st">"MONTH"</span>], austin_weather[<span class="st">"MLY-TAVG-NORMAL"</span>])</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">"Time (months)"</span>)</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"Average temperature (Fahrenheit degrees)"</span>)</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>                                                  </span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Seaborn styles</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>plt.style.use(<span class="st">"seaborn-colorblind"</span>)</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>ax.plot(seattle_weather[<span class="st">"MONTH"</span>], seattle_weather[<span class="st">"MLY-TAVG-NORMAL"</span></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>ax.plot(austin_weather[<span class="st">"MONTH"</span>], austin_weather[<span class="st">"MLY-TAVG-NORMAL"</span>])</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">"Time (months)"</span>)</span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"Average temperature (Fahrenheit degrees)"</span>)</span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>plt.show()                                                  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="saving-your-visualizations" class="level3">
+<h3 class="anchored" data-anchor-id="saving-your-visualizations">Saving your visualizations</h3>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Saving the figure to file</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>ax.bar(medals.index, medals[<span class="st">"Gold"</span>])</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>ax.set_xticklabels(medals.index, rotation<span class="op">=</span><span class="dv">90</span>)</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"Number of medals"</span>)</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>fig.savefig(<span class="st">"gold_medals.png"</span>)</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Different file formats</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>fig.savefig(<span class="st">"gold_medals.jpg"</span>)</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>fig.savefig(<span class="st">"gold_medals.jpg"</span>, quality<span class="op">=</span><span class="dv">50</span>)</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>fig.savefig(<span class="st">"gold_medals.svg"</span>)</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Resolution</span></span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>fig.savefig(<span class="st">"gold_medals.png"</span>, dpi<span class="op">=</span><span class="dv">300</span>)</span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Size</span></span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>fig.set_size_inches([<span class="dv">5</span>, <span class="dv">3</span>])</span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Another aspect ratio</span></span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>fig.set_size_inches([<span class="dv">3</span>, <span class="dv">5</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="automating-figures-from-data" class="level3">
+<h3 class="anchored" data-anchor-id="automating-figures-from-data">Automating figures from data</h3>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Getting unique values of a column</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>sports <span class="op">=</span> summer_2016_medals[<span class="st">"Sport"</span>].unique()</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Bar-chart of heights for all sports</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> sport <span class="kw">in</span> sports:</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>sport_df <span class="op">=</span> summer_2016_medals[summer_2016_medals[<span class="st">"Sport"</span>] <span class="op">==</span> spor</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>ax.bar(sport, sport_df[<span class="st">"Height"</span>].mean(),</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>yerr<span class="op">=</span>sport_df[<span class="st">"Height"</span>].std())</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"Height (cm)"</span>)</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>ax.set_xticklabels(sports, rotation<span class="op">=</span><span class="dv">90</span>)</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

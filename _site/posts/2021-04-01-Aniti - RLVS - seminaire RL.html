@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.189">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2021-04-01">
+<meta name="description" content="My notes">
+
+<title>blog - ANITI’s first Reinforcement Learning Virtual School</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">blog</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html">About</a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/"><i class="bi bi-github" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com"><i class="bi bi-twitter" role="img">
+</i> 
+ </a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">ANITI’s first Reinforcement Learning Virtual School</h1>
+                  <div>
+        <div class="description">
+          My notes
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">reinforcement learning</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">April 1, 2021</p>
+      </div>
+    </div>
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#rlvs-schedule" id="toc-rlvs-schedule" class="nav-link active" data-scroll-target="#rlvs-schedule">RLVS schedule</a></li>
+  <li><a href="#deep-q-networks-and-its-variants" id="toc-deep-q-networks-and-its-variants" class="nav-link" data-scroll-target="#deep-q-networks-and-its-variants">(4/1/21) - Deep Q-Networks and its variants</a></li>
+  <li><a href="#from-policy-gradients-to-actor-critic-methods" id="toc-from-policy-gradients-to-actor-critic-methods" class="nav-link" data-scroll-target="#from-policy-gradients-to-actor-critic-methods">(4/2/21) - From Policy Gradients to Actor Critic methods</a></li>
+  <li><a href="#evolutionary-reinforcement-learning" id="toc-evolutionary-reinforcement-learning" class="nav-link" data-scroll-target="#evolutionary-reinforcement-learning">(4/8/21) - Evolutionary Reinforcement Learning</a></li>
+  <li><a href="#micro-data-policy-search" id="toc-micro-data-policy-search" class="nav-link" data-scroll-target="#micro-data-policy-search">(4/8/21) - Micro-data Policy Search</a></li>
+  <li><a href="#rl-in-practice-tips-and-tricks-and-practical-session-with-stable-baselines3" id="toc-rl-in-practice-tips-and-tricks-and-practical-session-with-stable-baselines3" class="nav-link" data-scroll-target="#rl-in-practice-tips-and-tricks-and-practical-session-with-stable-baselines3">(4/9/21) - RL in Practice: Tips and Tricks and Practical Session With Stable-Baselines3</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<p><img src="https://d1keuthy5s86c8.cloudfront.net/static/ems/upload/img/72947a097165dcd24a6f700e2f28d690.png" class="img-fluid"></p>
+<p><a href="https://rlvs.aniti.fr/">https://rlvs.aniti.fr/</a></p>
+<p>Schedule is</p>
+<section id="rlvs-schedule" class="level2">
+<h2 class="anchored" data-anchor-id="rlvs-schedule">RLVS schedule</h2>
+<p>This condensed schedule does not include class breaks and social events. Times are Central European Summer Time (UTC+2).</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Schedule</th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>March 25th</td>
+<td>9:00-9:10</td>
+<td><a href="https://rl-vs.github.io/rlvs2021/opening.html">Opening remarks</a></td>
+<td><a href="https://rl-vs.github.io/rlvs2021/sebastien-gerchinovitz.html">S. Gerchinovitz</a></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>9:10-9:30</td>
+<td><a href="https://rl-vs.github.io/rlvs2021/rlvs-overview.html">RLVS Overview</a></td>
+<td><a href="https://rl-vs.github.io/rlvs2021/emmanuel-rachelson.html">E. Rachelson</a></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>9:30-13:00</td>
+<td><a href="https://rl-vs.github.io/rlvs2021/rl-fundamentals.html">RL fundamentals</a></td>
+<td><a href="https://rl-vs.github.io/rlvs2021/emmanuel-rachelson.html">E. Rachelson</a></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>14:00-16:00</td>
+<td><a href="https://rl-vs.github.io/rlvs2021/deep-learning.html">Introduction to Deep Learning</a></td>
+<td><a href="https://rl-vs.github.io/rlvs2021/dennis-wilson.html">D. Wilson</a></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>16:30-17:30</td>
+<td><a href="https://rl-vs.github.io/rlvs2021/human-behavioral-agents.html">Reward Processing Biases in Humans and RL Agents</a></td>
+<td><a href="https://rl-vs.github.io/rlvs2021/irina-rish.html">I. Rish</a></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>17:45-18:45</td>
+<td><a href="https://rl-vs.github.io/rlvs2021/hierarchical.html">Introduction to Hierarchical Reinforcement Learning</a></td>
+<td><a href="https://rl-vs.github.io/rlvs2021/doina-precup.html">D. Precup</a></td>
+</tr>
+<tr class="odd">
+<td>March 26th</td>
+<td>10:00-12:00</td>
+<td><a href="https://rl-vs.github.io/rlvs2021/stochastic-bandits.html">Stochastic bandits</a></td>
+<td><a href="https://rl-vs.github.io/rlvs2021/tor-lattimore.html">T. Lattimore</a></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>14:00-16:00</td>
+<td><a href="https://rl-vs.github.io/rlvs2021/mcts.html">Monte Carlo Tree Search</a></td>
+<td><a href="https://rl-vs.github.io/rlvs2021/tor-lattimore.html">T. Lattimore</a></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>16:30-17:30</td>
+<td><a href="https://rl-vs.github.io/rlvs2021/clinical.html">Multi-armed bandits in clinical trials</a></td>
+<td><a href="https://rl-vs.github.io/rlvs2021/donald-berry.html">D. A. Berry</a></td>
+</tr>
+<tr class="even">
+<td>April 1st</td>
+<td>9:00-15:00</td>
+<td><a href="https://rl-vs.github.io/rlvs2021/dqn.html">Deep Q-Networks and its variants</a></td>
+<td><a href="https://rl-vs.github.io/rlvs2021/bilal-piot.html">B. Piot</a>, <a href="https://rl-vs.github.io/rlvs2021/corentin-tallec.html">C. Tallec</a></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>15:15-16:15</td>
+<td><a href="https://rl-vs.github.io/rlvs2021/regularized-mdps.html">Regularized MDPs</a></td>
+<td><a href="https://rl-vs.github.io/rlvs2021/matthieu-geist.html">M. Geist</a></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>16:30-17:30</td>
+<td><a href="https://rl-vs.github.io/rlvs2021/regret-bound.html">Regret bounds of model-based reinforcement learning</a></td>
+<td><a href="https://rl-vs.github.io/rlvs2021/mengdi-wang.html">M. Wang</a></td>
+</tr>
+<tr class="odd">
+<td>April 2nd</td>
+<td>9:00-12:30</td>
+<td><a href="https://rl-vs.github.io/rlvs2021/pg.html">Policy Gradients and Actor Critic methods</a></td>
+<td><a href="https://rl-vs.github.io/rlvs2021/olivier-sigaud.html">O. Sigaud</a></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>14:00-15:00</td>
+<td><a href="https://rl-vs.github.io/rlvs2021/pg-pitfalls.html">Pitfalls in Policy Gradient methods</a></td>
+<td><a href="https://rl-vs.github.io/rlvs2021/olivier-sigaud.html">O. Sigaud</a></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>15:30-17:30</td>
+<td><a href="https://rl-vs.github.io/rlvs2021/exploration.html">Exploration in Deep RL</a></td>
+<td><a href="https://rl-vs.github.io/rlvs2021/matteo-pirotta.html">M. Pirotta</a></td>
+</tr>
+<tr class="even">
+<td>April 8th</td>
+<td>9:00-11:00</td>
+<td><a href="https://rl-vs.github.io/rlvs2021/evo-rl.html">Evolutionary Reinforcement Learning</a></td>
+<td><a href="https://rl-vs.github.io/rlvs2021/dennis-wilson.html">D. Wilson</a>, <a href="https://rl-vs.github.io/rlvs2021/jean-baptiste-mouret.html">J.-B. Mouret</a></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>11:30-12:30</td>
+<td><a href="https://rl-vs.github.io/rlvs2021/evolving-agents.html">Evolving Agents that Learn More Like Animals</a></td>
+<td><a href="https://rl-vs.github.io/rlvs2021/sebastian-risi.html">S. Risi</a></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>14:00-16:00</td>
+<td><a href="https://rl-vs.github.io/rlvs2021/micro-data.html">Micro-data Policy Search</a></td>
+<td><a href="https://rl-vs.github.io/rlvs2021/konstantinos-chatzilygeroudis.html">K. Chatzilygeroudis</a>, <a href="https://rl-vs.github.io/rlvs2021/jean-baptiste-mouret.html">J.-B. Mouret</a></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>16:30-17:30</td>
+<td><a href="https://rl-vs.github.io/rlvs2021/efficient-motor.html">Efficient Motor Skills Learning in Robotics</a></td>
+<td><a href="https://rl-vs.github.io/rlvs2021/dongheui-lee.html">D. Lee</a></td>
+</tr>
+<tr class="even">
+<td>April 9th</td>
+<td>9:00-13:00</td>
+<td><a href="https://rl-vs.github.io/rlvs2021/tips-and-tricks.html">RL tips and tricks</a></td>
+<td><a href="https://rl-vs.github.io/rlvs2021/antonin-raffin.html">A. Raffin</a></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>14:30-15:30</td>
+<td><a href="https://rl-vs.github.io/rlvs2021/symbolic.html">Symbolic representations and reinforcement learning</a></td>
+<td><a href="https://rl-vs.github.io/rlvs2021/marta-garnelo.html">M. Garnelo</a></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>15:45-16:45</td>
+<td><a href="https://rl-vs.github.io/rlvs2021/model-learning.html">Leveraging model-learning for extreme generalization</a></td>
+<td><a href="https://rl-vs.github.io/rlvs2021/leslie-kaelbling.html">L. P. Kaelbling</a></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>17:00-18:00</td>
+<td>RLVS wrap-up</td>
+<td><a href="https://rl-vs.github.io/rlvs2021/emmanuel-rachelson.html">E. Rachelson</a></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="deep-q-networks-and-its-variants" class="level2">
+<h2 class="anchored" data-anchor-id="deep-q-networks-and-its-variants">(4/1/21) - <a href="https://whova.com/embedded/session/rlstc_202011/1416824/?view=">Deep Q-Networks and its variants</a></h2>
+<p>Speaker is Bilal Piot.</p>
+<p><strong>Deep Q network</strong> as a solution for a practicable control theory.</p>
+<p>Introduction of ALE (Atari Learning Environment)</p>
+<p>DQN is (almost) end-to-end: from raw observations to actions. Bilal explains the preprocessing part (from 160x210x3 to 84x84 + stacking 4 frames + downsampling to 15 Hz)</p>
+<p>Value Iteration (VI) algorithm: Recurrent algorithm to get Q. <span class="math inline">\(Q_{k+1}=T^*Q\)</span></p>
+<p>But it is not practical in a real-world case. What we can do is use interactions with real world. And estimate <span class="math inline">\(Q^*\)</span> using a regression.</p>
+<p>Would be interesting to have slides. I like the link between regression notations and VI notation.</p>
+<p>From neural Fitted-<span class="math inline">\(Q\)</span> to DQN. Main difference is data collection (in DQN you have updated interactions and it allows exploration, and size of architecture)</p>
+<p>With DQN we have acting part and learning part. Acting is the data collection. (using <span class="math inline">\(\epsilon\)</span>-greedy policy)</p>
+<p><strong>hands-on based on DQN tutorial notebook.</strong></p>
+<p>had to <code>export LD_LIBRARY_PATH=/home/explore/miniconda3/envs/aniti/lib/</code></p>
+<p>Nice introduction to JAX and haiku. Haiku is similar modules in pytorch and can turn NN into pure version. Which is useful for Jax.</p>
+<p><strong>overview of the literature</strong></p>
+<p><img src="https://kstatic.googleusercontent.com/files/f6b5f285173d4449285a8e812b8385f45c03f7104e1c41370a73e0c8558ff82d6a69e60962dd91c4972c444fd73bc4f98a06b5487eff5a037a37bc42f97cef3b.png" class="img-fluid"></p>
+</section>
+<section id="from-policy-gradients-to-actor-critic-methods" class="level2">
+<h2 class="anchored" data-anchor-id="from-policy-gradients-to-actor-critic-methods">(4/2/21) - <a href="https://whova.com/embedded/session/rlstc_202011/1416833/?view=">From Policy Gradients to Actor Critic methods</a></h2>
+<p>Olivier Sigaud is the speaker.</p>
+<p>He has pre-recorded his lecture in videos. I have missed the start so I will have to watch them later.</p>
+<p><a href="https://whova.com/embedded/session/rlstc_202011/1416836/?view=">Policy Gradient in pratice</a></p>
+<p>Don’t become an alchemist ;)</p>
+<p>As stochastic policies, squashed gaussian is interesting because it allows continuous variable + bounds.</p>
+<p><a href="https://whova.com/embedded/session/rlstc_202011/1416838/?view=#">Exploration in Deep RL</a></p>
+</section>
+<section id="evolutionary-reinforcement-learning" class="level2">
+<h2 class="anchored" data-anchor-id="evolutionary-reinforcement-learning">(4/8/21) - <a href="https://whova.com/embedded/session/rlstc_202011/1416851/?view=">Evolutionary Reinforcement Learning</a></h2>
+<p>pdf version of the slides are available <a href="https://rl-vs.github.io/rlvs2021/class-material/evolutionary/light-virtual_school_neat_hyperneat.pdf">here</a></p>
+<p>then <a href="https://whova.com/embedded/session/rlstc_202011/1416848/?view=">Evolving Agents that Learn More Like Animals</a></p>
+<p>This morning was more about what we can do when we have infinite calculation power and data.</p>
+<p>Afternoon will be the opposite.</p>
+</section>
+<section id="micro-data-policy-search" class="level2">
+<h2 class="anchored" data-anchor-id="micro-data-policy-search">(4/8/21) - <a href="https://whova.com/embedded/session/rlstc_202011/1416841/?view=">Micro-data Policy Search</a></h2>
+<p>Most policy search algorithms require thousands of training episodes to find an effective policy, which is often infeasible when experiments takes time or are expensive (for instance, with physical robot or with an aerodynamics simulator). This class focuses on the extreme other end of the spectrum: how can an algorithm adapt a policy with only a handful of trials (a dozen) and a few minutes? By analogy with the word “big-data”, we refer to this challenge as “micro-data reinforcement learning”. We will describe two main strategies: (1) leverage prior knowledge on the policy structure (e.g., dynamic movement primitives), on the policy parameters (e.g., demonstrations), or on the dynamics (e.g., simulators), and (2) create data-driven surrogate models of the expected reward (e.g., Bayesian optimization) or the dynamical model (e.g., model-based policy search), so that the policy optimizer queries the model instead of the real system. Most of the examples will be about robotic systems, but the principle apply to any other expensive setup.</p>
+<p>all material: <a href="https://rl-vs.github.io/rlvs2021/micro-data.html">https://rl-vs.github.io/rlvs2021/micro-data.html</a></p>
+</section>
+<section id="rl-in-practice-tips-and-tricks-and-practical-session-with-stable-baselines3" class="level2">
+<h2 class="anchored" data-anchor-id="rl-in-practice-tips-and-tricks-and-practical-session-with-stable-baselines3">(4/9/21) - <a href="https://whova.com/embedded/session/rlstc_202011/1416855/?view=">RL in Practice: Tips and Tricks and Practical Session With Stable-Baselines3</a></h2>
+<p>​ <strong>Abstract:</strong> The aim of the session is to help you do reinforcement learning experiments. The first part covers general advice about RL, tips and tricks and details three examples where RL was applied on real robots. The second part will be a practical session using the Stable-Baselines3 library.</p>
+<p><strong>Pre-requisites:</strong> Python programming, RL basics, (recommended: Google account for the practical session in order to use Google Colab).</p>
+<p><strong>Additional material:</strong> Website: <a href="https://github.com/DLR-RM/stable-baselines3">https://github.com/DLR-RM/stable-baselines3</a> Doc: <a href="https://stable-baselines3.readthedocs.io/en/master/">https://stable-baselines3.readthedocs.io/en/master/</a></p>
+<p><strong>Outline:</strong> Part I: RL Tips and Tricks / The Challenges of Applying RL to Real Robots</p>
+<ol type="1">
+<li>Introduction (3 minutes)</li>
+<li>RL Tips and tricks (45 minutes)
+<ol type="1">
+<li>General Nuts and Bolts of RL experimentation (10 minutes)</li>
+<li>RL in practice on a custom task (custom environment) (30 minutes)</li>
+<li>Questions? (5 minutes)</li>
+</ol></li>
+<li>The Challenges of Applying RL to Real Robots (45 minutes)
+<ol type="1">
+<li>Learning to control an elastic robot - DLR David Neck Example (15 minutes)</li>
+<li>Learning to drive in minutes and learning to race in hours - Virtual and real racing car (15 minutes)</li>
+<li>Learning to walk with an elastic quadruped robot - DLR bert example (10 minutes)</li>
+<li>Questions? (5 minutes+)</li>
+</ol></li>
+</ol>
+<p>Part II: Practical Session with Stable-Baselines3</p>
+<ol type="1">
+<li>Stable-Baselines3 Overview (20 minutes)</li>
+<li>Questions? (5 minutes)</li>
+<li>Practical Session - Code along (1h+)</li>
+</ol>
+<p><em>action space</em></p>
+<p>When using continuous space, you need to normalize! (normalized action space -1, -1)</p>
+<p>there is a checker for that in stable baselines 3.</p>
+<p><em>reward</em></p>
+<p>start with reward shaping.</p>
+<p><em>termination condition</em></p>
+<p>early stopping makes learning faster (and safer for robots)</p>
+<p><img src="../images/aniti_rl_algo.png" class="img-fluid"></p>
+<p>for hyperparameter tuning, Antonin recommends Optuna.</p>
+<p>about the Henderson paper: <a href="https://arxiv.org/abs/1709.06560">Deep Reinforcement Learning that Matters</a></p>
+<p><img src="../images/aniti_rl_slr.png" class="img-fluid"></p>
+<p>and then the controller will use latent representation / current speed + history as observation space.</p>
+<p>Learning to drive takes then 10 min, and to race 2 hours.</p>
+<section id="handson" class="level4">
+<h4 class="anchored" data-anchor-id="handson">handson</h4>
+<p>slides: <a href="https://araffin.github.io/slides/rlvs-sb3-handson/">https://araffin.github.io/slides/rlvs-sb3-handson/</a></p>
+<p>notebook: <a href="https://github.com/araffin/rl-handson-rlvs21">https://github.com/araffin/rl-handson-rlvs21</a></p>
+<p>RL zoo: <a href="https://github.com/DLR-RM/rl-baselines3-zoo">https://github.com/DLR-RM/rl-baselines3-zoo</a></p>
+<p>documentation for SB3 usefull for completing exercises: <a href="https://stable-baselines3.readthedocs.io/en/master/">https://stable-baselines3.readthedocs.io/en/master/</a></p>
+<p><a href="https://excalidraw.com/" class="uri">https://excalidraw.com/</a></p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

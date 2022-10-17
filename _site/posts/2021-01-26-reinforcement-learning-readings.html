@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.189">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2021-01-26">
+<meta name="description" content="My notes about some readings">
+
+<title>blog - Reinforcement learning readings</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">blog</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html">About</a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/"><i class="bi bi-github" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com"><i class="bi bi-twitter" role="img">
+</i> 
+ </a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Reinforcement learning readings</h1>
+                  <div>
+        <div class="description">
+          My notes about some readings
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">reinforcement learning</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">January 26, 2021</p>
+      </div>
+    </div>
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#reinforcement-learning-for-real-world-robotics" id="toc-reinforcement-learning-for-real-world-robotics" class="nav-link active" data-scroll-target="#reinforcement-learning-for-real-world-robotics">1/26/21 - Reinforcement learning for real-world robotics</a></li>
+  <li><a href="#reinforcement-learning-algorithms-an-intuitive-overview" id="toc-reinforcement-learning-algorithms-an-intuitive-overview" class="nav-link" data-scroll-target="#reinforcement-learning-algorithms-an-intuitive-overview">1/26/21 - Reinforcement Learning algorithms — an intuitive overview</a></li>
+  <li><a href="#reinforcement-learning-partie-1-introduction-in-french" id="toc-reinforcement-learning-partie-1-introduction-in-french" class="nav-link" data-scroll-target="#reinforcement-learning-partie-1-introduction-in-french">1/26/21 - Reinforcement learning, partie 1 : introduction (in French)</a></li>
+  <li><a href="#reinforcement-learning-an-introduction---i-tabular-solution-methods" id="toc-reinforcement-learning-an-introduction---i-tabular-solution-methods" class="nav-link" data-scroll-target="#reinforcement-learning-an-introduction---i-tabular-solution-methods">1/27/21 - Reinforcement learning : an introduction - I tabular solution methods</a></li>
+  <li><a href="#from-a-deep-reinforcement-learning-based-multi-criteria-decision-support-system-for-optimizing-textile-chemical-process" id="toc-from-a-deep-reinforcement-learning-based-multi-criteria-decision-support-system-for-optimizing-textile-chemical-process" class="nav-link" data-scroll-target="#from-a-deep-reinforcement-learning-based-multi-criteria-decision-support-system-for-optimizing-textile-chemical-process">2/18/21 - from A Deep Reinforcement Learning Based Multi-Criteria Decision Support System for Optimizing Textile Chemical Process</a></li>
+  <li><a href="#the-complete-reinforcement-learning-dictionary" id="toc-the-complete-reinforcement-learning-dictionary" class="nav-link" data-scroll-target="#the-complete-reinforcement-learning-dictionary">2/18/21 - The Complete Reinforcement Learning Dictionary</a></li>
+  <li><a href="#reinforcement-learning-an-introduction---ii-approximate-solution-methods" id="toc-reinforcement-learning-an-introduction---ii-approximate-solution-methods" class="nav-link" data-scroll-target="#reinforcement-learning-an-introduction---ii-approximate-solution-methods">3/5/21 - Reinforcement learning : an introduction - II Approximate Solution Methods</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<section id="reinforcement-learning-for-real-world-robotics" class="level2">
+<h2 class="anchored" data-anchor-id="reinforcement-learning-for-real-world-robotics">1/26/21 - Reinforcement learning for real-world robotics</h2>
+<p>from <a href="https://www.youtube.com/watch?v=Obek04C8L5E&amp;feature=youtu.be">https://www.youtube.com/watch?v=Obek04C8L5E&amp;feature=youtu.be</a></p>
+<p>at 26’ idea that you can tackle over-optimism models by using ensemble models. See paper at <a href="https://github.com/castorfou/datascience-papers/blob/main/RL/2018%20Model-Ensemble%20Trust-Region%20Policy%20Optimization/model_ensemble_trust_region_policy_optimization.pdf">2018 Model-Ensemble Trust-Region Policy Optimization</a></p>
+</section>
+<section id="reinforcement-learning-algorithms-an-intuitive-overview" class="level2">
+<h2 class="anchored" data-anchor-id="reinforcement-learning-algorithms-an-intuitive-overview">1/26/21 - Reinforcement Learning algorithms — an intuitive overview</h2>
+<p>from <a href="https://medium.com/@SmartLabAI/reinforcement-learning-algorithms-an-intuitive-overview-904e2dff5bbc">https://medium.com/<span class="citation" data-cites="SmartLabAI/reinforcement-learning-algorithms-an-intuitive-overview-904e2dff5bbc">@SmartLabAI/reinforcement-learning-algorithms-an-intuitive-overview-904e2dff5bbc</span></a></p>
+<p><img src="../images/RL_taxonomy.png" class="img-fluid"></p>
+<p>give an overview of various RL models. Model-based vs model-free.</p>
+<p>And papers and codes.</p>
+</section>
+<section id="reinforcement-learning-partie-1-introduction-in-french" class="level2">
+<h2 class="anchored" data-anchor-id="reinforcement-learning-partie-1-introduction-in-french">1/26/21 - Reinforcement learning, partie 1 : introduction (in French)</h2>
+<p>There is a reference to an introduction paper: from Sutton, Richard S., and Andrew G. Barto <a href="https://github.com/castorfou/datascience-papers/blob/main/RL/2015%20Reinforcement%20Learning%20an%20introduction%20-%20Sutton%2C%20Richard%20S.%2C%20and%20Andrew%20G.%20Barto/SuttonBartoIPRLBook2ndEd.pdf">« Reinforcement learning : an introduction. » (2011)</a>. (I have an updated version from 2015)</p>
+<p>There is a reference to a blog article <a href="https://towardsdatascience.com/introduction-to-various-reinforcement-learning-algorithms-i-q-learning-sarsa-dqn-ddpg-72a5e0cb6287">[2] Steeve Huang. “Introduction to Various Reinforcement Learning Algorithms. Part I” (Q-Learning, SARSA, DQN, DDPG)”. (2018)</a></p>
+<p>And the paper for OpenAI Gym <a href="https://github.com/castorfou/datascience-papers/blob/main/RL/2016%20OpenAI%20Gym/1606.01540.pdf">[3] Greg Brockman, Vicki Cheung, Ludwig Pettersson, Jonas Schneider, John Schulman, Jie Tang, Wojciech Zaremba. “OpenAI Gym”. (2016)</a></p>
+</section>
+<section id="reinforcement-learning-an-introduction---i-tabular-solution-methods" class="level2">
+<h2 class="anchored" data-anchor-id="reinforcement-learning-an-introduction---i-tabular-solution-methods">1/27/21 - Reinforcement learning : an introduction - I tabular solution methods</h2>
+<p>as a ref. from Reinforcement learning, partie 1 : introduction (in French)</p>
+<p>I like this summary about RL</p>
+<blockquote class="blockquote">
+<p>Reinforcement learning is a computational approach to understanding and automating goal-directed learning and decision-making. It is distinguished from other computational approaches by its emphasis on learning by an agent from direct interaction with its environment, without relying on exemplary supervision or complete models of the environment. In our opinion, reinforcement learning is the first field to seriously address the computational issues that arise when learning from interaction with an environment in order to achieve long-term goals. Reinforcement learning uses a formal framework defining the interaction between a learning agent and its environment in terms of states, actions, and rewards. This framework is intended to be a simple way of representing essential features of the artificial intelligence problem. These features include a sense of cause and effect, a sense of uncertainty and nondeterminism, and the existence of explicit goals.</p>
+</blockquote>
+<p>There is some history about RL. Bellman equation and dynamic programming are at the beginning of RL.</p>
+<p>I read about <a href="http://felix.proba.jussieu.fr/pageperso/pham/Tangente.pdf">HJB equation</a> from Huyên PHAM (from a French Math magazine). It is funny to see why dynamic programming has been named that way, and how to deal with management.</p>
+<blockquote class="blockquote">
+<p>The class of methods for solving optimal control problems by solving this equation came to be known as dynamic programming (Bellman, 1957a). Bellman (1957b) also introduced the discrete stochastic version of the optimal control problem known as Markovian decision processes (MDPs), and Ronald Howard (1960) devised the policy iteration method for MDPs. All of these are essential elements underlying the theory and algorithms of modern reinforcement learning.</p>
+</blockquote>
+<p>All the vocabulary around RL is coming from dynamic programming and MDP.</p>
+<p><a href="https://en.wikipedia.org/wiki/Markov_decision_process">Markov decision process - Wikipedia</a></p>
+<blockquote class="blockquote">
+<p><img src="../images/wikipedia_mdp.png" class="img-fluid"></p>
+</blockquote>
+<p>Interesting to read that the famous cart pole experiment (learning to balance a pole hinged to a movable cart) came from Michie and Chambers in 1968, 53 years ago! (and derived from tic-tac-toe experiment)</p>
+<p>I don’t understand the subtlety behind the move from “learning with a teacher” to “learning with a critic” following the modified Least-Mean-Square (LMS) algorithm; Widrow and Hoff (1973)</p>
+<p>And some explanations about temporal-difference. I have just understood that a convergence effort happened (in 1989) by Chris Watkin who brought together temporal-difference and optimal control by developing Q-learning.</p>
+<p>After this introduction, here is the content:</p>
+<p>1st part is about <strong>finite markov decision processes</strong>—and its main ideas including Bellman equations and value functions.</p>
+<p>2nd part is about describing three fundamental classes of methods for <strong>solving finite Markov decision problems: dynamic programming, Monte Carlo methods, and temporal-difference learning</strong>. Each class of methods has its strengths and weaknesses. <strong>Dynamic programming</strong> methods are well developed mathematically, but require a complete and accurate model of the environment. <strong>Monte Carlo</strong> methods don’t require a model and are conceptually simple, but are not suited for step-by-step incremental computation. Finally, <strong>temporal-difference</strong> methods require no model and are fully incremental, but are more complex to analyze.</p>
+<p>3rd part is about combining these methods to offer a <strong>complete and unified solution to the tabular reinforcement learning problem</strong>.</p>
+<p>We can think of terms agent, environment, and action as engineers’ terms controller, controlled system (or plant), and control signal.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/agent–environment_interaction.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">The agent–environment interaction in reinforcement learning.</figcaption><p></p>
+</figure>
+</div>
+<p>Explanation about agent vs environment. Often not the same as physical boundaries of a robot: this boundary represents the limit of the agent’s absolute control, not of its knowledge. Many different agents can be operated at once.</p>
+<p>The agent’s goal is to maximize the total mount of reward it receives.</p>
+<p>I should re-read the full chapter3 because a lot of concepts coming from MDP is exposed, and their links to RL. At the end I should be able to answer most of end-of-chapter exercises. Have clearer view about how to define what are my agents/environment in my case; how to define actions (low-level definition (e.g.&nbsp;V in level1 electrical grid vs high level decision)); everything related to q* and Q-learning.</p>
+<section id="dynamic-programming-dp-chap4---103-126" class="level4">
+<h4 class="anchored" data-anchor-id="dynamic-programming-dp-chap4---103-126">dynamic programming (DP) (chap4 - 103-126)</h4>
+<p>What is key here is to have an exact way to describe your environment. Which is not always feasible. And we need computer power to go through all states, compute value function. There is a balance between policy evaluation and policy improvement but this is not crystal clear to me. And I don’t understand asynchronous DP. I haven’t developed enough intuitions behind DP, and I am unable to answer exercises. I understand though that reinforcement learning can solve some problems by approximating part of it (evaluation, environment, …)</p>
+</section>
+<section id="monte-carlo-mc-methods-chap5---127-156" class="level4">
+<h4 class="anchored" data-anchor-id="monte-carlo-mc-methods-chap5---127-156">monte carlo (MC) methods (chap5 - 127-156)</h4>
+<p>first-visit vs every-visit methods. First-visit has been widely studied. Blackjack example. Explanation of Monte Carlo ES (exploratory starts); and how to avoid this unlikely assumption thanks to on-policy or off-policy methods (on-policy estimate the value of a policy while using it for control. In off-policy methods these two functions are separated (behavior and target)).</p>
+<p>One issue with MC methods is to ensure sufficient exploration. One approach is to start with a random state-action pair, could work with simulated episodes but unlikely to learn from real experience.</p>
+<p>MC methods do not bootstrap (i.e.&nbsp;they don’t update their value estimates based on other value estimates) (TODO learn more about bootstrapping)</p>
+</section>
+<section id="temporal-difference-td-learning-chap6---157-180" class="level4">
+<h4 class="anchored" data-anchor-id="temporal-difference-td-learning-chap6---157-180">temporal-difference (TD) learning (chap6 - 157-180)</h4>
+<p>TD learning is a combination of Monte Carlo ideas and dynamic programming (DP) ideas. Like DP, TD methods update estimates based in part on other learned estimates, without waiting for a final outcome (they bootstrap, or said differently they learn a guess from a guess).</p>
+<p>If you consider optimization as a 2 phases approach: prediction problem (ie policy evaluation) and control problem (ie optimal policy), DP, TD, MC differences are at the prediction problem. On control problem they use variations of generalized policy iteration (GPI).</p>
+<p>TD methods combine the sampling of Monte Carlo with the bootstrapping of DP.</p>
+<p>Example based on Driving Home. In TD you update prediction at each step, not waiting for the final return as in MC.</p>
+</section>
+<section id="eligibility-traces-chap7---181-208" class="level4">
+<h4 class="anchored" data-anchor-id="eligibility-traces-chap7---181-208">eligibility traces (chap7 - 181-208)</h4>
+<p>TD(<span class="math display">\[\lambda\]</span>) is a way to integrate MC and TD.</p>
+<p>If one wants to use TD methods because of their other advantages, but the task is at least partially non-Markov, then the use of an eligibility trace method is indicated. Eligibility traces are the first line of defense against both long-delayed rewards and non-Markov tasks.</p>
+<p>I am not sure to understand the effect of bootstrap.</p>
+</section>
+<section id="planning-and-learning-with-tabular-methods-chap8---209-220-236" class="level4">
+<h4 class="anchored" data-anchor-id="planning-and-learning-with-tabular-methods-chap8---209-220-236">Planning and Learning with Tabular Methods (chap8 - 209-220-236)</h4>
+<p>planning = require a model (dynamic programming, heuristic search)</p>
+<p>learning = can be used without a model (MC, TD)</p>
+<p>The difference is that whereas planning uses simulated experience generated by a model, learning methods use real experience generated by the environment.</p>
+</section>
+</section>
+<section id="from-a-deep-reinforcement-learning-based-multi-criteria-decision-support-system-for-optimizing-textile-chemical-process" class="level2">
+<h2 class="anchored" data-anchor-id="from-a-deep-reinforcement-learning-based-multi-criteria-decision-support-system-for-optimizing-textile-chemical-process">2/18/21 - from <a href="https://www.researchgate.net/publication/346426718_A_Deep_Reinforcement_Learning_Based_Multi-Criteria_Decision_Support_System_for_Optimizing_Textile_Chemical_Process">A Deep Reinforcement Learning Based Multi-Criteria Decision Support System for Optimizing Textile Chemical Process</a></h2>
+<p>This is a more practical paper and should help to figure out what could be our own implementation.</p>
+<p>Overall MDP (markov decision process) structure is quite interesting with 3 blocks:</p>
+<ul>
+<li>RF (random forest) models (one per objective)</li>
+<li>AHP (analytic hierarchy process) which is a MCDM (Multiple criteria decision-making) method</li>
+<li>DQN which is the reinforcement learning part to approximate the Q function</li>
+</ul>
+<p><img src="../images/mdp_structure.png" class="img-fluid"></p>
+<p>there are interesting references.</p>
+<p>[2] K. Suzuki, ARTIFICIAL NEURAL NETWORKS - INDUSTRIAL AND CONTROL ENGINEERING APPLICATIONS. 2011.</p>
+<blockquote class="blockquote">
+<p>It is nearly impossible to upgrade the textile chemical manufacturing processes directly by only following the cases from other industries without considering the detailed characteristics of this sector and specific investigations in the applicable advanced technologies. To this end, the construction of accurate models for simulating manufacturing processes using intelligent techniques is rather necessary[2]</p>
+</blockquote>
+<p>[4]A. Ghosh, P. Mal, and A. Majumdar, Advanced Optimization and Decision-Making Techniques in Textile Manufacturing.2019.</p>
+<blockquote class="blockquote">
+<p>[..] Therefore, production decision-makers cannot effectively control the processes in order to obtain desired product functionalities [4]</p>
+</blockquote>
+<p>[53] T.L. Saaty, “What is the analytic hierarchy process?” Mathematical models for decision support, Springer, 1988, pp.109 121.</p>
+<blockquote class="blockquote">
+<p>The AHP is a MCDM method introduced by Saaty [53]</p>
+</blockquote>
+<p>[54]R. S. Sutton and A. G. Barto, Introduction to reinforcement learning, vol.&nbsp;135. MIT press Cambridge, 1998.</p>
+<blockquote class="blockquote">
+<p>The Markov property indicates that the state transitions are only dependent on the current state and current action is taken, but independent to all prior states and actions[54].</p>
+</blockquote>
+<p>[66] Z. Chourabi, F.Khedher, A. Babay and M. Cheikhrouhou, “Multi-criteria decision making in workforce choice using AHP, WSM and WPM”, J.Text.Inst., 2018</p>
+<blockquote class="blockquote">
+<p>However, it is worth remarking that certain features of this framework may hinder the massive promotion and application of it. The AHP has been successfully implemented in MCDM problems [41], [66]</p>
+</blockquote>
+</section>
+<section id="the-complete-reinforcement-learning-dictionary" class="level2">
+<h2 class="anchored" data-anchor-id="the-complete-reinforcement-learning-dictionary">2/18/21 - <a href="https://towardsdatascience.com/the-complete-reinforcement-learning-dictionary-e16230b7d24e">The Complete Reinforcement Learning Dictionary</a></h2>
+<p>recommandations:</p>
+<blockquote class="blockquote">
+<ul>
+<li>If you’re looking for a quick, 10-minutes crash course into RL with code examples, checkout my <em>Qrash Course</em> series: <a href="https://medium.com/@shakedzy/qrash-course-deep-q-networks-from-the-ground-up-1bbda41d3677">Introduction to RL and Q-Learning</a> and <a href="https://medium.com/@shakedzy/qrash-course-ii-from-q-learning-to-gradient-policy-actor-critic-in-12-minutes-8e8b47129c8c">Policy Gradients and Actor-Critics</a>.</li>
+<li>I you’re into something deeper, and would like to learn and code several different RL algorithms and gain more intuition, I can recommend <a href="https://medium.com/freecodecamp/an-introduction-to-reinforcement-learning-4339519de419">this series</a> by <a href="https://medium.com/@thomassimonini">Thomas Simonini</a> and <a href="https://medium.com/emergent-future/simple-reinforcement-learning-with-tensorflow-part-0-q-learning-with-tables-and-neural-networks-d195264329d0">this series</a> by <a href="https://medium.com/@awjuliani">Arthur Juliani</a>.</li>
+<li>If you’re ready to master RL, I will direct you to the “bible” of Reinforcement Learning — <em>“Reinforcement Learning, an introduction”</em> by Richard Sutton and Andrew Barto. The second edition (from 2018) is available for free (legally) as a <a href="https://web.stanford.edu/class/psych209/Readings/SuttonBartoIPRLBook2ndEd.pdf">PDF file</a>.</li>
+</ul>
+</blockquote>
+</section>
+<section id="reinforcement-learning-an-introduction---ii-approximate-solution-methods" class="level2">
+<h2 class="anchored" data-anchor-id="reinforcement-learning-an-introduction---ii-approximate-solution-methods">3/5/21 - Reinforcement learning : an introduction - II Approximate Solution Methods</h2>
+<p>This is the 2nd part of the book.</p>
+<p><strong>On-policy Approximation of Action Values</strong></p>
+<p>As mentioned in introduction of part II, what is developed in part I (our estimates of value functions are represented as a table with one entry for each state or for each state–action pair) is instructive, but of course it is limited to tasks with small numbers of states and actions.</p>
+<p>How can experience with a limited subset of the state space be usefully generalized to produce a good approximation over a much larger subset?</p>
+<p>This is a generalization issue (or <em>function approximation</em>) one could consider as an instance of supervised learning, where we use the s-&gt;v of each backup as a training example, and then interpret the approximate function produced as an estimated value function.</p>
+<p>Bertsekas and Tsitsiklis (1996) present the state of the art in function approximation in reinforcement learning.</p>
+<p><strong>Policy approximation</strong></p>
+<p>Actor-Critic: The policy structure is known as the actor, because it is used to select actions, and the estimated value function is known as the critic, because it criticizes the actions made by the actor.</p>
+<p><strong>(3/12/21) end of book. Chapter 14 - Applications and case studies.</strong></p>
+<p>I like this statement:</p>
+<blockquote class="blockquote">
+<p>Applications of reinforcement learning are still far from routine and typically require as much art as science. Making applications easier and more straightforward is one of the goals of current research in reinforcement learning.</p>
+</blockquote>
+<p>TD backgammon (1995). It uses a neural net (1 hidden layer, from 40 to 80 units) to approximate the predicted probability of winning v(s) for a given state. In later version, some domain features were used but still using self-play TD learning method. (I don’t know specifics for these domain features). And last versions give an interest to opponent reactions (possible dice rolls and moves)</p>
+<p>Samuel’s Checkers Player (~1960). (Checkers c’est le jeu de dames). It is based on <em>minimax</em> procedure to find the best move from current position. 1st learning used was rote learning (storing position(s value). 2nd learning used alpha-beta (linked to minimax procedure) and hierarchical lookup tables instead of linear function approximation.</p>
+<p>Acrobot (1993). Use of Sarsa(<span class="math display">\[\lambda\]</span>). Interesting to see that an exploration step can spoil a whole sequence of good actions. This is why greedy policy is used (<span class="math display">\[\epsilon\]</span>=0).</p>
+<p>Elevator dispatching (1996). With a reward being the negative of the sum of the squared waiting times of all waiting passengers. (squared to push the system to avoid big waiting times). We use an extension of Q-learning to semi-Markov decision problems. For function approximation, a nonlinear neural network trained by back-propagation was used to represent the action-value function.</p>
+<p>Dynamic Channel Allocation (1997). The channel assignment problem can be formulated as a semi-Markov decision process much as the elevator dispatching problem was in the previous section.</p>
+<p>Job-Shop Scheduling (1996). Zhang and Dietterich’s job-shop scheduling system is the first successful instance of which we are aware in which reinforcement learning was applied in plan-space, that is, in which states are complete plans (job-shop schedules in this case), and actions are plan modifications. This is a more abstract application of reinforcement learning than we are used to thinking about.</p>
+<p><strong>Chapter 15 - Prospects</strong></p>
+<p><img src="../images/sutton_spaceRL.png" class="img-fluid"></p>
+<p>This is a map to distinguish where to use different techniques. And considerations of a 3rd dimension regarding function approximation, or on/off-policy.</p>
+<p>And then opening to non markov case such as the theory of partially observable MDPs (POMDPs). (StarCraft!)</p>
+<p><strong>References</strong></p>
+<p>25 pages of references! Woawww.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

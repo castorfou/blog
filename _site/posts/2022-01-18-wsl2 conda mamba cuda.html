@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.189">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2022-01-18">
+<meta name="description" content="best of breed windows + linux">
+
+<title>blog - setup wsl2 conda mamba and cuda</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">blog</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html">About</a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/"><i class="bi bi-github" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com"><i class="bi bi-twitter" role="img">
+</i> 
+ </a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">setup wsl2 conda mamba and cuda</h1>
+                  <div>
+        <div class="description">
+          best of breed windows + linux
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">wsl</div>
+                <div class="quarto-category">cuda</div>
+                <div class="quarto-category">conda</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">January 18, 2022</p>
+      </div>
+    </div>
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#wsl2---installation-and-configuration" id="toc-wsl2---installation-and-configuration" class="nav-link active" data-scroll-target="#wsl2---installation-and-configuration">wsl2 - installation and configuration</a></li>
+  <li><a href="#conda-mamba---installation-and-configuration" id="toc-conda-mamba---installation-and-configuration" class="nav-link" data-scroll-target="#conda-mamba---installation-and-configuration">Conda Mamba - installation and configuration</a></li>
+  <li><a href="#jupyter" id="toc-jupyter" class="nav-link" data-scroll-target="#jupyter">Jupyter</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<section id="wsl2---installation-and-configuration" class="level2">
+<h2 class="anchored" data-anchor-id="wsl2---installation-and-configuration">wsl2 - installation and configuration</h2>
+<p>most of it is explained in an <a href="https://developers.michelin.com/details/wsl2/wsl2_fundamentals.html">internal blog entry</a>.</p>
+<p>To display windows version: <code>winver.exe</code></p>
+<p>I use version <code>20H2 build 19042.1415</code></p>
+<section id="installation" class="level4">
+<h4 class="anchored" data-anchor-id="installation">installation</h4>
+<p>It is now as easy as to run <code>wsl --install</code> in powershell as admin.</p>
+<p>Full detail at <a href="https://docs.microsoft.com/fr-fr/windows/wsl/install">MS WSL doc</a></p>
+<p>Other commands:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># list all wsl distributions installed and their WSL version</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">wsl</span> <span class="at">--list</span> <span class="at">--verbose</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># list all distributions available</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">wsl</span> <span class="at">--list</span> <span class="at">--online</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ex">Voici</span> la liste des distributions valides qui peuvent être installées.</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="ex">Installer</span> à l’aide de «&nbsp;wsl <span class="at">--install</span> <span class="at">-d</span> <span class="op">&lt;</span>Distribution<span class="op">&gt;</span>&nbsp;».</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="ex">NAME</span>            FRIENDLY NAME</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="ex">Ubuntu</span>          Ubuntu</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="ex">Debian</span>          Debian GNU/Linux</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="ex">kali-linux</span>      Kali Linux Rolling</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="ex">openSUSE-42</span>     openSUSE Leap 42</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="ex">SLES-12</span>         SUSE Linux Enterprise Server v12</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="ex">Ubuntu-16.04</span>    Ubuntu 16.04 LTS</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="ex">Ubuntu-18.04</span>    Ubuntu 18.04 LTS</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="ex">Ubuntu-20.04</span>    Ubuntu 20.04 LTS</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co"># install Linux distributions</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="ex">wsl</span> <span class="at">--install</span> <span class="at">-d</span> <span class="op">&lt;</span>Distribution Name<span class="op">&gt;</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="co"># shutdown wsl: shutdown all </span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="ex">wsl</span> <span class="at">--shutdown</span> </span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="co"># define default wsl distribution to use with wsl</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="ex">wsl</span> <span class="at">-s</span> <span class="op">&lt;</span>DistributionName<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="installation-in-a-non-system-drive" class="level4">
+<h4 class="anchored" data-anchor-id="installation-in-a-non-system-drive">installation in a non-system drive</h4>
+<p>and <a href="https://damsteen.nl/blog/2018/08/29/installing-wsl-manually-on-non-system-drive">here</a> is a more advanced config to install in a non system drive (D: instead of C:)</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#from powershell</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">New-Item</span> D:<span class="dt">\W</span>SL<span class="dt">\U</span>buntu-20.04 <span class="at">-ItemType</span> Directory</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Set-Location</span> D:<span class="dt">\W</span>SL<span class="dt">\U</span>buntu-20.04</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">#list+link of distributions in https://docs.microsoft.com/en-us/windows/wsl/install-manual#downloading-distributions</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="ex">Invoke-WebRequest</span> <span class="at">-Uri</span> https://aka.ms/wslubuntu2004 <span class="at">-OutFile</span> Ubuntu-20.04.appx <span class="at">-UseBasicParsing</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="ex">Rename-Item</span> .<span class="dt">\U</span>buntu-20.04.appx Ubuntu-20.04.zip</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="ex">Expand-Archive</span> .<span class="dt">\U</span>buntu-20.04.zip <span class="at">-Verbose</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># and then run Ubuntu_2004.2021.825.0_x64.appx</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>I don’t know yet where the WSL disk is located (is it a .vhdx file?)</p>
+<p>Disks are located at <code>%USERPROFILE%\AppData\Local\Packages\[distro name]</code></p>
+<p>2 ditros used:</p>
+<ul>
+<li><p>wsl1 ubuntu 18.04: CanonicalGroupLimited.Ubuntu18.04onWindows_79rhkp1fndgsc</p></li>
+<li><p>wsl2 ubuntu 20.04: CanonicalGroupLimited.UbuntuonWindows_79rhkp1fndgsc</p></li>
+</ul>
+<p>So disks are still in C:<br>
+</p>
+<p>Guess I have to use move-wsl.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Set-Location</span> <span class="st">'D:\Program Files (x86)\move-wsl\'</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">.</span><span class="dt">\m</span>ove-wsl.ps1</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ex">PS</span> D:<span class="dt">\P</span>rogram Files <span class="er">(</span><span class="ex">x86</span><span class="kw">)</span><span class="ex">\move-wsl</span><span class="op">&gt;</span> .\move-wsl.ps1</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="ex">Getting</span> distros...</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="ex">Select</span> distro to move:</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="ex">1:</span> Ubuntu-18.04</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="ex">2:</span> Ubuntu</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="ex">2</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="ex">Enter</span> WSL target directory:</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="ex">D:\wsl\Ubuntu-20.04</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="ex">Move</span> Ubuntu to <span class="st">"D:\wsl\Ubuntu-20.04"</span><span class="pp">?</span> <span class="er">(</span><span class="ex">Y</span><span class="kw">|</span><span class="ex">n</span><span class="kw">)</span><span class="bu">:</span> Y</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="ex">Exporting</span> VHDX to <span class="st">"D:\wsl\Ubuntu-20.04\Ubuntu.tar"</span> ...</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>And after that, have to create file<code>/etc/wsl.conf</code></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">guillaume@LL11LPC0PQARQ:~$</span> cat /etc/wsl.conf</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">[user]</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="va">default</span><span class="op">=</span>guillaume</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="configuration" class="level4">
+<h4 class="anchored" data-anchor-id="configuration">configuration</h4>
+<section id="wsl-vpnkit" class="level5">
+<h5 class="anchored" data-anchor-id="wsl-vpnkit">wsl-vpnkit</h5>
+<p>It is nicely explained in the Michelin blog entry. DNS resolution is kind of broken (I think due to internal protections we use on our corporate PC)</p>
+<p><a href="https://github.com/moby/vpnkit">vpnkit</a> provides a secured solution to make it work. And sakai135 has packaged it for wsl: <a href="https://github.com/sakai135/wsl-vpnkit">wsl-vpnkit</a></p>
+<p>The steps to install wsl-vpn kit are:</p>
+<ul>
+<li>Create a working directory on your windows workspace and download this <a href="https://github.com/sakai135/wsl-vpnkit/releases/download/v0.2.3/wsl-vpnkit.tar.gz">packaging of wsl-vpnkit</a> inside.</li>
+<li>Now, open a powershell and go to the location of wsl-vpnkit.tar.gz, downloaded during the previous step</li>
+<li>On your powershell terminal, launch:</li>
+</ul>
+<pre class="shell"><code>  #/!\ in powserhsell
+  wsl --import wsl-vpnkit $env:USERPROFILE\wsl-vpnkit wsl-vpnkit.tar.gz
+  wsl -d wsl-vpnkit</code></pre>
+<ul>
+<li>You can now exit your powershell</li>
+<li>For the last step, to ensure all wsl reboot good communication, we will write in .profile file of your ubuntu user wsl-vpnkit initialization command:</li>
+</ul>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>  <span class="bu">echo</span> <span class="st">'wsl.exe -d wsl-vpnkit service wsl-vpnkit start'</span> <span class="op">&gt;&gt;</span> ~/.profile</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Relaunch your WSL terminal</li>
+</ul>
+</section>
+<section id="git-configuration" class="level5">
+<h5 class="anchored" data-anchor-id="git-configuration">git configuration</h5>
+<p>create a SSH key pair under your distribution</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-keygen</span> <span class="at">-t</span> rsa <span class="at">-b</span> 4096 <span class="at">-C</span> <span class="st">"WSL2"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Integrate into gitlab using <a href="https://docs.gitlab.com/ee/ssh/#add-an-ssh-key-to-your-gitlab-account">gitlab doc</a>. (copy <code>id_rsa.pub</code> into gitlab &gt; preferences &gt; SSH Keys)cat .s</p>
+</section>
+<section id="add-corporate-ca-certificates" class="level5">
+<h5 class="anchored" data-anchor-id="add-corporate-ca-certificates">Add corporate CA certificates</h5>
+<p>Michelin SI is behind an ssl proxy with his proper PKI for certificates delivering. That is why, your subsystem must add this pki in her recognized authorities.</p>
+<p>To do this, we will clone a repository with the certificates in the subsystem and copy them to ca-certificates:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone git@gitlab.michelin.com:devops-foundation/devops_environment.git /tmp/devops_environment</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> cp /tmp/devops_environment/certs/<span class="pp">*</span> /usr/local/share/ca-certificates/</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> update-ca-certificates</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>If everything is ok, terminal notify you that certificates has been added.</p>
+<p>You can now clean the temp working folder:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-rf</span> /tmp/devops_environment</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>we can have similar approach to update CA certifcates for Python. 1st step is to locate cacert.pem of your active python environment.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> certifi</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>certifi.where() </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> <span class="st">'/home/guillaume/miniconda3/envs/fastai/lib/python3.9/site-packages/certifi/cacert.pem'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>TO BE FIXED</strong></p>
+<p>After having run <code>update-ca-certifcates</code>, there is an updated ca file at <code>/etc/ssl/certs/ca-certificates.crt</code>. Let’s concatenate it to our <code>cacert.pem</code>.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> /etc/ssl/certs/ca-certificates.crt /tmp/ca-certificates.crt</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">openssl</span> x509 <span class="at">-in</span> /tmp/ca-certificates.crt <span class="at">-out</span> /tmp/ca-certificates.pem <span class="at">-outform</span> PEM</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> /tmp/ca-certificates.pem <span class="kw">|</span> <span class="fu">tee</span> <span class="at">-a</span> /home/guillaume/miniconda3/envs/fastai/lib/python3.9/site-packages/certifi/cacert.pem</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="configure-apt" class="level5">
+<h5 class="anchored" data-anchor-id="configure-apt">Configure APT</h5>
+<p>The last step, to have a subsystem ready to use, is to have an apt with Michelin trusted sources configured. Ubuntu based package repositories can’t be used behind Michelin proxy.</p>
+<p>Michelin offers its own apt server with artifactory. To configure apt to use artifactory, launch these commands:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">'Acquire { http::User-Agent "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:13.37) Gecko/20100101 Firefox/31.33.7"; };'</span> <span class="kw">|</span> <span class="fu">sudo</span> tee /etc/apt/apt.conf.d/90globalprotectconf</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> sed <span class="at">-i</span> <span class="st">'s@^\(deb \)http://archive.ubuntu.com/ubuntu/\( focal\(-updates\)\?.*\)$@\1https://artifactory.michelin.com/artifactory/ubuntu-archive-remote\2\n# &amp;@'</span> /etc/apt/sources.list</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> sed <span class="at">-i</span> <span class="st">'s@^\(deb \)http://security.ubuntu.com/ubuntu/\( focal\(-updates\)\?.*\)$@\1https://artifactory.michelin.com/artifactory/ubuntu-security-remote\2\n# &amp;@'</span> /etc/apt/sources.list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="check-if-your-wsl-distribution-is-working-correctly" class="level5">
+<h5 class="anchored" data-anchor-id="check-if-your-wsl-distribution-is-working-correctly">Check if your WSL distribution is working correctly</h5>
+<p>To verify if everything is OK on your distribution:</p>
+<ul>
+<li>This command must return google ip:</li>
+</ul>
+<pre><code>  host google.fr</code></pre>
+<ul>
+<li>This command must return artifactory ip:</li>
+</ul>
+<pre><code>  host artifactory.michelin.com</code></pre>
+<ul>
+<li>You are able to update your distribution without error:</li>
+</ul>
+<pre><code>  sudo apt update
+  sudo apt upgrade -y</code></pre>
+</section>
+</section>
+</section>
+<section id="conda-mamba---installation-and-configuration" class="level2">
+<h2 class="anchored" data-anchor-id="conda-mamba---installation-and-configuration">Conda Mamba - installation and configuration</h2>
+<section id="conda-installation" class="level4">
+<h4 class="anchored" data-anchor-id="conda-installation">conda installation</h4>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="va">tmpdir</span><span class="op">=</span><span class="va">$(</span><span class="fu">mktemp</span> <span class="at">-d</span><span class="va">)</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="va">$tmpdir</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> +x Miniconda3-latest-Linux-x86_64.sh</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="co"># answer yes to question Do you wish the installer to initialize Miniconda3 by running conda init?</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> Miniconda3-latest-Linux-x86_64.sh <span class="at">-p</span> <span class="va">$HOME</span>/miniconda3</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;</span> ==<span class="op">&gt;</span> For <span class="ex">changes</span> to take effect, close and re-open your current shell. <span class="op">&lt;</span>==</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>With this configuration, conda will be activate at startup. If you’d prefer that conda’s base environment not be activated on startup, set the auto_activate_base parameter to false: <code>conda config --set auto_activate_base false</code></p>
+</section>
+<section id="conda-configuration" class="level4">
+<h4 class="anchored" data-anchor-id="conda-configuration">conda configuration</h4>
+<p>As we have in-house CA certificates, and conda uses its own CA certificates (in <code>~/miniconda3/ssl</code>)</p>
+<p>We have to change this behaviour and ask conda to use system CA certifcates.</p>
+<p>At the end of <code>.bash_rc</code>, add <code>export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt</code></p>
+</section>
+<section id="mamba-installation" class="level4">
+<h4 class="anchored" data-anchor-id="mamba-installation">mamba installation</h4>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> install mamba <span class="at">-n</span> base <span class="at">-c</span> conda-forge</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> init</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="installation-jupyter-notebook-nb_conda_kernels-jupyter-lab" class="level4">
+<h4 class="anchored" data-anchor-id="installation-jupyter-notebook-nb_conda_kernels-jupyter-lab">installation jupyter notebook, nb_conda_kernels, jupyter lab</h4>
+<div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> install nb_conda_kernels</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> install <span class="at">-c</span> conda-forge jupyterlab jupyterlab-git</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="create-conda-envt---fastai-v2.5.3-optional" class="level4">
+<h4 class="anchored" data-anchor-id="create-conda-envt---fastai-v2.5.3-optional">create conda envt - fastai (v2.5.3) (optional)</h4>
+<div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> create <span class="at">--name</span> fastai</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> activate fastai</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> install <span class="at">-c</span> fastai <span class="at">-c</span> pytorch fastai</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> install ipykernel</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="jupyter" class="level2">
+<h2 class="anchored" data-anchor-id="jupyter">Jupyter</h2>
+<p>Start jupyter (lab or notebook) from base environment, and switch to desired python environment.</p>
+<section id="modify-jupyter-config" class="level4">
+<h4 class="anchored" data-anchor-id="modify-jupyter-config">modify jupyter config</h4>
+<div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co">#create jupyter config file in ~.jupyter</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="ex">jupyter</span> notebook <span class="at">--generate-config</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>And activate jupyter config file to change <code>#c.NotebookApp.use_redirect_file = True</code> to <code>c.NotebookApp.use_redirect_file = False</code></p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
