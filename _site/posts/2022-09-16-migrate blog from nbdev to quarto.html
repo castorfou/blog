@@ -411,14 +411,15 @@ jobs:
 </section>
 <section id="current-publication-process" class="level1">
 <h1>Current publication process</h1>
-<div class="cell" data-execution_count="1">
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-10-17T09:19:58.806198Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-10-17T09:19:58.804824Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-10-17T09:19:58.922109Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-10-17T09:19:58.921312Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2022-10-17T09:19:58.806150Z&quot;}" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cat ..<span class="op">/</span>publish.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>NOW=`date '+%F_%H:%M'`;
+quarto render
 git add .
 git commit -m "$NOW"
 git push
-quarto publish gh-pages</code></pre>
+#quarto publish gh-pages --no-prompt</code></pre>
 </div>
 </div>
 </section>
