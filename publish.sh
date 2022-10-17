@@ -1,5 +1,5 @@
 NOW=`date '+%F_%H:%M'`;
-quarto render
+#quarto render
 git add .
 git commit -m "$NOW"
 git push
