@@ -9,7 +9,7 @@
 <meta name="dcterms.date" content="2022-09-16">
 <meta name="description" content="following migration guide from Hamel Hussain">
 
-<title>blog - Blog - migrate to quarto</title>
+<title>Guillaume’s blog - Blog - migrate to quarto</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -100,10 +100,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -136,7 +136,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
     <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">blog</span>
+    <span class="navbar-title">Guillaume’s blog</span>
     </a>
   </div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
@@ -148,12 +148,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <a class="nav-link" href="../about.html">About</a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/"><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/castorfou"><i class="bi bi-github" role="img">
 </i> 
  </a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com"><i class="bi bi-twitter" role="img">
+    <a class="nav-link" href="https://twitter.com/GuillaumeRamel1"><i class="bi bi-twitter" role="img">
 </i> 
  </a>
   </li>  
@@ -216,7 +216,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#update-some-files" id="toc-update-some-files" class="nav-link" data-scroll-target="#update-some-files">update some files</a></li>
   <li><a href="#preview" id="toc-preview" class="nav-link" data-scroll-target="#preview">preview</a></li>
   <li><a href="#keep-git-repo-in-sync" id="toc-keep-git-repo-in-sync" class="nav-link" data-scroll-target="#keep-git-repo-in-sync">keep git repo in sync</a></li>
-  <li><a href="#publication" id="toc-publication" class="nav-link" data-scroll-target="#publication">publication</a>
+  <li><a href="#publication-to-gh-pages-using-gh-actions" id="toc-publication-to-gh-pages-using-gh-actions" class="nav-link" data-scroll-target="#publication-to-gh-pages-using-gh-actions">publication to gh-pages using gh-actions</a>
   <ul class="collapse">
   <li><a href="#quarto-publish" id="toc-quarto-publish" class="nav-link" data-scroll-target="#quarto-publish">quarto publish</a></li>
   <li><a href="#github-actions" id="toc-github-actions" class="nav-link" data-scroll-target="#github-actions">github actions</a></li>
@@ -225,7 +225,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#current-publication-process" id="toc-current-publication-process" class="nav-link" data-scroll-target="#current-publication-process">Current publication process</a></li>
   <li><a href="#issues-improvments" id="toc-issues-improvments" class="nav-link" data-scroll-target="#issues-improvments">Issues / improvments</a>
   <ul class="collapse">
-  <li><a href="#quarto-publishing-issue-behind-firewall" id="toc-quarto-publishing-issue-behind-firewall" class="nav-link" data-scroll-target="#quarto-publishing-issue-behind-firewall">quarto publishing issue behind firewall</a></li>
+  <li><a href="#workaround-quarto-publishing-issue-behind-firewall" id="toc-workaround-quarto-publishing-issue-behind-firewall" class="nav-link" data-scroll-target="#workaround-quarto-publishing-issue-behind-firewall">[workaround] quarto publishing issue behind firewall</a></li>
   <li><a href="#workaround-inline-images-are-not-properly-rendered" id="toc-workaround-inline-images-are-not-properly-rendered" class="nav-link" data-scroll-target="#workaround-inline-images-are-not-properly-rendered">[workaround] inline images are not properly rendered</a></li>
   <li><a href="#albert-rapp-as-an-example" id="toc-albert-rapp-as-an-example" class="nav-link" data-scroll-target="#albert-rapp-as-an-example">Albert Rapp as an example</a></li>
   <li><a href="#workaround-links-are-not-rendered-as-links" id="toc-workaround-links-are-not-rendered-as-links" class="nav-link" data-scroll-target="#workaround-links-are-not-rendered-as-links">[workaround] links are not rendered as links</a>
@@ -325,13 +325,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>about.qmd</code>: I reuse my former <code>_pages/about.md</code></li>
 <li><code>profile.jpg</code>: and use my profile picture</li>
 </ul>
-<div class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cat <span class="op">~/</span>git<span class="op">/</span>blog<span class="op">/</span>.gitignore</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cat ..<span class="op">/</span>.gitignore</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>/.quarto/
-_site/
 .*
-!.gitignore</code></pre>
+!.gitignore
+!.github</code></pre>
 </div>
 </div>
 </section>
@@ -352,8 +352,8 @@ _site/
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"</span><span class="va">$NOW</span><span class="st">"</span></span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="publication" class="level2">
-<h2 class="anchored" data-anchor-id="publication">publication</h2>
+<section id="publication-to-gh-pages-using-gh-actions" class="level2">
+<h2 class="anchored" data-anchor-id="publication-to-gh-pages-using-gh-actions">publication to gh-pages using gh-actions</h2>
 <p>There are 2 ways to publish. A straightforword one by calling <code>quarto publish</code>. And a more advanced one with github actions.</p>
 <p>Using my corporate PC, <code>quarto publish</code> fails so I will give github actions a try.</p>
 <section id="quarto-publish" class="level3">
@@ -411,11 +411,11 @@ jobs:
 </section>
 <section id="current-publication-process" class="level1">
 <h1>Current publication process</h1>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-10-17T09:19:58.806198Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-10-17T09:19:58.804824Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-10-17T09:19:58.922109Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-10-17T09:19:58.921312Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2022-10-17T09:19:58.806150Z&quot;}" data-execution_count="1">
+<div class="cell" data-tags="[]" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cat ..<span class="op">/</span>publish.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>NOW=`date '+%F_%H:%M'`;
-quarto render
+#quarto render
 git add .
 git commit -m "$NOW"
 git push
@@ -425,8 +425,8 @@ git push
 </section>
 <section id="issues-improvments" class="level1">
 <h1>Issues / improvments</h1>
-<section id="quarto-publishing-issue-behind-firewall" class="level2">
-<h2 class="anchored" data-anchor-id="quarto-publishing-issue-behind-firewall">quarto publishing issue behind firewall</h2>
+<section id="workaround-quarto-publishing-issue-behind-firewall" class="level2">
+<h2 class="anchored" data-anchor-id="workaround-quarto-publishing-issue-behind-firewall">[workaround] quarto publishing issue behind firewall</h2>
 <p>Identical to error happening when installing quarto extension</p>
 <p><a href="https://github.com/quarto-ext/video/issues/27" class="uri">https://github.com/quarto-ext/video/issues/27</a></p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> quarto publish</span>
@@ -452,7 +452,7 @@ git push
 Sending fatal alert BadCertificate
 ERROR: TypeError: error sending request for url (https://github.com/quarto-ext/lightbox/archive/refs/heads/main.tar.gz): error trying to connect: invalid peer certificate contents: invalid peer certificate: UnknownIssuer</code></pre>
 <p>It fails with the same message. When I run <code>quarto publish</code> I have the same issue.</p>
-<p>One option is to use github actions. Need to find what is this id used in _publish.yml</p>
+<p>One option is to use github actions as explained in <a href="../posts/2022-09-16-migrate blog from nbdev to quarto.html#publication-to-gh-pages-using-gh-actions">publication to gh-pages using gh-actions</a>.</p>
 </section>
 <section id="workaround-inline-images-are-not-properly-rendered" class="level2">
 <h2 class="anchored" data-anchor-id="workaround-inline-images-are-not-properly-rendered">[workaround] inline images are not properly rendered</h2>

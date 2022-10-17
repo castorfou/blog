@@ -17,7 +17,9 @@ website:
         href: https://twitter.com/GuillaumeRamel1
 format:
   html:
-    theme: solar
+    theme: 
+      light: journal
+      dark: [journal, theme-dark.scss]
     css: styles.css
     from: markdown+autolink_bare_uris
 
