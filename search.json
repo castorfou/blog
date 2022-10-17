@@ -1964,7 +1964,7 @@
     "href": "posts/2022-09-16-migrate blog from nbdev to quarto.html#update-some-files",
     "title": "Blog - migrate to quarto",
     "section": "update some files",
-    "text": "update some files\n\n.gitignore: we suggest adding _site/ as well as dot files .*\nabout.qmd: I reuse my former _pages/about.md\nprofile.jpg: and use my profile picture\n\n\n!cat ~/git/blog/.gitignore\n\n/.quarto/\n_site/\n.*\n!.gitignore"
+    "text": "update some files\n\n.gitignore: we suggest adding _site/ as well as dot files .*\nabout.qmd: I reuse my former _pages/about.md\nprofile.jpg: and use my profile picture\n\n\n!cat ../.gitignore\n\n/.quarto/\n.*\n!.gitignore\n!.github"
   },
   {
     "objectID": "posts/2022-09-16-migrate blog from nbdev to quarto.html#preview",

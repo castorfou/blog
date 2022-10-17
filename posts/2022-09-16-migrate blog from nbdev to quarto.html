@@ -325,13 +325,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>about.qmd</code>: I reuse my former <code>_pages/about.md</code></li>
 <li><code>profile.jpg</code>: and use my profile picture</li>
 </ul>
-<div class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cat <span class="op">~/</span>git<span class="op">/</span>blog<span class="op">/</span>.gitignore</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cat ..<span class="op">/</span>.gitignore</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>/.quarto/
-_site/
 .*
-!.gitignore</code></pre>
+!.gitignore
+!.github</code></pre>
 </div>
 </div>
 </section>
@@ -452,7 +452,7 @@ git push
 Sending fatal alert BadCertificate
 ERROR: TypeError: error sending request for url (https://github.com/quarto-ext/lightbox/archive/refs/heads/main.tar.gz): error trying to connect: invalid peer certificate contents: invalid peer certificate: UnknownIssuer</code></pre>
 <p>It fails with the same message. When I run <code>quarto publish</code> I have the same issue.</p>
-<p>One option is to use github actions as explained in <a href="../posts/2022-09-16-migrate blog from nbdev to quarto.html#publication_to_gh-pages_using_gh-actions">publication to gh-pages using gh-actions</a>.</p>
+<p>One option is to use github actions as explained in <a href="../posts/2022-09-16-migrate blog from nbdev to quarto.html#publication-to-gh-pages-using-gh-actions">publication to gh-pages using gh-actions</a>.</p>
 </section>
 <section id="workaround-inline-images-are-not-properly-rendered" class="level2">
 <h2 class="anchored" data-anchor-id="workaround-inline-images-are-not-properly-rendered">[workaround] inline images are not properly rendered</h2>
