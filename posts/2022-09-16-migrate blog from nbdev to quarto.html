@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.1.189">
+<meta name="generator" content="quarto-1.1.251">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -228,7 +228,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#quarto-publishing-issue-behind-firewall" id="toc-quarto-publishing-issue-behind-firewall" class="nav-link" data-scroll-target="#quarto-publishing-issue-behind-firewall">quarto publishing issue behind firewall</a></li>
   <li><a href="#workaround-inline-images-are-not-properly-rendered" id="toc-workaround-inline-images-are-not-properly-rendered" class="nav-link" data-scroll-target="#workaround-inline-images-are-not-properly-rendered">[workaround] inline images are not properly rendered</a></li>
   <li><a href="#albert-rapp-as-an-example" id="toc-albert-rapp-as-an-example" class="nav-link" data-scroll-target="#albert-rapp-as-an-example">Albert Rapp as an example</a></li>
-  <li><a href="#links-are-not-rendered-as-links" id="toc-links-are-not-rendered-as-links" class="nav-link" data-scroll-target="#links-are-not-rendered-as-links">links are not rendered as links</a>
+  <li><a href="#workaround-links-are-not-rendered-as-links" id="toc-workaround-links-are-not-rendered-as-links" class="nav-link" data-scroll-target="#workaround-links-are-not-rendered-as-links">[workaround] links are not rendered as links</a>
   <ul class="collapse">
   <li><a href="#suggestions" id="toc-suggestions" class="nav-link" data-scroll-target="#suggestions">suggestions</a></li>
   </ul></li>
@@ -365,15 +365,46 @@ _site/
 </section>
 <section id="github-actions" class="level3">
 <h3 class="anchored" data-anchor-id="github-actions">github actions</h3>
-<p>as explained in <a href="https://quarto.org/docs/publishing/quarto-pub.html#github-action" class="uri">https://quarto.org/docs/publishing/quarto-pub.html#github-action</a></p>
-<section id="publish.yml" class="level4">
-<h4 class="anchored" data-anchor-id="publish.yml">_publish.yml</h4>
-<p>First step is to set <code>_publish.yml</code></p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">-</span> source: project</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="ex">quarto-pub:</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="ex">-</span> id: <span class="st">"5f3abafe-68f9-4c1d-835b-9d668b892001"</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>      <span class="ex">url:</span> <span class="st">"https://castorfou.github.io/blog/"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>but what is this id? <a href="https://github.com/quarto-dev/quarto-web/issues/404" class="uri">https://github.com/quarto-dev/quarto-web/issues/404</a></p>
+<p>as explained in <a href="https://quarto.org/docs/publishing/github-pages.html#github-action" class="uri">https://quarto.org/docs/publishing/github-pages.html#github-action</a></p>
+<p>1st step is to decide where code is executed: * local execution and rendering * local execution with CI rendering * CI execution and rendering</p>
+<p>I think I will go for local execution and rendering.</p>
+<section id="freezing-computations" class="level4">
+<h4 class="anchored" data-anchor-id="freezing-computations">freezing computations</h4>
+<p>To be added to <code>_quarto.yml</code></p>
+<pre class="text"><code>execute:
+  freeze: auto</code></pre>
+<p>And then <code>quarto render</code></p>
+</section>
+<section id="publish-actions" class="level4">
+<h4 class="anchored" data-anchor-id="publish-actions">publish actions</h4>
+<p>Add a publish.yml GitHub Action to your project by creating this YAML file and saving it to .github/workflows/publish.yml:</p>
+<pre class="text"><code>on:
+  workflow_dispatch:
+  push:
+    branches: main
+
+name: Quarto Publish
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+
+      - name: Set up Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+
+      - name: Render and Publish
+        uses: quarto-dev/quarto-actions/publish@v2
+        with:
+          target: gh-pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}</code></pre>
+<p>We can now remove the publish command from <code>publish.sh</code></p>
+<p>And remove _site/ from <code>.gitignore</code></p>
 </section>
 </section>
 </section>
@@ -381,7 +412,7 @@ _site/
 <section id="current-publication-process" class="level1">
 <h1>Current publication process</h1>
 <div class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cat ..<span class="op">/</span>publish.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cat ..<span class="op">/</span>publish.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>NOW=`date '+%F_%H:%M'`;
 git add .
@@ -397,23 +428,23 @@ quarto publish gh-pages</code></pre>
 <h2 class="anchored" data-anchor-id="quarto-publishing-issue-behind-firewall">quarto publishing issue behind firewall</h2>
 <p>Identical to error happening when installing quarto extension</p>
 <p><a href="https://github.com/quarto-ext/video/issues/27" class="uri">https://github.com/quarto-ext/video/issues/27</a></p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> quarto publish</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="ex">?</span> Publish update to: › https://castorfou.github.io/blog/ <span class="er">(</span><span class="ex">GitHub</span> Pages<span class="kw">)</span></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="ex">From</span> https://github.com/castorfou/blog</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a> <span class="ex">*</span> branch            gh-pages   <span class="at">-</span><span class="op">&gt;</span> FETCH_HEAD</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="ex">origin</span>  https://github.com/castorfou/blog.git <span class="er">(</span><span class="ex">fetch</span><span class="kw">)</span></span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="ex">origin</span>  https://github.com/castorfou/blog.git <span class="er">(</span><span class="ex">push</span><span class="kw">)</span></span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="ex">To</span> https://github.com/castorfou/blog.git</span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a> <span class="ex">+</span> 0a3710d...1aeaf23 HEAD <span class="at">-</span><span class="op">&gt;</span> gh-pages <span class="er">(</span><span class="ex">forced</span> update<span class="kw">)</span></span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="ex">fatal:</span> <span class="st">'fadc274b'</span> is not a working tree</span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a><span class="ex">NOTE:</span> GitHub Pages sites use caching so you might need to click the refresh</span>
-<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="ex">button</span> within your web browser to see changes after deployment.</span>
-<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">\)</span> Deploying gh-pages branch to website <span class="er">(</span><span class="ex">this</span> may take a few minutes<span class="kw">)</span><span class="ex">Sending</span> fatal alert BadCertificate</span>
-<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a><span class="ex">[✓]</span> Deploying gh-pages branch to website <span class="er">(</span><span class="ex">this</span> may take a few minutes<span class="kw">)</span></span>
-<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a><span class="ex">ERROR:</span> TypeError: error sending request for url <span class="er">(</span><span class="ex">https://castorfou.github.io/blog/.nojekyll</span><span class="kw">)</span><span class="bu">:</span> error trying to connect: invalid peer certificate contents: invalid peer certificate: UnknownIssuer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> quarto publish</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="ex">?</span> Publish update to: › https://castorfou.github.io/blog/ <span class="er">(</span><span class="ex">GitHub</span> Pages<span class="kw">)</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="ex">From</span> https://github.com/castorfou/blog</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a> <span class="ex">*</span> branch            gh-pages   <span class="at">-</span><span class="op">&gt;</span> FETCH_HEAD</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="ex">origin</span>  https://github.com/castorfou/blog.git <span class="er">(</span><span class="ex">fetch</span><span class="kw">)</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="ex">origin</span>  https://github.com/castorfou/blog.git <span class="er">(</span><span class="ex">push</span><span class="kw">)</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="ex">To</span> https://github.com/castorfou/blog.git</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a> <span class="ex">+</span> 0a3710d...1aeaf23 HEAD <span class="at">-</span><span class="op">&gt;</span> gh-pages <span class="er">(</span><span class="ex">forced</span> update<span class="kw">)</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="ex">fatal:</span> <span class="st">'fadc274b'</span> is not a working tree</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="ex">NOTE:</span> GitHub Pages sites use caching so you might need to click the refresh</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a><span class="ex">button</span> within your web browser to see changes after deployment.</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">\)</span> Deploying gh-pages branch to website <span class="er">(</span><span class="ex">this</span> may take a few minutes<span class="kw">)</span><span class="ex">Sending</span> fatal alert BadCertificate</span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a><span class="ex">[✓]</span> Deploying gh-pages branch to website <span class="er">(</span><span class="ex">this</span> may take a few minutes<span class="kw">)</span></span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a><span class="ex">ERROR:</span> TypeError: error sending request for url <span class="er">(</span><span class="ex">https://castorfou.github.io/blog/.nojekyll</span><span class="kw">)</span><span class="bu">:</span> error trying to connect: invalid peer certificate contents: invalid peer certificate: UnknownIssuer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>For context, I use quarto as a replacement of fastai/fastpages and followed a migration guide from Hamel Hussain asking for this installation.</p>
 <p>And I’m in a corporate environment with transparent proxies and self signed certificates. My system has updated CERT in /usr/local/share/ca-certificates/, and SSL_CERT_FILE environment variable pointing to updated corporate pem.</p>
 <pre><code>$ quarto install extension quarto-ext/lightbox
@@ -431,8 +462,8 @@ ERROR: TypeError: error sending request for url (https://github.com/quarto-ext/l
 <h2 class="anchored" data-anchor-id="albert-rapp-as-an-example">Albert Rapp as an example</h2>
 <p><a href="https://albert-rapp.de/posts/13_quarto_blog_writing_guide/13_quarto_blog_writing_guide.html" class="uri">https://albert-rapp.de/posts/13_quarto_blog_writing_guide/13_quarto_blog_writing_guide.html</a></p>
 </section>
-<section id="links-are-not-rendered-as-links" class="level2">
-<h2 class="anchored" data-anchor-id="links-are-not-rendered-as-links">links are not rendered as links</h2>
+<section id="workaround-links-are-not-rendered-as-links" class="level2">
+<h2 class="anchored" data-anchor-id="workaround-links-are-not-rendered-as-links">[workaround] links are not rendered as links</h2>
 <p>in jupyter, just typing url turns it into a link. Not with quarto: <a href="https://castorfou.github.io/blog/" class="uri">https://castorfou.github.io/blog/</a></p>
 <p>anyway to do it ?</p>
 <p><a href="https://github.com/quarto-dev/quarto-cli/discussions/2609">https://github.com/quarto-dev/quarto-cli/discussions/2609</a></p>
@@ -441,6 +472,13 @@ ERROR: TypeError: error sending request for url (https://github.com/quarto-ext/l
 <p>First one is to surround url with pointy braces ‘&lt;&gt;’</p>
 <p>Does it work: <a href="https://pandoc.org/MANUAL.html#links-1" class="uri">https://pandoc.org/MANUAL.html#links-1</a></p>
 <p>And better one (?) would be to run pandoc with <a href="https://pandoc.org/MANUAL.html#extension-autolink_bare_uris">autolink_bare_uris</a></p>
+<p>Just modifying <code>_quarto.yml</code> in ( format &gt; html &gt; from ) option</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2022-09-16-migrate%20blog%20from%20nbdev%20to%20quarto_files/figure-html/98d6bda2-f07a-4b7d-bfaf-68dc5f46130f.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
 
 
 </section>
