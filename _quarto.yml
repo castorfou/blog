@@ -5,14 +5,16 @@ execute:
   freeze: true
 
 website:
-  title: "blog"
+  title: "Guillaume's blog"
+  site-url: https://castorfou.github.io
+  description: "This is Guillaume Ramelet's personal blog."
   navbar:
     right:
       - about.qmd
       - icon: github
-        href: https://github.com/
+        href: https://github.com/castorfou
       - icon: twitter
-        href: https://twitter.com
+        href: https://twitter.com/GuillaumeRamel1
 format:
   html:
     theme: cosmo
