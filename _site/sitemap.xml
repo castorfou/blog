@@ -2,22 +2,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://castorfou.github.io/posts/2022-10-01-logbook-October-22.html</loc>
-    <lastmod>2022-10-17T16:29:12.689Z</lastmod>
+    <lastmod>2022-10-19T06:06:43.145Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2022-09-16-migrate blog from nbdev to quarto.html</loc>
-    <lastmod>2022-10-17T16:29:13.385Z</lastmod>
+    <lastmod>2022-10-19T06:07:53.137Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2022-10-17-fastai-2022-courses.html</loc>
-    <lastmod>2022-10-17T16:29:51.073Z</lastmod>
+    <lastmod>2022-10-19T06:06:44.262Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/index.html</loc>
-    <lastmod>2022-10-17T16:32:34.241Z</lastmod>
+    <lastmod>2022-10-19T06:08:36.883Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/about.html</loc>
-    <lastmod>2022-10-17T16:29:58.137Z</lastmod>
+    <lastmod>2022-10-19T06:09:14.648Z</lastmod>
+  </url>
+  <url>
+    <loc>https://castorfou.github.io/posts/2022-10-12-gradio_huggingface.html</loc>
+    <lastmod>2022-10-19T06:06:43.726Z</lastmod>
   </url>
 </urlset>

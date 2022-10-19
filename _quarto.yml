@@ -18,8 +18,8 @@ website:
 format:
   html:
     theme: 
-      light: [journal, light.scss]
-      dark: [journal, dark.scss]
+      light: journal
+      dark: darkly
     css: styles.css
     from: markdown+autolink_bare_uris
 
