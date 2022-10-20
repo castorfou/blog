@@ -2742,5 +2742,47 @@
     "title": "Run dataiku with docker",
     "section": "Portainer",
     "text": "Portainer\nI will use the community edition which is open source.\nBut portainer.io is providing nice documentation on:\n\ndocker and container: https://install.portainer.io/containers-101\nportainer: https://install.portainer.io/portainer-101\n\nFor CE installation, everything is detailed at https://docs.portainer.io/v/ce-2.9/start/install/server/docker/wsl\ndocker volume create portainer_data\ndocker run -d -p 8000:8000 -p 9443:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:2.9.3\nhttps://localhost:9443\ncreate admin user (admin/adminadmin)\n\n\n\nimage.png"
+  },
+  {
+    "objectID": "posts/2022-10-01-logbook-October-22.html#wednesday-1012",
+    "href": "posts/2022-10-01-logbook-October-22.html#wednesday-1012",
+    "title": "Logbook for October 22",
+    "section": "Wednesday 10/12",
+    "text": "Wednesday 10/12\nI am interested since a while to skip execution of some cells in notebooks.\nI usually have to rerun (most parts of) a notebook when reopen it, \nin order to get access to previously defined variables and go on working.\n\nHowever, sometimes I'd like to skip some of the cells, which have no \ninfluence to subsequent cells (e.g., they might comprise a branch of \nanalysis that is finished) and could take very long time to run. \nThese cells can be scattered throughout the notebook, so that something \nlike \"Run All Below\" won't help much.\nI had used freeze extension a while ago when using exclusively jupyter notebook, and now I use jupyter lab and I have not found any alternative\nThere is a solution proposed here https://stackoverflow.com/questions/19309287/how-to-intermittently-skip-certain-cells-when-running-ipython-notebook that could be of interest:\nusing %%cache"
+  },
+  {
+    "objectID": "posts/2022-10-01-logbook-October-22.html#saturday-1015",
+    "href": "posts/2022-10-01-logbook-October-22.html#saturday-1015",
+    "title": "Logbook for October 22",
+    "section": "Saturday 10/15",
+    "text": "Saturday 10/15\njust to create a bash script from Files app in ubuntu (explorer): https://itsfoss.com/add-new-document-option/\n\n\n\nimage.png\n\n\nI would like to create HD pictures to support my pitch of my newbiz idea.\nAnd korben has just tested promptomania to generate best prompt to generate diffusion pictures.\nI have installed a verssion on my linux using https://sd-webui.github.io/stable-diffusion-webui/docs/2.linux-installation.html\n\n\n\nimage.png"
+  },
+  {
+    "objectID": "posts/2022-10-01-logbook-October-22.html#monday-1017",
+    "href": "posts/2022-10-01-logbook-October-22.html#monday-1017",
+    "title": "Logbook for October 22",
+    "section": "Monday 10/17",
+    "text": "Monday 10/17\nJust taken back blogging with nbdev to handle publication using gh actions to gh pages.\nAnd finally took time to start fastai courses with chapter 1."
+  },
+  {
+    "objectID": "posts/2022-10-01-logbook-October-22.html#tuesday-1018",
+    "href": "posts/2022-10-01-logbook-October-22.html#tuesday-1018",
+    "title": "Logbook for October 22",
+    "section": "Tuesday 10/18",
+    "text": "Tuesday 10/18\nSearching why dark mode doesn’t toggle as expected, I land on this thread https://github.com/quarto-dev/quarto-cli/issues/822\nQuite interesting site where slides are published using quarto. https://pythoncoderunicorn.github.io/Quarto-RLadies/#/title-slide\nAn alternative to RISE?"
+  },
+  {
+    "objectID": "posts/2022-10-01-logbook-October-22.html#thursday-1020",
+    "href": "posts/2022-10-01-logbook-October-22.html#thursday-1020",
+    "title": "Logbook for October 22",
+    "section": "Thursday 10/20",
+    "text": "Thursday 10/20\n\nportainer\nJust testing portainer for docker as explained in Run dataiku with docker\n\n\ndetect broken links in blog\nAnd have to figure out a way to detect broken links:\n\nusing google search console\n\nAs it takes a day to be processed I will test again tomorrow\n\n\nfavicon on blog\nCreation of a favicon for this blog. Using gimp\nAnd quarto doc for favicon\n\n\ngoogle analytics on blog\nSetup google analytics, get G- Id, and update _quarto.yml accordingly as explained in quarto doc."
+  },
+  {
+    "objectID": "posts/2022-10-17-fastai-2022-courses.html#gradio-huggingface-spaces",
+    "href": "posts/2022-10-17-fastai-2022-courses.html#gradio-huggingface-spaces",
+    "title": "Practical Deep Learning for Coders",
+    "section": "Gradio + HuggingFace Spaces",
+    "text": "Gradio + HuggingFace Spaces\n\ncreate HF repo\nCreate this minima space from HF.\nAside the explanation on HF, Jeremy shares how useful Github Desktop is.\n\n\n\nimage.png\n\n\n\n\ncreate 1st gradio app and host it\nCreate app.py as instructed in our freshly created HF space. Commit Push (using github desktop). Back to HF interface, something is being built. and voila\n\n\n\nimage.png\n\n\nNothing new because I played with gradio and HF couple of weeks ago.\nWe know have a basic app hosted. We can just integrate a deep learning model.\n\n\ntrain and export a DL model\nAnd for that Jeremy has setup something on kaggle\nThey key (and new) part here is\nlearn.export('model.pkl')\nFinally, open the Kaggle sidebar on the right if it’s not already, and find the section marked “Output”. Open the /kaggle/working folder, and you’ll see model.pkl. Click on it, then click on the menu on the right that appears, and choose “Download”. After a few seconds, your model will be downloaded to your computer, where you can then create your app that uses the model.\n\n\n\nimage.png\n\n\nAnd copy/past it to your local minima repo. Push it to HF.\n\n\nintegrate it with gradio\n\n\n\nimage.png\n\n\nAnd Jeremy illustrates how to do it with a notebook and nbdev. Exactly as I did in gradio and huggingface - handson\n\nload model\nMain parts are to load the model with\nlearn = load_learner('model.pkl')\n\n\nrun prediction\nto run a prediction with\npred, idx, probs = learn.predict(img)\n\n\ncall prediction through a function\nand to create the classify_image function as expected by gradio\ncategories = ('Dog', 'Cat')\n\ndef classify_image(img):\n    pred, idx, probs = learn.predict(img)\n    return dict(zip(categories, map(float, probs))))\nand this return part is quite complex because gradio cannot deal with Tensors.\n\n\ncreate gradio UI\nThere is now the gradio interface that takes image and returns dictionary.\nimage = gr.inputs.Image(shape=(192, 192))\nlabel = gr.outputs.Label()\nexamples = ['dog.jpg', 'cat.jpg', 'dunno.jpg']\n\nintf = gr.Interface(fn=classify_image, inputs=image, outputs=label, examples=examples)\nintf.launch(inline=False)\n\n\nexport as app.py\nAnd export as app.py and for that Jeremy uses a slightly different version that I used\nMine;\nimport nbdev; nbdev.export.nb_export('app.ipynb', lib_path='.')\nHis:\nfrom nbdev.export import notebook2script\nnotebook2script('app.ipynb')\nhttps://huggingface.co/spaces/jph00/testing\n\n\n\nimage.png"
   }
 ]
