@@ -2776,7 +2776,7 @@
     "href": "posts/2022-10-01-logbook-October-22.html#thursday-1020",
     "title": "Logbook for October 22",
     "section": "Thursday 10/20",
-    "text": "Thursday 10/20\n\nportainer\nJust testing portainer for docker as explained in Run dataiku with docker\n\n\ndetect broken links in blog\nAnd have to figure out a way to detect broken links:\n\nusing google search console\n\nAs it takes a day to be processed I will test again tomorrow\n\n\nfavicon on blog\nCreation of a favicon for this blog. Using gimp\nAnd quarto doc for favicon\n\n\ngoogle analytics on blog\nSetup google analytics, get G- Id, and update _quarto.yml accordingly as explained in quarto doc."
+    "text": "Thursday 10/20\n\nportainer\nJust testing portainer for docker as explained in Run dataiku with docker\n\n\ndetect broken links in blog\nAnd have to figure out a way to detect broken links:\n\nusing google search console\n\nAs it takes a day to be processed I will test again tomorrow\n\n\nfavicon on blog\nCreation of a favicon for this blog. Using gimp\nAnd quarto doc for favicon\n\n\ngoogle analytics on blog\nSetup google analytics, get G- Id, and update _quarto.yml accordingly as explained in quarto doc.\nAnalytics available here"
   },
   {
     "objectID": "posts/2022-10-17-fastai-2022-courses.html#gradio-huggingface-spaces",
@@ -2784,5 +2784,19 @@
     "title": "Practical Deep Learning for Coders",
     "section": "Gradio + HuggingFace Spaces",
     "text": "Gradio + HuggingFace Spaces\n\ncreate HF repo\nCreate this minima space from HF.\nAside the explanation on HF, Jeremy shares how useful Github Desktop is.\n\n\n\nimage.png\n\n\n\n\ncreate 1st gradio app and host it\nCreate app.py as instructed in our freshly created HF space. Commit Push (using github desktop). Back to HF interface, something is being built. and voila\n\n\n\nimage.png\n\n\nNothing new because I played with gradio and HF couple of weeks ago.\nWe know have a basic app hosted. We can just integrate a deep learning model.\n\n\ntrain and export a DL model\nAnd for that Jeremy has setup something on kaggle\nThey key (and new) part here is\nlearn.export('model.pkl')\nFinally, open the Kaggle sidebar on the right if it’s not already, and find the section marked “Output”. Open the /kaggle/working folder, and you’ll see model.pkl. Click on it, then click on the menu on the right that appears, and choose “Download”. After a few seconds, your model will be downloaded to your computer, where you can then create your app that uses the model.\n\n\n\nimage.png\n\n\nAnd copy/past it to your local minima repo. Push it to HF.\n\n\nintegrate it with gradio\n\n\n\nimage.png\n\n\nAnd Jeremy illustrates how to do it with a notebook and nbdev. Exactly as I did in gradio and huggingface - handson\n\nload model\nMain parts are to load the model with\nlearn = load_learner('model.pkl')\n\n\nrun prediction\nto run a prediction with\npred, idx, probs = learn.predict(img)\n\n\ncall prediction through a function\nand to create the classify_image function as expected by gradio\ncategories = ('Dog', 'Cat')\n\ndef classify_image(img):\n    pred, idx, probs = learn.predict(img)\n    return dict(zip(categories, map(float, probs))))\nand this return part is quite complex because gradio cannot deal with Tensors.\n\n\ncreate gradio UI\nThere is now the gradio interface that takes image and returns dictionary.\nimage = gr.inputs.Image(shape=(192, 192))\nlabel = gr.outputs.Label()\nexamples = ['dog.jpg', 'cat.jpg', 'dunno.jpg']\n\nintf = gr.Interface(fn=classify_image, inputs=image, outputs=label, examples=examples)\nintf.launch(inline=False)\n\n\nexport as app.py\nAnd export as app.py and for that Jeremy uses a slightly different version that I used\nMine;\nimport nbdev; nbdev.export.nb_export('app.ipynb', lib_path='.')\nHis:\nfrom nbdev.export import notebook2script\nnotebook2script('app.ipynb')\nhttps://huggingface.co/spaces/jph00/testing\n\n\n\nimage.png"
+  },
+  {
+    "objectID": "posts/2022-10-17-fastai-2022-courses.html#fastse",
+    "href": "posts/2022-10-17-fastai-2022-courses.html#fastse",
+    "title": "Practical Deep Learning for Coders",
+    "section": "fastse",
+    "text": "fastse"
+  },
+  {
+    "objectID": "posts/2022-10-17-fastai-2022-courses.html#fastsetup",
+    "href": "posts/2022-10-17-fastai-2022-courses.html#fastsetup",
+    "title": "Practical Deep Learning for Coders",
+    "section": "fastsetup",
+    "text": "fastsetup\nhttps://github.com/fastai/fastsetup\nclone it with github desktop (will do cmd line I don’t have the option Jeremy has)\nlaunch ./setup-conda.sh that will install mamba. I won’t do it because I already have it installed.\nI have an env for fastai conda activate fastai\nand install fastai with conda install -c fastchan fastai as mentionned in https://docs.fast.ai. I use conda but it points to mamba in my PC.\nthen nbdev conda install -c fastchan nbdev\nI run these commands with conda update -c fastchan  fastai to be sure to get the last versions"
   }
 ]
