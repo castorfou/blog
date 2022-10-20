@@ -350,7 +350,13 @@ postgres                 10.4            978b82dc00dc   4 years ago     236MB</c
 </section>
 <section id="portainer" class="level2">
 <h2 class="anchored" data-anchor-id="portainer">Portainer</h2>
-<p>Everything is explained at <a href="https://docs.portainer.io/v/ce-2.9/start/install/server/docker/wsl" class="uri">https://docs.portainer.io/v/ce-2.9/start/install/server/docker/wsl</a></p>
+<p>I will use the community edition which is open source.</p>
+<p>But portainer.io is providing nice documentation on:</p>
+<ul>
+<li>docker and container: <a href="https://install.portainer.io/containers-101" class="uri">https://install.portainer.io/containers-101</a></li>
+<li>portainer: <a href="https://install.portainer.io/portainer-101" class="uri">https://install.portainer.io/portainer-101</a></li>
+</ul>
+<p>For CE installation, everything is detailed at <a href="https://docs.portainer.io/v/ce-2.9/start/install/server/docker/wsl" class="uri">https://docs.portainer.io/v/ce-2.9/start/install/server/docker/wsl</a></p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> volume create portainer_data</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-d</span> <span class="at">-p</span> 8000:8000 <span class="at">-p</span> 9443:9443 <span class="at">--name</span> portainer <span class="at">--restart</span><span class="op">=</span>always <span class="at">-v</span> /var/run/docker.sock:/var/run/docker.sock <span class="at">-v</span> portainer_data:/data portainer/portainer-ce:2.9.3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><a href="https://localhost:9443" class="uri">https://localhost:9443</a></p>

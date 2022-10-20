@@ -1033,7 +1033,7 @@
     "href": "posts/2022-10-13-dockerdss.html#portainer",
     "title": "Run dataiku with docker",
     "section": "Portainer",
-    "text": "Portainer\nEverything is explained at https://docs.portainer.io/v/ce-2.9/start/install/server/docker/wsl\ndocker volume create portainer_data\ndocker run -d -p 8000:8000 -p 9443:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:2.9.3\nhttps://localhost:9443\ncreate admin user (admin/adminadmin)\n\n\n\nimage.png"
+    "text": "Portainer\nI will use the community edition which is open source.\nBut portainer.io is providing nice documentation on:\n\ndocker and container: https://install.portainer.io/containers-101\nportainer: https://install.portainer.io/portainer-101\n\nFor CE installation, everything is detailed at https://docs.portainer.io/v/ce-2.9/start/install/server/docker/wsl\ndocker volume create portainer_data\ndocker run -d -p 8000:8000 -p 9443:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:2.9.3\nhttps://localhost:9443\ncreate admin user (admin/adminadmin)\n\n\n\nimage.png"
   },
   {
     "objectID": "posts/2022-10-06-pip_cheatsheet.html",
