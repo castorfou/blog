@@ -220,8 +220,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <ul class="collapse">
   <li><a href="#list-images" id="toc-list-images" class="nav-link" data-scroll-target="#list-images">list images</a></li>
   <li><a href="#run-image" id="toc-run-image" class="nav-link" data-scroll-target="#run-image">run image</a></li>
+  <li><a href="#stop-image" id="toc-stop-image" class="nav-link" data-scroll-target="#stop-image">stop image</a></li>
   </ul></li>
   <li><a href="#dataiku-dss" id="toc-dataiku-dss" class="nav-link" data-scroll-target="#dataiku-dss">Dataiku DSS</a></li>
+  <li><a href="#portainer" id="toc-portainer" class="nav-link" data-scroll-target="#portainer">Portainer</a></li>
   </ul>
 </nav>
     </div>
@@ -315,6 +317,11 @@ postgres                 10.4            978b82dc00dc   4 years ago     236MB</c
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="ex">Type</span> <span class="st">"help"</span>, <span class="st">"copyright"</span>, <span class="st">"credits"</span> or <span class="st">"license"</span> for more information.</span>
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
+<section id="stop-image" class="level3">
+<h3 class="anchored" data-anchor-id="stop-image">stop image</h3>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> stop <span class="op">&lt;</span>Container_ID<span class="op">&gt;</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> rm <span class="op">&lt;</span>Container_ID<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
 </section>
 <section id="dataiku-dss" class="level2">
 <h2 class="anchored" data-anchor-id="dataiku-dss">Dataiku DSS</h2>
@@ -322,8 +329,8 @@ postgres                 10.4            978b82dc00dc   4 years ago     236MB</c
 <p>Start a DSS instance on the default internal data directory, exposing DSS on the default port (10000)</p>
 <p><code>docker run -p 10000:10000 -d dataiku/dss</code></p>
 <p>Alternatively, you can start a DSS instance on a mounted data directory or Docker volume, exposing DSS on the default port (10000).</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> ~/dss</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-p</span> 10000:10000 <span class="at">-v</span> MYVOLUME:/home/explore/dss <span class="at">-d</span> dataiku/dss</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> ~/dss</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-p</span> 10000:10000 <span class="at">-v</span> MYVOLUME:/home/explore/dss <span class="at">-d</span> dataiku/dss</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Open DSS in your browser (Chrome or Firefox)</p>
 <p>For Linux, open <a href="http://localhost:10000" class="uri">http://localhost:10000</a></p>
 <p>Default login/password (admin/admin)</p>
@@ -337,6 +344,20 @@ postgres                 10.4            978b82dc00dc   4 years ago     236MB</c
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-10-13-dockerdss_files/figure-html/38eccb86-b5fb-42e1-ac6e-0d1fe7650a59.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="portainer" class="level2">
+<h2 class="anchored" data-anchor-id="portainer">Portainer</h2>
+<p>Everything is explained at <a href="https://docs.portainer.io/v/ce-2.9/start/install/server/docker/wsl" class="uri">https://docs.portainer.io/v/ce-2.9/start/install/server/docker/wsl</a></p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> volume create portainer_data</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-d</span> <span class="at">-p</span> 8000:8000 <span class="at">-p</span> 9443:9443 <span class="at">--name</span> portainer <span class="at">--restart</span><span class="op">=</span>always <span class="at">-v</span> /var/run/docker.sock:/var/run/docker.sock <span class="at">-v</span> portainer_data:/data portainer/portainer-ce:2.9.3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><a href="https://localhost:9443" class="uri">https://localhost:9443</a></p>
+<p>create admin user (admin/adminadmin)</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2022-10-13-dockerdss_files/figure-html/e7fe540d-da6d-4ef4-912b-dd44279ca26a.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
 </figure>
 </div>
