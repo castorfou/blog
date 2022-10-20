@@ -500,7 +500,7 @@ sudo sed -i 's@^\(deb \)http://security.ubuntu.com/ubuntu/\( jammy\(-updates\)\?
 
 ### Setup config dotfiles with whole filesystem (/)
 
-as detailed in [keep dotfiles in git](/blog/posts/2022-04-07-keep%20dotfiles%20in%20git.html)
+as detailed in [keep dotfiles in git](/posts/2022-04-07-keep%20dotfiles%20in%20git.html)
 
 but to manage the whole filesystem.
 
