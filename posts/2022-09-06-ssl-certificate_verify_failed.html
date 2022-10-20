@@ -328,22 +328,24 @@ Resolving deltas: 100% (26/26), done.</code></pre>
 <h1>Integration in WSL2</h1>
 <p>I will modify SSL cert of my (base) environment.</p>
 <p>and add export <code>SSL_CERT_FILE</code> in <code>.bashrc</code></p>
-<p>I have made the modification at <a href="../guillaume_blog/blog/install-ubuntu-22.04-on-WSL.html">install ubuntu 22.04 on WSL</a></p>
-<div class="cell" data-execution_count="3">
+<p>I have made the modification at <a href="../posts/2022-04-25-install ubuntu 22.04 on WSL.html">install ubuntu 22.04 on WSL</a></p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-10-20T06:57:10.053581Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-10-20T06:57:10.053107Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-10-20T06:57:10.224068Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-10-20T06:57:10.223292Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2022-10-20T06:57:10.053533Z&quot;}" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cat ..<span class="op">/</span>files<span class="op">/</span>setup_wsl_02_install_python_conda_part3.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>echo "configure SSL cert v1"
+<pre><code>echo "configure SSL cert v2"
 
+conda deactivate
+pip install -U certifi
 export SSL_CERT_FILE=`python -c 'import certifi;print(certifi.where())'`
-
-tee -a ~/.bashrc &lt;&lt; EOF
-export SSL_CERT_FILE=$SSL_CERT_FILE
-EOF
 
 export TMPDIR=`mktemp -d`
 git clone git@gitlab.michelin.com:DEV/bib-certificates.git $TMPDIR
 cd $TMPDIR
 cat *trust-ca.pem &gt;&gt; $SSL_CERT_FILE
+
+tee -a ~/.bashrc &lt;&lt; EOF
+export SSL_CERT_FILE=$SSL_CERT_FILE
+EOF
 
 if [ -e "/.cfg" ]; then
         config='/usr/bin/git --git-dir=/.cfg/ --work-tree=/'
