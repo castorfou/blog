@@ -2191,18 +2191,39 @@
     "text": "Just playing with huggingface projects.\nWeekly someone from HF publishes news of the week\nLast 2 weeks, Thomas Simonini has sent updates on Transformers, Stable Diffusion. 09/27 10/03\nAnd just playing with these apps, I realize it has been developped using gradio. Should be nice to give a test. Could be usefull for this project: drag&drop badminton players spreadsheet, and return one with uptodate ranks"
   },
   {
-    "objectID": "posts/2022-10-01-logbook-October-22.html#week-41---october-22",
-    "href": "posts/2022-10-01-logbook-October-22.html#week-41---october-22",
+    "objectID": "posts/2022-10-01-logbook-October-22.html#wednesday-1012",
+    "href": "posts/2022-10-01-logbook-October-22.html#wednesday-1012",
     "title": "Logbook for October 22",
-    "section": "Week 41 - October 22",
-    "text": "Week 41 - October 22\n\nWednesday 10/12\nI am interested since a while to skip execution of some cells in notebooks.\nI usually have to rerun (most parts of) a notebook when reopen it, \nin order to get access to previously defined variables and go on working.\n\nHowever, sometimes I'd like to skip some of the cells, which have no \ninfluence to subsequent cells (e.g., they might comprise a branch of \nanalysis that is finished) and could take very long time to run. \nThese cells can be scattered throughout the notebook, so that something \nlike \"Run All Below\" won't help much.\nI had used freeze extension a while ago when using exclusively jupyter notebook, and now I use jupyter lab and I have not found any alternative\nThere is a solution proposed here https://stackoverflow.com/questions/19309287/how-to-intermittently-skip-certain-cells-when-running-ipython-notebook that could be of interest:\nusing %%cache\nSaturday 10/15\njust to create a bash script from Files app in ubuntu (explorer): https://itsfoss.com/add-new-document-option/\n\n\n\nimage.png\n\n\nI would like to create HD pictures to support my pitch of my newbiz idea.\nAnd korben has just tested promptomania to generate best prompt to generate diffusion pictures.\nI have installed a verssion on my linux using https://sd-webui.github.io/stable-diffusion-webui/docs/2.linux-installation.html\n\n\n\nimage.png"
+    "section": "Wednesday 10/12",
+    "text": "Wednesday 10/12\nI am interested since a while to skip execution of some cells in notebooks.\nI usually have to rerun (most parts of) a notebook when reopen it, \nin order to get access to previously defined variables and go on working.\n\nHowever, sometimes I'd like to skip some of the cells, which have no \ninfluence to subsequent cells (e.g., they might comprise a branch of \nanalysis that is finished) and could take very long time to run. \nThese cells can be scattered throughout the notebook, so that something \nlike \"Run All Below\" won't help much.\nI had used freeze extension a while ago when using exclusively jupyter notebook, and now I use jupyter lab and I have not found any alternative\nThere is a solution proposed here https://stackoverflow.com/questions/19309287/how-to-intermittently-skip-certain-cells-when-running-ipython-notebook that could be of interest:\nusing %%cache"
   },
   {
-    "objectID": "posts/2022-10-01-logbook-October-22.html#week-42---october-22",
-    "href": "posts/2022-10-01-logbook-October-22.html#week-42---october-22",
+    "objectID": "posts/2022-10-01-logbook-October-22.html#saturday-1015",
+    "href": "posts/2022-10-01-logbook-October-22.html#saturday-1015",
     "title": "Logbook for October 22",
-    "section": "Week 42 - October 22",
-    "text": "Week 42 - October 22\n\nMonday 10/17\nJust taken back blogging with nbdev to handle publication using gh actions to gh pages.\nAnd finally took time to start fastai courses with chapter 1.\n\n\nTuesday 10/18\nSearching why dark mode doesn’t toggle as expected, I land on this thread https://github.com/quarto-dev/quarto-cli/issues/822\nQuite interesting site where slides are published using quarto. https://pythoncoderunicorn.github.io/Quarto-RLadies/#/title-slide\nAn alternative to RISE?\n\n\nThursday 10/20\n\nportainer\nJust testing portainer for docker as explained in Run dataiku with docker\n\n\ndetect broken links in blog\nAnd have to figure out a way to detect broken links:\n\nusing google search console\n\nAs it takes a day to be processed I will test again tomorrow\n\n\nfavicon on blog\nCreation of a favicon for this blog. Using gimp\nAnd quarto doc for favicon\n\n\ngoogle analytics on blog\nSetup google analytics, get G- Id, and update _quarto.yml accordingly as explained in quarto doc."
+    "section": "Saturday 10/15",
+    "text": "Saturday 10/15\njust to create a bash script from Files app in ubuntu (explorer): https://itsfoss.com/add-new-document-option/\n\n\n\nimage.png\n\n\nI would like to create HD pictures to support my pitch of my newbiz idea.\nAnd korben has just tested promptomania to generate best prompt to generate diffusion pictures.\nI have installed a verssion on my linux using https://sd-webui.github.io/stable-diffusion-webui/docs/2.linux-installation.html\n\n\n\nimage.png"
+  },
+  {
+    "objectID": "posts/2022-10-01-logbook-October-22.html#monday-1017",
+    "href": "posts/2022-10-01-logbook-October-22.html#monday-1017",
+    "title": "Logbook for October 22",
+    "section": "Monday 10/17",
+    "text": "Monday 10/17\nJust taken back blogging with nbdev to handle publication using gh actions to gh pages.\nAnd finally took time to start fastai courses with chapter 1."
+  },
+  {
+    "objectID": "posts/2022-10-01-logbook-October-22.html#tuesday-1018",
+    "href": "posts/2022-10-01-logbook-October-22.html#tuesday-1018",
+    "title": "Logbook for October 22",
+    "section": "Tuesday 10/18",
+    "text": "Tuesday 10/18\nSearching why dark mode doesn’t toggle as expected, I land on this thread https://github.com/quarto-dev/quarto-cli/issues/822\nQuite interesting site where slides are published using quarto. https://pythoncoderunicorn.github.io/Quarto-RLadies/#/title-slide\nAn alternative to RISE?"
+  },
+  {
+    "objectID": "posts/2022-10-01-logbook-October-22.html#thursday-1020",
+    "href": "posts/2022-10-01-logbook-October-22.html#thursday-1020",
+    "title": "Logbook for October 22",
+    "section": "Thursday 10/20",
+    "text": "Thursday 10/20\n\nportainer\nJust testing portainer for docker as explained in Run dataiku with docker\n\n\ndetect broken links in blog\nAnd have to figure out a way to detect broken links:\n\nusing google search console\n\nAs it takes a day to be processed I will test again tomorrow\n\n\nfavicon on blog\nCreation of a favicon for this blog. Using gimp\nAnd quarto doc for favicon\n\n\ngoogle analytics on blog\nSetup google analytics, get G- Id, and update _quarto.yml accordingly as explained in quarto doc."
   },
   {
     "objectID": "posts/2021-07-29-git-clean-large-files.html",
