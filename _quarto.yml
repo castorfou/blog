@@ -7,6 +7,8 @@ execute:
 website:
   title: "Guillaume's blog"
   favicon: favicon_small.png
+  twitter-card: true
+  google-analytics: "G-12YC1FPHWN"
   site-url: https://castorfou.github.io
   description: "This is Guillaume Ramelet's personal blog."
   navbar:
