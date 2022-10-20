@@ -6,6 +6,7 @@ execute:
 
 website:
   title: "Guillaume's blog"
+  favicon: favicon_small.png
   site-url: https://castorfou.github.io
   description: "This is Guillaume Ramelet's personal blog."
   navbar:
