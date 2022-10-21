@@ -186,7 +186,7 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
     </div>
 </div>
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="fastai" data-listing-date-sort="1665957600000" data-listing-file-modified-sort="1666338800726" data-listing-reading-time-sort="6.335">
+<div class="quarto-post image-right" data-index="0" data-categories="fastai" data-listing-date-sort="1665957600000" data-listing-file-modified-sort="1666339299284" data-listing-reading-time-sort="6.31">
 <div class="thumbnail">
 <p><a href="./posts/2022-10-17-fastai-2022-courses.html"> <img src="./images/icons/fastai.png" class="thumnail-image"> </a></p>
 </div>
@@ -329,7 +329,7 @@ Oct 6, 2022
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="4" data-categories="logbook" data-listing-date-sort="1664575200000" data-listing-file-modified-sort="1666333931843" data-listing-reading-time-sort="1.91">
+<div class="quarto-post image-right" data-index="4" data-categories="logbook" data-listing-date-sort="1664575200000" data-listing-file-modified-sort="1666339193820" data-listing-reading-time-sort="1.97">
 <div class="thumbnail">
 <p><a href="./posts/2022-10-01-logbook-October-22.html"> <img src="./images/logbook.jpg" class="thumnail-image"> </a></p>
 </div>
@@ -396,7 +396,7 @@ Sep 23, 2022
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="6" data-categories="nbdev,quarto,fastpages,blog" data-listing-date-sort="1663279200000" data-listing-file-modified-sort="1666334394557" data-listing-reading-time-sort="6.03">
+<div class="quarto-post image-right" data-index="6" data-categories="nbdev,quarto,fastpages,blog" data-listing-date-sort="1663279200000" data-listing-file-modified-sort="1666339072899" data-listing-reading-time-sort="6.025">
 <div class="thumbnail">
 <p><a href="./posts/2022-09-16-migrate blog from nbdev to quarto.html"> <img src="./posts/images/icons/fastai.png" class="thumnail-image"> </a></p>
 </div>
@@ -3953,6 +3953,20 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return popup.innerHTML;
     });
   }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var filterRegex = new RegExp(/^(?:http:|https:)\/\/castorfou\.github\.io\/**/);
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+    var links = window.document.querySelectorAll('a:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+          // target, if specified
+          link.setAttribute("target", "_blank");
+      }
+    }
 });
 </script>
 </div> <!-- /content -->
