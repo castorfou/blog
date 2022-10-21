@@ -170,6 +170,7 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
   <li><a href="#favicon-on-blog" id="toc-favicon-on-blog" class="nav-link" data-scroll-target="#favicon-on-blog">favicon on blog</a></li>
   <li><a href="#google-analytics-on-blog" id="toc-google-analytics-on-blog" class="nav-link" data-scroll-target="#google-analytics-on-blog">google analytics on blog</a></li>
   </ul></li>
+  <li><a href="#friday-1021" id="toc-friday-1021" class="nav-link" data-scroll-target="#friday-1021"><strong>Friday 10/21</strong></a></li>
   </ul></li>
   </ul>
 </nav>
@@ -232,7 +233,7 @@ like "Run All Below" won't help much.</code></pre>
 <section id="monday-1017" class="level2">
 <h2 class="anchored" data-anchor-id="monday-1017"><strong>Monday 10/17</strong></h2>
 <p>Just taken back blogging with nbdev to <a href="../posts/2022-09-16-migrate blog from nbdev to quarto.html#publication">handle publication</a> using gh actions to gh pages.</p>
-<p>And finally took time to start fastai courses with <a href="../posts/2022-10-17-fastai-2022-courses.html">chapter 1</a>.</p>
+<p>And finally took time to start fastai courses with <a href="../posts/2022-10-17-fastai-2022-courses.html">chapter 1 - Getting started</a>.</p>
 </section>
 <section id="tuesday-1018" class="level2">
 <h2 class="anchored" data-anchor-id="tuesday-1018"><strong>Tuesday 10/18</strong></h2>
@@ -262,9 +263,13 @@ like "Run All Below" won't help much.</code></pre>
 <h3 class="anchored" data-anchor-id="google-analytics-on-blog">google analytics on blog</h3>
 <p>Setup <a href="https://support.google.com/analytics/answer/9539598?hl=en">google analytics</a>, get G- Id, and update <code>_quarto.yml</code> accordingly as explained in <a href="https://quarto.org/docs/websites/website-tools.html#google-analytics">quarto doc</a>.</p>
 <p>Analytics available <a href="https://analytics.google.com/analytics/web/?utm_source=marketingplatform.google.com&amp;utm_medium=et&amp;utm_campaign=marketingplatform.google.com%2Fabout%2Fanalytics%2F#/p338279857/reports/intelligenthome">here</a></p>
-
-
 </section>
+</section>
+<section id="friday-1021" class="level2">
+<h2 class="anchored" data-anchor-id="friday-1021"><strong>Friday 10/21</strong></h2>
+<p>Fastai courses 2022 <a href="../posts/2022-10-17-fastai-2022-courses.html#lesson-2---deployment">chapter 2 - Deployment</a> completed</p>
+
+
 </section>
 </section>
 
@@ -479,7 +484,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     });
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var filterRegex = new RegExp(/^(?:http:|https:)\/\/castorfou\.github\.io\/**/);
+      var filterRegex = new RegExp(/^(?:http:|https:)\/\/castorfou\.github\.io\//);
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href);
     }
@@ -490,6 +495,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (!isInternal(link.href)) {
           // target, if specified
           link.setAttribute("target", "_blank");
+          // default icon
+          link.classList.add("external");
       }
     }
 });

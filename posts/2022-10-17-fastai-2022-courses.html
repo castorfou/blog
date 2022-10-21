@@ -258,7 +258,11 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
   <li><a href="#gradio-streamlit" id="toc-gradio-streamlit" class="nav-link" data-scroll-target="#gradio-streamlit">gradio, streamlit</a></li>
   <li><a href="#gradio-hf-api" id="toc-gradio-hf-api" class="nav-link" data-scroll-target="#gradio-hf-api">gradio, hf API</a></li>
   <li><a href="#example-from-js" id="toc-example-from-js" class="nav-link" data-scroll-target="#example-from-js">example from js</a></li>
-  <li><a href="#host-it-with-gh-pages-and-fastpages" id="toc-host-it-with-gh-pages-and-fastpages" class="nav-link" data-scroll-target="#host-it-with-gh-pages-and-fastpages">host it with gh pages and fastpages</a></li>
+  </ul></li>
+  <li><a href="#gh-pages" id="toc-gh-pages" class="nav-link" data-scroll-target="#gh-pages">GH pages</a>
+  <ul class="collapse">
+  <li><a href="#by-generating-from-fastpages" id="toc-by-generating-from-fastpages" class="nav-link" data-scroll-target="#by-generating-from-fastpages">by generating from fastpages</a></li>
+  <li><a href="#or-by-forking-an-existing-one-e.g.-tinypets" id="toc-or-by-forking-an-existing-one-e.g.-tinypets" class="nav-link" data-scroll-target="#or-by-forking-an-existing-one-e.g.-tinypets">or by forking an existing one (e.g.&nbsp;tinypets)</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -585,11 +589,12 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 <span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>  photo<span class="op">.</span><span class="fu">addEventListener</span>(<span class="st">'input'</span><span class="op">,</span> read)<span class="op">;</span></span>
 <span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/script&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="host-it-with-gh-pages-and-fastpages" class="level3">
-<h3 class="anchored" data-anchor-id="host-it-with-gh-pages-and-fastpages">host it with gh pages and fastpages</h3>
+</section>
+<section id="gh-pages" class="level2">
+<h2 class="anchored" data-anchor-id="gh-pages">GH pages</h2>
 <p>It can run locally of course, and can be hosted with gh pages.</p>
-<section id="by-generating-from-fastpages" class="level4">
-<h4 class="anchored" data-anchor-id="by-generating-from-fastpages">by generating from fastpages</h4>
+<section id="by-generating-from-fastpages" class="level3">
+<h3 class="anchored" data-anchor-id="by-generating-from-fastpages">by generating from fastpages</h3>
 <p>Jeremy suggests to use <a href="https://github.com/fastai/fastpages">fastpages</a>. In the doc at the bottom there is a link to generate a website from fastapages</p>
 <p><a href="https://github.com/fastai/fastpages">fastai/fastpages: An easy to use blogging platform, with enhanced support for Jupyter Notebooks.</a></p>
 <blockquote class="blockquote">
@@ -601,8 +606,8 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 <p>Apply a theme (to be setup in <code>_config.yml</code>)</p>
 <p>Create an <code>index.md</code> file which is the landing page.</p>
 </section>
-<section id="or-by-forking-an-existing-one-e.g.-tinypets" class="level4">
-<h4 class="anchored" data-anchor-id="or-by-forking-an-existing-one-e.g.-tinypets">or by forking an existing one (e.g.&nbsp;<a href="https://github.com/fastai/tinypets">tinypets</a>)</h4>
+<section id="or-by-forking-an-existing-one-e.g.-tinypets" class="level3">
+<h3 class="anchored" data-anchor-id="or-by-forking-an-existing-one-e.g.-tinypets">or by forking an existing one (e.g.&nbsp;<a href="https://github.com/fastai/tinypets">tinypets</a>)</h3>
 <p>and in that case we have to turn on gh pages</p>
 <p>Settings &gt; Pages &gt; Enable gh pages (select branch and save)</p>
 <p>We can now switch to different theme.</p>
@@ -617,7 +622,6 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 <p>Looks like we can browse through these jekyll themes at <a href="http://jekyllthemes.org/" class="uri">http://jekyllthemes.org/</a></p>
 
 
-</section>
 </section>
 </section>
 </section>
@@ -833,7 +837,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     });
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var filterRegex = new RegExp(/^(?:http:|https:)\/\/castorfou\.github\.io\/**/);
+      var filterRegex = new RegExp(/^(?:http:|https:)\/\/castorfou\.github\.io\//);
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href);
     }
@@ -844,6 +848,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (!isInternal(link.href)) {
           // target, if specified
           link.setAttribute("target", "_blank");
+          // default icon
+          link.classList.add("external");
       }
     }
 });
