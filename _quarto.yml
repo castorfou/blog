@@ -25,6 +25,9 @@ format:
       dark: darkly
     css: styles.css
     from: markdown+autolink_bare_uris
+    link-external-icon: false
+    link-external-newwindow: true
+    link-external-filter: '^(?:http:|https:)\/\/castorfou\.github\.io\/**'    
 
 
 
