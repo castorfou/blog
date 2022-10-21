@@ -228,7 +228,7 @@
     "href": "posts/2022-09-16-migrate blog from nbdev to quarto.html#open-external-links-in-new-tabs",
     "title": "Blog - migrate to quarto",
     "section": "open external links in new tabs",
-    "text": "open external links in new tabs\nthanks to https://quarto.org/docs/reference/formats/html.html#links\n\n!cat ../_quarto.yml |grep -A 2 external\n\n    link-external-icon: false\n    link-external-newwindow: true\n    link-external-filter: '^(?:http:|https:)\\/\\/castorfou\\.github\\.io\\/**'"
+    "text": "open external links in new tabs\nthanks to https://quarto.org/docs/reference/formats/html.html#links\n\n!cat ../_quarto.yml |grep -A 2 external\n\n    link-external-icon: true\n    link-external-newwindow: true\n    link-external-filter: ^(?:http:|https:)\\/\\/castorfou\\.github\\.io\\/"
   },
   {
     "objectID": "posts/2022-09-16-migrate blog from nbdev to quarto.html#setup-favicon.ico",
