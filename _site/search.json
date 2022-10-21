@@ -2069,7 +2069,7 @@
     "href": "posts/2022-09-16-migrate blog from nbdev to quarto.html#workaround-links-are-not-rendered-as-links",
     "title": "Blog - migrate to quarto",
     "section": "[workaround] links are not rendered as links",
-    "text": "[workaround] links are not rendered as links\nin jupyter, just typing url turns it into a link. Not with quarto: https://castorfou.github.io/blog/\nanyway to do it ?\nhttps://github.com/quarto-dev/quarto-cli/discussions/2609\n\nsuggestions\nFirst one is to surround url with pointy braces ‘<>’\nDoes it work: https://pandoc.org/MANUAL.html#links-1\nAnd better one (?) would be to run pandoc with autolink_bare_uris\nJust modifying _quarto.yml in ( format > html > from ) option\n\n\n\nimage.png"
+    "text": "[workaround] links are not rendered as links\nin jupyter, just typing url turns it into a link. Not with quarto: https://castorfou.github.io/blog/\nanyway to do it ?\nhttps://github.com/quarto-dev/quarto-cli/discussions/2609\n\nsuggestions\nFirst one is to surround url with pointy braces ‘<>’\nDoes it work: https://pandoc.org/MANUAL.html#links-1\nAnd better one (?) would be to run pandoc with autolink_bare_uris\nJust modifying _quarto.yml in ( format > html > from ) option\n\n\n\nimage.png\n\n\n\n!cat ../_quarto.yml | grep -B5 autolink\n\n  html:\n    theme: \n      light: journal\n      dark: darkly\n    css: styles.css\n    from: markdown+autolink_bare_uris"
   },
   {
     "objectID": "posts/2021-02-19-Deep Reinforcement Learning Course by Thomas Simonini.html",
@@ -2776,7 +2776,7 @@
     "href": "posts/2022-10-01-logbook-October-22.html#thursday-1020",
     "title": "Logbook for October 22",
     "section": "Thursday 10/20",
-    "text": "Thursday 10/20\n\nportainer\nJust testing portainer for docker as explained in Run dataiku with docker\n\n\ndetect broken links in blog\nAnd have to figure out a way to detect broken links:\n\nusing google search console\n\nAs it takes a day to be processed I will test again tomorrow\n\n\nfavicon on blog\nCreation of a favicon for this blog. Using gimp\nAnd quarto doc for favicon\n\n\ngoogle analytics on blog\nSetup google analytics, get G- Id, and update _quarto.yml accordingly as explained in quarto doc.\nAnalytics available here"
+    "text": "Thursday 10/20\n\nportainer\nJust testing portainer for docker as explained in Run dataiku with docker\n\n\ndetect broken links in blog\nAnd have to figure out a way to detect broken links:\n\nusing google search console\n\nAs it takes a day to be processed I will test again tomorrow\n\n\nfavicon on blog\nCreation of a favicon for this blog.\n\n\ngoogle analytics on blog\nSetup google analytics, get G- Id, and update _quarto.yml accordingly as explained in quarto doc.\nAnalytics available here"
   },
   {
     "objectID": "posts/2022-10-17-fastai-2022-courses.html#gradio-huggingface-spaces",
@@ -2797,6 +2797,62 @@
     "href": "posts/2022-10-17-fastai-2022-courses.html#fastsetup",
     "title": "Practical Deep Learning for Coders",
     "section": "fastsetup",
-    "text": "fastsetup\nhttps://github.com/fastai/fastsetup\nclone it with github desktop (will do cmd line I don’t have the option Jeremy has)\nlaunch ./setup-conda.sh that will install mamba. I won’t do it because I already have it installed.\nI have an env for fastai conda activate fastai\nand install fastai with conda install -c fastchan fastai as mentionned in https://docs.fast.ai. I use conda but it points to mamba in my PC.\nthen nbdev conda install -c fastchan nbdev\nI run these commands with conda update -c fastchan  fastai to be sure to get the last versions"
+    "text": "fastsetup\nhttps://github.com/fastai/fastsetup\nclone it with github desktop (will do cmd line I don’t have the option Jeremy has)\ninstall conda mamba (if needed)\n./setup-conda.sh\ninstall fastai from scratch\nconda create fastai python=3.9\nconda activate fastai\nconda install -c fastchan fastai nbdev\npip install gradio\nupdate to up-to-date versions\nconda activate fastai\nconda update -c fastchan fastai nbdev\npip install -U gradio"
+  },
+  {
+    "objectID": "posts/2022-10-17-fastai-2022-courses.html#api",
+    "href": "posts/2022-10-17-fastai-2022-courses.html#api",
+    "title": "Practical Deep Learning for Coders",
+    "section": "API",
+    "text": "API\n2 options within HF to build app:\n\ngradio\nstreamlit\n\nand with gradio"
+  },
+  {
+    "objectID": "posts/2022-09-16-migrate blog from nbdev to quarto.html#tbd-open-external-links-in-new-tabs",
+    "href": "posts/2022-09-16-migrate blog from nbdev to quarto.html#tbd-open-external-links-in-new-tabs",
+    "title": "Blog - migrate to quarto",
+    "section": "(tbd) open external links in new tabs",
+    "text": "(tbd) open external links in new tabs\nthanks to https://quarto.org/docs/reference/formats/html.html#links"
+  },
+  {
+    "objectID": "posts/2022-09-16-migrate blog from nbdev to quarto.html#setup-favicon.ico",
+    "href": "posts/2022-09-16-migrate blog from nbdev to quarto.html#setup-favicon.ico",
+    "title": "Blog - migrate to quarto",
+    "section": "setup favicon.ico",
+    "text": "setup favicon.ico\nCreation of a favicon for this blog. Using gimp\nAnd quarto doc for favicon\n\n!cat ../_quarto.yml |grep -B 2 favico\n\nwebsite:\n  title: \"Guillaume's blog\"\n  favicon: favicon_small.png\n\n\nAnd favicon_small.png is just at root.\n\n!find ../  -name 'favicon_small.png'\n\n../favicon_small.png\n../_site/favicon_small.png"
+  },
+  {
+    "objectID": "posts/2022-09-16-migrate blog from nbdev to quarto.html#tbd-detect-broken-links",
+    "href": "posts/2022-09-16-migrate blog from nbdev to quarto.html#tbd-detect-broken-links",
+    "title": "Blog - migrate to quarto",
+    "section": "(tbd) detect broken links",
+    "text": "(tbd) detect broken links\nGuillaume’s blog - Logbook for October 22\n\nAnd have to figure out a way to detect broken links:\n\nusing google search console\n\nAs it takes a day to be processed I will test again tomorrow"
+  },
+  {
+    "objectID": "posts/2022-09-16-migrate blog from nbdev to quarto.html#tbd-fix-latex-expressions",
+    "href": "posts/2022-09-16-migrate blog from nbdev to quarto.html#tbd-fix-latex-expressions",
+    "title": "Blog - migrate to quarto",
+    "section": "(tbd) fix latex expressions",
+    "text": "(tbd) fix latex expressions"
+  },
+  {
+    "objectID": "posts/2022-09-16-migrate blog from nbdev to quarto.html#tbd-google-analytics-on-blog",
+    "href": "posts/2022-09-16-migrate blog from nbdev to quarto.html#tbd-google-analytics-on-blog",
+    "title": "Blog - migrate to quarto",
+    "section": "(tbd) google analytics on blog",
+    "text": "(tbd) google analytics on blog\nGuillaume’s blog - Logbook for October 22\n\nSetup google analytics, get G- Id, and update _quarto.yml accordingly as explained in quarto doc.\nAnalytics available here"
+  },
+  {
+    "objectID": "posts/2022-09-16-migrate blog from nbdev to quarto.html#tbd-allow-comments",
+    "href": "posts/2022-09-16-migrate blog from nbdev to quarto.html#tbd-allow-comments",
+    "title": "Blog - migrate to quarto",
+    "section": "(tbd) allow comments",
+    "text": "(tbd) allow comments"
+  },
+  {
+    "objectID": "posts/2022-09-16-migrate blog from nbdev to quarto.html#change-theme-and-allow-lightdark-mode",
+    "href": "posts/2022-09-16-migrate blog from nbdev to quarto.html#change-theme-and-allow-lightdark-mode",
+    "title": "Blog - migrate to quarto",
+    "section": "change theme and allow light/dark mode",
+    "text": "change theme and allow light/dark mode\n\n!cat ../_quarto.yml | grep -A2 theme\n\n    theme: \n      light: journal\n      dark: darkly\n\n\nAnd to have a light banner in the landing page\n\n!cat ../index.qmd | grep banner\n\ntitle-block-banner: false"
   }
 ]

@@ -253,6 +253,7 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
   <li><a href="#integrate-it-with-gradio" id="toc-integrate-it-with-gradio" class="nav-link" data-scroll-target="#integrate-it-with-gradio">integrate it with gradio</a></li>
   </ul></li>
   <li><a href="#fastsetup" id="toc-fastsetup" class="nav-link" data-scroll-target="#fastsetup">fastsetup</a></li>
+  <li><a href="#api" id="toc-api" class="nav-link" data-scroll-target="#api">API</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -514,11 +515,26 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 <h2 class="anchored" data-anchor-id="fastsetup">fastsetup</h2>
 <p><a href="https://github.com/fastai/fastsetup" class="uri">https://github.com/fastai/fastsetup</a></p>
 <p>clone it with github desktop (will do cmd line I don’t have the option Jeremy has)</p>
-<p>launch <code>./setup-conda.sh</code> that will install mamba. I won’t do it because I already have it installed.</p>
-<p>I have an env for fastai <code>conda activate fastai</code></p>
-<p>and install fastai with <code>conda install -c fastchan fastai</code> as mentionned in <a href="https://docs.fast.ai" class="uri">https://docs.fast.ai</a>. I use conda but it points to mamba in my PC.</p>
-<p>then nbdev <code>conda install -c fastchan nbdev</code></p>
-<p>I run these commands with <code>conda update -c fastchan  fastai</code> to be sure to get the last versions</p>
+<p><strong>install conda mamba</strong> (if needed)</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">./setup-conda.sh</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>install fastai from scratch</strong></p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> create fastai python=3.9</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate fastai</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> install <span class="at">-c</span> fastchan fastai nbdev</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install gradio</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>update to up-to-date versions</strong></p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate fastai</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> update <span class="at">-c</span> fastchan fastai nbdev</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-U</span> gradio</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="api" class="level2">
+<h2 class="anchored" data-anchor-id="api">API</h2>
+<p>2 options within HF to build app:</p>
+<ul>
+<li><a href="https://gradio.app/docs/">gradio</a></li>
+<li><a href="">streamlit</a></li>
+</ul>
+<p>and with gradio</p>
 
 
 </section>
