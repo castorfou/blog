@@ -1379,6 +1379,13 @@
     "text": "Inside NN\nhttps://www.kaggle.com/code/jhoward/how-does-a-neural-net-really-work\nIllustration of a powerfull python function partial\n\nfrom functools import partial\ndef mk_quad(a, b, c): return partial(quad, a, b, c)\n\n\nf = mk_quad(3,2,1)\nf(1.5)\n\n10.75\n\n\nI think I will reuse that!\nJeremy explains NN in 3 steps:\n\nloss caculation (with nice simulator to manually approach better paameters)\ngrad calculation, adjustment (with learning rate) and loop\nwe can use combination of relu to be as close as possible to any function (whatever the dimension)"
   },
   {
+    "objectID": "posts/2022-10-17-fastai-2022-courses.html#using-microsoft-excel",
+    "href": "posts/2022-10-17-fastai-2022-courses.html#using-microsoft-excel",
+    "title": "Practical Deep Learning for Coders",
+    "section": "Using Microsoft excel",
+    "text": "Using Microsoft excel\nThis is fun. Not as surpising as the one from 3-4 years ago but Jeremy is very good at explaining it. Excel spreadsheet is here."
+  },
+  {
     "objectID": "posts/2020-10-06-gan-specialization-course1-week1-intro_to_gan.html",
     "href": "posts/2020-10-06-gan-specialization-course1-week1-intro_to_gan.html",
     "title": "GAN Specialization course 1 week 1 - intro to GAN",
