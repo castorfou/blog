@@ -396,7 +396,7 @@ Sep 23, 2022
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="6" data-categories="nbdev,quarto,fastpages,blog" data-listing-date-sort="1663279200000" data-listing-file-modified-sort="1666339072899" data-listing-reading-time-sort="6.025">
+<div class="quarto-post image-right" data-index="6" data-categories="nbdev,quarto,fastpages,blog" data-listing-date-sort="1663279200000" data-listing-file-modified-sort="1666339736458" data-listing-reading-time-sort="6.025">
 <div class="thumbnail">
 <p><a href="./posts/2022-09-16-migrate blog from nbdev to quarto.html"> <img src="./posts/images/icons/fastai.png" class="thumnail-image"> </a></p>
 </div>
@@ -3954,7 +3954,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     });
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var filterRegex = new RegExp(/^(?:http:|https:)\/\/castorfou\.github\.io\/**/);
+      var filterRegex = new RegExp(/^(?:http:|https:)\/\/castorfou\.github\.io\//);
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href);
     }
@@ -3965,6 +3965,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (!isInternal(link.href)) {
           // target, if specified
           link.setAttribute("target", "_blank");
+          // default icon
+          link.classList.add("external");
       }
     }
 });

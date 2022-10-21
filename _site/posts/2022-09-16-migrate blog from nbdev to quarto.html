@@ -439,12 +439,12 @@ jobs:
 <section id="open-external-links-in-new-tabs" class="level2">
 <h2 class="anchored" data-anchor-id="open-external-links-in-new-tabs">open external links in new tabs</h2>
 <p>thanks to <a href="https://quarto.org/docs/reference/formats/html.html#links" class="uri">https://quarto.org/docs/reference/formats/html.html#links</a></p>
-<div class="cell" data-execution_count="15">
+<div class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cat ..<span class="op">/</span>_quarto.yml <span class="op">|</span>grep <span class="op">-</span>A <span class="dv">2</span> external</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>    link-external-icon: false
+<pre><code>    link-external-icon: true
     link-external-newwindow: true
-    link-external-filter: '^(?:http:|https:)\/\/castorfou\.github\.io\/**'    
+    link-external-filter: ^(?:http:|https:)\/\/castorfou\.github\.io\/
 
 </code></pre>
 </div>
@@ -814,7 +814,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     });
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var filterRegex = new RegExp(/^(?:http:|https:)\/\/castorfou\.github\.io\/**/);
+      var filterRegex = new RegExp(/^(?:http:|https:)\/\/castorfou\.github\.io\//);
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href);
     }
@@ -825,6 +825,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (!isInternal(link.href)) {
           // target, if specified
           link.setAttribute("target", "_blank");
+          // default icon
+          link.classList.add("external");
       }
     }
 });
