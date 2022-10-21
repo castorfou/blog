@@ -265,6 +265,11 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
   <li><a href="#or-by-forking-an-existing-one-e.g.-tinypets" id="toc-or-by-forking-an-existing-one-e.g.-tinypets" class="nav-link" data-scroll-target="#or-by-forking-an-existing-one-e.g.-tinypets">or by forking an existing one (e.g.&nbsp;tinypets)</a></li>
   </ul></li>
   </ul></li>
+  <li><a href="#lesson-3---neural-net-foundations" id="toc-lesson-3---neural-net-foundations" class="nav-link" data-scroll-target="#lesson-3---neural-net-foundations">Lesson 3 - Neural net foundations</a>
+  <ul class="collapse">
+  <li><a href="#timm" id="toc-timm" class="nav-link" data-scroll-target="#timm">timm</a></li>
+  <li><a href="#using-in-an-app" id="toc-using-in-an-app" class="nav-link" data-scroll-target="#using-in-an-app">Using in an app</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -620,9 +625,73 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 </figure>
 </div>
 <p>Looks like we can browse through these jekyll themes at <a href="http://jekyllthemes.org/" class="uri">http://jekyllthemes.org/</a></p>
-
-
 </section>
+</section>
+</section>
+<section id="lesson-3---neural-net-foundations" class="level1">
+<h1>Lesson 3 - Neural net foundations</h1>
+<p><a href="https://course.fast.ai/Lessons/lesson3.html" class="uri">https://course.fast.ai/Lessons/lesson3.html</a></p>
+<p>Jeremy mentions <a href="https://www.youtube.com/watch?v=gGxe2mN3kAg">Lesson Zero</a> which is more about the way he teaches to learn these things. and recommened process to be run by students.</p>
+<p>On this lesson, Jeremy uses <a href="https://www.paperspace.com/gradient">paperspace gradient</a>. Which offers full machine with jupyter environments.</p>
+<section id="timm" class="level2">
+<h2 class="anchored" data-anchor-id="timm">timm</h2>
+<p>To use it we have to install it: <code>pip install timm</code></p>
+<p>Jeremy illsutrates how to switch model architecture. And for that uses timm fastai. He has created a notebook on kaggle to rank vision models <a href="https://www.kaggle.com/code/jhoward/which-image-models-are-best/" class="uri">https://www.kaggle.com/code/jhoward/which-image-models-are-best/</a></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2022-10-17-fastai-2022-courses_files/figure-html/56e655b6-1940-4766-bf49-ff76de4ad4b7.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+<p>Convnext models seem to be a good fit.</p>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> timm</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>timm.list_models(<span class="st">'convnext*'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<pre><code>['convnext_atto',
+ 'convnext_atto_ols',
+ 'convnext_base',
+ 'convnext_base_384_in22ft1k',
+ 'convnext_base_in22ft1k',
+ 'convnext_base_in22k',
+ 'convnext_femto',
+ 'convnext_femto_ols',
+ 'convnext_large',
+ 'convnext_large_384_in22ft1k',
+ 'convnext_large_in22ft1k',
+ 'convnext_large_in22k',
+ 'convnext_nano',
+ 'convnext_nano_ols',
+ 'convnext_pico',
+ 'convnext_pico_ols',
+ 'convnext_small',
+ 'convnext_small_384_in22ft1k',
+ 'convnext_small_in22ft1k',
+ 'convnext_small_in22k',
+ 'convnext_tiny',
+ 'convnext_tiny_384_in22ft1k',
+ 'convnext_tiny_hnf',
+ 'convnext_tiny_in22ft1k',
+ 'convnext_tiny_in22k',
+ 'convnext_xlarge_384_in22ft1k',
+ 'convnext_xlarge_in22ft1k',
+ 'convnext_xlarge_in22k']</code></pre>
+</div>
+</div>
+<p>And to use one it is just a matter of calling</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>learn <span class="op">=</span> vision_learner(dls, <span class="st">'convnext_tiny_in22k'</span>, metrics<span class="op">=</span>error_rate).to_fp16()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="using-in-an-app" class="level2">
+<h2 class="anchored" data-anchor-id="using-in-an-app">Using in an app</h2>
+<p>When dealing with categories, fastai keep category names in the dataloader under vocab</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>categories <span class="op">=</span> lean.dls.vocab</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> classify_image(img):</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    pred, idx, probs <span class="op">=</span> learn.predict(img)</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">dict</span>(<span class="bu">zip</span>(categories, <span class="bu">map</span>(<span class="bu">float</span>, probs)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+
 </section>
 </section>
 
@@ -837,7 +906,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     });
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var filterRegex = new RegExp(/^(?:http:|https:)\/\/castorfou\.github\.io\/**/);
+      var filterRegex = new RegExp(/^(?:http:|https:)\/\/castorfou\.github\.io\//);
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href);
     }
@@ -848,6 +917,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (!isInternal(link.href)) {
           // target, if specified
           link.setAttribute("target", "_blank");
+          // default icon
+          link.classList.add("external");
       }
     }
 });
