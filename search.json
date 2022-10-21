@@ -837,7 +837,7 @@
     "href": "posts/2022-10-01-logbook-October-22.html#friday-1021",
     "title": "Logbook for October 22",
     "section": "Friday 10/21",
-    "text": "Friday 10/21\nFastai courses 2022 chapter 2 - Deployment completed"
+    "text": "Friday 10/21\nFastai courses 2022 chapter 2 - Deployment completed\nFastai courses 2022 chapter 3 - Neural net foundations"
   },
   {
     "objectID": "posts/2021-07-07-deep-neural-network-coursera.html",
@@ -1349,6 +1349,27 @@
     "title": "Practical Deep Learning for Coders",
     "section": "GH pages",
     "text": "GH pages\nIt can run locally of course, and can be hosted with gh pages.\n\nby generating from fastpages\nJeremy suggests to use fastpages. In the doc at the bottom there is a link to generate a website from fastapages\nfastai/fastpages: An easy to use blogging platform, with enhanced support for Jupyter Notebooks.\n\nSetup Instructions\n\nGenerate a copy of this repo by clicking on this link. Make sure to sign in to your account, or you will see a 404 error. Name your repo anything you like except {your-username}.github.io.\n\n\nApply a theme (to be setup in _config.yml)\nCreate an index.md file which is the landing page.\n\n\nor by forking an existing one (e.g. tinypets)\nand in that case we have to turn on gh pages\nSettings > Pages > Enable gh pages (select branch and save)\nWe can now switch to different theme.\nFrom remote_theme: daviddarnes/alembic@main to remote_theme: pages-themes/hacker\nit provides a complete different look\n\n\n\nimage.png\n\n\nLooks like we can browse through these jekyll themes at http://jekyllthemes.org/"
+  },
+  {
+    "objectID": "posts/2022-10-17-fastai-2022-courses.html#timm",
+    "href": "posts/2022-10-17-fastai-2022-courses.html#timm",
+    "title": "Practical Deep Learning for Coders",
+    "section": "timm",
+    "text": "timm\nTo use it we have to install it: pip install timm\nJeremy illsutrates how to switch model architecture. And for that uses timm fastai. He has created a notebook on kaggle to rank vision models https://www.kaggle.com/code/jhoward/which-image-models-are-best/\n\n\n\nimage.png\n\n\nConvnext models seem to be a good fit.\n\nimport timm\n\ntimm.list_models('convnext*')\n\n['convnext_atto',\n 'convnext_atto_ols',\n 'convnext_base',\n 'convnext_base_384_in22ft1k',\n 'convnext_base_in22ft1k',\n 'convnext_base_in22k',\n 'convnext_femto',\n 'convnext_femto_ols',\n 'convnext_large',\n 'convnext_large_384_in22ft1k',\n 'convnext_large_in22ft1k',\n 'convnext_large_in22k',\n 'convnext_nano',\n 'convnext_nano_ols',\n 'convnext_pico',\n 'convnext_pico_ols',\n 'convnext_small',\n 'convnext_small_384_in22ft1k',\n 'convnext_small_in22ft1k',\n 'convnext_small_in22k',\n 'convnext_tiny',\n 'convnext_tiny_384_in22ft1k',\n 'convnext_tiny_hnf',\n 'convnext_tiny_in22ft1k',\n 'convnext_tiny_in22k',\n 'convnext_xlarge_384_in22ft1k',\n 'convnext_xlarge_in22ft1k',\n 'convnext_xlarge_in22k']\n\n\nAnd to use one it is just a matter of calling\nlearn = vision_learner(dls, 'convnext_tiny_in22k', metrics=error_rate).to_fp16()"
+  },
+  {
+    "objectID": "posts/2022-10-17-fastai-2022-courses.html#using-in-an-app",
+    "href": "posts/2022-10-17-fastai-2022-courses.html#using-in-an-app",
+    "title": "Practical Deep Learning for Coders",
+    "section": "Using in an app",
+    "text": "Using in an app\nWhen dealing with categories, fastai keep category names in the dataloader under vocab\ncategories = learn.dls.vocab\n\ndef classify_image(img):\n    pred, idx, probs = learn.predict(img)\n    return dict(zip(categories, map(float, probs)))"
+  },
+  {
+    "objectID": "posts/2022-10-17-fastai-2022-courses.html#applying-this-on-my-own-app-cheeses",
+    "href": "posts/2022-10-17-fastai-2022-courses.html#applying-this-on-my-own-app-cheeses",
+    "title": "Practical Deep Learning for Coders",
+    "section": "Applying this on my own app: cheeses",
+    "text": "Applying this on my own app: cheeses\nAll notebooks from these courses are at https://github.com/fastai/course22\nAnd my app is at https://huggingface.co/spaces/Guillaume63/cheeses\nI had to configure this repo to use git-lfs to store large binary files:\ngit lfs install\n#if needed reset the last commit\ngit reset --soft HEAD^\ngit status\n#if offeneded files ar already staged, restore them\ngit restore --staged *.jpg\ngit status\n#add them back\ngit add -A\n#check they are managed by git lfs\ngit lfs ls-files\ngit commit -am'recommit after lfs install'\ngit push"
   },
   {
     "objectID": "posts/2020-10-06-gan-specialization-course1-week1-intro_to_gan.html",
