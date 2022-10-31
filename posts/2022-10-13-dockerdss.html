@@ -344,7 +344,7 @@ postgres                 10.4            978b82dc00dc   4 years ago     236MB</c
 <p><code>docker run -p 10000:10000 -d dataiku/dss</code></p>
 <p>Alternatively, you can start a DSS instance on a mounted data directory or Docker volume, exposing DSS on the default port (10000).</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> ~/dss</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-p</span> 10000:10000 <span class="at">-v</span> MYVOLUME:/home/explore/dss <span class="at">-d</span> dataiku/dss</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-p</span> 10000:10000 <span class="at">-v</span> /home/explore/dss:/home/dataiku/dss <span class="at">-d</span> dataiku/dss</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Open DSS in your browser (Chrome or Firefox)</p>
 <p>For Linux, open <a href="http://localhost:10000" class="uri">http://localhost:10000</a></p>
 <p>Default login/password (admin/admin)</p>
@@ -358,6 +358,13 @@ postgres                 10.4            978b82dc00dc   4 years ago     236MB</c
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-10-13-dockerdss_files/figure-html/38eccb86-b5fb-42e1-ac6e-0d1fe7650a59.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+<p>Mounting with volume configuration will keep all modifications.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2022-10-13-dockerdss_files/figure-html/9f9d7a28-4bef-4a26-ac18-90f64a703472.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
 </figure>
 </div>
