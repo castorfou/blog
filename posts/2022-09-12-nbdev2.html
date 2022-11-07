@@ -279,7 +279,7 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
   <li><a href="#open-questions" id="toc-open-questions" class="nav-link" data-scroll-target="#open-questions">Open questions</a>
   <ul class="collapse">
   <li><a href="#fixed-nbdev_clean-fails" id="toc-fixed-nbdev_clean-fails" class="nav-link" data-scroll-target="#fixed-nbdev_clean-fails">[fixed] nbdev_clean fails</a></li>
-  <li><a href="#nbdev_prepare-typeerror-exception-when-parsing-pycaret-import" id="toc-nbdev_prepare-typeerror-exception-when-parsing-pycaret-import" class="nav-link" data-scroll-target="#nbdev_prepare-typeerror-exception-when-parsing-pycaret-import">nbdev_prepare TypeError exception when parsing pycaret import</a></li>
+  <li><a href="#fixed-nbdev_prepare-typeerror-exception-when-parsing-pycaret-import" id="toc-fixed-nbdev_prepare-typeerror-exception-when-parsing-pycaret-import" class="nav-link" data-scroll-target="#fixed-nbdev_prepare-typeerror-exception-when-parsing-pycaret-import">[fixed] nbdev_prepare TypeError exception when parsing pycaret import</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -986,9 +986,11 @@ git push origin $VERSION_TO_TAG</code></pre>
 <p><a href="https://forums.fast.ai/t/nbdev-clean-fails-cryptically/98784/13" class="uri">https://forums.fast.ai/t/nbdev-clean-fails-cryptically/98784/13</a></p>
 <p>Solution: update <code>fastcore</code> to version &gt; 1.2.5</p>
 </section>
-<section id="nbdev_prepare-typeerror-exception-when-parsing-pycaret-import" class="level2">
-<h2 class="anchored" data-anchor-id="nbdev_prepare-typeerror-exception-when-parsing-pycaret-import">nbdev_prepare TypeError exception when parsing pycaret import</h2>
+<section id="fixed-nbdev_prepare-typeerror-exception-when-parsing-pycaret-import" class="level2">
+<h2 class="anchored" data-anchor-id="fixed-nbdev_prepare-typeerror-exception-when-parsing-pycaret-import">[fixed] nbdev_prepare TypeError exception when parsing pycaret import</h2>
 <p>as explained in <a href="https://github.com/fastai/nbdev/issues/1150" class="uri">https://github.com/fastai/nbdev/issues/1150</a></p>
+<p>Seem has fixed it. Culprit was in execnb. It will be integrated in release 0.1.5. Meanwhile I can fix it by running <code>pip install git+https://github.com/fastai/execnb.git</code></p>
+<p>(for example in .gitlab-ci.yml)</p>
 
 
 </section>

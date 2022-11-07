@@ -777,11 +777,11 @@
     "text": "[fixed] nbdev_clean fails\nhttps://forums.fast.ai/t/nbdev-clean-fails-cryptically/98784/13\nSolution: update fastcore to version > 1.2.5"
   },
   {
-    "objectID": "posts/2022-09-12-nbdev2.html#nbdev_prepare-typeerror-exception-when-parsing-pycaret-import",
-    "href": "posts/2022-09-12-nbdev2.html#nbdev_prepare-typeerror-exception-when-parsing-pycaret-import",
+    "objectID": "posts/2022-09-12-nbdev2.html#fixed-nbdev_prepare-typeerror-exception-when-parsing-pycaret-import",
+    "href": "posts/2022-09-12-nbdev2.html#fixed-nbdev_prepare-typeerror-exception-when-parsing-pycaret-import",
     "title": "nbdev2 - first steps",
-    "section": "nbdev_prepare TypeError exception when parsing pycaret import",
-    "text": "nbdev_prepare TypeError exception when parsing pycaret import\nas explained in https://github.com/fastai/nbdev/issues/1150"
+    "section": "[fixed] nbdev_prepare TypeError exception when parsing pycaret import",
+    "text": "[fixed] nbdev_prepare TypeError exception when parsing pycaret import\nas explained in https://github.com/fastai/nbdev/issues/1150\nSeem has fixed it. Culprit was in execnb. It will be integrated in release 0.1.5. Meanwhile I can fix it by running pip install git+https://github.com/fastai/execnb.git\n(for example in .gitlab-ci.yml)"
   },
   {
     "objectID": "posts/2020-10-20-mit-edx-introduction-computational-thinking-and-data-science.html",
