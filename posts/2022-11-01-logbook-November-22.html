@@ -221,7 +221,11 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
   <li><a href="#blog-and-broken-links" id="toc-blog-and-broken-links" class="nav-link" data-scroll-target="#blog-and-broken-links">blog and broken links</a></li>
   <li><a href="#mamba-v1.0" id="toc-mamba-v1.0" class="nav-link" data-scroll-target="#mamba-v1.0">mamba v1.0</a></li>
   </ul></li>
-  <li><a href="#thursday-1110" id="toc-thursday-1110" class="nav-link" data-scroll-target="#thursday-1110"><strong>Thursday 11/10</strong></a></li>
+  <li><a href="#thursday-1110" id="toc-thursday-1110" class="nav-link" data-scroll-target="#thursday-1110"><strong>Thursday 11/10</strong></a>
+  <ul class="collapse">
+  <li><a href="#fixed-unsafe-legacy-renegotiation-disabled" id="toc-fixed-unsafe-legacy-renegotiation-disabled" class="nav-link" data-scroll-target="#fixed-unsafe-legacy-renegotiation-disabled">[fixed] unsafe legacy renegotiation disabled</a></li>
+  <li><a href="#fastai-course-lesson-4---nlp" id="toc-fastai-course-lesson-4---nlp" class="nav-link" data-scroll-target="#fastai-course-lesson-4---nlp">fastai course lesson 4 - nlp</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -262,6 +266,8 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 </section>
 <section id="thursday-1110" class="level2">
 <h2 class="anchored" data-anchor-id="thursday-1110"><strong>Thursday 11/10</strong></h2>
+<section id="fixed-unsafe-legacy-renegotiation-disabled" class="level3">
+<h3 class="anchored" data-anchor-id="fixed-unsafe-legacy-renegotiation-disabled">[fixed] unsafe legacy renegotiation disabled</h3>
 <p>Unfortuantely having updated mamba broke my WSL system. My other environment (with same update) is fine.</p>
 <p>I think this is linked to openssl version (v3 on WSL, v1.1.1 on linux)</p>
 <p>Here are some more information about this problem</p>
@@ -291,8 +297,13 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 <p>Just had to export <code>OPENSSL_CONF</code></p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">OPENSSL_CONF</span><span class="op">=</span>/etc/ssl/openssl.cnf</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Modifying <code>.bashrc</code> to integrated thie environment variable.</p>
+</section>
+<section id="fastai-course-lesson-4---nlp" class="level3">
+<h3 class="anchored" data-anchor-id="fastai-course-lesson-4---nlp">fastai course lesson 4 - nlp</h3>
+<p>Start of <a href="../posts/2022-10-17-fastai-2022-courses.html#lesson-4---neural-net-foundations">lesson 4</a></p>
 
 
+</section>
 </section>
 </section>
 
