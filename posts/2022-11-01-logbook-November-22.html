@@ -283,6 +283,10 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="bu">declare</span> <span class="at">-x</span> <span class="va">CURL_CA_BUNDLE</span><span class="op">=</span><span class="st">"/etc/ssl/certs/ca-certificates.crt"</span></span>
 <span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="bu">declare</span> <span class="at">-x</span> <span class="va">REQUESTS_CA_BUNDLE</span><span class="op">=</span><span class="st">"/etc/ssl/certs/ca-certificates.crt"</span></span>
 <span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="bu">declare</span> <span class="at">-x</span> <span class="va">SSL_CERT_FILE</span><span class="op">=</span><span class="st">"/home/guillaume/miniconda/lib/python3.9/site-packages/certifi/cacert.pem"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Initially I thought of <a href="https://bugs.launchpad.net/ubuntu/+source/openssl/+bug/1963834/comments/7">this issue</a> as fixed in <a href="../posts/2022-07-26-install ubuntu 18.04 on WSL.html#automatic-setup">WSL installation</a> (setup_wsl_user.sh / “3. update certificates”).</p>
+<p>But the workaround/fix is still active</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat /etc/ssl/openssl.cnf<span class="kw">|</span><span class="fu">grep</span> <span class="at">-i</span> unsafe</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Options</span> = UnsafeLegacyRenegotiation</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>
