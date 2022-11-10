@@ -287,6 +287,10 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 <p>But the workaround/fix is still active</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat /etc/ssl/openssl.cnf<span class="kw">|</span><span class="fu">grep</span> <span class="at">-i</span> unsafe</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Options</span> = UnsafeLegacyRenegotiation</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>[FIX]</p>
+<p>Just had to export <code>OPENSSL_CONF</code></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">OPENSSL_CONF</span><span class="op">=</span>/etc/ssl/openssl.cnf</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Modifying <code>.bashrc</code> to integrated thie environment variable.</p>
 
 
 </section>
