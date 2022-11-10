@@ -74,7 +74,7 @@
     "href": "posts/2022-11-01-logbook-November-22.html",
     "title": "Logbook for November 22",
     "section": "",
-    "text": "freshly back from vacations (2 weeks) without touching anything AI-computer related\n\n\n\nLast time I had to fix broken links on this blog. For that I have setup google search console.\nBut for the moment I have this report\n\n\n\nimage.png\n\n\nHave to figure out why.\nAnd sitemap as well is not configured. Maybe quarto can help to generate one."
+    "text": "freshly back from vacations (2 weeks) without touching anything AI-computer related\n\n\n\n\n\nLast time I had to fix broken links on this blog. For that I have setup google search console.\nBut for the moment I have this report\n\n\n\nimage.png\n\n\nHave to figure out why.\nAnd sitemap as well is not configured. Maybe quarto can help to generate one.\n\n\n\nMamba released v1.0.\nI can now update my environments:\n(base) $ conda update -c conda-forge mamba\n\n\n\n\nUnfortuantely having updated mamba broke my WSL system. My other environment (with same update) is fine.\nI think this is linked to openssl version (v3 on WSL, v1.1.1 on linux)\nHere are some more information about this problem\n$ conda create -n fastai python=3.9\nLooking for: ['python=3.9']\nDownload error (35) SSL connect error [https://repo.anaconda.com/pkgs/r/noarch/repodata.json]\nerror:0A000152:SSL routines::unsafe legacy renegotiation disabled\nand information about the environment\n$ openssl version\nOpenSSL 3.0.7 1 Nov 2022 (Library: OpenSSL 3.0.7 1 Nov 2022)\n$ . /etc/lsb-release && echo $DISTRIB_RELEASE\n22.04"
   },
   {
     "objectID": "posts/2020-09-15-autodetect-home-office-network-and-proxy-settings.html",
@@ -1341,7 +1341,7 @@
     "href": "posts/2022-10-17-fastai-2022-courses.html#fastsetup",
     "title": "Practical Deep Learning for Coders",
     "section": "fastsetup",
-    "text": "fastsetup\nhttps://github.com/fastai/fastsetup\nclone it with github desktop (will do cmd line I don’t have the option Jeremy has)\ninstall conda mamba (if needed)\n./setup-conda.sh\ninstall fastai from scratch\nconda create fastai python=3.9\nconda activate fastai\nconda install -c fastchan fastai nbdev\npip install gradio\nupdate to up-to-date versions\nconda activate fastai\nconda update -c fastchan fastai nbdev\npip install -U gradio"
+    "text": "fastsetup\nhttps://github.com/fastai/fastsetup\nclone it with github desktop (will do cmd line I don’t have the option Jeremy has)\ninstall conda mamba (if needed)\n./setup-conda.sh\ninstall fastai from scratch\nconda create -n fastai python=3.9\nconda activate fastai\nconda install -c fastchan fastai nbdev\npip install gradio\nupdate to up-to-date versions\nconda activate fastai\nconda update -c fastchan fastai nbdev\npip install -U gradio"
   },
   {
     "objectID": "posts/2022-10-17-fastai-2022-courses.html#api",
