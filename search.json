@@ -1407,6 +1407,20 @@
     "text": "Next lesson\nWill practice nlp using huggingface api."
   },
   {
+    "objectID": "posts/2022-10-17-fastai-2022-courses.html#linear-model-then-deep-learning-model",
+    "href": "posts/2022-10-17-fastai-2022-courses.html#linear-model-then-deep-learning-model",
+    "title": "Practical Deep Learning for Coders",
+    "section": "linear model then deep learning model",
+    "text": "linear model then deep learning model\nJust restarting from titanic dataset and exactly as what was made in excel, now we do it with PyTorch.\nIt is good to see how much fiddling it requires. This is good to develop intuititions but defintely it is not what you want to implement when exploring a question."
+  },
+  {
+    "objectID": "posts/2022-10-17-fastai-2022-courses.html#why-you-should-use-a-framework",
+    "href": "posts/2022-10-17-fastai-2022-courses.html#why-you-should-use-a-framework",
+    "title": "Practical Deep Learning for Coders",
+    "section": "Why you should use a framework",
+    "text": "Why you should use a framework\nIt is in Why you should use a framework. As usually upvote & copy/edit to start using it. Or get the notebooks from github."
+  },
+  {
     "objectID": "posts/2020-10-06-gan-specialization-course1-week1-intro_to_gan.html",
     "href": "posts/2020-10-06-gan-specialization-course1-week1-intro_to_gan.html",
     "title": "GAN Specialization course 1 week 1 - intro to GAN",
