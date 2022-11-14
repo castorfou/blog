@@ -809,6 +809,29 @@ So, let’s get started!</p>
 <p>Today we look at how to create a neural network from scratch using Python and PyTorch, and how to implement a training loop for optimising the weights of a model. We build up from a single layer regression model up to a neural net with one hidden layer, and then to a deep learning model. Along the way we’ll also look at how we can use a special function called sigmoid to make binary classification models easier to train, and we’ll also learn about metrics.</p>
 </blockquote>
 <p>We start from a kaggle notebook from <a href="https://www.kaggle.com/jhoward/code">jeremy’s profile</a> which is <a href="https://www.kaggle.com/code/jhoward/linear-model-and-neural-net-from-scratch">Linear model and neural net from scratch</a>. As usually upvote &amp; copy/<a href="https://www.kaggle.com/code/guillaumeramelet/linear-model-and-neural-net-from-scratch/edit">edit</a> to start using it.</p>
+<p>But one can start with the “clean” (without any prose) version of it. From paperspace or locally. I will follow the course locally.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/git</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/fastai/course22.git </span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> course22</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2022-10-17-fastai-2022-courses_files/figure-html/31e16cdc-010d-4056-b275-a5feb523c752.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+<p>And I have to setup kaggle locally:</p>
+<ul>
+<li><code>pip install kaggle</code> inside my fastai env</li>
+<li>create a token from my kaggle profile <a href="https://www.kaggle.com/guillaumeramelet/account">page</a></li>
+<li>move this <code>kaggle.json</code> into <code>~/.kaggle/kaggle.json</code></li>
+<li><code>chmod 600 /home/guillaume/.kaggle/kaggle.json</code></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2022-10-17-fastai-2022-courses_files/figure-html/3a059c3a-b170-4943-b7bd-c44c96211fa3.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
 
 
 </section>
