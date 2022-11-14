@@ -43,6 +43,10 @@ system_default = system_default_sect
 Options = UnsafeLegacyRenegotiation
 EOF
 fi
+
+tee -a ~/.bashrc << EOF
+export OPENSSL_CONF=/etc/ssl/openssl.cnf
+EOF
 echo
 
 echo "4. update apt sources with artifactory"
