@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.1.251">
+<meta name="generator" content="quarto-1.2.269">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -163,17 +163,18 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../about.html">About</a>
+    <a class="nav-link" href="../about.html">
+ <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item compact">
     <a class="nav-link" href="https://github.com/castorfou"><i class="bi bi-github" role="img">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
     <a class="nav-link" href="https://twitter.com/GuillaumeRamel1"><i class="bi bi-twitter" role="img">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
 </ul>
               <div class="quarto-toggle-container">
@@ -210,6 +211,7 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
         <p class="date">October 17, 2022</p>
       </div>
     </div>
+    
       
     </div>
     
@@ -223,6 +225,12 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
    
   <ul>
   <li><a href="#source-of-inspiration" id="toc-source-of-inspiration" class="nav-link active" data-scroll-target="#source-of-inspiration">Source of inspiration</a></li>
+  <li><a href="#setup-local-conda-environment-for-fastai" id="toc-setup-local-conda-environment-for-fastai" class="nav-link" data-scroll-target="#setup-local-conda-environment-for-fastai">Setup local conda environment for fastai</a>
+  <ul class="collapse">
+  <li><a href="#conda-environment" id="toc-conda-environment" class="nav-link" data-scroll-target="#conda-environment">conda environment</a></li>
+  <li><a href="#setup-kaggle" id="toc-setup-kaggle" class="nav-link" data-scroll-target="#setup-kaggle">setup kaggle</a></li>
+  <li><a href="#get-materials-from-github" id="toc-get-materials-from-github" class="nav-link" data-scroll-target="#get-materials-from-github">get materials from github</a></li>
+  </ul></li>
   <li><a href="#lesson-1---getting-started" id="toc-lesson-1---getting-started" class="nav-link" data-scroll-target="#lesson-1---getting-started">Lesson 1 - Getting started</a>
   <ul class="collapse">
   <li><a href="#deep-learning-introduction" id="toc-deep-learning-introduction" class="nav-link" data-scroll-target="#deep-learning-introduction">Deep learning introduction</a></li>
@@ -294,11 +302,64 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 <p>Many sources about that, pointing all to <a href="https://course.fast.ai/" class="uri">https://course.fast.ai/</a></p>
 <p>This is version 5 of this course.</p>
 </section>
+<section id="setup-local-conda-environment-for-fastai" class="level1">
+<h1>Setup local conda environment for fastai</h1>
+<section id="conda-environment" class="level2">
+<h2 class="anchored" data-anchor-id="conda-environment">conda environment</h2>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-11-15T07:03:32.364344Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-11-15T07:03:32.363693Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-11-15T07:03:32.520173Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-11-15T07:03:32.519165Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2022-11-15T07:03:32.364287Z&quot;}" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cat <span class="op">~/</span>_conda_env<span class="op">/</span>fastai.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>conda create -n fastai python=3.9
+conda activate fastai
+conda install ipykernel
+python -m ipykernel install --user --name=fastai
+conda install -c fastchan fastai nbdev
+pip install gradio
+pip install kaggle
+
+
+# update
+conda activate fastai
+conda update -c fastchan fastai nbdev
+pip install -U gradio </code></pre>
+</div>
+</div>
+</section>
+<section id="setup-kaggle" class="level2">
+<h2 class="anchored" data-anchor-id="setup-kaggle">setup kaggle</h2>
+<p>And I have to setup kaggle locally:</p>
+<ul>
+<li>[already done] <code>pip install kaggle</code> inside my fastai env</li>
+<li>create a token from my kaggle profile <a href="https://www.kaggle.com/guillaumeramelet/account">page</a></li>
+<li>move this <code>kaggle.json</code> into <code>~/.kaggle/kaggle.json</code></li>
+<li><code>chmod 600 /home/guillaume/.kaggle/kaggle.json</code></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2022-10-17-fastai-2022-courses_files/figure-html/c8926a88-d5b7-4214-ac5d-bcaf818f8c59-1-3a059c3a-b170-4943-b7bd-c44c96211fa3.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="get-materials-from-github" class="level2">
+<h2 class="anchored" data-anchor-id="get-materials-from-github">get materials from github</h2>
+<p><a href="https://github.com/fastai/course22/">Github fastai/course22</a> is where you’ll find the notebooks, slides, and spreadsheets for the 2022 edition of Practical Deep Learning for Coders. we can get a local version from .</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/git</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/fastai/course22.git </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> course22</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2022-10-17-fastai-2022-courses_files/figure-html/a63057aa-0968-4c37-95fb-369f8e4d3ae5-1-31e16cdc-010d-4056-b275-a5feb523c752.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+</section>
+</section>
 <section id="lesson-1---getting-started" class="level1">
 <h1>Lesson 1 - Getting started</h1>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="2022-10-17-fastai-2022-courses_files/figure-html/f65839a7-cf1c-4da2-a395-7818e5241abe.png" class="img-fluid figure-img"></p>
+<p><img src="2022-10-17-fastai-2022-courses_files/figure-html/9206f93d-2255-404a-87b2-a87fbf7dc8bc-1-f65839a7-cf1c-4da2-a395-7818e5241abe.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
 </figure>
 </div>
@@ -311,7 +372,7 @@ So, let’s get started!</p>
 <h2 class="anchored" data-anchor-id="deep-learning-introduction">Deep learning introduction</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="2022-10-17-fastai-2022-courses_files/figure-html/d9a38f06-b9ab-4b1c-8dca-8187fbb0355c.png" class="img-fluid figure-img"></p>
+<p><img src="2022-10-17-fastai-2022-courses_files/figure-html/f3d59743-04e9-4fdb-b22e-e806b84aa958-1-d9a38f06-b9ab-4b1c-8dca-8187fbb0355c.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
 </figure>
 </div>
@@ -330,7 +391,7 @@ So, let’s get started!</p>
 <p>Then classical but nice explanation that NN learns features (features are not given or coded) and illustrates that with Matt Zeiler and Rob Fergus works</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="2022-10-17-fastai-2022-courses_files/figure-html/374144e3-fa7b-4cf5-ba83-6a1d37a72288.png" class="img-fluid figure-img"></p>
+<p><img src="2022-10-17-fastai-2022-courses_files/figure-html/a855fd4d-0ffb-4a62-bd66-2b6feaf8bdc0-1-374144e3-fa7b-4cf5-ba83-6a1d37a72288.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
 </figure>
 </div>
@@ -343,7 +404,7 @@ So, let’s get started!</p>
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="2022-10-17-fastai-2022-courses_files/figure-html/521368e2-f88d-4fd0-a52c-d3ddbef3cfc6.png" class="img-fluid figure-img"></p>
+<p><img src="2022-10-17-fastai-2022-courses_files/figure-html/f67b71f4-57d0-4494-b202-114f06b7fed3-2-521368e2-f88d-4fd0-a52c-d3ddbef3cfc6.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
 </figure>
 </div>
@@ -352,7 +413,7 @@ So, let’s get started!</p>
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="2022-10-17-fastai-2022-courses_files/figure-html/99638923-aae2-43cf-aaa2-ada718cf6cae.png" class="img-fluid figure-img"></p>
+<p><img src="2022-10-17-fastai-2022-courses_files/figure-html/f67b71f4-57d0-4494-b202-114f06b7fed3-3-99638923-aae2-43cf-aaa2-ada718cf6cae.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
 </figure>
 </div>
@@ -361,7 +422,7 @@ So, let’s get started!</p>
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="2022-10-17-fastai-2022-courses_files/figure-html/3e04cfbd-19d4-49a3-922e-70da10f0bf44.png" class="img-fluid figure-img"></p>
+<p><img src="2022-10-17-fastai-2022-courses_files/figure-html/f67b71f4-57d0-4494-b202-114f06b7fed3-1-3e04cfbd-19d4-49a3-922e-70da10f0bf44.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
 </figure>
 </div>
@@ -410,7 +471,7 @@ So, let’s get started!</p>
 <p>And it is why we have such outputs</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="2022-10-17-fastai-2022-courses_files/figure-html/18981c69-5b80-4d5b-a8c6-24710ba3d0fb.png" class="img-fluid figure-img"></p>
+<p><img src="2022-10-17-fastai-2022-courses_files/figure-html/245ad086-5bae-4405-aeb7-bcfd2c6eb798-1-18981c69-5b80-4d5b-a8c6-24710ba3d0fb.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
 </figure>
 </div>
@@ -422,7 +483,7 @@ So, let’s get started!</p>
 <h3 class="anchored" data-anchor-id="segmentation">Segmentation</h3>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="2022-10-17-fastai-2022-courses_files/figure-html/7d714c96-df7f-4758-9e69-93aa3a810658.png" class="img-fluid figure-img"></p>
+<p><img src="2022-10-17-fastai-2022-courses_files/figure-html/1d6931ed-c358-4c9c-a75d-e22d417160ce-1-7d714c96-df7f-4758-9e69-93aa3a810658.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
 </figure>
 </div>
@@ -433,7 +494,7 @@ So, let’s get started!</p>
 <p>Here again no need for DataBlock but a direct use of <code>TabularDataLoaders</code></p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="2022-10-17-fastai-2022-courses_files/figure-html/83f9e7f9-0495-4d89-82c5-15e21bddaa31.png" class="img-fluid figure-img"></p>
+<p><img src="2022-10-17-fastai-2022-courses_files/figure-html/3850c635-af2c-401c-9cf3-0e38301b8957-1-83f9e7f9-0495-4d89-82c5-15e21bddaa31.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
 </figure>
 </div>
@@ -448,7 +509,7 @@ So, let’s get started!</p>
 <h1>Lesson 2 - Deployment</h1>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="2022-10-17-fastai-2022-courses_files/figure-html/dd1b59e1-eaa3-486f-b8ac-519f4ba1e3a8.png" class="img-fluid figure-img"></p>
+<p><img src="2022-10-17-fastai-2022-courses_files/figure-html/6deea125-0962-4449-89e7-602fa5f876f5-1-dd1b59e1-eaa3-486f-b8ac-519f4ba1e3a8.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
 </figure>
 </div>
@@ -467,7 +528,7 @@ So, let’s get started!</p>
 <p>Aside the explanation on HF, Jeremy shares how useful <a href="https://github.com/shiftkey/desktop/releases">Github Desktop</a> is.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="2022-10-17-fastai-2022-courses_files/figure-html/f95a61af-e56e-4650-b51a-c9a017744a5d.png" class="img-fluid figure-img"></p>
+<p><img src="2022-10-17-fastai-2022-courses_files/figure-html/15d3e6f7-032e-49ca-8ff1-6846909cd2a5-1-f95a61af-e56e-4650-b51a-c9a017744a5d.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
 </figure>
 </div>
@@ -477,7 +538,7 @@ So, let’s get started!</p>
 <p>Create app.py as instructed in our freshly created HF space. Commit Push (using github desktop). Back to HF interface, something is being built. and voila</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="2022-10-17-fastai-2022-courses_files/figure-html/46b3093a-b3cb-45dc-82e7-30e6d9e8423a.png" class="img-fluid figure-img"></p>
+<p><img src="2022-10-17-fastai-2022-courses_files/figure-html/a75f8c4f-d400-4343-8080-e5b4dcc749a6-1-46b3093a-b3cb-45dc-82e7-30e6d9e8423a.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
 </figure>
 </div>
@@ -488,11 +549,11 @@ So, let’s get started!</p>
 <h3 class="anchored" data-anchor-id="train-and-export-a-dl-model">train and export a DL model</h3>
 <p>And for that Jeremy has setup <a href="https://www.kaggle.com/code/guillaumeramelet/saving-a-basic-fastai-model/edit">something on kaggle</a></p>
 <p>They key (and new) part here is</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>learn.export(<span class="st">'model.pkl'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>learn.export(<span class="st">'model.pkl'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Finally, open the Kaggle sidebar on the right if it’s not already, and find the section marked “Output”. Open the /kaggle/working folder, and you’ll see model.pkl. Click on it, then click on the menu on the right that appears, and choose “Download”. After a few seconds, your model will be downloaded to your computer, where you can then create your app that uses the model.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="2022-10-17-fastai-2022-courses_files/figure-html/395df238-6c39-4ca7-87fa-812471437c69.png" class="img-fluid figure-img"></p>
+<p><img src="2022-10-17-fastai-2022-courses_files/figure-html/64ceac72-ba74-41b6-a8f8-492fc045312d-1-395df238-6c39-4ca7-87fa-812471437c69.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
 </figure>
 </div>
@@ -502,7 +563,7 @@ So, let’s get started!</p>
 <h3 class="anchored" data-anchor-id="integrate-it-with-gradio">integrate it with gradio</h3>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="2022-10-17-fastai-2022-courses_files/figure-html/8dfac218-e7a8-4b71-a053-eea355eb97c5.png" class="img-fluid figure-img"></p>
+<p><img src="2022-10-17-fastai-2022-courses_files/figure-html/1050ea4d-4e98-4c77-b7e2-c0edbaa51443-1-8dfac218-e7a8-4b71-a053-eea355eb97c5.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
 </figure>
 </div>
@@ -510,45 +571,45 @@ So, let’s get started!</p>
 <section id="load-model" class="level4">
 <h4 class="anchored" data-anchor-id="load-model">load model</h4>
 <p>Main parts are to load the model with</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>learn <span class="op">=</span> load_learner(<span class="st">'model.pkl'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>learn <span class="op">=</span> load_learner(<span class="st">'model.pkl'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="run-prediction" class="level4">
 <h4 class="anchored" data-anchor-id="run-prediction">run prediction</h4>
 <p>to run a prediction with</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pred, idx, probs <span class="op">=</span> learn.predict(img)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>pred, idx, probs <span class="op">=</span> learn.predict(img)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="call-prediction-through-a-function" class="level4">
 <h4 class="anchored" data-anchor-id="call-prediction-through-a-function">call prediction through a function</h4>
 <p>and to create the <code>classify_image</code> function as expected by gradio</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>categories <span class="op">=</span> (<span class="st">'Dog'</span>, <span class="st">'Cat'</span>)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> classify_image(img):</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    pred, idx, probs <span class="op">=</span> learn.predict(img)</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">dict</span>(<span class="bu">zip</span>(categories, <span class="bu">map</span>(<span class="bu">float</span>, probs))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>categories <span class="op">=</span> (<span class="st">'Dog'</span>, <span class="st">'Cat'</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> classify_image(img):</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    pred, idx, probs <span class="op">=</span> learn.predict(img)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">dict</span>(<span class="bu">zip</span>(categories, <span class="bu">map</span>(<span class="bu">float</span>, probs))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>and this return part is quite complex because gradio cannot deal with Tensors.</p>
 </section>
 <section id="create-gradio-ui" class="level4">
 <h4 class="anchored" data-anchor-id="create-gradio-ui">create gradio UI</h4>
 <p>There is now the gradio interface that takes image and returns dictionary.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>image <span class="op">=</span> gr.inputs.Image(shape<span class="op">=</span>(<span class="dv">192</span>, <span class="dv">192</span>))</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>label <span class="op">=</span> gr.outputs.Label()</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>examples <span class="op">=</span> [<span class="st">'dog.jpg'</span>, <span class="st">'cat.jpg'</span>, <span class="st">'dunno.jpg'</span>]</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>intf <span class="op">=</span> gr.Interface(fn<span class="op">=</span>classify_image, inputs<span class="op">=</span>image, outputs<span class="op">=</span>label, examples<span class="op">=</span>examples)</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>intf.launch(inline<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>image <span class="op">=</span> gr.inputs.Image(shape<span class="op">=</span>(<span class="dv">192</span>, <span class="dv">192</span>))</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>label <span class="op">=</span> gr.outputs.Label()</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>examples <span class="op">=</span> [<span class="st">'dog.jpg'</span>, <span class="st">'cat.jpg'</span>, <span class="st">'dunno.jpg'</span>]</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>intf <span class="op">=</span> gr.Interface(fn<span class="op">=</span>classify_image, inputs<span class="op">=</span>image, outputs<span class="op">=</span>label, examples<span class="op">=</span>examples)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>intf.launch(inline<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="export-as-app.py" class="level4">
 <h4 class="anchored" data-anchor-id="export-as-app.py">export as app.py</h4>
 <p>And export as app.py and for that Jeremy uses a slightly different version that I used</p>
 <p>Mine;</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> nbdev<span class="op">;</span> nbdev.export.nb_export(<span class="st">'app.ipynb'</span>, lib_path<span class="op">=</span><span class="st">'.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> nbdev<span class="op">;</span> nbdev.export.nb_export(<span class="st">'app.ipynb'</span>, lib_path<span class="op">=</span><span class="st">'.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>His:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nbdev.export <span class="im">import</span> notebook2script</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>notebook2script(<span class="st">'app.ipynb'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nbdev.export <span class="im">import</span> notebook2script</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>notebook2script(<span class="st">'app.ipynb'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><a href="https://huggingface.co/spaces/jph00/testing" class="uri">https://huggingface.co/spaces/jph00/testing</a></p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="2022-10-17-fastai-2022-courses_files/figure-html/4d65166a-5f79-431a-9bf5-e7192e6815ae.png" class="img-fluid figure-img"></p>
+<p><img src="2022-10-17-fastai-2022-courses_files/figure-html/eb0aa304-6cbc-438c-9ce9-d754ed437cf0-1-4d65166a-5f79-431a-9bf5-e7192e6815ae.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
 </figure>
 </div>
@@ -560,16 +621,16 @@ So, let’s get started!</p>
 <p><a href="https://github.com/fastai/fastsetup" class="uri">https://github.com/fastai/fastsetup</a></p>
 <p>clone it with github desktop (will do cmd line I don’t have the option Jeremy has)</p>
 <p><strong>install conda mamba</strong> (if needed)</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">./setup-conda.sh</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">./setup-conda.sh</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>install fastai from scratch</strong></p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> create <span class="at">-n</span> fastai python=3.9</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate fastai</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> install <span class="at">-c</span> fastchan fastai nbdev</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install gradio</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> create <span class="at">-n</span> fastai python=3.9</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate fastai</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> install <span class="at">-c</span> fastchan fastai nbdev</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install gradio</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>update to up-to-date versions</strong></p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate fastai</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> update <span class="at">-c</span> fastchan fastai nbdev</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-U</span> gradio</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate fastai</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> update <span class="at">-c</span> fastchan fastai nbdev</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-U</span> gradio</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="api" class="level2">
 <h2 class="anchored" data-anchor-id="api">API</h2>
@@ -583,13 +644,13 @@ So, let’s get started!</p>
 </section>
 <section id="gradio-hf-api" class="level3">
 <h3 class="anchored" data-anchor-id="gradio-hf-api">gradio, hf API</h3>
-<p>and with gradio + HF you have automatically an API available <img src="2022-10-17-fastai-2022-courses_files/figure-html/1cd15510-9c6e-461f-be59-220e4554cd76.png" class="img-fluid" alt="image.png"></p>
+<p>and with gradio + HF you have automatically an API available <img src="2022-10-17-fastai-2022-courses_files/figure-html/8c26adf0-8899-447a-b13b-6399d5ec244d-1-1cd15510-9c6e-461f-be59-220e4554cd76.png" class="img-fluid" alt="image.png"></p>
 <p>By <a href="https://hf.space/embed/jph00/testing/api">clicking it</a> you get the documentation of this API.</p>
 <p>It can then be used by any JS interface you would like to develop.</p>
 <p>And HF is nice enought to provide examples (live demo) in Python, curl (command line) and javascript</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="2022-10-17-fastai-2022-courses_files/figure-html/0e4921b6-7f1f-4ead-a7cf-e75df376aa4f.png" class="img-fluid figure-img"></p>
+<p><img src="2022-10-17-fastai-2022-courses_files/figure-html/ae5534c2-d593-455e-8a8b-c7624e9b09d8-1-0e4921b6-7f1f-4ead-a7cf-e75df376aa4f.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
 </figure>
 </div>
@@ -598,30 +659,30 @@ So, let’s get started!</p>
 <h3 class="anchored" data-anchor-id="example-from-js">example from js</h3>
 <p>Jeremy uses this to develop a small JS interface in <a href="https://fastai.github.io/tinypets/1single.html" class="uri">https://fastai.github.io/tinypets/1single.html</a></p>
 <p>And the code is quite minimum: <a href="https://github.com/fastai/tinypets/blob/master/1single.html" class="uri">https://github.com/fastai/tinypets/blob/master/1single.html</a></p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>title: 1. Single file</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>layout: page</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;input</span> <span class="er">id</span><span class="ot">=</span><span class="st">"photo"</span> <span class="er">type</span><span class="ot">=</span><span class="st">"file"</span><span class="kw">&gt;</span></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;div</span> <span class="er">id</span><span class="ot">=</span><span class="st">"results"</span><span class="kw">&gt;&lt;/div&gt;</span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;script&gt;</span></span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>  <span class="kw">async</span> <span class="kw">function</span> <span class="fu">loaded</span>(reader) {</span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> response <span class="op">=</span> <span class="cf">await</span> <span class="fu">fetch</span>(<span class="st">'https://hf.space/embed/jph00/pets/+/api/predict/'</span><span class="op">,</span> {</span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>      <span class="dt">method</span><span class="op">:</span> <span class="st">"POST"</span><span class="op">,</span> <span class="dt">body</span><span class="op">:</span> <span class="bu">JSON</span><span class="op">.</span><span class="fu">stringify</span>({ <span class="st">"data"</span><span class="op">:</span> [reader<span class="op">.</span><span class="at">result</span>] })<span class="op">,</span></span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>      <span class="dt">headers</span><span class="op">:</span> { <span class="st">"Content-Type"</span><span class="op">:</span> <span class="st">"application/json"</span> }</span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> json <span class="op">=</span> <span class="cf">await</span> response<span class="op">.</span><span class="fu">json</span>()<span class="op">;</span></span>
-<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> label <span class="op">=</span> json[<span class="st">'data'</span>][<span class="dv">0</span>][<span class="st">'confidences'</span>][<span class="dv">0</span>][<span class="st">'label'</span>]<span class="op">;</span></span>
-<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>    results<span class="op">.</span><span class="at">innerHTML</span> <span class="op">=</span> <span class="vs">`&lt;br/&gt;&lt;img src="</span><span class="sc">${</span>reader<span class="op">.</span><span class="at">result</span><span class="sc">}</span><span class="vs">" width="300"&gt; &lt;p&gt;</span><span class="sc">${</span>label<span class="sc">}</span><span class="vs">&lt;/p&gt;`</span></span>
-<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>  <span class="kw">function</span> <span class="fu">read</span>() {</span>
-<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> reader <span class="op">=</span> <span class="kw">new</span> <span class="bu">FileReader</span>()<span class="op">;</span></span>
-<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>    reader<span class="op">.</span><span class="fu">addEventListener</span>(<span class="st">'load'</span><span class="op">,</span> () <span class="kw">=&gt;</span> <span class="fu">loaded</span>(reader))</span>
-<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>    reader<span class="op">.</span><span class="fu">readAsDataURL</span>(photo<span class="op">.</span><span class="at">files</span>[<span class="dv">0</span>])<span class="op">;</span></span>
-<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>  photo<span class="op">.</span><span class="fu">addEventListener</span>(<span class="st">'input'</span><span class="op">,</span> read)<span class="op">;</span></span>
-<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/script&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>title: 1. Single file</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>layout: page</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;input</span> <span class="er">id</span><span class="ot">=</span><span class="st">"photo"</span> <span class="er">type</span><span class="ot">=</span><span class="st">"file"</span><span class="kw">&gt;</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;div</span> <span class="er">id</span><span class="ot">=</span><span class="st">"results"</span><span class="kw">&gt;&lt;/div&gt;</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;script&gt;</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>  <span class="kw">async</span> <span class="kw">function</span> <span class="fu">loaded</span>(reader) {</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> response <span class="op">=</span> <span class="cf">await</span> <span class="fu">fetch</span>(<span class="st">'https://hf.space/embed/jph00/pets/+/api/predict/'</span><span class="op">,</span> {</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>      <span class="dt">method</span><span class="op">:</span> <span class="st">"POST"</span><span class="op">,</span> <span class="dt">body</span><span class="op">:</span> <span class="bu">JSON</span><span class="op">.</span><span class="fu">stringify</span>({ <span class="st">"data"</span><span class="op">:</span> [reader<span class="op">.</span><span class="at">result</span>] })<span class="op">,</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>      <span class="dt">headers</span><span class="op">:</span> { <span class="st">"Content-Type"</span><span class="op">:</span> <span class="st">"application/json"</span> }</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> json <span class="op">=</span> <span class="cf">await</span> response<span class="op">.</span><span class="fu">json</span>()<span class="op">;</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> label <span class="op">=</span> json[<span class="st">'data'</span>][<span class="dv">0</span>][<span class="st">'confidences'</span>][<span class="dv">0</span>][<span class="st">'label'</span>]<span class="op">;</span></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>    results<span class="op">.</span><span class="at">innerHTML</span> <span class="op">=</span> <span class="vs">`&lt;br/&gt;&lt;img src="</span><span class="sc">${</span>reader<span class="op">.</span><span class="at">result</span><span class="sc">}</span><span class="vs">" width="300"&gt; &lt;p&gt;</span><span class="sc">${</span>label<span class="sc">}</span><span class="vs">&lt;/p&gt;`</span></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>  <span class="kw">function</span> <span class="fu">read</span>() {</span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> reader <span class="op">=</span> <span class="kw">new</span> <span class="bu">FileReader</span>()<span class="op">;</span></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>    reader<span class="op">.</span><span class="fu">addEventListener</span>(<span class="st">'load'</span><span class="op">,</span> () <span class="kw">=&gt;</span> <span class="fu">loaded</span>(reader))</span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>    reader<span class="op">.</span><span class="fu">readAsDataURL</span>(photo<span class="op">.</span><span class="at">files</span>[<span class="dv">0</span>])<span class="op">;</span></span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>  photo<span class="op">.</span><span class="fu">addEventListener</span>(<span class="st">'input'</span><span class="op">,</span> read)<span class="op">;</span></span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/script&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="gh-pages" class="level2">
@@ -649,7 +710,7 @@ So, let’s get started!</p>
 <p>it provides a complete different look</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="2022-10-17-fastai-2022-courses_files/figure-html/60c95ea4-29b6-42e6-9827-1cdafd04e705.png" class="img-fluid figure-img"></p>
+<p><img src="2022-10-17-fastai-2022-courses_files/figure-html/35e779a3-c3ad-43e9-bb90-4371217829ad-1-60c95ea4-29b6-42e6-9827-1cdafd04e705.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
 </figure>
 </div>
@@ -661,7 +722,7 @@ So, let’s get started!</p>
 <h1>Lesson 3 - Neural net foundations</h1>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="2022-10-17-fastai-2022-courses_files/figure-html/d4e08165-739e-4034-843b-1efe335281ad.png" class="img-fluid figure-img"></p>
+<p><img src="2022-10-17-fastai-2022-courses_files/figure-html/1cb73eaa-2f68-4fba-b4c0-d24170f98917-1-d4e08165-739e-4034-843b-1efe335281ad.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
 </figure>
 </div>
@@ -677,15 +738,15 @@ So, let’s get started!</p>
 <p>Jeremy illsutrates how to switch model architecture. And for that uses timm fastai. He has created a notebook on kaggle to rank vision models <a href="https://www.kaggle.com/code/jhoward/which-image-models-are-best/" class="uri">https://www.kaggle.com/code/jhoward/which-image-models-are-best/</a></p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="2022-10-17-fastai-2022-courses_files/figure-html/56e655b6-1940-4766-bf49-ff76de4ad4b7.png" class="img-fluid figure-img"></p>
+<p><img src="2022-10-17-fastai-2022-courses_files/figure-html/bb0e4629-a800-4743-a8cc-92a8763ec532-1-56e655b6-1940-4766-bf49-ff76de4ad4b7.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
 </figure>
 </div>
 <p>Convnext models seem to be a good fit.</p>
 <div class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> timm</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>timm.list_models(<span class="st">'convnext*'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> timm</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>timm.list_models(<span class="st">'convnext*'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <pre><code>['convnext_atto',
  'convnext_atto_ols',
@@ -718,35 +779,35 @@ So, let’s get started!</p>
 </div>
 </div>
 <p>And to use one it is just a matter of calling</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>learn <span class="op">=</span> vision_learner(dls, <span class="st">'convnext_tiny_in22k'</span>, metrics<span class="op">=</span>error_rate).to_fp16()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>learn <span class="op">=</span> vision_learner(dls, <span class="st">'convnext_tiny_in22k'</span>, metrics<span class="op">=</span>error_rate).to_fp16()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="using-in-an-app" class="level2">
 <h2 class="anchored" data-anchor-id="using-in-an-app">Using in an app</h2>
 <p>When dealing with categories, fastai keep category names in the dataloader under vocab</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>categories <span class="op">=</span> learn.dls.vocab</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> classify_image(img):</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    pred, idx, probs <span class="op">=</span> learn.predict(img)</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">dict</span>(<span class="bu">zip</span>(categories, <span class="bu">map</span>(<span class="bu">float</span>, probs)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>categories <span class="op">=</span> learn.dls.vocab</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> classify_image(img):</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    pred, idx, probs <span class="op">=</span> learn.predict(img)</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">dict</span>(<span class="bu">zip</span>(categories, <span class="bu">map</span>(<span class="bu">float</span>, probs)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="applying-this-on-my-own-app-cheeses" class="level2">
 <h2 class="anchored" data-anchor-id="applying-this-on-my-own-app-cheeses">Applying this on my own app: <a href="https://huggingface.co/spaces/Guillaume63/cheeses">cheeses</a></h2>
 <p>All notebooks from these courses are at <a href="https://github.com/fastai/course22" class="uri">https://github.com/fastai/course22</a></p>
 <p>And my app is at <a href="https://huggingface.co/spaces/Guillaume63/cheeses" class="uri">https://huggingface.co/spaces/Guillaume63/cheeses</a></p>
 <p>I had to configure this repo to use git-lfs to store large binary files:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> lfs install</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co">#if needed reset the last commit</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> reset <span class="at">--soft</span> HEAD^</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="co">#if offeneded files ar already staged, restore them</span></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> restore <span class="at">--staged</span> <span class="pp">*</span>.jpg</span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="co">#add them back</span></span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add <span class="at">-A</span></span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="co">#check they are managed by git lfs</span></span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> lfs ls-files</span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-am</span><span class="st">'recommit after lfs install'</span></span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> lfs install</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="co">#if needed reset the last commit</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> reset <span class="at">--soft</span> HEAD^</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="co">#if offeneded files ar already staged, restore them</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> restore <span class="at">--staged</span> <span class="pp">*</span>.jpg</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="co">#add them back</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add <span class="at">-A</span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a><span class="co">#check they are managed by git lfs</span></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> lfs ls-files</span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-am</span><span class="st">'recommit after lfs install'</span></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>and I pushed it to <a href="https://forums.fast.ai/t/share-your-work-here/96015/515?u=guillaumeramelet">fastai forum</a></p>
 </section>
 <section id="inside-nn" class="level2">
@@ -754,12 +815,12 @@ So, let’s get started!</p>
 <p><a href="https://www.kaggle.com/code/jhoward/how-does-a-neural-net-really-work" class="uri">https://www.kaggle.com/code/jhoward/how-does-a-neural-net-really-work</a></p>
 <p>Illustration of a powerfull python function <code>partial</code></p>
 <div class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> functools <span class="im">import</span> partial</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> mk_quad(a, b, c): <span class="cf">return</span> partial(quad, a, b, c)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> functools <span class="im">import</span> partial</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> mk_quad(a, b, c): <span class="cf">return</span> partial(quad, a, b, c)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> mk_quad(<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">1</span>)</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>f(<span class="fl">1.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> mk_quad(<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">1</span>)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>f(<span class="fl">1.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="17">
 <pre><code>10.75</code></pre>
 </div>
@@ -786,7 +847,7 @@ So, let’s get started!</p>
 <p><a href="https://course.fast.ai/Lessons/lesson4.html" class="uri">https://course.fast.ai/Lessons/lesson4.html</a></p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="2022-10-17-fastai-2022-courses_files/figure-html/67afa14d-fd26-45ed-8d09-82a97458787d.png" class="img-fluid figure-img"></p>
+<p><img src="2022-10-17-fastai-2022-courses_files/figure-html/fd076952-c3a5-4a41-be6e-81395db0ee12-1-67afa14d-fd26-45ed-8d09-82a97458787d.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
 </figure>
 </div>
@@ -805,37 +866,15 @@ So, let’s get started!</p>
 <p><a href="https://course.fast.ai/Lessons/lesson5.html" class="uri">https://course.fast.ai/Lessons/lesson5.html</a></p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="2022-10-17-fastai-2022-courses_files/figure-html/dbe1075e-9548-4e54-9924-ca99f1e6649f.png" class="img-fluid figure-img"></p>
+<p><img src="2022-10-17-fastai-2022-courses_files/figure-html/85af52d2-9674-45b5-b71c-2576078497f9-1-dbe1075e-9548-4e54-9924-ca99f1e6649f.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
 </figure>
 </div>
 <blockquote class="blockquote">
 <p>Today we look at how to create a neural network from scratch using Python and PyTorch, and how to implement a training loop for optimising the weights of a model. We build up from a single layer regression model up to a neural net with one hidden layer, and then to a deep learning model. Along the way we’ll also look at how we can use a special function called sigmoid to make binary classification models easier to train, and we’ll also learn about metrics.</p>
 </blockquote>
-<p>We start from a kaggle notebook from <a href="https://www.kaggle.com/jhoward/code">jeremy’s profile</a> which is <a href="https://www.kaggle.com/code/jhoward/linear-model-and-neural-net-from-scratch">Linear model and neural net from scratch</a>. As usually upvote &amp; copy/<a href="https://www.kaggle.com/code/guillaumeramelet/linear-model-and-neural-net-from-scratch/edit">edit</a> to start using it.</p>
-<p>But one can start with the “clean” (without any prose) version of it. From paperspace or locally. I will follow the course locally.</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/git</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/fastai/course22.git </span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> course22</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="2022-10-17-fastai-2022-courses_files/figure-html/31e16cdc-010d-4056-b275-a5feb523c752.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
-</figure>
-</div>
-<p>And I have to setup kaggle locally:</p>
-<ul>
-<li><code>pip install kaggle</code> inside my fastai env</li>
-<li>create a token from my kaggle profile <a href="https://www.kaggle.com/guillaumeramelet/account">page</a></li>
-<li>move this <code>kaggle.json</code> into <code>~/.kaggle/kaggle.json</code></li>
-<li><code>chmod 600 /home/guillaume/.kaggle/kaggle.json</code></li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="2022-10-17-fastai-2022-courses_files/figure-html/3a059c3a-b170-4943-b7bd-c44c96211fa3.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
-</figure>
-</div>
+<p>We start from a kaggle notebook from <a href="https://www.kaggle.com/jhoward/code">jeremy’s profile</a> which is <a href="https://www.kaggle.com/code/jhoward/linear-model-and-neural-net-from-scratch">Linear model and neural net from scratch</a>. As usually upvote &amp; copy/<a href="https://www.kaggle.com/code/guillaumeramelet/linear-model-and-neural-net-from-scratch/edit">edit</a> to start using it. Or get the notebooks from <a href="https://github.com/fastai/course22/blob/master/05-linear-model-and-neural-net-from-scratch.ipynb">github</a>.</p>
+<p>Today I will use the local version.</p>
 <section id="linear-model-then-deep-learning-model" class="level2">
 <h2 class="anchored" data-anchor-id="linear-model-then-deep-learning-model">linear model then deep learning model</h2>
 <p>Just restarting from titanic dataset and exactly as what was made in excel, now we do it with PyTorch.</p>
@@ -843,7 +882,7 @@ So, let’s get started!</p>
 </section>
 <section id="why-you-should-use-a-framework" class="level2">
 <h2 class="anchored" data-anchor-id="why-you-should-use-a-framework">Why you should use a framework</h2>
-<p>It is in <a href="https://www.kaggle.com/code/jhoward/why-you-should-use-a-framework">Why you should use a framework</a>. As usually upvote &amp; copy/edit to start using it. Or get the notebooks from <a href="https://github.com/fastai/course22">github</a>.</p>
+<p>It is in kaggle <a href="https://www.kaggle.com/code/jhoward/why-you-should-use-a-framework">Why you should use a framework</a>. As usually upvote &amp; copy/edit to start using it. Or get the notebooks from <a href="https://github.com/fastai/course22/blob/master/06-why-you-should-use-a-framework.ipynb">github</a>.</p>
 
 
 </section>
@@ -982,7 +1021,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   // Switch to dark mode if need be
   if (hasAlternateSentinel()) {
     toggleColorMode(true);
-  } 
+  } else {
+    toggleColorMode(false);
+  }
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {
@@ -1004,7 +1045,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -1040,24 +1098,42 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var filterRegex = new RegExp(/^(?:http:|https:)\/\/castorfou\.github\.io\//);
@@ -1065,7 +1141,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
-    var links = window.document.querySelectorAll('a:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external)');
+    var links = window.document.querySelectorAll('a:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
