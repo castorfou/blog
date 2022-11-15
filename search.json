@@ -315,6 +315,13 @@
     "text": "[workaround] links are not rendered as links\nin jupyter, just typing url turns it into a link. Not with quarto: https://castorfou.github.io/blog/\nanyway to do it ?\nhttps://github.com/quarto-dev/quarto-cli/discussions/2609\n\nsuggestions\nFirst one is to surround url with pointy braces ‘<>’\nDoes it work: https://pandoc.org/MANUAL.html#links-1\nAnd better one (?) would be to run pandoc with autolink_bare_uris\nJust modifying _quarto.yml in ( format > html > from ) option\n\n\n\nimage.png\n\n\n\n!cat ../_quarto.yml | grep -B5 autolink\n\n  html:\n    theme: \n      light: journal\n      dark: darkly\n    css: styles.css\n    from: markdown+autolink_bare_uris"
   },
   {
+    "objectID": "posts/2022-09-16-migrate blog from nbdev to quarto.html#quarto-updated-to-version-1.2.269",
+    "href": "posts/2022-09-16-migrate blog from nbdev to quarto.html#quarto-updated-to-version-1.2.269",
+    "title": "Blog - migrate to quarto",
+    "section": "quarto updated to version 1.2.269",
+    "text": "quarto updated to version 1.2.269\n~/temp$ wget https://github.com/quarto-dev/quarto-cli/releases/download/v1.2.269/quarto-1.2.269-linux-amd64.deb\n~/temp$ sudo apt install ./quarto-1.2.269-linux-amd64.deb \n~/temp$ quarto -V\n1.2.269\nI don’t know what is the changelog. Looks like we don’t need to install video extension anymore. (quarto install extension quarto-ext/video)"
+  },
+  {
     "objectID": "posts/2021-02-05-learning-MIT-6.S191-2021.html",
     "href": "posts/2021-02-05-learning-MIT-6.S191-2021.html",
     "title": "Learning: MIT 6.S191 Introduction to Deep Learning - 2021",
