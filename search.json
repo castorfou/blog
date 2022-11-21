@@ -81,7 +81,14 @@
     "href": "posts/2022-11-01-logbook-November-22.html#monday-1114",
     "title": "Logbook for November 22",
     "section": "Monday 11/14",
-    "text": "Monday 11/14\n\nfastai course lesson 4 - nlp\nEnding lesson 4\nStarting lesson 5"
+    "text": "Monday 11/14\n\nfastai course lesson 4 - nlp, lesson 5 - from-scratch model\nEnding lesson 4\nStarting lesson 5"
+  },
+  {
+    "objectID": "posts/2022-11-01-logbook-November-22.html#wednesday-1116",
+    "href": "posts/2022-11-01-logbook-November-22.html#wednesday-1116",
+    "title": "Logbook for November 22",
+    "section": "Wednesday 11/16",
+    "text": "Wednesday 11/16\n\nquarto update\nquarto has been updated to version 1.2.269 as mentioned in fastai forum\nHere the procedure to update."
   },
   {
     "objectID": "posts/2020-09-15-autodetect-home-office-network-and-proxy-settings.html",
@@ -319,7 +326,7 @@
     "href": "posts/2022-09-16-migrate blog from nbdev to quarto.html#quarto-updated-to-version-1.2.269",
     "title": "Blog - migrate to quarto",
     "section": "quarto updated to version 1.2.269",
-    "text": "quarto updated to version 1.2.269\n~/temp$ wget https://github.com/quarto-dev/quarto-cli/releases/download/v1.2.269/quarto-1.2.269-linux-amd64.deb\n~/temp$ sudo apt install ./quarto-1.2.269-linux-amd64.deb \n~/temp$ quarto -V\n1.2.269\nI don’t know what is the changelog. Looks like we don’t need to install video extension anymore. (quarto install extension quarto-ext/video)\n~/git/blog$ quarto remove extension quarto-ext/video"
+    "text": "quarto updated to version 1.2.269\n~/temp$ wget https://github.com/quarto-dev/quarto-cli/releases/download/v1.2.269/quarto-1.2.269-linux-amd64.deb\n~/temp$ sudo apt install ./quarto-1.2.269-linux-amd64.deb \n~/temp$ quarto -V\n1.2.269\nI don’t know what is the changelog. Looks like we don’t need to install video extension anymore. (quarto install extension quarto-ext/video)\n~/git/blog$ quarto remove extension quarto-ext/video\nI have started a thread in fastai forum. There are updates with widget states and inline images. Update worth running!"
   },
   {
     "objectID": "posts/2021-02-05-learning-MIT-6.S191-2021.html",
