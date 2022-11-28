@@ -903,7 +903,8 @@ So, let’s get started!</p>
 <p>I could try this for autoencoders: <a href="https://alanbertl.com/autoencoder-with-fast-ai/" class="uri">https://alanbertl.com/autoencoder-with-fast-ai/</a> (this is v1 but should be easy to adapt to v2)</p>
 <p>And then ends with <a href="https://www.kaggle.com/code/jhoward/how-random-forests-really-work">How random forests really work</a>. Or get the notebooks from <a href="https://github.com/fastai/course22/blob/master/07-how-random-forests-really-work.ipynb">github</a>.</p>
 <p>Tip: <code>pd.options.display.float_format = '{:.2f}'.format</code> will display all floats from dataframes with 2 digits</p>
-<p>Tip2: <code>from fastai.imports import *</code> will import everuthing that we need (numpy, pandas, matplotlib, …)</p>
+<p>Tip2: <code>from fastai.imports import *</code> will import everything that we need (numpy, pandas, matplotlib, …)</p>
+<p>Jeremy illustrates binary split and mentions <a href="https://link.springer.com/article/10.1023/A:1022631118932">OneR</a> classifier (paper from 1993)</p>
 </section>
 </section>
 <section id="lesson-6---random-forests" class="level1">
@@ -918,6 +919,14 @@ So, let’s get started!</p>
 <blockquote class="blockquote">
 <p>Random forests started a revolution in machine learning 20 years ago. For the first time, there was a fast and reliable algorithm which made almost no assumptions about the form of the data, and required almost no preprocessing. In today’s lesson, you’ll learn how a random forest really works, and how to build one from scratch. And, just as importantly, you’ll learn how to interpret random forests to better understand your data.</p>
 </blockquote>
+<p>We continue on the previous notebook <a href="https://www.kaggle.com/code/jhoward/how-random-forests-really-work">How random forests really work</a>.</p>
+<p>And repeating binary split on 2 dataset already split makes it a TwoR approach… And we can continue recursively. This is what a DecisionTree is.</p>
+<div class="cell" data-tags="[]" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>draw_tree(m, trn_xs, size<span class="op">=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="35">
+<p><img src="2022-10-17-fastai-2022-courses_files/figure-html/cell-8-output-1.svg" class="img-fluid"></p>
+</div>
+</div>
 
 
 </section>
