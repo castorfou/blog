@@ -291,6 +291,7 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
   <li><a href="#linear-model-then-deep-learning-model" id="toc-linear-model-then-deep-learning-model" class="nav-link" data-scroll-target="#linear-model-then-deep-learning-model">linear model then deep learning model</a></li>
   <li><a href="#why-you-should-use-a-framework" id="toc-why-you-should-use-a-framework" class="nav-link" data-scroll-target="#why-you-should-use-a-framework">Why you should use a framework</a></li>
   </ul></li>
+  <li><a href="#lesson-6---random-forests" id="toc-lesson-6---random-forests" class="nav-link" data-scroll-target="#lesson-6---random-forests">Lesson 6 - Random forests</a></li>
   </ul>
 </nav>
     </div>
@@ -901,9 +902,24 @@ So, let’s get started!</p>
 </div>
 <p>I could try this for autoencoders: <a href="https://alanbertl.com/autoencoder-with-fast-ai/" class="uri">https://alanbertl.com/autoencoder-with-fast-ai/</a> (this is v1 but should be easy to adapt to v2)</p>
 <p>And then ends with <a href="https://www.kaggle.com/code/jhoward/how-random-forests-really-work">How random forests really work</a>. Or get the notebooks from <a href="https://github.com/fastai/course22/blob/master/07-how-random-forests-really-work.ipynb">github</a>.</p>
-
-
+<p>Tip: <code>pd.options.display.float_format = '{:.2f}'.format</code> will display all floats from dataframes with 2 digits</p>
+<p>Tip2: <code>from fastai.imports import *</code> will import everuthing that we need (numpy, pandas, matplotlib, …)</p>
 </section>
+</section>
+<section id="lesson-6---random-forests" class="level1">
+<h1>Lesson 6 - Random forests</h1>
+<p><a href="https://course.fast.ai/Lessons/lesson6.html" class="uri">https://course.fast.ai/Lessons/lesson6.html</a></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2022-10-17-fastai-2022-courses_files/figure-html/1be83661-8a7f-45af-acfe-3045c8c77946-1-2af8bec3-ac03-4b00-97a6-d70bec83e724.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+<blockquote class="blockquote">
+<p>Random forests started a revolution in machine learning 20 years ago. For the first time, there was a fast and reliable algorithm which made almost no assumptions about the form of the data, and required almost no preprocessing. In today’s lesson, you’ll learn how a random forest really works, and how to build one from scratch. And, just as importantly, you’ll learn how to interpret random forests to better understand your data.</p>
+</blockquote>
+
+
 </section>
 
 </main> <!-- /main -->
