@@ -6,10 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2022-10-13">
-<meta name="description" content="and it is a good time to document some stuff about docker">
+<meta name="dcterms.date" content="2022-11-01">
 
-<title>Guillaume’s blog - Run dataiku with docker</title>
+<title>Guillaume’s blog - Logbook for November 22</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -138,9 +137,8 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 
 
 <link rel="stylesheet" href="../styles.css">
-<meta name="twitter:title" content="Guillaume’s blog - Run dataiku with docker">
-<meta name="twitter:description" content="and it is a good time to document some stuff about docker">
-<meta name="twitter:image" content="https://castorfou.github.io/images/icons/docker.webp">
+<meta name="twitter:title" content="Guillaume’s blog - Logbook for November 22">
+<meta name="twitter:image" content="https://castorfou.github.io/images/logbook.jpg">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -187,17 +185,9 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Run dataiku with docker</h1>
-                  <div>
-        <div class="description">
-          and it is a good time to document some stuff about docker
-        </div>
-      </div>
-                          <div class="quarto-categories">
-                <div class="quarto-category">docker</div>
-                <div class="quarto-category">dataiku</div>
-                <div class="quarto-category">wsl</div>
-                <div class="quarto-category">linux</div>
+      <h1 class="title">Logbook for November 22</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">logbook</div>
               </div>
                   </div>
   </div>
@@ -209,7 +199,7 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">October 13, 2022</p>
+        <p class="date">November 1, 2022</p>
       </div>
     </div>
     
@@ -225,21 +215,27 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#source-of-inspiration" id="toc-source-of-inspiration" class="nav-link active" data-scroll-target="#source-of-inspiration">Source of inspiration</a></li>
-  <li><a href="#install-docker-run-docker-service" id="toc-install-docker-run-docker-service" class="nav-link" data-scroll-target="#install-docker-run-docker-service">Install docker, run docker service</a>
+  <li><a href="#week-45---november-22" id="toc-week-45---november-22" class="nav-link active" data-scroll-target="#week-45---november-22">Week 45 - November 22</a>
   <ul class="collapse">
-  <li><a href="#for-wsl" id="toc-for-wsl" class="nav-link" data-scroll-target="#for-wsl">for WSL</a></li>
-  <li><a href="#for-linux" id="toc-for-linux" class="nav-link" data-scroll-target="#for-linux">for linux</a></li>
-  <li><a href="#docker-service-status" id="toc-docker-service-status" class="nav-link" data-scroll-target="#docker-service-status">docker service status</a></li>
-  </ul></li>
-  <li><a href="#useful-commands" id="toc-useful-commands" class="nav-link" data-scroll-target="#useful-commands">Useful commands</a>
+  <li><a href="#monday-117" id="toc-monday-117" class="nav-link" data-scroll-target="#monday-117"><strong>Monday 11/7</strong></a></li>
+  <li><a href="#wednesday-119" id="toc-wednesday-119" class="nav-link" data-scroll-target="#wednesday-119"><strong>Wednesday 11/9</strong></a>
   <ul class="collapse">
-  <li><a href="#list-images" id="toc-list-images" class="nav-link" data-scroll-target="#list-images">list images</a></li>
-  <li><a href="#run-image" id="toc-run-image" class="nav-link" data-scroll-target="#run-image">run image</a></li>
-  <li><a href="#stop-image" id="toc-stop-image" class="nav-link" data-scroll-target="#stop-image">stop image</a></li>
+  <li><a href="#blog-and-broken-links" id="toc-blog-and-broken-links" class="nav-link" data-scroll-target="#blog-and-broken-links">blog and broken links</a></li>
+  <li><a href="#mamba-v1.0" id="toc-mamba-v1.0" class="nav-link" data-scroll-target="#mamba-v1.0">mamba v1.0</a></li>
   </ul></li>
-  <li><a href="#dataiku-dss" id="toc-dataiku-dss" class="nav-link" data-scroll-target="#dataiku-dss">Dataiku DSS</a></li>
-  <li><a href="#portainer" id="toc-portainer" class="nav-link" data-scroll-target="#portainer">Portainer</a></li>
+  <li><a href="#thursday-1110" id="toc-thursday-1110" class="nav-link" data-scroll-target="#thursday-1110"><strong>Thursday 11/10</strong></a>
+  <ul class="collapse">
+  <li><a href="#fixed-unsafe-legacy-renegotiation-disabled" id="toc-fixed-unsafe-legacy-renegotiation-disabled" class="nav-link" data-scroll-target="#fixed-unsafe-legacy-renegotiation-disabled">[fixed] unsafe legacy renegotiation disabled</a></li>
+  <li><a href="#fastai-course-lesson-4---nlp" id="toc-fastai-course-lesson-4---nlp" class="nav-link" data-scroll-target="#fastai-course-lesson-4---nlp">fastai course lesson 4 - nlp</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#week-46---november-22" id="toc-week-46---november-22" class="nav-link" data-scroll-target="#week-46---november-22">Week 46 - November 22</a>
+  <ul class="collapse">
+  <li><a href="#monday-1114" id="toc-monday-1114" class="nav-link" data-scroll-target="#monday-1114"><strong>Monday 11/14</strong></a>
+  <ul class="collapse">
+  <li><a href="#fastai-course-lesson-4---nlp-1" id="toc-fastai-course-lesson-4---nlp-1" class="nav-link" data-scroll-target="#fastai-course-lesson-4---nlp-1">fastai course lesson 4 - nlp</a></li>
+  </ul></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -249,149 +245,86 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 
 
 
-<section id="source-of-inspiration" class="level2">
-<h2 class="anchored" data-anchor-id="source-of-inspiration">Source of inspiration</h2>
-<p>Would like to play with <a href="https://www.dataiku.com/">dataiku</a> to do some dataprep</p>
-<p>But I don’t want to install it.</p>
+<section id="week-45---november-22" class="level1">
+<h1>Week 45 - November 22</h1>
+<section id="monday-117" class="level2">
+<h2 class="anchored" data-anchor-id="monday-117"><strong>Monday 11/7</strong></h2>
+<p>freshly back from vacations (2 weeks) without touching anything AI-computer related</p>
 </section>
-<section id="install-docker-run-docker-service" class="level2">
-<h2 class="anchored" data-anchor-id="install-docker-run-docker-service">Install docker, run docker service</h2>
-<section id="for-wsl" class="level3">
-<h3 class="anchored" data-anchor-id="for-wsl">for WSL</h3>
-<p>Everything explained at <a href="../blog/posts/2022-04-25-install ubuntu 22.04 on WSL.html#docker">Docker for wsl</a></p>
-</section>
-<section id="for-linux" class="level3">
-<h3 class="anchored" data-anchor-id="for-linux">for linux</h3>
-<p>I guess this is the same logic</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt list <span class="at">--installed</span> <span class="kw">|</span><span class="fu">grep</span> docker</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker-ce-cli/focal,now</span> 5:20.10.18~3-0~ubuntu-focal amd64 [installed]</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">docker-ce-rootless-extras/focal,now</span> 5:20.10.18~3-0~ubuntu-focal amd64 [installed,automatic]</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">docker-ce/focal,now</span> 5:20.10.18~3-0~ubuntu-focal amd64 [installed]</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">docker-compose-plugin/focal,now</span> 2.10.2~ubuntu-focal amd64 [installed]</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ex">docker-scan-plugin/focal,now</span> 0.17.0~ubuntu-focal amd64 [installed,automatic]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install <span class="at">-y</span> docker-ce docker-ce-cli containerd.io </span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> usermod <span class="at">-aG</span> docker <span class="va">$USER</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> service docker start</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> curl <span class="at">-L</span> <span class="st">"https://github.com/docker/compose/releases/download/v2.11.2/docker-compose-linux-x86_64"</span> <span class="at">-o</span> /usr/local/bin/docker-compose</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> chmod +x /usr/local/bin/docker-compose</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="docker-service-status" class="level3">
-<h3 class="anchored" data-anchor-id="docker-service-status">docker service status</h3>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> service docker status</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">●</span> docker.service <span class="at">-</span> Docker Application Container Engine</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>     <span class="ex">Loaded:</span> loaded <span class="er">(</span><span class="ex">/lib/systemd/system/docker.service</span><span class="kw">;</span> <span class="ex">enabled</span><span class="kw">;</span> <span class="ex">vendor</span> preset: enabled<span class="kw">)</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>     <span class="ex">Active:</span> active <span class="er">(</span><span class="ex">running</span><span class="kw">)</span> <span class="ex">since</span> Tue 2022-10-11 10:26:23 CEST<span class="kw">;</span> <span class="ex">2</span> days ago</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="ex">TriggeredBy:</span> ● docker.socket</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>       <span class="ex">Docs:</span> https://docs.docker.com</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>   <span class="ex">Main</span> PID: 2231 <span class="er">(</span><span class="ex">dockerd</span><span class="kw">)</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>      <span class="ex">Tasks:</span> 18</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>     <span class="ex">Memory:</span> 120.5M</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>        <span class="ex">CPU:</span> 1min 4.466s</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>     <span class="ex">CGroup:</span> /system.slice/docker.service</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>             <span class="ex">└─2231</span> /usr/bin/dockerd <span class="at">-H</span> fd:// <span class="at">--containerd</span><span class="op">=</span>/run/containerd/containerd.sock</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-</section>
-<section id="useful-commands" class="level2">
-<h2 class="anchored" data-anchor-id="useful-commands">Useful commands</h2>
-<section id="list-images" class="level3">
-<h3 class="anchored" data-anchor-id="list-images">list images</h3>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> ps</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> images</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>docker images</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>REPOSITORY               TAG             IMAGE ID       CREATED         SIZE
-evalai_worker            latest          dba6096090fb   2 months ago    2.58GB
-evalai_django            latest          ae485874e456   2 months ago    1.52GB
-evalai_nodejs_v2         latest          2c31d7c19b50   2 months ago    2GB
-evalai_nodejs            latest          870941d3fc88   2 months ago    1.98GB
-softwaremill/elasticmq   latest          b722353e4eaa   2 months ago    648MB
-node                     14.20.0         326f034bd14b   3 months ago    914MB
-prom/statsd-exporter     latest          a52efa669891   3 months ago    17MB
-&lt;none&gt;                   &lt;none&gt;          5b8afa69cc58   11 months ago   422MB
-&lt;none&gt;                   &lt;none&gt;          66a693993cdc   11 months ago   422MB
-&lt;none&gt;                   &lt;none&gt;          5db5659b96f2   11 months ago   422MB
-&lt;none&gt;                   &lt;none&gt;          7bd2798881a8   11 months ago   422MB
-&lt;none&gt;                   &lt;none&gt;          a1753859aadb   11 months ago   422MB
-&lt;none&gt;                   &lt;none&gt;          adea02a35542   11 months ago   559MB
-debian                   bullseye-slim   dd984c2cf05c   12 months ago   80.4MB
-python                   3.7.5           fbf9f709ca9f   2 years ago     917MB
-node                     12.2.0          502d06d3bfdf   3 years ago     906MB
-postgres                 10.4            978b82dc00dc   4 years ago     236MB</code></pre>
-</div>
-</div>
-<p>Here we can see I played with <a href="../blog/posts/2022-07-29-evalai and gitlab.html">evalai</a>…</p>
-</section>
-<section id="run-image" class="level3">
-<h3 class="anchored" data-anchor-id="run-image">run image</h3>
-<p>To enter into an image in interactive mode</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-ti</span> <span class="op">&lt;</span>REPO<span class="op">&gt;</span>:<span class="op">&lt;</span>TAG<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>as an example</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-it</span> python:3.7.5 </span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Python</span> 3.7.5 <span class="er">(</span><span class="ex">default,</span> Nov 23 2019, 05:59:34<span class="kw">)</span> </span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="ex">[GCC</span> 8.3.0] on linux</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="ex">Type</span> <span class="st">"help"</span>, <span class="st">"copyright"</span>, <span class="st">"credits"</span> or <span class="st">"license"</span> for more information.</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="stop-image" class="level3">
-<h3 class="anchored" data-anchor-id="stop-image">stop image</h3>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> stop <span class="op">&lt;</span>Container_ID<span class="op">&gt;</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> rm <span class="op">&lt;</span>Container_ID<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-</section>
-<section id="dataiku-dss" class="level2">
-<h2 class="anchored" data-anchor-id="dataiku-dss">Dataiku DSS</h2>
-<p><a href="https://hub.docker.com/r/dataiku/dss/" class="uri">https://hub.docker.com/r/dataiku/dss/</a></p>
-<p>Start a DSS instance on the default internal data directory, exposing DSS on the default port (10000)</p>
-<p><code>docker run -p 10000:10000 -d dataiku/dss</code></p>
-<p>Alternatively, you can start a DSS instance on a mounted data directory or Docker volume, exposing DSS on the default port (10000).</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> ~/dss</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-p</span> 10000:10000 <span class="at">-v</span> /home/explore/dss:/home/dataiku/dss <span class="at">-d</span> dataiku/dss</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Open DSS in your browser (Chrome or Firefox)</p>
-<p>For Linux, open <a href="http://localhost:10000" class="uri">http://localhost:10000</a></p>
-<p>Default login/password (admin/admin)</p>
+<section id="wednesday-119" class="level2">
+<h2 class="anchored" data-anchor-id="wednesday-119"><strong>Wednesday 11/9</strong></h2>
+<section id="blog-and-broken-links" class="level3">
+<h3 class="anchored" data-anchor-id="blog-and-broken-links">blog and broken links</h3>
+<p>Last <a href="../posts/2022-10-01-logbook-October-22.html#friday-1021">time</a> I had to fix broken links on this blog. For that I have setup <a href="https://search.google.com/u/1/search-console/index?resource_id=https://castorfou.github.io/blog/">google search console</a>.</p>
+<p>But for the moment I have this report</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="2022-10-13-dockerdss_files/figure-html/93bbf859-a253-454a-b069-5e9a51bcb17d-1-f39b4d16-fcaf-4a3c-bdd1-cc251309b89b.png" class="img-fluid figure-img"></p>
+<p><img src="2022-11-01-logbook-November-22_files/figure-html/0384030d-0913-44fd-bbda-0174f9c47c70-1-45512fec-0746-4a43-9866-d18264ece5b6.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
 </figure>
 </div>
-<p>And I can start it just from lunching <code>start.sh</code> from Appliations/dataiku</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="2022-10-13-dockerdss_files/figure-html/036fdbf0-3fcd-46d1-aeb8-5a564b56c3d2-1-38eccb86-b5fb-42e1-ac6e-0d1fe7650a59.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
-</figure>
-</div>
-<p>Mounting with volume configuration will keep all modifications.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="2022-10-13-dockerdss_files/figure-html/9b27ef6f-82d2-4d7d-99aa-a6ba9cfb7fca-1-9f9d7a28-4bef-4a26-ac18-90f64a703472.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
-</figure>
-</div>
+<p>Have to figure out why.</p>
+<p>And sitemap as well is not configured. Maybe quarto can help to generate one.</p>
 </section>
-<section id="portainer" class="level2">
-<h2 class="anchored" data-anchor-id="portainer">Portainer</h2>
-<p>I will use the community edition which is open source.</p>
-<p>But portainer.io is providing nice documentation on:</p>
-<ul>
-<li>docker and container: <a href="https://install.portainer.io/containers-101" class="uri">https://install.portainer.io/containers-101</a></li>
-<li>portainer: <a href="https://install.portainer.io/portainer-101" class="uri">https://install.portainer.io/portainer-101</a></li>
-</ul>
-<p>For CE installation, everything is detailed at <a href="https://docs.portainer.io/v/ce-2.9/start/install/server/docker/wsl" class="uri">https://docs.portainer.io/v/ce-2.9/start/install/server/docker/wsl</a></p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> volume create portainer_data</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-d</span> <span class="at">-p</span> 8000:8000 <span class="at">-p</span> 9443:9443 <span class="at">--name</span> portainer <span class="at">--restart</span><span class="op">=</span>always <span class="at">-v</span> /var/run/docker.sock:/var/run/docker.sock <span class="at">-v</span> portainer_data:/data portainer/portainer-ce:2.9.3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><a href="https://localhost:9443" class="uri">https://localhost:9443</a></p>
-<p>create admin user (admin/adminadmin)</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="2022-10-13-dockerdss_files/figure-html/a77d907d-10ca-4975-a1bc-b6d5021f663d-1-e7fe540d-da6d-4ef4-912b-dd44279ca26a.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
-</figure>
-</div>
+<section id="mamba-v1.0" class="level3">
+<h3 class="anchored" data-anchor-id="mamba-v1.0">mamba v1.0</h3>
+<p>Mamba released v1.0.</p>
+<p>I can now update my environments:</p>
+<p><code>(base) $ conda update -c conda-forge mamba</code></p>
+</section>
+</section>
+<section id="thursday-1110" class="level2">
+<h2 class="anchored" data-anchor-id="thursday-1110"><strong>Thursday 11/10</strong></h2>
+<section id="fixed-unsafe-legacy-renegotiation-disabled" class="level3">
+<h3 class="anchored" data-anchor-id="fixed-unsafe-legacy-renegotiation-disabled">[fixed] unsafe legacy renegotiation disabled</h3>
+<p>Unfortuantely having updated mamba broke my WSL system. My other environment (with same update) is fine.</p>
+<p>I think this is linked to openssl version (v3 on WSL, v1.1.1 on linux)</p>
+<p>Here are some more information about this problem</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> conda create <span class="at">-n</span> fastai python=3.9</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Looking</span> for: [<span class="st">'python=3.9'</span>]</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Download</span> error <span class="er">(</span><span class="ex">35</span><span class="kw">)</span> <span class="ex">SSL</span> connect error [https://repo.anaconda.com/pkgs/r/noarch/repodata.json]</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">error:0A000152:SSL</span> routines::unsafe legacy renegotiation disabled</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>and information about the environment</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># openssl version</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> openssl version</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">OpenSSL</span> 3.0.7 1 Nov 2022 <span class="er">(</span><span class="ex">Library:</span> OpenSSL 3.0.7 1 Nov 2022<span class="kw">)</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># ubuntu version (using lsb-release)</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> . /etc/lsb-release <span class="kw">&amp;&amp;</span> <span class="bu">echo</span> <span class="va">$DISTRIB_RELEASE</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="ex">22.04</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co"># SSL declarations that could impact this behaviour</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> declare <span class="at">-p</span><span class="kw">|</span><span class="fu">grep</span> <span class="at">-i</span> ssl</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="bu">declare</span> <span class="at">-x</span> <span class="va">CURL_CA_BUNDLE</span><span class="op">=</span><span class="st">"/etc/ssl/certs/ca-certificates.crt"</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="bu">declare</span> <span class="at">-x</span> <span class="va">REQUESTS_CA_BUNDLE</span><span class="op">=</span><span class="st">"/etc/ssl/certs/ca-certificates.crt"</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="bu">declare</span> <span class="at">-x</span> <span class="va">SSL_CERT_FILE</span><span class="op">=</span><span class="st">"/home/guillaume/miniconda/lib/python3.9/site-packages/certifi/cacert.pem"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Initially I thought of <a href="https://bugs.launchpad.net/ubuntu/+source/openssl/+bug/1963834/comments/7">this issue</a> as fixed in <a href="../posts/2022-07-26-install ubuntu 18.04 on WSL.html#automatic-setup">WSL installation</a> (setup_wsl_user.sh / “3. update certificates”).</p>
+<p>But the workaround/fix is still active</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat /etc/ssl/openssl.cnf<span class="kw">|</span><span class="fu">grep</span> <span class="at">-i</span> unsafe</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Options</span> = UnsafeLegacyRenegotiation</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>[FIX]</p>
+<p>Just had to export <code>OPENSSL_CONF</code></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">OPENSSL_CONF</span><span class="op">=</span>/etc/ssl/openssl.cnf</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Modifying <code>.bashrc</code> to integrated thie environment variable.</p>
+</section>
+<section id="fastai-course-lesson-4---nlp" class="level3">
+<h3 class="anchored" data-anchor-id="fastai-course-lesson-4---nlp">fastai course lesson 4 - nlp</h3>
+<p>Start of <a href="../posts/2022-10-17-fastai-2022-courses.html#lesson-4---natural-language-nlp">lesson 4</a></p>
+</section>
+</section>
+</section>
+<section id="week-46---november-22" class="level1">
+<h1>Week 46 - November 22</h1>
+<section id="monday-1114" class="level2">
+<h2 class="anchored" data-anchor-id="monday-1114"><strong>Monday 11/14</strong></h2>
+<section id="fastai-course-lesson-4---nlp-1" class="level3">
+<h3 class="anchored" data-anchor-id="fastai-course-lesson-4---nlp-1">fastai course lesson 4 - nlp</h3>
+<p>Ending <a href="../posts/2022-10-17-fastai-2022-courses.html#lesson-4---natural-language-nlp">lesson 4</a></p>
+<p>Starting <a href="../posts/2022-10-17-fastai-2022-courses.html#lesson-5---from-scratch-model">lesson 5</a></p>
 
 
+</section>
+</section>
 </section>
 
 </main> <!-- /main -->
