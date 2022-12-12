@@ -229,6 +229,7 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
   <li><a href="#solution" id="toc-solution" class="nav-link" data-scroll-target="#solution">Solution</a></li>
   <li><a href="#validate-it-works" id="toc-validate-it-works" class="nav-link" data-scroll-target="#validate-it-works">Validate it works</a></li>
   <li><a href="#integration-in-wsl2" id="toc-integration-in-wsl2" class="nav-link" data-scroll-target="#integration-in-wsl2">Integration in WSL2</a></li>
+  <li><a href="#to-be-reexecuted-after-certifi-update" id="toc-to-be-reexecuted-after-certifi-update" class="nav-link" data-scroll-target="#to-be-reexecuted-after-certifi-update">To be (re)executed after certifi update</a></li>
   </ul>
 </nav>
     </div>
@@ -371,6 +372,27 @@ if [ -e "/.cfg" ]; then
         $config commit -m'export certificates for commandline'
         $config push        
 fi</code></pre>
+</div>
+</div>
+</section>
+<section id="to-be-reexecuted-after-certifi-update" class="level1">
+<h1>To be (re)executed after certifi update</h1>
+<p>Of course each time certifi is being updated, we have to re-run this process.</p>
+<p>Here is a script that could be run each time we have the same problem:</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-12-12T09:05:48.082851Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-12-12T09:05:48.082088Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-12-12T09:05:48.199661Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-12-12T09:05:48.198475Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2022-12-12T09:05:48.082804Z&quot;}" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cat <span class="op">/</span>home<span class="op">/</span>guillaume<span class="op">/</span>_conda_env<span class="op">/</span>update_SSL.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#!/bin/bash
+conda deactivate
+pip list|grep certifi
+pip install -U certifi
+pip list|grep certifi
+export SSL_CERT_FILE=`python -c 'import certifi;print(certifi.where())'`
+
+export TMPDIR=`mktemp -d`
+git clone git@gitlab.michelin.com:DEV/bib-certificates.git $TMPDIR
+cd $TMPDIR
+cat *trust-ca.pem &gt;&gt; $SSL_CERT_FILE</code></pre>
 </div>
 </div>
 
