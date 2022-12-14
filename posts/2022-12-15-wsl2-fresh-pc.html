@@ -132,6 +132,7 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
       </div>
                           <div class="quarto-categories">
                 <div class="quarto-category">wsl</div>
+                <div class="quarto-category">wsl_latest</div>
               </div>
                   </div>
   </div>
@@ -235,7 +236,30 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 </section>
 <section id="install-ubuntu-lts" class="level3">
 <h3 class="anchored" data-anchor-id="install-ubuntu-lts">install Ubuntu LTS</h3>
-<p>follow <a href="../posts/2022-04-25-install ubuntu 22.04 on WSL.html#automatic-setup">install ubuntu 22.04 on WSL # Automatic setup</a></p>
+<p>following instructions from <a href="../posts/2022-04-25-install ubuntu 22.04 on WSL.html#automatic-setup">install ubuntu 22.04 on WSL # Automatic setup</a>.</p>
+<p>And here are the steps</p>
+<p>Create 2 folders: <code>C:\wsl\Ubuntu-22.04\download</code>, <code>C:\wsl\Ubuntu-22.04\instance</code></p>
+<p>Move <code>ubuntu-jammy-wsl-amd64-wsl.rootfs.tar.gz</code> in <code>C:\wsl\Ubuntu-22.04\download</code></p>
+<p>Copy scripts <a href="https://raw.githubusercontent.com/castorfou/blog/main/files/setup_wsl_root.sh"><code>setup_wsl_root.sh</code></a> and <a href="https://raw.githubusercontent.com/castorfou/blog/main/files/setup_wsl_user.sh"><code>setup_wsl_user.sh</code></a> to <code>C:\wsl\Ubuntu-22.04\download</code></p>
+<p>Copy <a href="https://github.com/sakai135/wsl-vpnkit/releases/download/v0.3.8/wsl-vpnkit.tar.gz"><code>wsl-vpnkit</code></a> to <code>C:\wsl\Ubuntu-22.04\download</code></p>
+<p>From Windows Terminal:</p>
+<p>#/!&nbsp;in powserhsell wsl –import wsl-vpnkit $env:USERPROFILE-vpnkit wsl-vpnkit.tar.gz wsl -d wsl-vpnkit wsl -d wsl-vpnkit service wsl-vpnkit start</p>
+<p>From Windows Terminal:</p>
+<pre><code>wsl --import ubuntu-22.04 C:\wsl\ubuntu-22.04\instance C:\wsl\ubuntu-22.04\download\ubuntu-jammy-wsl-amd64-wsl.rootfs.tar.gz
+wsl -d ubuntu-22.04
+cd
+cp /mnt/c/wsl/Ubuntu-22.04/download/setup_wsl_* ~/
+chmod +x setup_wsl_root.sh
+./setup_wsl_root.sh</code></pre>
+<p>Provide username, password and quit session with Ctrl-D</p>
+<p>From Windows Terminal, stop wsl with <code>wsl -t ubuntu-22.04</code>, a new profile for ubuntu-22.04 should have been automatically created in Windows Terminal</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2022-12-15-wsl2-fresh-pc_files/figure-html/55a8442c-ed78-4d61-82ed-eeba534ab895-1-edf2fa53-fb5b-41ec-b04b-b55116f2125b.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+<p>Start <code>ubuntu-22.04</code> by clicking the profile in Windows Terminal</p>
 
 
 </section>
