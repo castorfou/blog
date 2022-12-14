@@ -18,6 +18,7 @@ sudo apt install -y nodejs npm
 
 # to launch browser after starting jupyter
 jupyter notebook --generate-config
+mkdir -p ~/.jupyter
 echo 'c.NotebookApp.use_redirect_file = False' >> ~/.jupyter/jupyter_notebook_config.py
 tee -a ~/.bashrc << EOF
 export PATH="/mnt/c/Program Files/Google/Chrome/Application:$PATH"
