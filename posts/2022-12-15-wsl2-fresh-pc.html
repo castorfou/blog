@@ -6,9 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2020-10-19">
+<meta name="dcterms.date" content="2022-12-14">
+<meta name="description" content="Walkthrough this installation">
 
-<title>Guillaume’s blog - Validation of jupyter inner images with fastpages</title>
+<title>Guillaume’s blog - WSL2 on a fresh new PC</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -74,9 +75,10 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 
 
 <link rel="stylesheet" href="../styles.css">
-<meta name="twitter:title" content="Guillaume’s blog - Validation of jupyter inner images with fastpages">
-<meta name="twitter:description" content="When this page will appear it will mean this feature has been implemented!">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Guillaume’s blog - WSL2 on a fresh new PC">
+<meta name="twitter:description" content="Walkthrough this installation">
+<meta name="twitter:image" content="https://castorfou.github.io/images/icons/wsl2.jpeg">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 
 <body class="nav-fixed">
@@ -122,10 +124,14 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Validation of jupyter inner images with fastpages</h1>
-                                <div class="quarto-categories">
-                <div class="quarto-category">blog</div>
-                <div class="quarto-category">fastpages</div>
+      <h1 class="title">WSL2 on a fresh new PC</h1>
+                  <div>
+        <div class="description">
+          Walkthrough this installation
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">wsl</div>
               </div>
                   </div>
   </div>
@@ -137,7 +143,7 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">October 19, 2020</p>
+        <p class="date">December 14, 2022</p>
       </div>
     </div>
     
@@ -149,7 +155,27 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#to-do-before-install" id="toc-to-do-before-install" class="nav-link active" data-scroll-target="#to-do-before-install">To do before install</a>
+  <ul class="collapse">
+  <li><a href="#install-windows-terminal" id="toc-install-windows-terminal" class="nav-link" data-scroll-target="#install-windows-terminal">install Windows Terminal</a></li>
+  <li><a href="#download-nvidia-driver" id="toc-download-nvidia-driver" class="nav-link" data-scroll-target="#download-nvidia-driver">download Nvidia driver</a></li>
+  <li><a href="#download-ubuntu-lts-image" id="toc-download-ubuntu-lts-image" class="nav-link" data-scroll-target="#download-ubuntu-lts-image">download Ubuntu LTS image</a></li>
+  </ul></li>
+  <li><a href="#installation" id="toc-installation" class="nav-link" data-scroll-target="#installation">Installation</a>
+  <ul class="collapse">
+  <li><a href="#install-nvidia-driver" id="toc-install-nvidia-driver" class="nav-link" data-scroll-target="#install-nvidia-driver">install Nvidia driver</a></li>
+  <li><a href="#install-wsl" id="toc-install-wsl" class="nav-link" data-scroll-target="#install-wsl">install WSL</a>
+  <ul class="collapse">
+  <li><a href="#activate-wsl" id="toc-activate-wsl" class="nav-link" data-scroll-target="#activate-wsl">activate WSL</a></li>
+  <li><a href="#install-ubuntu-lts" id="toc-install-ubuntu-lts" class="nav-link" data-scroll-target="#install-ubuntu-lts">install Ubuntu LTS</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
@@ -157,15 +183,64 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 
 
 
-<p>When this page will appear it will mean this feature has been implemented!</p>
+<p>As an example from T15Gen2, corporate mastered.</p>
+<section id="to-do-before-install" class="level1">
+<h1>To do before install</h1>
+<section id="install-windows-terminal" class="level2">
+<h2 class="anchored" data-anchor-id="install-windows-terminal">install Windows Terminal</h2>
+<p>Just install <code>Windows Terminal</code> from Windows Store at <a href="https://aka.ms/terminal" class="uri">https://aka.ms/terminal</a></p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="2020-10-19-test-inner-images_in-jupyter_files/figure-html/0f497d39-1-image.png" class="img-fluid figure-img"></p>
+<p><img src="2022-12-15-wsl2-fresh-pc_files/figure-html/ffa57bab-f1f8-4769-89ca-80befe985bff-1-14214012-dafb-4ce0-8960-d2acc3d4dcb1.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
 </figure>
 </div>
+</section>
+<section id="download-nvidia-driver" class="level2">
+<h2 class="anchored" data-anchor-id="download-nvidia-driver">download Nvidia driver</h2>
+<p>Download from <a href="https://developer.nvidia.com/cuda/wsl" class="uri">https://developer.nvidia.com/cuda/wsl</a></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2022-12-15-wsl2-fresh-pc_files/figure-html/b214ea81-04dd-4295-9f6d-f3404729c9b6-1-44d9bbb0-9529-4d46-aed6-e058437a4e09.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+<p>(Dec-22: this file <code>527.56-desktop-win10-win11-64bit-international-dch-whql.exe</code>)</p>
+</section>
+<section id="download-ubuntu-lts-image" class="level2">
+<h2 class="anchored" data-anchor-id="download-ubuntu-lts-image">download Ubuntu LTS image</h2>
+<p>Download from <a href="https://cloud-images.ubuntu.com/daily/server/wsl/" class="uri">https://cloud-images.ubuntu.com/daily/server/wsl/</a></p>
+<p>This address may change (search for « <a href="https://www.google.com/search?q=cloud+wsl+ubuntu+images&amp;rlz=1C1GCEB_enFR1022FR1022&amp;oq=cloud+wsl+ubuntu+images&amp;aqs=chrome.0.69i59j69i60l3.344j0j7&amp;sourceid=chrome&amp;ie=UTF-8">cloud wsl ubuntu images</a> »)</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2022-12-15-wsl2-fresh-pc_files/figure-html/feea4b16-9560-4376-ac20-6ebcd81a2602-1-9bc2eacb-1523-4584-8fcc-5cb94c33c578.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+<p>(Dec-22: this file <code>ubuntu-jammy-wsl-amd64-wsl.rootfs.tar.gz</code>)</p>
+</section>
+</section>
+<section id="installation" class="level1">
+<h1>Installation</h1>
+<section id="install-nvidia-driver" class="level2">
+<h2 class="anchored" data-anchor-id="install-nvidia-driver">install Nvidia driver</h2>
+<p>as admin, install the driver</p>
+</section>
+<section id="install-wsl" class="level2">
+<h2 class="anchored" data-anchor-id="install-wsl">install WSL</h2>
+<section id="activate-wsl" class="level3">
+<h3 class="anchored" data-anchor-id="activate-wsl">activate WSL</h3>
+<p>as admin, open windows terminal, and run</p>
+<p><code>wsl --install</code></p>
+</section>
+<section id="install-ubuntu-lts" class="level3">
+<h3 class="anchored" data-anchor-id="install-ubuntu-lts">install Ubuntu LTS</h3>
+<p>follow <a href="../posts/2022-04-25-install ubuntu 22.04 on WSL.html#automatic-setup">install ubuntu 22.04 on WSL # Automatic setup</a></p>
 
 
+</section>
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
