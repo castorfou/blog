@@ -352,13 +352,14 @@ chmod +x setup_wsl_root.sh
 <h4 class="anchored" data-anchor-id="keep-config-files-in-git">keep config files in git</h4>
 <div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">--no-check-certificate</span> <span class="at">--content-disposition</span> <span class="at">-O</span> <span class="at">-</span> https://raw.githubusercontent.com/castorfou/blog/master/files/setup_wsl_00_config_files_in_git.sh <span class="kw">|</span> <span class="fu">bash</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> ~/.bashrc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>TODO: take branch name as a parameter</p>
+<p>TODO: take branch name as a parameter. Meanwhile download the script and update branch name to something new</p>
 </section>
 <section id="optional-automount-secured-vbox" class="level4">
 <h4 class="anchored" data-anchor-id="optional-automount-secured-vbox">(optional) automount secured vbox</h4>
 <p>if secured disks are used and mounted in windows (Z:, Y:, …)</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">--no-check-certificate</span> <span class="at">--content-disposition</span> <span class="at">-O</span> <span class="at">-</span> https://raw.githubusercontent.com/castorfou/blog/master/files/setup_wsl_01_automount_secured_vbox.sh <span class="kw">|</span> <span class="fu">bash</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Modify <code>/etc/vbox.autofs</code> to match your actual mounted disks. <code>service autofs start</code> to start the service.</p>
+<p>Modify <code>/etc/vbox.autofs</code> to match your actual mounted disks. <code>sudo service autofs start</code> to start the service.</p>
+<p>if it fails, check that kernel is at least v5. <code>uname -a</code>. If not maybe in WSL 1 insted of WSL 2? (<code>sudo automount -f -v</code> should provide more information)</p>
 <div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-12-14T11:49:09.596622Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-12-14T11:49:09.596356Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-12-14T11:49:09.716501Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-12-14T11:49:09.715587Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2022-12-14T11:49:09.596551Z&quot;}" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cat <span class="op">/</span>etc<span class="op">/</span>vbox.autofs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
