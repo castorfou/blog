@@ -1,4 +1,7 @@
 echo "configure base v5"
+# https://stackoverflow.com/questions/72103046/libtinfo-so-6-no-version-information-available-message-using-conda-environment
+conda install -y -c conda-forge ncurses
+
 conda install -y mamba -n base -c conda-forge
 mamba init
 mamba install -y nb_conda_kernels
