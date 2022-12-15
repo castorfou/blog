@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.269">
+<meta name="generator" content="quarto-1.2.280">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -223,7 +223,7 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#to-do-before-install" id="toc-to-do-before-install" class="nav-link active" data-scroll-target="#to-do-before-install">To do before install</a>
+  <li><a href="#preparation" id="toc-preparation" class="nav-link active" data-scroll-target="#preparation">Preparation</a>
   <ul class="collapse">
   <li><a href="#install-windows-terminal" id="toc-install-windows-terminal" class="nav-link" data-scroll-target="#install-windows-terminal">install Windows Terminal</a></li>
   <li><a href="#download-nvidia-driver" id="toc-download-nvidia-driver" class="nav-link" data-scroll-target="#download-nvidia-driver">download Nvidia driver</a></li>
@@ -236,8 +236,14 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
   <ul class="collapse">
   <li><a href="#activate-wsl" id="toc-activate-wsl" class="nav-link" data-scroll-target="#activate-wsl">activate WSL</a></li>
   <li><a href="#install-ubuntu-lts" id="toc-install-ubuntu-lts" class="nav-link" data-scroll-target="#install-ubuntu-lts">install Ubuntu LTS</a></li>
-  <li><a href="#configure-ubuntu-lts-for-pyhton" id="toc-configure-ubuntu-lts-for-pyhton" class="nav-link" data-scroll-target="#configure-ubuntu-lts-for-pyhton">configure Ubuntu LTS for Pyhton</a></li>
   </ul></li>
+  </ul></li>
+  <li><a href="#configure-ubuntu-lts-for-pythonai-development" id="toc-configure-ubuntu-lts-for-pythonai-development" class="nav-link" data-scroll-target="#configure-ubuntu-lts-for-pythonai-development">Configure Ubuntu LTS for Python/AI development</a>
+  <ul class="collapse">
+  <li><a href="#keep-config-files-in-git" id="toc-keep-config-files-in-git" class="nav-link" data-scroll-target="#keep-config-files-in-git">keep config files in git</a></li>
+  <li><a href="#optional-automount-secured-vbox" id="toc-optional-automount-secured-vbox" class="nav-link" data-scroll-target="#optional-automount-secured-vbox">(optional) automount secured vbox</a></li>
+  <li><a href="#python-with-conda-and-configure-base-environment-jupyterlab-mamba" id="toc-python-with-conda-and-configure-base-environment-jupyterlab-mamba" class="nav-link" data-scroll-target="#python-with-conda-and-configure-base-environment-jupyterlab-mamba">python with conda and configure base environment (jupyterlab, mamba)</a></li>
+  <li><a href="#python-with-pip" id="toc-python-with-pip" class="nav-link" data-scroll-target="#python-with-pip">python with pip</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -249,8 +255,9 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 
 
 <p>As an example from T15Gen2, corporate mastered.</p>
-<section id="to-do-before-install" class="level1">
-<h1>To do before install</h1>
+<p>This procedure needs admin rights on 2 steps (<a href="../posts/2022-12-15-wsl2-fresh-pc.html#install-nvidia-driver">install nvidia drivers</a>, <a href="../posts/2022-12-15-wsl2-fresh-pc.html#activate-wsl">activate wsl</a>)</p>
+<section id="preparation" class="level1">
+<h1>Preparation</h1>
 <section id="install-windows-terminal" class="level2">
 <h2 class="anchored" data-anchor-id="install-windows-terminal">install Windows Terminal</h2>
 <p>Just install <code>Windows Terminal</code> from Windows Store at <a href="https://aka.ms/terminal" class="uri">https://aka.ms/terminal</a></p>
@@ -346,29 +353,34 @@ chmod +x setup_wsl_root.sh
 <p>At that stage this is a fully operating image of ubuntu (internet, apt)</p>
 </section>
 </section>
-<section id="configure-ubuntu-lts-for-pyhton" class="level3">
-<h3 class="anchored" data-anchor-id="configure-ubuntu-lts-for-pyhton">configure Ubuntu LTS for Pyhton</h3>
-<section id="keep-config-files-in-git" class="level4">
-<h4 class="anchored" data-anchor-id="keep-config-files-in-git">keep config files in git</h4>
+</section>
+</section>
+<section id="configure-ubuntu-lts-for-pythonai-development" class="level1">
+<h1>Configure Ubuntu LTS for Python/AI development</h1>
+<section id="keep-config-files-in-git" class="level2">
+<h2 class="anchored" data-anchor-id="keep-config-files-in-git">keep config files in git</h2>
+<p>I have explained how and why to do this step at <a href="../posts/2022-04-07-keep dotfiles in git.html">keep dotfiles in git</a></p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">--no-check-certificate</span> <span class="at">--content-disposition</span> <span class="at">-O</span> <span class="at">-</span> https://raw.githubusercontent.com/castorfou/blog/master/files/setup_wsl_00_config_files_in_git.sh <span class="kw">|</span> <span class="fu">bash</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> ~/.bashrc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>TODO: take branch name as a parameter. Meanwhile download the script and update branch name to something new</p>
 </section>
-<section id="optional-automount-secured-vbox" class="level4">
-<h4 class="anchored" data-anchor-id="optional-automount-secured-vbox">(optional) automount secured vbox</h4>
-<p>if secured disks are used and mounted in windows (Z:, Y:, …)</p>
+<section id="optional-automount-secured-vbox" class="level2">
+<h2 class="anchored" data-anchor-id="optional-automount-secured-vbox">(optional) automount secured vbox</h2>
+<p>Because I keep secured data within my secured disks mounted in windows (Z:, Y:, …)</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">--no-check-certificate</span> <span class="at">--content-disposition</span> <span class="at">-O</span> <span class="at">-</span> https://raw.githubusercontent.com/castorfou/blog/master/files/setup_wsl_01_automount_secured_vbox.sh <span class="kw">|</span> <span class="fu">bash</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Modify <code>/etc/vbox.autofs</code> to match your actual mounted disks. <code>sudo service autofs start</code> to start the service.</p>
 <p>if it fails, check that kernel is at least v5. <code>uname -a</code>. If not maybe in WSL 1 insted of WSL 2? (<code>sudo automount -f -v</code> should provide more information)</p>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-12-14T11:49:09.596622Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-12-14T11:49:09.596356Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-12-14T11:49:09.716501Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-12-14T11:49:09.715587Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2022-12-14T11:49:09.596551Z&quot;}" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cat <span class="op">/</span>etc<span class="op">/</span>vbox.autofs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-12-15T06:59:08.940563Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-12-15T06:59:08.939739Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-12-15T06:59:09.054598Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-12-15T06:59:09.053780Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2022-12-15T06:59:08.940524Z&quot;}" data-tags="[]" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#my vbox.autofs file</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cat <span class="op">/</span>etc<span class="op">/</span>vbox.autofs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>janus   -fstype=drvfs,uid=1000,gid=1000 :Z:</code></pre>
 </div>
 </div>
 </section>
-<section id="python-with-conda-and-configure-base-environment-jupyterlab-mamba" class="level4">
-<h4 class="anchored" data-anchor-id="python-with-conda-and-configure-base-environment-jupyterlab-mamba">python with conda and configure base environment (jupyterlab, mamba)</h4>
+<section id="python-with-conda-and-configure-base-environment-jupyterlab-mamba" class="level2">
+<h2 class="anchored" data-anchor-id="python-with-conda-and-configure-base-environment-jupyterlab-mamba">python with conda and configure base environment (jupyterlab, mamba)</h2>
+<p>Give a look to <a href="../posts/2022-04-25-install ubuntu 22.04 on WSL.html#python-with-conda-and-configure-base-environment-jupyterlab-mamba">script sources</a></p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">--no-check-certificate</span> <span class="at">--content-disposition</span> <span class="at">-O</span> <span class="at">-</span> https://raw.githubusercontent.com/castorfou/blog/master/files/setup_wsl_02_install_python_conda_part1.sh <span class="kw">|</span> <span class="fu">bash</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> ~/.bashrc</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">--no-check-certificate</span> <span class="at">--content-disposition</span> <span class="at">-O</span> <span class="at">-</span> https://raw.githubusercontent.com/castorfou/blog/master/files/setup_wsl_02_install_python_conda_part2.sh <span class="kw">|</span> <span class="fu">bash</span></span>
@@ -376,13 +388,12 @@ chmod +x setup_wsl_root.sh
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">--no-check-certificate</span> <span class="at">--content-disposition</span> <span class="at">-O</span> <span class="at">-</span> https://raw.githubusercontent.com/castorfou/blog/master/files/setup_wsl_02_install_python_conda_part3.sh <span class="kw">|</span> <span class="fu">bash</span></span>
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> ~/.bashrc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="configure-pip" class="level4">
-<h4 class="anchored" data-anchor-id="configure-pip">configure pip</h4>
+<section id="python-with-pip" class="level2">
+<h2 class="anchored" data-anchor-id="python-with-pip">python with pip</h2>
+<p>Give a look to <a href="../posts/2022-04-25-install ubuntu 22.04 on WSL.html#configure-pip">script sources</a></p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">--no-check-certificate</span> <span class="at">--content-disposition</span> <span class="at">-O</span> <span class="at">-</span> https://raw.githubusercontent.com/castorfou/blog/master/files/setup_wsl_08_pip.sh <span class="kw">|</span> <span class="fu">bash</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
-</section>
-</section>
 </section>
 </section>
 
