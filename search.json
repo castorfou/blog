@@ -2674,6 +2674,13 @@
     "text": "dropbox\nThis one is the official one but it fails\nsudo apt install nautilus-dropbox\ndropbox start -i\nanother one\nrm -rf ~/.dropbox-dist ~/.dropbox\nwget -q -O ~/dropbox https://www.dropbox.com/download?dl=packages/dropbox.py\nchmod a+x ~/dropbox\nDISPLAY='' dropbox start -i\nbut still no luck\n\n\n\nimage.png"
   },
   {
+    "objectID": "posts/2022-12-19-wsl2-from-windows-store.html#desktop",
+    "href": "posts/2022-12-19-wsl2-from-windows-store.html#desktop",
+    "title": "WSL2 from Windows Store",
+    "section": "Desktop",
+    "text": "Desktop\nWoulld like to test https://askubuntu.com/questions/1442663/cannot-start-gnome-session-after-enabling-systemd-on-latest-wsl2:\nThere 2 ways: - configure and access from XRDP - direct configuration\nWill try on a fresh new image"
+  },
+  {
     "objectID": "posts/2022-12-19-wsl2-from-windows-store.html#error-createprocessparsecommon",
     "href": "posts/2022-12-19-wsl2-from-windows-store.html#error-createprocessparsecommon",
     "title": "WSL2 from Windows Store",
