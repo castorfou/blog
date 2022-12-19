@@ -2590,6 +2590,13 @@
     "text": "keep config files in git\nI have explained how and why to do this step at keep dotfiles in git\nwget --no-check-certificate --content-disposition -O - https://raw.githubusercontent.com/castorfou/blog/master/files/setup_wsl_00_config_files_in_git.sh | bash\nsource ~/.bashrc\nTODO: take branch name as a parameter. Meanwhile download the script and update branch name to something new"
   },
   {
+    "objectID": "posts/2022-12-15-wsl2-fresh-pc.html#git-credential-manager-to-push-on-github",
+    "href": "posts/2022-12-15-wsl2-fresh-pc.html#git-credential-manager-to-push-on-github",
+    "title": "WSL2 on a fresh new PC",
+    "section": "git credential manager to push on github",
+    "text": "git credential manager to push on github\nThis is explained at git-credential-manager repo\nwget --no-check-certificate --content-disposition -O - https://raw.githubusercontent.com/castorfou/blog/master/files/setup_wsl_06_git_credential_manager.sh | bash"
+  },
+  {
     "objectID": "posts/2022-12-15-wsl2-fresh-pc.html#optional-automount-secured-vbox",
     "href": "posts/2022-12-15-wsl2-fresh-pc.html#optional-automount-secured-vbox",
     "title": "WSL2 on a fresh new PC",
@@ -2637,6 +2644,13 @@
     "title": "WSL2 from Windows Store",
     "section": "firefox",
     "text": "firefox\nAnd install firefox\nsudo snap install firefox\n\n\n\nimage.png"
+  },
+  {
+    "objectID": "posts/2022-12-19-wsl2-from-windows-store.html#nautilus",
+    "href": "posts/2022-12-19-wsl2-from-windows-store.html#nautilus",
+    "title": "WSL2 from Windows Store",
+    "section": "nautilus",
+    "text": "nautilus\nAnd install nautilus\nsudo snap install nautilus\n\n\n\nimage.png"
   },
   {
     "objectID": "posts/2022-12-19-wsl2-from-windows-store.html#error-createprocessparsecommon",

@@ -232,6 +232,7 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
   <li><a href="#systemd" id="toc-systemd" class="nav-link" data-scroll-target="#systemd">systemd</a></li>
   <li><a href="#snapd" id="toc-snapd" class="nav-link" data-scroll-target="#snapd">snapd</a></li>
   <li><a href="#firefox" id="toc-firefox" class="nav-link" data-scroll-target="#firefox">firefox</a></li>
+  <li><a href="#nautilus" id="toc-nautilus" class="nav-link" data-scroll-target="#nautilus">nautilus</a></li>
   </ul></li>
   <li><a href="#problems" id="toc-problems" class="nav-link" data-scroll-target="#problems">Problems</a>
   <ul class="collapse">
@@ -322,13 +323,24 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 </figure>
 </div>
 </section>
+<section id="nautilus" class="level2">
+<h2 class="anchored" data-anchor-id="nautilus">nautilus</h2>
+<p>And install nautilus</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> snap install nautilus</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2022-12-19-wsl2-from-windows-store_files/figure-html/c1044a11-d871-472f-b7ab-538a248f61eb-1-27246a86-24d7-4131-adad-4a50fd9cbe92.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+</section>
 </section>
 <section id="problems" class="level1">
 <h1>Problems</h1>
 <section id="error-createprocessparsecommon" class="level2">
 <h2 class="anchored" data-anchor-id="error-createprocessparsecommon">ERROR: CreateProcessParseCommon</h2>
 <p>When starting image after wsl update, I have the following error:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>3<span class="op">&gt;</span>WSL <span class="kw">(</span><span class="ex">8</span><span class="kw">)</span> <span class="ex">ERROR:</span> CreateProcessParseCommon:782: Failed to translate <span class="dt">\\</span>wsl.localhost<span class="dt">\u</span>buntu-22.04<span class="dt">\h</span>ome<span class="dt">\g</span>uillaume</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>3<span class="op">&gt;</span>WSL <span class="kw">(</span><span class="ex">8</span><span class="kw">)</span> <span class="ex">ERROR:</span> CreateProcessParseCommon:782: Failed to translate <span class="dt">\\</span>wsl.localhost<span class="dt">\u</span>buntu-22.04<span class="dt">\h</span>ome<span class="dt">\g</span>uillaume</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>I am not the only one, I have posted in <a href="https://github.com/microsoft/WSL/issues/9252">this issue</a> from WSL github repo.</p>
 
 
