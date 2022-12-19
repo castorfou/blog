@@ -233,10 +233,13 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
   <li><a href="#snapd" id="toc-snapd" class="nav-link" data-scroll-target="#snapd">snapd</a></li>
   <li><a href="#firefox" id="toc-firefox" class="nav-link" data-scroll-target="#firefox">firefox</a></li>
   <li><a href="#nautilus" id="toc-nautilus" class="nav-link" data-scroll-target="#nautilus">nautilus</a></li>
+  <li><a href="#gimp" id="toc-gimp" class="nav-link" data-scroll-target="#gimp">gimp</a></li>
+  <li><a href="#snap-store" id="toc-snap-store" class="nav-link" data-scroll-target="#snap-store">snap-store</a></li>
   </ul></li>
   <li><a href="#problems" id="toc-problems" class="nav-link" data-scroll-target="#problems">Problems</a>
   <ul class="collapse">
   <li><a href="#error-createprocessparsecommon" id="toc-error-createprocessparsecommon" class="nav-link" data-scroll-target="#error-createprocessparsecommon">ERROR: CreateProcessParseCommon</a></li>
+  <li><a href="#cannot-install-from-snap-store" id="toc-cannot-install-from-snap-store" class="nav-link" data-scroll-target="#cannot-install-from-snap-store">Cannot install from snap-store</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -300,25 +303,27 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 <p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
 </figure>
 </div>
+<p>I can now use systemctl to manage services such as</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl restart autofs.service</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="snapd" class="level2">
 <h2 class="anchored" data-anchor-id="snapd">snapd</h2>
 <p>Upgrade snap</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get <span class="at">-y</span> upgrade snapd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get <span class="at">-y</span> upgrade snapd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Check it is running</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> snap list</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Name</span>    Version        Rev    Tracking       Publisher   Notes</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">core20</span>  20220318       1405   latest/stable  canonical✓  base</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="ex">lxd</span>     5.0.0-b0287c1  22923  5.0/stable/…   canonical✓  <span class="at">-</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="ex">snapd</span>   2.55.3         15534  latest/stable  canonical✓  snapd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> snap list</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Name</span>    Version        Rev    Tracking       Publisher   Notes</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="ex">core20</span>  20220318       1405   latest/stable  canonical✓  base</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="ex">lxd</span>     5.0.0-b0287c1  22923  5.0/stable/…   canonical✓  <span class="at">-</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="ex">snapd</span>   2.55.3         15534  latest/stable  canonical✓  snapd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="firefox" class="level2">
 <h2 class="anchored" data-anchor-id="firefox">firefox</h2>
 <p>And install firefox</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> snap install firefox</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># due to a bug when opening settings</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># https://answers.launchpad.net/ubuntu/+question/701403https://answers.launchpad.net/ubuntu/+question/701403</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install xdg-desktop-portal-gtksudo apt install xdg-desktop-portal-gtk</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> snap install firefox</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># due to a bug when opening settings</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># https://answers.launchpad.net/ubuntu/+question/701403https://answers.launchpad.net/ubuntu/+question/701403</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install xdg-desktop-portal-gtksudo apt install xdg-desktop-portal-gtk</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-12-19-wsl2-from-windows-store_files/figure-html/1bedddbf-579e-4267-9ca1-d34931caf4aa-1-f65bdbb3-c8f4-4a30-ac69-54727b96e6e4.png" class="img-fluid figure-img"></p>
@@ -336,7 +341,7 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 <section id="nautilus" class="level2">
 <h2 class="anchored" data-anchor-id="nautilus">nautilus</h2>
 <p>And install nautilus</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> snap install nautilus</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install nautilus nautilus-extension-gnome-terminal</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-12-19-wsl2-from-windows-store_files/figure-html/c1044a11-d871-472f-b7ab-538a248f61eb-1-27246a86-24d7-4131-adad-4a50fd9cbe92.png" class="img-fluid figure-img"></p>
@@ -344,14 +349,45 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 </figure>
 </div>
 </section>
+<section id="gimp" class="level2">
+<h2 class="anchored" data-anchor-id="gimp">gimp</h2>
+<p>And install gimp</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install gimp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="snap-store" class="level2">
+<h2 class="anchored" data-anchor-id="snap-store">snap-store</h2>
+<p>I can install like for other softwares</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> snap install snap-store</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>but it failed at installing anything</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2022-12-19-wsl2-from-windows-store_files/figure-html/e54a5dbc-eff6-4135-aace-5050b7bbb273-1-990616f8-d52f-4010-b858-0eaa79d21efa.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+<p>With these messages</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">14:15:34:0004</span> Gs  Could not set idle IO priority, attempting best effort of 7</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">14:15:34:0004</span> Gs  Could not set best effort IO priority either, giving up</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
 </section>
 <section id="problems" class="level1">
 <h1>Problems</h1>
 <section id="error-createprocessparsecommon" class="level2">
 <h2 class="anchored" data-anchor-id="error-createprocessparsecommon">ERROR: CreateProcessParseCommon</h2>
 <p>When starting image after wsl update, I have the following error:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>3<span class="op">&gt;</span>WSL <span class="kw">(</span><span class="ex">8</span><span class="kw">)</span> <span class="ex">ERROR:</span> CreateProcessParseCommon:782: Failed to translate <span class="dt">\\</span>wsl.localhost<span class="dt">\u</span>buntu-22.04<span class="dt">\h</span>ome<span class="dt">\g</span>uillaume</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>3<span class="op">&gt;</span>WSL <span class="kw">(</span><span class="ex">8</span><span class="kw">)</span> <span class="ex">ERROR:</span> CreateProcessParseCommon:782: Failed to translate <span class="dt">\\</span>wsl.localhost<span class="dt">\u</span>buntu-22.04<span class="dt">\h</span>ome<span class="dt">\g</span>uillaume</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>I am not the only one, I have posted in <a href="https://github.com/microsoft/WSL/issues/9252">this issue</a> from WSL github repo.</p>
+</section>
+<section id="cannot-install-from-snap-store" class="level2">
+<h2 class="anchored" data-anchor-id="cannot-install-from-snap-store">Cannot install from snap-store</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2022-12-19-wsl2-from-windows-store_files/figure-html/e569a13b-0f12-4a61-9e62-ca538423277d-1-e863acbc-3ad7-4002-b128-aad901f6c155.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">14:12:09:0637</span> Gs  not handling error no-security for action refresh: Failed to obtain authentication.</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="ex">14:12:09:0638</span> Gs  not handling error not-supported for action get-updates-historical: The name org.freedesktop.fwupd was not provided by any .service files</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>

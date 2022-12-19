@@ -417,7 +417,7 @@
     "href": "posts/2022-12-01-logbook-December-22.html#monday-1219",
     "title": "Logbook for December 22",
     "section": "Monday 12/19",
-    "text": "Monday 12/19\n\nWSL version 1.0\nI have just received windows update KB5020812 and with that it means WSL version 1.0! It is now using the Windows Store version.\n wsl --version\nVersion WSL : 1.0.3.0\nVersion du noyau : 5.15.79.1\nVersion WSLg : 1.0.47\nVersion MSRDC : 1.2.3575\nVersion direct3D : 1.606.4\nVersion de DXCore : 10.0.25131.1002-220531-1700.rs-onecore-base2-hyp\nversion Windows : 10.0.19044.2364\nUsing the Store version of WSL allows you to get updates to WSL much faster compared to when it was a Windows component.\nCreating a blog entry WSL2 from Windows Store for all experiences I will have with this version."
+    "text": "Monday 12/19\n\nWSL version 1.0\nI have just received windows update KB5020812 and with that it means WSL version 1.0! It is now using the Windows Store version.\n wsl --version\nVersion WSL : 1.0.3.0\nVersion du noyau : 5.15.79.1\nVersion WSLg : 1.0.47\nVersion MSRDC : 1.2.3575\nVersion direct3D : 1.606.4\nVersion de DXCore : 10.0.25131.1002-220531-1700.rs-onecore-base2-hyp\nversion Windows : 10.0.19044.2364\nUsing the Store version of WSL allows you to get updates to WSL much faster compared to when it was a Windows component.\nCreating a blog entry WSL2 from Windows Store for all experiences I will have with this version.\nCanonical has published a whitepaper about how to setup WSL/ubuntu for datascientist: https://ubuntu.com/blog/upgrade-data-science-workflows-ubuntu-wsl\nAnd there is a WSL page on ubuntu wiki with fancy tips such as how to activate sound into WSL: https://wiki.ubuntu.com/WSL"
   },
   {
     "objectID": "posts/2022-10-17-fastai-2022-courses.html",
@@ -2629,7 +2629,7 @@
     "href": "posts/2022-12-19-wsl2-from-windows-store.html#systemd",
     "title": "WSL2 from Windows Store",
     "section": "systemd",
-    "text": "systemd\nfollowing this article: systemd support\nModify /etc/wsl.conf with\n[boot]\nsystemd=true\nAnd restart wsl image (wsl -t ubuntu-22.04)\nTest that it works by running\nsystemctl list-unit-files --type=service\n\n\n\nimage.png"
+    "text": "systemd\nfollowing this article: systemd support\nModify /etc/wsl.conf with\n[boot]\nsystemd=true\nAnd restart wsl image (wsl -t ubuntu-22.04)\nTest that it works by running\nsystemctl list-unit-files --type=service\n\n\n\nimage.png\n\n\nI can now use systemctl to manage services such as\nsudo systemctl restart autofs.service"
   },
   {
     "objectID": "posts/2022-12-19-wsl2-from-windows-store.html#snapd",
@@ -2650,7 +2650,21 @@
     "href": "posts/2022-12-19-wsl2-from-windows-store.html#nautilus",
     "title": "WSL2 from Windows Store",
     "section": "nautilus",
-    "text": "nautilus\nAnd install nautilus\nsudo snap install nautilus\n\n\n\nimage.png"
+    "text": "nautilus\nAnd install nautilus\nsudo apt install nautilus nautilus-extension-gnome-terminal\n\n\n\nimage.png"
+  },
+  {
+    "objectID": "posts/2022-12-19-wsl2-from-windows-store.html#gimp",
+    "href": "posts/2022-12-19-wsl2-from-windows-store.html#gimp",
+    "title": "WSL2 from Windows Store",
+    "section": "gimp",
+    "text": "gimp\nAnd install gimp\nsudo apt install gimp"
+  },
+  {
+    "objectID": "posts/2022-12-19-wsl2-from-windows-store.html#snap-store",
+    "href": "posts/2022-12-19-wsl2-from-windows-store.html#snap-store",
+    "title": "WSL2 from Windows Store",
+    "section": "snap-store",
+    "text": "snap-store\nI can install like for other softwares\nsudo snap install snap-store\nbut it failed at installing anything\n\n\n\nimage.png\n\n\nWith these messages\n14:15:34:0004 Gs  Could not set idle IO priority, attempting best effort of 7\n14:15:34:0004 Gs  Could not set best effort IO priority either, giving up"
   },
   {
     "objectID": "posts/2022-12-19-wsl2-from-windows-store.html#error-createprocessparsecommon",
@@ -2658,6 +2672,13 @@
     "title": "WSL2 from Windows Store",
     "section": "ERROR: CreateProcessParseCommon",
     "text": "ERROR: CreateProcessParseCommon\nWhen starting image after wsl update, I have the following error:\n<3>WSL (8) ERROR: CreateProcessParseCommon:782: Failed to translate \\\\wsl.localhost\\ubuntu-22.04\\home\\guillaume\nI am not the only one, I have posted in this issue from WSL github repo."
+  },
+  {
+    "objectID": "posts/2022-12-19-wsl2-from-windows-store.html#cannot-install-from-snap-store",
+    "href": "posts/2022-12-19-wsl2-from-windows-store.html#cannot-install-from-snap-store",
+    "title": "WSL2 from Windows Store",
+    "section": "Cannot install from snap-store",
+    "text": "Cannot install from snap-store\n\n\n\nimage.png\n\n\n14:12:09:0637 Gs  not handling error no-security for action refresh: Failed to obtain authentication.\n14:12:09:0638 Gs  not handling error not-supported for action get-updates-historical: The name org.freedesktop.fwupd was not provided by any .service files"
   },
   {
     "objectID": "posts/2021-03-25-headless-raspberry-pi-bridge-network.html",
