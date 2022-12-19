@@ -417,7 +417,7 @@
     "href": "posts/2022-12-01-logbook-December-22.html#monday-1219",
     "title": "Logbook for December 22",
     "section": "Monday 12/19",
-    "text": "Monday 12/19\n\nWSL version 1.0\nI have just received windows update KB5020812 and with that it means WSL version 1.0! It is now using the Windows Store version.\n wsl --version\nVersion WSL : 1.0.3.0\nVersion du noyau : 5.15.79.1\nVersion WSLg : 1.0.47\nVersion MSRDC : 1.2.3575\nVersion direct3D : 1.606.4\nVersion de DXCore : 10.0.25131.1002-220531-1700.rs-onecore-base2-hyp\nversion Windows : 10.0.19044.2364\nUsing the Store version of WSL allows you to get updates to WSL much faster compared to when it was a Windows component.\nCreating a blog entry for all experiences I will have with this version."
+    "text": "Monday 12/19\n\nWSL version 1.0\nI have just received windows update KB5020812 and with that it means WSL version 1.0! It is now using the Windows Store version.\n wsl --version\nVersion WSL : 1.0.3.0\nVersion du noyau : 5.15.79.1\nVersion WSLg : 1.0.47\nVersion MSRDC : 1.2.3575\nVersion direct3D : 1.606.4\nVersion de DXCore : 10.0.25131.1002-220531-1700.rs-onecore-base2-hyp\nversion Windows : 10.0.19044.2364\nUsing the Store version of WSL allows you to get updates to WSL much faster compared to when it was a Windows component.\nCreating a blog entry WSL2 from Windows Store for all experiences I will have with this version."
   },
   {
     "objectID": "posts/2022-10-17-fastai-2022-courses.html",
@@ -2615,7 +2615,14 @@
     "href": "posts/2022-12-19-wsl2-from-windows-store.html",
     "title": "WSL2 from Windows Store",
     "section": "",
-    "text": "Source of inspiration"
+    "text": "From devblogs: The Windows Subsystem for Linux in the Microsoft Store is now generally available on Windows 10 and 11\n\n\nThere are 100s of bug fixes and improvements that you can read through on our release notes page to see all the improvements that we’ve put into the Store version of WSL. In this blog post I’ll highlight some of the significant changes that you might see as a user upgrading to the Store version for the first time.\n\nYou can opt in for systemd support\nWindows 10 users can now use Linux GUI apps! This was previously only available to Windows 11 users\nwsl --install now includes:\n\nDirect installation from the Microsoft Store by default\n--no-launch option to not launch the distro after installing\n--web-download option which will download the distro through our GitHub releases page rather than through the Microsoft Store\n\nwsl --mount now includes:\n\n--vhd option to make mounting VHD files easier\n--name option to make naming the mountpoint easier\n\nwsl --import and wsl --export now include:\n\n--vhd option to import or export to a VHD directly\n\nAdded wsl --import-in-place to take an existing .vhdx file and register it as a distro\nAdded wsl --version to print your version information more easily\nwsl --update now includes:\n\nOpening the Microsoft Store page by default\n--web-download option to allow updates from our GitHub release page\n\nBetter error printing\nAll of WSLg and the WSL kernel are packaged into the same WSL package, meaning no more extra MSI installs!"
+  },
+  {
+    "objectID": "posts/2022-12-19-wsl2-from-windows-store.html#systemd",
+    "href": "posts/2022-12-19-wsl2-from-windows-store.html#systemd",
+    "title": "WSL2 from Windows Store",
+    "section": "systemd",
+    "text": "systemd\nfollowing this article: systemd support"
   },
   {
     "objectID": "posts/2021-03-25-headless-raspberry-pi-bridge-network.html",

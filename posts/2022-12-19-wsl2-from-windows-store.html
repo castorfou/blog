@@ -160,7 +160,14 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#source-of-inspiration" id="toc-source-of-inspiration" class="nav-link active" data-scroll-target="#source-of-inspiration">Source of inspiration</a></li>
+  <li><a href="#source-of-inspiration" id="toc-source-of-inspiration" class="nav-link active" data-scroll-target="#source-of-inspiration">Source of inspiration</a>
+  <ul class="collapse">
+  <li><a href="#whats-new-in-the-store-version-of-wsl" id="toc-whats-new-in-the-store-version-of-wsl" class="nav-link" data-scroll-target="#whats-new-in-the-store-version-of-wsl">What’s new in the Store version of WSL?</a></li>
+  </ul></li>
+  <li><a href="#testing-these-features" id="toc-testing-these-features" class="nav-link" data-scroll-target="#testing-these-features">Testing these features</a>
+  <ul class="collapse">
+  <li><a href="#systemd" id="toc-systemd" class="nav-link" data-scroll-target="#systemd">systemd</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -172,8 +179,48 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 
 <section id="source-of-inspiration" class="level1">
 <h1>Source of inspiration</h1>
+<p>From devblogs: <a href="https://devblogs.microsoft.com/commandline/the-windows-subsystem-for-linux-in-the-microsoft-store-is-now-generally-available-on-windows-10-and-11/">The Windows Subsystem for Linux in the Microsoft Store is now generally available on Windows 10 and 11</a></p>
+<section id="whats-new-in-the-store-version-of-wsl" class="level2">
+<h2 class="anchored" data-anchor-id="whats-new-in-the-store-version-of-wsl">What’s new in the Store version of WSL?<a href="https://devblogs.microsoft.com/commandline/the-windows-subsystem-for-linux-in-the-microsoft-store-is-now-generally-available-on-windows-10-and-11/#whats-new-in-the-store-version-of-wsl"></a></h2>
+<p>There are 100s of bug fixes and improvements that you can read through on our <a href="https://github.com/microsoft/WSL/releases">release notes</a> page to see all the improvements that we’ve put into the Store version of WSL. In this blog post I’ll highlight some of the significant changes that you might see as a user upgrading to the Store version for the first time.</p>
+<ul>
+<li>You can opt in for <a href="https://devblogs.microsoft.com/commandline/systemd-support-is-now-available-in-wsl/">systemd support</a></li>
+<li>Windows 10 users can now use Linux GUI apps! This was previously only available to Windows 11 users</li>
+<li><code>wsl --install</code> now includes:
+<ul>
+<li>Direct installation from the Microsoft Store by default</li>
+<li><code>--no-launch</code> option to not launch the distro after installing</li>
+<li><code>--web-download</code> option which will download the distro through our GitHub releases page rather than through the Microsoft Store</li>
+</ul></li>
+<li><code>wsl --mount</code> now includes:
+<ul>
+<li><code>--vhd</code> option to make mounting VHD files easier</li>
+<li><code>--name</code> option to make naming the mountpoint easier</li>
+</ul></li>
+<li><code>wsl --import</code> and <code>wsl --export</code> now include:
+<ul>
+<li><code>--vhd</code> option to import or export to a VHD directly</li>
+</ul></li>
+<li>Added <code>wsl --import-in-place</code> to take an existing .vhdx file and register it as a distro</li>
+<li>Added <code>wsl --version</code> to print your version information more easily</li>
+<li><code>wsl --update</code> now includes:
+<ul>
+<li>Opening the Microsoft Store page by default</li>
+<li><code>--web-download</code> option to allow updates from our GitHub release page</li>
+</ul></li>
+<li>Better error printing</li>
+<li>All of WSLg and the WSL kernel are packaged into the same WSL package, meaning no more extra MSI installs!</li>
+</ul>
+</section>
+</section>
+<section id="testing-these-features" class="level1">
+<h1>Testing these features</h1>
+<section id="systemd" class="level2">
+<h2 class="anchored" data-anchor-id="systemd">systemd</h2>
+<p>following this article: <a href="https://devblogs.microsoft.com/commandline/systemd-support-is-now-available-in-wsl/">systemd support</a></p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
