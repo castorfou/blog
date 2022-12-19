@@ -235,6 +235,7 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
   <li><a href="#nautilus" id="toc-nautilus" class="nav-link" data-scroll-target="#nautilus">nautilus</a></li>
   <li><a href="#gimp" id="toc-gimp" class="nav-link" data-scroll-target="#gimp">gimp</a></li>
   <li><a href="#snap-store" id="toc-snap-store" class="nav-link" data-scroll-target="#snap-store">snap-store</a></li>
+  <li><a href="#dropbox" id="toc-dropbox" class="nav-link" data-scroll-target="#dropbox">dropbox</a></li>
   </ul></li>
   <li><a href="#problems" id="toc-problems" class="nav-link" data-scroll-target="#problems">Problems</a>
   <ul class="collapse">
@@ -369,13 +370,31 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 <div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">14:15:34:0004</span> Gs  Could not set idle IO priority, attempting best effort of 7</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">14:15:34:0004</span> Gs  Could not set best effort IO priority either, giving up</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
+<section id="dropbox" class="level2">
+<h2 class="anchored" data-anchor-id="dropbox">dropbox</h2>
+<p>This one is the official one but it fails</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install nautilus-dropbox</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">dropbox</span> start <span class="at">-i</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>another one</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-rf</span> ~/.dropbox-dist ~/.dropbox</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">-q</span> <span class="at">-O</span> ~/dropbox https://www.dropbox.com/download<span class="pp">?</span>dl=packages/dropbox.py</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> a+x ~/dropbox</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="va">DISPLAY</span><span class="op">=</span><span class="st">''</span> <span class="ex">dropbox</span> start <span class="at">-i</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>but still no luck</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2022-12-19-wsl2-from-windows-store_files/figure-html/d79959bd-5a08-4c4c-9382-c01208c59a13-1-865c1332-22b4-482f-ac44-062c3587daeb.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+</section>
 </section>
 <section id="problems" class="level1">
 <h1>Problems</h1>
 <section id="error-createprocessparsecommon" class="level2">
 <h2 class="anchored" data-anchor-id="error-createprocessparsecommon">ERROR: CreateProcessParseCommon</h2>
 <p>When starting image after wsl update, I have the following error:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>3<span class="op">&gt;</span>WSL <span class="kw">(</span><span class="ex">8</span><span class="kw">)</span> <span class="ex">ERROR:</span> CreateProcessParseCommon:782: Failed to translate <span class="dt">\\</span>wsl.localhost<span class="dt">\u</span>buntu-22.04<span class="dt">\h</span>ome<span class="dt">\g</span>uillaume</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>3<span class="op">&gt;</span>WSL <span class="kw">(</span><span class="ex">8</span><span class="kw">)</span> <span class="ex">ERROR:</span> CreateProcessParseCommon:782: Failed to translate <span class="dt">\\</span>wsl.localhost<span class="dt">\u</span>buntu-22.04<span class="dt">\h</span>ome<span class="dt">\g</span>uillaume</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>I am not the only one, I have posted in <a href="https://github.com/microsoft/WSL/issues/9252">this issue</a> from WSL github repo.</p>
 </section>
 <section id="cannot-install-from-snap-store" class="level2">
@@ -386,8 +405,8 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 <p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
 </figure>
 </div>
-<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">14:12:09:0637</span> Gs  not handling error no-security for action refresh: Failed to obtain authentication.</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="ex">14:12:09:0638</span> Gs  not handling error not-supported for action get-updates-historical: The name org.freedesktop.fwupd was not provided by any .service files</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">14:12:09:0637</span> Gs  not handling error no-security for action refresh: Failed to obtain authentication.</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="ex">14:12:09:0638</span> Gs  not handling error not-supported for action get-updates-historical: The name org.freedesktop.fwupd was not provided by any .service files</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>
