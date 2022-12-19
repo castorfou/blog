@@ -2629,7 +2629,7 @@
     "href": "posts/2022-12-19-wsl2-from-windows-store.html#snapd",
     "title": "WSL2 from Windows Store",
     "section": "snapd",
-    "text": "snapd\nUpgrade snap\nsudo apt-get -y upgrade snapd\nCheck it is running\n$ snap list\nName    Version        Rev    Tracking       Publisher   Notes\ncore20  20220318       1405   latest/stable  canonical✓  base\nlxd     5.0.0-b0287c1  22923  5.0/stable/…   canonical✓  -\nsnapd   2.55.3         15534  latest/stable  canonical✓  snapd\nAnd install firefox\nsudo snap install firefox"
+    "text": "snapd\nUpgrade snap\nsudo apt-get -y upgrade snapd\nCheck it is running\n$ snap list\nName    Version        Rev    Tracking       Publisher   Notes\ncore20  20220318       1405   latest/stable  canonical✓  base\nlxd     5.0.0-b0287c1  22923  5.0/stable/…   canonical✓  -\nsnapd   2.55.3         15534  latest/stable  canonical✓  snapd\nAnd install firefox\nsudo snap install firefox\n\n\n\nimage.png"
   },
   {
     "objectID": "posts/2022-12-19-wsl2-from-windows-store.html#error-createprocessparsecommon",
