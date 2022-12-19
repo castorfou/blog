@@ -315,10 +315,20 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 <section id="firefox" class="level2">
 <h2 class="anchored" data-anchor-id="firefox">firefox</h2>
 <p>And install firefox</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> snap install firefox</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> snap install firefox</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># due to a bug when opening settings</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># https://answers.launchpad.net/ubuntu/+question/701403https://answers.launchpad.net/ubuntu/+question/701403</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install xdg-desktop-portal-gtksudo apt install xdg-desktop-portal-gtk</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-12-19-wsl2-from-windows-store_files/figure-html/1bedddbf-579e-4267-9ca1-d34931caf4aa-1-f65bdbb3-c8f4-4a30-ac69-54727b96e6e4.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+<p>To allow external websites, import this certificate <code>/usr/local/share/ca-certificates/cert_M_X5C_sase-mob-sslfwd-trust-ca.crt</code> in the certificate manager</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2022-12-19-wsl2-from-windows-store_files/figure-html/c0de6090-014d-42e0-91d6-94a16bb2f04f-1-a6fce345-70db-4331-ac47-1dd50cb5a69a.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
 </figure>
 </div>

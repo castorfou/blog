@@ -2643,7 +2643,7 @@
     "href": "posts/2022-12-19-wsl2-from-windows-store.html#firefox",
     "title": "WSL2 from Windows Store",
     "section": "firefox",
-    "text": "firefox\nAnd install firefox\nsudo snap install firefox\n\n\n\nimage.png"
+    "text": "firefox\nAnd install firefox\nsudo snap install firefox\n# due to a bug when opening settings\n# https://answers.launchpad.net/ubuntu/+question/701403https://answers.launchpad.net/ubuntu/+question/701403\nsudo apt install xdg-desktop-portal-gtksudo apt install xdg-desktop-portal-gtk\n\n\n\nimage.png\n\n\nTo allow external websites, import this certificate /usr/local/share/ca-certificates/cert_M_X5C_sase-mob-sslfwd-trust-ca.crt in the certificate manager\n\n\n\nimage.png"
   },
   {
     "objectID": "posts/2022-12-19-wsl2-from-windows-store.html#nautilus",
