@@ -2622,7 +2622,21 @@
     "href": "posts/2022-12-19-wsl2-from-windows-store.html#systemd",
     "title": "WSL2 from Windows Store",
     "section": "systemd",
-    "text": "systemd\nfollowing this article: systemd support"
+    "text": "systemd\nfollowing this article: systemd support\nModify /etc/wsl.conf with\n[boot]\nsystemd=true\nAnd restart wsl image (wsl -t ubuntu-22.04)\nTest that it works by running\nsystemctl list-unit-files --type=service\n\n\n\nimage.png"
+  },
+  {
+    "objectID": "posts/2022-12-19-wsl2-from-windows-store.html#snapd",
+    "href": "posts/2022-12-19-wsl2-from-windows-store.html#snapd",
+    "title": "WSL2 from Windows Store",
+    "section": "snapd",
+    "text": "snapd\nUpgrade snap\nsudo apt-get -y upgrade snapd\nCheck it is running\n$ snap list\nName    Version        Rev    Tracking       Publisher   Notes\ncore20  20220318       1405   latest/stable  canonical✓  base\nlxd     5.0.0-b0287c1  22923  5.0/stable/…   canonical✓  -\nsnapd   2.55.3         15534  latest/stable  canonical✓  snapd\nAnd install firefox\nsudo snap install firefox"
+  },
+  {
+    "objectID": "posts/2022-12-19-wsl2-from-windows-store.html#error-createprocessparsecommon",
+    "href": "posts/2022-12-19-wsl2-from-windows-store.html#error-createprocessparsecommon",
+    "title": "WSL2 from Windows Store",
+    "section": "ERROR: CreateProcessParseCommon",
+    "text": "ERROR: CreateProcessParseCommon\nWhen starting image after wsl update, I have the following error:\n<3>WSL (8) ERROR: CreateProcessParseCommon:782: Failed to translate \\\\wsl.localhost\\ubuntu-22.04\\home\\guillaume\nI am not the only one, I have posted in this issue from WSL github repo."
   },
   {
     "objectID": "posts/2021-03-25-headless-raspberry-pi-bridge-network.html",
