@@ -2594,7 +2594,7 @@
     "href": "posts/2022-12-15-wsl2-fresh-pc.html#git-credential-manager-to-push-on-github",
     "title": "WSL2 on a fresh new PC",
     "section": "git credential manager to push on github",
-    "text": "git credential manager to push on github\nThis is explained at git-credential-manager repo\nwget --no-check-certificate --content-disposition -O - https://raw.githubusercontent.com/castorfou/blog/master/files/setup_wsl_06_git_credential_manager.sh | bash"
+    "text": "git credential manager to push on github\nThis is explained at git-credential-manager repo\nwget --no-check-certificate --content-disposition -O - https://raw.githubusercontent.com/castorfou/blog/master/files/setup_wsl_06_git_credential_manager.sh | bash\nYou need to create a personal access token in github.\nAnd when pushing to a github repo, use this token as the password\n\n\n\nimage.png"
   },
   {
     "objectID": "posts/2022-12-15-wsl2-fresh-pc.html#optional-automount-secured-vbox",

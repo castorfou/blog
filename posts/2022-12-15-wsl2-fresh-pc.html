@@ -369,6 +369,14 @@ chmod +x setup_wsl_root.sh
 <h2 class="anchored" data-anchor-id="git-credential-manager-to-push-on-github">git credential manager to push on github</h2>
 <p>This is explained at <a href="https://github.com/GitCredentialManager/git-credential-manager/blob/main/README.md">git-credential-manager repo</a></p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">--no-check-certificate</span> <span class="at">--content-disposition</span> <span class="at">-O</span> <span class="at">-</span> https://raw.githubusercontent.com/castorfou/blog/master/files/setup_wsl_06_git_credential_manager.sh <span class="kw">|</span> <span class="fu">bash</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You need to create a personal access token in github.</p>
+<p>And when pushing to a github repo, use this token as the password</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2022-12-15-wsl2-fresh-pc_files/figure-html/6d6341d7-6604-405d-955f-8234907f503d-1-4129a8f8-597d-439a-9d53-55d7c0022a51.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
 </section>
 <section id="optional-automount-secured-vbox" class="level2">
 <h2 class="anchored" data-anchor-id="optional-automount-secured-vbox">(optional) automount secured vbox</h2>
