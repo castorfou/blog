@@ -413,6 +413,13 @@
     "text": "Wednesday 12/14\n\nChatGPT and RLHF Reinforcement Learning from Human Feedback\n1 hour live from Nathan Lambert and Thomas Simonini. Video here\n\n\n\nimage.png\n\n\nAnd there is a blog post written by Nathan and all. (on HuggingFace blog) Illustrating Reinforcement Learning from Human Feedback (RLHF)\n\n\n\nimage.png\n\n\nI like the way to ask this question\n\n\n\nimage.png"
   },
   {
+    "objectID": "posts/2022-12-01-logbook-December-22.html#monday-1219",
+    "href": "posts/2022-12-01-logbook-December-22.html#monday-1219",
+    "title": "Logbook for December 22",
+    "section": "Monday 12/19",
+    "text": "Monday 12/19\n\nWSL version 1.0\nI have just received windows update KB5020812 and with that it means WSL version 1.0!\n wsl --version\nVersion WSL : 1.0.3.0\nVersion du noyau : 5.15.79.1\nVersion WSLg : 1.0.47\nVersion MSRDC : 1.2.3575\nVersion direct3D : 1.606.4\nVersion de DXCore : 10.0.25131.1002-220531-1700.rs-onecore-base2-hyp\nversion Windows : 10.0.19044.2364"
+  },
+  {
     "objectID": "posts/2022-10-17-fastai-2022-courses.html",
     "href": "posts/2022-10-17-fastai-2022-courses.html",
     "title": "Practical Deep Learning for Coders",
