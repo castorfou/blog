@@ -258,6 +258,7 @@ wget --no-check-certificate --content-disposition -O - https://raw.githubusercon
 [view1](https://github.com/castorfou/blog/blob/main/files/setup_wsl_02_install_python_conda_part1.sh)
 [view2](https://github.com/castorfou/blog/blob/main/files/setup_wsl_02_install_python_conda_part2.sh)
 [view3](https://github.com/castorfou/blog/blob/main/files/setup_wsl_02_install_python_conda_part3.sh)
+[view4](https://github.com/castorfou/blog/blob/main/files/setup_wsl_02_install_python_conda_part4.sh)
 
 ```bash
 wget --no-check-certificate --content-disposition -O - https://raw.githubusercontent.com/castorfou/blog/master/files/setup_wsl_02_install_python_conda_part1.sh | bash
@@ -266,6 +267,8 @@ source .bashrc
 wget --no-check-certificate --content-disposition -O - https://raw.githubusercontent.com/castorfou/blog/master/files/setup_wsl_02_install_python_conda_part2.sh | bash
 source .bashrc
 wget --no-check-certificate --content-disposition -O - https://raw.githubusercontent.com/castorfou/blog/master/files/setup_wsl_02_install_python_conda_part3.sh | bash
+source .bashrc
+wget --no-check-certificate --content-disposition -O - https://raw.githubusercontent.com/castorfou/blog/master/files/setup_wsl_02_install_python_conda_part4.sh | bash
 source .bashrc
 ```
 
