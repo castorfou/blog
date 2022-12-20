@@ -1,4 +1,4 @@
-echo "install conda v3"
+echo "install miniconda v3"
 tmp_dir=$(mktemp -d )
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -P $tmp_dir
 chmod +x $tmp_dir/Miniconda3-latest-Linux-x86_64.sh

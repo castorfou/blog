@@ -1,4 +1,4 @@
-echo "configure SSL cert v2"
+echo "configure SSL cert v3"
 
 conda deactivate
 pip install -U certifi
@@ -9,9 +9,11 @@ git clone git@gitlab.michelin.com:DEV/bib-certificates.git $TMPDIR
 cd $TMPDIR
 cat *trust-ca.pem >> $SSL_CERT_FILE
 
-tee -a ~/.bashrc << EOF
-export SSL_CERT_FILE=$SSL_CERT_FILE
-EOF
+if [[ -z "${SSL_CERT_FILE}" ]]; then 
+    tee -a ~/.bashrc << EOF
+    export SSL_CERT_FILE=$SSL_CERT_FILE
+    EOF
+fi
 
 if [ -e "/.cfg" ]; then
 		config='/usr/bin/git --git-dir=/.cfg/ --work-tree=/'
