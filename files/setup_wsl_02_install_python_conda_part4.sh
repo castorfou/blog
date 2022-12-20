@@ -8,7 +8,7 @@ jupyter labextension install jupyterlab-plotly
 mamba install -y -c conda-forge jupyterlab_execute_time
 
 jupyter-lab --generate-config
-echo 'c.NotebookApp.use_redirect_file = False' >> ~/.jupyter/jupyter_lab_config.py
+echo 'c.ServerApp.use_redirect_file = False' >> ~/.jupyter/jupyter_lab_config.py
 
 mkdir -p ~/bin
 tee -a ~/bin/jupyterlab << EOF
