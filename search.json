@@ -2664,7 +2664,7 @@
     "href": "posts/2022-12-19-wsl2-from-windows-store.html#snap-store",
     "title": "WSL2 from Windows Store",
     "section": "snap-store",
-    "text": "snap-store\nI can install like for other softwares\nsudo snap install snap-store\nbut it failed at installing anything\n\n\n\nimage.png\n\n\nWith these messages\n14:15:34:0004 Gs  Could not set idle IO priority, attempting best effort of 7\n14:15:34:0004 Gs  Could not set best effort IO priority either, giving up"
+    "text": "snap-store\nI can install like for other softwares\nsudo snap install snap-store\n# to fix \"Unable to download updates, you do not have permission to install software\"\nsudo apt install --reinstall policykit-1-gnome\nsudo apt install --reinstall gnome-software\n# to fix \"Unable to install <e.g. notepadqq>: authentication was required\"\nsudo snap remove snap-store\nrm -rf ~/snap/snap-store\nsudo snap install snap-store\nsnap run snap-store\nbut it failed at installing anything\n\n\n\nimage.png\n\n\nWith these messages\n14:15:34:0004 Gs  Could not set idle IO priority, attempting best effort of 7\n14:15:34:0004 Gs  Could not set best effort IO priority either, giving up"
   },
   {
     "objectID": "posts/2022-12-19-wsl2-from-windows-store.html#dropbox",
