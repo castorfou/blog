@@ -5,10 +5,10 @@ conda install -y -c conda-forge ncurses
 conda install -y mamba -n base -c conda-forge
 mamba init
 
-if [[ -z "${REQUESTS_CA_BUNDLE}" ]]; then 
-    tee -a ~/.bashrc << EOF
-    export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
-    EOF
+if [ -z "${REQUESTS_CA_BUNDLE}" ]; then 
+tee -a ~/.bashrc << EOF
+export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
+EOF
 fi
 
 sudo apt install -y nodejs npm
