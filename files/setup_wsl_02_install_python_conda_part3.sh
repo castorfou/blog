@@ -10,9 +10,9 @@ cd $TMPDIR
 cat *trust-ca.pem >> $SSL_CERT_FILE
 
 if [[ -z "${SSL_CERT_FILE}" ]]; then 
-    tee -a ~/.bashrc << EOF
-    export SSL_CERT_FILE=$SSL_CERT_FILE
-    EOF
+	tee -a ~/.bashrc << EOF
+	export SSL_CERT_FILE=$SSL_CERT_FILE
+	EOF
 fi
 
 if [ -e "/.cfg" ]; then
