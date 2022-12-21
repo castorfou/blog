@@ -2709,6 +2709,13 @@
     "text": "Desktop\nWoulld like to test https://askubuntu.com/questions/1442663/cannot-start-gnome-session-after-enabling-systemd-on-latest-wsl2:\nThere 2 ways: - configure and access from XRDP - direct configuration\nWill try on a fresh new image"
   },
   {
+    "objectID": "posts/2022-12-19-wsl2-from-windows-store.html#rc.local",
+    "href": "posts/2022-12-19-wsl2-from-windows-store.html#rc.local",
+    "title": "WSL2 from Windows Store",
+    "section": "rc.local",
+    "text": "rc.local\nIt would allow services to be created and run at boot time: https://www.cyberciti.biz/faq/how-to-enable-rc-local-shell-script-on-systemd-while-booting-linux-system/\nnot tested yet."
+  },
+  {
     "objectID": "posts/2022-12-19-wsl2-from-windows-store.html#error-createprocessparsecommon",
     "href": "posts/2022-12-19-wsl2-from-windows-store.html#error-createprocessparsecommon",
     "title": "WSL2 from Windows Store",
