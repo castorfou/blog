@@ -3,7 +3,6 @@ aliases:
 - /wsl/wsl_last/2022/04/25/install ubuntu 22.04 on WSL
 categories:
 - wsl
-- wsl_latest
 date: '2022-04-25'
 description: even if not available in Windows Store
 image: images/icons/wsl2.jpeg
