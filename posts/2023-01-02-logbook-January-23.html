@@ -239,7 +239,8 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 <h3 class="anchored" data-anchor-id="wsl-and-x-session">WSL and X-session</h3>
 <p>I have left on-going tests last week of 22.</p>
 <p>Trying to start a X-session on ubuntu 22.04 within this new version of WSL.</p>
-<p><strong>systemctl-sysusers failed</strong></p>
+<section id="systemctl-sysusers-failed-fixed" class="level4">
+<h4 class="anchored" data-anchor-id="systemctl-sysusers-failed-fixed"><strong>systemctl-sysusers failed [FIXED]</strong></h4>
 <p>seen in <code>journalctl -r</code> when starting <code>gnome-session</code> some errors linked to <code>systemd-sysusers.service</code>.</p>
 <p>And I can see failed services with</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl <span class="at">--failed</span></span>
@@ -250,8 +251,66 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ex">ACTIVE</span> = The high-level unit activation state, i.e. generalization of SUB.</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="ex">SUB</span>    = The low-level unit activation state, values depend on unit type.</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="ex">1</span> loaded units listed.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>by getting additional info</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl status  systemd-sysusers</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">×</span> systemd-sysusers.service <span class="at">-</span> Create System Users</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>     <span class="ex">Loaded:</span> loaded <span class="er">(</span><span class="ex">/lib/systemd/system/systemd-sysusers.service</span><span class="kw">;</span> <span class="ex">static</span><span class="kw">)</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>     <span class="ex">Active:</span> failed <span class="er">(</span><span class="ex">Result:</span> exit-code<span class="kw">)</span> <span class="ex">since</span> Mon 2023-01-02 09:44:29 CET<span class="kw">;</span> <span class="ex">10min</span> ago</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>       <span class="ex">Docs:</span> man:sysusers.d<span class="er">(</span><span class="ex">5</span><span class="kw">)</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>             <span class="ex">man:systemd-sysusers.service</span><span class="er">(</span><span class="ex">8</span><span class="kw">)</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>   <span class="ex">Main</span> PID: 1803 <span class="er">(</span><span class="va">code</span><span class="op">=</span>exited, <span class="va">status</span><span class="op">=</span>243/CREDENTIALS<span class="kw">)</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="ex">Jan</span> 02 09:44:29 L001LPF3RKAR5 systemd[1]: Starting Create System Users...</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="ex">Jan</span> 02 09:44:29 L001LPF3RKAR5 systemd[1803]: systemd-sysusers.service: Failed to set up credentials: Protocol error</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="ex">Jan</span> 02 09:44:29 L001LPF3RKAR5 systemd[1803]: systemd-sysusers.service: Failed at step CREDENTIALS spawning systemd-sysusers: Protocol error</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="ex">Jan</span> 02 09:44:29 L001LPF3RKAR5 systemd[1]: systemd-sysusers.service: Main process exited, code=exited, status=243/CREDENTIALS</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="ex">Jan</span> 02 09:44:29 L001LPF3RKAR5 systemd[1]: systemd-sysusers.service: Failed with result <span class="st">'exit-code'</span>.</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="ex">Jan</span> 02 09:44:29 L001LPF3RKAR5 systemd[1]: Failed to start Create System Users.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>user encountered this issue: <a href="https://anthony-f-tannous.medium.com/run-systemd-on-wsl2-distro-18a9775cb2f2" class="uri">https://anthony-f-tannous.medium.com/run-systemd-on-wsl2-distro-18a9775cb2f2</a></p>
+<p>and suggests a workaround:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl edit systemd-sysusers.service</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">#here is the content to be added:</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co">### Anything between here and the comment below will become the new contents of the file[Service]</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="ex">[Service]</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="va">LoadCredential</span><span class="op">=</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co">### Lines below this comment will be discarded### /lib/systemd/system/systemd-sysusers.service</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co">#check this is active</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> /etc/systemd/system/systemd-sysusers.service.d/override.conf</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co">#restart service</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl restart systemd-sysusers.service</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="gnome-session-failed" class="level4">
+<h4 class="anchored" data-anchor-id="gnome-session-failed"><strong>gnome-session failed</strong></h4>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> journalctl <span class="at">-r</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">gnome-session-binary[3048]:</span> Entering running state</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">gnome-session[3048]:</span> _IceTransmkdir: ERROR: euid != 0,directory /tmp/.ICE-unix will not be created.</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="ex">gnome-session-binary[3048]:</span> WARNING: Could not get session id for session. Check that logind is properly installed and pam_systemd is getting used at login.</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="ex">gnome-session[3048]:</span> gnome-session-binary[3048]: WARNING: Could not get session id for session. Check that logind is properly installed and pam_systemd is getting used at login.</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="ex">gnome-session-binary[3048]:</span> WARNING: Falling back to non-systemd startup procedure due to error: GDBus.Error:org.freedesktop.DBus.Error.InvalidArgs: Unit name gnome-session-<span class="er">(</span><span class="ex">null</span><span class="kw">)</span><span class="ex">@gnome.target</span> is not valid.</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="ex">gnome-session[3048]:</span> gnome-session-binary[3048]: WARNING: Falling back to non-systemd startup procedure due to error: GDBus.Error:org.freedesktop.DBus.Error.InvalidArgs: Unit name gnome-session-<span class="er">(</span><span class="ex">null</span><span class="kw">)</span><span class="ex">@gnome.target</span> is not valid.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>to try <a href="https://askubuntu.com/questions/1442663/cannot-start-gnome-session-after-enabling-systemd-on-latest-wsl2" class="uri">https://askubuntu.com/questions/1442663/cannot-start-gnome-session-after-enabling-systemd-on-latest-wsl2</a></p>
+<p>Activate rc.local service: (see <a href="https://www.cyberciti.biz/faq/how-to-enable-rc-local-shell-script-on-systemd-while-booting-linux-system/" class="uri">https://www.cyberciti.biz/faq/how-to-enable-rc-local-shell-script-on-systemd-while-booting-linux-system/</a>)</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl is-enabled rc-local.service</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="cf">if</span> <span class="ex">static</span> it means it has be activated<span class="kw">)</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl enable rc-local.service</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co">#create rc.local file</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> vi /etc/rc.local</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="fu">mount</span> <span class="at">-o</span> rw,remount /tmp/.X11-unix/</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> +t /tmp/.X11-unix</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> o+rw /dev/dri/renderD128</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="ex">/usr/libexec/at-spi-bus-launcher</span> <span class="at">--launch-immediately</span> <span class="kw">&amp;</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="co">#save &amp; exit</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> chmod 700 /etc/rc.local</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
+</section>
 </section>
 </section>
 </section>
