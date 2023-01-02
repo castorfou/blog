@@ -310,6 +310,18 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 <span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="co">#save &amp; exit</span></span>
 <span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> chmod 700 /etc/rc.local</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>create <code>/etc/pam.d/system/systemd-user</code> with this content:</p>
+<pre class="text"><code># This file is part of systemd.
+#
+# Used by systemd --user instances.
+
+@include common-account
+
+session  required pam_loginuid.so
+session  required pam_limits.so
+@include common-session-noninteractive
+session optional pam_systemd.so</code></pre>
+<p>and restart wsl</p>
 
 
 </section>
