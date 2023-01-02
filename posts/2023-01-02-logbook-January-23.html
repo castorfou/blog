@@ -334,6 +334,39 @@ session optional pam_systemd.so</code></pre>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="ex">./setup_wsl_root.sh</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>from powershell</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">wsl</span> <span class="at">-t</span> ubuntu-x11</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>start ubuntu-x11 from windows terminal menu</p>
+<p>and enter informations requested (ssh keys (paste to gitlab), update certificates (enter password)). Other steps are automatic.</p>
+<p>Other steps: - activate systemd (by modifying /etc/wsl.conf) - restart</p>
+<p>Here we have a fully working distro. And we will test what is suggested at : <a href="https://askubuntu.com/a/1445415" class="uri">https://askubuntu.com/a/1445415</a></p>
+<ul>
+<li>Create the file /etc/pam.d/system/systemd-user</li>
+<li>Restart distro</li>
+<li><code>sudo apt install ubuntu-desktop acpi-support-</code></li>
+<li>prevent gdm service to start
+<ul>
+<li><code>sudo systemctl stop gdm.service</code></li>
+<li><code>sudo systemctl disable gdm.service</code></li>
+</ul></li>
+<li>activate x11 config at boot:
+<ul>
+<li><code>bash       sudo systemctl is-enabled rc-local.service       (if static it means it has be activated)       sudo systemctl enable rc-local.service</code></li>
+<li><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>  <span class="co">#create rc.local file</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sudo</span> vi /etc/rc.local</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="co">#!/bin/sh -e</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mount</span> <span class="at">-o</span> rw,remount /tmp/.X11-unix/</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">chmod</span> +t /tmp/.X11-unix</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">chmod</span> o+rw /dev/dri/renderD128</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="ex">/usr/libexec/at-spi-bus-launcher</span> <span class="at">--launch-immediately</span> <span class="kw">&amp;</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  <span class="bu">exit</span> 0</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  <span class="co">#save &amp; exit</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sudo</span> chmod 700 /etc/rc.local</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul></li>
+<li><code>sudo usermod -a -G adm guillaume</code></li>
+<li>Restart distro</li>
+<li><code>XDG_SESSION_TYPE=x11 gnome-session --disable-acceleration-check --session=ubuntu --systemd-service &gt; /dev/null 2&gt;&amp;1</code></li>
+</ul>
 
 
 </section>
