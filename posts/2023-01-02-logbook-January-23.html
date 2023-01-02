@@ -220,6 +220,7 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
   <li><a href="#monday-0102" id="toc-monday-0102" class="nav-link" data-scroll-target="#monday-0102"><strong>Monday 01/02</strong></a>
   <ul class="collapse">
   <li><a href="#wsl-and-x-session" id="toc-wsl-and-x-session" class="nav-link" data-scroll-target="#wsl-and-x-session">WSL and X-session</a></li>
+  <li><a href="#start-jupyter-lab-with-wsl-within-screen" id="toc-start-jupyter-lab-with-wsl-within-screen" class="nav-link" data-scroll-target="#start-jupyter-lab-with-wsl-within-screen">start jupyter lab with wsl (within screen)</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -377,9 +378,34 @@ session optional pam_systemd.so</code></pre>
 <p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
 </figure>
 </div>
-
-
 </section>
+</section>
+<section id="start-jupyter-lab-with-wsl-within-screen" class="level3">
+<h3 class="anchored" data-anchor-id="start-jupyter-lab-with-wsl-within-screen">start jupyter lab with wsl (within screen)</h3>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">screen</span> <span class="at">-dmS</span> <span class="st">"jupyter_screen"</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">screen</span> <span class="at">-S</span> <span class="st">"jupyter_screen"</span> <span class="at">-p</span> 0 <span class="at">-X</span> exec jupyterlab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>and run this as a service at boot time</p>
+<p><a href="https://askubuntu.com/questions/156771/run-a-script-only-at-the-very-first-boot" class="uri">https://askubuntu.com/questions/156771/run-a-script-only-at-the-very-first-boot</a></p>
+<p>FILE /etc/systemd/system/jupyterlab.service</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[Unit]</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="va">Description</span><span class="op">=</span>Jupyter <span class="ex">lab</span> boot script</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="ex">[Service]</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="va">Type</span><span class="op">=</span>simple</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="va">ExecStart</span><span class="op">=</span>/home/guillaume/bin/jupyterlab.sh</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="ex">[Install]</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="va">WantedBy</span><span class="op">=</span>multi-user.target </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>and</p>
+<p>FILE /home/guillaume/bin/jupyterlab.sh</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash </span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="ex">screen</span> <span class="at">-dmS</span> <span class="st">"jupyter_screen"</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="ex">screen</span> <span class="at">-S</span> <span class="st">"jupyter_screen"</span> <span class="at">-p</span> 0 <span class="at">-X</span> exec jupyterlab</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="ex">systemctl</span> disable firstboot.service </span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-rf</span> /etc/systemd/system/jupyterlab.service</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-f</span> /home/guillaume/bin/jupyterlab.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Then enable</p>
+<p>(sudo) chmod +x /jupyterlab.sh (sudo) systemctl enable jupyterlab.service</p>
+
+
 </section>
 </section>
 </section>
