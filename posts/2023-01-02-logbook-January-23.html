@@ -367,22 +367,16 @@ session optional pam_systemd.so</code></pre>
 <li>Restart distro</li>
 <li><code>XDG_SESSION_TYPE=x11 gnome-session --disable-acceleration-check --session=ubuntu --systemd-service &gt; /dev/null 2&gt;&amp;1</code></li>
 </ul>
-<p>But unfortunately, nothing happens and I have these lines in journalctl:</p>
-<pre class="text"><code>kernel: hv_balloon: Max. dynamic memory size: 32618 MB
-utempter[743]: pututline: Permission denied
-gnome-session[749]: gnome-session-binary[749]: WARNING: Could not get session id for session. Check that logind is properly installed and pam_systemd is getting used at login.
-gnome-session-binary[749]: WARNING: Could not get session id for session. Check that logind is properly installed and pam_systemd is getting used at login.
-gnome-session[749]: _IceTransmkdir: ERROR: euid != 0,directory /tmp/.ICE-unix will not be created.
-gnome-session[749]: gnome-session-binary[749]: WARNING: Could not parse desktop file xscreensaver.desktop or it references a not found TryExec binary
-gnome-session-binary[749]: WARNING: Could not parse desktop file xscreensaver.desktop or it references a not found TryExec binary
-gnome-keyring-daemon[760]: couldn't access control socket: /run/user/1000/keyring/control: No such file or directory
-gnome-keyring-daemon[759]: couldn't access control socket: /run/user/1000/keyring/control: No such file or directory
-gnome-keyring-d[760]: couldn't access control socket: /run/user/1000/keyring/control: No such file or directory
-gnome-keyring-daemon[761]: couldn't access control socket: /run/user/1000/keyring/control: No such file or directory
-gnome-keyring-d[761]: couldn't access control socket: /run/user/1000/keyring/control: No such file or directory
-gnome-keyring-d[759]: couldn't access control socket: /run/user/1000/keyring/control: No such file or directory
-gnome-keyring-ssh.desktop[760]: SSH_AUTH_SOCK=/run/user/1000/keyring/ssh
-utempter[777]: pututline: Permission denied</code></pre>
+<p>and then</p>
+<ul>
+<li><code>MUTTER_DEBUG_DUMMY_MODE_SPECS=2400x1300 gnome-shell --nested --no-x11 2&gt; /dev/null &amp;</code></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2023-01-02-logbook-January-23_files/figure-html/8f52e9ca-993e-4557-99e0-3fb110d66b79-1-bbf4eacb-20e4-440a-a1bd-c430832000b2.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
 
 
 </section>
