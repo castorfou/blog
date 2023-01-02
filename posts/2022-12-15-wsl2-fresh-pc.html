@@ -335,7 +335,8 @@ wsl -d wsl-vpnkit service wsl-vpnkit start</code></pre>
 <h4 class="anchored" data-anchor-id="install-ubuntu-and-setup-root">install ubuntu and setup root</h4>
 <p>Install ubuntu-lts from Windows Terminal:</p>
 <pre><code>wsl --import ubuntu-22.04 C:\wsl\ubuntu-22.04\instance C:\wsl\ubuntu-22.04\download\ubuntu-jammy-wsl-amd64-wsl.rootfs.tar.gz
-wsl -d ubuntu-22.04
+# close windows terminal / launch it (ubuntu-22.04 entry should be added within it)
+wsl -d ubuntu-22.04 # or launch from Windows Terminal menu
 cd
 cp /mnt/c/wsl/Ubuntu-22.04/download/setup_wsl_* ~/
 chmod +x setup_wsl_root.sh
