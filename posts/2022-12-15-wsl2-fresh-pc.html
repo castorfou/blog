@@ -647,6 +647,10 @@ mamba install -c conda-forge jupyterlab_execute_time
 <p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
 </figure>
 </div>
+<p>Then we can start it by running <code>gnomeshell.sh</code></p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> bin/gnomeshell.sh</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="va">MUTTER_DEBUG_DUMMY_MODE_SPECS</span><span class="op">=</span>1920x1080 <span class="ex">gnome-shell</span> <span class="at">--nested</span> <span class="at">--no-x11</span> <span class="dv">2</span><span class="op">&gt;</span> /dev/null <span class="kw">&amp;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>
