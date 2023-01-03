@@ -254,6 +254,7 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
   <li><a href="#firefox" id="toc-firefox" class="nav-link" data-scroll-target="#firefox">firefox</a></li>
   <li><a href="#nautilus" id="toc-nautilus" class="nav-link" data-scroll-target="#nautilus">nautilus</a></li>
   <li><a href="#gimp" id="toc-gimp" class="nav-link" data-scroll-target="#gimp">gimp</a></li>
+  <li><a href="#zotero" id="toc-zotero" class="nav-link" data-scroll-target="#zotero">zotero</a></li>
   </ul></li>
   <li><a href="#run-gnome-session-in-ubuntu-lts" id="toc-run-gnome-session-in-ubuntu-lts" class="nav-link" data-scroll-target="#run-gnome-session-in-ubuntu-lts">Run gnome-session in Ubuntu LTS</a>
   <ul class="collapse">
@@ -564,6 +565,24 @@ mamba install -c conda-forge jupyterlab_execute_time
 <p>And install gimp</p>
 <div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install gimp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
+<section id="zotero" class="level2">
+<h2 class="anchored" data-anchor-id="zotero">zotero</h2>
+<div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snap</span> find zotero</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Name</span>         Version  Publisher   Notes  Summary</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="ex">zotero-snap</span>  6.0.18   extraymond  <span class="at">-</span>      Zotero helps you collect, organize, cite, and share research.</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="ex">qnotero</span>      2.3.1    ealbiter    <span class="at">-</span>      Standalone sidekick to Zotero reference manager.</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="ex">zotviewer</span>    1.5.0    fvalle      <span class="at">-</span>      Zotero Visualizer</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> snap install zotero-snap</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="ex">zotero-snap</span> 6.0.18 from extraymond installed</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>but there is something to do to activate sync: <a href="https://github.com/extraymond/zotero-snap/issues/29" class="uri">https://github.com/extraymond/zotero-snap/issues/29</a></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2022-12-15-wsl2-fresh-pc_files/figure-html/7445bf92-7a8f-4a53-adeb-0cb48a69ad31-1-f9962cc1-a6f7-4db5-bca3-920541215b4c.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+</section>
 </section>
 <section id="run-gnome-session-in-ubuntu-lts" class="level1">
 <h1>Run gnome-session in Ubuntu LTS</h1>
@@ -572,14 +591,14 @@ mamba install -c conda-forge jupyterlab_execute_time
 <section id="install-test-distro-from-scratch" class="level2">
 <h2 class="anchored" data-anchor-id="install-test-distro-from-scratch">install test distro <strong>from scratch</strong></h2>
 <p>from powershell</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="ex">wsl</span> <span class="at">--import</span> ubuntu-x11 C:<span class="dt">\w</span>sl<span class="dt">\U</span>buntu-22.04_X11<span class="dt">\i</span>nstance C:<span class="dt">\w</span>sl<span class="dt">\U</span>buntu-22.04_X11<span class="dt">\d</span>ownload<span class="dt">\u</span>buntu-jammy-wsl-amd64-wsl.rootfs.tar.gz</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="ex">wsl</span> <span class="at">-d</span> ubuntu-x11</span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span></span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> /mnt/c/wsl/Ubuntu-22.04_X11/download/setup_wsl_<span class="pp">*</span> ~/</span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> +x setup_wsl_root.sh</span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="ex">./setup_wsl_root.sh</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="ex">wsl</span> <span class="at">--import</span> ubuntu-x11 C:<span class="dt">\w</span>sl<span class="dt">\U</span>buntu-22.04_X11<span class="dt">\i</span>nstance C:<span class="dt">\w</span>sl<span class="dt">\U</span>buntu-22.04_X11<span class="dt">\d</span>ownload<span class="dt">\u</span>buntu-jammy-wsl-amd64-wsl.rootfs.tar.gz</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="ex">wsl</span> <span class="at">-d</span> ubuntu-x11</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> /mnt/c/wsl/Ubuntu-22.04_X11/download/setup_wsl_<span class="pp">*</span> ~/</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> +x setup_wsl_root.sh</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="ex">./setup_wsl_root.sh</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>from powershell</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="ex">wsl</span> <span class="at">-t</span> ubuntu-x11</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="ex">wsl</span> <span class="at">-t</span> ubuntu-x11</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>start ubuntu-x11 from windows terminal menu</p>
 <p>and enter informations requested (ssh keys (paste to gitlab), update certificates (enter password)). Other steps are automatic.</p>
 <p>Other steps: - activate systemd (by modifying /etc/wsl.conf) - restart</p>
@@ -596,22 +615,49 @@ mamba install -c conda-forge jupyterlab_execute_time
 <li><code>sudo systemctl stop gdm.service</code></li>
 <li><code>sudo systemctl disable gdm.service</code></li>
 </ul></li>
-<li>activate x11 config at boot:
-<ul>
-<li><code>bash       sudo systemctl is-enabled rc-local.service       (if static it means it has be activated)       sudo systemctl enable rc-local.service</code></li>
-<li><div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>  <span class="co">#create rc.local file</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sudo</span> vi /etc/rc.local</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="co">#!/bin/sh -e</span></span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mount</span> <span class="at">-o</span> rw,remount /tmp/.X11-unix/</span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">chmod</span> +t /tmp/.X11-unix</span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">chmod</span> o+rw /dev/dri/renderD128</span>
-<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>  <span class="ex">/usr/libexec/at-spi-bus-launcher</span> <span class="at">--launch-immediately</span> <span class="kw">&amp;</span></span>
-<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>  <span class="bu">exit</span> 0</span>
-<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>  <span class="co">#save &amp; exit</span></span>
-<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sudo</span> chmod 700 /etc/rc.local</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-</ul></li>
+<li><table class="table">
+<thead>
+<tr class="header">
+<th>tivate x11 config at boot:</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>- ```bash</td>
+</tr>
+<tr class="even">
+<td>sudo systemctl is-enabled rc-local.service</td>
+</tr>
+<tr class="odd">
+<td>(if static it means it has be activated)</td>
+</tr>
+<tr class="even">
+<td>sudo systemctl enable rc-local.service</td>
+</tr>
+<tr class="odd">
+<td>```</td>
+</tr>
+<tr class="even">
+<td>- ```bash</td>
+</tr>
+<tr class="odd">
+<td>#create rc.local file</td>
+</tr>
+<tr class="even">
+<td>sudo vi /etc/rc.local</td>
+</tr>
+</tbody>
+</table>
+<pre><code>  #!/bin/sh -e
+  mount -o rw,remount /tmp/.X11-unix/
+  chmod +t /tmp/.X11-unix
+  chmod o+rw /dev/dri/renderD128
+  /usr/libexec/at-spi-bus-launcher --launch-immediately &amp;
+  exit 0
+
+  #save &amp; exit
+  sudo chmod 700 /etc/rc.local
+  ```</code></pre></li>
 <li><code>sudo usermod -a -G adm guillaume</code></li>
 <li>Restart distro</li>
 <li>launch <code>XDG_SESSION_TYPE=x11 gnome-session --disable-acceleration-check --session=ubuntu --systemd-service &gt; /dev/null 2&gt;&amp;1</code> (this can be added to .bashrc or as a service)</li>
