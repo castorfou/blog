@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.269">
+<meta name="generator" content="quarto-1.2.280">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -135,6 +135,9 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 <link rel="stylesheet" href="../styles.css">
@@ -288,6 +291,9 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
   <li><a href="#linear-model-then-deep-learning-model" id="toc-linear-model-then-deep-learning-model" class="nav-link" data-scroll-target="#linear-model-then-deep-learning-model">linear model then deep learning model</a></li>
   <li><a href="#why-you-should-use-a-framework" id="toc-why-you-should-use-a-framework" class="nav-link" data-scroll-target="#why-you-should-use-a-framework">Why you should use a framework</a></li>
   </ul></li>
+  <li><a href="#lesson-6---random-forests" id="toc-lesson-6---random-forests" class="nav-link" data-scroll-target="#lesson-6---random-forests">Lesson 6 - Random forests</a></li>
+  <li><a href="#lesson-7---collaborative-filtering" id="toc-lesson-7---collaborative-filtering" class="nav-link" data-scroll-target="#lesson-7---collaborative-filtering">Lesson 7 - Collaborative filtering</a></li>
+  <li><a href="#lesson-8---convolutions-cnns" id="toc-lesson-8---convolutions-cnns" class="nav-link" data-scroll-target="#lesson-8---convolutions-cnns">Lesson 8 - Convolutions (CNNs)</a></li>
   </ul>
 </nav>
     </div>
@@ -883,10 +889,118 @@ So, let’s get started!</p>
 <section id="why-you-should-use-a-framework" class="level2">
 <h2 class="anchored" data-anchor-id="why-you-should-use-a-framework">Why you should use a framework</h2>
 <p>It is in kaggle <a href="https://www.kaggle.com/code/jhoward/why-you-should-use-a-framework">Why you should use a framework</a>. As usually upvote &amp; copy/edit to start using it. Or get the notebooks from <a href="https://github.com/fastai/course22/blob/master/06-why-you-should-use-a-framework.ipynb">github</a>.</p>
-<p>(stopped at 1:15:31 to be resumed later)</p>
+<p>Jeremy used TabularPandas, lr_find, ensemble</p>
+<div class="cell" data-tags="[]" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>learn.lr_find(suggest_funcs<span class="op">=</span>(slide, valley))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
 
-
+</div>
+<div class="cell-output cell-output-display" data-execution_count="14">
+<pre><code>SuggestedLRs(slide=0.0831763744354248, valley=0.007585775572806597)</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="2022-10-17-fastai-2022-courses_files/figure-html/cell-6-output-3.png" class="img-fluid"></p>
+</div>
+</div>
+<p>I could try this for autoencoders: <a href="https://alanbertl.com/autoencoder-with-fast-ai/" class="uri">https://alanbertl.com/autoencoder-with-fast-ai/</a> (this is v1 but should be easy to adapt to v2)</p>
+<p>And then ends with <a href="https://www.kaggle.com/code/jhoward/how-random-forests-really-work">How random forests really work</a>. Or get the notebooks from <a href="https://github.com/fastai/course22/blob/master/07-how-random-forests-really-work.ipynb">github</a>.</p>
+<p>Tip: <code>pd.options.display.float_format = '{:.2f}'.format</code> will display all floats from dataframes with 2 digits</p>
+<p>Tip2: <code>from fastai.imports import *</code> will import everything that we need (numpy, pandas, matplotlib, …)</p>
+<p>Jeremy illustrates binary split and mentions <a href="https://link.springer.com/article/10.1023/A:1022631118932">OneR</a> classifier (paper from 1993)</p>
 </section>
+</section>
+<section id="lesson-6---random-forests" class="level1">
+<h1>Lesson 6 - Random forests</h1>
+<p><a href="https://course.fast.ai/Lessons/lesson6.html" class="uri">https://course.fast.ai/Lessons/lesson6.html</a></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2022-10-17-fastai-2022-courses_files/figure-html/1be83661-8a7f-45af-acfe-3045c8c77946-1-2af8bec3-ac03-4b00-97a6-d70bec83e724.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+<blockquote class="blockquote">
+<p>Random forests started a revolution in machine learning 20 years ago. For the first time, there was a fast and reliable algorithm which made almost no assumptions about the form of the data, and required almost no preprocessing. In today’s lesson, you’ll learn how a random forest really works, and how to build one from scratch. And, just as importantly, you’ll learn how to interpret random forests to better understand your data.</p>
+</blockquote>
+<p>We continue on the previous notebook <a href="https://www.kaggle.com/code/jhoward/how-random-forests-really-work">How random forests really work</a>.</p>
+<p>And repeating binary split on 2 dataset already split makes it a TwoR approach… And we can continue recursively. This is what a DecisionTree is.</p>
+<div class="cell" data-tags="[]" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>draw_tree(m, trn_xs, size<span class="op">=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="35">
+<p><img src="2022-10-17-fastai-2022-courses_files/figure-html/cell-7-output-1.svg" class="img-fluid"></p>
+</div>
+</div>
+<p>Then Jeremy explains different ensemble approached: - by subsetting rows (and columns) and averaging predictions - this is bagging and random forest is one implementation - by focusing on residuals on each steps and summing predictions - this is boosting and gradient boosting decision trees is one implementation. Jeremys’explanation at <a href="https://explained.ai/gradient-boosting/">explained ai</a></p>
+<p>And he mentions feature importance, dependency plot, waterfall plots, oob errors, and other stuff from book <a href="https://github.com/fastai/fastbook/blob/master/09_tabular.ipynb">chapter 9</a>.</p>
+<p>And then Jeremy illustrates with a kaggle competition about rice quality. This is in <a href="https://github.com/fastai/course22/blob/master/08-first-steps-road-to-the-top-part-1.ipynb">08-first-steps-road-to-the-top-part-1.ipynb in github</a></p>
+<p>As always I have to accept conditions before being able to download this dataset</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2022-10-17-fastai-2022-courses_files/figure-html/56a8e326-0b24-4b49-bc0e-f4a44ab10a65-1-ddf78814-ef73-4ad3-8cc5-3e4896f575cb.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+<p>There are 6 videos (walkthrough) from Jeremy, I think 6 hours long to enter into each detail of his process to be a kaggle grandmaster.</p>
+<blockquote class="blockquote">
+<ul>
+<li><a href="https://www.youtube.com/watch?v=-Scs4gbwWXg">Walkthru 8</a></li>
+<li><a href="https://www.youtube.com/watch?v=EK5wJRzffas">Walkthru 9</a></li>
+<li><a href="https://youtu.be/zhBRynq9Yvo">Walkthru 10</a></li>
+<li><a href="https://youtu.be/j-zMF2VirA8">Walkthru 11</a></li>
+<li><a href="https://youtu.be/GuCkpjXHdTc">Walkthru 12</a></li>
+<li><a href="https://youtu.be/INrkhUGCXHg">Walkthru 13</a></li>
+</ul>
+</blockquote>
+<p>Not so bad top80% within a couple of minutes (of running). It would have taken me days to write such a notebook.</p>
+<p>And step 2 happens in <a href="https://github.com/fastai/course22/blob/master/09-small-models-road-to-the-top-part-2.ipynb">09-small-models-road-to-the-top-part-2.ipynb in github</a></p>
+<p>Where Jeremy changes from resnet26d to convnext_small using <a href="https://www.kaggle.com/code/jhoward/the-best-vision-models-for-fine-tuning">The best vision models for fine-tuning</a>.(in collaboration with Thomas Capelle ;) )</p>
+<p>And introduces TTA (tranformation at inference time and take avergae of it)</p>
+</section>
+<section id="lesson-7---collaborative-filtering" class="level1">
+<h1>Lesson 7 - Collaborative filtering</h1>
+<p><a href="https://course.fast.ai/Lessons/lesson7.html" class="uri">https://course.fast.ai/Lessons/lesson7.html</a></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2022-10-17-fastai-2022-courses_files/figure-html/29f01da0-60c7-40bc-b4a2-ff2655209a33-1-e97eb590-fbad-4ca4-b1f1-affa840869fc.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+<blockquote class="blockquote">
+<p>You interact nearly every day with <em>recommendation systems</em>—algorithms which guess what products and services you might like, based on your past behavior. These systems largely rely on <em>collaborative-filtering</em>, an approach based on linear algebra that fills in the missing values in a matrix. Today we’ll see two ways to do this: one based on a classic linear algebra formulation, and one based on deep learning.</p>
+</blockquote>
+<p>Next is in <a href="https://github.com/fastai/course22/blob/master/10-scaling-up-road-to-the-top-part-3.ipynb">10-scaling-up-road-to-the-top-part-3.ipynb in github</a></p>
+<p>This is about dealing with GPU memory management and training with less memory (and adjusting batch size in a smart way (combined with gradient accumulation))</p>
+<p>In fastai, it is done with <img src="2022-10-17-fastai-2022-courses_files/figure-html/a91a8f12-70e8-4ddb-b234-3211441b9c2c-1-f2e4471d-9ab4-4510-a13f-0461d8de2ee8.png" class="img-fluid" alt="image.png"></p>
+<p>you adjust bs and use callback with GradientAccumulation</p>
+<p>Last part is about collaborative filtering and it is quite identical to subsequent book chapter. Notebook is at kaggle <a href="https://www.kaggle.com/code/jhoward/collaborative-filtering-deep-dive/notebook" class="uri">https://www.kaggle.com/code/jhoward/collaborative-filtering-deep-dive/notebook</a></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2022-10-17-fastai-2022-courses_files/figure-html/878f5f41-fb02-4d76-8e07-e3a3a0884608-1-9f314285-1119-4290-87ef-5c0d1ab5581d.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+<p>Jeremy explains latent factor, the way to implement them in pytorch. Then bias factor added to these matrices to adjust bias. ProductBias to calculate similarity. And the full learning process. Then introduces weight decay as a way to regularize (avoid overfitting).</p>
+<p>There is a chapter on interpreting Embeddings and Biases but Jeremy has not gone through it.</p>
+</section>
+<section id="lesson-8---convolutions-cnns" class="level1">
+<h1>Lesson 8 - Convolutions (CNNs)</h1>
+<p><a href="https://course.fast.ai/Lessons/lesson8.html" class="uri">https://course.fast.ai/Lessons/lesson8.html</a></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2022-10-17-fastai-2022-courses_files/figure-html/cee3aee1-77c8-4a3a-93d5-ddcc0958d0b0-1-937c5629-1a79-4873-966f-05458b912588.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+<blockquote class="blockquote">
+<p>Today we finish off our study of collaborative filtering by looking closely at <em>embeddings</em>—a critical building block of many deep learning algorithms. Then we’ll dive into <em>convolutional neural networks</em> (CNNs) and see how they really work. We’ve used plenty of CNNs through this course, but we haven’t peeked inside them to see what’s really going on in there. As well as learning about their most fundamental building block, the <em>convolution</em>, we’ll also look at pooling, dropout, and more.</p>
+</blockquote>
+<p>First part is continuing collaborative filtering. Notebook is at kaggle <a href="https://www.kaggle.com/code/jhoward/collaborative-filtering-deep-dive/notebook" class="uri">https://www.kaggle.com/code/jhoward/collaborative-filtering-deep-dive/notebook</a></p>
+<p>It starts with embeddings and bias and interpretation. Jeremy shows how to visualize bias (which movies are most liked (even by people usually not liking this kind of movies) and disliked) or from a user perspective (which users tend to like all movies or dislike alkl movies)</p>
+<p>And to visualize embeddings (thanks to a PCA) to understand which kind of movies we have. (and could be which kind of users we have)</p>
+<p>I am re-running from start. As adviced it is good to restart <a href="https://www.kaggle.com/code/jhoward/linear-model-and-neural-net-from-scratch/comments#2062682" class="uri">https://www.kaggle.com/code/jhoward/linear-model-and-neural-net-from-scratch/comments#2062682</a></p>
+<p>I like the progressivity here: linear model, then matrix product, then neural network with 2 hidden layers. All of this using basic PyTorch pieces (tensors, multiplication, gradient calculation, …) but nothing about Module</p>
+<p>And then the second step is from fastai book available at <a href="https://github.com/fastai/fastbook/blob/master/08_collab.ipynb" class="uri">https://github.com/fastai/fastbook/blob/master/08_collab.ipynb</a> to explore Module.</p>
+
+
 </section>
 
 </main> <!-- /main -->

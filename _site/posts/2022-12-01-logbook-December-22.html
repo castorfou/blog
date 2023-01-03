@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.280">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2022-12-01">
+
+<title>Guillaume’s blog - Logbook for December 22</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../favicon_small.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-12YC1FPHWN"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
+</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+<meta name="twitter:title" content="Guillaume’s blog - Logbook for December 22">
+<meta name="twitter:image" content="https://castorfou.github.io/images/logbook.jpg">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Guillaume’s blog</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html">
+ <span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/castorfou"><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/GuillaumeRamel1"><i class="bi bi-twitter" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+              <div class="quarto-toggle-container">
+                  <a href="" class="quarto-color-scheme-toggle nav-link" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+              </div>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Logbook for December 22</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">logbook</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">December 1, 2022</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#week-48---december-22" id="toc-week-48---december-22" class="nav-link active" data-scroll-target="#week-48---december-22">Week 48 - December 22</a>
+  <ul class="collapse">
+  <li><a href="#thursday-1201" id="toc-thursday-1201" class="nav-link" data-scroll-target="#thursday-1201"><strong>Thursday 12/01</strong></a>
+  <ul class="collapse">
+  <li><a href="#fastai-course-lesson-8---convolutions-cnns" id="toc-fastai-course-lesson-8---convolutions-cnns" class="nav-link" data-scroll-target="#fastai-course-lesson-8---convolutions-cnns">fastai course lesson 8 - Convolutions (CNNs)</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#week-49---december-22" id="toc-week-49---december-22" class="nav-link" data-scroll-target="#week-49---december-22">Week 49 - December 22</a>
+  <ul class="collapse">
+  <li><a href="#monday-1205" id="toc-monday-1205" class="nav-link" data-scroll-target="#monday-1205"><strong>Monday 12/05</strong></a>
+  <ul class="collapse">
+  <li><a href="#chatgpt" id="toc-chatgpt" class="nav-link" data-scroll-target="#chatgpt">ChatGPT</a></li>
+  </ul></li>
+  <li><a href="#friday-1209" id="toc-friday-1209" class="nav-link" data-scroll-target="#friday-1209">Friday 12/09</a></li>
+  </ul></li>
+  <li><a href="#week-50---december-22" id="toc-week-50---december-22" class="nav-link" data-scroll-target="#week-50---december-22">Week 50 - December 22</a>
+  <ul class="collapse">
+  <li><a href="#monday-1212" id="toc-monday-1212" class="nav-link" data-scroll-target="#monday-1212">Monday 12/12</a>
+  <ul class="collapse">
+  <li><a href="#fastai-course-lesson-8---convolutions-cnn" id="toc-fastai-course-lesson-8---convolutions-cnn" class="nav-link" data-scroll-target="#fastai-course-lesson-8---convolutions-cnn">fastai course lesson 8 - Convolutions (CNN)</a></li>
+  </ul></li>
+  <li><a href="#wednesday-1214" id="toc-wednesday-1214" class="nav-link" data-scroll-target="#wednesday-1214">Wednesday 12/14</a></li>
+  </ul></li>
+  <li><a href="#week-51---december-22" id="toc-week-51---december-22" class="nav-link" data-scroll-target="#week-51---december-22">Week 51 - December 22</a>
+  <ul class="collapse">
+  <li><a href="#monday-1219" id="toc-monday-1219" class="nav-link" data-scroll-target="#monday-1219">Monday 12/19</a>
+  <ul class="collapse">
+  <li><a href="#wsl-version-1.0" id="toc-wsl-version-1.0" class="nav-link" data-scroll-target="#wsl-version-1.0">WSL version 1.0</a></li>
+  </ul></li>
+  <li><a href="#wednesday-1221" id="toc-wednesday-1221" class="nav-link" data-scroll-target="#wednesday-1221">Wednesday 12/21</a>
+  <ul class="collapse">
+  <li><a href="#desktop-linux-in-wsl" id="toc-desktop-linux-in-wsl" class="nav-link" data-scroll-target="#desktop-linux-in-wsl">desktop linux in WSL</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<section id="week-48---december-22" class="level1">
+<h1>Week 48 - December 22</h1>
+<section id="thursday-1201" class="level2">
+<h2 class="anchored" data-anchor-id="thursday-1201"><strong>Thursday 12/01</strong></h2>
+<section id="fastai-course-lesson-8---convolutions-cnns" class="level3">
+<h3 class="anchored" data-anchor-id="fastai-course-lesson-8---convolutions-cnns">fastai course lesson 8 - Convolutions (CNNs)</h3>
+<p>Running through <a href="../posts/2022-10-17-fastai-2022-courses.html#lesson-8---convolutions-cnns">lesson 8</a></p>
+</section>
+</section>
+</section>
+<section id="week-49---december-22" class="level1">
+<h1>Week 49 - December 22</h1>
+<section id="monday-1205" class="level2">
+<h2 class="anchored" data-anchor-id="monday-1205"><strong>Monday 12/05</strong></h2>
+<section id="chatgpt" class="level3">
+<h3 class="anchored" data-anchor-id="chatgpt">ChatGPT</h3>
+<p>Waiting for some models to be trained, I have some time to play with <a href="https://chat.openai.com/chat">ChatGPT</a> from openai.</p>
+<p>Some questions:</p>
+<ul>
+<li><p>what are the causes of climate change in France?</p></li>
+<li><p>and what are the options to face it?</p></li>
+<li><p>how to train a deep neural network with fastai?</p></li>
+<li><p>what is the most beautiful Franch word?</p></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2022-12-01-logbook-December-22_files/figure-html/8411af41-542f-4d71-b153-e81161ae5df0-1-398d4c0c-0e14-4841-9a8c-6ebe27a40cde.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+<p>nice and fun!</p>
+</section>
+</section>
+<section id="friday-1209" class="level2">
+<h2 class="anchored" data-anchor-id="friday-1209">Friday 12/09</h2>
+<p>I have just encountered an issue in conda/mamba with error messages <code>libtinfow.so.6: no version information available</code></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">guillaume@L001LPF3RKAR5:~$</span> conda info</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/home/guillaume/miniconda/bin/python:</span> /home/guillaume/miniconda/bin/../lib/./libtinfow.so.6: no version information available <span class="er">(</span><span class="ex">required</span> by /home/guillaume/miniconda/bin/../lib/libpypy3.9-c.so<span class="kw">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>A solution for me was issued from <a href="https://stackoverflow.com/questions/72103046/libtinfo-so-6-no-version-information-available-message-using-conda-environment" class="uri">https://stackoverflow.com/questions/72103046/libtinfo-so-6-no-version-information-available-message-using-conda-environment</a></p>
+<p>Install ncurses from conda-forge</p>
+<p>To call <code>conda install -y -c conda-forge ncurses</code> before installing mamba</p>
+</section>
+</section>
+<section id="week-50---december-22" class="level1">
+<h1>Week 50 - December 22</h1>
+<section id="monday-1212" class="level2">
+<h2 class="anchored" data-anchor-id="monday-1212">Monday 12/12</h2>
+<section id="fastai-course-lesson-8---convolutions-cnn" class="level3">
+<h3 class="anchored" data-anchor-id="fastai-course-lesson-8---convolutions-cnn">fastai course lesson 8 - Convolutions (CNN)</h3>
+<p>Continuing <a href="../posts/2022-10-17-fastai-2022-courses.html#lesson-8---convolutions-cnns">lesson 8</a></p>
+</section>
+</section>
+<section id="wednesday-1214" class="level2">
+<h2 class="anchored" data-anchor-id="wednesday-1214">Wednesday 12/14</h2>
+<section id="chatgpt-and-rlhf-reinforcement-learning-from-human-feedback" class="level4">
+<h4 class="anchored" data-anchor-id="chatgpt-and-rlhf-reinforcement-learning-from-human-feedback">ChatGPT and RLHF Reinforcement Learning from Human Feedback</h4>
+<p>1 hour live from Nathan Lambert and Thomas Simonini. <a href="https://www.youtube.com/watch?v=2MBJOuVq380">Video here</a></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2022-12-01-logbook-December-22_files/figure-html/1faab41a-4cfd-4b54-a8c9-5a56596d6edb-1-4144cf29-793e-429a-bc68-4a163ff3200d.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+<p>And there is a blog post written by Nathan and all. (on HuggingFace blog) <a href="https://huggingface.co/blog/rlhf">Illustrating Reinforcement Learning from Human Feedback (RLHF)</a></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2022-12-01-logbook-December-22_files/figure-html/8e6b1903-728c-46e0-ae9c-d940e1ca5b39-1-d88edcb8-294a-4503-92e6-e7956dd8ae83.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+<p>I like the way to ask this question</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2022-12-01-logbook-December-22_files/figure-html/a7867948-110f-4e8d-92c9-e5d75f2f765c-1-8899be10-fb66-4762-97cb-34c035f57d06.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+</section>
+</section>
+</section>
+<section id="week-51---december-22" class="level1">
+<h1>Week 51 - December 22</h1>
+<section id="monday-1219" class="level2">
+<h2 class="anchored" data-anchor-id="monday-1219">Monday 12/19</h2>
+<section id="wsl-version-1.0" class="level3">
+<h3 class="anchored" data-anchor-id="wsl-version-1.0">WSL version 1.0</h3>
+<p>I have just received windows update KB5020812 and with that it means <a href="https://devblogs.microsoft.com/commandline/the-windows-subsystem-for-linux-in-the-microsoft-store-is-now-generally-available-on-windows-10-and-11/">WSL version 1.0</a>! It is now using the Windows Store version.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a> <span class="ex">wsl</span> <span class="at">--version</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Version</span> WSL : 1.0.3.0</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Version</span> du noyau : 5.15.79.1</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">Version</span> WSLg : 1.0.47</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ex">Version</span> MSRDC : 1.2.3575</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="ex">Version</span> direct3D : 1.606.4</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="ex">Version</span> de DXCore : 10.0.25131.1002-220531-1700.rs-onecore-base2-hyp</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="ex">version</span> Windows : 10.0.19044.2364</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Using the Store version of WSL allows you to <a href="https://devblogs.microsoft.com/commandline/a-preview-of-wsl-in-the-microsoft-store-is-now-available/">get updates to WSL much faster</a> compared to when it was a Windows component.</p>
+<p>Creating a blog entry <a href="../posts/2022-12-19-wsl2-from-windows-store.html">WSL2 from Windows Store</a> for all experiences I will have with this version.</p>
+<p>Canonical has published a whitepaper about how to setup WSL/ubuntu for datascientist: <a href="https://ubuntu.com/blog/upgrade-data-science-workflows-ubuntu-wsl" class="uri">https://ubuntu.com/blog/upgrade-data-science-workflows-ubuntu-wsl</a></p>
+<p>And there is a WSL page on ubuntu wiki with fancy tips such as how to activate sound into WSL: <a href="https://wiki.ubuntu.com/WSL" class="uri">https://wiki.ubuntu.com/WSL</a></p>
+</section>
+</section>
+<section id="wednesday-1221" class="level2">
+<h2 class="anchored" data-anchor-id="wednesday-1221">Wednesday 12/21</h2>
+<section id="desktop-linux-in-wsl" class="level3">
+<h3 class="anchored" data-anchor-id="desktop-linux-in-wsl">desktop linux in WSL</h3>
+<p>Trying with kali linux - <a href="https://www.kali.org/docs/wsl/win-kex/" class="uri">https://www.kali.org/docs/wsl/win-kex/</a> * download kali from <a href="https://learn.microsoft.com/en-us/windows/wsl/install-manual#downloading-distributions" class="uri">https://learn.microsoft.com/en-us/windows/wsl/install-manual#downloading-distributions</a> * double-click on KaliLinux_1.13.1.0.appx * create kali-linux entry in Windows Terminal * create wsl.conf with systemd: systemd=true in /etc/wsl.conf, restart kali * activate wsl-vpnkit: echo ‘wsl.exe -d wsl-vpnkit service wsl-vpnkit start’ &gt;&gt; ~/.profile, restart kali * I acnnot activate kali repos which are not within artifactory…</p>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var filterRegex = new RegExp(/^(?:http:|https:)\/\/castorfou\.github\.io\//);
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+    var links = window.document.querySelectorAll('a:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          // default icon
+          link.classList.add("external");
+      }
+    }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

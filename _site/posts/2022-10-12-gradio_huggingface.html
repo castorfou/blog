@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.1.189">
+<meta name="generator" content="quarto-1.2.280">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -166,17 +166,18 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../about.html">About</a>
+    <a class="nav-link" href="../about.html">
+ <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item compact">
     <a class="nav-link" href="https://github.com/castorfou"><i class="bi bi-github" role="img">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
     <a class="nav-link" href="https://twitter.com/GuillaumeRamel1"><i class="bi bi-twitter" role="img">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
 </ul>
               <div class="quarto-toggle-container">
@@ -215,6 +216,7 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
         <p class="date">October 12, 2022</p>
       </div>
     </div>
+    
       
     </div>
     
@@ -256,7 +258,7 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 <p>I am in the board of a badminton club. We have list of members given by one source. And updated rankings given by another source (these rankings can evolve during the year, actually after each game)</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="2022-10-12-gradio_huggingface_files/figure-html/b0965153-4129-47de-a501-ecba6ebf3a48.png" class="img-fluid figure-img"></p>
+<p><img src="2022-10-12-gradio_huggingface_files/figure-html/99cf6b2f-c8e3-4237-9466-807f3f33ecde-1-b0965153-4129-47de-a501-ecba6ebf3a48.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
 </figure>
 </div>
@@ -418,7 +420,7 @@ To create a public link, set `share=True` in `launch()`.</code></pre>
 <p><code>analyse_fichier</code> which takes the file, use <code>add_classements</code> from <code>rbc</code>, save the new content in a temporary file, and return it as the 2nd file block output.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="2022-10-12-gradio_huggingface_files/figure-html/43d95d1f-d77e-433f-8a11-084374ab9c51.png" class="img-fluid figure-img"></p>
+<p><img src="2022-10-12-gradio_huggingface_files/figure-html/3dcbfc10-2cc5-4bad-90b3-0593724cfb08-1-43d95d1f-d77e-433f-8a11-084374ab9c51.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
 </figure>
 </div>
@@ -434,7 +436,7 @@ To create a public link, set `share=True` in `launch()`.</code></pre>
 <p>Just by launching <code>Restart kernel and run all cells</code>, everything is run smoothly and <code>main.py</code> is created</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="2022-10-12-gradio_huggingface_files/figure-html/a627caeb-2dac-4fb0-93ce-ccce300e5116.png" class="img-fluid figure-img"></p>
+<p><img src="2022-10-12-gradio_huggingface_files/figure-html/e5c063dc-6171-4c20-be4b-dd1046d139ef-1-a627caeb-2dac-4fb0-93ce-ccce300e5116.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
 </figure>
 </div>
@@ -446,7 +448,7 @@ To create a public link, set `share=True` in `launch()`.</code></pre>
 <p>You need an huggingface account. And created a space which is almost like creating a git repo.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="2022-10-12-gradio_huggingface_files/figure-html/ca5b351f-bec1-4515-80ef-c12abd84ae76.png" class="img-fluid figure-img"></p>
+<p><img src="2022-10-12-gradio_huggingface_files/figure-html/901fec32-f6dd-4b16-8632-de137570293a-1-ca5b351f-bec1-4515-80ef-c12abd84ae76.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
 </figure>
 </div>
@@ -613,7 +615,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   // Switch to dark mode if need be
   if (hasAlternateSentinel()) {
     toggleColorMode(true);
-  } 
+  } else {
+    toggleColorMode(false);
+  }
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {
@@ -635,7 +639,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -671,25 +692,59 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var filterRegex = new RegExp(/^(?:http:|https:)\/\/castorfou\.github\.io\//);
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+    var links = window.document.querySelectorAll('a:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          // default icon
+          link.classList.add("external");
+      }
+    }
 });
 </script>
 </div> <!-- /content -->
