@@ -3049,7 +3049,7 @@
     "href": "posts/2023-01-02-logbook-January-23.html",
     "title": "Logbook for January 23",
     "section": "",
-    "text": "I have left on-going tests last week of 22.\nTrying to start a X-session on ubuntu 22.04 within this new version of WSL.\nDone it on a sandbox distro at Run gnome-session in Ubuntu LTSRun gnome-session in Ubuntu LTS\nNow gnome-shell can be started from distro ubuntu-x11 by calling gnomeshell.sh\n\n\n\njupyter lab\nsetup my base_jupyter env jupyter lab in WSL\nNow jupyter lab starts automatically with distro ubuntu-22.04\nand can be restarted with sudo systemctl restart jupyterlab"
+    "text": "I have left on-going tests last week of 22.\nTrying to start a X-session on ubuntu 22.04 within this new version of WSL.\nDone it on a sandbox distro at Run gnome-session in Ubuntu LTS\nNow gnome-shell can be started from distro ubuntu-x11 by calling gnomeshell.sh\n\n\n\njupyter lab\nsetup my base_jupyter env jupyter lab in WSL\nNow jupyter lab starts automatically with distro ubuntu-22.04\nand can be restarted with sudo systemctl restart jupyterlab"
   },
   {
     "objectID": "posts/2020-10-21-open-jupyter-from-http-link.html",
