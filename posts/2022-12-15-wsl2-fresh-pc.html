@@ -246,13 +246,19 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
   <li><a href="#optional-automount-secured-vbox" id="toc-optional-automount-secured-vbox" class="nav-link" data-scroll-target="#optional-automount-secured-vbox">(optional) automount secured vbox</a></li>
   <li><a href="#python-with-conda-and-configure-base-environment-jupyterlab-mamba" id="toc-python-with-conda-and-configure-base-environment-jupyterlab-mamba" class="nav-link" data-scroll-target="#python-with-conda-and-configure-base-environment-jupyterlab-mamba">python with conda and configure base environment (jupyterlab, mamba)</a></li>
   <li><a href="#python-with-pip" id="toc-python-with-pip" class="nav-link" data-scroll-target="#python-with-pip">python with pip</a></li>
+  <li><a href="#jupyter-lab" id="toc-jupyter-lab" class="nav-link" data-scroll-target="#jupyter-lab">jupyter lab</a></li>
   </ul></li>
-  <li><a href="#configure-ubuntu-lts-as-desktop" id="toc-configure-ubuntu-lts-as-desktop" class="nav-link" data-scroll-target="#configure-ubuntu-lts-as-desktop">Configure Ubuntu LTS as desktop</a>
+  <li><a href="#configure-ubuntu-lts-as-desktop---run-standalone-applications" id="toc-configure-ubuntu-lts-as-desktop---run-standalone-applications" class="nav-link" data-scroll-target="#configure-ubuntu-lts-as-desktop---run-standalone-applications">Configure Ubuntu LTS as desktop - run standalone applications</a>
   <ul class="collapse">
   <li><a href="#snapd" id="toc-snapd" class="nav-link" data-scroll-target="#snapd">snapd</a></li>
   <li><a href="#firefox" id="toc-firefox" class="nav-link" data-scroll-target="#firefox">firefox</a></li>
   <li><a href="#nautilus" id="toc-nautilus" class="nav-link" data-scroll-target="#nautilus">nautilus</a></li>
   <li><a href="#gimp" id="toc-gimp" class="nav-link" data-scroll-target="#gimp">gimp</a></li>
+  </ul></li>
+  <li><a href="#run-gnome-session-in-ubuntu-lts" id="toc-run-gnome-session-in-ubuntu-lts" class="nav-link" data-scroll-target="#run-gnome-session-in-ubuntu-lts">Run gnome-session in Ubuntu LTS</a>
+  <ul class="collapse">
+  <li><a href="#install-test-distro-from-scratch" id="toc-install-test-distro-from-scratch" class="nav-link" data-scroll-target="#install-test-distro-from-scratch">install test distro <strong>from scratch</strong></a></li>
+  <li><a href="#activate-gnome-session-and-launch-gnome-shell" id="toc-activate-gnome-session-and-launch-gnome-shell" class="nav-link" data-scroll-target="#activate-gnome-session-and-launch-gnome-shell">activate gnome-session and launch gnome-shell</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -427,9 +433,9 @@ chmod +x setup_wsl_root.sh
 <span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="ex">journalctl</span> <span class="at">-r</span> <span class="at">-u</span> autofs</span>
 <span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="co">#print warning</span></span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="ex">journalctl</span> <span class="at">-r</span> <span class="at">-p</span> warning</span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="co">#other examples with journalctl: https://www.geeksforgeeks.org/journalctl-command-in-linux-with-examples/</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="ex">journalctl</span> <span class="at">-r</span> <span class="at">-p</span> warning</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>other examples with journalctl:</p>
+<p><a href="https://www.geeksforgeeks.org/journalctl-command-in-linux-with-examples/" class="uri">https://www.geeksforgeeks.org/journalctl-command-in-linux-with-examples/</a></p>
 </section>
 <section id="python-with-conda-and-configure-base-environment-jupyterlab-mamba" class="level2">
 <h2 class="anchored" data-anchor-id="python-with-conda-and-configure-base-environment-jupyterlab-mamba">python with conda and configure base environment (jupyterlab, mamba)</h2>
@@ -452,29 +458,82 @@ chmod +x setup_wsl_root.sh
 <p>Give a look to <a href="../posts/2022-04-25-install ubuntu 22.04 on WSL.html#configure-pip">script sources</a></p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">--no-check-certificate</span> <span class="at">--content-disposition</span> <span class="at">-O</span> <span class="at">-</span> https://raw.githubusercontent.com/castorfou/blog/master/files/setup_wsl_08_pip.sh <span class="kw">|</span> <span class="fu">bash</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
+<section id="jupyter-lab" class="level2">
+<h2 class="anchored" data-anchor-id="jupyter-lab">jupyter lab</h2>
+<p>In order to preserve base environment, I won’t install anything in it.</p>
+<p>I will create a <code>base_jupyter</code> env with what is needed for running jupyter lab. And create a jupyterlab service to automatically start jupyter lab with my distro (and stop/restart it)</p>
+<p><code>base_jupyter</code></p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-01-03T07:18:49.945138Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-01-03T07:18:49.944794Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-01-03T07:18:50.062803Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-01-03T07:18:50.061939Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-01-03T07:18:49.945115Z&quot;}" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cat <span class="op">/</span>home<span class="op">/</span>guillaume<span class="op">/</span>_conda_env<span class="op">/</span>base_jupyter.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>mamba create -n base_jupyter python=3.9
+mamba activate base_jupyter
+mamba install -c conda-forge jupyterlab
+jupyter labextension install jupyterlab-plotly
+
+jupyter-lab --generate-config
+# in .jupyter/jupyter_lab_config.py
+# replace # c.ServerApp.use_redirect_file = True
+# with c.ServerApp.use_redirect_file = False
+# or get it from gitlab/JANUS/dotfiles
+
+
+mamba install -c conda-forge jupyterlab_execute_time
+</code></pre>
+</div>
+</div>
+<p>jupyterlab as a service:</p>
+<p>FILE /etc/systemd/system/jupyterlab.service</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[Unit]</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="va">Description</span><span class="op">=</span>Jupyter <span class="ex">lab</span> boot scriptJupyter lab boot script</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="va">DefaultDependencies</span><span class="op">=</span>no</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="va">After</span><span class="op">=</span>network.target</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="ex">[Service]</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="va">Type</span><span class="op">=</span>simple</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="va">User</span><span class="op">=</span>guillaume</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="va">Group</span><span class="op">=</span>adm</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="va">ExecStart</span><span class="op">=</span>/home/guillaume/bin/jupyterlab.sh</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="va">TimeoutStartSec</span><span class="op">=</span>0</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="va">RemainAfterExit</span><span class="op">=</span>yes</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a><span class="ex">[Install]</span></span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a><span class="va">WantedBy</span><span class="op">=</span>default.target</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>and</p>
+<p>FILE /home/guillaume/bin/jupyterlab.sh</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash </span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="ex">screen</span> <span class="at">-dmS</span> <span class="st">"jupyter_screen"</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="ex">screen</span> <span class="at">-S</span> <span class="st">"jupyter_screen"</span> <span class="at">-p</span> 0 <span class="at">-X</span> exec jupyterlab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Then enable</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> +x /home/guillaume/bin/jupyterlab.sh</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl daemon-reload</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl enable jupyterlab.service</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl restart jupyterlab.service</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Just pointing to <a href="http://localhost:8888/lab" class="uri">http://localhost:8888/lab</a></p>
 </section>
-<section id="configure-ubuntu-lts-as-desktop" class="level1">
-<h1>Configure Ubuntu LTS as desktop</h1>
+</section>
+<section id="configure-ubuntu-lts-as-desktop---run-standalone-applications" class="level1">
+<h1>Configure Ubuntu LTS as desktop - run standalone applications</h1>
 <p>based on wsl version &gt;= 1.0.</p>
 <p>See <a href="../posts/2022-12-19-wsl2-from-windows-store.html">WSL2 from Windows Store</a></p>
 <section id="snapd" class="level2">
 <h2 class="anchored" data-anchor-id="snapd">snapd</h2>
 <p>Upgrade snap</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get <span class="at">-y</span> upgrade snapd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get <span class="at">-y</span> upgrade snapd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Check it is running</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> snap list</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Name</span>    Version        Rev    Tracking       Publisher   Notes</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="ex">core20</span>  20220318       1405   latest/stable  canonical✓  base</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="ex">lxd</span>     5.0.0-b0287c1  22923  5.0/stable/…   canonical✓  <span class="at">-</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="ex">snapd</span>   2.55.3         15534  latest/stable  canonical✓  snapd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> snap list</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Name</span>    Version        Rev    Tracking       Publisher   Notes</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="ex">core20</span>  20220318       1405   latest/stable  canonical✓  base</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="ex">lxd</span>     5.0.0-b0287c1  22923  5.0/stable/…   canonical✓  <span class="at">-</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="ex">snapd</span>   2.55.3         15534  latest/stable  canonical✓  snapd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="firefox" class="level2">
 <h2 class="anchored" data-anchor-id="firefox">firefox</h2>
 <p>And install firefox</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> snap install firefox</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co"># due to a bug when opening settings</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co"># https://answers.launchpad.net/ubuntu/+question/701403https://answers.launchpad.net/ubuntu/+question/701403</span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install xdg-desktop-portal-gtk</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> snap install firefox</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co"># due to a bug when opening settings</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co"># https://answers.launchpad.net/ubuntu/+question/701403https://answers.launchpad.net/ubuntu/+question/701403</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install xdg-desktop-portal-gtk</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-12-15-wsl2-fresh-pc_files/figure-html/a23898c4-f3f8-40e6-abf4-e46c06ceaa66-1-f65bdbb3-c8f4-4a30-ac69-54727b96e6e4.png" class="img-fluid figure-img"></p>
@@ -492,7 +551,7 @@ chmod +x setup_wsl_root.sh
 <section id="nautilus" class="level2">
 <h2 class="anchored" data-anchor-id="nautilus">nautilus</h2>
 <p>And install nautilus</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install nautilus nautilus-extension-gnome-terminal</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install nautilus nautilus-extension-gnome-terminal</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-12-15-wsl2-fresh-pc_files/figure-html/ddff4bbe-8c2c-44ef-9df8-bdc6c06ba501-1-27246a86-24d7-4131-adad-4a50fd9cbe92.png" class="img-fluid figure-img"></p>
@@ -503,7 +562,70 @@ chmod +x setup_wsl_root.sh
 <section id="gimp" class="level2">
 <h2 class="anchored" data-anchor-id="gimp">gimp</h2>
 <p>And install gimp</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install gimp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install gimp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="run-gnome-session-in-ubuntu-lts" class="level1">
+<h1>Run gnome-session in Ubuntu LTS</h1>
+<p>for the moment I don’t recommend to do it in the main distro.</p>
+<p>It is just as a test. Lots of stuffs don’t work as expected.</p>
+<section id="install-test-distro-from-scratch" class="level2">
+<h2 class="anchored" data-anchor-id="install-test-distro-from-scratch">install test distro <strong>from scratch</strong></h2>
+<p>from powershell</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="ex">wsl</span> <span class="at">--import</span> ubuntu-x11 C:<span class="dt">\w</span>sl<span class="dt">\U</span>buntu-22.04_X11<span class="dt">\i</span>nstance C:<span class="dt">\w</span>sl<span class="dt">\U</span>buntu-22.04_X11<span class="dt">\d</span>ownload<span class="dt">\u</span>buntu-jammy-wsl-amd64-wsl.rootfs.tar.gz</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="ex">wsl</span> <span class="at">-d</span> ubuntu-x11</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> /mnt/c/wsl/Ubuntu-22.04_X11/download/setup_wsl_<span class="pp">*</span> ~/</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> +x setup_wsl_root.sh</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="ex">./setup_wsl_root.sh</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>from powershell</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="ex">wsl</span> <span class="at">-t</span> ubuntu-x11</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>start ubuntu-x11 from windows terminal menu</p>
+<p>and enter informations requested (ssh keys (paste to gitlab), update certificates (enter password)). Other steps are automatic.</p>
+<p>Other steps: - activate systemd (by modifying /etc/wsl.conf) - restart</p>
+</section>
+<section id="activate-gnome-session-and-launch-gnome-shell" class="level2">
+<h2 class="anchored" data-anchor-id="activate-gnome-session-and-launch-gnome-shell">activate gnome-session and launch gnome-shell</h2>
+<p>Here we have a fully working distro. And we will test what is suggested at : <a href="https://askubuntu.com/a/1445415" class="uri">https://askubuntu.com/a/1445415</a></p>
+<ul>
+<li>Create the file /etc/pam.d/system/systemd-user</li>
+<li>Restart distro</li>
+<li><code>sudo apt install ubuntu-desktop acpi-support-</code></li>
+<li>prevent gdm service to start
+<ul>
+<li><code>sudo systemctl stop gdm.service</code></li>
+<li><code>sudo systemctl disable gdm.service</code></li>
+</ul></li>
+<li>activate x11 config at boot:
+<ul>
+<li><code>bash       sudo systemctl is-enabled rc-local.service       (if static it means it has be activated)       sudo systemctl enable rc-local.service</code></li>
+<li><div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>  <span class="co">#create rc.local file</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sudo</span> vi /etc/rc.local</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="co">#!/bin/sh -e</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mount</span> <span class="at">-o</span> rw,remount /tmp/.X11-unix/</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">chmod</span> +t /tmp/.X11-unix</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">chmod</span> o+rw /dev/dri/renderD128</span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>  <span class="ex">/usr/libexec/at-spi-bus-launcher</span> <span class="at">--launch-immediately</span> <span class="kw">&amp;</span></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>  <span class="bu">exit</span> 0</span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>  <span class="co">#save &amp; exit</span></span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sudo</span> chmod 700 /etc/rc.local</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul></li>
+<li><code>sudo usermod -a -G adm guillaume</code></li>
+<li>Restart distro</li>
+<li>launch <code>XDG_SESSION_TYPE=x11 gnome-session --disable-acceleration-check --session=ubuntu --systemd-service &gt; /dev/null 2&gt;&amp;1</code> (this can be added to .bashrc or as a service)</li>
+</ul>
+<p>and then</p>
+<ul>
+<li><code>MUTTER_DEBUG_DUMMY_MODE_SPECS=2400x1300 gnome-shell --nested --no-x11 2&gt; /dev/null &amp;</code></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2022-12-15-wsl2-fresh-pc_files/figure-html/ce9fb9b5-eda2-4d2d-ab54-2923e266bd5d-1-bbf4eacb-20e4-440a-a1bd-c430832000b2.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
 
 
 </section>

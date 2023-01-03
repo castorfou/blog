@@ -2608,7 +2608,7 @@
     "href": "posts/2022-12-15-wsl2-fresh-pc.html#optional-automount-secured-vbox",
     "title": "WSL2 on a fresh new PC",
     "section": "(optional) automount secured vbox",
-    "text": "(optional) automount secured vbox\nBecause I keep secured data within my secured disks mounted in windows (Z:, Y:, …)\nwget --no-check-certificate --content-disposition -O - https://raw.githubusercontent.com/castorfou/blog/master/files/setup_wsl_01_automount_secured_vbox.sh | bash\nModify /etc/vbox.autofs to match your actual mounted disks. sudo service autofs start to start the service.\nif it fails, check that kernel is at least v5. uname -a. If not maybe in WSL 1 insted of WSL 2? (sudo automount -f -v should provide more information)\n\n#my vbox.autofs file\n!cat /etc/vbox.autofs\n\njanus   -fstype=drvfs,uid=1000,gid=1000 :Z:\n\n\nif systemd is activated, we can manage services with journalctl\n#restart autofs\nsudo systemctl restart autofs.service\n\n#read logs for autofs (-r: display last entries first)\n#to use it as user, add your user to adm group\n#sudo usermod -a -G adm <your_username>\njournalctl -r -u autofs\n\n#print warning\njournalctl -r -p warning\n\n#other examples with journalctl: https://www.geeksforgeeks.org/journalctl-command-in-linux-with-examples/"
+    "text": "(optional) automount secured vbox\nBecause I keep secured data within my secured disks mounted in windows (Z:, Y:, …)\nwget --no-check-certificate --content-disposition -O - https://raw.githubusercontent.com/castorfou/blog/master/files/setup_wsl_01_automount_secured_vbox.sh | bash\nModify /etc/vbox.autofs to match your actual mounted disks. sudo service autofs start to start the service.\nif it fails, check that kernel is at least v5. uname -a. If not maybe in WSL 1 insted of WSL 2? (sudo automount -f -v should provide more information)\n\n#my vbox.autofs file\n!cat /etc/vbox.autofs\n\njanus   -fstype=drvfs,uid=1000,gid=1000 :Z:\n\n\nif systemd is activated, we can manage services with journalctl\n#restart autofs\nsudo systemctl restart autofs.service\n\n#read logs for autofs (-r: display last entries first)\n#to use it as user, add your user to adm group\n#sudo usermod -a -G adm <your_username>\njournalctl -r -u autofs\n\n#print warning\njournalctl -r -p warning\nother examples with journalctl:\nhttps://www.geeksforgeeks.org/journalctl-command-in-linux-with-examples/"
   },
   {
     "objectID": "posts/2022-12-15-wsl2-fresh-pc.html#python-with-conda-and-configure-base-environment-jupyterlab-mamba",
@@ -2623,6 +2623,13 @@
     "title": "WSL2 on a fresh new PC",
     "section": "python with pip",
     "text": "python with pip\nGive a look to script sources\nwget --no-check-certificate --content-disposition -O - https://raw.githubusercontent.com/castorfou/blog/master/files/setup_wsl_08_pip.sh | bash"
+  },
+  {
+    "objectID": "posts/2022-12-15-wsl2-fresh-pc.html#jupyter-lab",
+    "href": "posts/2022-12-15-wsl2-fresh-pc.html#jupyter-lab",
+    "title": "WSL2 on a fresh new PC",
+    "section": "jupyter lab",
+    "text": "jupyter lab\nIn order to preserve base environment, I won’t install anything in it.\nI will create a base_jupyter env with what is needed for running jupyter lab. And create a jupyterlab service to automatically start jupyter lab with my distro (and stop/restart it)\nbase_jupyter\n\n!cat /home/guillaume/_conda_env/base_jupyter.txt\n\nmamba create -n base_jupyter python=3.9\nmamba activate base_jupyter\nmamba install -c conda-forge jupyterlab\njupyter labextension install jupyterlab-plotly\n\njupyter-lab --generate-config\n# in .jupyter/jupyter_lab_config.py\n# replace # c.ServerApp.use_redirect_file = True\n# with c.ServerApp.use_redirect_file = False\n# or get it from gitlab/JANUS/dotfiles\n\n\nmamba install -c conda-forge jupyterlab_execute_time\n\n\n\njupyterlab as a service:\nFILE /etc/systemd/system/jupyterlab.service\n[Unit]\nDescription=Jupyter lab boot scriptJupyter lab boot script\nDefaultDependencies=no\nAfter=network.target\n\n[Service]\nType=simple\nUser=guillaume\nGroup=adm\nExecStart=/home/guillaume/bin/jupyterlab.sh\nTimeoutStartSec=0\nRemainAfterExit=yes\n\n[Install]\nWantedBy=default.target\nand\nFILE /home/guillaume/bin/jupyterlab.sh\n#!/bin/bash \nscreen -dmS \"jupyter_screen\"\nscreen -S \"jupyter_screen\" -p 0 -X exec jupyterlab\nThen enable\nchmod +x /home/guillaume/bin/jupyterlab.sh\nsudo systemctl daemon-reload\nsudo systemctl enable jupyterlab.service\nsudo systemctl restart jupyterlab.service\nJust pointing to http://localhost:8888/lab"
   },
   {
     "objectID": "posts/2022-12-15-wsl2-fresh-pc.html#snapd",
@@ -2651,6 +2658,20 @@
     "title": "WSL2 on a fresh new PC",
     "section": "gimp",
     "text": "gimp\nAnd install gimp\nsudo apt install gimp"
+  },
+  {
+    "objectID": "posts/2022-12-15-wsl2-fresh-pc.html#install-test-distro-from-scratch",
+    "href": "posts/2022-12-15-wsl2-fresh-pc.html#install-test-distro-from-scratch",
+    "title": "WSL2 on a fresh new PC",
+    "section": "install test distro from scratch",
+    "text": "install test distro from scratch\nfrom powershell\nwsl --import ubuntu-x11 C:\\wsl\\Ubuntu-22.04_X11\\instance C:\\wsl\\Ubuntu-22.04_X11\\download\\ubuntu-jammy-wsl-amd64-wsl.rootfs.tar.gz\nwsl -d ubuntu-x11\ncd\ncp /mnt/c/wsl/Ubuntu-22.04_X11/download/setup_wsl_* ~/\nchmod +x setup_wsl_root.sh\n./setup_wsl_root.sh\nfrom powershell\nwsl -t ubuntu-x11\nstart ubuntu-x11 from windows terminal menu\nand enter informations requested (ssh keys (paste to gitlab), update certificates (enter password)). Other steps are automatic.\nOther steps: - activate systemd (by modifying /etc/wsl.conf) - restart"
+  },
+  {
+    "objectID": "posts/2022-12-15-wsl2-fresh-pc.html#activate-gnome-session-and-launch-gnome-shell",
+    "href": "posts/2022-12-15-wsl2-fresh-pc.html#activate-gnome-session-and-launch-gnome-shell",
+    "title": "WSL2 on a fresh new PC",
+    "section": "activate gnome-session and launch gnome-shell",
+    "text": "activate gnome-session and launch gnome-shell\nHere we have a fully working distro. And we will test what is suggested at : https://askubuntu.com/a/1445415\n\nCreate the file /etc/pam.d/system/systemd-user\nRestart distro\nsudo apt install ubuntu-desktop acpi-support-\nprevent gdm service to start\n\nsudo systemctl stop gdm.service\nsudo systemctl disable gdm.service\n\nactivate x11 config at boot:\n\nbash       sudo systemctl is-enabled rc-local.service       (if static it means it has be activated)       sudo systemctl enable rc-local.service\n  #create rc.local file\n  sudo vi /etc/rc.local\n\n  #!/bin/sh -e\n  mount -o rw,remount /tmp/.X11-unix/\n  chmod +t /tmp/.X11-unix\n  chmod o+rw /dev/dri/renderD128\n  /usr/libexec/at-spi-bus-launcher --launch-immediately &\n  exit 0\n\n  #save & exit\n  sudo chmod 700 /etc/rc.local\n\nsudo usermod -a -G adm guillaume\nRestart distro\nlaunch XDG_SESSION_TYPE=x11 gnome-session --disable-acceleration-check --session=ubuntu --systemd-service > /dev/null 2>&1 (this can be added to .bashrc or as a service)\n\nand then\n\nMUTTER_DEBUG_DUMMY_MODE_SPECS=2400x1300 gnome-shell --nested --no-x11 2> /dev/null &\n\n\n\n\nimage.png"
   },
   {
     "objectID": "posts/2022-12-19-wsl2-from-windows-store.html",
