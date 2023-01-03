@@ -575,13 +575,12 @@ mamba install -c conda-forge jupyterlab_execute_time
 <span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> snap install zotero-snap</span>
 <span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="ex">zotero-snap</span> 6.0.18 from extraymond installed</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>but there is something to do to activate sync: <a href="https://github.com/extraymond/zotero-snap/issues/29" class="uri">https://github.com/extraymond/zotero-snap/issues/29</a></p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="2022-12-15-wsl2-fresh-pc_files/figure-html/7445bf92-7a8f-4a53-adeb-0cb48a69ad31-1-f9962cc1-a6f7-4db5-bca3-920541215b4c.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
-</figure>
-</div>
+<p>and there is something to do to activate sync: <a href="https://github.com/extraymond/zotero-snap/issues/29" class="uri">https://github.com/extraymond/zotero-snap/issues/29</a></p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="va">FIREFOX_PROFILE</span><span class="op">=</span><span class="kw">`</span><span class="fu">find</span> ~/snap/firefox/common/.mozilla/ <span class="at">-name</span> <span class="pp">*</span>.default<span class="kw">`</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="va">ZOTERO_PROFILE</span><span class="op">=</span><span class="kw">`</span><span class="fu">find</span> ~/snap/zotero-snap/common/.zotero/ <span class="at">-name</span> <span class="pp">*</span>.default<span class="kw">`</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="va">$FIREFOX_PROFILE</span>/cert9.db <span class="va">$ZOTERO_PROFILE</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="va">$FIREFOX_PROFILE</span>/key4.db <span class="va">$ZOTERO_PROFILE</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="va">$FIREFOX_PROFILE</span>/pkcs11.txt <span class="va">$ZOTERO_PROFILE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="run-gnome-session-in-ubuntu-lts" class="level1">
@@ -591,14 +590,14 @@ mamba install -c conda-forge jupyterlab_execute_time
 <section id="install-test-distro-from-scratch" class="level2">
 <h2 class="anchored" data-anchor-id="install-test-distro-from-scratch">install test distro <strong>from scratch</strong></h2>
 <p>from powershell</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="ex">wsl</span> <span class="at">--import</span> ubuntu-x11 C:<span class="dt">\w</span>sl<span class="dt">\U</span>buntu-22.04_X11<span class="dt">\i</span>nstance C:<span class="dt">\w</span>sl<span class="dt">\U</span>buntu-22.04_X11<span class="dt">\d</span>ownload<span class="dt">\u</span>buntu-jammy-wsl-amd64-wsl.rootfs.tar.gz</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="ex">wsl</span> <span class="at">-d</span> ubuntu-x11</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span></span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> /mnt/c/wsl/Ubuntu-22.04_X11/download/setup_wsl_<span class="pp">*</span> ~/</span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> +x setup_wsl_root.sh</span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="ex">./setup_wsl_root.sh</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="ex">wsl</span> <span class="at">--import</span> ubuntu-x11 C:<span class="dt">\w</span>sl<span class="dt">\U</span>buntu-22.04_X11<span class="dt">\i</span>nstance C:<span class="dt">\w</span>sl<span class="dt">\U</span>buntu-22.04_X11<span class="dt">\d</span>ownload<span class="dt">\u</span>buntu-jammy-wsl-amd64-wsl.rootfs.tar.gz</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="ex">wsl</span> <span class="at">-d</span> ubuntu-x11</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> /mnt/c/wsl/Ubuntu-22.04_X11/download/setup_wsl_<span class="pp">*</span> ~/</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> +x setup_wsl_root.sh</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="ex">./setup_wsl_root.sh</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>from powershell</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="ex">wsl</span> <span class="at">-t</span> ubuntu-x11</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="ex">wsl</span> <span class="at">-t</span> ubuntu-x11</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>start ubuntu-x11 from windows terminal menu</p>
 <p>and enter informations requested (ssh keys (paste to gitlab), update certificates (enter password)). Other steps are automatic.</p>
 <p>Other steps: - activate systemd (by modifying /etc/wsl.conf) - restart</p>
@@ -617,21 +616,21 @@ mamba install -c conda-forge jupyterlab_execute_time
 </ul></li>
 <li>activate x11 config at boot</li>
 </ul>
-<div class="sourceCode" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl is-enabled rc-local.service</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="cf">if</span> <span class="ex">static</span> it means it has be activated<span class="kw">)</span></span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl enable rc-local.service</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co">#create rc.local file</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> vi /etc/rc.local</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/sh -e</span></span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mount</span> <span class="at">-o</span> rw,remount /tmp/.X11-unix/</span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> +t /tmp/.X11-unix</span>
-<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> o+rw /dev/dri/renderD128</span>
-<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a><span class="ex">/usr/libexec/at-spi-bus-launcher</span> <span class="at">--launch-immediately</span> <span class="kw">&amp;</span></span>
-<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a><span class="bu">exit</span> 0</span>
-<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a><span class="co">#save &amp; exit</span></span>
-<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> chmod 700 /etc/rc.local</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl is-enabled rc-local.service</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="cf">if</span> <span class="ex">static</span> it means it has be activated<span class="kw">)</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl enable rc-local.service</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co">#create rc.local file</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> vi /etc/rc.local</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/sh -e</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mount</span> <span class="at">-o</span> rw,remount /tmp/.X11-unix/</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> +t /tmp/.X11-unix</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> o+rw /dev/dri/renderD128</span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a><span class="ex">/usr/libexec/at-spi-bus-launcher</span> <span class="at">--launch-immediately</span> <span class="kw">&amp;</span></span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a><span class="bu">exit</span> 0</span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a><span class="co">#save &amp; exit</span></span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> chmod 700 /etc/rc.local</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li><code>sudo usermod -a -G adm guillaume</code></li>
 <li>Restart distro</li>
@@ -648,9 +647,9 @@ mamba install -c conda-forge jupyterlab_execute_time
 </figure>
 </div>
 <p>Then we can start it by running <code>gnomeshell.sh</code></p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> bin/gnomeshell.sh</span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="va">MUTTER_DEBUG_DUMMY_MODE_SPECS</span><span class="op">=</span>1920x1080 <span class="ex">gnome-shell</span> <span class="at">--nested</span> <span class="at">--no-x11</span> <span class="dv">2</span><span class="op">&gt;</span> /dev/null <span class="kw">&amp;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> bin/gnomeshell.sh</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="va">MUTTER_DEBUG_DUMMY_MODE_SPECS</span><span class="op">=</span>1920x1080 <span class="ex">gnome-shell</span> <span class="at">--nested</span> <span class="at">--no-x11</span> <span class="dv">2</span><span class="op">&gt;</span> /dev/null <span class="kw">&amp;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>

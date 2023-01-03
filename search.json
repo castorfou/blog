@@ -2664,7 +2664,7 @@
     "href": "posts/2022-12-15-wsl2-fresh-pc.html#zotero",
     "title": "WSL2 on a fresh new PC",
     "section": "zotero",
-    "text": "zotero\nsnap find zotero\nName         Version  Publisher   Notes  Summary\nzotero-snap  6.0.18   extraymond  -      Zotero helps you collect, organize, cite, and share research.\nqnotero      2.3.1    ealbiter    -      Standalone sidekick to Zotero reference manager.\nzotviewer    1.5.0    fvalle      -      Zotero Visualizer\n\nsudo snap install zotero-snap\nzotero-snap 6.0.18 from extraymond installed\nbut there is something to do to activate sync: https://github.com/extraymond/zotero-snap/issues/29\n\n\n\nimage.png"
+    "text": "zotero\nsnap find zotero\nName         Version  Publisher   Notes  Summary\nzotero-snap  6.0.18   extraymond  -      Zotero helps you collect, organize, cite, and share research.\nqnotero      2.3.1    ealbiter    -      Standalone sidekick to Zotero reference manager.\nzotviewer    1.5.0    fvalle      -      Zotero Visualizer\n\nsudo snap install zotero-snap\nzotero-snap 6.0.18 from extraymond installed\nand there is something to do to activate sync: https://github.com/extraymond/zotero-snap/issues/29\nFIREFOX_PROFILE=`find ~/snap/firefox/common/.mozilla/ -name *.default`\nZOTERO_PROFILE=`find ~/snap/zotero-snap/common/.zotero/ -name *.default`\ncp $FIREFOX_PROFILE/cert9.db $ZOTERO_PROFILE\ncp $FIREFOX_PROFILE/key4.db $ZOTERO_PROFILE\ncp $FIREFOX_PROFILE/pkcs11.txt $ZOTERO_PROFILE"
   },
   {
     "objectID": "posts/2022-12-15-wsl2-fresh-pc.html#install-test-distro-from-scratch",
@@ -3049,7 +3049,7 @@
     "href": "posts/2023-01-02-logbook-January-23.html",
     "title": "Logbook for January 23",
     "section": "",
-    "text": "I have left on-going tests last week of 22.\nTrying to start a X-session on ubuntu 22.04 within this new version of WSL.\nDone it on a sandbox distro at Run gnome-session in Ubuntu LTS\nNow gnome-shell can be started from distro ubuntu-x11 by calling gnomeshell.sh\n\n\n\njupyter lab\nsetup my base_jupyter env jupyter lab in WSL\nNow jupyter lab starts automatically with distro ubuntu-22.04\nand can be restarted with sudo systemctl restart jupyterlab"
+    "text": "I have left on-going tests last week of 22.\nTrying to start a X-session on ubuntu 22.04 within this new version of WSL.\nDone it on a sandbox distro at Run gnome-session in Ubuntu LTS\nNow gnome-shell can be started from distro ubuntu-x11 by calling gnomeshell.sh\n\n\n\njupyter lab\nsetup my base_jupyter env jupyter lab in WSL\nNow jupyter lab starts automatically with distro ubuntu-22.04\nand can be restarted with sudo systemctl restart jupyterlab\nzotero\ncan install and use it including sync (otherwise no interest)"
   },
   {
     "objectID": "posts/2020-10-21-open-jupyter-from-http-link.html",
