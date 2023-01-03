@@ -615,49 +615,24 @@ mamba install -c conda-forge jupyterlab_execute_time
 <li><code>sudo systemctl stop gdm.service</code></li>
 <li><code>sudo systemctl disable gdm.service</code></li>
 </ul></li>
-<li><table class="table">
-<thead>
-<tr class="header">
-<th>tivate x11 config at boot:</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>- ```bash</td>
-</tr>
-<tr class="even">
-<td>sudo systemctl is-enabled rc-local.service</td>
-</tr>
-<tr class="odd">
-<td>(if static it means it has be activated)</td>
-</tr>
-<tr class="even">
-<td>sudo systemctl enable rc-local.service</td>
-</tr>
-<tr class="odd">
-<td>```</td>
-</tr>
-<tr class="even">
-<td>- ```bash</td>
-</tr>
-<tr class="odd">
-<td>#create rc.local file</td>
-</tr>
-<tr class="even">
-<td>sudo vi /etc/rc.local</td>
-</tr>
-</tbody>
-</table>
-<pre><code>  #!/bin/sh -e
-  mount -o rw,remount /tmp/.X11-unix/
-  chmod +t /tmp/.X11-unix
-  chmod o+rw /dev/dri/renderD128
-  /usr/libexec/at-spi-bus-launcher --launch-immediately &amp;
-  exit 0
-
-  #save &amp; exit
-  sudo chmod 700 /etc/rc.local
-  ```</code></pre></li>
+<li>activate x11 config at boot</li>
+</ul>
+<div class="sourceCode" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl is-enabled rc-local.service</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="cf">if</span> <span class="ex">static</span> it means it has be activated<span class="kw">)</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl enable rc-local.service</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co">#create rc.local file</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> vi /etc/rc.local</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/sh -e</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mount</span> <span class="at">-o</span> rw,remount /tmp/.X11-unix/</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> +t /tmp/.X11-unix</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> o+rw /dev/dri/renderD128</span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a><span class="ex">/usr/libexec/at-spi-bus-launcher</span> <span class="at">--launch-immediately</span> <span class="kw">&amp;</span></span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a><span class="bu">exit</span> 0</span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a><span class="co">#save &amp; exit</span></span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> chmod 700 /etc/rc.local</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
 <li><code>sudo usermod -a -G adm guillaume</code></li>
 <li>Restart distro</li>
 <li>launch <code>XDG_SESSION_TYPE=x11 gnome-session --disable-acceleration-check --session=ubuntu --systemd-service &gt; /dev/null 2&gt;&amp;1</code> (this can be added to .bashrc or as a service)</li>
