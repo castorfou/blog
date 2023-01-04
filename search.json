@@ -2653,6 +2653,13 @@
     "text": "nautilus\nAnd install nautilus\nsudo apt install nautilus nautilus-extension-gnome-terminal\n\n\n\nimage.png"
   },
   {
+    "objectID": "posts/2022-12-15-wsl2-fresh-pc.html#gnome-tweaks-and-yaru-theme",
+    "href": "posts/2022-12-15-wsl2-fresh-pc.html#gnome-tweaks-and-yaru-theme",
+    "title": "WSL2 on a fresh new PC",
+    "section": "gnome-tweaks and yaru theme",
+    "text": "gnome-tweaks and yaru theme\nsudo add-apt-repository univ\nsudo apt-get -y install gnome-tweaks\nsudo apt-get -y install yaru-theme-gtk\nsudo apt-get -y install yaru-theme-icon\n\n\n\nimage.png\n\n\nAnd impact on nautilus is directly visible\n\n\n\nimage.png"
+  },
+  {
     "objectID": "posts/2022-12-15-wsl2-fresh-pc.html#gimp",
     "href": "posts/2022-12-15-wsl2-fresh-pc.html#gimp",
     "title": "WSL2 on a fresh new PC",
@@ -2665,6 +2672,13 @@
     "title": "WSL2 on a fresh new PC",
     "section": "zotero",
     "text": "zotero\nsnap find zotero\nName         Version  Publisher   Notes  Summary\nzotero-snap  6.0.18   extraymond  -      Zotero helps you collect, organize, cite, and share research.\nqnotero      2.3.1    ealbiter    -      Standalone sidekick to Zotero reference manager.\nzotviewer    1.5.0    fvalle      -      Zotero Visualizer\n\nsudo snap install zotero-snap\nzotero-snap 6.0.18 from extraymond installed\nand there is something to do to activate sync: https://github.com/extraymond/zotero-snap/issues/29\nFIREFOX_PROFILE=`find ~/snap/firefox/common/.mozilla/ -name *.default`\nZOTERO_PROFILE=`find ~/snap/zotero-snap/common/.zotero/ -name *.default`\ncp $FIREFOX_PROFILE/cert9.db $ZOTERO_PROFILE\ncp $FIREFOX_PROFILE/key4.db $ZOTERO_PROFILE\ncp $FIREFOX_PROFILE/pkcs11.txt $ZOTERO_PROFILE"
+  },
+  {
+    "objectID": "posts/2022-12-15-wsl2-fresh-pc.html#pdf-support",
+    "href": "posts/2022-12-15-wsl2-fresh-pc.html#pdf-support",
+    "title": "WSL2 on a fresh new PC",
+    "section": "pdf support",
+    "text": "pdf support\n#acrobat reader (which uses wine)\nsudo snap install acrordrdc\n\n#evince universal documen reader for ubuntu\nsudo snap install evince"
   },
   {
     "objectID": "posts/2022-12-15-wsl2-fresh-pc.html#install-test-distro-from-scratch",
