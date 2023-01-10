@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.280">
+<meta name="generator" content="quarto-1.2.313">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -165,6 +165,10 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
   <li><a href="#wednesday-0104" id="toc-wednesday-0104" class="nav-link" data-scroll-target="#wednesday-0104">Wednesday 01/04</a></li>
   <li><a href="#friday-0106" id="toc-friday-0106" class="nav-link" data-scroll-target="#friday-0106">Friday 01/06</a></li>
   </ul></li>
+  <li><a href="#week-2---january-23" id="toc-week-2---january-23" class="nav-link" data-scroll-target="#week-2---january-23">Week 2 - January 23</a>
+  <ul class="collapse">
+  <li><a href="#tuesday-0109" id="toc-tuesday-0109" class="nav-link" data-scroll-target="#tuesday-0109">Tuesday 01/09</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -207,7 +211,16 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 <h2 class="anchored" data-anchor-id="friday-0106">Friday 01/06</h2>
 <p>Working with collab filtering (to fill NaN), inspired by fastai <a href="https://www.youtube.com/watch?v=htiNBPxcXgo&amp;t=1086s">Lesson 8 - Practical Deep Learning for Coders 2022</a></p>
 <p>seems it takes 6x times longer to use collab_learner instead of directly embeddings</p>
-<p>I need to understand why</p>
+<p>I need to understand why. I know why, it was just a mistake in calling <code>collab_learner(dls, n_factors, y_range=y_range)collab_learner(dls, n_factors, y_range=y_range)</code> (gorgot <code>y_range=</code>)</p>
+</section>
+</section>
+<section id="week-2---january-23" class="level1">
+<h1>Week 2 - January 23</h1>
+<section id="tuesday-0109" class="level2">
+<h2 class="anchored" data-anchor-id="tuesday-0109">Tuesday 01/09</h2>
+<p>I have continued my experimentations with collaborative filtering and embedding matrices. With nice results. I jave played with parameters (y_range) and hyper parameters (wd). Will have to share with colleagues to get their feedback.</p>
+<p>I have started to use collab_learner with NN. But I have to better understand what is behind.</p>
+<p>Continue to listen to this lesson 8. It is back to computer vision with convolution. I have less interest for these matters but I still like the way Jeremy uses Excel to illustrate all these concepts. Jeremy: the AI excel master.</p>
 
 
 </section>

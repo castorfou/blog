@@ -3063,7 +3063,14 @@
     "href": "posts/2023-01-02-logbook-January-23.html",
     "title": "Logbook for January 23",
     "section": "",
-    "text": "I have left on-going tests last week of 22.\nTrying to start a X-session on ubuntu 22.04 within this new version of WSL.\nDone it on a sandbox distro at Run gnome-session in Ubuntu LTS\nNow gnome-shell can be started from distro ubuntu-x11 by calling gnomeshell.sh\n\n\n\n\n\n\njupyter lab\nsetup my base_jupyter env jupyter lab in WSL\nNow jupyter lab starts automatically with distro ubuntu-22.04\nand can be restarted with sudo systemctl restart jupyterlab\nzotero\ncan install and use it including sync (otherwise no interest)\n\n\n\n\nget back to fastai lesson 8\nopened a ticket in wsl github : WSL some icons in taskbar for linux applications are defaulting to Tux (triaged to wslg)\n\n\n\nWorking with collab filtering (to fill NaN), inspired by fastai Lesson 8 - Practical Deep Learning for Coders 2022\nseems it takes 6x times longer to use collab_learner instead of directly embeddings\nI need to understand why"
+    "text": "I have left on-going tests last week of 22.\nTrying to start a X-session on ubuntu 22.04 within this new version of WSL.\nDone it on a sandbox distro at Run gnome-session in Ubuntu LTS\nNow gnome-shell can be started from distro ubuntu-x11 by calling gnomeshell.sh\n\n\n\n\n\n\njupyter lab\nsetup my base_jupyter env jupyter lab in WSL\nNow jupyter lab starts automatically with distro ubuntu-22.04\nand can be restarted with sudo systemctl restart jupyterlab\nzotero\ncan install and use it including sync (otherwise no interest)\n\n\n\n\nget back to fastai lesson 8\nopened a ticket in wsl github : WSL some icons in taskbar for linux applications are defaulting to Tux (triaged to wslg)\n\n\n\nWorking with collab filtering (to fill NaN), inspired by fastai Lesson 8 - Practical Deep Learning for Coders 2022\nseems it takes 6x times longer to use collab_learner instead of directly embeddings\nI need to understand why. I know why, it was just a mistake in calling collab_learner(dls, n_factors, y_range=y_range)collab_learner(dls, n_factors, y_range=y_range) (gorgot y_range=)"
+  },
+  {
+    "objectID": "posts/2023-01-02-logbook-January-23.html#tuesday-0109",
+    "href": "posts/2023-01-02-logbook-January-23.html#tuesday-0109",
+    "title": "Logbook for January 23",
+    "section": "Tuesday 01/09",
+    "text": "Tuesday 01/09\nI have continued my experimentations with collaborative filtering and embedding matrices. With nice results. I jave played with parameters (y_range) and hyper parameters (wd). Will have to share with colleagues to get their feedback.\nI have started to use collab_learner with NN. But I have to better understand what is behind.\nContinue to listen to this lesson 8. It is back to computer vision with convolution. I have less interest for these matters but I still like the way Jeremy uses Excel to illustrate all these concepts. Jeremy: the AI excel master."
   },
   {
     "objectID": "posts/2020-10-21-open-jupyter-from-http-link.html",
