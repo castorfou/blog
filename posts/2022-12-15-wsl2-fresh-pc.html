@@ -466,11 +466,12 @@ chmod +x setup_wsl_root.sh
 <p>In order to preserve base environment, I won’t install anything in it.</p>
 <p>I will create a <code>base_jupyter</code> env with what is needed for running jupyter lab. And create a jupyterlab service to automatically start jupyter lab with my distro (and stop/restart it)</p>
 <p><code>base_jupyter</code></p>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-01-03T07:18:49.945138Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-01-03T07:18:49.944794Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-01-03T07:18:50.062803Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-01-03T07:18:50.061939Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-01-03T07:18:49.945115Z&quot;}" data-execution_count="1">
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-01-10T11:07:30.353647Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-01-10T11:07:30.353429Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-01-10T11:07:30.466028Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-01-10T11:07:30.465336Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-01-10T11:07:30.353633Z&quot;}" data-tags="[]" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cat <span class="op">/</span>home<span class="op">/</span>guillaume<span class="op">/</span>_conda_env<span class="op">/</span>base_jupyter.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>mamba create -n base_jupyter python=3.9
-mamba activate base_jupyter
+<pre><code>conda remove --name base_jupyter --all
+mamba create -n base_jupyter python=3.9
+conda activate base_jupyter
 mamba install -c conda-forge jupyterlab
 jupyter labextension install jupyterlab-plotly
 
@@ -482,7 +483,8 @@ jupyter-lab --generate-config
 
 
 mamba install -c conda-forge jupyterlab_execute_time
-</code></pre>
+
+pip install azure-cli</code></pre>
 </div>
 </div>
 <p>jupyterlab as a service:</p>

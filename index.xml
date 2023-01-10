@@ -512,11 +512,12 @@ chmod +x setup_wsl_root.sh
 <p>In order to preserve base environment, I won’t install anything in it.</p>
 <p>I will create a <code>base_jupyter</code> env with what is needed for running jupyter lab. And create a jupyterlab service to automatically start jupyter lab with my distro (and stop/restart it)</p>
 <p><code>base_jupyter</code></p>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-01-03T07:18:49.945138Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-01-03T07:18:49.944794Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-01-03T07:18:50.062803Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-01-03T07:18:50.061939Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-01-03T07:18:49.945115Z&quot;}" data-execution_count="1">
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-01-10T11:07:30.353647Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-01-10T11:07:30.353429Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-01-10T11:07:30.466028Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-01-10T11:07:30.465336Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-01-10T11:07:30.353633Z&quot;}" data-tags="[]" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><span class="op" style="color: #5E5E5E;">!</span>cat <span class="op" style="color: #5E5E5E;">/</span>home<span class="op" style="color: #5E5E5E;">/</span>guillaume<span class="op" style="color: #5E5E5E;">/</span>_conda_env<span class="op" style="color: #5E5E5E;">/</span>base_jupyter.txt</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>mamba create -n base_jupyter python=3.9
-mamba activate base_jupyter
+<pre><code>conda remove --name base_jupyter --all
+mamba create -n base_jupyter python=3.9
+conda activate base_jupyter
 mamba install -c conda-forge jupyterlab
 jupyter labextension install jupyterlab-plotly
 
@@ -528,7 +529,8 @@ jupyter-lab --generate-config
 
 
 mamba install -c conda-forge jupyterlab_execute_time
-</code></pre>
+
+pip install azure-cli</code></pre>
 </div>
 </div>
 <p>jupyterlab as a service:</p>
@@ -2740,7 +2742,7 @@ ERROR: TypeError: error sending request for url (https://github.com/quarto-ext/l
 <p>Just modifying <code>_quarto.yml</code> in ( format &gt; html &gt; from ) option</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://castorfou.github.io/posts/2022-09-16-migrate blog from nbdev to quarto_files/figure-html/6c93192f-1-98d6bda2-f07a-4b7d-bfaf-68dc5f46130f.png" class="img-fluid figure-img"></p>
+<p><img src="https://castorfou.github.io/posts/2022-09-16-migrate blog from nbdev to quarto_files/figure-html/4f55716e-1-98d6bda2-f07a-4b7d-bfaf-68dc5f46130f.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
 </figure>
 </div>
@@ -3113,7 +3115,7 @@ ipdb&gt; q</code></pre>
 <p>Settings &gt; Pages &gt; Under “Build and deployment”, under “Branch”, use the None or Branch drop-down menu and select <strong>gh-pages</strong> as a publishing source.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://castorfou.github.io/posts/2022-09-12-nbdev2_files/figure-html/9edc1af2-1-2bea4d49-bd96-4e50-b6fb-44728dcd7fd4.png" class="img-fluid figure-img"></p>
+<p><img src="https://castorfou.github.io/posts/2022-09-12-nbdev2_files/figure-html/6341598b-1-2bea4d49-bd96-4e50-b6fb-44728dcd7fd4.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
 </figure>
 </div>
@@ -3452,7 +3454,7 @@ git push origin $VERSION_TO_TAG</code></pre>
 <p>And only with methods from a class. (otherwise it won’t be exposed)</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://castorfou.github.io/posts/2022-09-12-nbdev2_files/figure-html/8fa3290c-1-9296aaf7-8d34-481b-b18a-d9949d99faad.png" class="img-fluid figure-img"></p>
+<p><img src="https://castorfou.github.io/posts/2022-09-12-nbdev2_files/figure-html/47b19382-1-9296aaf7-8d34-481b-b18a-d9949d99faad.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
 </figure>
 </div>
