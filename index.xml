@@ -10,7 +10,84 @@
 <atom:link href="https://castorfou.github.io/index.xml" rel="self" type="application/rss+xml"/>
 <description>This is Guillaume Ramelet&#39;s personal blog.</description>
 <generator>quarto-1.2.313</generator>
-<lastBuildDate>Sun, 01 Jan 2023 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Wed, 11 Jan 2023 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Zotero</title>
+  <link>https://castorfou.github.io/posts/2023-01-11-zotero-manage-datascience-paper.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>I have been using <a href="https://www.zotero.org/">Zotero</a> for a year now.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://castorfou.github.io/posts/2023-01-11-zotero-manage-datascience-paper_files/figure-html/dc6fe4af-bcd3-43cd-9751-8a9c06ad16e3-1-30005832-8f7d-4e45-aee6-c390439a7fd7.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+<p>Here is the process I use.</p>
+<section id="installation-and-setup" class="level1">
+<h1>Installation and setup</h1>
+<section id="zotero-account" class="level2">
+<h2 class="anchored" data-anchor-id="zotero-account">zotero account</h2>
+<p>1st step is to create a <a href="https://www.zotero.org/guillaumeramelet/library">zotero account</a> from zotero website, quite usefull to sync libraries between multiple zotero installations.</p>
+</section>
+<section id="zotero-app" class="level2">
+<h2 class="anchored" data-anchor-id="zotero-app">zotero app</h2>
+<p>I have installed <a href="../posts/2022-12-15-wsl2-fresh-pc.html#zotero">zotero app</a> within WSL. For a reason the app on my Windows corporate is not the last one, and cannot sync anymore (I think due to too old chrome version).</p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="fu" style="color: #4758AB;">sudo</span> snap install zotero-snap</span>
+<span id="cb1-2"><span class="co" style="color: #5E5E5E;"># to use CA certificates</span></span>
+<span id="cb1-3"><span class="va" style="color: #111111;">FIREFOX_PROFILE</span><span class="op" style="color: #5E5E5E;">=</span><span class="kw" style="color: #003B4F;">`</span><span class="fu" style="color: #4758AB;">find</span> ~/snap/firefox/common/.mozilla/ <span class="at" style="color: #657422;">-name</span> <span class="pp" style="color: #AD0000;">*</span>.default<span class="kw" style="color: #003B4F;">`</span></span>
+<span id="cb1-4"><span class="va" style="color: #111111;">ZOTERO_PROFILE</span><span class="op" style="color: #5E5E5E;">=</span><span class="kw" style="color: #003B4F;">`</span><span class="fu" style="color: #4758AB;">find</span> ~/snap/zotero-snap/common/.zotero/ <span class="at" style="color: #657422;">-name</span> <span class="pp" style="color: #AD0000;">*</span>.default<span class="kw" style="color: #003B4F;">`</span></span>
+<span id="cb1-5"><span class="fu" style="color: #4758AB;">cp</span> <span class="va" style="color: #111111;">$FIREFOX_PROFILE</span>/cert9.db <span class="va" style="color: #111111;">$ZOTERO_PROFILE</span></span>
+<span id="cb1-6"><span class="fu" style="color: #4758AB;">cp</span> <span class="va" style="color: #111111;">$FIREFOX_PROFILE</span>/key4.db <span class="va" style="color: #111111;">$ZOTERO_PROFILE</span></span>
+<span id="cb1-7"><span class="fu" style="color: #4758AB;">cp</span> <span class="va" style="color: #111111;">$FIREFOX_PROFILE</span>/pkcs11.txt <span class="va" style="color: #111111;">$ZOTERO_PROFILE</span></span></code></pre></div>
+</section>
+<section id="zotero-browser-extension" class="level2">
+<h2 class="anchored" data-anchor-id="zotero-browser-extension">zotero browser extension</h2>
+<p>From zotero website, install <a href="https://www.zotero.org/download/connectors">connectors</a></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://castorfou.github.io/posts/2023-01-11-zotero-manage-datascience-paper_files/figure-html/ee6bf395-c625-4fc4-89af-f84a6d036780-1-90a8b17a-ae98-412d-8f54-194b773b5b2e.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+<p>For a reason, install browser connector from zotero app doesn’t do anything here.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://castorfou.github.io/posts/2023-01-11-zotero-manage-datascience-paper_files/figure-html/cb879b8a-56d1-4bff-8a44-794220faccd4-1-774e25b1-fc5d-4664-b848-98375adb619f.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+</section>
+</section>
+<section id="how-to-use-it" class="level1">
+<h1>How to use it</h1>
+<p>As soon as installed in Firefox, the easiest and more efficient way is to navigate sources with Firefox and Click on Zotero add-on <strong>Save to Zotero</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://castorfou.github.io/posts/2023-01-11-zotero-manage-datascience-paper_files/figure-html/5245c43c-4b7b-4b9d-94db-30f6e931a0ca-1-da99f0fa-9a3a-421a-91a2-99dc0b44c5e2.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+<p>It gets all metadata and download PDFs.</p>
+<section id="note" class="level2">
+<h2 class="anchored" data-anchor-id="note">Note</h2>
+<p>We should have the same behaviour from app by using the magic wand but for a certificate reason it fails <img src="https://castorfou.github.io/posts/2023-01-11-zotero-manage-datascience-paper_files/figure-html/e3b2bba5-f46b-4619-9f12-e8d0fcc42a62-1-4f61a970-5da0-42c6-b880-3acc5be9b68f.png" class="img-fluid" alt="image.png"></p>
+<p>And doing the same from zotero website gets metadata but not the pdfs.</p>
+<p>Because of that I will focus on this process based on browser add-on.</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <category>datascience</category>
+  <guid>https://castorfou.github.io/posts/2023-01-11-zotero-manage-datascience-paper.html</guid>
+  <pubDate>Wed, 11 Jan 2023 00:00:00 GMT</pubDate>
+  <media:content url="https://castorfou.github.io/images/ai.png" medium="image" type="image/png"/>
+</item>
 <item>
   <title>Logbook for January 23</title>
   <link>https://castorfou.github.io/posts/2023-01-02-logbook-January-23.html</link>
@@ -2742,7 +2819,7 @@ ERROR: TypeError: error sending request for url (https://github.com/quarto-ext/l
 <p>Just modifying <code>_quarto.yml</code> in ( format &gt; html &gt; from ) option</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://castorfou.github.io/posts/2022-09-16-migrate blog from nbdev to quarto_files/figure-html/4f55716e-1-98d6bda2-f07a-4b7d-bfaf-68dc5f46130f.png" class="img-fluid figure-img"></p>
+<p><img src="https://castorfou.github.io/posts/2022-09-16-migrate blog from nbdev to quarto_files/figure-html/a4a82c4e-1-98d6bda2-f07a-4b7d-bfaf-68dc5f46130f.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
 </figure>
 </div>
@@ -3115,7 +3192,7 @@ ipdb&gt; q</code></pre>
 <p>Settings &gt; Pages &gt; Under “Build and deployment”, under “Branch”, use the None or Branch drop-down menu and select <strong>gh-pages</strong> as a publishing source.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://castorfou.github.io/posts/2022-09-12-nbdev2_files/figure-html/6341598b-1-2bea4d49-bd96-4e50-b6fb-44728dcd7fd4.png" class="img-fluid figure-img"></p>
+<p><img src="https://castorfou.github.io/posts/2022-09-12-nbdev2_files/figure-html/8f334f07-1-2bea4d49-bd96-4e50-b6fb-44728dcd7fd4.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
 </figure>
 </div>
@@ -3454,7 +3531,7 @@ git push origin $VERSION_TO_TAG</code></pre>
 <p>And only with methods from a class. (otherwise it won’t be exposed)</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://castorfou.github.io/posts/2022-09-12-nbdev2_files/figure-html/47b19382-1-9296aaf7-8d34-481b-b18a-d9949d99faad.png" class="img-fluid figure-img"></p>
+<p><img src="https://castorfou.github.io/posts/2022-09-12-nbdev2_files/figure-html/bbd9d31a-1-9296aaf7-8d34-481b-b18a-d9949d99faad.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
 </figure>
 </div>
@@ -4303,95 +4380,6 @@ bower install</code></pre>
   <guid>https://castorfou.github.io/posts/2022-07-21-install docker on WSL.html</guid>
   <pubDate>Thu, 21 Jul 2022 00:00:00 GMT</pubDate>
   <media:content url="https://castorfou.github.io/posts/images/icons/wsl2.jpeg" medium="image" type="image/jpeg"/>
-</item>
-<item>
-  <title>Auto export python code from jupyter lab</title>
-  <link>https://castorfou.github.io/posts/2022-07-21-jupyter-export-lab-as-py.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>This hack comes from <a href="https://drivendata.co/blog/nbautoexport-jupyter-code-review/">EASIER CODE REVIEWS FOR JUPYTER NOTEBOOKS WITH NBAUTOEXPORT</a>.</p>
-<p>And this is an updated version for Jupyter lab when <a href="../posts/2021-01-05-jupyter-export-notebook-as-py.html">Auto export python code from jupyter notebooks</a> was specifically for Jupyter notebook.</p>
-<section id="install-nbautoexport" class="level1">
-<h1>Install NBAUTOEXPORT</h1>
-<p>You should install it in the same virtual environment that you are running Jupyter Notebook or JupyterLab from.</p>
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="co" style="color: #5E5E5E;"># in base (from in _conda_env/base.txt)</span></span>
-<span id="cb1-2"><span class="ex" style="color: null;">pip</span> install nbautoexport</span></code></pre></div>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-07-21T07:06:07.014039Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-07-21T07:06:07.013586Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-07-21T07:06:07.144620Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-07-21T07:06:07.143464Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2022-07-21T07:06:07.014003Z&quot;}" data-tags="[]" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="op" style="color: #5E5E5E;">!</span>cat <span class="op" style="color: #5E5E5E;">~/</span>_conda_env<span class="op" style="color: #5E5E5E;">/</span>base.txt</span></code></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>conda install -y mamba -n base -c conda-forge
-mamba init
-mamba install -y nb_conda_kernels
-mamba install -y -c conda-forge jupyterlab jupyterlab-git
-mamba install -y ipywidgets
-
-mamba install -y -c conda-forge jupyterlab_execute_time
-#and change in jupyter lab : Settings- &gt; Advanced Settings Editor -&gt; Notebook: {"recordTiming": true} 
-
-pip install --upgrade nvitop
-
-jupyter labextension install jupyterlab-spreadsheet
-pip install jupyterlab-tabular-data-editor
-pip install nbautoexport</code></pre>
-</div>
-</div>
-<p>There are two main steps to setting up nbautoexport:</p>
-<ul>
-<li>Install nbautoexport as a post-save hook with Jupyter (once per machine you use it on)</li>
-<li>Configure a notebooks directory (once per project you are working on)</li>
-</ul>
-</section>
-<section id="install-nbautoexport-as-a-post-save-hook" class="level1">
-<h1>Install nbautoexport as a post-save hook</h1>
-<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><span class="co" style="color: #5E5E5E;"># from base environment</span></span>
-<span id="cb4-2"><span class="ex" style="color: null;">nbautoexport</span> install</span>
-<span id="cb4-3"></span>
-<span id="cb4-4"><span class="op" style="color: #5E5E5E;">&gt;</span> nbautoexport <span class="ex" style="color: null;">post-save</span> hook successfully installed with Jupyter.</span>
-<span id="cb4-5"><span class="op" style="color: #5E5E5E;">&gt;</span> If <span class="ex" style="color: null;">a</span> Jupyter server is already running, you will need to restart it for nbautoexport to work.</span></code></pre></div>
-</section>
-<section id="configure-a-notebooks-directory" class="level1">
-<h1>Configure a notebooks directory</h1>
-<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><span class="co" style="color: #5E5E5E;"># from your notebooks directory</span></span>
-<span id="cb5-2"><span class="ex" style="color: null;">nbautoexport</span> configure .</span></code></pre></div>
-<p>It creates this file <code>.nbautoexport</code></p>
-<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><span class="ex" style="color: null;">───────┬───────────────────────────────────────────────────────────</span></span>
-<span id="cb6-2">       <span class="ex" style="color: null;">│</span> File: .nbautoexport</span>
-<span id="cb6-3"><span class="ex" style="color: null;">───────┼───────────────────────────────────────────────────────────</span></span>
-<span id="cb6-4">   <span class="ex" style="color: null;">1</span>   │ {</span>
-<span id="cb6-5">   <span class="ex" style="color: null;">2</span>   │   <span class="st" style="color: #20794D;">"export_formats"</span>: [</span>
-<span id="cb6-6">   <span class="ex" style="color: null;">3</span>   │     <span class="st" style="color: #20794D;">"script"</span></span>
-<span id="cb6-7">   <span class="ex" style="color: null;">4</span>   │   ],</span>
-<span id="cb6-8">   <span class="ex" style="color: null;">5</span>   │   <span class="st" style="color: #20794D;">"organize_by"</span>: <span class="st" style="color: #20794D;">"extension"</span>,</span>
-<span id="cb6-9">   <span class="ex" style="color: null;">6</span>   │   <span class="st" style="color: #20794D;">"clean"</span>: {</span>
-<span id="cb6-10">   <span class="ex" style="color: null;">7</span>   │     <span class="st" style="color: #20794D;">"exclude"</span>: []</span>
-<span id="cb6-11">   <span class="ex" style="color: null;">8</span>   │   }</span>
-<span id="cb6-12">   <span class="ex" style="color: null;">9</span>   │ }</span>
-<span id="cb6-13"><span class="ex" style="color: null;">───────┴───────────────────────────────────────────────────────────</span></span></code></pre></div>
-</section>
-<section id="test" class="level1">
-<h1>Test</h1>
-<p>After running it in my blog <code>_notebooks</code> directory, and saving a notebook; a <code>script</code> directory and <code>.py</code> file with notebook content are created</p>
-<div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><span class="kw" style="color: #003B4F;">(</span><span class="ex" style="color: null;">base</span><span class="kw" style="color: #003B4F;">)</span> <span class="ex" style="color: null;">guillaume@LL11LPC0PQARQ:~/git/guillaume_blog/_notebooks$</span> tree</span>
-<span id="cb7-2"><span class="bu" style="color: null;">.</span></span>
-<span id="cb7-3"><span class="ex" style="color: null;">├──</span> .nbautoexport</span>
-<span id="cb7-4"><span class="ex" style="color: null;">├──</span> 2022-07-21-jupyter-export-lab-as-py.ipynb</span>
-<span id="cb7-5"><span class="ex" style="color: null;">├──</span> README.md</span>
-<span id="cb7-6"><span class="ex" style="color: null;">└──</span> script</span>
-<span id="cb7-7">    <span class="ex" style="color: null;">└──</span> 2022-07-21-jupyter-export-lab-as-py.py</span></code></pre></div>
-<p><code>2022-07-21-jupyter-export-lab-as-py.py</code> has been created as expected</p>
-<p>I can now delete <code>.nbautoexport</code> and it won’t happen in that directory</p>
-
-
-</section>
-
- ]]></description>
-  <category>jupyter</category>
-  <guid>https://castorfou.github.io/posts/2022-07-21-jupyter-export-lab-as-py.html</guid>
-  <pubDate>Thu, 21 Jul 2022 00:00:00 GMT</pubDate>
-  <media:content url="https://castorfou.github.io/posts/images/icons/jupyter.png" medium="image" type="image/png" height="65" width="144"/>
 </item>
 </channel>
 </rss>
