@@ -2562,6 +2562,13 @@
     "text": "Tuesday 01/09\nI have continued my experimentations with collaborative filtering and embedding matrices. With nice results. I have played with parameters (y_range) and hyper parameters (wd). Will have to share with colleagues to get their feedback.\nI have started to use collab_learner with NN. But I have to better understand what is behind.\nContinue to listen to this lesson 8 (1:06). It is back to computer vision with convolution. I have less interest for these matters but I still like the way Jeremy uses Excel to illustrate all these concepts. Jeremy: the AI excel master."
   },
   {
+    "objectID": "posts/2023-01-02-logbook-January-23.html#thursday-0111",
+    "href": "posts/2023-01-02-logbook-January-23.html#thursday-0111",
+    "title": "Logbook for January 23",
+    "section": "Thursday 01/11",
+    "text": "Thursday 01/11\nThis is the end of Lesson 8 - Practical Deep Learning for Coders 2022\nAnd a perfect time to start Lesson 9 - Deep learning foundations to stable diffusion"
+  },
+  {
     "objectID": "posts/2022-07-21-jupyter-export-lab-as-py.html",
     "href": "posts/2022-07-21-jupyter-export-lab-as-py.html",
     "title": "Auto export python code from jupyter lab",

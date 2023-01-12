@@ -139,6 +139,11 @@
 <p>I have continued my experimentations with collaborative filtering and embedding matrices. With nice results. I have played with parameters (y_range) and hyper parameters (wd). Will have to share with colleagues to get their feedback.</p>
 <p>I have started to use collab_learner with NN. But I have to better understand what is behind.</p>
 <p>Continue to listen to this lesson 8 (1:06). It is back to computer vision with convolution. I have less interest for these matters but I still like the way Jeremy uses Excel to illustrate all these concepts. Jeremy: the AI excel master.</p>
+</section>
+<section id="thursday-0111" class="level2">
+<h2 class="anchored" data-anchor-id="thursday-0111">Thursday 01/11</h2>
+<p>This is the end of <a href="https://www.youtube.com/watch?v=htiNBPxcXgo&amp;t=1086s">Lesson 8 - Practical Deep Learning for Coders 2022</a></p>
+<p>And a perfect time to start <a href="https://www.youtube.com/watch?v=_7rMfsA24Ls">Lesson 9 - Deep learning foundations to stable diffusion</a></p>
 
 
 </section>
@@ -1774,6 +1779,13 @@ So, let’s get started!</p>
 <p>I am re-running from start. As adviced it is good to restart <a href="https://www.kaggle.com/code/jhoward/linear-model-and-neural-net-from-scratch/comments#2062682" class="uri">https://www.kaggle.com/code/jhoward/linear-model-and-neural-net-from-scratch/comments#2062682</a></p>
 <p>I like the progressivity here: linear model, then matrix product, then neural network with 2 hidden layers. All of this using basic PyTorch pieces (tensors, multiplication, gradient calculation, …) but nothing about Module</p>
 <p>And then the second step is from fastai book available at <a href="https://github.com/fastai/fastbook/blob/master/08_collab.ipynb" class="uri">https://github.com/fastai/fastbook/blob/master/08_collab.ipynb</a> to explore Module.</p>
+<p>At the end of <a href="https://www.youtube.com/watch?v=htiNBPxcXgo&amp;t=1086s">Lesson 8 - Practical Deep Learning for Coders 2022</a>, Jeremy suggests to read Meta Learning from Radek (<a href="https://radekosmulski.com/" class="uri">https://radekosmulski.com/</a>)</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://castorfou.github.io/posts/2022-10-17-fastai-2022-courses_files/figure-html/09dbdd7a-6fba-4792-b34b-9f982ae241d6-1-50be3667-b78e-4934-a5db-954d2137942b.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
 
 
 </section>
@@ -2819,7 +2831,7 @@ ERROR: TypeError: error sending request for url (https://github.com/quarto-ext/l
 <p>Just modifying <code>_quarto.yml</code> in ( format &gt; html &gt; from ) option</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://castorfou.github.io/posts/2022-09-16-migrate blog from nbdev to quarto_files/figure-html/d7a6041d-1-98d6bda2-f07a-4b7d-bfaf-68dc5f46130f.png" class="img-fluid figure-img"></p>
+<p><img src="https://castorfou.github.io/posts/2022-09-16-migrate blog from nbdev to quarto_files/figure-html/069768d2-1-98d6bda2-f07a-4b7d-bfaf-68dc5f46130f.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
 </figure>
 </div>
@@ -3192,7 +3204,7 @@ ipdb&gt; q</code></pre>
 <p>Settings &gt; Pages &gt; Under “Build and deployment”, under “Branch”, use the None or Branch drop-down menu and select <strong>gh-pages</strong> as a publishing source.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://castorfou.github.io/posts/2022-09-12-nbdev2_files/figure-html/7bb62a3f-1-2bea4d49-bd96-4e50-b6fb-44728dcd7fd4.png" class="img-fluid figure-img"></p>
+<p><img src="https://castorfou.github.io/posts/2022-09-12-nbdev2_files/figure-html/713f80f6-1-2bea4d49-bd96-4e50-b6fb-44728dcd7fd4.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
 </figure>
 </div>
@@ -3531,7 +3543,7 @@ git push origin $VERSION_TO_TAG</code></pre>
 <p>And only with methods from a class. (otherwise it won’t be exposed)</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://castorfou.github.io/posts/2022-09-12-nbdev2_files/figure-html/bfc2d70e-1-9296aaf7-8d34-481b-b18a-d9949d99faad.png" class="img-fluid figure-img"></p>
+<p><img src="https://castorfou.github.io/posts/2022-09-12-nbdev2_files/figure-html/611c8437-1-9296aaf7-8d34-481b-b18a-d9949d99faad.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
 </figure>
 </div>
