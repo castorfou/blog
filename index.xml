@@ -24,6 +24,17 @@
 <section id="lesson-9" class="level1">
 <h1>Lesson 9</h1>
 <p>Video at youtube: <a href="https://www.youtube.com/watch?v=_7rMfsA24Ls" class="uri">https://www.youtube.com/watch?v=_7rMfsA24Ls</a></p>
+<p>There is a repo with notebooks at <a href="https://github.com/fastai/diffusion-nbs">github diffusion-nbs</a></p>
+<p><a href="https://lexica.art/">Lexica</a> is a good starting point where you can search for generated images and what were the prompt used.</p>
+<p>To experiment stable diffusion, there are multiple options.</p>
+<p>I have cloned lessons repo <code>git clone https://github.com/fastai/diffusion-nbs.git</code></p>
+<p>And now I am abble to run this notebook <code>stable_diffusion.ipynb</code> which is based on diffusers library from huggingface.</p>
+<p>I start from a classic fastai environment <code>fastai_janus_tools</code> and duplicate it to <code>fastai_hf</code></p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="ex" style="color: null;">conda</span> create <span class="at" style="color: #657422;">--name</span> fastai_hf <span class="at" style="color: #657422;">--clone</span> fastai_janus_tools</span>
+<span id="cb1-2"><span class="ex" style="color: null;">conda</span> activate fastai_hf</span>
+<span id="cb1-3"><span class="ex" style="color: null;">pip</span> install <span class="at" style="color: #657422;">-Uq</span> diffusers transformers fastcore</span>
+<span id="cb1-4"><span class="ex" style="color: null;">mamba</span> install ipykernel</span>
+<span id="cb1-5"><span class="ex" style="color: null;">python</span> <span class="at" style="color: #657422;">-m</span> ipykernel install <span class="at" style="color: #657422;">--user</span> <span class="at" style="color: #657422;">--name</span><span class="op" style="color: #5E5E5E;">=</span>fastai_hf</span></code></pre></div>
 
 
 </section>
@@ -2854,7 +2865,7 @@ ERROR: TypeError: error sending request for url (https://github.com/quarto-ext/l
 <p>Just modifying <code>_quarto.yml</code> in ( format &gt; html &gt; from ) option</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://castorfou.github.io/posts/2022-09-16-migrate blog from nbdev to quarto_files/figure-html/b372ac69-1-98d6bda2-f07a-4b7d-bfaf-68dc5f46130f.png" class="img-fluid figure-img"></p>
+<p><img src="https://castorfou.github.io/posts/2022-09-16-migrate blog from nbdev to quarto_files/figure-html/ea383ecb-1-98d6bda2-f07a-4b7d-bfaf-68dc5f46130f.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
 </figure>
 </div>
@@ -3227,7 +3238,7 @@ ipdb&gt; q</code></pre>
 <p>Settings &gt; Pages &gt; Under “Build and deployment”, under “Branch”, use the None or Branch drop-down menu and select <strong>gh-pages</strong> as a publishing source.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://castorfou.github.io/posts/2022-09-12-nbdev2_files/figure-html/2e4d2dac-1-2bea4d49-bd96-4e50-b6fb-44728dcd7fd4.png" class="img-fluid figure-img"></p>
+<p><img src="https://castorfou.github.io/posts/2022-09-12-nbdev2_files/figure-html/9be3efde-1-2bea4d49-bd96-4e50-b6fb-44728dcd7fd4.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
 </figure>
 </div>
@@ -3566,7 +3577,7 @@ git push origin $VERSION_TO_TAG</code></pre>
 <p>And only with methods from a class. (otherwise it won’t be exposed)</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://castorfou.github.io/posts/2022-09-12-nbdev2_files/figure-html/a7fa0385-1-9296aaf7-8d34-481b-b18a-d9949d99faad.png" class="img-fluid figure-img"></p>
+<p><img src="https://castorfou.github.io/posts/2022-09-12-nbdev2_files/figure-html/1bc30636-1-9296aaf7-8d34-481b-b18a-d9949d99faad.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
 </figure>
 </div>
