@@ -10,7 +10,30 @@
 <atom:link href="https://castorfou.github.io/index.xml" rel="self" type="application/rss+xml"/>
 <description>This is Guillaume Ramelet&#39;s personal blog.</description>
 <generator>quarto-1.2.313</generator>
-<lastBuildDate>Wed, 11 Jan 2023 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Thu, 12 Jan 2023 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Deep Learning Foundations to Stable Diffusion</title>
+  <link>https://castorfou.github.io/posts/2023-01-12-fastai-stable-diffusion.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>A good entry point is here in fastai forum: <a href="https://forums.fast.ai/t/lesson-9-part-2-preview/101336">Lesson 9 (part 2) preview</a></p>
+<p>This is not yet part 2 but will be a good playground waiting for it.</p>
+<section id="lesson-9" class="level1">
+<h1>Lesson 9</h1>
+<p>Video at youtube: <a href="https://www.youtube.com/watch?v=_7rMfsA24Ls" class="uri">https://www.youtube.com/watch?v=_7rMfsA24Ls</a></p>
+
+
+</section>
+
+ ]]></description>
+  <category>fastai</category>
+  <guid>https://castorfou.github.io/posts/2023-01-12-fastai-stable-diffusion.html</guid>
+  <pubDate>Thu, 12 Jan 2023 00:00:00 GMT</pubDate>
+  <media:content url="https://castorfou.github.io/images/icons/fastai.png" medium="image" type="image/png" height="59" width="144"/>
+</item>
 <item>
   <title>Zotero</title>
   <link>https://castorfou.github.io/posts/2023-01-11-zotero-manage-datascience-paper.html</link>
@@ -2831,7 +2854,7 @@ ERROR: TypeError: error sending request for url (https://github.com/quarto-ext/l
 <p>Just modifying <code>_quarto.yml</code> in ( format &gt; html &gt; from ) option</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://castorfou.github.io/posts/2022-09-16-migrate blog from nbdev to quarto_files/figure-html/069768d2-1-98d6bda2-f07a-4b7d-bfaf-68dc5f46130f.png" class="img-fluid figure-img"></p>
+<p><img src="https://castorfou.github.io/posts/2022-09-16-migrate blog from nbdev to quarto_files/figure-html/b372ac69-1-98d6bda2-f07a-4b7d-bfaf-68dc5f46130f.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
 </figure>
 </div>
@@ -3204,7 +3227,7 @@ ipdb&gt; q</code></pre>
 <p>Settings &gt; Pages &gt; Under “Build and deployment”, under “Branch”, use the None or Branch drop-down menu and select <strong>gh-pages</strong> as a publishing source.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://castorfou.github.io/posts/2022-09-12-nbdev2_files/figure-html/713f80f6-1-2bea4d49-bd96-4e50-b6fb-44728dcd7fd4.png" class="img-fluid figure-img"></p>
+<p><img src="https://castorfou.github.io/posts/2022-09-12-nbdev2_files/figure-html/2e4d2dac-1-2bea4d49-bd96-4e50-b6fb-44728dcd7fd4.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
 </figure>
 </div>
@@ -3543,7 +3566,7 @@ git push origin $VERSION_TO_TAG</code></pre>
 <p>And only with methods from a class. (otherwise it won’t be exposed)</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://castorfou.github.io/posts/2022-09-12-nbdev2_files/figure-html/611c8437-1-9296aaf7-8d34-481b-b18a-d9949d99faad.png" class="img-fluid figure-img"></p>
+<p><img src="https://castorfou.github.io/posts/2022-09-12-nbdev2_files/figure-html/a7fa0385-1-9296aaf7-8d34-481b-b18a-d9949d99faad.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
 </figure>
 </div>
@@ -4275,123 +4298,6 @@ bower install</code></pre>
   <guid>https://castorfou.github.io/posts/2022-07-21-install docker on linux.html</guid>
   <pubDate>Thu, 21 Jul 2022 00:00:00 GMT</pubDate>
   <media:content url="https://castorfou.github.io/posts/images/icons/image_linux.jpg" medium="image" type="image/jpeg"/>
-</item>
-<item>
-  <title>install docker within WSL</title>
-  <link>https://castorfou.github.io/posts/2022-07-21-install docker on WSL.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<section id="source-of-inspiration" class="level2">
-<h2 class="anchored" data-anchor-id="source-of-inspiration">source of inspiration</h2>
-<p><a href="https://dev.michelin.com/wsl2/docker">WSL 2 Docker inside WSL 2</a></p>
-<p><a href="../guillaume_blog/blog/install-ubuntu-22.04-on-WSL.html">install ubuntu 22.04 on WSL</a></p>
-</section>
-<section id="pre-requisite-installation---ubuntu-docker" class="level2">
-<h2 class="anchored" data-anchor-id="pre-requisite-installation---ubuntu-docker">Pre-requisite Installation - ubuntu-docker</h2>
-<section id="uninstall-image-if-needed" class="level3">
-<h3 class="anchored" data-anchor-id="uninstall-image-if-needed">uninstall image (if needed)</h3>
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb1-1"><span class="co" style="color: #5E5E5E;"># wsl --unregister &lt;distroName&gt;</span></span>
-<span id="cb1-2">wsl <span class="op" style="color: #5E5E5E;">--</span>unregister ubuntu<span class="op" style="color: #5E5E5E;">-</span>docker</span></code></pre></div>
-</section>
-<section id="setup-installation-directory" class="level3">
-<h3 class="anchored" data-anchor-id="setup-installation-directory">setup installation directory</h3>
-<p>create this structure by copying the existing one from <code>ubuntu-22.04</code></p>
-<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><span class="ex" style="color: null;">guillaume@LL11LPC0PQARQ:/mnt/d/wsl/Ubuntu-docker$</span> tree</span>
-<span id="cb2-2"><span class="bu" style="color: null;">.</span></span>
-<span id="cb2-3"><span class="ex" style="color: null;">└──</span> download</span>
-<span id="cb2-4"> <span class="ex" style="color: null;">&nbsp;&nbsp;</span> ├── GWSL.Traditional.140.release.x64.exe</span>
-<span id="cb2-5"> <span class="ex" style="color: null;">&nbsp;&nbsp;</span> ├── ZscalerRootCA.crt</span>
-<span id="cb2-6"> <span class="ex" style="color: null;">&nbsp;&nbsp;</span> ├── jammy-server-cloudimg-amd64-wsl.rootfs.tar.gz</span>
-<span id="cb2-7"> <span class="ex" style="color: null;">&nbsp;&nbsp;</span> ├── setup_wsl_root.sh</span>
-<span id="cb2-8"> <span class="ex" style="color: null;">&nbsp;&nbsp;</span> └── setup_wsl_user.sh</span></code></pre></div>
-</section>
-<section id="create-ubuntu-docker-image" class="level3">
-<h3 class="anchored" data-anchor-id="create-ubuntu-docker-image">create ubuntu-docker image</h3>
-<p>from Powershell</p>
-<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb3-1">wsl <span class="op" style="color: #5E5E5E;">--</span>import ubuntu<span class="op" style="color: #5E5E5E;">-</span>docker D<span class="op" style="color: #5E5E5E;">:</span>\wsl\ubuntu<span class="op" style="color: #5E5E5E;">-</span>docker\instance D<span class="op" style="color: #5E5E5E;">:</span>\wsl\ubuntu<span class="op" style="color: #5E5E5E;">-</span>docker\download\jammy<span class="op" style="color: #5E5E5E;">-</span>server<span class="op" style="color: #5E5E5E;">-</span>cloudimg<span class="op" style="color: #5E5E5E;">-</span>amd64<span class="op" style="color: #5E5E5E;">-</span>wsl<span class="op" style="color: #5E5E5E;">.</span><span class="fu" style="color: #4758AB;">rootfs</span><span class="op" style="color: #5E5E5E;">.</span><span class="fu" style="color: #4758AB;">tar</span><span class="op" style="color: #5E5E5E;">.</span><span class="fu" style="color: #4758AB;">gz</span></span>
-<span id="cb3-2"></span>
-<span id="cb3-3"><span class="co" style="color: #5E5E5E;">#should appear in </span></span>
-<span id="cb3-4">wsl <span class="op" style="color: #5E5E5E;">--</span>list <span class="op" style="color: #5E5E5E;">--</span>all <span class="op" style="color: #5E5E5E;">-</span>v</span></code></pre></div>
-</section>
-<section id="declare-ubuntu-docker-in-windows-terminal" class="level3">
-<h3 class="anchored" data-anchor-id="declare-ubuntu-docker-in-windows-terminal">declare ubuntu-docker in Windows Terminal</h3>
-<p>Windows Terminal &gt; Settings &gt; Add a profile &gt; Duplicate a profile (from Ubuntu-22.04)</p>
-<p>Name: <code>ubuntu-docker</code></p>
-<p>Command line: <code>C:\WINDOWS\system32\wsl.exe -d ubuntu-docker</code></p>
-<p>Tab title: <code>ubuntu docker</code></p>
-</section>
-<section id="setup-root-configuration" class="level3">
-<h3 class="anchored" data-anchor-id="setup-root-configuration">setup root configuration</h3>
-<p>Start ubuntu-docker from Windows Terminal</p>
-<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><span class="fu" style="color: #4758AB;">cp</span> /mnt/d/wsl/Ubuntu-docker/download/setup_wsl_<span class="pp" style="color: #AD0000;">*</span> .</span>
-<span id="cb4-2"><span class="fu" style="color: #4758AB;">chmod</span> +x setup_wsl_root.sh</span>
-<span id="cb4-3"><span class="ex" style="color: null;">./setup_wsl_root.sh</span></span></code></pre></div>
-<p>enter username and password</p>
-<p>From powershell, stop ubuntu-docker</p>
-<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb5-1">wsl <span class="op" style="color: #5E5E5E;">-</span>t ubuntu<span class="op" style="color: #5E5E5E;">-</span>docker</span></code></pre></div>
-</section>
-<section id="setup-user-configuration" class="level3">
-<h3 class="anchored" data-anchor-id="setup-user-configuration">setup user configuration</h3>
-<p>Start ubuntu-docker from Windows Terminal</p>
-<p>Follow instructions, don’t skip the integration of ssh key in gitlab</p>
-<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><span class="ex" style="color: null;">guillaume@LL11LPC0PQARQ:~$</span> host google.fr</span>
-<span id="cb6-2"><span class="ex" style="color: null;">google.fr</span> has address 142.250.75.227</span>
-<span id="cb6-3"><span class="ex" style="color: null;">google.fr</span> has IPv6 address 2a00:1450:4007:811::2003</span>
-<span id="cb6-4"><span class="ex" style="color: null;">Host</span> google.fr not found: 3<span class="er" style="color: #AD0000;">(</span><span class="ex" style="color: null;">NXDOMAIN</span><span class="kw" style="color: #003B4F;">)</span></span></code></pre></div>
-<p>That’s it for WSL setup, docker can now be installed</p>
-</section>
-</section>
-<section id="docker-installation" class="level1">
-<h1>Docker installation</h1>
-<div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><span class="ex" style="color: null;">curl</span>  https://artifactory.michelin.com/artifactory/mt-generic-prod/devops-environment/install.sh <span class="at" style="color: #657422;">-o</span> install.sh</span></code></pre></div>
-<p>Edit install.sh</p>
-<ul>
-<li>line 246: add 22 as a support for ubuntu 22.04</li>
-</ul>
-<p><code>declare -A support_matrix=(["debian"]="10 11" ["ubuntu"]="18 20")</code></p>
-<ul>
-<li>comment lines 297 to 301</li>
-</ul>
-<p><code>#configure_vpn_kit #configure_wsl_dns #install_cacert #configure_apt_global "$os" #configure_apt_artifactory "$os"</code></p>
-<ul>
-<li>insert docker list (line 40)</li>
-</ul>
-<div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><span class="bu" style="color: null;">source</span> /etc/os-release</span>
-<span id="cb8-2"><span class="ex" style="color: null;">curl</span> <span class="at" style="color: #657422;">-fsSL</span> https://download.docker.com/linux/<span class="va" style="color: #111111;">${ID}</span>/gpg <span class="kw" style="color: #003B4F;">|</span> <span class="fu" style="color: #4758AB;">sudo</span> apt-key add <span class="at" style="color: #657422;">-</span></span>
-<span id="cb8-3"><span class="bu" style="color: null;">echo</span> <span class="st" style="color: #20794D;">"deb [arch=amd64] https://artifactory.michelin.com/artifactory/ubuntu-docker-remote jammy stable"</span> <span class="kw" style="color: #003B4F;">|</span> <span class="fu" style="color: #4758AB;">sudo</span> tee /etc/apt/sources.list.d/docker.list</span>
-<span id="cb8-4"><span class="fu" style="color: #4758AB;">sudo</span> apt-get update</span></code></pre></div>
-<p>And run it</p>
-<div class="sourceCode" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><span class="fu" style="color: #4758AB;">chmod</span> +x install.sh</span>
-<span id="cb9-2"><span class="ex" style="color: null;">./install.sh</span> <span class="at" style="color: #657422;">--no-dev</span> <span class="at" style="color: #657422;">--no-dev-tools</span> <span class="at" style="color: #657422;">--no-swag</span> <span class="at" style="color: #657422;">--no-swagerino</span> <span class="at" style="color: #657422;">--no-kube</span> <span class="at" style="color: #657422;">--skip-update</span></span></code></pre></div>
-<p>Activate legacy for iptables</p>
-<div class="sourceCode" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><span class="fu" style="color: #4758AB;">sudo</span> update-alternatives <span class="at" style="color: #657422;">--set</span> iptables /usr/sbin/iptables-legacy</span>
-<span id="cb10-2"><span class="fu" style="color: #4758AB;">sudo</span> update-alternatives <span class="at" style="color: #657422;">--set</span> ip6tables /usr/sbin/ip6tables-legacy</span></code></pre></div>
-<p>Then start docker service</p>
-<div class="sourceCode" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><span class="fu" style="color: #4758AB;">sudo</span> service docker start</span></code></pre></div>
-<p>Before restarting, ensure your <code>wsl.conf</code> is correct (remove network-generateResolvConf entry and add user-default one):</p>
-<div class="sourceCode" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><span class="ex" style="color: null;">guillaume@LL11LPC0PQARQ:~$</span> cat /etc/wsl.conf</span>
-<span id="cb12-2"><span class="ex" style="color: null;">[user]</span></span>
-<span id="cb12-3"><span class="va" style="color: #111111;">default</span><span class="op" style="color: #5E5E5E;">=</span>guillaume</span></code></pre></div>
-<p>Restart</p>
-</section>
-<section id="test-installation" class="level1">
-<h1>Test installation</h1>
-<div class="sourceCode" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><span class="ex" style="color: null;">docker</span> run docker.artifactory.michelin.com/hello-world</span>
-<span id="cb13-2"><span class="op" style="color: #5E5E5E;">&gt;</span> Hello <span class="ex" style="color: null;">from</span> Docker!</span>
-<span id="cb13-3"><span class="op" style="color: #5E5E5E;">&gt;</span> This <span class="ex" style="color: null;">message</span> shows that your installation appears to be working correctly.</span></code></pre></div>
-
-
-</section>
-
- ]]></description>
-  <category>wsl</category>
-  <category>docker</category>
-  <guid>https://castorfou.github.io/posts/2022-07-21-install docker on WSL.html</guid>
-  <pubDate>Thu, 21 Jul 2022 00:00:00 GMT</pubDate>
-  <media:content url="https://castorfou.github.io/posts/images/icons/wsl2.jpeg" medium="image" type="image/jpeg"/>
 </item>
 </channel>
 </rss>
