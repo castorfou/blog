@@ -228,6 +228,14 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
   <ul class="collapse">
   <li><a href="#under-wsl" id="toc-under-wsl" class="nav-link" data-scroll-target="#under-wsl">under WSL</a></li>
   <li><a href="#under-linux" id="toc-under-linux" class="nav-link" data-scroll-target="#under-linux">under linux</a></li>
+  <li><a href="#different-features" id="toc-different-features" class="nav-link" data-scroll-target="#different-features">different features</a>
+  <ul class="collapse">
+  <li><a href="#prompt" id="toc-prompt" class="nav-link" data-scroll-target="#prompt">prompt</a></li>
+  <li><a href="#negative-prompt" id="toc-negative-prompt" class="nav-link" data-scroll-target="#negative-prompt">negative prompt</a></li>
+  <li><a href="#sketch---image-to-image" id="toc-sketch---image-to-image" class="nav-link" data-scroll-target="#sketch---image-to-image">sketch - image to image</a></li>
+  <li><a href="#add-your-own-tokens" id="toc-add-your-own-tokens" class="nav-link" data-scroll-target="#add-your-own-tokens">add your own tokens</a></li>
+  <li><a href="#or-retrain-existing-ones" id="toc-or-retrain-existing-ones" class="nav-link" data-scroll-target="#or-retrain-existing-ones">or retrain existing ones</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -314,8 +322,64 @@ pytorch-mutex             1.0                        cuda    fastchan
 torchvision               0.13.1               py38_cu102    fastchan</code></pre>
 </div>
 </div>
+</section>
+<section id="different-features" class="level2">
+<h2 class="anchored" data-anchor-id="different-features">different features</h2>
+<section id="prompt" class="level3">
+<h3 class="anchored" data-anchor-id="prompt">prompt</h3>
+<p>Direct prompt and prompt with style are quite well known</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2023-01-12-fastai-stable-diffusion_files/figure-html/6a868a7e-0bdb-4180-b011-cfcb099254b6-1-24fcbfe5-70cc-4b84-a4ff-29b6f3edcbf0.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="negative-prompt" class="level3">
+<h3 class="anchored" data-anchor-id="negative-prompt">negative prompt</h3>
+<p>But I didn’t know about negative prompt</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2023-01-12-fastai-stable-diffusion_files/figure-html/e284b83b-5634-44f5-a473-0d7df859f2a9-1-6b78dbbf-da13-4b4b-b2d2-5b9b0b574390.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+<p>Here all reference to blue have been removded. Quite neat</p>
+</section>
+<section id="sketch---image-to-image" class="level3">
+<h3 class="anchored" data-anchor-id="sketch---image-to-image">sketch - image to image</h3>
+<p>And with another model image to image,</p>
+<p>you can give an initial image, and this image is then noised and used as a starting point such as in</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2023-01-12-fastai-stable-diffusion_files/figure-html/d25c2ed6-b43b-4a5e-a45a-49008f1c575e-1-e31ed971-4745-4d70-8779-700f74fdeeec.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+<p>And then we can iterate by picking one of these 3 images and use it as an init image</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>init_image2 <span class="op">=</span> images[<span class="dv">2</span>]</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>prompt <span class="op">=</span> <span class="st">"Oil painting of wolf howling at the moon by Van Gogh"</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>images <span class="op">=</span> pipe(prompt<span class="op">=</span>prompt, num_images_per_prompt<span class="op">=</span><span class="dv">3</span>, init_image<span class="op">=</span>init_image2, strength<span class="op">=</span><span class="dv">1</span>, num_inference_steps<span class="op">=</span><span class="dv">70</span>).images</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>image_grid(images, rows<span class="op">=</span><span class="dv">1</span>, cols<span class="op">=</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="add-your-own-tokens" class="level3">
+<h3 class="anchored" data-anchor-id="add-your-own-tokens">add your own tokens</h3>
+<p><a href="http://localhost:8888/lab/tree/diffusion-nbs/stable_diffusion.ipynb">stable_diffu… (2) - JupyterLab</a></p>
+<blockquote class="blockquote">
+<p>Textual inversion is a process where you can quickly “teach” a new word to the text model and plain its embeddings close to some visual representation. This is achieved by adding a new token to the vocabulary, freezing the weights of all the models (except the text encoder), and train with a few representative images.</p>
+<p>This is a schematic representation of the process by the <a href="https://textual-inversion.github.io">authors of the paper</a>.</p>
+</blockquote>
+</section>
+<section id="or-retrain-existing-ones" class="level3">
+<h3 class="anchored" data-anchor-id="or-retrain-existing-ones">or retrain existing ones</h3>
+<p><a href="http://localhost:8888/lab/tree/diffusion-nbs/stable_diffusion.ipynb">stable_diffu… (2) - JupyterLab</a></p>
+<blockquote class="blockquote">
+<p>For example, we fine-tuned a model with a prompt like <code>"photo of a sks person"</code>, using the rare <code>sks</code> token to qualify the term <code>person</code>, and using photos of Jeremy as the targets. Let’s see how it works.</p>
+</blockquote>
+<p>We don’t have the detail about how to retrain it though. This is what is used in Dreambooth.</p>
 
 
+</section>
 </section>
 </section>
 
