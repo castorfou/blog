@@ -264,6 +264,16 @@ mamba install -c conda-forge ipywidgets
 #et verifier que ça marche en lancant python certify_validation.py</code></pre>
 </div>
 </div>
+<p>which is a clone of <code>fastai</code> environement</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-01-13T09:33:12.878950Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-01-13T09:33:12.878696Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-01-13T09:33:12.989890Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-01-13T09:33:12.989188Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-01-13T09:33:12.878927Z&quot;}" data-tags="[]" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cat <span class="op">/</span>home<span class="op">/</span>guillaume<span class="op">/</span>_conda_env<span class="op">/</span>fastai.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>mamba create -n fastai python=3.9
+conda activate fastai
+mamba install pytorch torchvision torchaudio pytorch-cuda=11.7 -c pytorch -c nvidia
+mamba install -c fastchan fastai nbdev </code></pre>
+</div>
+</div>
 <p>For a reason, it fails directly when running <code>pipe = StableDiffusionPipeline.from_pretrained("CompVis/stable-diffusion-v1-4", revision="fp16", torch_dtype=torch.float16).to("cuda")</code></p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -277,7 +287,7 @@ mamba install -c conda-forge ipywidgets
 As described in the docs:<br>
 &gt; When this option is enabled, the attention module will split the input tensor in slices, to compute attention in several steps. This is useful to save some memory in exchange for a small speed decrease.</p>
 <div class="cell" data-tags="[]">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pipe.enable_attention_slicing()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>pipe.enable_attention_slicing()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
