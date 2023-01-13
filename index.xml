@@ -29,12 +29,41 @@
 <p>To experiment stable diffusion, there are multiple options.</p>
 <p>I have cloned lessons repo <code>git clone https://github.com/fastai/diffusion-nbs.git</code></p>
 <p>And now I am abble to run this notebook <code>stable_diffusion.ipynb</code> which is based on diffusers library from huggingface.</p>
-<p>I start from a classic fastai environment <code>fastai_janus_tools</code> and duplicate it to <code>fastai_hf</code></p>
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="ex" style="color: null;">conda</span> create <span class="at" style="color: #657422;">--name</span> fastai_hf <span class="at" style="color: #657422;">--clone</span> fastai_janus_tools</span>
-<span id="cb1-2"><span class="ex" style="color: null;">conda</span> activate fastai_hf</span>
-<span id="cb1-3"><span class="ex" style="color: null;">pip</span> install <span class="at" style="color: #657422;">-Uq</span> diffusers transformers fastcore</span>
-<span id="cb1-4"><span class="ex" style="color: null;">mamba</span> install ipykernel</span>
-<span id="cb1-5"><span class="ex" style="color: null;">python</span> <span class="at" style="color: #657422;">-m</span> ipykernel install <span class="at" style="color: #657422;">--user</span> <span class="at" style="color: #657422;">--name</span><span class="op" style="color: #5E5E5E;">=</span>fastai_hf</span></code></pre></div>
+<p>I start from this <code>fastai_hf</code> environnement</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-01-13T08:21:30.783042Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-01-13T08:21:30.782821Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-01-13T08:21:30.895037Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-01-13T08:21:30.894335Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-01-13T08:21:30.783025Z&quot;}" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="op" style="color: #5E5E5E;">!</span>cat <span class="op" style="color: #5E5E5E;">/</span>home<span class="op" style="color: #5E5E5E;">/</span>guillaume<span class="op" style="color: #5E5E5E;">/</span>_conda_env<span class="op" style="color: #5E5E5E;">/</span>fastai_hf.txt</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>conda remove --name fastai_hf --all
+conda create --name fastai_hf --clone fastai
+conda activate fastai_hf
+pip install -Uq diffusers transformers fastcore
+mamba install ipykernel
+python -m ipykernel install --user --name=fastai_hf
+mamba install matplotlib
+mamba install -c conda-forge ipywidgets
+
+
+#il faut ajouter les certificats Michelin à certifi
+#pour cela lancer ~/bin/certifi.sh
+#depuis l'environnement fastai_hf
+#et verifier que ça marche en lancant python certify_validation.py</code></pre>
+</div>
+</div>
+<p>For a reason, it fails directly when running <code>pipe = StableDiffusionPipeline.from_pretrained("CompVis/stable-diffusion-v1-4", revision="fp16", torch_dtype=torch.float16).to("cuda")</code></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://castorfou.github.io/posts/2023-01-12-fastai-stable-diffusion_files/figure-html/3c7ddcaa-df2f-4c5e-9853-bbb715b777a6-1-ea7cabe0-564d-4348-aa51-fa1082da0418.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+<p>As a workaround, I can execute from my full linux box.</p>
+<p>But because it has less GPU memory (8 GB), I need to run <code>pipe.enable_attention_slicing()</code></p>
+<p>If your GPU is not big enough to use <code>pipe</code>, run <code>pipe.enable_attention_slicing()</code><br>
+As described in the docs:<br>
+&gt; When this option is enabled, the attention module will split the input tensor in slices, to compute attention in several steps. This is useful to save some memory in exchange for a small speed decrease.</p>
+<div class="cell" data-tags="[]">
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1">pipe.enable_attention_slicing()</span></code></pre></div>
+</div>
 
 
 </section>
@@ -2865,7 +2894,7 @@ ERROR: TypeError: error sending request for url (https://github.com/quarto-ext/l
 <p>Just modifying <code>_quarto.yml</code> in ( format &gt; html &gt; from ) option</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://castorfou.github.io/posts/2022-09-16-migrate blog from nbdev to quarto_files/figure-html/ea383ecb-1-98d6bda2-f07a-4b7d-bfaf-68dc5f46130f.png" class="img-fluid figure-img"></p>
+<p><img src="https://castorfou.github.io/posts/2022-09-16-migrate blog from nbdev to quarto_files/figure-html/697e81bc-1-98d6bda2-f07a-4b7d-bfaf-68dc5f46130f.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
 </figure>
 </div>
@@ -3238,7 +3267,7 @@ ipdb&gt; q</code></pre>
 <p>Settings &gt; Pages &gt; Under “Build and deployment”, under “Branch”, use the None or Branch drop-down menu and select <strong>gh-pages</strong> as a publishing source.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://castorfou.github.io/posts/2022-09-12-nbdev2_files/figure-html/9be3efde-1-2bea4d49-bd96-4e50-b6fb-44728dcd7fd4.png" class="img-fluid figure-img"></p>
+<p><img src="https://castorfou.github.io/posts/2022-09-12-nbdev2_files/figure-html/e75caf3a-1-2bea4d49-bd96-4e50-b6fb-44728dcd7fd4.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
 </figure>
 </div>
@@ -3577,7 +3606,7 @@ git push origin $VERSION_TO_TAG</code></pre>
 <p>And only with methods from a class. (otherwise it won’t be exposed)</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://castorfou.github.io/posts/2022-09-12-nbdev2_files/figure-html/1bc30636-1-9296aaf7-8d34-481b-b18a-d9949d99faad.png" class="img-fluid figure-img"></p>
+<p><img src="https://castorfou.github.io/posts/2022-09-12-nbdev2_files/figure-html/309a0265-1-9296aaf7-8d34-481b-b18a-d9949d99faad.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
 </figure>
 </div>
