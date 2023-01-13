@@ -224,7 +224,11 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#lesson-9" id="toc-lesson-9" class="nav-link active" data-scroll-target="#lesson-9">Lesson 9</a></li>
+  <li><a href="#lesson-9" id="toc-lesson-9" class="nav-link active" data-scroll-target="#lesson-9">Lesson 9</a>
+  <ul class="collapse">
+  <li><a href="#under-wsl" id="toc-under-wsl" class="nav-link" data-scroll-target="#under-wsl">under WSL</a></li>
+  <li><a href="#under-linux" id="toc-under-linux" class="nav-link" data-scroll-target="#under-linux">under linux</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -244,6 +248,8 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 <p>To experiment stable diffusion, there are multiple options.</p>
 <p>I have cloned lessons repo <code>git clone https://github.com/fastai/diffusion-nbs.git</code></p>
 <p>And now I am abble to run this notebook <code>stable_diffusion.ipynb</code> which is based on diffusers library from huggingface.</p>
+<section id="under-wsl" class="level2">
+<h2 class="anchored" data-anchor-id="under-wsl">under WSL</h2>
 <p>I start from this <code>fastai_hf</code> environnement</p>
 <div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-01-13T08:21:30.783042Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-01-13T08:21:30.782821Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-01-13T08:21:30.895037Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-01-13T08:21:30.894335Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-01-13T08:21:30.783025Z&quot;}" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cat <span class="op">/</span>home<span class="op">/</span>guillaume<span class="op">/</span>_conda_env<span class="op">/</span>fastai_hf.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -281,6 +287,9 @@ mamba install -c fastchan fastai nbdev </code></pre>
 <p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
 </figure>
 </div>
+</section>
+<section id="under-linux" class="level2">
+<h2 class="anchored" data-anchor-id="under-linux">under linux</h2>
 <p>As a workaround, I can execute from my full linux box.</p>
 <p>But because it has less GPU memory (8 GB), I need to run <code>pipe.enable_attention_slicing()</code></p>
 <p>If your GPU is not big enough to use <code>pipe</code>, run <code>pipe.enable_attention_slicing()</code><br>
@@ -289,8 +298,25 @@ As described in the docs:<br>
 <div class="cell" data-tags="[]">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>pipe.enable_attention_slicing()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>and now it works quite well</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2023-01-12-fastai-stable-diffusion_files/figure-html/66933f15-4598-4c9a-8ff8-cf8730c93883-1-8f8b6bb0-95b2-4677-b243-438ecf37dec4.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+<p>But I don’t remember exactly how my fastai environment has been installed. Because I see a reference to fastchan, I guess it was something like <code>conda install -c fastchan fastai</code></p>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>mamba <span class="bu">list</span><span class="op">|</span>grep torch</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>pytorch                   1.12.1          py3.8_cuda10.2_cudnn7.6.5_0    fastchan
+pytorch-mutex             1.0                        cuda    fastchan
+torchvision               0.13.1               py38_cu102    fastchan</code></pre>
+</div>
+</div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
