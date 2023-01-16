@@ -844,7 +844,7 @@
     "href": "posts/2023-01-12-fastai-stable-diffusion.html#different-features",
     "title": "Deep Learning Foundations to Stable Diffusion",
     "section": "different features",
-    "text": "different features\n\nprompt\nDirect prompt and prompt with style are quite well known\n\n\n\nimage.png\n\n\n\n\nnegative prompt\nBut I didn’t know about negative prompt\n\n\n\nimage.png\n\n\nHere all reference to blue have been removded. Quite neat\n\n\nsketch - image to image\nAnd with another model image to image,\nyou can give an initial image, and this image is then noised and used as a starting point such as in\n\n\n\nimage.png\n\n\nAnd then we can iterate by picking one of these 3 images and use it as an init image\ninit_image2 = images[2]\nprompt = \"Oil painting of wolf howling at the moon by Van Gogh\"\nimages = pipe(prompt=prompt, num_images_per_prompt=3, init_image=init_image2, strength=1, num_inference_steps=70).images\nimage_grid(images, rows=1, cols=3)\n\n\nadd your own tokens\nstable_diffu… (2) - JupyterLab\n\nTextual inversion is a process where you can quickly “teach” a new word to the text model and plain its embeddings close to some visual representation. This is achieved by adding a new token to the vocabulary, freezing the weights of all the models (except the text encoder), and train with a few representative images.\nThis is a schematic representation of the process by the authors of the paper.\n\n\n\nor retrain existing ones\nstable_diffu… (2) - JupyterLab\n\nFor example, we fine-tuned a model with a prompt like \"photo of a sks person\", using the rare sks token to qualify the term person, and using photos of Jeremy as the targets. Let’s see how it works.\n\nWe don’t have the detail about how to retrain it though. This is what is used in Dreambooth."
+    "text": "different features\n\nprompt\nDirect prompt and prompt with style are quite well known\n\n\n\nimage.png\n\n\n\n\nnegative prompt\nBut I didn’t know about negative prompt\n\n\n\nimage.png\n\n\nHere all reference to blue have been removded. Quite neat\n\n\nsketch - image to image\nAnd with another model image to image,\nyou can give an initial image, and this image is then noised and used as a starting point such as in\n\n\n\nimage.png\n\n\nAnd then we can iterate by picking one of these 3 images and use it as an init image\ninit_image2 = images[2]\nprompt = \"Oil painting of wolf howling at the moon by Van Gogh\"\nimages = pipe(prompt=prompt, num_images_per_prompt=3, init_image=init_image2, strength=1, num_inference_steps=70).images\nimage_grid(images, rows=1, cols=3)\n\n\nadd your own tokens\n\nTextual inversion is a process where you can quickly “teach” a new word to the text model and plain its embeddings close to some visual representation. This is achieved by adding a new token to the vocabulary, freezing the weights of all the models (except the text encoder), and train with a few representative images.\nThis is a schematic representation of the process by the authors of the paper.\n\n\n\nor retrain existing ones\n\nFor example, we fine-tuned a model with a prompt like \"photo of a sks person\", using the rare sks token to qualify the term person, and using photos of Jeremy as the targets. Let’s see how it works.\n\nWe don’t have the detail about how to retrain it though. This is what is used in Dreambooth."
   },
   {
     "objectID": "posts/2020-12-02-push-big-files-to-github.html",
@@ -2595,6 +2595,13 @@
     "title": "Logbook for January 23",
     "section": "Thursday 01/11",
     "text": "Thursday 01/11\nThis is the end of Lesson 8 - Practical Deep Learning for Coders 2022\nAnd a perfect time to start Lesson 9 - Deep learning foundations to stable diffusion"
+  },
+  {
+    "objectID": "posts/2023-01-02-logbook-January-23.html#monday-0116",
+    "href": "posts/2023-01-02-logbook-January-23.html#monday-0116",
+    "title": "Logbook for January 23",
+    "section": "Monday 01/16",
+    "text": "Monday 01/16\nStephane Mallat will give his 2023 course at College de France in the following weeks.\n\n\n\nimage.png\n\n\nI guess it will be a great time as always."
   },
   {
     "objectID": "posts/2022-07-21-jupyter-export-lab-as-py.html",
