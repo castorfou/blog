@@ -148,10 +148,15 @@ torchvision               0.13.1               py38_cu102    fastchan</code></pr
 <p>For example, we fine-tuned a model with a prompt like <code>"photo of a sks person"</code>, using the rare <code>sks</code> token to qualify the term <code>person</code>, and using photos of Jeremy as the targets. Let’s see how it works.</p>
 </blockquote>
 <p>We don’t have the detail about how to retrain it though. This is what is used in Dreambooth.</p>
-
-
 </section>
 </section>
+</section>
+<section id="lesson-9a---deep-divefrom-johnowhitaker" class="level1">
+<h1>Lesson 9A - Deep Dive—from <span class="citation" data-cites="johnowhitaker">@johnowhitaker</span></h1>
+<p>Video: <a href="https://www.youtube.com/watch?v=0_BBRNYInx8" class="uri">https://www.youtube.com/watch?v=0_BBRNYInx8</a></p>
+<p>Notebook: <a href="https://github.com/fastai/diffusion-nbs/blob/master/Stable%20Diffusion%20Deep%20Dive.ipynb" class="uri">https://github.com/fastai/diffusion-nbs/blob/master/Stable%20Diffusion%20Deep%20Dive.ipynb</a></p>
+
+
 </section>
 
  ]]></description>
@@ -2994,7 +2999,7 @@ ERROR: TypeError: error sending request for url (https://github.com/quarto-ext/l
 <p>Just modifying <code>_quarto.yml</code> in ( format &gt; html &gt; from ) option</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://castorfou.github.io/posts/2022-09-16-migrate blog from nbdev to quarto_files/figure-html/325899c5-1-98d6bda2-f07a-4b7d-bfaf-68dc5f46130f.png" class="img-fluid figure-img"></p>
+<p><img src="https://castorfou.github.io/posts/2022-09-16-migrate blog from nbdev to quarto_files/figure-html/82ef76cd-1-98d6bda2-f07a-4b7d-bfaf-68dc5f46130f.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
 </figure>
 </div>
@@ -3367,7 +3372,7 @@ ipdb&gt; q</code></pre>
 <p>Settings &gt; Pages &gt; Under “Build and deployment”, under “Branch”, use the None or Branch drop-down menu and select <strong>gh-pages</strong> as a publishing source.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://castorfou.github.io/posts/2022-09-12-nbdev2_files/figure-html/c2334994-1-2bea4d49-bd96-4e50-b6fb-44728dcd7fd4.png" class="img-fluid figure-img"></p>
+<p><img src="https://castorfou.github.io/posts/2022-09-12-nbdev2_files/figure-html/41455c40-1-2bea4d49-bd96-4e50-b6fb-44728dcd7fd4.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
 </figure>
 </div>
@@ -3706,7 +3711,7 @@ git push origin $VERSION_TO_TAG</code></pre>
 <p>And only with methods from a class. (otherwise it won’t be exposed)</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://castorfou.github.io/posts/2022-09-12-nbdev2_files/figure-html/0e9f6b71-1-9296aaf7-8d34-481b-b18a-d9949d99faad.png" class="img-fluid figure-img"></p>
+<p><img src="https://castorfou.github.io/posts/2022-09-12-nbdev2_files/figure-html/d8ef9dee-1-9296aaf7-8d34-481b-b18a-d9949d99faad.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
 </figure>
 </div>
