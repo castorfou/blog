@@ -383,6 +383,11 @@ torchvision               0.13.1               py38_cu102    fastchan</code></pr
 <h1>Lesson 9A - Deep Dive—from <span class="citation" data-cites="johnowhitaker">@johnowhitaker</span></h1>
 <p>Video: <a href="https://www.youtube.com/watch?v=0_BBRNYInx8" class="uri">https://www.youtube.com/watch?v=0_BBRNYInx8</a></p>
 <p>Notebook: <a href="https://github.com/fastai/diffusion-nbs/blob/master/Stable%20Diffusion%20Deep%20Dive.ipynb" class="uri">https://github.com/fastai/diffusion-nbs/blob/master/Stable%20Diffusion%20Deep%20Dive.ipynb</a></p>
+<p>With my low gpu-memory machine, have to install additional packages</p>
+<pre class="pip"><code>!pip install accelerate protobuf==3.20</code></pre>
+<p>Unfortunately I cannot run it:</p>
+<p><a href="https://forums.fast.ai/t/lesson-9-part-2-preview/101336/11?u=guillaumeramelet" class="uri">https://forums.fast.ai/t/lesson-9-part-2-preview/101336/11?u=guillaumeramelet</a></p>
+<pre class="log"><code>RuntimeError: CUDA out of memory. Tried to allocate 512.00 MiB (GPU 0; 7.80 GiB total capacity; 6.15 GiB already allocated; 142.06 MiB free; 6.67 GiB reserved in total by PyTorch) If reserved memory is &gt;&gt; allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF</code></pre>
 
 
 </section>
