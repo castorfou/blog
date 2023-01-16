@@ -160,8 +160,18 @@ torchvision               0.13.1               py38_cu102    fastchan</code></pr
 <p>Unfortunately I cannot run it:</p>
 <p><a href="https://forums.fast.ai/t/lesson-9-part-2-preview/101336/11?u=guillaumeramelet" class="uri">https://forums.fast.ai/t/lesson-9-part-2-preview/101336/11?u=guillaumeramelet</a></p>
 <pre class="log"><code>RuntimeError: CUDA out of memory. Tried to allocate 512.00 MiB (GPU 0; 7.80 GiB total capacity; 6.15 GiB already allocated; 142.06 MiB free; 6.67 GiB reserved in total by PyTorch) If reserved memory is &gt;&gt; allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF</code></pre>
+<section id="the-autoencoder" class="level2">
+<h2 class="anchored" data-anchor-id="the-autoencoder">the autoencoder</h2>
+<p>This is quite impressive that vae can compress/decompress with such a factor (/48) and keep this level of quality</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://castorfou.github.io/posts/2023-01-12-fastai-stable-diffusion_files/figure-html/6dccd1fc-0c5b-478e-a1a1-e25b00e1b34b-1-1a3367a3-99f6-41ba-977c-2f7ffa2885ce.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
 
 
+</section>
 </section>
 
  ]]></description>
@@ -3004,7 +3014,7 @@ ERROR: TypeError: error sending request for url (https://github.com/quarto-ext/l
 <p>Just modifying <code>_quarto.yml</code> in ( format &gt; html &gt; from ) option</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://castorfou.github.io/posts/2022-09-16-migrate blog from nbdev to quarto_files/figure-html/676424c0-1-98d6bda2-f07a-4b7d-bfaf-68dc5f46130f.png" class="img-fluid figure-img"></p>
+<p><img src="https://castorfou.github.io/posts/2022-09-16-migrate blog from nbdev to quarto_files/figure-html/20c1f3d1-1-98d6bda2-f07a-4b7d-bfaf-68dc5f46130f.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
 </figure>
 </div>
@@ -3377,7 +3387,7 @@ ipdb&gt; q</code></pre>
 <p>Settings &gt; Pages &gt; Under “Build and deployment”, under “Branch”, use the None or Branch drop-down menu and select <strong>gh-pages</strong> as a publishing source.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://castorfou.github.io/posts/2022-09-12-nbdev2_files/figure-html/4fe9f1d1-1-2bea4d49-bd96-4e50-b6fb-44728dcd7fd4.png" class="img-fluid figure-img"></p>
+<p><img src="https://castorfou.github.io/posts/2022-09-12-nbdev2_files/figure-html/586d224f-1-2bea4d49-bd96-4e50-b6fb-44728dcd7fd4.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
 </figure>
 </div>
@@ -3716,7 +3726,7 @@ git push origin $VERSION_TO_TAG</code></pre>
 <p>And only with methods from a class. (otherwise it won’t be exposed)</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://castorfou.github.io/posts/2022-09-12-nbdev2_files/figure-html/f829bc4e-1-9296aaf7-8d34-481b-b18a-d9949d99faad.png" class="img-fluid figure-img"></p>
+<p><img src="https://castorfou.github.io/posts/2022-09-12-nbdev2_files/figure-html/94d5b4cc-1-9296aaf7-8d34-481b-b18a-d9949d99faad.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
 </figure>
 </div>
