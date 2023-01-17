@@ -327,6 +327,20 @@ torchvision               0.13.1               py38_cu102    fastchan</code></pr
 </figure>
 </div>
 <p>I guess it will be a great time as always.</p>
+</section>
+<section id="tuesday-0117" class="level2">
+<h2 class="anchored" data-anchor-id="tuesday-0117">Tuesday 01/17</h2>
+<p>In Windows Terminal (and it seems OSX as well), Ctrl-C has 2 behaviours - if some text is highlighted, then it means COPY - if nothing is selected, then it is INTERRUPT</p>
+<p>And I like this behaviour.</p>
+<p>Unfortunately it is not the case with gnome terminal. But what I did was to update shortcut options to map Copy with Ctrl-C.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://castorfou.github.io/posts/2023-01-02-logbook-January-23_files/figure-html/08dc58ee-cd10-4bf8-b7b3-388c9bf81dc6-1-256aa94c-3c05-4fa5-b518-002a2494dad1.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+<p>And automatically it remaps INTERRUPT with Ctrl-Shift-C.</p>
+<p>Not as good as Windows Terminal but good enough for now.</p>
 
 
 </section>
@@ -3014,7 +3028,7 @@ ERROR: TypeError: error sending request for url (https://github.com/quarto-ext/l
 <p>Just modifying <code>_quarto.yml</code> in ( format &gt; html &gt; from ) option</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://castorfou.github.io/posts/2022-09-16-migrate blog from nbdev to quarto_files/figure-html/20c1f3d1-1-98d6bda2-f07a-4b7d-bfaf-68dc5f46130f.png" class="img-fluid figure-img"></p>
+<p><img src="https://castorfou.github.io/posts/2022-09-16-migrate blog from nbdev to quarto_files/figure-html/023b0767-1-98d6bda2-f07a-4b7d-bfaf-68dc5f46130f.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
 </figure>
 </div>
@@ -3387,7 +3401,7 @@ ipdb&gt; q</code></pre>
 <p>Settings &gt; Pages &gt; Under “Build and deployment”, under “Branch”, use the None or Branch drop-down menu and select <strong>gh-pages</strong> as a publishing source.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://castorfou.github.io/posts/2022-09-12-nbdev2_files/figure-html/586d224f-1-2bea4d49-bd96-4e50-b6fb-44728dcd7fd4.png" class="img-fluid figure-img"></p>
+<p><img src="https://castorfou.github.io/posts/2022-09-12-nbdev2_files/figure-html/a4d4bb71-1-2bea4d49-bd96-4e50-b6fb-44728dcd7fd4.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
 </figure>
 </div>
@@ -3726,7 +3740,7 @@ git push origin $VERSION_TO_TAG</code></pre>
 <p>And only with methods from a class. (otherwise it won’t be exposed)</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://castorfou.github.io/posts/2022-09-12-nbdev2_files/figure-html/94d5b4cc-1-9296aaf7-8d34-481b-b18a-d9949d99faad.png" class="img-fluid figure-img"></p>
+<p><img src="https://castorfou.github.io/posts/2022-09-12-nbdev2_files/figure-html/157bd757-1-9296aaf7-8d34-481b-b18a-d9949d99faad.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
 </figure>
 </div>

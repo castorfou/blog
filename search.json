@@ -2611,6 +2611,13 @@
     "text": "Monday 01/16\nStephane Mallat will give his 2023 course at College de France in the following weeks.\n\n\n\nimage.png\n\n\nI guess it will be a great time as always."
   },
   {
+    "objectID": "posts/2023-01-02-logbook-January-23.html#tuesday-0117",
+    "href": "posts/2023-01-02-logbook-January-23.html#tuesday-0117",
+    "title": "Logbook for January 23",
+    "section": "Tuesday 01/17",
+    "text": "Tuesday 01/17\nIn Windows Terminal (and it seems OSX as well), Ctrl-C has 2 behaviours - if some text is highlighted, then it means COPY - if nothing is selected, then it is INTERRUPT\nAnd I like this behaviour.\nUnfortunately it is not the case with gnome terminal. But what I did was to update shortcut options to map Copy with Ctrl-C.\n\n\n\nimage.png\n\n\nAnd automatically it remaps INTERRUPT with Ctrl-Shift-C.\nNot as good as Windows Terminal but good enough for now."
+  },
+  {
     "objectID": "posts/2022-07-21-jupyter-export-lab-as-py.html",
     "href": "posts/2022-07-21-jupyter-export-lab-as-py.html",
     "title": "Auto export python code from jupyter lab",

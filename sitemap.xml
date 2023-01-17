@@ -2,446 +2,446 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://castorfou.github.io/index.html</loc>
-    <lastmod>2023-01-16T16:51:50.384Z</lastmod>
+    <lastmod>2023-01-17T07:09:22.093Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/about.html</loc>
-    <lastmod>2023-01-16T16:51:52.816Z</lastmod>
+    <lastmod>2023-01-17T07:09:24.117Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2020-09-08-becoming-datascientist.html</loc>
-    <lastmod>2023-01-16T16:51:53.340Z</lastmod>
+    <lastmod>2023-01-17T07:09:24.461Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2021-03-25-headless-raspberry-pi-bridge-network.html</loc>
-    <lastmod>2023-01-16T16:51:53.848Z</lastmod>
+    <lastmod>2023-01-17T07:09:24.833Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2021-04-01-Aniti - RLVS - seminaire RL.html</loc>
-    <lastmod>2023-01-16T16:51:54.500Z</lastmod>
+    <lastmod>2023-01-17T07:09:25.321Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2021-06-25-slide-show-jupyter.html</loc>
-    <lastmod>2023-01-16T16:51:54.964Z</lastmod>
+    <lastmod>2023-01-17T07:09:25.669Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2022-07-29-evalai and gitlab.html</loc>
-    <lastmod>2023-01-16T16:51:55.512Z</lastmod>
+    <lastmod>2023-01-17T07:09:26.029Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2022-10-01-logbook-October-22.html</loc>
-    <lastmod>2023-01-16T16:51:56.324Z</lastmod>
+    <lastmod>2023-01-17T07:09:26.593Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2021-02-19-Deep Reinforcement Learning Course by Thomas Simonini.html</loc>
-    <lastmod>2023-01-16T16:51:57.264Z</lastmod>
+    <lastmod>2023-01-17T07:09:27.249Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2021-02-10-college-de-france-representations-parcimonieuses.html</loc>
-    <lastmod>2023-01-16T16:51:58.056Z</lastmod>
+    <lastmod>2023-01-17T07:09:27.789Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2020-12-08-share-github-repo-on-2-pc.html</loc>
-    <lastmod>2023-01-16T16:51:58.528Z</lastmod>
+    <lastmod>2023-01-17T07:09:28.117Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2021-03-03-gpg-linux.html</loc>
-    <lastmod>2023-01-16T16:51:59.008Z</lastmod>
+    <lastmod>2023-01-17T07:09:28.453Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2020-09-11-git-commit-without-password.html</loc>
-    <lastmod>2023-01-16T16:51:59.452Z</lastmod>
+    <lastmod>2023-01-17T07:09:28.781Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2021-06-07-reinforcement-learning-specialization-coursera-course3.html</loc>
-    <lastmod>2023-01-16T16:52:00.292Z</lastmod>
+    <lastmod>2023-01-17T07:09:29.369Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2020-10-21-github-ssh-behind-proxy.html</loc>
-    <lastmod>2023-01-16T16:52:00.800Z</lastmod>
+    <lastmod>2023-01-17T07:09:29.737Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2020-10-07-gan-specialization-week4-conditional_generation-controllable-generation.html</loc>
-    <lastmod>2023-01-16T16:52:01.224Z</lastmod>
+    <lastmod>2023-01-17T07:09:30.093Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2020-09-10-blog-from-jupyter-sans-images.html</loc>
-    <lastmod>2023-01-16T16:52:01.836Z</lastmod>
+    <lastmod>2023-01-17T07:09:30.505Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2020-09-14-fast-read-excel-pandas.html</loc>
-    <lastmod>2023-01-16T16:52:02.332Z</lastmod>
+    <lastmod>2023-01-17T07:09:30.869Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2021-07-09-git-ignore-large-files.html</loc>
-    <lastmod>2023-01-16T16:52:02.760Z</lastmod>
+    <lastmod>2023-01-17T07:09:31.193Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2021-03-09-Introduction to Reinforcement Learning with David Silver.html</loc>
-    <lastmod>2023-01-16T16:52:03.560Z</lastmod>
+    <lastmod>2023-01-17T07:09:31.753Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2020-10-19-test-inner-images_in-jupyter.html</loc>
-    <lastmod>2023-01-16T16:52:03.968Z</lastmod>
+    <lastmod>2023-01-17T07:09:32.069Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2021-06-14-reinforcement-learning-specialization-coursera-course4.html</loc>
-    <lastmod>2023-01-16T16:52:04.656Z</lastmod>
+    <lastmod>2023-01-17T07:09:32.521Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2020-09-21-windows10-fastai-wsl2-cuda.html</loc>
-    <lastmod>2023-01-16T16:52:05.248Z</lastmod>
+    <lastmod>2023-01-17T07:09:32.933Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2021-01-13-installing-python-packages-from-jupyter.html</loc>
-    <lastmod>2023-01-16T16:52:05.784Z</lastmod>
+    <lastmod>2023-01-17T07:09:33.305Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2021-01-13-matplotlib-cheatsheet.html</loc>
-    <lastmod>2023-01-16T16:52:06.472Z</lastmod>
+    <lastmod>2023-01-17T07:09:33.797Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2020-10-20-mit-edx-introduction-computational-thinking-and-data-science.html</loc>
-    <lastmod>2023-01-16T16:52:06.936Z</lastmod>
+    <lastmod>2023-01-17T07:09:34.129Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2022-11-01-logbook-November-22.html</loc>
-    <lastmod>2023-01-16T16:52:07.468Z</lastmod>
+    <lastmod>2023-01-17T07:09:34.505Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2021-05-25-reinforcement-learning-specialization-coursera-course2.html</loc>
-    <lastmod>2023-01-16T16:52:08.304Z</lastmod>
+    <lastmod>2023-01-17T07:09:35.081Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2020-10-06-gan-specialization-course1-week1-intro_to_gan.html</loc>
-    <lastmod>2023-01-16T16:52:08.752Z</lastmod>
+    <lastmod>2023-01-17T07:09:35.393Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2022-06-01-logbook-June-22.html</loc>
-    <lastmod>2023-01-16T16:52:09.164Z</lastmod>
+    <lastmod>2023-01-17T07:09:35.689Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2021-07-07-deep-neural-network-coursera.html</loc>
-    <lastmod>2023-01-16T16:52:16.460Z</lastmod>
+    <lastmod>2023-01-17T07:09:40.821Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2023-01-12-fastai-stable-diffusion.html</loc>
-    <lastmod>2023-01-16T16:52:17.416Z</lastmod>
+    <lastmod>2023-01-17T07:09:41.525Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2020-12-02-push-big-files-to-github.html</loc>
-    <lastmod>2023-01-16T16:52:17.884Z</lastmod>
+    <lastmod>2023-01-17T07:09:41.865Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2022-09-12-nbdev2.html</loc>
-    <lastmod>2023-01-16T16:52:19.088Z</lastmod>
+    <lastmod>2023-01-17T07:09:42.729Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2022-07-01-logbook-July-22.html</loc>
-    <lastmod>2023-01-16T16:52:19.556Z</lastmod>
+    <lastmod>2023-01-17T07:09:43.073Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2021-04-01-logbook-April.html</loc>
-    <lastmod>2023-01-16T16:52:20.032Z</lastmod>
+    <lastmod>2023-01-17T07:09:43.417Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2022-05-03-save git https credentials under wsl.html</loc>
-    <lastmod>2023-01-16T16:52:20.472Z</lastmod>
+    <lastmod>2023-01-17T07:09:43.745Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2022-04-07-keep dotfiles in git.html</loc>
-    <lastmod>2023-01-16T16:52:20.944Z</lastmod>
+    <lastmod>2023-01-17T07:09:44.105Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2022-09-06-ssl-certificate_verify_failed.html</loc>
-    <lastmod>2023-01-16T16:52:21.464Z</lastmod>
+    <lastmod>2023-01-17T07:09:44.465Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2022-07-21-install docker on linux.html</loc>
-    <lastmod>2023-01-16T16:52:21.908Z</lastmod>
+    <lastmod>2023-01-17T07:09:44.781Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2020-10-09-gan-course2-week2-disadventages-bias.html</loc>
-    <lastmod>2023-01-16T16:52:22.328Z</lastmod>
+    <lastmod>2023-01-17T07:09:45.085Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2020-09-10-blog-from-jupyter.html</loc>
-    <lastmod>2023-01-16T16:52:22.940Z</lastmod>
+    <lastmod>2023-01-17T07:09:45.537Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2021-01-21-aristotle-and-deep-learning.html</loc>
-    <lastmod>2023-01-16T16:52:23.392Z</lastmod>
+    <lastmod>2023-01-17T07:09:45.861Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2021-05-03-reinforcement-learning-specialization-coursera.html</loc>
-    <lastmod>2023-01-16T16:52:24.340Z</lastmod>
+    <lastmod>2023-01-17T07:09:46.549Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2020-09-09-blogging-from-github.html</loc>
-    <lastmod>2023-01-16T16:52:24.840Z</lastmod>
+    <lastmod>2023-01-17T07:09:46.897Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2022-10-17-fastai-2022-courses.html</loc>
-    <lastmod>2023-01-16T16:52:26.092Z</lastmod>
+    <lastmod>2023-01-17T07:09:47.781Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2022-06-15-deep-rl-class-with-huggingface.html</loc>
-    <lastmod>2023-01-16T16:52:26.724Z</lastmod>
+    <lastmod>2023-01-17T07:09:48.225Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2021-07-01-logbook-July.html</loc>
-    <lastmod>2023-01-16T16:52:27.212Z</lastmod>
+    <lastmod>2023-01-17T07:09:48.577Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2021-01-14-java-installation-on-ubuntu-20.04.html</loc>
-    <lastmod>2023-01-16T16:52:27.700Z</lastmod>
+    <lastmod>2023-01-17T07:09:48.905Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2020-10-01-gan-pytorch-coursera.html</loc>
-    <lastmod>2023-01-16T16:52:28.176Z</lastmod>
+    <lastmod>2023-01-17T07:09:49.241Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2021-03-25-contribute to a project with git.html</loc>
-    <lastmod>2023-01-16T16:52:28.648Z</lastmod>
+    <lastmod>2023-01-17T07:09:49.581Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2022-10-06-pip_cheatsheet.html</loc>
-    <lastmod>2023-01-16T16:52:29.364Z</lastmod>
+    <lastmod>2023-01-17T07:09:50.093Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2022-02-01-logbook-February-22.html</loc>
-    <lastmod>2023-01-16T16:52:29.792Z</lastmod>
+    <lastmod>2023-01-17T07:09:50.405Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2022-09-01-logbook-September-22.html</loc>
-    <lastmod>2023-01-16T16:52:30.568Z</lastmod>
+    <lastmod>2023-01-17T07:09:50.941Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2021-01-07-datacamp.html</loc>
-    <lastmod>2023-01-16T16:52:31.520Z</lastmod>
+    <lastmod>2023-01-17T07:09:51.593Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2021-09-16-Fix-non-unique-cell-issue-in-Jupyter-Notebook.html</loc>
-    <lastmod>2023-01-16T16:52:31.964Z</lastmod>
+    <lastmod>2023-01-17T07:09:51.909Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2020-12-13-from-cron-to-anacron.html</loc>
-    <lastmod>2023-01-16T16:52:32.400Z</lastmod>
+    <lastmod>2023-01-17T07:09:52.245Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2021-01-13-pandas-cheatsheet.html</loc>
-    <lastmod>2023-01-16T16:52:33.088Z</lastmod>
+    <lastmod>2023-01-17T07:09:52.717Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2021-01-19-seaborn-cheatsheet.html</loc>
-    <lastmod>2023-01-16T16:52:33.896Z</lastmod>
+    <lastmod>2023-01-17T07:09:53.265Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2022-07-26-install ubuntu 18.04 on WSL.html</loc>
-    <lastmod>2023-01-16T16:52:34.480Z</lastmod>
+    <lastmod>2023-01-17T07:09:53.665Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2020-09-24-fastai-book.html</loc>
-    <lastmod>2023-01-16T16:52:34.952Z</lastmod>
+    <lastmod>2023-01-17T07:09:54.005Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2021-03-24-stable-baselines-3.html</loc>
-    <lastmod>2023-01-16T16:52:35.636Z</lastmod>
+    <lastmod>2023-01-17T07:09:54.469Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2023-01-11-zotero-manage-datascience-paper.html</loc>
-    <lastmod>2023-01-16T16:52:36.120Z</lastmod>
+    <lastmod>2023-01-17T07:09:54.805Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2021-06-01-logbook-June.html</loc>
-    <lastmod>2023-01-16T16:52:36.620Z</lastmod>
+    <lastmod>2023-01-17T07:09:55.157Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2022-12-15-wsl2-fresh-pc.html</loc>
-    <lastmod>2023-01-16T16:52:37.368Z</lastmod>
+    <lastmod>2023-01-17T07:09:55.721Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2021-09-01-logbook-September.html</loc>
-    <lastmod>2023-01-16T16:52:37.840Z</lastmod>
+    <lastmod>2023-01-17T07:09:56.045Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2020-10-07-conda-activate-from-bash-script.html</loc>
-    <lastmod>2023-01-16T16:52:38.284Z</lastmod>
+    <lastmod>2023-01-17T07:09:56.369Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2022-01-01-logbook-January-22.html</loc>
-    <lastmod>2023-01-16T16:52:38.732Z</lastmod>
+    <lastmod>2023-01-17T07:09:56.693Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2021-09-28-Fix-pythoncom37.dll-Jupyter-Notebook.html</loc>
-    <lastmod>2023-01-16T16:52:39.168Z</lastmod>
+    <lastmod>2023-01-17T07:09:57.005Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2020-09-15-autodetect-home-office-network-and-proxy-settings.html</loc>
-    <lastmod>2023-01-16T16:52:39.712Z</lastmod>
+    <lastmod>2023-01-17T07:09:57.429Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2022-04-25-install ubuntu 22.04 on WSL.html</loc>
-    <lastmod>2023-01-16T16:52:40.420Z</lastmod>
+    <lastmod>2023-01-17T07:09:57.925Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2022-10-12-gradio_huggingface.html</loc>
-    <lastmod>2023-01-16T16:52:40.988Z</lastmod>
+    <lastmod>2023-01-17T07:09:58.332Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2021-01-05-jupyter-export-notebook-as-py.html</loc>
-    <lastmod>2023-01-16T16:52:41.464Z</lastmod>
+    <lastmod>2023-01-17T07:09:58.684Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2021-06-30-documentation-python.html</loc>
-    <lastmod>2023-01-16T16:52:41.932Z</lastmod>
+    <lastmod>2023-01-17T07:09:59.024Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2020-09-23-setup-ubuntu-box-with-fastai.html</loc>
-    <lastmod>2023-01-16T16:52:42.368Z</lastmod>
+    <lastmod>2023-01-17T07:09:59.388Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2022-05-02-upgrade-fastpages.html</loc>
-    <lastmod>2023-01-16T16:52:42.799Z</lastmod>
+    <lastmod>2023-01-17T07:09:59.700Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2022-07-21-install docker on WSL.html</loc>
-    <lastmod>2023-01-16T16:52:43.295Z</lastmod>
+    <lastmod>2023-01-17T07:10:00.064Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2020-10-01-fingerprint-authentication-sudoers.html</loc>
-    <lastmod>2023-01-16T16:52:43.751Z</lastmod>
+    <lastmod>2023-01-17T07:10:00.380Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2021-01-12-nbdev_tutorial.html</loc>
-    <lastmod>2023-01-16T16:52:44.675Z</lastmod>
+    <lastmod>2023-01-17T07:10:01.024Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2020-09-26-matplotlib-multiple-subplots-and-animations.html</loc>
-    <lastmod>2023-01-16T16:52:46.751Z</lastmod>
+    <lastmod>2023-01-17T07:10:02.560Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2020-10-07-decorator-trace-variables.html</loc>
-    <lastmod>2023-01-16T16:52:47.223Z</lastmod>
+    <lastmod>2023-01-17T07:10:02.912Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2021-03-01-logbook-March.html</loc>
-    <lastmod>2023-01-16T16:52:47.755Z</lastmod>
+    <lastmod>2023-01-17T07:10:03.300Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2021-03-09-clustergit.html</loc>
-    <lastmod>2023-01-16T16:52:48.295Z</lastmod>
+    <lastmod>2023-01-17T07:10:03.700Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2020-10-15-gan-course2-week3-certificate.html</loc>
-    <lastmod>2023-01-16T16:52:48.723Z</lastmod>
+    <lastmod>2023-01-17T07:10:04.020Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2021-04-09-wsl2 cuda conda.html</loc>
-    <lastmod>2023-01-16T16:52:49.175Z</lastmod>
+    <lastmod>2023-01-17T07:10:04.360Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2022-09-23-inline-images-with-quarto.html</loc>
-    <lastmod>2023-01-16T16:52:49.631Z</lastmod>
+    <lastmod>2023-01-17T07:10:04.692Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2022-10-13-dockerdss.html</loc>
-    <lastmod>2023-01-16T16:52:50.135Z</lastmod>
+    <lastmod>2023-01-17T07:10:05.064Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2020-10-06-gan-specialization-course1-week2-deep_convolutional_gan.html</loc>
-    <lastmod>2023-01-16T16:52:50.535Z</lastmod>
+    <lastmod>2023-01-17T07:10:05.376Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2021-02-16-conda-and-jupyter-tips.html</loc>
-    <lastmod>2023-01-16T16:52:51.011Z</lastmod>
+    <lastmod>2023-01-17T07:10:05.724Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2020-10-07-gan-specialization-week3-mode_collapse-w_loss.html</loc>
-    <lastmod>2023-01-16T16:52:51.423Z</lastmod>
+    <lastmod>2023-01-17T07:10:06.040Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2021-11-01-logbook-November.html</loc>
-    <lastmod>2023-01-16T16:52:51.883Z</lastmod>
+    <lastmod>2023-01-17T07:10:06.392Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2021-10-01-logbook-October.html</loc>
-    <lastmod>2023-01-16T16:52:52.311Z</lastmod>
+    <lastmod>2023-01-17T07:10:06.716Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2021-12-01-logbook-December.html</loc>
-    <lastmod>2023-01-16T16:52:52.727Z</lastmod>
+    <lastmod>2023-01-17T07:10:07.028Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2023-01-02-logbook-January-23.html</loc>
-    <lastmod>2023-01-16T16:52:53.203Z</lastmod>
+    <lastmod>2023-01-17T07:10:07.388Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2022-07-21-jupyter-export-lab-as-py.html</loc>
-    <lastmod>2023-01-16T16:52:53.679Z</lastmod>
+    <lastmod>2023-01-17T07:10:07.736Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2022-12-01-logbook-December-22.html</loc>
-    <lastmod>2023-01-16T16:52:54.215Z</lastmod>
+    <lastmod>2023-01-17T07:10:08.132Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2022-12-19-wsl2-from-windows-store.html</loc>
-    <lastmod>2023-01-16T16:52:54.819Z</lastmod>
+    <lastmod>2023-01-17T07:10:08.568Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2020-10-09-gan-course2-week1-evaluations-on-gans.html</loc>
-    <lastmod>2023-01-16T16:52:55.247Z</lastmod>
+    <lastmod>2023-01-17T07:10:08.876Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2022-01-18-wsl2 conda mamba cuda.html</loc>
-    <lastmod>2023-01-16T16:52:56.107Z</lastmod>
+    <lastmod>2023-01-17T07:10:09.484Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2021-05-21-Machine-learning-in-python-with-scikit-learn.html</loc>
-    <lastmod>2023-01-16T16:52:57.047Z</lastmod>
+    <lastmod>2023-01-17T07:10:10.124Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2021-01-26-reinforcement-learning-readings.html</loc>
-    <lastmod>2023-01-16T16:52:57.779Z</lastmod>
+    <lastmod>2023-01-17T07:10:10.652Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2021-04-06-git avec proxy socks.html</loc>
-    <lastmod>2023-01-16T16:52:58.307Z</lastmod>
+    <lastmod>2023-01-17T07:10:11.004Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2020-09-28-upgrade-ubuntu-18.04-to-20.04.html</loc>
-    <lastmod>2023-01-16T16:52:58.755Z</lastmod>
+    <lastmod>2023-01-17T07:10:11.332Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2021-10-21-Just-some-usefull-keyboard-shortcuts.html</loc>
-    <lastmod>2023-01-16T16:52:59.163Z</lastmod>
+    <lastmod>2023-01-17T07:10:11.628Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2020-10-21-open-jupyter-from-http-link.html</loc>
-    <lastmod>2023-01-16T16:52:59.611Z</lastmod>
+    <lastmod>2023-01-17T07:10:11.940Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2021-05-01-logbook-May.html</loc>
-    <lastmod>2023-01-16T16:53:00.071Z</lastmod>
+    <lastmod>2023-01-17T07:10:12.280Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2021-07-29-git-clean-large-files.html</loc>
-    <lastmod>2023-01-16T16:53:00.575Z</lastmod>
+    <lastmod>2023-01-17T07:10:12.620Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2022-09-16-migrate blog from nbdev to quarto.html</loc>
-    <lastmod>2023-01-16T16:53:01.563Z</lastmod>
+    <lastmod>2023-01-17T07:10:13.340Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2021-02-26-logbook-Februrary.html</loc>
-    <lastmod>2023-01-16T16:53:02.007Z</lastmod>
+    <lastmod>2023-01-17T07:10:13.664Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2021-02-05-learning-MIT-6.S191-2021.html</loc>
-    <lastmod>2023-01-16T16:53:02.747Z</lastmod>
+    <lastmod>2023-01-17T07:10:14.204Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2021-09-29-nbdev-notebook2script.html</loc>
-    <lastmod>2023-01-16T16:53:03.331Z</lastmod>
+    <lastmod>2023-01-17T07:10:14.600Z</lastmod>
   </url>
 </urlset>
