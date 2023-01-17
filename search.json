@@ -1817,7 +1817,7 @@
     "href": "posts/2022-12-15-wsl2-fresh-pc.html#download-nvidia-driver",
     "title": "WSL2 on a fresh new PC",
     "section": "download Nvidia driver",
-    "text": "download Nvidia driver\nDownload from https://developer.nvidia.com/cuda/wsl\n\n\n\nimage.png\n\n\n(Dec-22: this file 527.56-desktop-win10-win11-64bit-international-dch-whql.exe)"
+    "text": "download Nvidia driver\nDownload from https://developer.nvidia.com/cuda/wsl\n\n\n\nimage.png\n\n\n(Dec-22: this file 527.56-desktop-win10-win11-64bit-international-dch-whql.exe)\nTo get drivers in link to cuda versions:\nhttps://developer.nvidia.com/cuda-toolkit-archive\n\n\n\nimage.png"
   },
   {
     "objectID": "posts/2022-12-15-wsl2-fresh-pc.html#download-ubuntu-lts-image",
