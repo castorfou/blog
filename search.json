@@ -1817,7 +1817,7 @@
     "href": "posts/2022-12-15-wsl2-fresh-pc.html#download-nvidia-driver",
     "title": "WSL2 on a fresh new PC",
     "section": "download Nvidia driver",
-    "text": "download Nvidia driver\nDownload from https://developer.nvidia.com/cuda/wsl\n\n\n\nimage.png\n\n\n(Dec-22: this file 527.56-desktop-win10-win11-64bit-international-dch-whql.exe)\nTo get drivers in link to cuda versions:\nhttps://developer.nvidia.com/cuda-toolkit-archive\n\n\n\nimage.png"
+    "text": "download Nvidia driver\nTo get drivers in link to cuda versions:\nhttps://developer.nvidia.com/cuda-toolkit-archive\n\n\n\nimage.png\n\n\n(Jan-18 23: cuda 11.7.1 using cuda_11.7.1_516.94_windows.exe)\n+-----------------------------------------------------------------------------+\n| NVIDIA-SMI 515.65.01    Driver Version: 516.94       CUDA Version: 11.7     |\n|-------------------------------+----------------------+----------------------+\n| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |\n| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |\n|                               |                      |               MIG M. |\n|===============================+======================+======================|\n|   0  NVIDIA GeForce ...  On   | 00000000:01:00.0  On |                  N/A |\n| N/A   54C    P8    18W /  N/A |    274MiB / 16384MiB |      1%      Default |\n|                               |                      |                  N/A |\n+-------------------------------+----------------------+----------------------+"
   },
   {
     "objectID": "posts/2022-12-15-wsl2-fresh-pc.html#download-ubuntu-lts-image",
