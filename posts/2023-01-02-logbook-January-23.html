@@ -21,6 +21,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -181,6 +244,7 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
   <ul class="collapse">
   <li><a href="#issue-on-wslg---detached-window-cannot-be-used" id="toc-issue-on-wslg---detached-window-cannot-be-used" class="nav-link" data-scroll-target="#issue-on-wslg---detached-window-cannot-be-used">Issue on WSLg - detached window cannot be used</a></li>
   </ul></li>
+  <li><a href="#thursday-0119" id="toc-thursday-0119" class="nav-link" data-scroll-target="#thursday-0119">Thursday 01/19</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -277,9 +341,47 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 <h3 class="anchored" data-anchor-id="issue-on-wslg---detached-window-cannot-be-used">Issue on WSLg - detached window cannot be used</h3>
 <p>Just opened an issue at <a href="https://github.com/microsoft/wslg/issues/958">Detached windows cannot be used (e.g.&nbsp;in gimp)</a></p>
 <p>I had opened another one in WSLg <a href="https://github.com/microsoft/wslg/issues/944">WSL some icons in taskbar for linux applications are defaulting to Tux (when set_app_id doesn’t match with .desktop file)</a></p>
-
-
 </section>
+</section>
+<section id="thursday-0119" class="level2">
+<h2 class="anchored" data-anchor-id="thursday-0119">Thursday 01/19</h2>
+<p>2 tips I have just used in <a href="../posts/2022-09-16-migrate blog from nbdev to quarto.html#setup-RSS-feed">RSS feed for my blog</a></p>
+<p><strong>To highlight some text from a file from jupyter</strong></p>
+<p>use <code>| grep --color=always -z 'feed: true'</code></p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-01-19T07:28:32.667703Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-01-19T07:28:32.667490Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-01-19T07:28:32.788635Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-01-19T07:28:32.788038Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-01-19T07:28:32.667688Z&quot;}" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cat ..<span class="op">/</span>index.qmd <span class="op">|</span> grep <span class="op">--</span>color<span class="op">=</span>always <span class="op">-</span>z <span class="st">'feed: true'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>---
+title: "blog"
+listing:
+  contents: posts
+  sort: "date desc"
+  type: default
+  categories: true
+  sort-ui: false
+  filter-ui: true
+  feed: true
+page-layout: full
+title-block-banner: false
+---
+
+
+</code></pre>
+</div>
+</div>
+<p><strong>To insert rescaled image into jupyter</strong></p>
+<p>Just copy paste the image in a markdown cell:</p>
+<pre class="text"><code>![image.png](attachment:24349bd1-4c85-4c51-833c-808bb8c82a38.png)</code></pre>
+<p>validate cell to save this image file</p>
+<p>and turn this into html code</p>
+<pre class="text"><code>&lt;div&gt;
+   &lt;img src="attachment:24349bd1-4c85-4c51-833c-808bb8c82a38.png" width="200"&gt;
+&lt;/div&gt;</code></pre>
+<div>
+<p><img src="2023-01-02-logbook-January-23_files/figure-html/4aa0b8e5-a5f4-4792-8d4f-2f32d92d5205-1-24349bd1-4c85-4c51-833c-808bb8c82a38.png" width="200"></p>
+</div>
+
+
 </section>
 </section>
 

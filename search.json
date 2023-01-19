@@ -2639,6 +2639,13 @@
     "text": "Wednesday 01/18\n\nIssue on WSLg - detached window cannot be used\nJust opened an issue at Detached windows cannot be used (e.g. in gimp)\nI had opened another one in WSLg WSL some icons in taskbar for linux applications are defaulting to Tux (when set_app_id doesn’t match with .desktop file)"
   },
   {
+    "objectID": "posts/2023-01-02-logbook-January-23.html#thursday-0119",
+    "href": "posts/2023-01-02-logbook-January-23.html#thursday-0119",
+    "title": "Logbook for January 23",
+    "section": "Thursday 01/19",
+    "text": "Thursday 01/19\n2 tips I have just used in RSS feed for my blog\nTo highlight some text from a file from jupyter\nuse | grep --color=always -z 'feed: true'\n\n!cat ../index.qmd | grep --color=always -z 'feed: true'\n\n---\ntitle: \"blog\"\nlisting:\n  contents: posts\n  sort: \"date desc\"\n  type: default\n  categories: true\n  sort-ui: false\n  filter-ui: true\n  feed: true\npage-layout: full\ntitle-block-banner: false\n---\n\n\n\n\n\nTo insert rescaled image into jupyter\nJust copy paste the image in a markdown cell:\n![image.png](attachment:24349bd1-4c85-4c51-833c-808bb8c82a38.png)\nvalidate cell to save this image file\nand turn this into html code\n<div>\n   <img src=\"attachment:24349bd1-4c85-4c51-833c-808bb8c82a38.png\" width=\"200\">\n</div>"
+  },
+  {
     "objectID": "posts/2022-07-21-jupyter-export-lab-as-py.html",
     "href": "posts/2022-07-21-jupyter-export-lab-as-py.html",
     "title": "Auto export python code from jupyter lab",
@@ -3134,6 +3141,13 @@
     "title": "Blog - migrate to quarto",
     "section": "setup favicon.ico",
     "text": "setup favicon.ico\nCreation of a favicon for this blog. Using gimp\nAnd quarto doc for favicon\n\n!cat ../_quarto.yml |grep -B 2 favico\n\nwebsite:\n  title: \"Guillaume's blog\"\n  favicon: favicon_small.png\n\n\nAnd favicon_small.png is just at root.\n\n!find ../  -name 'favicon_small.png'\n\n../favicon_small.png\n../_site/favicon_small.png"
+  },
+  {
+    "objectID": "posts/2022-09-16-migrate blog from nbdev to quarto.html#setup-rss-feed",
+    "href": "posts/2022-09-16-migrate blog from nbdev to quarto.html#setup-rss-feed",
+    "title": "Blog - migrate to quarto",
+    "section": "setup RSS feed",
+    "text": "setup RSS feed\nDiscussing with my colleague Jerome, he was interested to get RSS feed from my blog.\nI was kind of reluctant because it is not really a blog, it is more a wiki-log. I constantly update articles, sometimes months after the 1st publication.\nAnyway, here is how I did to activate RSS feed: just add the option feed: true in index.qmd\n\n!cat ../index.qmd | grep --color=always -z 'feed: true'\n\n---\ntitle: \"blog\"\nlisting:\n  contents: posts\n  sort: \"date desc\"\n  type: default\n  categories: true\n  sort-ui: false\n  filter-ui: true\n  feed: true\npage-layout: full\ntitle-block-banner: false\n---\n\n\n\n\n\nAnd here is the result in Feedly\n\n\n\n\nto be improved\n\nno icon in feedly for this feed (I would like it to use my favicon)\nwhen publishing an update on article, create new entry in rss feed"
   },
   {
     "objectID": "posts/2022-09-16-migrate blog from nbdev to quarto.html#tbd-detect-broken-links",
