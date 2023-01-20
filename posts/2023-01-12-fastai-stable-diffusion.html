@@ -414,6 +414,14 @@ torchvision               0.13.1               py38_cu102    fastchan</code></pr
 <p><span class="math inline">\(X\)</span> denotes inputs, <span class="math inline">\(X^{(0)}\)</span> denotes a sequence, one can expect to see <span class="math inline">\(X^{(1)}\)</span>, <span class="math inline">\(X^{(2)}\)</span>, .., <span class="math inline">\(X^{(n)}\)</span></p>
 <p>and <span class="math inline">\(q\)</span> (quite close to <span class="math inline">\(p\)</span>) is a probability density function. My representation of this is a curve (given X is of dimension 1) which area under curve equals to 1. And I have questions about how to calculate probability density function for multiple dependent variables. Scikit-learn can help <a href="https://scikit-learn.org/stable/modules/density.html">density estimation</a> Or VAE? For independant variable, we can just multiply each prob density.</p>
 <p>Those notations are from the diffusion paper, published in 2015 by Jascha Sohl-Dickstein, Eric A. Weiss, Niru Maheswaranathan, Surya Ganguli: <a href="https://arxiv.org/abs/1503.03585">Deep Unsupervised Learning using Nonequilibrium Thermodynamics</a></p>
+<p><span class="math inline">\(q\)</span> is this kind of magic function as introduced by Jeremy in the 1st video which provides probability that <span class="math inline">\(X^{(0)}\)</span> is <strong>enter your target: mnist or other kind of stuff expected</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2023-01-12-fastai-stable-diffusion_files/figure-html/ec90515b-5618-4a19-9031-474929f6bf31-1-2d2988cd-c0a6-41d9-9527-938f2a82ca21.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+<p>Next notation is <span class="math inline">\(q(X^{(t)}|X^{(t-1)})\)</span></p>
 
 
 </section>
