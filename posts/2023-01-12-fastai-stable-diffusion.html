@@ -410,56 +410,10 @@ torchvision               0.13.1               py38_cu102    fastchan</code></pr
 <p>The video is here: <a href="https://www.youtube.com/watch?v=mYpjmM7O-30" class="uri">https://www.youtube.com/watch?v=mYpjmM7O-30</a></p>
 <p>by Wasim <span class="citation" data-cites="seem">@seem</span> and Tanishq <span class="citation" data-cites="ilovescience">@ilovescience</span></p>
 <p>They start by explaining notations which is quite helpful.</p>
-<p>For example in <span class="math inline">\(q(X^{(0)})\)</span></p>
+<p>For example in &gt;<span class="math inline">\(q(X^{(0)})\)</span> data distribution</p>
 <p><span class="math inline">\(X\)</span> denotes inputs, <span class="math inline">\(X^{(0)}\)</span> denotes a sequence, one can expect to see <span class="math inline">\(X^{(1)}\)</span>, <span class="math inline">\(X^{(2)}\)</span>, .., <span class="math inline">\(X^{(n)}\)</span></p>
-<p><span class="math display">\[
-\widehat{q}
-\\
-| x-x_M |
-\\
-f_M(x)
-\\
-\displaystyle\sum_{m}
-\\
-\langle{x,w_m}\rangle
-\\
-\| v_m \|
-\\
-\cos
-\\
-\Z^d
-\\
-\infty
-\\
-f \in L^2
-\\
-\implies
-\\
-\lim\limits_{M \to \infty}
-\\
-P(A|B) = \frac{P(B|A)*P(A)}{P(B)}
-\\
-\begin{align}
-Q_t(a) &amp;= \frac{\text{sum of rewards when } \mathit{a} \text{ taken prior to }\mathit{t}}{\text{number of times } \mathit{a} \text{ taken prior to }\mathit{t}} \\
-&amp; = \frac{\displaystyle\sum_{i=1}^{t-1} R_i.\mathcal{1}_{A_i=a}}{\displaystyle\sum_{i=1}^{t-1} \mathcal{1}_{A_i=a}}
-\end{align}
-\\
-A_t=\underset{a}{\mathrm{argmax}}{\text{ }Q_t(a)}
-\\
-p(s',r|s,a) \doteq Pr\{S_t=s', R_t=r|S_{t-1}=s, A_{t-1}=a\}
-\\
-q_\pi(s,a) \doteq \mathbb{E}[R_{t+1}+\gamma.G_{t+1}|S_t=s, A_t=a]
-\\
-v_*(s)\doteq \max\limits_{\pi} v_\pi(s), \forall s \in S
-\\
-q_\pi(s,a) \doteq \mathbb{E}[R_{t+1}+\gamma.G_{t+1}|S_t=s, A_t=a]
-\\
-l(w,b)=\frac{1}{N}\displaystyle\sum_{n=1}^{N}(y_n-(x_nw+b))^2
-\\
-\nabla l(w,b) = \begin{bmatrix}\frac{\partial l(w,b)}{\partial w_1}\\ \vdots \\\frac{\partial l(w,b)}{\partial w_d}\end{bmatrix}
-\\
-\\ H(X) = – \sum_{x \in X} P(x) * \log(P(x))
-\]</span></p>
+<p>and <span class="math inline">\(q\)</span> (quite close to <span class="math inline">\(p\)</span>) is a probability density function. My representation of this is a curve (given X is of dimension 1) which area under curve equals to 1. And I have questions about how to calculate probability density function for multiple dependent variables. Scikit-learn can help <a href="https://scikit-learn.org/stable/modules/density.html">density estimation</a> Or VAE? For independant variable, we can just multiply each prob density.</p>
+<p>Those notations are from the diffusion paper, published in 2015 by Jascha Sohl-Dickstein, Eric A. Weiss, Niru Maheswaranathan, Surya Ganguli: <a href="https://arxiv.org/abs/1503.03585">Deep Unsupervised Learning using Nonequilibrium Thermodynamics</a></p>
 
 
 </section>

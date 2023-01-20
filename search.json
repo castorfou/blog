@@ -322,6 +322,13 @@
     "text": "gimp\nAnd install gimp\nsudo apt install gimp"
   },
   {
+    "objectID": "posts/2022-12-19-wsl2-from-windows-store.html#zettlr-markdown-editor",
+    "href": "posts/2022-12-19-wsl2-from-windows-store.html#zettlr-markdown-editor",
+    "title": "WSL2 from Windows Store",
+    "section": "Zettlr (markdown editor)",
+    "text": "Zettlr (markdown editor)\nNow that typora is not open sourced anymore, switch to Zettlr\nwget https://github.com/Zettlr/Zettlr/releases/download/v2.3.0/Zettlr-2.3.0-amd64.deb\nsudo apt-get install libxss1\nsudo dpkg -i Zettlr-2.3.0-amd64.deb\nZettlr"
+  },
+  {
     "objectID": "posts/2022-12-19-wsl2-from-windows-store.html#snap-store",
     "href": "posts/2022-12-19-wsl2-from-windows-store.html#snap-store",
     "title": "WSL2 from Windows Store",
