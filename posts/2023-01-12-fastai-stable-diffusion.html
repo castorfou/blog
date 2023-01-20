@@ -136,6 +136,7 @@ gtag('js', new Date());
 gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 </script>
 
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../styles.css">
 <meta name="twitter:title" content="Guillaume’s blog - Deep Learning Foundations to Stable Diffusion">
@@ -241,6 +242,7 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
   <ul class="collapse">
   <li><a href="#the-autoencoder" id="toc-the-autoencoder" class="nav-link" data-scroll-target="#the-autoencoder">the autoencoder</a></li>
   </ul></li>
+  <li><a href="#lesson-9b---the-math-of-diffusion" id="toc-lesson-9b---the-math-of-diffusion" class="nav-link" data-scroll-target="#lesson-9b---the-math-of-diffusion">Lesson 9B - the math of diffusion</a></li>
   </ul>
 </nav>
     </div>
@@ -400,9 +402,66 @@ torchvision               0.13.1               py38_cu102    fastchan</code></pr
 <p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
 </figure>
 </div>
-
-
+<p>I have to watch this video again to propose a fair understanding of it</p>
 </section>
+</section>
+<section id="lesson-9b---the-math-of-diffusion" class="level1">
+<h1>Lesson 9B - the math of diffusion</h1>
+<p>The video is here: <a href="https://www.youtube.com/watch?v=mYpjmM7O-30" class="uri">https://www.youtube.com/watch?v=mYpjmM7O-30</a></p>
+<p>by Wasim <span class="citation" data-cites="seem">@seem</span> and Tanishq <span class="citation" data-cites="ilovescience">@ilovescience</span></p>
+<p>They start by explaining notations which is quite helpful.</p>
+<p>For example in <span class="math inline">\(q(X^{(0)})\)</span></p>
+<p><span class="math inline">\(X\)</span> denotes inputs, <span class="math inline">\(X^{(0)}\)</span> denotes a sequence, one can expect to see <span class="math inline">\(X^{(1)}\)</span>, <span class="math inline">\(X^{(2)}\)</span>, .., <span class="math inline">\(X^{(n)}\)</span></p>
+<p><span class="math display">\[
+\widehat{q}
+\\
+| x-x_M |
+\\
+f_M(x)
+\\
+\displaystyle\sum_{m}
+\\
+\langle{x,w_m}\rangle
+\\
+\| v_m \|
+\\
+\cos
+\\
+\Z^d
+\\
+\infty
+\\
+f \in L^2
+\\
+\implies
+\\
+\lim\limits_{M \to \infty}
+\\
+P(A|B) = \frac{P(B|A)*P(A)}{P(B)}
+\\
+\begin{align}
+Q_t(a) &amp;= \frac{\text{sum of rewards when } \mathit{a} \text{ taken prior to }\mathit{t}}{\text{number of times } \mathit{a} \text{ taken prior to }\mathit{t}} \\
+&amp; = \frac{\displaystyle\sum_{i=1}^{t-1} R_i.\mathcal{1}_{A_i=a}}{\displaystyle\sum_{i=1}^{t-1} \mathcal{1}_{A_i=a}}
+\end{align}
+\\
+A_t=\underset{a}{\mathrm{argmax}}{\text{ }Q_t(a)}
+\\
+p(s',r|s,a) \doteq Pr\{S_t=s', R_t=r|S_{t-1}=s, A_{t-1}=a\}
+\\
+q_\pi(s,a) \doteq \mathbb{E}[R_{t+1}+\gamma.G_{t+1}|S_t=s, A_t=a]
+\\
+v_*(s)\doteq \max\limits_{\pi} v_\pi(s), \forall s \in S
+\\
+q_\pi(s,a) \doteq \mathbb{E}[R_{t+1}+\gamma.G_{t+1}|S_t=s, A_t=a]
+\\
+l(w,b)=\frac{1}{N}\displaystyle\sum_{n=1}^{N}(y_n-(x_nw+b))^2
+\\
+\nabla l(w,b) = \begin{bmatrix}\frac{\partial l(w,b)}{\partial w_1}\\ \vdots \\\frac{\partial l(w,b)}{\partial w_d}\end{bmatrix}
+\\
+\\ H(X) = – \sum_{x \in X} P(x) * \log(P(x))
+\]</span></p>
+
+
 </section>
 
 </main> <!-- /main -->
