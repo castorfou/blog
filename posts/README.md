@@ -48,54 +48,7 @@ https://en.wikibooks.org/wiki/LaTeX/Mathematics
 
 # Quelques exemples
 
-$$
-\widehat{q}
-\\
-| x-x_M |
-\\
-f_M(x)
-\\dd
-\displaystyle\sum_{m}
-\\
-\langle{x,w_m}\rangle
-\\
-\| v_m \|
-\\
-\cos
-\\
-\Z^d
-\\
-\infty
-\\
-f \in L^2
-\\
-\implies 
-\\
-\lim\limits_{M \to \infty}
-\\
-P(A|B) = \frac{P(B|A)*P(A)}{P(B)}
-\\
-\begin{align}
-Q_t(a) &= \frac{\text{sum of rewards when } \mathit{a} \text{ taken prior to }\mathit{t}}{\text{number of times } \mathit{a} \text{ taken prior to }\mathit{t}} \\
-& = \frac{\displaystyle\sum_{i=1}^{t-1} R_i.\mathcal{1}_{A_i=a}}{\displaystyle\sum_{i=1}^{t-1} \mathcal{1}_{A_i=a}}
-\end{align}
-\\
-A_t=\underset{a}{\mathrm{argmax}}{\text{ }Q_t(a)}
-\\
-p(s',r|s,a) \doteq Pr\{S_t=s', R_t=r|S_{t-1}=s, A_{t-1}=a\}
-\\
-q_\pi(s,a) \doteq \mathbb{E}[R_{t+1}+\gamma.G_{t+1}|S_t=s, A_t=a]
-\\
-v_*(s)\doteq \max\limits_{\pi} v_\pi(s), \forall s \in S
-\\
-q_\pi(s,a) \doteq \mathbb{E}[R_{t+1}+\gamma.G_{t+1}|S_t=s, A_t=a]
-\\
-l(w,b)=\frac{1}{N}\displaystyle\sum_{n=1}^{N}(y_n-(x_nw+b))^2
-\\
-\nabla l(w,b) = \begin{bmatrix}\frac{\partial l(w,b)}{\partial w_1}\\ \vdots \\\frac{\partial l(w,b)}{\partial w_d}\end{bmatrix}
-\\
-\\ H(X) = – \sum_{x \in X} P(x) * \log(P(x))
-$$
+https://castorfou.github.io/blog/posts/2023-01-23-latex_reference.html#Examples
 
 
 
