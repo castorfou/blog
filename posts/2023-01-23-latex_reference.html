@@ -247,75 +247,12 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 <td><code>P(A|B) = \frac{P(B|A)*P(A)}{P(B)}</code></td>
 </tr>
 <tr class="even">
-<td><span class="math inline">\(\begin{align} Q_t(a) &amp;= \frac{\text{sum of rewards when } \mathit{a} \text{ taken prior to }\mathit{t}}{\text{number of times } \mathit{a} \text{ taken prior to }\mathit{t}} \\ &amp; = \frac{\displaystyle\sum_{i=1}^{t-1} R_i.\mathcal{1}_{A_i=a}}{\displaystyle\sum_{i=1}^{t-1} \mathcal{1}_{A_i=a}} \end{align}\)</span></td>
-<td><code>\begin{align} Q_t(a) &amp;= \frac{\text{sum of rewards when } \mathit{a} \text{ taken prior to }\mathit{t}}{\text{number of times } \mathit{a} \text{ taken prior to }\mathit{t}} \\ &amp; = \frac{\displaystyle\sum_{i=1}^{t-1} R_i.\mathcal{1}_{A_i=a}}{\displaystyle\sum_{i=1}^{t-1} \mathcal{1}_{A_i=a}} \end{align}</code></td>
-</tr>
-<tr class="odd">
-<td><span class="math inline">\(A_t=\underset{a}{\mathrm{argmax}}{\text{ }Q_t(a)}\)</span></td>
-<td><code>A_t=\underset{a}{\mathrm{argmax}}{\text{ }Q_t(a)}</code></td>
-</tr>
-<tr class="even">
-<td><span class="math inline">\(p(s',r|s,a) \doteq Pr\{S_t=s', R_t=r|S_{t-1}=s, A_{t-1}=a\}\)</span></td>
-<td><code>p(s',r|s,a) \doteq Pr\{S_t=s', R_t=r|S_{t-1}=s, A_{t-1}=a\}</code></td>
-</tr>
-<tr class="odd">
-<td><span class="math inline">\(q_\pi(s,a) \doteq \mathbb{E}[R_{t+1}+\gamma.G_{t+1}|S_t=s, A_t=a]\)</span></td>
-<td><code>q_\pi(s,a) \doteq \mathbb{E}[R_{t+1}+\gamma.G_{t+1}|S_t=s, A_t=a]</code></td>
-</tr>
-<tr class="even">
-<td><span class="math inline">\(v_*(s)\doteq \max\limits_{\pi} v_\pi(s), \forall s \in S\)</span></td>
-<td><code>v_*(s)\doteq \max\limits_{\pi} v_\pi(s), \forall s \in S</code></td>
-</tr>
-<tr class="odd">
-<td><span class="math inline">\(q_\pi(s,a) \doteq \mathbb{E}[R_{t+1}+\gamma.G_{t+1}|S_t=s, A_t=a]\)</span></td>
-<td><code>q_\pi(s,a) \doteq \mathbb{E}[R_{t+1}+\gamma.G_{t+1}|S_t=s, A_t=a]</code></td>
-</tr>
-<tr class="even">
-<td><span class="math inline">\(l(w,b)=\frac{1}{N}\displaystyle\sum_{n=1}^{N}(y_n-(x_nw+b))^2\)</span></td>
-<td><code>l(w,b)=\frac{1}{N}\displaystyle\sum_{n=1}^{N}(y_n-(x_nw+b))^2</code></td>
-</tr>
-<tr class="odd">
-<td><span class="math inline">\(\nabla l(w,b) = \begin{bmatrix}\frac{\partial l(w,b)}{\partial w_1}\\ \vdots \\\frac{\partial l(w,b)}{\partial w_d}\end{bmatrix}\)</span></td>
-<td><code>\nabla l(w,b) = \begin{bmatrix}\frac{\partial l(w,b)}{\partial w_1}\\ \vdots \\\frac{\partial l(w,b)}{\partial w_d}\end{bmatrix}</code></td>
-</tr>
-<tr class="even">
-<td><span class="math inline">\(\\ H(X) = – \sum_{x \in X} P(x) * \log(P(x))\)</span></td>
-<td><code>\\ H(X) = – \sum_{x \in X} P(x) * \log(P(x))</code></td>
-</tr>
-<tr class="odd">
-<td><span class="math inline">\(X \sim \mathcal{N}(\mu,\,\sigma^{2})\)</span></td>
-<td><code>X \sim \mathcal{N}(\mu,\,\sigma^{2})</code></td>
-</tr>
-<tr class="even">
-<td><span class="math inline">\(\sqrt[n]{1+x+x^2+x^3+\dots+x^n}\)</span></td>
-<td><code>\sqrt[n]{1+x+x^2+x^3+\dots+x^n}</code></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td></td>
-<td></td>
+<td><span class="math inline">\(\begin{align} \\ Q_t(a) &amp;= \frac{\text{sum of rewards when } \mathit{a} \text{ taken prior to }\mathit{t}}{\text{number of times } \mathit{a} \text{ taken prior to }\mathit{t}} \\ &amp; = \frac{\displaystyle\sum_{i=1}^{t-1} R_i.\mathcal{1}_{A_i=a}}{\displaystyle\sum_{i=1}^{t-1} \mathcal{1}_{A_i=a}} \end{align}\)</span></td>
+<td><code>\begin{align} \\</code></td>
 </tr>
 </tbody>
 </table>
+<p><code>Q_t(a) &amp;= \frac{\text{sum of rewards when } \mathit{a} \text{ taken prior to }\mathit{t}}{\text{number of times } \mathit{a} \text{ taken prior to }\mathit{t}} \\</code> <code>&amp; = \frac{\displaystyle\sum_{i=1}^{t-1} R_i.\mathcal{1}_{A_i=a}}{\displaystyle\sum_{i=1}^{t-1} \mathcal{1}_{A_i=a}}</code> <code>\end{align}</code> | | <span class="math inline">\(A_t=\underset{a}{\mathrm{argmax}}{\text{ }Q_t(a)}\)</span> | <code>A_t=\underset{a}{\mathrm{argmax}}{\text{ }Q_t(a)}</code> | | <span class="math inline">\(p(s',r|s,a) \doteq Pr\{S_t=s', R_t=r|S_{t-1}=s, A_{t-1}=a\}\)</span> | <code>p(s',r|s,a) \doteq Pr\{S_t=s', R_t=r|S_{t-1}=s, A_{t-1}=a\}</code> | | <span class="math inline">\(q_\pi(s,a) \doteq \mathbb{E}[R_{t+1}+\gamma.G_{t+1}|S_t=s, A_t=a]\)</span> | <code>q_\pi(s,a) \doteq \mathbb{E}[R_{t+1}+\gamma.G_{t+1}|S_t=s, A_t=a]</code> | | <span class="math inline">\(v_*(s)\doteq \max\limits_{\pi} v_\pi(s), \forall s \in S\)</span> | <code>v_*(s)\doteq \max\limits_{\pi} v_\pi(s), \forall s \in S</code> | | <span class="math inline">\(q_\pi(s,a) \doteq \mathbb{E}[R_{t+1}+\gamma.G_{t+1}|S_t=s, A_t=a]\)</span> | <code>q_\pi(s,a) \doteq \mathbb{E}[R_{t+1}+\gamma.G_{t+1}|S_t=s, A_t=a]</code> | | <span class="math inline">\(l(w,b)=\frac{1}{N}\displaystyle\sum_{n=1}^{N}(y_n-(x_nw+b))^2\)</span> | <code>l(w,b)=\frac{1}{N}\displaystyle\sum_{n=1}^{N}(y_n-(x_nw+b))^2</code> | | <span class="math inline">\(\nabla l(w,b) = \begin{bmatrix}\frac{\partial l(w,b)}{\partial w_1}\\ \vdots \\\frac{\partial l(w,b)}{\partial w_d}\end{bmatrix}\)</span> | <code>\nabla l(w,b) = \begin{bmatrix}\frac{\partial l(w,b)}{\partial w_1}\\ \vdots \\\frac{\partial l(w,b)}{\partial w_d}\end{bmatrix}</code> | | <span class="math inline">\(\\ H(X) = – \sum_{x \in X} P(x) * \log(P(x))\)</span> | <code>\\ H(X) = – \sum_{x \in X} P(x) * \log(P(x))</code> | | <span class="math inline">\(X \sim \mathcal{N}(\mu,\,\sigma^{2})\)</span> | <code>X \sim \mathcal{N}(\mu,\,\sigma^{2})</code> | | <span class="math inline">\(\sqrt[n]{1+x+x^2+x^3+\dots+x^n}\)</span> | <code>\sqrt[n]{1+x+x^2+x^3+\dots+x^n}</code> | | | | | | | | | | | | | | | | | | |</p>
 
 
 </section>
