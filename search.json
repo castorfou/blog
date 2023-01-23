@@ -588,6 +588,20 @@
     "text": "the autoencoder\nThis is quite impressive that vae can compress/decompress with such a factor (/48) and keep this level of quality\n\n\n\nimage.png\n\n\nI have to watch this video again to propose a fair understanding of it"
   },
   {
+    "objectID": "posts/2023-01-12-fastai-stable-diffusion.html#forward-diffusion",
+    "href": "posts/2023-01-12-fastai-stable-diffusion.html#forward-diffusion",
+    "title": "Deep Learning Foundations to Stable Diffusion",
+    "section": "forward diffusion",
+    "text": "forward diffusion\nSo the forward diffusion will follow this process\n\n\n\nimage.png\n\n\nThis is a Markow Process with Gaussians transitions\nby Process we can understand a sequence (t) is involved\nby Markov, the things at time t \\(X^{t}\\) depends only on the thing at time t-1 \\(X^{t-1}\\)\nby transitions it is following the \\(q\\) function \\(q(X^{(t)}|X^{(t-1)})\\)\nby Gaussian, this function is the normal distribution \\(\\mathcal{N}(X^{(t)}; X^{(t-1)}\\sqrt{I-\\beta_t}; I\\beta_t)\\)\nAnd by process we mean that we apply baby steps, a high number of times. Maybe 1000 times."
+  },
+  {
+    "objectID": "posts/2023-01-12-fastai-stable-diffusion.html#backward-diffusion",
+    "href": "posts/2023-01-12-fastai-stable-diffusion.html#backward-diffusion",
+    "title": "Deep Learning Foundations to Stable Diffusion",
+    "section": "backward diffusion",
+    "text": "backward diffusion\nWe can now think about the backward diffusion process, by going backward with exactly the same logic.\n\\(p(X^{(t-1)}|X^{(t)}) = \\mathcal{N}(X^{(t-1)}; \\Box ; \\Delta )\\)\nwhere p is the here the conditionnal probability to get clearer and clearer, and \\(\\Box\\) is the mean, \\(\\Delta\\) is the variance. Those are unknown but can be fit.\nWe can fit this model by maximizing the likelihood function. Practically we prefer to use log likelihood. (we like its properties to turn products to sums, and by taking exponential such as in normal distribution we get identity which is quite convenient) And more recent works showed that we can use one particular loss to dot it which is ELBO (evidence lower bound, evidence is another name for likelihood). elbo being easily calculated, one can use it as a loss function. You can now train a NN to get \\(\\Box\\) and \\(\\Delta\\).\nTo match distributions between the forward process and the backward process, we will use special function KL divergence. KL divergence of gaussians can be calculated analytically so it eases the process.\nIn 2020, a paper introduced a new model DDPM (Denoising Diffusion Probabilistic model). Main idea is to simplify diffusion processes by considering only mean. Variance is set as a constant. In that case we can just use mse(noise) as a loss.\n\n\n\nimage.png"
+  },
+  {
     "objectID": "posts/2021-03-01-logbook-March.html",
     "href": "posts/2021-03-01-logbook-March.html",
     "title": "Logbook for March 21",
