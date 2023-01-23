@@ -1838,7 +1838,7 @@
     "href": "posts/2023-01-23-latex_reference.html",
     "title": "Latex in markdown reference",
     "section": "",
-    "text": "Reference\nhttps://en.wikibooks.org/wiki/LaTeX/Mathematics\n\n\nExamples\nWe can integrate markdown between $ $ or $$ $$\nSingle $ will be inline\nDouble $$ will be centered into a new line\n\n\n\nLaTeX\nMarkdow\n\n\n\n\n\\(\\widehat{q}\\)\n\\widehat{q}\n\n\n\\(|x-x_M|\\)\n\\|x-x_M\\|"
+    "text": "Reference\nhttps://en.wikibooks.org/wiki/LaTeX/Mathematics\n\n\nExamples\nWe can integrate markdown between $ $ or $$ $$\nSingle $ will be inline\nDouble $$ will be centered into a new line\n\n\n\n\n\n\n\nLaTeX\nMarkdow\n\n\n\n\n\\(\\widehat{q}\\)\n\\widehat{q}\n\n\n\\(|x-x_M|\\)\n|x-x_M|\n\n\n\\(f_M(x)\\)\nf_M(x)\n\n\n\\(\\displaystyle\\sum_{m}\\)\n\\displaystyle\\sum_{m}\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n                     | |\n                     | |"
   },
   {
     "objectID": "posts/2021-03-25-contribute to a project with git.html",
