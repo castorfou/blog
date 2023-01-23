@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/2023-01-23-latex_reference.html",
       "/posts/2023-01-17-chord-diagram.html",
       "/posts/2023-01-12-fastai-stable-diffusion.html",
       "/posts/2023-01-11-zotero-manage-datascience-paper.html",
