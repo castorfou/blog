@@ -54,7 +54,7 @@ $$
 | x-x_M |
 \\
 f_M(x)
-\\
+\\dd
 \displaystyle\sum_{m}
 \\
 \langle{x,w_m}\rangle
