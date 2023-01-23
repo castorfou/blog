@@ -424,10 +424,27 @@ torchvision               0.13.1               py38_cu102    fastchan</code></pr
 <p>Next notation is <span class="math inline">\(q(X^{(t)}|X^{(t-1)})\)</span></p>
 <p>We can think of it as a function <span class="math inline">\(q\)</span> which transforms <span class="math inline">\(X^{(t-1)}\)</span> to <span class="math inline">\(X^{(t)}\)</span> and what is given is again the probability.</p>
 <p>We have this formula for it</p>
-<p><span class="math inline">\(q(X^{(t)}|X^{(t-1)}) = \mathcal{N}\)</span></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>\mathcal{N}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><span class="math inline">\(q(X^{(t)}|X^{(t-1)}) = \mathcal{N}(X^{(t)}; X^{(t-1)}\sqrt{I-\beta_t}; I\beta_t)\)</span></p>
+<p><span class="math inline">\(X^{(t-1)}\sqrt{I-\beta_t}\)</span> is <span class="math inline">\(\mu\)</span> the mean of this distribution for the normal distribution</p>
+<p><span class="math inline">\(I\beta_t\)</span> is <span class="math inline">\(\Sigma\)</span> the covariance of this distribution for the normal distribution</p>
+<p>When <span class="math inline">\(\beta_t=0\)</span>, with <span class="math inline">\(t=1\)</span> we have a mean <span class="math inline">\(\mu=X^{0}\)</span> and a covariance <span class="math inline">\(\Sigma=0\)</span></p>
+<p>it means in that case noise is null, our function is Identity</p>
+<p>When <span class="math inline">\(\beta_t=1\)</span>, with <span class="math inline">\(t=1\)</span> we have a mean <span class="math inline">\(\mu=0\)</span> and a covariance <span class="math inline">\(\Sigma=I\)</span></p>
+<p>in that case we will get pure noise</p>
+<p>Someway in between we will have part of the initial image + some noise</p>
+<p>So the <strong>forward diffusion</strong> will follow this process</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2023-01-12-fastai-stable-diffusion_files/figure-html/baf888f1-ff03-4009-bbbd-eecb927615c0-1-c8ef3fc4-6442-46d4-bde0-b5019fca3e33.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
 </div>
+<p>This is a <strong>Markow Process with Gaussians transitions</strong></p>
+<p>by Process we can understand a sequence (t) is involved</p>
+<p>by Markov, the things at time t <span class="math inline">\(X^{t}\)</span> depends only on the thing at time t-1 <span class="math inline">\(X^{t-1}\)</span></p>
+<p>by transitions it is following the <span class="math inline">\(q\)</span> function <span class="math inline">\(q(X^{(t)}|X^{(t-1)})\)</span></p>
+<p>by Gaussian, this function is the normal distribution <span class="math inline">\(\mathcal{N}(X^{(t)}; X^{(t-1)}\sqrt{I-\beta_t}; I\beta_t)\)</span></p>
+<p>And by process we mean that we apply baby steps, a high number of times. Maybe 1000 times.</p>
 
 
 </section>
