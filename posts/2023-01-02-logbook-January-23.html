@@ -246,6 +246,13 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
   </ul></li>
   <li><a href="#thursday-0119" id="toc-thursday-0119" class="nav-link" data-scroll-target="#thursday-0119">Thursday 01/19</a></li>
   </ul></li>
+  <li><a href="#week-4---january-23" id="toc-week-4---january-23" class="nav-link" data-scroll-target="#week-4---january-23">Week 4 - January 23</a>
+  <ul class="collapse">
+  <li><a href="#monday-0123" id="toc-monday-0123" class="nav-link" data-scroll-target="#monday-0123">Monday 01/23</a>
+  <ul class="collapse">
+  <li><a href="#issue-on-wslg---icons-missing" id="toc-issue-on-wslg---icons-missing" class="nav-link" data-scroll-target="#issue-on-wslg---icons-missing">Issue on WSLg - icons missing</a></li>
+  </ul></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -383,8 +390,22 @@ title-block-banner: false
 <p><strong>discord app in wsl</strong></p>
 <p>for a reason (maybe due to <a href="https://bugs.launchpad.net/ubuntu/+source/chromium-browser/+bug/1901586">[snap] CA Certificates from /usr/local/share/ca-certificates are not used</a>),</p>
 <p>discord snap cannot (ERR_CERT_AUTHORITY_INVALID) fetch data, complete its installation and cannot be used</p>
+</section>
+</section>
+<section id="week-4---january-23" class="level1">
+<h1>Week 4 - January 23</h1>
+<section id="monday-0123" class="level2">
+<h2 class="anchored" data-anchor-id="monday-0123">Monday 01/23</h2>
+<section id="issue-on-wslg---icons-missing" class="level3">
+<h3 class="anchored" data-anchor-id="issue-on-wslg---icons-missing">Issue on WSLg - icons missing</h3>
+<p>Got an answer from <a href="https://github.com/microsoft/wslg/issues/944#issuecomment-1399107496" class="uri">https://github.com/microsoft/wslg/issues/944#issuecomment-1399107496</a></p>
+<blockquote class="blockquote">
+<p>for sublime-text, you can rename <code>/var/lib/snapd/desktop/applications/sublime-text_subl.desktop</code> to <code>/var/lib/snapd/desktop/applications/sublime_text.desktop</code>. Since the application reports “sublime_text” as their app_id, just rename its .desktop file to same as it’s app_id, thanks!</p>
+</blockquote>
+<p>Not exactly what I do: <a href="../posts/2022-12-15-wsl2-fresh-pc.html#/posts/2022-12-15-wsl2-fresh-pc.html#sublime-text">steps for sublime text in WSL</a></p>
 
 
+</section>
 </section>
 </section>
 

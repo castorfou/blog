@@ -253,6 +253,7 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
   <li><a href="#snapd" id="toc-snapd" class="nav-link" data-scroll-target="#snapd">snapd</a></li>
   <li><a href="#firefox" id="toc-firefox" class="nav-link" data-scroll-target="#firefox">firefox</a></li>
   <li><a href="#nautilus" id="toc-nautilus" class="nav-link" data-scroll-target="#nautilus">nautilus</a></li>
+  <li><a href="#sublime-text" id="toc-sublime-text" class="nav-link" data-scroll-target="#sublime-text">sublime text</a></li>
   <li><a href="#gnome-tweaks-and-yaru-theme" id="toc-gnome-tweaks-and-yaru-theme" class="nav-link" data-scroll-target="#gnome-tweaks-and-yaru-theme">gnome-tweaks and yaru theme</a></li>
   <li><a href="#gimp" id="toc-gimp" class="nav-link" data-scroll-target="#gimp">gimp</a></li>
   <li><a href="#zotero" id="toc-zotero" class="nav-link" data-scroll-target="#zotero">zotero</a></li>
@@ -576,12 +577,30 @@ pip install azure-cli</code></pre>
 </figure>
 </div>
 </section>
+<section id="sublime-text" class="level2">
+<h2 class="anchored" data-anchor-id="sublime-text">sublime text</h2>
+<p>I like this text editor even if it is not exactly opensource.</p>
+<p>I may even buy a license later.</p>
+<p>Anyway I will use the snap version</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> snap install sublime-text</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>and because of this issue from WSLg <a href="https://github.com/microsoft/wslg/issues/944#issuecomment-1399107496">WSL some icons in taskbar for linux applications are defaulting to Tux</a>, I add this</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /var/lib/snapd/desktop/applications</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ln <span class="at">-s</span> sublime-text_subl.desktop  sublime_text.desktop</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/bin</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> sublime_text</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> +x sublime_text</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="fu">tee</span> sublime_text <span class="op">&lt;&lt; EOF</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="st">#!/bin/bash</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="st">env BAMF_DESKTOP_FILE_HINT=/var/lib/snapd/desktop/applications/sublime-text_subl.desktop /snap/bin/sublime-text.subl --launch-or-new-window</span></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a><span class="op">EOF</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Launching <code>sublime_text</code> in command line should open sublime_text with matching icon in taskbar. The same when right clicking a text file in nautilus and editing with sublime text.</p>
+</section>
 <section id="gnome-tweaks-and-yaru-theme" class="level2">
 <h2 class="anchored" data-anchor-id="gnome-tweaks-and-yaru-theme">gnome-tweaks and yaru theme</h2>
-<div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> add-apt-repository univ</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get <span class="at">-y</span> install gnome-tweaks</span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get <span class="at">-y</span> install yaru-theme-gtk</span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get <span class="at">-y</span> install yaru-theme-icon</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> add-apt-repository univ</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get <span class="at">-y</span> install gnome-tweaks</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get <span class="at">-y</span> install yaru-theme-gtk</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get <span class="at">-y</span> install yaru-theme-icon</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-12-15-wsl2-fresh-pc_files/figure-html/ae8205fb-aa09-48c5-9738-a917a104644e-1-1a4c2bac-a4ff-46fb-b5b6-ae40add3390d.png" class="img-fluid figure-img"></p>
@@ -599,32 +618,32 @@ pip install azure-cli</code></pre>
 <section id="gimp" class="level2">
 <h2 class="anchored" data-anchor-id="gimp">gimp</h2>
 <p>And install gimp</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install gimp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install gimp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="zotero" class="level2">
 <h2 class="anchored" data-anchor-id="zotero">zotero</h2>
-<div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snap</span> find zotero</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Name</span>         Version  Publisher   Notes  Summary</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="ex">zotero-snap</span>  6.0.18   extraymond  <span class="at">-</span>      Zotero helps you collect, organize, cite, and share research.</span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="ex">qnotero</span>      2.3.1    ealbiter    <span class="at">-</span>      Standalone sidekick to Zotero reference manager.</span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="ex">zotviewer</span>    1.5.0    fvalle      <span class="at">-</span>      Zotero Visualizer</span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> snap install zotero-snap</span>
-<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="ex">zotero-snap</span> 6.0.18 from extraymond installed</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snap</span> find zotero</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Name</span>         Version  Publisher   Notes  Summary</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="ex">zotero-snap</span>  6.0.18   extraymond  <span class="at">-</span>      Zotero helps you collect, organize, cite, and share research.</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="ex">qnotero</span>      2.3.1    ealbiter    <span class="at">-</span>      Standalone sidekick to Zotero reference manager.</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="ex">zotviewer</span>    1.5.0    fvalle      <span class="at">-</span>      Zotero Visualizer</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> snap install zotero-snap</span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a><span class="ex">zotero-snap</span> 6.0.18 from extraymond installed</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>and there is something to do to activate sync: <a href="https://github.com/extraymond/zotero-snap/issues/29" class="uri">https://github.com/extraymond/zotero-snap/issues/29</a></p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="va">FIREFOX_PROFILE</span><span class="op">=</span><span class="kw">`</span><span class="fu">find</span> ~/snap/firefox/common/.mozilla/ <span class="at">-name</span> <span class="pp">*</span>.default<span class="kw">`</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="va">ZOTERO_PROFILE</span><span class="op">=</span><span class="kw">`</span><span class="fu">find</span> ~/snap/zotero-snap/common/.zotero/ <span class="at">-name</span> <span class="pp">*</span>.default<span class="kw">`</span></span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="va">$FIREFOX_PROFILE</span>/cert9.db <span class="va">$ZOTERO_PROFILE</span></span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="va">$FIREFOX_PROFILE</span>/key4.db <span class="va">$ZOTERO_PROFILE</span></span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="va">$FIREFOX_PROFILE</span>/pkcs11.txt <span class="va">$ZOTERO_PROFILE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="va">FIREFOX_PROFILE</span><span class="op">=</span><span class="kw">`</span><span class="fu">find</span> ~/snap/firefox/common/.mozilla/ <span class="at">-name</span> <span class="pp">*</span>.default<span class="kw">`</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="va">ZOTERO_PROFILE</span><span class="op">=</span><span class="kw">`</span><span class="fu">find</span> ~/snap/zotero-snap/common/.zotero/ <span class="at">-name</span> <span class="pp">*</span>.default<span class="kw">`</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="va">$FIREFOX_PROFILE</span>/cert9.db <span class="va">$ZOTERO_PROFILE</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="va">$FIREFOX_PROFILE</span>/key4.db <span class="va">$ZOTERO_PROFILE</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="va">$FIREFOX_PROFILE</span>/pkcs11.txt <span class="va">$ZOTERO_PROFILE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="pdf-support" class="level2">
 <h2 class="anchored" data-anchor-id="pdf-support">pdf support</h2>
-<div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co">#acrobat reader (which uses wine)</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> snap install acrordrdc</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="co">#evince universal documen reader for ubuntu</span></span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> snap install evince</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co">#acrobat reader (which uses wine)</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> snap install acrordrdc</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="co">#evince universal documen reader for ubuntu</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> snap install evince</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="run-gnome-session-in-ubuntu-lts" class="level1">
@@ -634,14 +653,14 @@ pip install azure-cli</code></pre>
 <section id="install-test-distro-from-scratch" class="level2">
 <h2 class="anchored" data-anchor-id="install-test-distro-from-scratch">install test distro <strong>from scratch</strong></h2>
 <p>from powershell</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="ex">wsl</span> <span class="at">--import</span> ubuntu-x11 C:<span class="dt">\w</span>sl<span class="dt">\U</span>buntu-22.04_X11<span class="dt">\i</span>nstance C:<span class="dt">\w</span>sl<span class="dt">\U</span>buntu-22.04_X11<span class="dt">\d</span>ownload<span class="dt">\u</span>buntu-jammy-wsl-amd64-wsl.rootfs.tar.gz</span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="ex">wsl</span> <span class="at">-d</span> ubuntu-x11</span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span></span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> /mnt/c/wsl/Ubuntu-22.04_X11/download/setup_wsl_<span class="pp">*</span> ~/</span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> +x setup_wsl_root.sh</span>
-<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="ex">./setup_wsl_root.sh</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="ex">wsl</span> <span class="at">--import</span> ubuntu-x11 C:<span class="dt">\w</span>sl<span class="dt">\U</span>buntu-22.04_X11<span class="dt">\i</span>nstance C:<span class="dt">\w</span>sl<span class="dt">\U</span>buntu-22.04_X11<span class="dt">\d</span>ownload<span class="dt">\u</span>buntu-jammy-wsl-amd64-wsl.rootfs.tar.gz</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="ex">wsl</span> <span class="at">-d</span> ubuntu-x11</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> /mnt/c/wsl/Ubuntu-22.04_X11/download/setup_wsl_<span class="pp">*</span> ~/</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> +x setup_wsl_root.sh</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="ex">./setup_wsl_root.sh</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>from powershell</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="ex">wsl</span> <span class="at">-t</span> ubuntu-x11</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="ex">wsl</span> <span class="at">-t</span> ubuntu-x11</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>start ubuntu-x11 from windows terminal menu</p>
 <p>and enter informations requested (ssh keys (paste to gitlab), update certificates (enter password)). Other steps are automatic.</p>
 <p>Other steps: - activate systemd (by modifying /etc/wsl.conf) - restart</p>
@@ -660,21 +679,21 @@ pip install azure-cli</code></pre>
 </ul></li>
 <li>activate x11 config at boot</li>
 </ul>
-<div class="sourceCode" id="cb31"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl is-enabled rc-local.service</span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="cf">if</span> <span class="ex">static</span> it means it has be activated<span class="kw">)</span></span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl enable rc-local.service</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb32"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co">#create rc.local file</span></span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> vi /etc/rc.local</span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/sh -e</span></span>
-<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mount</span> <span class="at">-o</span> rw,remount /tmp/.X11-unix/</span>
-<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> +t /tmp/.X11-unix</span>
-<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> o+rw /dev/dri/renderD128</span>
-<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a><span class="ex">/usr/libexec/at-spi-bus-launcher</span> <span class="at">--launch-immediately</span> <span class="kw">&amp;</span></span>
-<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a><span class="bu">exit</span> 0</span>
-<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a><span class="co">#save &amp; exit</span></span>
-<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> chmod 700 /etc/rc.local</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl is-enabled rc-local.service</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="cf">if</span> <span class="ex">static</span> it means it has be activated<span class="kw">)</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl enable rc-local.service</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co">#create rc.local file</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> vi /etc/rc.local</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/sh -e</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mount</span> <span class="at">-o</span> rw,remount /tmp/.X11-unix/</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> +t /tmp/.X11-unix</span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> o+rw /dev/dri/renderD128</span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a><span class="ex">/usr/libexec/at-spi-bus-launcher</span> <span class="at">--launch-immediately</span> <span class="kw">&amp;</span></span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a><span class="bu">exit</span> 0</span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a><span class="co">#save &amp; exit</span></span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> chmod 700 /etc/rc.local</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li><code>sudo usermod -a -G adm guillaume</code></li>
 <li>Restart distro</li>
@@ -691,9 +710,9 @@ pip install azure-cli</code></pre>
 </figure>
 </div>
 <p>Then we can start it by running <code>gnomeshell.sh</code></p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> bin/gnomeshell.sh</span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="va">MUTTER_DEBUG_DUMMY_MODE_SPECS</span><span class="op">=</span>1920x1080 <span class="ex">gnome-shell</span> <span class="at">--nested</span> <span class="at">--no-x11</span> <span class="dv">2</span><span class="op">&gt;</span> /dev/null <span class="kw">&amp;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> bin/gnomeshell.sh</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="va">MUTTER_DEBUG_DUMMY_MODE_SPECS</span><span class="op">=</span>1920x1080 <span class="ex">gnome-shell</span> <span class="at">--nested</span> <span class="at">--no-x11</span> <span class="dv">2</span><span class="op">&gt;</span> /dev/null <span class="kw">&amp;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>

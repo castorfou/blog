@@ -189,6 +189,13 @@
     "text": "Thursday 01/19\n2 tips I have just used in RSS feed for my blog\nTo highlight some text from a file from jupyter\nuse | grep --color=always -z 'feed: true'\n\n!cat ../index.qmd | grep --color=always -z 'feed: true'\n\n---\ntitle: \"blog\"\nlisting:\n  contents: posts\n  sort: \"date desc\"\n  type: default\n  categories: true\n  sort-ui: false\n  filter-ui: true\n  feed: true\npage-layout: full\ntitle-block-banner: false\n---\n\n\n\n\n\nTo insert rescaled image into jupyter\nJust copy paste the image in a markdown cell:\n![image.png](attachment:24349bd1-4c85-4c51-833c-808bb8c82a38.png)\nvalidate cell to save this image file\nand turn this into html code\n<div>\n   <img src=\"attachment:24349bd1-4c85-4c51-833c-808bb8c82a38.png\" width=\"200\">\n</div>\n\n\n\ndiscord app in wsl\nfor a reason (maybe due to [snap] CA Certificates from /usr/local/share/ca-certificates are not used),\ndiscord snap cannot (ERR_CERT_AUTHORITY_INVALID) fetch data, complete its installation and cannot be used"
   },
   {
+    "objectID": "posts/2023-01-02-logbook-January-23.html#monday-0123",
+    "href": "posts/2023-01-02-logbook-January-23.html#monday-0123",
+    "title": "Logbook for January 23",
+    "section": "Monday 01/23",
+    "text": "Monday 01/23\n\nIssue on WSLg - icons missing\nGot an answer from https://github.com/microsoft/wslg/issues/944#issuecomment-1399107496\n\nfor sublime-text, you can rename /var/lib/snapd/desktop/applications/sublime-text_subl.desktop to /var/lib/snapd/desktop/applications/sublime_text.desktop. Since the application reports “sublime_text” as their app_id, just rename its .desktop file to same as it’s app_id, thanks!\n\nNot exactly what I do: steps for sublime text in WSL"
+  },
+  {
     "objectID": "posts/2021-05-21-Machine-learning-in-python-with-scikit-learn.html",
     "href": "posts/2021-05-21-Machine-learning-in-python-with-scikit-learn.html",
     "title": "Machine learning in python with scikit-learn",
@@ -2112,6 +2119,13 @@
     "title": "WSL2 on a fresh new PC",
     "section": "nautilus",
     "text": "nautilus\nAnd install nautilus\nsudo apt install nautilus nautilus-extension-gnome-terminal\n\n\n\nimage.png"
+  },
+  {
+    "objectID": "posts/2022-12-15-wsl2-fresh-pc.html#sublime-text",
+    "href": "posts/2022-12-15-wsl2-fresh-pc.html#sublime-text",
+    "title": "WSL2 on a fresh new PC",
+    "section": "sublime text",
+    "text": "sublime text\nI like this text editor even if it is not exactly opensource.\nI may even buy a license later.\nAnyway I will use the snap version\nsudo snap install sublime-text\nand because of this issue from WSLg WSL some icons in taskbar for linux applications are defaulting to Tux, I add this\ncd /var/lib/snapd/desktop/applications\nsudo ln -s sublime-text_subl.desktop  sublime_text.desktop\ncd ~/bin\ntouch sublime_text\nchmod +x sublime_text\ntee sublime_text << EOF\n#!/bin/bash\nenv BAMF_DESKTOP_FILE_HINT=/var/lib/snapd/desktop/applications/sublime-text_subl.desktop /snap/bin/sublime-text.subl --launch-or-new-window\nEOF\nLaunching sublime_text in command line should open sublime_text with matching icon in taskbar. The same when right clicking a text file in nautilus and editing with sublime text."
   },
   {
     "objectID": "posts/2022-12-15-wsl2-fresh-pc.html#gnome-tweaks-and-yaru-theme",
