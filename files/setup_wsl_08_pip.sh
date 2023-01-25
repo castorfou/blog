@@ -13,7 +13,7 @@ trusted-host = download.pytorch.org
 extra-index-url= https://artifactory.michelin.com/api/pypi/pypi/simple
 EOF
 
-if [ -e "/.cfg" ]; then
+if [ -d "~/.cfg" ]; then
 		config='/usr/bin/git --git-dir=/.cfg/ --work-tree=/'
 		$config add ~/.config/pip/pip.conf
 		$config commit -m'config artifactory'
