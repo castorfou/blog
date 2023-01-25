@@ -2972,7 +2972,42 @@
     "href": "posts/2023-01-25-fastai-live-coding-sessions.html#end-of-session---wrap-up",
     "title": "Live coding sessions from fastai",
     "section": "End of session - wrap-up",
-    "text": "End of session - wrap-up\nThis was the base environnement setup after installing mambaforge\nconda_env/base.txt\npip install -U certifi\nexport SSL_CERT_FILE=`python -c 'import certifi;print(certifi.where())'`\n# update CA\nexport TMPDIR=`mktemp -d`\ngit clone git@gitlab.michelin.com:DEV/bib-certificates.git $TMPDIR\npushd $TMPDIR\ncat *trust-ca.pem >> $SSL_CERT_FILE\npopd\n\nmamba install ipython\n\nmamba install pytorch torchvision torchaudio pytorch-cuda=11.7 -c pytorch -c nvidia\n\nmamba install jupyterlab\nStarting from this fresh install, let’s retest stable diffusion and my issues on WSL:\nmamba create --name fastai_diffusers --clone base\nmamba activate fastai_diffusers\npip install -Uq diffusers transformers fastcore\nmamba install matplotlib\ncd ~/nbs\ngit clone https://github.com/fastai/diffusion-nbs.git\njupyter lab\nand open/run stable_diffusion.ipynb\nbut this is not better (still on cuda 1.7, this is maybe why)\n\n\n\nimage.png"
+    "text": "End of session - wrap-up\nThis was the base environnement setup after installing mambaforge\nconda_env/base.txt\npip install -U certifi\nexport SSL_CERT_FILE=`python -c 'import certifi;print(certifi.where())'`\n# update CA\nexport TMPDIR=`mktemp -d`\ngit clone git@gitlab.michelin.com:DEV/bib-certificates.git $TMPDIR\npushd $TMPDIR\ncat *trust-ca.pem >> $SSL_CERT_FILE\npopd\n\nmamba install ipython\n\nmamba install pytorch torchvision torchaudio pytorch-cuda=11.7 -c pytorch -c nvidia\n\nmamba install jupyterlab ipywidgets\nStarting from this fresh install, let’s retest stable diffusion and my issues on WSL:\nmamba create --name fastai_diffusers --clone base\nmamba activate fastai_diffusers\npip install -Uq diffusers transformers fastcore\nmamba install matplotlib\ncd ~/nbs\ngit clone https://github.com/fastai/diffusion-nbs.git\njupyter lab\nand open/run stable_diffusion.ipynb\nbut this is not better (still on cuda 1.7, this is maybe why)\n\n\n\nimage.png"
+  },
+  {
+    "objectID": "posts/2023-01-25-fastai-live-coding-sessions.html#tmux",
+    "href": "posts/2023-01-25-fastai-live-coding-sessions.html#tmux",
+    "title": "Live coding sessions from fastai",
+    "section": "tmux",
+    "text": "tmux\nThis is a little bit as screen\ninstallation\nsudo snap install tmux --classic\nusage\njust run tmux to start a new window.\nFrom here you have special commands, starting with binding key (default is Ctrl-b)\nStart a new pan (vertical split): C-b %\nStart a new pan (horizontal split): C-b \"\nClose a pan: C-d\nNavigate through pans: C-b arrow keys\nZoom-in zoom-out: C-b z\nDetach window: C-b d\nRe-attach window: tmux a\n\n\n\nimage.png"
+  },
+  {
+    "objectID": "posts/2023-01-25-fastai-live-coding-sessions.html#jupyter-shortcuts",
+    "href": "posts/2023-01-25-fastai-live-coding-sessions.html#jupyter-shortcuts",
+    "title": "Live coding sessions from fastai",
+    "section": "jupyter shortcuts",
+    "text": "jupyter shortcuts\nin command mode\n1 - for titles # (if in code, it auto switches to markdown)\n2 - for titles ##\n3 - for titles ###\ny to switch to code cells (much used to m for markdown)"
+  },
+  {
+    "objectID": "posts/2023-01-25-fastai-live-coding-sessions.html#install-fastai",
+    "href": "posts/2023-01-25-fastai-live-coding-sessions.html#install-fastai",
+    "title": "Live coding sessions from fastai",
+    "section": "install fastai",
+    "text": "install fastai\nfrom https://docs.fast.ai/\nmamba install -c fastchan fastai"
+  },
+  {
+    "objectID": "posts/2023-01-25-fastai-live-coding-sessions.html#run-fastbook-notebooks",
+    "href": "posts/2023-01-25-fastai-live-coding-sessions.html#run-fastbook-notebooks",
+    "title": "Live coding sessions from fastai",
+    "section": "run fastbook notebooks",
+    "text": "run fastbook notebooks\nAnd to run notebooks from fastbook, we have to install fastbook and sentencepiece as well\n\nuntar_data issues\npath = untar_data(URLs.MNIST_SAMPLE) fails with > [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate in certificate chain (_ssl.c:997)\nnot exactly why because my certifi/certs are updated with my corporate CA\nAnd if I workaround with this preceeding\nimport ssl\nssl._create_default_https_context = ssl._create_unverified_context\nI have another error which is MICHELIN GROUP - Internet Access blocked</h1><br>Access denied. You are attempting to access the Internet using an obsolete version of Chrome.\nLooking in fastai code, I see something like https://github.com/fastai/fastai2/blob/master/fastai2/data/external.py#L162 s.headers.update({'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0'})\nIs it that user-agent is old and considered as dangerous by security agent in my company?"
+  },
+  {
+    "objectID": "posts/2023-01-25-fastai-live-coding-sessions.html#end-of-session---wrap-up-1",
+    "href": "posts/2023-01-25-fastai-live-coding-sessions.html#end-of-session---wrap-up-1",
+    "title": "Live coding sessions from fastai",
+    "section": "End of session - wrap-up",
+    "text": "End of session - wrap-up\nShould defintely solve the issue with untar_data\nAnd at the end of this session, my base environment has been built this way\npip install -U certifi\nexport SSL_CERT_FILE=`python -c 'import certifi;print(certifi.where())'`\n# update CA\nexport TMPDIR=`mktemp -d`\ngit clone git@gitlab.michelin.com:DEV/bib-certificates.git $TMPDIR\ncd $TMPDIR\ncat *trust-ca.pem >> $SSL_CERT_FILE\ncd\n\nmamba install ipython\n\nmamba install pytorch torchvision torchaudio pytorch-cuda=11.7 -c pytorch -c nvidia\n\nmamba install jupyterlab ipywidgets\n\nmamba install -c fastchan fastai fastbook sentencepiece"
   },
   {
     "objectID": "posts/2021-03-09-clustergit.html",
