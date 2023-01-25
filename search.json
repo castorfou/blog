@@ -2951,7 +2951,7 @@
     "href": "posts/2023-01-25-fastai-live-coding-sessions.html#install-python-distribution---mambaforge-the-automated-way",
     "title": "Live coding sessions from fastai",
     "section": "install python distribution - mambaforge | the automated way",
-    "text": "install python distribution - mambaforge | the automated way\nIt is at https://github.com/fastai/fastsetup\nIt is Jeremy’s repo that contains anything he uses to setup a new computer\nThere is a thing called setup-conda.sh\nwget --no-check-certificate --content-disposition -O - https://raw.githubusercontent.com/fastai/fastsetup/master/setup-conda.sh | bash"
+    "text": "install python distribution - mambaforge | the automated way\nIt is at https://github.com/fastai/fastsetup\nIt is Jeremy’s repo that contains anything he uses to setup a new computer\nThere is a thing called setup-conda.sh\nwget --no-check-certificate --content-disposition -O - https://raw.githubusercontent.com/fastai/fastsetup/master/setup-conda.sh | bash\nand run mamba init to allow mamba activate"
   },
   {
     "objectID": "posts/2023-01-25-fastai-live-coding-sessions.html#and-then-activate-self-certificates-into-ca",
@@ -2972,7 +2972,7 @@
     "href": "posts/2023-01-25-fastai-live-coding-sessions.html#end-of-session---wrap-up",
     "title": "Live coding sessions from fastai",
     "section": "End of session - wrap-up",
-    "text": "End of session - wrap-up\nThis was the base environnement setup\nconda_env/base.txt\npip install -U certifi\nexport SSL_CERT_FILE=`python -c 'import certifi;print(certifi.where())'`\n# update CA\nexport TMPDIR=`mktemp -d`\ngit clone git@gitlab.michelin.com:DEV/bib-certificates.git $TMPDIR\npushd $TMPDIR\ncat *trust-ca.pem >> $SSL_CERT_FILE\npopd\n\nmamba install ipython\n\nmamba install pytorch torchvision torchaudio pytorch-cuda=11.7 -c pytorch -c nvidia\n\nmamba install jupyterlab"
+    "text": "End of session - wrap-up\nThis was the base environnement setup after installing mambaforge\nconda_env/base.txt\npip install -U certifi\nexport SSL_CERT_FILE=`python -c 'import certifi;print(certifi.where())'`\n# update CA\nexport TMPDIR=`mktemp -d`\ngit clone git@gitlab.michelin.com:DEV/bib-certificates.git $TMPDIR\npushd $TMPDIR\ncat *trust-ca.pem >> $SSL_CERT_FILE\npopd\n\nmamba install ipython\n\nmamba install pytorch torchvision torchaudio pytorch-cuda=11.7 -c pytorch -c nvidia\n\nmamba install jupyterlab\nStarting from this fresh install, let’s retest stable diffusion and my issues on WSL:\nmamba create --name fastai_diffusers --clone base\nmamba activate fastai_diffusers\npip install -Uq diffusers transformers fastcore\nmamba install matplotlib\ncd ~/nbs\ngit clone https://github.com/fastai/diffusion-nbs.git\njupyter lab\nand open/run stable_diffusion.ipynb\nbut this is not better (still on cuda 1.7, this is maybe why)\n\n\n\nimage.png"
   },
   {
     "objectID": "posts/2021-03-09-clustergit.html",
