@@ -2979,7 +2979,7 @@
     "href": "posts/2023-01-25-fastai-live-coding-sessions.html#tmux",
     "title": "Live coding sessions from fastai",
     "section": "tmux",
-    "text": "tmux\nThis is a little bit as screen\ninstallation\nsudo snap install tmux --classic\nusage\njust run tmux to start a new window.\nFrom here you have special commands, starting with binding key (default is Ctrl-b)\nStart a new pan (vertical split): C-b %\nStart a new pan (horizontal split): C-b \"\nClose a pan: C-d\nNavigate through pans: C-b arrow keys\nZoom-in zoom-out: C-b z\nDetach window: C-b d\nRe-attach window: tmux a\n\n\n\nimage.png"
+    "text": "tmux\nThis is a little bit as screen\ninstallation\nsudo snap install tmux --classic\nusage\njust run tmux to start a new window.\nFrom here you have special commands, starting with binding key (default is Ctrl-b)\nStart a new pan (vertical split): C-b %\nStart a new pan (horizontal split): C-b \"\nClose a pan: C-d\nNavigate through pans: C-b arrow keys\nZoom-in zoom-out: C-b z\nDetach window: C-b d\nNavigate in scrillback buffer: C-b [ then arrow keys, pg-up, pg-down\nRe-attach window: tmux a\n\n\n\nimage.png"
   },
   {
     "objectID": "posts/2023-01-25-fastai-live-coding-sessions.html#jupyter-shortcuts",
