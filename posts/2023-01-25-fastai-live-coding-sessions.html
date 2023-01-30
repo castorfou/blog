@@ -257,6 +257,12 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
   </ul></li>
   <li><a href="#end-of-session---wrap-up-1" id="toc-end-of-session---wrap-up-1" class="nav-link" data-scroll-target="#end-of-session---wrap-up-1">End of session - wrap-up</a></li>
   </ul></li>
+  <li><a href="#live-coding-3" id="toc-live-coding-3" class="nav-link" data-scroll-target="#live-coding-3">Live coding 3</a>
+  <ul class="collapse">
+  <li><a href="#paperspace-gradient-notebooks" id="toc-paperspace-gradient-notebooks" class="nav-link" data-scroll-target="#paperspace-gradient-notebooks">paperspace gradient notebooks</a></li>
+  <li><a href="#graphical-debugger-in-jupyter-lab" id="toc-graphical-debugger-in-jupyter-lab" class="nav-link" data-scroll-target="#graphical-debugger-in-jupyter-lab">graphical debugger in jupyter lab</a></li>
+  <li><a href="#classic-non-graphical-debugger" id="toc-classic-non-graphical-debugger" class="nav-link" data-scroll-target="#classic-non-graphical-debugger">classic, non-graphical debugger</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -587,6 +593,76 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 <span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> install jupyterlab ipywidgets</span>
 <span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> install <span class="at">-c</span> fastchan fastai fastbook sentencepiece</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="live-coding-3" class="level1">
+<h1>Live coding 3</h1>
+<ul>
+<li><a href="https://forums.fast.ai/t/live-coding-3/96707">Live-coding 3 - forum entry</a></li>
+<li><a href="https://www.youtube.com/watch?v=B6BQiIgiEks">Live-coding 3 - video</a></li>
+</ul>
+<p>From previous session, question from audience about why Jeremy discourages to use multiple mamba environnement. Quite interesting.</p>
+<section id="paperspace-gradient-notebooks" class="level2">
+<h2 class="anchored" data-anchor-id="paperspace-gradient-notebooks">paperspace gradient notebooks</h2>
+<p>I use github to sign-up on paperspace. And create a project, then a notebook (actually a server?)</p>
+<p><a href="https://console.paperspace.com/teox6gpp0/projects/pa3mp7r16wz/notebooks" class="uri">https://console.paperspace.com/teox6gpp0/projects/pa3mp7r16wz/notebooks</a></p>
+</section>
+<section id="graphical-debugger-in-jupyter-lab" class="level2">
+<h2 class="anchored" data-anchor-id="graphical-debugger-in-jupyter-lab">graphical debugger in jupyter lab</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2023-01-25-fastai-live-coding-sessions_files/figure-html/f70da639-5fdf-4f57-b803-2b91b2f8a9cf-1-c1ae8d55-0373-4223-80ba-b5b5a7cf1556.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+<p>one can see the limit of <code>from xxx import *</code>, you will have the full variables in this window.</p>
+</section>
+<section id="classic-non-graphical-debugger" class="level2">
+<h2 class="anchored" data-anchor-id="classic-non-graphical-debugger">classic, non-graphical debugger</h2>
+<p>Just by adding <code>%%debug</code></p>
+<p>and for a reason it works better when you navigate into a function</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2023-01-25-fastai-live-coding-sessions_files/figure-html/7294e959-f4bb-48f9-b469-ed1488947255-1-a547e0c6-4efb-41e8-ac02-272865ee3db4.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+<p>And have access to classic <code>ipdb</code> options</p>
+<p><code>h</code>for help</p>
+<p><code>c</code> for continue</p>
+<p><code>n</code> for next</p>
+<p><code>p</code> for print</p>
+<p><code>s</code>for step into</p>
+<p>or a second way:</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-01-30T08:03:33.633249Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-01-30T08:03:33.633024Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-01-30T08:03:33.636364Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-01-30T08:03:33.635848Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-01-30T08:03:33.633235Z&quot;}" data-tags="[]" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pdb <span class="im">import</span> set_trace</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f():</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>        set_trace()</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(i)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-01-30T08:03:58.887920Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-01-30T08:03:58.887663Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-01-30T08:04:04.580824Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-01-30T08:04:04.579910Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-01-30T08:03:58.887900Z&quot;}" data-tags="[]" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>f()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&gt; /tmp/ipykernel_1682/972468431.py(6)f()
+      2 
+      3 def f():
+      4     for i in range(3):
+      5         set_trace()
+----&gt; 6         print(i)
+</code></pre>
+</div>
+<div class="cell-output cell-output-stdin">
+<pre><code>ipdb&gt;  p i</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0</code></pre>
+</div>
+<div class="cell-output cell-output-stdin">
+<pre><code>ipdb&gt;  q</code></pre>
+</div>
+</div>
 
 
 </section>

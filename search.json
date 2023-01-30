@@ -210,6 +210,13 @@
     "text": "Wednesday 01/25\nJust started watching Live coding sessions from fastai"
   },
   {
+    "objectID": "posts/2023-01-02-logbook-January-23.html#friday-0126",
+    "href": "posts/2023-01-02-logbook-January-23.html#friday-0126",
+    "title": "Logbook for January 23",
+    "section": "Friday 01/26",
+    "text": "Friday 01/26\nJust watched video #1 of Stephane Mallet 2023."
+  },
+  {
     "objectID": "posts/2021-05-21-Machine-learning-in-python-with-scikit-learn.html",
     "href": "posts/2021-05-21-Machine-learning-in-python-with-scikit-learn.html",
     "title": "Machine learning in python with scikit-learn",
@@ -3008,6 +3015,27 @@
     "title": "Live coding sessions from fastai",
     "section": "End of session - wrap-up",
     "text": "End of session - wrap-up\nShould defintely solve the issue with untar_data\nAnd at the end of this session, my base environment has been built this way\npip install -U certifi\nexport SSL_CERT_FILE=`python -c 'import certifi;print(certifi.where())'`\n# update CA\nexport TMPDIR=`mktemp -d`\ngit clone git@gitlab.michelin.com:DEV/bib-certificates.git $TMPDIR\ncd $TMPDIR\ncat *trust-ca.pem >> $SSL_CERT_FILE\ncd\n\nmamba install ipython\n\nmamba install pytorch torchvision torchaudio pytorch-cuda=11.7 -c pytorch -c nvidia\n\nmamba install jupyterlab ipywidgets\n\nmamba install -c fastchan fastai fastbook sentencepiece"
+  },
+  {
+    "objectID": "posts/2023-01-25-fastai-live-coding-sessions.html#paperspace-gradient-notebooks",
+    "href": "posts/2023-01-25-fastai-live-coding-sessions.html#paperspace-gradient-notebooks",
+    "title": "Live coding sessions from fastai",
+    "section": "paperspace gradient notebooks",
+    "text": "paperspace gradient notebooks\nI use github to sign-up on paperspace. And create a project, then a notebook (actually a server?)\nhttps://console.paperspace.com/teox6gpp0/projects/pa3mp7r16wz/notebooks"
+  },
+  {
+    "objectID": "posts/2023-01-25-fastai-live-coding-sessions.html#graphical-debugger-in-jupyter-lab",
+    "href": "posts/2023-01-25-fastai-live-coding-sessions.html#graphical-debugger-in-jupyter-lab",
+    "title": "Live coding sessions from fastai",
+    "section": "graphical debugger in jupyter lab",
+    "text": "graphical debugger in jupyter lab\n\n\n\nimage.png\n\n\none can see the limit of from xxx import *, you will have the full variables in this window."
+  },
+  {
+    "objectID": "posts/2023-01-25-fastai-live-coding-sessions.html#classic-non-graphical-debugger",
+    "href": "posts/2023-01-25-fastai-live-coding-sessions.html#classic-non-graphical-debugger",
+    "title": "Live coding sessions from fastai",
+    "section": "classic, non-graphical debugger",
+    "text": "classic, non-graphical debugger\nJust by adding %%debug\nand for a reason it works better when you navigate into a function\n\n\n\nimage.png\n\n\nAnd have access to classic ipdb options\nhfor help\nc for continue\nn for next\np for print\nsfor step into\nor a second way:\n\nfrom pdb import set_trace\n\ndef f():\n    for i in range(3):\n        set_trace()\n        print(i)\n\n\nf()\n\n> /tmp/ipykernel_1682/972468431.py(6)f()\n      2 \n      3 def f():\n      4     for i in range(3):\n      5         set_trace()\n----> 6         print(i)\n\n\n\nipdb>  p i\n\n\n0\n\n\nipdb>  q"
   },
   {
     "objectID": "posts/2021-03-09-clustergit.html",
