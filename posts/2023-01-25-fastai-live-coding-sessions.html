@@ -263,6 +263,7 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
   <li><a href="#graphical-debugger-in-jupyter-lab" id="toc-graphical-debugger-in-jupyter-lab" class="nav-link" data-scroll-target="#graphical-debugger-in-jupyter-lab">graphical debugger in jupyter lab</a></li>
   <li><a href="#classic-non-graphical-debugger" id="toc-classic-non-graphical-debugger" class="nav-link" data-scroll-target="#classic-non-graphical-debugger">classic, non-graphical debugger</a></li>
   <li><a href="#persistent-storage-in-paperspace" id="toc-persistent-storage-in-paperspace" class="nav-link" data-scroll-target="#persistent-storage-in-paperspace">persistent storage in paperspace</a></li>
+  <li><a href="#sys.path" id="toc-sys.path" class="nav-link" data-scroll-target="#sys.path">sys.path</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -682,6 +683,24 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 <p><img src="2023-01-25-fastai-live-coding-sessions_files/figure-html/41b204f5-4d6e-4add-9de1-d5504eafc0a4-1-db26c070-cbfa-4ee1-8cc8-df65e53f45ca.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
 </figure>
+</div>
+<p>Actually it may be smarter to include this into <code>/storage/pre-run.sh</code> and not <code>/storage/.bash.local</code>. First one is run once at the start of your server. The last one is run each time you open a terminal</p>
+</section>
+<section id="sys.path" class="level2">
+<h2 class="anchored" data-anchor-id="sys.path">sys.path</h2>
+<p>Jeremy gets some issue because site-packages was not part of sys.path…</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-01-30T12:40:35.446423Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-01-30T12:40:35.446225Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-01-30T12:40:35.451312Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-01-30T12:40:35.450822Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-01-30T12:40:35.446410Z&quot;}" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>sys.path</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<pre><code>['/mnt/c/Users/f279814/git/blog/posts',
+ '/home/guillaume/miniconda/envs/fastai/lib/python310.zip',
+ '/home/guillaume/miniconda/envs/fastai/lib/python3.10',
+ '/home/guillaume/miniconda/envs/fastai/lib/python3.10/lib-dynload',
+ '',
+ '/home/guillaume/miniconda/envs/fastai/lib/python3.10/site-packages']</code></pre>
+</div>
 </div>
 
 

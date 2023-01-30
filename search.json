@@ -3042,7 +3042,14 @@
     "href": "posts/2023-01-25-fastai-live-coding-sessions.html#persistent-storage-in-paperspace",
     "title": "Live coding sessions from fastai",
     "section": "persistent storage in paperspace",
-    "text": "persistent storage in paperspace\n/storage is following you on all your servers.\nTo keep a consistent environment each time you start a paperspace server, Jeremy is following this process:\n\ninstall additional lib with pip --user. e.g. pip install -U fastcore --user. It will install libs in ~/.local\nmove .local to /storage: mv ~/.local /storage\nsymbolic link back from /storage/.local to ~/.local: ln -s /storage/.local ~/\n\nThis has to be done once.\nAnd because paperspace has this nifty thing to call /storage/.bash.local at the start of a session, you can automate things here.\n\n\n\nimage.png"
+    "text": "persistent storage in paperspace\n/storage is following you on all your servers.\nTo keep a consistent environment each time you start a paperspace server, Jeremy is following this process:\n\ninstall additional lib with pip --user. e.g. pip install -U fastcore --user. It will install libs in ~/.local\nmove .local to /storage: mv ~/.local /storage\nsymbolic link back from /storage/.local to ~/.local: ln -s /storage/.local ~/\n\nThis has to be done once.\nAnd because paperspace has this nifty thing to call /storage/.bash.local at the start of a session, you can automate things here.\n\n\n\nimage.png\n\n\nActually it may be smarter to include this into /storage/pre-run.sh and not /storage/.bash.local. First one is run once at the start of your server. The last one is run each time you open a terminal"
+  },
+  {
+    "objectID": "posts/2023-01-25-fastai-live-coding-sessions.html#sys.path",
+    "href": "posts/2023-01-25-fastai-live-coding-sessions.html#sys.path",
+    "title": "Live coding sessions from fastai",
+    "section": "sys.path",
+    "text": "sys.path\nJeremy gets some issue because site-packages was not part of sys.path…\n\nimport sys\n\nsys.path\n\n['/mnt/c/Users/f279814/git/blog/posts',\n '/home/guillaume/miniconda/envs/fastai/lib/python310.zip',\n '/home/guillaume/miniconda/envs/fastai/lib/python3.10',\n '/home/guillaume/miniconda/envs/fastai/lib/python3.10/lib-dynload',\n '',\n '/home/guillaume/miniconda/envs/fastai/lib/python3.10/site-packages']"
   },
   {
     "objectID": "posts/2021-03-09-clustergit.html",
