@@ -3042,7 +3042,7 @@
     "href": "posts/2023-01-25-fastai-live-coding-sessions.html#persistent-storage-in-paperspace",
     "title": "Live coding sessions from fastai",
     "section": "persistent storage in paperspace",
-    "text": "persistent storage in paperspace\n/storage is following you on all your servers.\nTo keep a consistent environment each time you start a paperspace server, Jeremy is following this process: - install additional lib with pip --user. e.g. pip install -U fastcore --user. It will install libs in ~/.local - move .local to /storage: mv ~/.local /storage - symbolic link back from /storage/.local to ~/.local: ln -s /storage/.local ~/\nThis has to be done once.\nAnd because paperspace has this nifty thing to call /storage/.bash.local at the start of a session, you can automate things here.\n\n\n\nimage.png"
+    "text": "persistent storage in paperspace\n/storage is following you on all your servers.\nTo keep a consistent environment each time you start a paperspace server, Jeremy is following this process:\n\ninstall additional lib with pip --user. e.g. pip install -U fastcore --user. It will install libs in ~/.local\nmove .local to /storage: mv ~/.local /storage\nsymbolic link back from /storage/.local to ~/.local: ln -s /storage/.local ~/\n\nThis has to be done once.\nAnd because paperspace has this nifty thing to call /storage/.bash.local at the start of a session, you can automate things here.\n\n\n\nimage.png"
   },
   {
     "objectID": "posts/2021-03-09-clustergit.html",
