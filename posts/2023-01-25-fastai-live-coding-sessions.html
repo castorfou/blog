@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.313">
+<meta name="generator" content="quarto-1.2.335">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -264,6 +264,10 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
   <li><a href="#classic-non-graphical-debugger" id="toc-classic-non-graphical-debugger" class="nav-link" data-scroll-target="#classic-non-graphical-debugger">classic, non-graphical debugger</a></li>
   <li><a href="#persistent-storage-in-paperspace" id="toc-persistent-storage-in-paperspace" class="nav-link" data-scroll-target="#persistent-storage-in-paperspace">persistent storage in paperspace</a></li>
   <li><a href="#sys.path" id="toc-sys.path" class="nav-link" data-scroll-target="#sys.path">sys.path</a></li>
+  </ul></li>
+  <li><a href="#live-coding-4" id="toc-live-coding-4" class="nav-link" data-scroll-target="#live-coding-4">Live coding 4</a>
+  <ul class="collapse">
+  <li><a href="#optimised-config-for-paperspace" id="toc-optimised-config-for-paperspace" class="nav-link" data-scroll-target="#optimised-config-for-paperspace">optimised config for paperspace</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -702,6 +706,24 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
  '/home/guillaume/miniconda/envs/fastai/lib/python3.10/site-packages']</code></pre>
 </div>
 </div>
+</section>
+</section>
+<section id="live-coding-4" class="level1">
+<h1>Live coding 4</h1>
+<ul>
+<li><a href="https://forums.fast.ai/t/live-coding-4/96727">Live-coding 4 - forum entry</a></li>
+<li><a href="https://www.youtube.com/watch?v=uKUMT6Bj4l8&amp;feature=youtu.be">Live-coding 4 - video</a></li>
+</ul>
+<section id="optimised-config-for-paperspace" class="level2">
+<h2 class="anchored" data-anchor-id="optimised-config-for-paperspace">optimised config for paperspace</h2>
+<p>Essentially Jeremy has been improving his paperspace configuration</p>
+<p>based on paperspace special configuration where</p>
+<ul>
+<li><p><code>/storage</code> is linked to your account (and maybe to your organization account) and will follow you under all your servers (notebooks in paperspace), and</p></li>
+<li><p><code>/notebooks</code> is linked to your server (notebook) and will follow you for this server, whatever is the machine you decide to attach to it.</p></li>
+</ul>
+<p>Jeremy setups <code>.local</code>, <code>.ssh</code>, and then move that to <code>/storage</code>, create symlinks.</p>
+<p>I am less interested by that one, watched at x2 speed…</p>
 
 
 </section>
