@@ -1677,7 +1677,7 @@
     "href": "posts/2023-02-01-logbook-February-23.html",
     "title": "Logbook for February 23",
     "section": "",
-    "text": "Just watched Live coding session #4 from fastai\nJust watched video #2 of Stephane Mallat 2023.\nHere is a link to Elements of information theory by Thomas Cover and Joy Thomas, reading suggested by S. Mallat (~800 pages)\nJust watched Live coding session #5 from fastai\n\n\n\nReading comments in Live coding session #5 - forums, I felt on https://automatetheboringstuff.com/, and it reminds me these days where we try with my kids to learn Python by controling Minecraft.\nAnd there is an update about this which seems to run under PC version of Minecraft.\nhttps://inventwithpython.com/blog/2020/12/24/installing-the-computercraft-mod-for-minecraft-116-and-later/\n\n\n\nimage.png\n\n\nWould be a perfect activity for the next 2 weeks during shool break!\nhttps://www.curseforge.com/minecraft/mc-mods/cc-tweaked"
+    "text": "Just watched Live coding session #4 from fastai\nJust watched video #2 of Stephane Mallat 2023.\nHere is a link to Elements of information theory by Thomas Cover and Joy Thomas, reading suggested by S. Mallat (~800 pages)\nJust watched Live coding session #5 from fastai\n\n\n\nReading comments in Live coding session #5 - forums, I felt on https://automatetheboringstuff.com/, and it reminds me these days where we try with my kids to learn Python by controling Minecraft.\nAnd there is an update about this which seems to run under PC version of Minecraft.\nhttps://inventwithpython.com/blog/2020/12/24/installing-the-computercraft-mod-for-minecraft-116-and-later/\n\n\n\nimage.png\n\n\nWould be a perfect activity for the next 2 weeks during shool break!\nhttps://www.curseforge.com/minecraft/mc-mods/cc-tweaked\nJust watched Live coding session #6 from fastai"
   },
   {
     "objectID": "posts/2021-01-13-installing-python-packages-from-jupyter.html",
@@ -3085,6 +3085,20 @@
     "title": "Live coding sessions from fastai",
     "section": "ctags",
     "text": "ctags\nusing a clone of fastai to illustrate, and Jeremy used an option to clone without the full depth which is much much quicker\ngit clone https://github.com/fastai/fastai.git --depth 1\n1st thing is to install universal-ctags:\n\none option is to use snap: sudo snap install universal-ctags. It is what I used but Jeremy doesn’t lik snap (why?)\n2nd one is mamba: mamba install universal-ctags\n\nAnd now we can\ncd ~/git/fastai/fastai\nctags -R .\n#we can look into tags file with all symbols being used in this repo\nless tags\n\n#jump to a tag ArrayMask\nvim -t ArrayMask\n\n#open a file\nvim layers.py\n#enter tag to jump to (tj: tag jump)\n#enter just the 1st letters and press enter, it will suggest matching cases\n#e.g. Array\n:tj Array\n# or from code itself, if cursor is on a word, to get to its tag\nCtrl-]\n#e.g. cursor on Module, Ctrl-]\nclass View(Module):\n# will jump to torch_core.py\nclass Module(nn.Module, metaclass=PrePostInitMeta):\n# to get back to previous tag\nCtrl-t\nWe can create a ctags config file to ignore locations such as .pynb_checkpoints…\n# we can use stag (split tag)\n:stag DataL <enter>\n# it will split the screen in 2 parts"
+  },
+  {
+    "objectID": "posts/2023-01-25-fastai-live-coding-sessions.html#paperspace-and-ctags-and-other-stuff",
+    "href": "posts/2023-01-25-fastai-live-coding-sessions.html#paperspace-and-ctags-and-other-stuff",
+    "title": "Live coding sessions from fastai",
+    "section": "paperspace and ctags and other stuff",
+    "text": "paperspace and ctags and other stuff\nOne option is to install in a specific directory using mamba\nmamba -p ~/conda install universal-ctags, and to move ~/conda to /storage, and link symlinks within /storage/.bash.local"
+  },
+  {
+    "objectID": "posts/2023-01-25-fastai-live-coding-sessions.html#use-paperspace-with-fastbook",
+    "href": "posts/2023-01-25-fastai-live-coding-sessions.html#use-paperspace-with-fastbook",
+    "title": "Live coding sessions from fastai",
+    "section": "use paperspace with fastbook",
+    "text": "use paperspace with fastbook\nSteps to setup paperspace:\n\nupload ssh keys for github to paperspace /storage/cfg/.ssh (be sure to copy a key declared to github (yes double check that) and chmod 600 your private key)\ngit clone https://github.com/fastai/paperspace-setup.git in /notebooks\ncd paperspace-setup\n./setup.sh\nShutdown your machine and start up a new one\n\nFork fastbook\n\nsource ~/.bashrc # don’t know why it is not done automatically\ngit clone git@github.com:castorfou/fastbook.git in /notebooks\n\nAnd now we can run notebooks from /fastbook/clean e.g. 01_intro.ipynb\n\n\n\nimage.png\n\n\nJeremy dives into what happens here:\n\nfrom xxx import *: and link to all.py\nto break down cells into splitted cells (with one command per cell) using key shortcut: Ctrl-Shift -"
   },
   {
     "objectID": "posts/2021-03-09-clustergit.html",

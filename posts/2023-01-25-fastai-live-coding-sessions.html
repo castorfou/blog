@@ -274,6 +274,11 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
   <li><a href="#vim" id="toc-vim" class="nav-link" data-scroll-target="#vim">vim</a></li>
   <li><a href="#ctags" id="toc-ctags" class="nav-link" data-scroll-target="#ctags">ctags</a></li>
   </ul></li>
+  <li><a href="#live-coding-6" id="toc-live-coding-6" class="nav-link" data-scroll-target="#live-coding-6">Live coding 6</a>
+  <ul class="collapse">
+  <li><a href="#paperspace-and-ctags-and-other-stuff" id="toc-paperspace-and-ctags-and-other-stuff" class="nav-link" data-scroll-target="#paperspace-and-ctags-and-other-stuff">paperspace and ctags and other stuff</a></li>
+  <li><a href="#use-paperspace-with-fastbook" id="toc-use-paperspace-with-fastbook" class="nav-link" data-scroll-target="#use-paperspace-with-fastbook">use paperspace with fastbook</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -789,6 +794,46 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 <div class="sourceCode" id="cb31"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we can use stag (split tag)</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="ex">:stag</span> DataL <span class="op">&lt;</span>enter<span class="op">&gt;</span></span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="co"># it will split the screen in 2 parts</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="live-coding-6" class="level1">
+<h1>Live coding 6</h1>
+<ul>
+<li><a href="https://forums.fast.ai/t/live-coding-6/96794">Live-coding 6 - forum entry</a></li>
+<li><a href="https://www.youtube.com/watch?v=V3cN-bqFUh4">Live-coding 6 - video</a></li>
+</ul>
+<section id="paperspace-and-ctags-and-other-stuff" class="level2">
+<h2 class="anchored" data-anchor-id="paperspace-and-ctags-and-other-stuff">paperspace and ctags and other stuff</h2>
+<p>One option is to install in a specific directory using mamba</p>
+<p><code>mamba -p ~/conda install universal-ctags</code>, and to move ~/conda to /storage, and link symlinks within /storage/.bash.local</p>
+</section>
+<section id="use-paperspace-with-fastbook" class="level2">
+<h2 class="anchored" data-anchor-id="use-paperspace-with-fastbook">use paperspace with fastbook</h2>
+<p>Steps to setup paperspace:</p>
+<ul>
+<li><p>upload ssh keys for github to paperspace <code>/storage/cfg/.ssh</code> (be sure to copy a key declared to github (yes double check that) and chmod 600 your private key)</p></li>
+<li><p><code>git clone https://github.com/fastai/paperspace-setup.git</code> in <code>/notebooks</code></p></li>
+<li><p>cd paperspace-setup</p></li>
+<li><p>./setup.sh</p></li>
+<li><p>Shutdown your machine and start up a new one</p></li>
+</ul>
+<p>Fork fastbook</p>
+<ul>
+<li><p><code>source ~/.bashrc</code> # don’t know why it is not done automatically</p></li>
+<li><p><code>git clone git@github.com:castorfou/fastbook.git</code> in <code>/notebooks</code></p></li>
+</ul>
+<p>And now we can run notebooks from <code>/fastbook/clean</code> e.g.&nbsp;<code>01_intro.ipynb</code></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2023-01-25-fastai-live-coding-sessions_files/figure-html/2ae7f090-ef94-464d-89f1-5968e7149492-1-ce461459-083b-4fae-ae1a-9b8633445a33.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+<p>Jeremy dives into what happens here:</p>
+<ul>
+<li><p>from xxx import *: and link to <code>all.py</code></p></li>
+<li><p>to break down cells into splitted cells (with one command per cell) using key shortcut: Ctrl-Shift -</p></li>
+</ul>
 
 
 </section>
