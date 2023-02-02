@@ -1677,7 +1677,7 @@
     "href": "posts/2023-02-01-logbook-February-23.html",
     "title": "Logbook for February 23",
     "section": "",
-    "text": "Just watched Live coding session #4 from fastai\nJust watched video #2 of Stephane Mallat 2023.\nHere is a link to Elements of information theory by Thomas Cover and Joy Thomas, reading suggested by S. Mallat (~800 pages)"
+    "text": "Just watched Live coding session #4 from fastai\nJust watched video #2 of Stephane Mallat 2023.\nHere is a link to Elements of information theory by Thomas Cover and Joy Thomas, reading suggested by S. Mallat (~800 pages)\nJust watched Live coding session #5 from fastai"
   },
   {
     "objectID": "posts/2021-01-13-installing-python-packages-from-jupyter.html",
@@ -2951,7 +2951,7 @@
     "href": "posts/2023-01-25-fastai-live-coding-sessions.html#start-from-a-fresh-user-in-wsl",
     "title": "Live coding sessions from fastai",
     "section": "start from a fresh user in WSL",
-    "text": "start from a fresh user in WSL\nI try things with a complete fresh new user fastai in WSL\nsudo adduser --gecos \"\" fastai\nsudo usermod -aG sudo,adm fastai\nsu - fastai\n\n!id fastai\n\nuid=1001(fastai) gid=1001(fastai) groups=1001(fastai),4(adm),27(sudo)\n\n\nif needed, completey delete user and home directory\nsudo userdel -rfRZ fastai\n\nand setup things for this new user\n\nX apps\nTo launch X apps\npushd ~\ntee -a .bashrc << EOF\nexport DISPLAY=\":0\"\nEOF\npopd\nAlias terminal explorer (nautilus)\npushd ~\ntee -a .bash_aliases << EOF\nalias terminal='dbus-launch gnome-terminal &'\nalias explorer='dbus-launch nautilus &'\nEOF\npopd\nTake it into account\npushd ~\nsource .bashrc\npopd\nUpdate Ctrl-C Ctrl-V shortcuts in gnome-terminal\n\n\n\nimage.png\n\n\n\n\nSSL, CA, SSH setups\nTo avoid “unsafe legacy renegotiation disabled” (linked to my corporate network architecture)\nand “SSL peer certificate or SSH remote key was not OK”\npushd ~\ntee -a .bashrc << EOF\nexport OPENSSL_CONF=/etc/ssl/openssl.cnf\nexport REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt\nEOF\nsource .bashrc\npopd\nTo connect to gitlab\nNot the smartest way to do it but I copy ssh keys from my main user\nsudo bash -c \"cp ~guillaume/.ssh/id_rsa* ~fastai/.ssh/\"\nsudo bash -c \"chown fastai:fastai ~fastai/.ssh/*\""
+    "text": "start from a fresh user in WSL\nI try things with a complete fresh new user fastai in WSL\nsudo adduser --gecos \"\" fastai\nsudo usermod -aG sudo,adm fastai\nsu - fastai\n\n!id fastai\n\nuid=1001(fastai) gid=1001(fastai) groups=1001(fastai),4(adm),27(sudo)\n\n\nif needed, completey delete user and home directory\nsudo userdel -rfRZ fastai\n\nand setup things for this new user\n\nX apps\nTo launch X apps\npushd ~\ntee -a .bashrc << EOF\nexport DISPLAY=\":0\"\nEOF\npopd\nAlias terminal explorer (nautilus)\npushd ~\ntee -a .bash_aliases << EOF\nalias terminal='dbus-launch gnome-terminal &'\nalias explorer='dbus-launch nautilus &'\nEOF\npopd\nTake it into account\npushd ~\nsource .bashrc\npopd\nUpdate Ctrl-C Ctrl-V keybindings in gnome-terminal\n\n\n\nimage.png\n\n\n\n\nSSL, CA, SSH setups\nTo avoid “unsafe legacy renegotiation disabled” (linked to my corporate network architecture)\nand “SSL peer certificate or SSH remote key was not OK”\npushd ~\ntee -a .bashrc << EOF\nexport OPENSSL_CONF=/etc/ssl/openssl.cnf\nexport REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt\nEOF\nsource .bashrc\npopd\nTo connect to gitlab\nNot the smartest way to do it but I copy ssh keys from my main user\nsudo bash -c \"cp ~guillaume/.ssh/id_rsa* ~fastai/.ssh/\"\nsudo bash -c \"chown fastai:fastai ~fastai/.ssh/*\""
   },
   {
     "objectID": "posts/2023-01-25-fastai-live-coding-sessions.html#install-python-distribution---mambaforge-the-manual-way",
@@ -3071,6 +3071,20 @@
     "title": "Live coding sessions from fastai",
     "section": "optimised config for paperspace",
     "text": "optimised config for paperspace\nEssentially Jeremy has been improving his paperspace configuration\nbased on paperspace special configuration where\n\n/storage is linked to your account (and maybe to your organization account) and will follow you under all your servers (notebooks in paperspace), and\n/notebooks is linked to your server (notebook) and will follow you for this server, whatever is the machine you decide to attach to it.\n\nJeremy setups .local, .ssh, and then move that to /storage, create symlinks.\nI am less interested by that one, watched at x2 speed…"
+  },
+  {
+    "objectID": "posts/2023-01-25-fastai-live-coding-sessions.html#vim",
+    "href": "posts/2023-01-25-fastai-live-coding-sessions.html#vim",
+    "title": "Live coding sessions from fastai",
+    "section": "vim",
+    "text": "vim\noverview on vim. Nothing new here, except for learning resources\n\nhttps://www.openvim.com/ that I didn’t know, and\nvimtutor as well\nhttps://vim-adventures.com/ which is a kind of game\n\n\n\n\nimage.png\n\n\nJeremy’s vim config file is at https://github.com/fastai/dotfiles/blob/master/.vimrc"
+  },
+  {
+    "objectID": "posts/2023-01-25-fastai-live-coding-sessions.html#ctags",
+    "href": "posts/2023-01-25-fastai-live-coding-sessions.html#ctags",
+    "title": "Live coding sessions from fastai",
+    "section": "ctags",
+    "text": "ctags\nusing a clone of fastai to illustrate, and Jeremy used an option to clone without the full depth which is much much quicker\ngit clone https://github.com/fastai/fastai.git --depth 1\n1st thing is to install universal-ctags:\n\none option is to use snap: sudo snap install universal-ctags. It is what I used but Jeremy doesn’t lik snap (why?)\n2nd one is mamba: mamba install universal-ctags\n\nAnd now we can\ncd ~/git/fastai/fastai\nctags -R .\n#we can look into tags file with all symbols being used in this repo\nless tags\n\n#jump to a tag ArrayMask\nvim -t ArrayMask\n\n#open a file\nvim layers.py\n#enter tag to jump to (tj: tag jump)\n#enter just the 1st letters and press enter, it will suggest matching cases\n#e.g. Array\n:tj Array\n# or from code itself, if cursor is on a word, to get to its tag\nCtrl-]\n#e.g. cursor on Module, Ctrl-]\nclass View(Module):\n# will jump to torch_core.py\nclass Module(nn.Module, metaclass=PrePostInitMeta):\n# to get back to previous tag\nCtrl-t\nWe can create a ctags config file to ignore locations such as .pynb_checkpoints…\n# we can use stag (split tag)\n:stag DataL <enter>\n# it will split the screen in 2 parts"
   },
   {
     "objectID": "posts/2021-03-09-clustergit.html",

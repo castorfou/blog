@@ -269,6 +269,11 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
   <ul class="collapse">
   <li><a href="#optimised-config-for-paperspace" id="toc-optimised-config-for-paperspace" class="nav-link" data-scroll-target="#optimised-config-for-paperspace">optimised config for paperspace</a></li>
   </ul></li>
+  <li><a href="#live-coding-5" id="toc-live-coding-5" class="nav-link" data-scroll-target="#live-coding-5">Live coding 5</a>
+  <ul class="collapse">
+  <li><a href="#vim" id="toc-vim" class="nav-link" data-scroll-target="#vim">vim</a></li>
+  <li><a href="#ctags" id="toc-ctags" class="nav-link" data-scroll-target="#ctags">ctags</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -345,7 +350,7 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 <div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">pushd</span> ~</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> .bashrc</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="bu">popd</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Update Ctrl-C Ctrl-V shortcuts in gnome-terminal</p>
+<p>Update Ctrl-C Ctrl-V keybindings in gnome-terminal</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2023-01-25-fastai-live-coding-sessions_files/figure-html/8d5ba2ab-be63-40e5-8122-928a8cd8f1af-1-b8b7d7cd-34cc-4497-949b-8b783c33f4e5.png" class="img-fluid figure-img"></p>
@@ -724,6 +729,66 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 </ul>
 <p>Jeremy setups <code>.local</code>, <code>.ssh</code>, and then move that to <code>/storage</code>, create symlinks.</p>
 <p>I am less interested by that one, watched at x2 speed…</p>
+</section>
+</section>
+<section id="live-coding-5" class="level1">
+<h1>Live coding 5</h1>
+<ul>
+<li><a href="https://forums.fast.ai/t/live-coding-5/96733">Live-coding 5 - forum entry</a></li>
+<li><a href="https://www.youtube.com/watch?v=gdsa2VawOeM">Live-coding 5 - video</a></li>
+</ul>
+<section id="vim" class="level2">
+<h2 class="anchored" data-anchor-id="vim">vim</h2>
+<p>overview on vim. Nothing new here, except for learning resources</p>
+<ul>
+<li><p><a href="https://www.openvim.com/" class="uri">https://www.openvim.com/</a> that I didn’t know, and</p></li>
+<li><p><code>vimtutor</code> as well</p></li>
+<li><p><a href="https://vim-adventures.com/" class="uri">https://vim-adventures.com/</a> which is a kind of game</p></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2023-01-25-fastai-live-coding-sessions_files/figure-html/62086c74-ca89-4453-b8b5-3e426cbc4573-1-e0c93d1c-7ffc-4157-b5b3-d6c8ab7f2825.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+<p>Jeremy’s vim config file is at <a href="https://github.com/fastai/dotfiles/blob/master/.vimrc" class="uri">https://github.com/fastai/dotfiles/blob/master/.vimrc</a></p>
+</section>
+<section id="ctags" class="level2">
+<h2 class="anchored" data-anchor-id="ctags">ctags</h2>
+<p>using a clone of fastai to illustrate, and Jeremy used an option to clone without the full depth which is much much quicker</p>
+<p><code>git clone https://github.com/fastai/fastai.git --depth 1</code></p>
+<p>1st thing is to install universal-ctags:</p>
+<ul>
+<li><p>one option is to use snap: <code>sudo snap install universal-ctags</code>. It is what I used but Jeremy doesn’t lik snap (why?)</p></li>
+<li><p>2nd one is mamba: <code>mamba install universal-ctags</code></p></li>
+</ul>
+<p>And now we can</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/git/fastai/fastai</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="ex">ctags</span> <span class="at">-R</span> .</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="co">#we can look into tags file with all symbols being used in this repo</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="fu">less</span> tags</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="co">#jump to a tag ArrayMask</span></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="ex">vim</span> <span class="at">-t</span> ArrayMask</span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a><span class="co">#open a file</span></span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a><span class="ex">vim</span> layers.py</span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a><span class="co">#enter tag to jump to (tj: tag jump)</span></span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a><span class="co">#enter just the 1st letters and press enter, it will suggest matching cases</span></span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a><span class="co">#e.g. Array</span></span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a><span class="ex">:tj</span> Array</span>
+<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a><span class="co"># or from code itself, if cursor is on a word, to get to its tag</span></span>
+<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a><span class="ex">Ctrl-]</span></span>
+<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a><span class="co">#e.g. cursor on Module, Ctrl-]</span></span>
+<span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a><span class="ex">class</span> View<span class="er">(</span><span class="ex">Module</span><span class="kw">)</span><span class="bu">:</span></span>
+<span id="cb30-19"><a href="#cb30-19" aria-hidden="true" tabindex="-1"></a><span class="co"># will jump to torch_core.py</span></span>
+<span id="cb30-20"><a href="#cb30-20" aria-hidden="true" tabindex="-1"></a><span class="ex">class</span> Module<span class="er">(</span><span class="ex">nn.Module,</span> metaclass=PrePostInitMeta<span class="kw">)</span><span class="bu">:</span></span>
+<span id="cb30-21"><a href="#cb30-21" aria-hidden="true" tabindex="-1"></a><span class="co"># to get back to previous tag</span></span>
+<span id="cb30-22"><a href="#cb30-22" aria-hidden="true" tabindex="-1"></a><span class="ex">Ctrl-t</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>We can create a ctags config file to ignore locations such as .pynb_checkpoints…</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we can use stag (split tag)</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="ex">:stag</span> DataL <span class="op">&lt;</span>enter<span class="op">&gt;</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="co"># it will split the screen in 2 parts</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>
