@@ -1684,7 +1684,7 @@
     "href": "posts/2023-02-01-logbook-February-23.html#monday-0206",
     "title": "Logbook for February 23",
     "section": "Monday 02/06",
-    "text": "Monday 02/06\nJust watched Live coding session #7 from fastai"
+    "text": "Monday 02/06\nJust watched Live coding session #7 from fastai\nFixed issue with kernel dying when using GPU in some cases. It was due to an env variable not setup. I need export LD_LIBRARY_PATH=/usr/lib/wsl/lib including in systemd jupyterlab service.\nMoved to quarto pre-release version to get access to code annotation. This is done by updating publish.yml\nindex 503ee47..9cda82b 100644\n--- a/.github/workflows/publish.yml\n+++ b/.github/workflows/publish.yml\n@@ -16,6 +16,8 @@ jobs:\n \n       - name: Set up Quarto\n         uses: quarto-dev/quarto-actions/setup@v2\n+        with:\n+          version: 'pre-release'\n \n       - name: Render and Publish\n         uses: quarto-dev/quarto-actions/publish@v2"
   },
   {
     "objectID": "posts/2021-01-13-installing-python-packages-from-jupyter.html",

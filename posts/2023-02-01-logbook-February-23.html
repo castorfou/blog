@@ -278,6 +278,20 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 <section id="monday-0206" class="level2">
 <h2 class="anchored" data-anchor-id="monday-0206">Monday 02/06</h2>
 <p>Just watched <a href="../posts/2023-01-25-fastai-live-coding-sessions.html#live-coding-7">Live coding session #7</a> from fastai</p>
+<p>Fixed issue with kernel dying when using GPU in some cases. It was due to an env variable not setup. I need <code>export LD_LIBRARY_PATH=/usr/lib/wsl/lib</code> including in systemd jupyterlab <a href="../posts/2022-12-15-wsl2-fresh-pc.html#jupyter-lab">service</a>.</p>
+<p>Moved to quarto pre-release version to get access to <a href="https://quarto.org/docs/prerelease/1.3/code-annotation.html">code annotation</a>. This is done by updating <code>publish.yml</code></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="at">index 503ee47..9cda82b 100644</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="pp">--- a/.github/workflows/publish.yml</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="at">+++ b/.github/workflows/publish.yml</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">@@ -16,6 +16,8 @@ jobs</span><span class="kw">:</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="at"> </span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="at">       </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Set up Quarto</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="at">         </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> quarto-dev/quarto-actions/setup@v2</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">+        with</span><span class="kw">:</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="fu">+          version</span><span class="kw">:</span><span class="at"> </span><span class="st">'pre-release'</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="at"> </span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="at">       </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Render and Publish</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="at">         </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> quarto-dev/quarto-actions/publish@v2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>
