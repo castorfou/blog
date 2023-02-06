@@ -479,13 +479,14 @@ chmod +x setup_wsl_root.sh
 <p>In order to preserve base environment, I won’t install anything in it.</p>
 <p>I will create a <code>base_jupyter</code> env with what is needed for running jupyter lab. And create a jupyterlab service to automatically start jupyter lab with my distro (and stop/restart it)</p>
 <p><code>base_jupyter</code></p>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-01-10T11:07:30.353647Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-01-10T11:07:30.353429Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-01-10T11:07:30.466028Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-01-10T11:07:30.465336Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-01-10T11:07:30.353633Z&quot;}" data-tags="[]" data-execution_count="1">
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-02-06T15:04:49.901514Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-02-06T15:04:49.901267Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-02-06T15:04:50.051802Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-02-06T15:04:50.051008Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-02-06T15:04:49.901496Z&quot;}" data-tags="[]" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cat <span class="op">/</span>home<span class="op">/</span>guillaume<span class="op">/</span>_conda_env<span class="op">/</span>base_jupyter.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>conda remove --name base_jupyter --all
 mamba create -n base_jupyter python=3.9
 conda activate base_jupyter
 mamba install -c conda-forge jupyterlab
+mamba install -c conda-forge ipywidgets
 jupyter labextension install jupyterlab-plotly
 
 jupyter-lab --generate-config
@@ -500,7 +501,7 @@ mamba install -c conda-forge jupyterlab_execute_time
 pip install azure-cli</code></pre>
 </div>
 </div>
-<p>jupyterlab as a service:</p>
+<p>jupyterlab as a service: (Feb-06: I don’t do that anymore. For a reason when starting jupyter lab from systemctl, it can create kernel crash). I will run jupyterlab manually</p>
 <p>FILE /etc/systemd/system/jupyterlab.service</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[Unit]</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="va">Description</span><span class="op">=</span>Jupyter <span class="ex">lab</span> boot scriptJupyter lab boot script</span>
@@ -512,11 +513,12 @@ pip install azure-cli</code></pre>
 <span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="va">User</span><span class="op">=</span>guillaume</span>
 <span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="va">Group</span><span class="op">=</span>adm</span>
 <span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="va">ExecStart</span><span class="op">=</span>/home/guillaume/bin/jupyterlab.sh</span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="va">TimeoutStartSec</span><span class="op">=</span>0</span>
-<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a><span class="va">RemainAfterExit</span><span class="op">=</span>yes</span>
-<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a><span class="ex">[Install]</span></span>
-<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a><span class="va">WantedBy</span><span class="op">=</span>default.target</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="va">ExecStop</span><span class="op">=</span>screen <span class="ex">-X</span> <span class="at">-S</span> jupyter_screen kill</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a><span class="va">TimeoutStartSec</span><span class="op">=</span>0</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="va">RemainAfterExit</span><span class="op">=</span>yes</span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a><span class="ex">[Install]</span></span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a><span class="va">WantedBy</span><span class="op">=</span>default.target</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>and</p>
 <p>FILE /home/guillaume/bin/jupyterlab.sh</p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash </span></span>
