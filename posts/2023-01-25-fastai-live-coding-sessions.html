@@ -279,7 +279,10 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
   <li><a href="#paperspace-and-ctags-and-other-stuff" id="toc-paperspace-and-ctags-and-other-stuff" class="nav-link" data-scroll-target="#paperspace-and-ctags-and-other-stuff">paperspace and ctags and other stuff</a></li>
   <li><a href="#use-paperspace-with-fastbook" id="toc-use-paperspace-with-fastbook" class="nav-link" data-scroll-target="#use-paperspace-with-fastbook">use paperspace with fastbook</a></li>
   </ul></li>
-  <li><a href="#live-coding-7" id="toc-live-coding-7" class="nav-link" data-scroll-target="#live-coding-7">Live coding 7</a></li>
+  <li><a href="#live-coding-7" id="toc-live-coding-7" class="nav-link" data-scroll-target="#live-coding-7">Live coding 7</a>
+  <ul class="collapse">
+  <li><a href="#kaggle-competition" id="toc-kaggle-competition" class="nav-link" data-scroll-target="#kaggle-competition">kaggle competition</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -843,8 +846,66 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 <li><a href="https://forums.fast.ai/t/live-coding-7/96811">Live-coding 7 - forum entry</a></li>
 <li><a href="https://www.youtube.com/watch?v=cagqUrHMDJ0">Live-coding 7 - video</a></li>
 </ul>
+<section id="kaggle-competition" class="level2">
+<h2 class="anchored" data-anchor-id="kaggle-competition">kaggle competition</h2>
+<p>It starts with an overview of different types of Kaggle competitions (kudos, knowledge, …, money) and going through a <a href="https://www.kaggle.com/competitions/paddy-disease-classification/overview">competition</a> as suggested by <a href="https://forums.fast.ai/t/practice-walk-thru-6-chp1-on-kaggle/96793">Radek</a>.</p>
+<p>To follow I will switch to my fastai user, install kaggle into base environment. (<code>pip install kaggle</code>)</p>
+<p>Get kaggle json from kaggle website. Account &gt; API &gt; Create New API Token</p>
+<p>You get</p>
+<blockquote class="blockquote">
+<p>Ensure kaggle.json is in the location ~/.kaggle/kaggle.json to use the API.</p>
+</blockquote>
+<p>So download, copy (using upload in jupyter lab), move in right location, change owner and chmod 600</p>
+<p>And I can download paddy dataset with</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/nbs/kaggle/paddy</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="ex">kaggle</span> competitions download <span class="at">-c</span> paddy-disease-classification</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Unzip and then look at directory structure, number of files</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-type</span> d <span class="at">-print0</span> <span class="kw">|</span> </span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="bu">read</span> <span class="at">-d</span> <span class="st">''</span> <span class="at">-r</span> <span class="va">dir</span><span class="kw">;</span> <span class="cf">do</span>     </span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>    <span class="va">files</span><span class="op">=</span><span class="va">(</span><span class="st">"</span><span class="va">$dir</span><span class="st">"</span>/<span class="pp">*</span><span class="va">)</span><span class="kw">;</span>     </span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">printf</span> <span class="st">"%5d files in directory %s\n"</span> <span class="st">"</span><span class="va">${</span><span class="op">#</span><span class="va">files</span><span class="op">[@]</span><span class="va">}</span><span class="st">"</span> <span class="st">"</span><span class="va">$dir</span><span class="st">"</span><span class="kw">;</span> </span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>    <span class="ex">5</span> files in directory .</span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a> <span class="ex">3469</span> files in directory ./test_images</span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>   <span class="ex">10</span> files in directory ./train_images</span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>  <span class="ex">380</span> files in directory ./train_images/bacterial_leaf_streak</span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a> <span class="ex">1088</span> files in directory ./train_images/tungro</span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>  <span class="ex">965</span> files in directory ./train_images/brown_spot</span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a> <span class="ex">1442</span> files in directory ./train_images/dead_heart</span>
+<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a> <span class="ex">1594</span> files in directory ./train_images/hispa</span>
+<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a> <span class="ex">1764</span> files in directory ./train_images/normal</span>
+<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a>  <span class="ex">620</span> files in directory ./train_images/downy_mildew</span>
+<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a>  <span class="ex">337</span> files in directory ./train_images/bacterial_panicle_blight</span>
+<span id="cb33-18"><a href="#cb33-18" aria-hidden="true" tabindex="-1"></a> <span class="ex">1738</span> files in directory ./train_images/blast</span>
+<span id="cb33-19"><a href="#cb33-19" aria-hidden="true" tabindex="-1"></a>  <span class="ex">479</span> files in directory ./train_images/bacterial_leaf_blight</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>And then we can start to work on it.</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-02-06T09:05:19.533911Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-02-06T09:05:19.533229Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-02-06T09:05:19.540151Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-02-06T09:05:19.539469Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-02-06T09:05:19.533890Z&quot;}" data-tags="[]" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastai.vision.<span class="bu">all</span> <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>Path.BASE_PATH <span class="op">=</span> path <span class="op">=</span> Path.home()<span class="op">/</span><span class="st">'git'</span><span class="op">/</span><span class="st">'kaggle'</span><span class="op">/</span><span class="st">'paddy'</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>path.ls()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<pre><code>(#5) [Path('paddy-disease-classification.zip'),Path('sample_submission.csv'),Path('test_images'),Path('train.csv'),Path('train_images')]</code></pre>
+</div>
+</div>
+<p>Path is neat. Define this <code>BASE_PATH</code> to simplify <code>ls()</code> output.</p>
+<p>Had to insert</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> ssl</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>ssl._create_default_https_context <span class="op">=</span> ssl._create_unverified_context</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>to be able to download resnet34</p>
+<p>For a reason, surely the same issue as I got with diffusion model, my kernel dies when training</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2023-01-25-fastai-live-coding-sessions_files/figure-html/c816e1ba-87b4-4c66-be60-eed0301cab13-1-19cccd57-7103-4c3e-b6f1-bf6edacc69ef.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+<p>And Jeremy shares some tip about nvidia-smi. He suggests to use <code>nvidia-smi dmon</code> instead of <code>watch nvidia-smi</code> (and monitor <code>sm</code> column and see if io allow it to be high enough)</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
