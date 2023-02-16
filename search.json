@@ -392,11 +392,11 @@
     "text": "rc.local\nIt would allow services to be created and run at boot time: https://www.cyberciti.biz/faq/how-to-enable-rc-local-shell-script-on-systemd-while-booting-linux-system/\nnot tested yet."
   },
   {
-    "objectID": "posts/2022-12-19-wsl2-from-windows-store.html#error-createprocessparsecommon",
-    "href": "posts/2022-12-19-wsl2-from-windows-store.html#error-createprocessparsecommon",
+    "objectID": "posts/2022-12-19-wsl2-from-windows-store.html#fixed-error-createprocessparsecommon",
+    "href": "posts/2022-12-19-wsl2-from-windows-store.html#fixed-error-createprocessparsecommon",
     "title": "WSL2 from Windows Store",
-    "section": "ERROR: CreateProcessParseCommon",
-    "text": "ERROR: CreateProcessParseCommon\nWhen starting image after wsl update, I have the following error:\n<3>WSL (8) ERROR: CreateProcessParseCommon:782: Failed to translate \\\\wsl.localhost\\ubuntu-22.04\\home\\guillaume\nI am not the only one, I have posted in this issue from WSL github repo."
+    "section": "[FIXED] ERROR: CreateProcessParseCommon",
+    "text": "[FIXED] ERROR: CreateProcessParseCommon\nWhen starting image after wsl update, I have the following error:\n<3>WSL (8) ERROR: CreateProcessParseCommon:782: Failed to translate \\\\wsl.localhost\\ubuntu-22.04\\home\\guillaume\nI am not the only one, I have posted in this issue from WSL github repo.\nA solution given in the thread is to update the way to call vpnkit (in .profile)\nwsl.exe -d wsl-vpnkit --cd /app service wsl-vpnkit status >/dev/null || wsl.exe -d wsl-vpnkit --cd /app service wsl-vpnkit start"
   },
   {
     "objectID": "posts/2022-12-19-wsl2-from-windows-store.html#cannot-install-from-snap-store",
@@ -1684,7 +1684,7 @@
     "href": "posts/2023-02-01-logbook-February-23.html#monday-0206",
     "title": "Logbook for February 23",
     "section": "Monday 02/06",
-    "text": "Monday 02/06\nJust watched Live coding session #7 from fastai\nFixed issue with kernel dying when using GPU in some cases. It was due to an env variable not setup. I need export LD_LIBRARY_PATH=/usr/lib/wsl/lib including in systemd jupyterlab service.\nMoved to quarto pre-release version to get access to code annotation. This is done by updating publish.yml\nindex 503ee47..9cda82b 100644\n--- a/.github/workflows/publish.yml\n+++ b/.github/workflows/publish.yml\n@@ -16,6 +16,8 @@ jobs:\n \n       - name: Set up Quarto\n         uses: quarto-dev/quarto-actions/setup@v2\n+        with:\n+          version: 'pre-release'\n \n       - name: Render and Publish\n         uses: quarto-dev/quarto-actions/publish@v2"
+    "text": "Monday 02/06\nJust watched Live coding session #7 from fastai\nFixed issue with kernel dying when using GPU in some cases. It was due to an env variable not setup. I need export LD_LIBRARY_PATH=/usr/lib/wsl/lib including in systemd jupyterlab service. I have integrated that in WSL installation procedure (actually in setup_wsl_user.sh)\nMoved to quarto pre-release version to get access to code annotation. This is done by updating publish.yml\nindex 503ee47..9cda82b 100644\n--- a/.github/workflows/publish.yml\n+++ b/.github/workflows/publish.yml\n@@ -16,6 +16,8 @@ jobs:\n \n       - name: Set up Quarto\n         uses: quarto-dev/quarto-actions/setup@v2\n+        with:\n+          version: 'pre-release'\n \n       - name: Render and Publish\n         uses: quarto-dev/quarto-actions/publish@v2"
   },
   {
     "objectID": "posts/2023-02-01-logbook-February-23.html#wednesday-0215",
@@ -1692,6 +1692,13 @@
     "title": "Logbook for February 23",
     "section": "Wednesday 02/15",
     "text": "Wednesday 02/15\nwsl --update --pre-release\n\nVersion WSL : 1.1.3.0\nVersion du noyau : 5.15.90.1\nVersion WSLg : 1.0.49\nVersion MSRDC : 1.2.3770\nVersion direct3D : 1.608.2-61064218\nVersion de DXCore : 10.0.25131.1002-220531-1700.rs-onecore-base2-hyp\nversion Windows : 10.0.19044.2486"
+  },
+  {
+    "objectID": "posts/2023-02-01-logbook-February-23.html#thursday-0216",
+    "href": "posts/2023-02-01-logbook-February-23.html#thursday-0216",
+    "title": "Logbook for February 23",
+    "section": "Thursday 02/16",
+    "text": "Thursday 02/16\n\ngit security issue\nGit security issue CVE-2022-41903 and CVE-2022-23251\nTo patch\necho \"deb [arch=amd64 trusted=yes] https://artifactory.michelin.com/artifactory/git-core-ubuntu/ $(lsb_release -cs) main\" | sudo tee /etc/apt/sources.list.d/git-core.list\nsudo apt update\nsudo apt upgrade\nand to check\n\n!git --version\n\ngit version 2.39.1\n\n\nShould be in version >= 2.39.1\nI have integrated this in WSL installation procedure (actually in setup_wsl_user.sh)\n\n\nwsl CreateProcessParseCommon fixed\nas explained here\nupdated in WSL installation procedure (actually in setup_wsl_user.sh)"
   },
   {
     "objectID": "posts/2021-01-13-installing-python-packages-from-jupyter.html",

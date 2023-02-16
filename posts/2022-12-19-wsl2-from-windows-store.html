@@ -244,7 +244,7 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
   </ul></li>
   <li><a href="#problems" id="toc-problems" class="nav-link" data-scroll-target="#problems">Problems</a>
   <ul class="collapse">
-  <li><a href="#error-createprocessparsecommon" id="toc-error-createprocessparsecommon" class="nav-link" data-scroll-target="#error-createprocessparsecommon">ERROR: CreateProcessParseCommon</a></li>
+  <li><a href="#fixed-error-createprocessparsecommon" id="toc-fixed-error-createprocessparsecommon" class="nav-link" data-scroll-target="#fixed-error-createprocessparsecommon">[FIXED] ERROR: CreateProcessParseCommon</a></li>
   <li><a href="#cannot-install-from-snap-store" id="toc-cannot-install-from-snap-store" class="nav-link" data-scroll-target="#cannot-install-from-snap-store">Cannot install from snap-store</a></li>
   </ul></li>
   </ul>
@@ -466,11 +466,13 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 </section>
 <section id="problems" class="level1">
 <h1>Problems</h1>
-<section id="error-createprocessparsecommon" class="level2">
-<h2 class="anchored" data-anchor-id="error-createprocessparsecommon">ERROR: CreateProcessParseCommon</h2>
+<section id="fixed-error-createprocessparsecommon" class="level2">
+<h2 class="anchored" data-anchor-id="fixed-error-createprocessparsecommon">[FIXED] ERROR: CreateProcessParseCommon</h2>
 <p>When starting image after wsl update, I have the following error:</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>3<span class="op">&gt;</span>WSL <span class="kw">(</span><span class="ex">8</span><span class="kw">)</span> <span class="ex">ERROR:</span> CreateProcessParseCommon:782: Failed to translate <span class="dt">\\</span>wsl.localhost<span class="dt">\u</span>buntu-22.04<span class="dt">\h</span>ome<span class="dt">\g</span>uillaume</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>I am not the only one, I have posted in <a href="https://github.com/microsoft/WSL/issues/9252">this issue</a> from WSL github repo.</p>
+<p>A solution given in the thread is to update the way to call vpnkit (in .profile)</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">wsl.exe</span> <span class="at">-d</span> wsl-vpnkit <span class="at">--cd</span> /app service wsl-vpnkit status <span class="op">&gt;</span>/dev/null <span class="kw">||</span> <span class="ex">wsl.exe</span> <span class="at">-d</span> wsl-vpnkit <span class="at">--cd</span> /app service wsl-vpnkit start</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="cannot-install-from-snap-store" class="level2">
 <h2 class="anchored" data-anchor-id="cannot-install-from-snap-store">Cannot install from snap-store</h2>
@@ -480,8 +482,8 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 <p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
 </figure>
 </div>
-<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">14:12:09:0637</span> Gs  not handling error no-security for action refresh: Failed to obtain authentication.</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="ex">14:12:09:0638</span> Gs  not handling error not-supported for action get-updates-historical: The name org.freedesktop.fwupd was not provided by any .service files</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">14:12:09:0637</span> Gs  not handling error no-security for action refresh: Failed to obtain authentication.</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="ex">14:12:09:0638</span> Gs  not handling error not-supported for action get-updates-historical: The name org.freedesktop.fwupd was not provided by any .service files</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>

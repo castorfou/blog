@@ -7,7 +7,8 @@ then
 	echo "   wsl-vpnkit already setup"
 else
     # code if not found
-	echo 'wsl.exe -d wsl-vpnkit service wsl-vpnkit start' >> ~/.profile
+    # changed (Feb-16 23) to fix <3>WSL (8) ERROR: CreateProcessParseCommon:782: Failed to translate \\wsl.localhost
+	echo 'wsl.exe -d wsl-vpnkit --cd /app service wsl-vpnkit status >/dev/null || wsl.exe -d wsl-vpnkit --cd /app service wsl-vpnkit start' >> ~/.profile
 fi
 wsl.exe -d wsl-vpnkit service wsl-vpnkit start
 source ./.bashrc
@@ -53,7 +54,13 @@ echo "4. update apt sources with artifactory"
 echo 'Acquire { http::User-Agent "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:13.37) Gecko/20100101 Firefox/31.33.7"; };' | sudo tee /etc/apt/apt.conf.d/90globalprotectconf
 sudo sed -i 's,http://archive.ubuntu.com/ubuntu,https://artifactory.michelin.com/artifactory/ubuntu-archive-remote,g' /etc/apt/sources.list
 sudo sed -i 's,http://security.ubuntu.com/ubuntu,https://artifactory.michelin.com/artifactory/ubuntu-archive-remote,g' /etc/apt/sources.list
+# added Feb-16 23 to patch patch the CVE-2022-41903 and CVE-2022-23251 :  https://dev.michelin.com/wsl2/fundamentals#-very-important-for-all-git-user-patch-the-cve---and-cve--
+echo "deb [arch=amd64 trusted=yes] https://artifactory.michelin.com/artifactory/git-core-ubuntu/ $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/git-core.list
 sudo apt update
 sudo apt upgrade -y
 echo
 
+echo "5. setup LD_LIBRARY_PATH"
+tee -a ~/.bashrc << EOF
+export LD_LIBRARY_PATH=/usr/lib/wsl/lib
+EOF
