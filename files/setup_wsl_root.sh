@@ -37,5 +37,6 @@ EOF
 echo
 
 echo "end of configuration for root"
+echo "if you have existing ssh keys, you can copy them into $user_name/.ssh (they will be automatically used in the next phase)"
 echo "stop wsl instance by running 'wsl -t <distro-name>' from powershell"
 echo "and start from Windows Terminal"
