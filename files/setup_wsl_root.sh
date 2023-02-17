@@ -8,6 +8,7 @@ read user_name
 echo Configuration for user [$user_name]
 echo of distribution $DISTRIB_CODENAME
 echo
+export username=$user_name
 
 echo "1. create user and add in sudo"
 #adduser --disabled-password --gecos "" $user_name
