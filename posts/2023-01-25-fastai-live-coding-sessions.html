@@ -446,11 +446,12 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 <span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> <span class="pp">*</span>trust-ca.pem <span class="op">&gt;&gt;</span> <span class="va">$SSL_CERT_FILE</span></span>
 <span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span></span>
 <span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a><span class="co"># export SSL_CERT_FILE</span></span>
-<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a><span class="fu">tee</span> <span class="at">-a</span> ~.bashrc <span class="op">&lt;&lt; EOF</span></span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a><span class="fu">tee</span> <span class="at">-a</span> ~/.bashrc <span class="op">&lt;&lt; EOF</span></span>
 <span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a><span class="st">export SSL_CERT_FILE=</span><span class="kw">`</span><span class="ex">python</span> <span class="at">-c</span> <span class="st">'import certifi;print(certifi.where())'</span><span class="kw">`</span></span>
-<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a><span class="op">EOF</span></span>
-<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> ~/.bashrc</span>
-<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a><span class="bu">popd</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a><span class="st">export REQUESTS_CA_BUNDLE=</span><span class="kw">`</span><span class="ex">python</span> <span class="at">-c</span> <span class="st">'import certifi;print(certifi.where())'</span><span class="kw">`</span></span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a><span class="op">EOF</span></span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> ~/.bashrc</span>
+<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a><span class="bu">popd</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="install-packages-in-base" class="level2">
 <h2 class="anchored" data-anchor-id="install-packages-in-base">install packages in base</h2>

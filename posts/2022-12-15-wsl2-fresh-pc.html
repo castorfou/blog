@@ -523,7 +523,7 @@ pip install azure-cli</code></pre>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-15" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="10" data-code-cell="annotated-cell-15" data-code-annotation="1">This is to allow execution of GPU instructions within jupyter lab</span>
+<span data-code-annotation="1" data-code-lines="10" data-code-cell="annotated-cell-15">This is to allow execution of GPU instructions within jupyter lab</span>
 </dd>
 </dl>
 <div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-02-06T15:35:32.152159Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-02-06T15:35:32.151920Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-02-06T15:35:32.266905Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-02-06T15:35:32.266187Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-02-06T15:35:32.152141Z&quot;}" data-execution_count="1">
@@ -613,7 +613,7 @@ screen -X -S jupyter_screen kill</code></pre>
 <p>I like this text editor even if it is not exactly opensource.</p>
 <p>I may even buy a license later.</p>
 <p>Anyway I will use the snap version</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> snap install sublime-text</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> snap install sublime-text <span class="at">--classic</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>and because of this issue from WSLg <a href="https://github.com/microsoft/wslg/issues/944#issuecomment-1399107496">WSL some icons in taskbar for linux applications are defaulting to Tux</a>, I add this</p>
 <div class="sourceCode" id="cb30"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /var/lib/snapd/desktop/applications</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ln <span class="at">-s</span> sublime-text_subl.desktop  sublime_text.desktop</span>
