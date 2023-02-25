@@ -1754,7 +1754,7 @@
     "href": "posts/2023-02-01-logbook-February-23.html#saturday-0225",
     "title": "Logbook for February 23",
     "section": "Saturday 02/25",
-    "text": "Saturday 02/25\nHow to Activate week number in calendar widget within gnome ubuntu:\ngsettings set org.gnome.desktop.calendar show-weekdate true\nI have started to listen to Tristan Nitot’s podcast L'octet vert: le podcast qui parle de climat, numérique, et qui file la pêche\nl’Octet vert\nFor each episode, there is a list of subjects discussed and some recommandations by guest (books, podcasts, blogs, …)\nThis morning I listened to S02E08 Ivan Enderlin et sa maison autonome\nI have to read his blog https://lamaisonvivante.blog/ which explains all steps to go from this crazy idea to a completely clean house."
+    "text": "Saturday 02/25\nHow to Activate week number in calendar widget within gnome ubuntu:\ngsettings set org.gnome.desktop.calendar show-weekdate true\nI have started to listen to Tristan Nitot’s podcast L'octet vert: le podcast qui parle de climat, numérique, et qui file la pêche\nl’Octet vert\nFor each episode, there is a list of subjects discussed and some recommandations by guest (books, podcasts, blogs, …)\nThis morning I listened to S02E08 Ivan Enderlin et sa maison autonome\nI have to read his blog https://lamaisonvivante.blog/ which explains all steps to go from this crazy idea to a completely clean house.\nAnd he recommends to follow Jean-Marc Jancovici’s lectures at Ecole des Mines: 8 lectures of 2h30 each."
   },
   {
     "objectID": "posts/2020-10-09-gan-course2-week1-evaluations-on-gans.html",
