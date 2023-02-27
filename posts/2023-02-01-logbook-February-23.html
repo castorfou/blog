@@ -238,6 +238,13 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
   </ul></li>
   <li><a href="#sunday-0226" id="toc-sunday-0226" class="nav-link" data-scroll-target="#sunday-0226">Sunday 02/26</a></li>
   </ul></li>
+  <li><a href="#week-9---february-23" id="toc-week-9---february-23" class="nav-link" data-scroll-target="#week-9---february-23">Week 9 - February 23</a>
+  <ul class="collapse">
+  <li><a href="#monday-0227" id="toc-monday-0227" class="nav-link" data-scroll-target="#monday-0227">Monday 02/27</a>
+  <ul class="collapse">
+  <li><a href="#jupyterlab-ctrlv-pastes-the-copied-content-twice" id="toc-jupyterlab-ctrlv-pastes-the-copied-content-twice" class="nav-link" data-scroll-target="#jupyterlab-ctrlv-pastes-the-copied-content-twice">jupyterlab ctrl+v pastes the copied content twice</a></li>
+  </ul></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -358,8 +365,29 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 <p>To update snap-store: close it and</p>
 <p><code>sudo snap refresh snap-store</code></p>
 <p>can’t believe we cannot do it from snap-store, and each time I have to search for it.</p>
+</section>
+</section>
+<section id="week-9---february-23" class="level1">
+<h1>Week 9 - February 23</h1>
+<section id="monday-0227" class="level2">
+<h2 class="anchored" data-anchor-id="monday-0227">Monday 02/27</h2>
+<section id="jupyterlab-ctrlv-pastes-the-copied-content-twice" class="level3">
+<h3 class="anchored" data-anchor-id="jupyterlab-ctrlv-pastes-the-copied-content-twice">jupyterlab ctrl+v pastes the copied content twice</h3>
+<p>as discussed <a href="https://github.com/jupyterlab/jupyterlab/issues/11639" class="uri">https://github.com/jupyterlab/jupyterlab/issues/11639</a></p>
+<p>May be fixed in v3.6.1, I am in v3.5.2. Updating…</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> update <span class="at">-c</span> conda-forge jupyterlab</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl restart jupyterlab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>It needs to rebuild stuff and for that needs node.js v14</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-o-</span> https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh <span class="kw">|</span> <span class="fu">bash</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">exec</span> zsh</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="ex">nvm</span> install lts/fermium</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="ex">node</span> <span class="at">-v</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>and then build</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">jupyter</span> lab build</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>I had to manually uninstall jupyter lab plotly extension</p>
 
 
+</section>
 </section>
 </section>
 
