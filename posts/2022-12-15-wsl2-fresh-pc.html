@@ -525,7 +525,7 @@ pip install azure-cli</code></pre>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-15" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-cell="annotated-cell-15" data-code-lines="10">This is to allow execution of GPU instructions within jupyter lab</span>
+<span data-code-lines="10" data-code-cell="annotated-cell-15" data-code-annotation="1">This is to allow execution of GPU instructions within jupyter lab</span>
 </dd>
 </dl>
 <div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-02-06T15:35:32.152159Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-02-06T15:35:32.151920Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-02-06T15:35:32.266905Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-02-06T15:35:32.266187Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-02-06T15:35:32.152141Z&quot;}" data-execution_count="1">
@@ -584,7 +584,7 @@ screen -X -S jupyter_screen kill</code></pre>
 <div class="sourceCode" id="cb28"><pre class="sourceCode zsh code-with-copy"><code class="sourceCode zsh"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get install fonts-powerline</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="2022-12-15-wsl2-fresh-pc_files/figure-html/4efb333d-514c-4a14-88e8-ec4100daa123-1-efbeb000-bfc0-4f5d-96fd-cc2e42c0e41b.png" class="img-fluid figure-img"></p>
+<p><img src="attachment:efbeb000-bfc0-4f5d-96fd-cc2e42c0e41b.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
 </figure>
 </div>
@@ -614,6 +614,7 @@ screen -X -S jupyter_screen kill</code></pre>
 <div class="sourceCode" id="cb31"><pre class="sourceCode zsh code-with-copy"><code class="sourceCode zsh"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone <span class="at">--depth</span><span class="op">=</span>1 https://github.com/romkatv/powerlevel10k.git <span class="va">${ZSH_CUSTOM</span><span class="op">:-</span><span class="va">$HOME</span>/.oh-my-zsh/custom<span class="va">}</span>/themes/powerlevel10k</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>and update in <code>.zshrc</code> <code>ZSH_THEME="powerlevel10k/powerlevel10k"</code></p>
 <p>Install fonts for power10klevel <a href="https://github.com/romkatv/powerlevel10k#manual-font-installation" class="uri">https://github.com/romkatv/powerlevel10k#manual-font-installation</a></p>
+<p>Could need installation of font-manager <code>sudo apt install font-manager</code> And install them in windows as well to have it properly rendered in Windows Terminal <a href="https://sicse.dev/blog/wsl-2-prompt-powerlevel10k-theme" class="uri">https://sicse.dev/blog/wsl-2-prompt-powerlevel10k-theme</a></p>
 <p>Manually configure or get a version from dotfiles</p>
 <p>Install plugins</p>
 <div class="sourceCode" id="cb32"><pre class="sourceCode zsh code-with-copy"><code class="sourceCode zsh"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co">#zsh autosuggestions</span></span>
