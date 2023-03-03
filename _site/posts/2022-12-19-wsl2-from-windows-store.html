@@ -233,6 +233,7 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
   <li><a href="#firefox" id="toc-firefox" class="nav-link" data-scroll-target="#firefox">firefox</a></li>
   <li><a href="#nautilus" id="toc-nautilus" class="nav-link" data-scroll-target="#nautilus">nautilus</a></li>
   <li><a href="#gimp" id="toc-gimp" class="nav-link" data-scroll-target="#gimp">gimp</a></li>
+  <li><a href="#zettlr-markdown-editor" id="toc-zettlr-markdown-editor" class="nav-link" data-scroll-target="#zettlr-markdown-editor">Zettlr (markdown editor)</a></li>
   <li><a href="#snap-store" id="toc-snap-store" class="nav-link" data-scroll-target="#snap-store">snap-store</a>
   <ul class="collapse">
   <li><a href="#investigations" id="toc-investigations" class="nav-link" data-scroll-target="#investigations">investigations</a></li>
@@ -243,7 +244,7 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
   </ul></li>
   <li><a href="#problems" id="toc-problems" class="nav-link" data-scroll-target="#problems">Problems</a>
   <ul class="collapse">
-  <li><a href="#error-createprocessparsecommon" id="toc-error-createprocessparsecommon" class="nav-link" data-scroll-target="#error-createprocessparsecommon">ERROR: CreateProcessParseCommon</a></li>
+  <li><a href="#fixed-error-createprocessparsecommon" id="toc-fixed-error-createprocessparsecommon" class="nav-link" data-scroll-target="#fixed-error-createprocessparsecommon">[FIXED] ERROR: CreateProcessParseCommon</a></li>
   <li><a href="#cannot-install-from-snap-store" id="toc-cannot-install-from-snap-store" class="nav-link" data-scroll-target="#cannot-install-from-snap-store">Cannot install from snap-store</a></li>
   </ul></li>
   </ul>
@@ -359,18 +360,26 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 <p>And install gimp</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install gimp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
+<section id="zettlr-markdown-editor" class="level2">
+<h2 class="anchored" data-anchor-id="zettlr-markdown-editor">Zettlr (markdown editor)</h2>
+<p>Now that typora is not open sourced anymore, switch to Zettlr</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://github.com/Zettlr/Zettlr/releases/download/v2.3.0/Zettlr-2.3.0-amd64.deb</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get install libxss1</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> dpkg <span class="at">-i</span> Zettlr-2.3.0-amd64.deb</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="ex">Zettlr</span>  <span class="at">--disable-hardware-acceleration</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
 <section id="snap-store" class="level2">
 <h2 class="anchored" data-anchor-id="snap-store">snap-store</h2>
 <p>I can install like for other softwares</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> snap install snap-store</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># to fix "Unable to download updates, you do not have permission to install software"</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install <span class="at">--reinstall</span> policykit-1-gnome</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install <span class="at">--reinstall</span> gnome-software</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co"># to fix "Unable to install &lt;e.g. notepadqq&gt;: authentication was required"</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> snap remove snap-store</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-rf</span> ~/snap/snap-store</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> snap install snap-store</span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="ex">snap</span> run snap-store</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> snap install snap-store</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># to fix "Unable to download updates, you do not have permission to install software"</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install <span class="at">--reinstall</span> policykit-1-gnome</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install <span class="at">--reinstall</span> gnome-software</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co"># to fix "Unable to install &lt;e.g. notepadqq&gt;: authentication was required"</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> snap remove snap-store</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-rf</span> ~/snap/snap-store</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> snap install snap-store</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="ex">snap</span> run snap-store</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>but it failed at installing anything</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -389,52 +398,52 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 </figure>
 </div>
 <p>This is the trace when starting snap-store</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">12:54:21:0924</span> Gs  plugin fwupd took 25.0 seconds to do setup</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">12:54:47:0573</span> Gs  can<span class="st">'t reliably fixup error code 20 in domain g-dbus-error-quark</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="st">12:54:47:0574 Gs  can'</span>t reliably fixup error code 20 in domain g-dbus-error-quark</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="ex">12:54:47:0574</span> Gs  not handling error failed for action refresh: Error calling StartServiceByName for org.freedesktop.fwupd: Failed to activate service <span class="st">'org.freedesktop.fwupd'</span>: timed out <span class="er">(</span><span class="va">service_start_timeout</span><span class="op">=</span>25000ms<span class="kw">)</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="ex">12:54:47:0574</span> Gs  not handling error failed for action get-updates-historical: Error calling StartServiceByName for org.freedesktop.fwupd: Failed to activate service <span class="st">'org.freedesktop.fwupd'</span>: timed out <span class="er">(</span><span class="va">service_start_timeout</span><span class="op">=</span>25000ms<span class="kw">)</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="ex">12:54:47:0622</span> Gs  not handling error no-security for action refresh: Failed to obtain authentication.</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="ex">12:54:47:0671</span> Gs  adding wildcard app <span class="pp">*</span>/<span class="pp">*</span>/<span class="pp">*</span>/org.gnome.Builder.desktop/<span class="pp">*</span> to plugin cache</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="ex">12:54:47:0671</span> Gs  adding wildcard app <span class="pp">*</span>/<span class="pp">*</span>/<span class="pp">*</span>/org.gnome.Calculator.desktop/<span class="pp">*</span> to plugin cache</span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="ex">12:54:47:0671</span> Gs  adding wildcard app <span class="pp">*</span>/<span class="pp">*</span>/<span class="pp">*</span>/org.gnome.clocks.desktop/<span class="pp">*</span> to plugin cache</span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="ex">12:54:47:0671</span> Gs  adding wildcard app <span class="pp">*</span>/<span class="pp">*</span>/<span class="pp">*</span>/org.gnome.Dictionary.desktop/<span class="pp">*</span> to plugin cache</span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="ex">12:54:47:0671</span> Gs  adding wildcard app <span class="pp">*</span>/<span class="pp">*</span>/<span class="pp">*</span>/org.gnome.Documents.desktop/<span class="pp">*</span> to plugin cache</span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="ex">12:54:47:0671</span> Gs  adding wildcard app <span class="pp">*</span>/<span class="pp">*</span>/<span class="pp">*</span>/org.gnome.Evince/<span class="pp">*</span> to plugin cache</span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="ex">12:54:47:0671</span> Gs  adding wildcard app <span class="pp">*</span>/<span class="pp">*</span>/<span class="pp">*</span>/org.gnome.gedit.desktop/<span class="pp">*</span> to plugin cache</span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="ex">12:54:47:0671</span> Gs  adding wildcard app <span class="pp">*</span>/<span class="pp">*</span>/<span class="pp">*</span>/org.gnome.Maps.desktop/<span class="pp">*</span> to plugin cache</span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="ex">12:54:47:0671</span> Gs  adding wildcard app <span class="pp">*</span>/<span class="pp">*</span>/<span class="pp">*</span>/org.gnome.Weather/<span class="pp">*</span> to plugin cache</span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="ex">12:54:47:0677</span> Gs  Only 0 apps for recent list, hiding</span>
-<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a><span class="ex">12:55:13:0039</span> Gs  can<span class="st">'t reliably fixup error code 20 in domain g-dbus-error-quark</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl status fwupd.service</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">○</span> fwupd.service <span class="at">-</span> Firmware update daemon</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>     <span class="ex">Loaded:</span> loaded <span class="er">(</span><span class="ex">/lib/systemd/system/fwupd.service</span><span class="kw">;</span> <span class="ex">static</span><span class="kw">)</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>     <span class="ex">Active:</span> inactive <span class="er">(</span><span class="ex">dead</span><span class="kw">)</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>       <span class="ex">Docs:</span> https://fwupd.org/</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="ex">Dec</span> 20 09:05:50 L001LPF3RKAR5 systemd[1]: Condition check resulted in Firmware update daemon being skipped.</span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="ex">Dec</span> 20 09:06:16 L001LPF3RKAR5 systemd[1]: Condition check resulted in Firmware update daemon being skipped.</span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="ex">Dec</span> 20 09:06:44 L001LPF3RKAR5 systemd[1]: Condition check resulted in Firmware update daemon being skipped.</span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="ex">Dec</span> 20 12:11:54 L001LPF3RKAR5 systemd[1]: Condition check resulted in Firmware update daemon being skipped.</span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="ex">Dec</span> 20 12:12:20 L001LPF3RKAR5 systemd[1]: Condition check resulted in Firmware update daemon being skipped.</span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="ex">Dec</span> 20 12:12:45 L001LPF3RKAR5 systemd[1]: Condition check resulted in Firmware update daemon being skipped.</span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="ex">Dec</span> 20 13:53:56 L001LPF3RKAR5 systemd[1]: Condition check resulted in Firmware update daemon being skipped.</span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a><span class="ex">Dec</span> 20 13:54:22 L001LPF3RKAR5 systemd[1]: Condition check resulted in Firmware update daemon being skipped.</span>
-<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="ex">Dec</span> 20 13:54:48 L001LPF3RKAR5 systemd[1]: Condition check resulted in Firmware update daemon being skipped.</span>
-<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="ex">Dec</span> 20 14:00:02 L001LPF3RKAR5 systemd[1]: Condition check resulted in Firmware update daemon being skipped.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">12:54:21:0924</span> Gs  plugin fwupd took 25.0 seconds to do setup</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">12:54:47:0573</span> Gs  can<span class="st">'t reliably fixup error code 20 in domain g-dbus-error-quark</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="st">12:54:47:0574 Gs  can'</span>t reliably fixup error code 20 in domain g-dbus-error-quark</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="ex">12:54:47:0574</span> Gs  not handling error failed for action refresh: Error calling StartServiceByName for org.freedesktop.fwupd: Failed to activate service <span class="st">'org.freedesktop.fwupd'</span>: timed out <span class="er">(</span><span class="va">service_start_timeout</span><span class="op">=</span>25000ms<span class="kw">)</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="ex">12:54:47:0574</span> Gs  not handling error failed for action get-updates-historical: Error calling StartServiceByName for org.freedesktop.fwupd: Failed to activate service <span class="st">'org.freedesktop.fwupd'</span>: timed out <span class="er">(</span><span class="va">service_start_timeout</span><span class="op">=</span>25000ms<span class="kw">)</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="ex">12:54:47:0622</span> Gs  not handling error no-security for action refresh: Failed to obtain authentication.</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="ex">12:54:47:0671</span> Gs  adding wildcard app <span class="pp">*</span>/<span class="pp">*</span>/<span class="pp">*</span>/org.gnome.Builder.desktop/<span class="pp">*</span> to plugin cache</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="ex">12:54:47:0671</span> Gs  adding wildcard app <span class="pp">*</span>/<span class="pp">*</span>/<span class="pp">*</span>/org.gnome.Calculator.desktop/<span class="pp">*</span> to plugin cache</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="ex">12:54:47:0671</span> Gs  adding wildcard app <span class="pp">*</span>/<span class="pp">*</span>/<span class="pp">*</span>/org.gnome.clocks.desktop/<span class="pp">*</span> to plugin cache</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="ex">12:54:47:0671</span> Gs  adding wildcard app <span class="pp">*</span>/<span class="pp">*</span>/<span class="pp">*</span>/org.gnome.Dictionary.desktop/<span class="pp">*</span> to plugin cache</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="ex">12:54:47:0671</span> Gs  adding wildcard app <span class="pp">*</span>/<span class="pp">*</span>/<span class="pp">*</span>/org.gnome.Documents.desktop/<span class="pp">*</span> to plugin cache</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="ex">12:54:47:0671</span> Gs  adding wildcard app <span class="pp">*</span>/<span class="pp">*</span>/<span class="pp">*</span>/org.gnome.Evince/<span class="pp">*</span> to plugin cache</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="ex">12:54:47:0671</span> Gs  adding wildcard app <span class="pp">*</span>/<span class="pp">*</span>/<span class="pp">*</span>/org.gnome.gedit.desktop/<span class="pp">*</span> to plugin cache</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a><span class="ex">12:54:47:0671</span> Gs  adding wildcard app <span class="pp">*</span>/<span class="pp">*</span>/<span class="pp">*</span>/org.gnome.Maps.desktop/<span class="pp">*</span> to plugin cache</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="ex">12:54:47:0671</span> Gs  adding wildcard app <span class="pp">*</span>/<span class="pp">*</span>/<span class="pp">*</span>/org.gnome.Weather/<span class="pp">*</span> to plugin cache</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="ex">12:54:47:0677</span> Gs  Only 0 apps for recent list, hiding</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a><span class="ex">12:55:13:0039</span> Gs  can<span class="st">'t reliably fixup error code 20 in domain g-dbus-error-quark</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl status fwupd.service</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="ex">○</span> fwupd.service <span class="at">-</span> Firmware update daemon</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>     <span class="ex">Loaded:</span> loaded <span class="er">(</span><span class="ex">/lib/systemd/system/fwupd.service</span><span class="kw">;</span> <span class="ex">static</span><span class="kw">)</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>     <span class="ex">Active:</span> inactive <span class="er">(</span><span class="ex">dead</span><span class="kw">)</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>       <span class="ex">Docs:</span> https://fwupd.org/</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="ex">Dec</span> 20 09:05:50 L001LPF3RKAR5 systemd[1]: Condition check resulted in Firmware update daemon being skipped.</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="ex">Dec</span> 20 09:06:16 L001LPF3RKAR5 systemd[1]: Condition check resulted in Firmware update daemon being skipped.</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="ex">Dec</span> 20 09:06:44 L001LPF3RKAR5 systemd[1]: Condition check resulted in Firmware update daemon being skipped.</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="ex">Dec</span> 20 12:11:54 L001LPF3RKAR5 systemd[1]: Condition check resulted in Firmware update daemon being skipped.</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="ex">Dec</span> 20 12:12:20 L001LPF3RKAR5 systemd[1]: Condition check resulted in Firmware update daemon being skipped.</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="ex">Dec</span> 20 12:12:45 L001LPF3RKAR5 systemd[1]: Condition check resulted in Firmware update daemon being skipped.</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="ex">Dec</span> 20 13:53:56 L001LPF3RKAR5 systemd[1]: Condition check resulted in Firmware update daemon being skipped.</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a><span class="ex">Dec</span> 20 13:54:22 L001LPF3RKAR5 systemd[1]: Condition check resulted in Firmware update daemon being skipped.</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="ex">Dec</span> 20 13:54:48 L001LPF3RKAR5 systemd[1]: Condition check resulted in Firmware update daemon being skipped.</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a><span class="ex">Dec</span> 20 14:00:02 L001LPF3RKAR5 systemd[1]: Condition check resulted in Firmware update daemon being skipped.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 </section>
 <section id="dropbox" class="level2">
 <h2 class="anchored" data-anchor-id="dropbox">dropbox</h2>
 <p>This one is the official one but it fails</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install nautilus-dropbox</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="ex">dropbox</span> start <span class="at">-i</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install nautilus-dropbox</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="ex">dropbox</span> start <span class="at">-i</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>another one</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-rf</span> ~/.dropbox-dist ~/.dropbox</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">-q</span> <span class="at">-O</span> ~/dropbox https://www.dropbox.com/download<span class="pp">?</span>dl=packages/dropbox.py</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> a+x ~/dropbox</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="va">DISPLAY</span><span class="op">=</span><span class="st">''</span> <span class="ex">dropbox</span> start <span class="at">-i</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-rf</span> ~/.dropbox-dist ~/.dropbox</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">-q</span> <span class="at">-O</span> ~/dropbox https://www.dropbox.com/download<span class="pp">?</span>dl=packages/dropbox.py</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> a+x ~/dropbox</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="va">DISPLAY</span><span class="op">=</span><span class="st">''</span> <span class="ex">dropbox</span> start <span class="at">-i</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>but still no luck</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -457,11 +466,13 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 </section>
 <section id="problems" class="level1">
 <h1>Problems</h1>
-<section id="error-createprocessparsecommon" class="level2">
-<h2 class="anchored" data-anchor-id="error-createprocessparsecommon">ERROR: CreateProcessParseCommon</h2>
+<section id="fixed-error-createprocessparsecommon" class="level2">
+<h2 class="anchored" data-anchor-id="fixed-error-createprocessparsecommon">[FIXED] ERROR: CreateProcessParseCommon</h2>
 <p>When starting image after wsl update, I have the following error:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>3<span class="op">&gt;</span>WSL <span class="kw">(</span><span class="ex">8</span><span class="kw">)</span> <span class="ex">ERROR:</span> CreateProcessParseCommon:782: Failed to translate <span class="dt">\\</span>wsl.localhost<span class="dt">\u</span>buntu-22.04<span class="dt">\h</span>ome<span class="dt">\g</span>uillaume</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>3<span class="op">&gt;</span>WSL <span class="kw">(</span><span class="ex">8</span><span class="kw">)</span> <span class="ex">ERROR:</span> CreateProcessParseCommon:782: Failed to translate <span class="dt">\\</span>wsl.localhost<span class="dt">\u</span>buntu-22.04<span class="dt">\h</span>ome<span class="dt">\g</span>uillaume</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>I am not the only one, I have posted in <a href="https://github.com/microsoft/WSL/issues/9252">this issue</a> from WSL github repo.</p>
+<p>A solution given in the thread is to update the way to call vpnkit (in .profile)</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">wsl.exe</span> <span class="at">-d</span> wsl-vpnkit <span class="at">--cd</span> /app service wsl-vpnkit status <span class="op">&gt;</span>/dev/null <span class="kw">||</span> <span class="ex">wsl.exe</span> <span class="at">-d</span> wsl-vpnkit <span class="at">--cd</span> /app service wsl-vpnkit start</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="cannot-install-from-snap-store" class="level2">
 <h2 class="anchored" data-anchor-id="cannot-install-from-snap-store">Cannot install from snap-store</h2>
@@ -471,8 +482,8 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 <p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
 </figure>
 </div>
-<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">14:12:09:0637</span> Gs  not handling error no-security for action refresh: Failed to obtain authentication.</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="ex">14:12:09:0638</span> Gs  not handling error not-supported for action get-updates-historical: The name org.freedesktop.fwupd was not provided by any .service files</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">14:12:09:0637</span> Gs  not handling error no-security for action refresh: Failed to obtain authentication.</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="ex">14:12:09:0638</span> Gs  not handling error not-supported for action get-updates-historical: The name org.freedesktop.fwupd was not provided by any .service files</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>

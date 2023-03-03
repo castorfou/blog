@@ -6,7 +6,7 @@
   </url>
   <url>
     <loc>https://castorfou.github.io/index.html</loc>
-    <lastmod>2023-01-03T09:48:26.767Z</lastmod>
+    <lastmod>2023-03-03T10:47:28.149Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2020-09-08-becoming-datascientist.html</loc>
@@ -18,7 +18,7 @@
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2020-09-10-blog-from-jupyter-sans-images.html</loc>
-    <lastmod>2023-01-03T09:42:57.806Z</lastmod>
+    <lastmod>2023-03-03T10:47:28.865Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2020-09-10-blog-from-jupyter.html</loc>
@@ -390,7 +390,7 @@
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2022-09-16-migrate blog from nbdev to quarto.html</loc>
-    <lastmod>2023-01-03T09:43:46.199Z</lastmod>
+    <lastmod>2023-03-03T10:47:29.748Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2022-09-23-inline-images-with-quarto.html</loc>
@@ -414,7 +414,7 @@
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2022-10-17-fastai-2022-courses.html</loc>
-    <lastmod>2023-01-03T09:43:49.455Z</lastmod>
+    <lastmod>2023-03-03T10:47:30.802Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2022-11-01-logbook-November-22.html</loc>
@@ -426,14 +426,46 @@
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2022-12-15-wsl2-fresh-pc.html</loc>
-    <lastmod>2023-01-03T09:48:15.798Z</lastmod>
+    <lastmod>2023-03-03T10:47:31.833Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2022-12-19-wsl2-from-windows-store.html</loc>
-    <lastmod>2023-01-03T09:43:51.422Z</lastmod>
+    <lastmod>2023-03-03T10:47:32.503Z</lastmod>
   </url>
   <url>
     <loc>https://castorfou.github.io/posts/2023-01-02-logbook-January-23.html</loc>
-    <lastmod>2023-01-03T09:43:51.962Z</lastmod>
+    <lastmod>2023-03-03T10:47:33.248Z</lastmod>
+  </url>
+  <url>
+    <loc>https://castorfou.github.io/posts/2023-01-11-zotero-manage-datascience-paper.html</loc>
+    <lastmod>2023-03-03T10:47:33.814Z</lastmod>
+  </url>
+  <url>
+    <loc>https://castorfou.github.io/posts/2023-01-12-fastai-stable-diffusion.html</loc>
+    <lastmod>2023-03-03T10:47:34.708Z</lastmod>
+  </url>
+  <url>
+    <loc>https://castorfou.github.io/posts/2023-01-17-chord-diagram.html</loc>
+    <lastmod>2023-03-03T10:47:36.422Z</lastmod>
+  </url>
+  <url>
+    <loc>https://castorfou.github.io/posts/2023-01-23-latex_reference.html</loc>
+    <lastmod>2023-03-03T10:47:36.943Z</lastmod>
+  </url>
+  <url>
+    <loc>https://castorfou.github.io/posts/2023-01-25-fastai-live-coding-sessions.html</loc>
+    <lastmod>2023-03-03T10:47:37.862Z</lastmod>
+  </url>
+  <url>
+    <loc>https://castorfou.github.io/posts/2023-02-01-logbook-February-23.html</loc>
+    <lastmod>2023-03-03T10:47:38.446Z</lastmod>
+  </url>
+  <url>
+    <loc>https://castorfou.github.io/posts/2023-03-01-logbook-March-23.html</loc>
+    <lastmod>2023-03-03T10:47:38.945Z</lastmod>
+  </url>
+  <url>
+    <loc>https://castorfou.github.io/posts/2023-03-03-icon-support-in-wsl.html</loc>
+    <lastmod>2023-03-03T10:47:39.529Z</lastmod>
   </url>
 </urlset>

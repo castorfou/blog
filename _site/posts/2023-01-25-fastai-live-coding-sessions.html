@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.280">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2023-01-25">
+<meta name="description" content="by Jeremy Howard">
+
+<title>Guillaume’s blog - Live coding sessions from fastai</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../favicon_small.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-12YC1FPHWN"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
+</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+<meta name="twitter:title" content="Guillaume’s blog - Live coding sessions from fastai">
+<meta name="twitter:description" content="by Jeremy Howard">
+<meta name="twitter:image" content="https://castorfou.github.io/images/icons/fastai.png">
+<meta name="twitter:image-height" content="234">
+<meta name="twitter:image-width" content="576">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Guillaume’s blog</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html">
+ <span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/castorfou"><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/GuillaumeRamel1"><i class="bi bi-twitter" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+              <div class="quarto-toggle-container">
+                  <a href="" class="quarto-color-scheme-toggle nav-link" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+              </div>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Live coding sessions from fastai</h1>
+                  <div>
+        <div class="description">
+          by Jeremy Howard
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">fastai</div>
+                <div class="quarto-category">jupyter</div>
+                <div class="quarto-category">python</div>
+                <div class="quarto-category">wsl</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">January 25, 2023</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#live-coding-1" id="toc-live-coding-1" class="nav-link active" data-scroll-target="#live-coding-1">Live coding 1</a>
+  <ul class="collapse">
+  <li><a href="#start-from-a-fresh-user-in-wsl" id="toc-start-from-a-fresh-user-in-wsl" class="nav-link" data-scroll-target="#start-from-a-fresh-user-in-wsl">start from a fresh user in WSL</a>
+  <ul class="collapse">
+  <li><a href="#and-setup-things-for-this-new-user" id="toc-and-setup-things-for-this-new-user" class="nav-link" data-scroll-target="#and-setup-things-for-this-new-user">and setup things for this new user</a></li>
+  </ul></li>
+  <li><a href="#install-python-distribution---mambaforge-the-manual-way" id="toc-install-python-distribution---mambaforge-the-manual-way" class="nav-link" data-scroll-target="#install-python-distribution---mambaforge-the-manual-way">install python distribution - mambaforge | the manual way</a></li>
+  <li><a href="#about-python-version" id="toc-about-python-version" class="nav-link" data-scroll-target="#about-python-version">about python version</a></li>
+  <li><a href="#install-python-distribution---mambaforge-the-automated-way" id="toc-install-python-distribution---mambaforge-the-automated-way" class="nav-link" data-scroll-target="#install-python-distribution---mambaforge-the-automated-way">install python distribution - mambaforge | the automated way</a></li>
+  <li><a href="#and-then-activate-self-certificates-into-ca" id="toc-and-then-activate-self-certificates-into-ca" class="nav-link" data-scroll-target="#and-then-activate-self-certificates-into-ca">and then activate self-certificates into CA</a></li>
+  <li><a href="#install-packages-in-base" id="toc-install-packages-in-base" class="nav-link" data-scroll-target="#install-packages-in-base">install packages in base</a>
+  <ul class="collapse">
+  <li><a href="#ipython" id="toc-ipython" class="nav-link" data-scroll-target="#ipython">ipython</a></li>
+  <li><a href="#pytorch" id="toc-pytorch" class="nav-link" data-scroll-target="#pytorch">pytorch</a></li>
+  <li><a href="#jupyter" id="toc-jupyter" class="nav-link" data-scroll-target="#jupyter">jupyter</a></li>
+  <li><a href="#ipywidgets" id="toc-ipywidgets" class="nav-link" data-scroll-target="#ipywidgets">ipywidgets</a></li>
+  </ul></li>
+  <li><a href="#end-of-session---wrap-up" id="toc-end-of-session---wrap-up" class="nav-link" data-scroll-target="#end-of-session---wrap-up">End of session - wrap-up</a></li>
+  </ul></li>
+  <li><a href="#live-coding-2" id="toc-live-coding-2" class="nav-link" data-scroll-target="#live-coding-2">Live coding 2</a>
+  <ul class="collapse">
+  <li><a href="#tmux" id="toc-tmux" class="nav-link" data-scroll-target="#tmux">tmux</a></li>
+  <li><a href="#jupyter-shortcuts" id="toc-jupyter-shortcuts" class="nav-link" data-scroll-target="#jupyter-shortcuts">jupyter shortcuts</a></li>
+  <li><a href="#install-fastai" id="toc-install-fastai" class="nav-link" data-scroll-target="#install-fastai">install fastai</a></li>
+  <li><a href="#run-fastbook-notebooks" id="toc-run-fastbook-notebooks" class="nav-link" data-scroll-target="#run-fastbook-notebooks">run fastbook notebooks</a>
+  <ul class="collapse">
+  <li><a href="#untar_data-issues" id="toc-untar_data-issues" class="nav-link" data-scroll-target="#untar_data-issues">untar_data issues</a></li>
+  </ul></li>
+  <li><a href="#end-of-session---wrap-up-1" id="toc-end-of-session---wrap-up-1" class="nav-link" data-scroll-target="#end-of-session---wrap-up-1">End of session - wrap-up</a></li>
+  </ul></li>
+  <li><a href="#live-coding-3" id="toc-live-coding-3" class="nav-link" data-scroll-target="#live-coding-3">Live coding 3</a>
+  <ul class="collapse">
+  <li><a href="#paperspace-gradient-notebooks" id="toc-paperspace-gradient-notebooks" class="nav-link" data-scroll-target="#paperspace-gradient-notebooks">paperspace gradient notebooks</a></li>
+  <li><a href="#graphical-debugger-in-jupyter-lab" id="toc-graphical-debugger-in-jupyter-lab" class="nav-link" data-scroll-target="#graphical-debugger-in-jupyter-lab">graphical debugger in jupyter lab</a></li>
+  <li><a href="#classic-non-graphical-debugger" id="toc-classic-non-graphical-debugger" class="nav-link" data-scroll-target="#classic-non-graphical-debugger">classic, non-graphical debugger</a></li>
+  <li><a href="#persistent-storage-in-paperspace" id="toc-persistent-storage-in-paperspace" class="nav-link" data-scroll-target="#persistent-storage-in-paperspace">persistent storage in paperspace</a></li>
+  <li><a href="#sys.path" id="toc-sys.path" class="nav-link" data-scroll-target="#sys.path">sys.path</a></li>
+  </ul></li>
+  <li><a href="#live-coding-4" id="toc-live-coding-4" class="nav-link" data-scroll-target="#live-coding-4">Live coding 4</a>
+  <ul class="collapse">
+  <li><a href="#optimised-config-for-paperspace" id="toc-optimised-config-for-paperspace" class="nav-link" data-scroll-target="#optimised-config-for-paperspace">optimised config for paperspace</a></li>
+  </ul></li>
+  <li><a href="#live-coding-5" id="toc-live-coding-5" class="nav-link" data-scroll-target="#live-coding-5">Live coding 5</a>
+  <ul class="collapse">
+  <li><a href="#vim" id="toc-vim" class="nav-link" data-scroll-target="#vim">vim</a></li>
+  <li><a href="#ctags" id="toc-ctags" class="nav-link" data-scroll-target="#ctags">ctags</a></li>
+  </ul></li>
+  <li><a href="#live-coding-6" id="toc-live-coding-6" class="nav-link" data-scroll-target="#live-coding-6">Live coding 6</a>
+  <ul class="collapse">
+  <li><a href="#paperspace-and-ctags-and-other-stuff" id="toc-paperspace-and-ctags-and-other-stuff" class="nav-link" data-scroll-target="#paperspace-and-ctags-and-other-stuff">paperspace and ctags and other stuff</a></li>
+  <li><a href="#use-paperspace-with-fastbook" id="toc-use-paperspace-with-fastbook" class="nav-link" data-scroll-target="#use-paperspace-with-fastbook">use paperspace with fastbook</a></li>
+  </ul></li>
+  <li><a href="#live-coding-7" id="toc-live-coding-7" class="nav-link" data-scroll-target="#live-coding-7">Live coding 7</a>
+  <ul class="collapse">
+  <li><a href="#kaggle-competition" id="toc-kaggle-competition" class="nav-link" data-scroll-target="#kaggle-competition">kaggle competition</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<p>From time to time, Jeremy organizes live coding session.</p>
+<p>They are recorded (~1h each) and he takes one subject, and tackle it. They seem to be for beginners. But I am quite sure I can get some tips that I will write down on this page.</p>
+<p>18 sessions so far (jan-23):</p>
+<p><a href="https://forums.fast.ai/t/live-coding-aka-walk-thrus/96617">Live-coding (aka walk-thrus) ✅ - Part 1 2022 - fast.ai Course Forums</a></p>
+<blockquote class="blockquote">
+<ul>
+<li><a href="https://forums.fast.ai/t/walk-thru-1/96649">Live-coding 1</a></li>
+<li><a href="https://forums.fast.ai/t/walk-thru-2/96690">Live-coding 2</a></li>
+<li><a href="https://forums.fast.ai/t/walk-thru-3/96707">Live-coding 3</a></li>
+<li><a href="https://forums.fast.ai/t/walk-thru-4/96727">Live-coding 4</a></li>
+<li><a href="https://forums.fast.ai/t/walk-thru-5/96733">Live-coding 5</a></li>
+<li><a href="https://forums.fast.ai/t/walk-thru-6/96794">Live-coding 6</a></li>
+<li><a href="https://forums.fast.ai/t/walk-thru-7/96811">Live-coding 7</a></li>
+<li><a href="https://forums.fast.ai/t/walk-thru-8/96825">Live-coding 8</a></li>
+<li><a href="https://forums.fast.ai/t/session-9/96847">Live-coding 9</a></li>
+<li><a href="https://forums.fast.ai/t/session-10/96874">Live-coding 10</a></li>
+<li><a href="https://forums.fast.ai/t/session-11/96891">Live-coding 11</a></li>
+<li><a href="https://forums.fast.ai/t/session-12/96909">Live-coding 12</a></li>
+<li><a href="https://forums.fast.ai/t/session-13/96924">Live-coding 13</a></li>
+<li><a href="https://forums.fast.ai/t/walk-thru-14/97011">Live-coding 14</a></li>
+<li><a href="https://forums.fast.ai/t/walk-thru-15/97024">Live-coding 15</a></li>
+<li><a href="https://forums.fast.ai/t/session-16/97059">Live-coding 16</a></li>
+<li><a href="https://forums.fast.ai/t/live-coding-17/97166">Live-coding 17</a></li>
+<li><a href="https://forums.fast.ai/t/live-coding-18/97187">Live-coding 18</a></li>
+</ul>
+</blockquote>
+<section id="live-coding-1" class="level1">
+<h1>Live coding 1</h1>
+<ul>
+<li><a href="https://forums.fast.ai/t/walk-thru-1/96649">Live-coding 1 - forum entry</a></li>
+<li><a href="https://www.youtube.com/watch?v=56sIyFjihEc">Live-coding 1 - video</a></li>
+</ul>
+<section id="start-from-a-fresh-user-in-wsl" class="level2">
+<h2 class="anchored" data-anchor-id="start-from-a-fresh-user-in-wsl">start from a fresh user in WSL</h2>
+<p>I try things with a complete fresh new user <code>fastai</code> in WSL</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> adduser <span class="at">--gecos</span> <span class="st">""</span> fastai</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> usermod <span class="at">-aG</span> sudo,adm fastai</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">su</span> <span class="at">-</span> fastai</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-01-25T07:52:19.594985Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-01-25T07:52:19.594797Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-01-25T07:52:19.706752Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-01-25T07:52:19.706103Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-01-25T07:52:19.594972Z&quot;}" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span><span class="bu">id</span> fastai</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>uid=1001(fastai) gid=1001(fastai) groups=1001(fastai),4(adm),27(sudo)</code></pre>
+</div>
+</div>
+<p>if needed, completey delete user and home directory</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> userdel <span class="at">-rfRZ</span> fastai</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="and-setup-things-for-this-new-user" class="level3">
+<h3 class="anchored" data-anchor-id="and-setup-things-for-this-new-user">and setup things for this new user</h3>
+<section id="x-apps" class="level4">
+<h4 class="anchored" data-anchor-id="x-apps">X apps</h4>
+<p>To launch X apps</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">pushd</span> ~</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tee</span> <span class="at">-a</span> .bashrc <span class="op">&lt;&lt; EOF</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="st">export DISPLAY=":0"</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="op">EOF</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="bu">popd</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Alias <code>terminal</code> <code>explorer (nautilus)</code></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">pushd</span> ~</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tee</span> <span class="at">-a</span> .bash_aliases <span class="op">&lt;&lt; EOF</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="st">alias terminal='dbus-launch gnome-terminal &amp;'</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="st">alias explorer='dbus-launch nautilus &amp;'</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="op">EOF</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="bu">popd</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Take it into account</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">pushd</span> ~</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> .bashrc</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="bu">popd</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Update Ctrl-C Ctrl-V keybindings in gnome-terminal</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2023-01-25-fastai-live-coding-sessions_files/figure-html/8d5ba2ab-be63-40e5-8122-928a8cd8f1af-1-b8b7d7cd-34cc-4497-949b-8b783c33f4e5.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="ssl-ca-ssh-setups" class="level4">
+<h4 class="anchored" data-anchor-id="ssl-ca-ssh-setups">SSL, CA, SSH setups</h4>
+<p>To avoid “unsafe legacy renegotiation disabled” (linked to my corporate network architecture)</p>
+<p>and “SSL peer certificate or SSH remote key was not OK”</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="bu">pushd</span> ~</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tee</span> <span class="at">-a</span> .bashrc <span class="op">&lt;&lt; EOF</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="st">export OPENSSL_CONF=/etc/ssl/openssl.cnf</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="st">export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="op">EOF</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> .bashrc</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="bu">popd</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>To connect to gitlab</p>
+<p>Not the smartest way to do it but I copy ssh keys from my main user</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> bash <span class="at">-c</span> <span class="st">"cp ~guillaume/.ssh/id_rsa* ~fastai/.ssh/"</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> bash <span class="at">-c</span> <span class="st">"chown fastai:fastai ~fastai/.ssh/*"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+</section>
+<section id="install-python-distribution---mambaforge-the-manual-way" class="level2">
+<h2 class="anchored" data-anchor-id="install-python-distribution---mambaforge-the-manual-way">install python distribution - mambaforge | the manual way</h2>
+<p>This is from <a href="https://github.com/conda-forge/miniforge#mambaforge" class="uri">https://github.com/conda-forge/miniforge#mambaforge</a></p>
+<p>Mambaforge is miniforge but with mamba already setup.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">pushd</span> ~/downloads</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> Mambaforge-Linux-x86_64.sh</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="bu">popd</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>And to this question &gt; Do you wish the installer to initialize Mambaforge by running conda init? [yes|no]</p>
+<p>We answer Yes, and then</p>
+<blockquote class="blockquote">
+<p>==&gt; For changes to take effect, close and re-open your current shell. &lt;==</p>
+</blockquote>
+<p>Jeremy hates to not automate things you could have to do several times.</p>
+<p>To do it we revert everything done here manually (including conda-init in .bashrc)</p>
+</section>
+<section id="about-python-version" class="level2">
+<h2 class="anchored" data-anchor-id="about-python-version">about python version</h2>
+<p>by searching for <code>python eol</code>, you fall into <a href="https://endoflife.date/python" class="uri">https://endoflife.date/python</a></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2023-01-25-fastai-live-coding-sessions_files/figure-html/1925ae0a-a0de-4260-89ec-634304313798-1-c1b98dd2-2fda-4d01-9384-1242649888f6.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+<p>and recommandation from Jeremy is to take penultimate one. It looks like ot is what is followed by mambaforge</p>
+</section>
+<section id="install-python-distribution---mambaforge-the-automated-way" class="level2">
+<h2 class="anchored" data-anchor-id="install-python-distribution---mambaforge-the-automated-way">install python distribution - mambaforge | the automated way</h2>
+<p>It is at <a href="https://github.com/fastai/fastsetup" class="uri">https://github.com/fastai/fastsetup</a></p>
+<p>It is Jeremy’s repo that contains anything he uses to setup a new computer</p>
+<p>There is a thing called <code>setup-conda.sh</code></p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">--no-check-certificate</span> <span class="at">--content-disposition</span> <span class="at">-O</span> <span class="at">-</span> https://raw.githubusercontent.com/fastai/fastsetup/master/setup-conda.sh <span class="kw">|</span> <span class="fu">bash</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>and run <code>mamba init</code> to allow mamba activate</p>
+</section>
+<section id="and-then-activate-self-certificates-into-ca" class="level2">
+<h2 class="anchored" data-anchor-id="and-then-activate-self-certificates-into-ca">and then activate self-certificates into CA</h2>
+<p>Setup pip, instal certifi and update CA</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="bu">pushd</span> ~</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co"># setup pip</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> ~/.config/pip</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">tee</span> ~/.config/pip/pip.conf <span class="op">&lt;&lt; EOF</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="st">[global]</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="st">timeout = 1000</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="st">index-url = https://pypi.org/simple/</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="st">trusted-host = download.pytorch.org</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="st">               pypi.python.org</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="st">               files.pythonhosted.org</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="st">               pypi.org</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="st">               artifactory.michelin.com</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="st">extra-index-url= https://artifactory.michelin.com/api/pypi/pypi/simple</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a><span class="op">EOF</span></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="co"># install certifi</span></span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-U</span> certifi</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">SSL_CERT_FILE</span><span class="op">=</span><span class="kw">`</span><span class="ex">python</span> <span class="at">-c</span> <span class="st">'import certifi;print(certifi.where())'</span><span class="kw">`</span></span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a><span class="co"># update CA</span></span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">TMPDIR</span><span class="op">=</span><span class="kw">`</span><span class="fu">mktemp</span> <span class="at">-d</span><span class="kw">`</span></span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone git@gitlab.michelin.com:DEV/bib-certificates.git <span class="va">$TMPDIR</span></span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="va">$TMPDIR</span></span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> <span class="pp">*</span>trust-ca.pem <span class="op">&gt;&gt;</span> <span class="va">$SSL_CERT_FILE</span></span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span></span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a><span class="co"># export SSL_CERT_FILE</span></span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a><span class="fu">tee</span> <span class="at">-a</span> ~/.bashrc <span class="op">&lt;&lt; EOF</span></span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a><span class="st">export SSL_CERT_FILE=</span><span class="kw">`</span><span class="ex">python</span> <span class="at">-c</span> <span class="st">'import certifi;print(certifi.where())'</span><span class="kw">`</span></span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a><span class="st">export REQUESTS_CA_BUNDLE=</span><span class="kw">`</span><span class="ex">python</span> <span class="at">-c</span> <span class="st">'import certifi;print(certifi.where())'</span><span class="kw">`</span></span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a><span class="op">EOF</span></span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> ~/.bashrc</span>
+<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a><span class="bu">popd</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="install-packages-in-base" class="level2">
+<h2 class="anchored" data-anchor-id="install-packages-in-base">install packages in base</h2>
+<section id="ipython" class="level3">
+<h3 class="anchored" data-anchor-id="ipython">ipython</h3>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> install ipython</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Here Jeremy mentionned that Wes McKinney, author of “Python for Data Analysis” does much much things in ipython.</p>
+<p>And this is worthy to be read</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2023-01-25-fastai-live-coding-sessions_files/figure-html/50484f4b-d274-4dfc-822f-c801304fa82d-1-78e53956-1c52-4e38-b09f-ae24c693f29b.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="pytorch" class="level3">
+<h3 class="anchored" data-anchor-id="pytorch">pytorch</h3>
+<p>Let’s install pytorch (searching pytorch install) <a href="https://pytorch.org/get-started/locally/" class="uri">https://pytorch.org/get-started/locally/</a></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2023-01-25-fastai-live-coding-sessions_files/figure-html/9b1947d5-b700-422a-8004-85c5ae9b2408-1-8be8e3aa-39ba-4bec-8385-195f900beef4.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> install pytorch torchvision torchaudio pytorch-cuda=11.7 <span class="at">-c</span> pytorch <span class="at">-c</span> nvidia</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>from ipython we can test</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>In [<span class="dv">2</span>]: torch.cuda.get_device_name()</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>Out[<span class="dv">2</span>]: <span class="st">'NVIDIA GeForce RTX 3080 Laptop GPU'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="jupyter" class="level3">
+<h3 class="anchored" data-anchor-id="jupyter">jupyter</h3>
+<p>Let’s install jupyter (searching jupyter lab install) <a href="https://jupyterlab.readthedocs.io/en/stable/getting_started/installation.html" class="uri">https://jupyterlab.readthedocs.io/en/stable/getting_started/installation.html</a></p>
+<p>Because we use mamba, conda-forge channel is the default so</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> install jupyterlab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>And we can test by running it <code>jupyter lab</code></p>
+<p>Because I have firefox installed in WSL, I don’t have the same issue Jeremy mentionned. And because I have another instance of jupyter running under my main user (where I blog this), it opens on port 8889</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2023-01-25-fastai-live-coding-sessions_files/figure-html/7971a951-b9ee-48bf-ac52-df8225b0a71c-1-10ed3f2d-767c-4351-b733-0a6c9ab02570.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="ipywidgets" class="level3">
+<h3 class="anchored" data-anchor-id="ipywidgets">ipywidgets</h3>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> install ipywidgets</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="end-of-session---wrap-up" class="level2">
+<h2 class="anchored" data-anchor-id="end-of-session---wrap-up">End of session - wrap-up</h2>
+<p>This was the base environnement setup after installing mambaforge</p>
+<p><code>conda_env/base.txt</code></p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-U</span> certifi</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">SSL_CERT_FILE</span><span class="op">=</span><span class="kw">`</span><span class="ex">python</span> <span class="at">-c</span> <span class="st">'import certifi;print(certifi.where())'</span><span class="kw">`</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co"># update CA</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">TMPDIR</span><span class="op">=</span><span class="kw">`</span><span class="fu">mktemp</span> <span class="at">-d</span><span class="kw">`</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone git@gitlab.michelin.com:DEV/bib-certificates.git <span class="va">$TMPDIR</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="bu">pushd</span> <span class="va">$TMPDIR</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> <span class="pp">*</span>trust-ca.pem <span class="op">&gt;&gt;</span> <span class="va">$SSL_CERT_FILE</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="bu">popd</span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> install ipython</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> install pytorch torchvision torchaudio pytorch-cuda=11.7 <span class="at">-c</span> pytorch <span class="at">-c</span> nvidia</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> install jupyterlab ipywidgets</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Starting from this fresh install, let’s retest stable diffusion and my <a href="../posts/2023-01-12-fastai-stable-diffusion.html#under-wsl">issues on WSL</a>:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> create <span class="at">--name</span> fastai_diffusers <span class="at">--clone</span> base</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> activate fastai_diffusers</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-Uq</span> diffusers transformers fastcore</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> install matplotlib</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/nbs</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/fastai/diffusion-nbs.git</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="ex">jupyter</span> lab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>and open/run <code>stable_diffusion.ipynb</code></p>
+<p>but this is not better (still on cuda 1.7, this is maybe why)</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2023-01-25-fastai-live-coding-sessions_files/figure-html/fde3e1bd-5f43-4c11-af9d-e6380e583bf4-1-bf2e3102-85df-4e25-aeaf-56b1af2192a7.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+</section>
+</section>
+<section id="live-coding-2" class="level1">
+<h1>Live coding 2</h1>
+<ul>
+<li><a href="https://forums.fast.ai/t/live-coding-2/96690">Live-coding 2 - forum entry</a></li>
+<li><a href="https://www.youtube.com/watch?v=0pWjZByJ3Lk">Live-coding 2 - video</a></li>
+</ul>
+<p>Jeremy shows stuff such as: - switchi users in Linux, - introduction to git and github - build a website with github - setup and use ssh keys - use tmux - create a notebook in jupyter lab - committing and pushing to git - fork a repo - install fastai and fastbook</p>
+<section id="tmux" class="level2">
+<h2 class="anchored" data-anchor-id="tmux">tmux</h2>
+<p>This is a little bit as <code>screen</code></p>
+<p><strong>installation</strong></p>
+<p><code>sudo snap install tmux --classic</code></p>
+<p><strong>usage</strong></p>
+<p>just run <code>tmux</code> to start a new window.</p>
+<p>From here you have special commands, starting with binding key (default is Ctrl-b)</p>
+<p>Start a new pan (vertical split): <code>C-b %</code></p>
+<p>Start a new pan (horizontal split): <code>C-b "</code></p>
+<p>Close a pan: <code>C-d</code></p>
+<p>Navigate through pans: <code>C-b arrow keys</code></p>
+<p>Zoom-in zoom-out: <code>C-b z</code></p>
+<p>Detach window: <code>C-b d</code></p>
+<p>Navigate in scrillback buffer: <code>C-b [</code> then arrow keys, pg-up, pg-down</p>
+<p>Re-attach window: <code>tmux a</code></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2023-01-25-fastai-live-coding-sessions_files/figure-html/3faf5899-108c-454d-a981-56d916ceab5a-1-a4d029be-d64b-4a1b-832c-530e48d50374.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="jupyter-shortcuts" class="level2">
+<h2 class="anchored" data-anchor-id="jupyter-shortcuts">jupyter shortcuts</h2>
+<p>in command mode</p>
+<p><code>1</code> - for titles # (if in code, it auto switches to markdown)</p>
+<p><code>2</code> - for titles ##</p>
+<p><code>3</code> - for titles ###</p>
+<p><code>y</code> to switch to code cells (much used to <code>m</code> for markdown)</p>
+</section>
+<section id="install-fastai" class="level2">
+<h2 class="anchored" data-anchor-id="install-fastai">install fastai</h2>
+<p>from <a href="https://docs.fast.ai/" class="uri">https://docs.fast.ai/</a></p>
+<p><code>mamba install -c fastchan fastai</code></p>
+</section>
+<section id="run-fastbook-notebooks" class="level2">
+<h2 class="anchored" data-anchor-id="run-fastbook-notebooks">run fastbook notebooks</h2>
+<p>And to run notebooks from fastbook, we have to install <code>fastbook</code> and <code>sentencepiece</code> as well</p>
+<section id="untar_data-issues" class="level3">
+<h3 class="anchored" data-anchor-id="untar_data-issues">untar_data issues</h3>
+<p><code>path = untar_data(URLs.MNIST_SAMPLE)</code> fails with &gt; <code>[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate in certificate chain (_ssl.c:997)</code></p>
+<p>not exactly why because my certifi/certs are updated with my corporate CA</p>
+<p>And if I workaround with this preceeding</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> ssl</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>ssl._create_default_https_context <span class="op">=</span> ssl._create_unverified_context</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>I have another error which is <code>MICHELIN GROUP - Internet Access blocked&lt;/h1&gt;&lt;br&gt;Access denied. You are attempting to access the Internet using an obsolete version of Chrome.</code></p>
+<p>Looking in fastai code, I see something like <a href="https://github.com/fastai/fastai2/blob/master/fastai2/data/external.py#L162" class="uri">https://github.com/fastai/fastai2/blob/master/fastai2/data/external.py#L162</a> <code>s.headers.update({'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0'})</code></p>
+<p>Is it that user-agent is old and considered as dangerous by security agent in my company?</p>
+</section>
+</section>
+<section id="end-of-session---wrap-up-1" class="level2">
+<h2 class="anchored" data-anchor-id="end-of-session---wrap-up-1">End of session - wrap-up</h2>
+<p>Should defintely solve the issue with untar_data</p>
+<p>And at the end of this session, my base environment has been built this way</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-U</span> certifi</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">SSL_CERT_FILE</span><span class="op">=</span><span class="kw">`</span><span class="ex">python</span> <span class="at">-c</span> <span class="st">'import certifi;print(certifi.where())'</span><span class="kw">`</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co"># update CA</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">TMPDIR</span><span class="op">=</span><span class="kw">`</span><span class="fu">mktemp</span> <span class="at">-d</span><span class="kw">`</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone git@gitlab.michelin.com:DEV/bib-certificates.git <span class="va">$TMPDIR</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="va">$TMPDIR</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> <span class="pp">*</span>trust-ca.pem <span class="op">&gt;&gt;</span> <span class="va">$SSL_CERT_FILE</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> install ipython</span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> install pytorch torchvision torchaudio pytorch-cuda=11.7 <span class="at">-c</span> pytorch <span class="at">-c</span> nvidia</span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> install jupyterlab ipywidgets</span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> install <span class="at">-c</span> fastchan fastai fastbook sentencepiece</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="live-coding-3" class="level1">
+<h1>Live coding 3</h1>
+<ul>
+<li><a href="https://forums.fast.ai/t/live-coding-3/96707">Live-coding 3 - forum entry</a></li>
+<li><a href="https://www.youtube.com/watch?v=B6BQiIgiEks">Live-coding 3 - video</a></li>
+</ul>
+<p>From previous session, question from audience about why Jeremy discourages to use multiple mamba environnement. Quite interesting.</p>
+<section id="paperspace-gradient-notebooks" class="level2">
+<h2 class="anchored" data-anchor-id="paperspace-gradient-notebooks">paperspace gradient notebooks</h2>
+<p>I use github to sign-up on paperspace. And create a project, then a notebook (actually a server?)</p>
+<p><a href="https://console.paperspace.com/teox6gpp0/projects/pa3mp7r16wz/notebooks" class="uri">https://console.paperspace.com/teox6gpp0/projects/pa3mp7r16wz/notebooks</a></p>
+</section>
+<section id="graphical-debugger-in-jupyter-lab" class="level2">
+<h2 class="anchored" data-anchor-id="graphical-debugger-in-jupyter-lab">graphical debugger in jupyter lab</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2023-01-25-fastai-live-coding-sessions_files/figure-html/f70da639-5fdf-4f57-b803-2b91b2f8a9cf-1-c1ae8d55-0373-4223-80ba-b5b5a7cf1556.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+<p>one can see the limit of <code>from xxx import *</code>, you will have the full variables in this window.</p>
+</section>
+<section id="classic-non-graphical-debugger" class="level2">
+<h2 class="anchored" data-anchor-id="classic-non-graphical-debugger">classic, non-graphical debugger</h2>
+<p>Just by adding <code>%%debug</code></p>
+<p>and for a reason it works better when you navigate into a function</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2023-01-25-fastai-live-coding-sessions_files/figure-html/7294e959-f4bb-48f9-b469-ed1488947255-1-a547e0c6-4efb-41e8-ac02-272865ee3db4.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+<p>And have access to classic <code>ipdb</code> options</p>
+<p><code>h</code>for help</p>
+<p><code>c</code> for continue</p>
+<p><code>n</code> for next</p>
+<p><code>p</code> for print</p>
+<p><code>s</code>for step into</p>
+<p><code>q</code>for quit</p>
+<p>or a second way:</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-01-30T08:03:33.633249Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-01-30T08:03:33.633024Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-01-30T08:03:33.636364Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-01-30T08:03:33.635848Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-01-30T08:03:33.633235Z&quot;}" data-tags="[]" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pdb <span class="im">import</span> set_trace</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f():</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>        set_trace()</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(i)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-01-30T08:03:58.887920Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-01-30T08:03:58.887663Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-01-30T08:04:04.580824Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-01-30T08:04:04.579910Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-01-30T08:03:58.887900Z&quot;}" data-tags="[]" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>f()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&gt; /tmp/ipykernel_1682/972468431.py(6)f()
+      2 
+      3 def f():
+      4     for i in range(3):
+      5         set_trace()
+----&gt; 6         print(i)
+</code></pre>
+</div>
+<div class="cell-output cell-output-stdin">
+<pre><code>ipdb&gt;  p i</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0</code></pre>
+</div>
+<div class="cell-output cell-output-stdin">
+<pre><code>ipdb&gt;  q</code></pre>
+</div>
+</div>
+</section>
+<section id="persistent-storage-in-paperspace" class="level2">
+<h2 class="anchored" data-anchor-id="persistent-storage-in-paperspace">persistent storage in paperspace</h2>
+<p><code>/storage</code> is following you on all your servers.</p>
+<p>To keep a consistent environment each time you start a paperspace server, Jeremy is following this process:</p>
+<ul>
+<li><p>install additional lib with <code>pip --user</code>. e.g.&nbsp;<code>pip install -U fastcore --user</code>. It will install libs in <code>~/.local</code></p></li>
+<li><p>move <code>.local</code> to <code>/storage</code>: <code>mv ~/.local /storage</code></p></li>
+<li><p>symbolic link back from /storage/.local to ~/.local: <code>ln -s /storage/.local ~/</code></p></li>
+</ul>
+<p>This has to be done once.</p>
+<p>And because paperspace has this nifty thing to call <code>/storage/.bash.local</code> at the start of a session, you can automate things here.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2023-01-25-fastai-live-coding-sessions_files/figure-html/41b204f5-4d6e-4add-9de1-d5504eafc0a4-1-db26c070-cbfa-4ee1-8cc8-df65e53f45ca.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+<p>Actually it may be smarter to include this into <code>/storage/pre-run.sh</code> and not <code>/storage/.bash.local</code>. First one is run once at the start of your server. The last one is run each time you open a terminal</p>
+</section>
+<section id="sys.path" class="level2">
+<h2 class="anchored" data-anchor-id="sys.path">sys.path</h2>
+<p>Jeremy gets some issue because site-packages was not part of sys.path…</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-01-30T12:40:35.446423Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-01-30T12:40:35.446225Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-01-30T12:40:35.451312Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-01-30T12:40:35.450822Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-01-30T12:40:35.446410Z&quot;}" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>sys.path</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<pre><code>['/mnt/c/Users/f279814/git/blog/posts',
+ '/home/guillaume/miniconda/envs/fastai/lib/python310.zip',
+ '/home/guillaume/miniconda/envs/fastai/lib/python3.10',
+ '/home/guillaume/miniconda/envs/fastai/lib/python3.10/lib-dynload',
+ '',
+ '/home/guillaume/miniconda/envs/fastai/lib/python3.10/site-packages']</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="live-coding-4" class="level1">
+<h1>Live coding 4</h1>
+<ul>
+<li><a href="https://forums.fast.ai/t/live-coding-4/96727">Live-coding 4 - forum entry</a></li>
+<li><a href="https://www.youtube.com/watch?v=uKUMT6Bj4l8&amp;feature=youtu.be">Live-coding 4 - video</a></li>
+</ul>
+<section id="optimised-config-for-paperspace" class="level2">
+<h2 class="anchored" data-anchor-id="optimised-config-for-paperspace">optimised config for paperspace</h2>
+<p>Essentially Jeremy has been improving his paperspace configuration</p>
+<p>based on paperspace special configuration where</p>
+<ul>
+<li><p><code>/storage</code> is linked to your account (and maybe to your organization account) and will follow you under all your servers (notebooks in paperspace), and</p></li>
+<li><p><code>/notebooks</code> is linked to your server (notebook) and will follow you for this server, whatever is the machine you decide to attach to it.</p></li>
+</ul>
+<p>Jeremy setups <code>.local</code>, <code>.ssh</code>, and then move that to <code>/storage</code>, create symlinks.</p>
+<p>I am less interested by that one, watched at x2 speed…</p>
+</section>
+</section>
+<section id="live-coding-5" class="level1">
+<h1>Live coding 5</h1>
+<ul>
+<li><a href="https://forums.fast.ai/t/live-coding-5/96733">Live-coding 5 - forum entry</a></li>
+<li><a href="https://www.youtube.com/watch?v=gdsa2VawOeM">Live-coding 5 - video</a></li>
+</ul>
+<section id="vim" class="level2">
+<h2 class="anchored" data-anchor-id="vim">vim</h2>
+<p>overview on vim. Nothing new here, except for learning resources</p>
+<ul>
+<li><p><a href="https://www.openvim.com/" class="uri">https://www.openvim.com/</a> that I didn’t know, and</p></li>
+<li><p><code>vimtutor</code> as well</p></li>
+<li><p><a href="https://vim-adventures.com/" class="uri">https://vim-adventures.com/</a> which is a kind of game</p></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2023-01-25-fastai-live-coding-sessions_files/figure-html/62086c74-ca89-4453-b8b5-3e426cbc4573-1-e0c93d1c-7ffc-4157-b5b3-d6c8ab7f2825.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+<p>Jeremy’s vim config file is at <a href="https://github.com/fastai/dotfiles/blob/master/.vimrc" class="uri">https://github.com/fastai/dotfiles/blob/master/.vimrc</a></p>
+</section>
+<section id="ctags" class="level2">
+<h2 class="anchored" data-anchor-id="ctags">ctags</h2>
+<p>using a clone of fastai to illustrate, and Jeremy used an option to clone without the full depth which is much much quicker</p>
+<p><code>git clone https://github.com/fastai/fastai.git --depth 1</code></p>
+<p>1st thing is to install universal-ctags:</p>
+<ul>
+<li><p>one option is to use snap: <code>sudo snap install universal-ctags</code>. It is what I used but Jeremy doesn’t lik snap (why?)</p></li>
+<li><p>2nd one is mamba: <code>mamba install universal-ctags</code></p></li>
+</ul>
+<p>And now we can</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/git/fastai/fastai</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="ex">ctags</span> <span class="at">-R</span> .</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="co">#we can look into tags file with all symbols being used in this repo</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="fu">less</span> tags</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="co">#jump to a tag ArrayMask</span></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="ex">vim</span> <span class="at">-t</span> ArrayMask</span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a><span class="co">#open a file</span></span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a><span class="ex">vim</span> layers.py</span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a><span class="co">#enter tag to jump to (tj: tag jump)</span></span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a><span class="co">#enter just the 1st letters and press enter, it will suggest matching cases</span></span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a><span class="co">#e.g. Array</span></span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a><span class="ex">:tj</span> Array</span>
+<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a><span class="co"># or from code itself, if cursor is on a word, to get to its tag</span></span>
+<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a><span class="ex">Ctrl-]</span></span>
+<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a><span class="co">#e.g. cursor on Module, Ctrl-]</span></span>
+<span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a><span class="ex">class</span> View<span class="er">(</span><span class="ex">Module</span><span class="kw">)</span><span class="bu">:</span></span>
+<span id="cb30-19"><a href="#cb30-19" aria-hidden="true" tabindex="-1"></a><span class="co"># will jump to torch_core.py</span></span>
+<span id="cb30-20"><a href="#cb30-20" aria-hidden="true" tabindex="-1"></a><span class="ex">class</span> Module<span class="er">(</span><span class="ex">nn.Module,</span> metaclass=PrePostInitMeta<span class="kw">)</span><span class="bu">:</span></span>
+<span id="cb30-21"><a href="#cb30-21" aria-hidden="true" tabindex="-1"></a><span class="co"># to get back to previous tag</span></span>
+<span id="cb30-22"><a href="#cb30-22" aria-hidden="true" tabindex="-1"></a><span class="ex">Ctrl-t</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>We can create a ctags config file to ignore locations such as .pynb_checkpoints…</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we can use stag (split tag)</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="ex">:stag</span> DataL <span class="op">&lt;</span>enter<span class="op">&gt;</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="co"># it will split the screen in 2 parts</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="live-coding-6" class="level1">
+<h1>Live coding 6</h1>
+<ul>
+<li><a href="https://forums.fast.ai/t/live-coding-6/96794">Live-coding 6 - forum entry</a></li>
+<li><a href="https://www.youtube.com/watch?v=V3cN-bqFUh4">Live-coding 6 - video</a></li>
+</ul>
+<section id="paperspace-and-ctags-and-other-stuff" class="level2">
+<h2 class="anchored" data-anchor-id="paperspace-and-ctags-and-other-stuff">paperspace and ctags and other stuff</h2>
+<p>One option is to install in a specific directory using mamba</p>
+<p><code>mamba -p ~/conda install universal-ctags</code>, and to move ~/conda to /storage, and link symlinks within /storage/.bash.local</p>
+</section>
+<section id="use-paperspace-with-fastbook" class="level2">
+<h2 class="anchored" data-anchor-id="use-paperspace-with-fastbook">use paperspace with fastbook</h2>
+<p>Steps to setup paperspace:</p>
+<ul>
+<li><p>upload ssh keys for github to paperspace <code>/storage/cfg/.ssh</code> (be sure to copy a key declared to github (yes double check that) and chmod 600 your private key)</p></li>
+<li><p><code>git clone https://github.com/fastai/paperspace-setup.git</code> in <code>/notebooks</code></p></li>
+<li><p>cd paperspace-setup</p></li>
+<li><p>./setup.sh</p></li>
+<li><p>Shutdown your machine and start up a new one</p></li>
+</ul>
+<p>Fork fastbook</p>
+<ul>
+<li><p><code>source ~/.bashrc</code> # don’t know why it is not done automatically</p></li>
+<li><p><code>git clone git@github.com:castorfou/fastbook.git</code> in <code>/notebooks</code></p></li>
+</ul>
+<p>And now we can run notebooks from <code>/fastbook/clean</code> e.g.&nbsp;<code>01_intro.ipynb</code></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2023-01-25-fastai-live-coding-sessions_files/figure-html/2ae7f090-ef94-464d-89f1-5968e7149492-1-ce461459-083b-4fae-ae1a-9b8633445a33.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+<p>Jeremy dives into what happens here:</p>
+<ul>
+<li><p>from xxx import *: and link to <code>all.py</code></p></li>
+<li><p>to break down cells into splitted cells (with one command per cell) using key shortcut: <code>Ctrl-Shift -</code></p></li>
+</ul>
+</section>
+</section>
+<section id="live-coding-7" class="level1">
+<h1>Live coding 7</h1>
+<ul>
+<li><a href="https://forums.fast.ai/t/live-coding-7/96811">Live-coding 7 - forum entry</a></li>
+<li><a href="https://www.youtube.com/watch?v=cagqUrHMDJ0">Live-coding 7 - video</a></li>
+</ul>
+<section id="kaggle-competition" class="level2">
+<h2 class="anchored" data-anchor-id="kaggle-competition">kaggle competition</h2>
+<p>It starts with an overview of different types of Kaggle competitions (kudos, knowledge, …, money) and going through a <a href="https://www.kaggle.com/competitions/paddy-disease-classification/overview">competition</a> as suggested by <a href="https://forums.fast.ai/t/practice-walk-thru-6-chp1-on-kaggle/96793">Radek</a>.</p>
+<p>To follow I will switch to my fastai user, install kaggle into base environment. (<code>pip install kaggle</code>)</p>
+<p>Get kaggle json from kaggle website. Account &gt; API &gt; Create New API Token</p>
+<p>You get</p>
+<blockquote class="blockquote">
+<p>Ensure kaggle.json is in the location ~/.kaggle/kaggle.json to use the API.</p>
+</blockquote>
+<p>So download, copy (using upload in jupyter lab), move in right location, change owner and chmod 600</p>
+<p>And I can download paddy dataset with</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/nbs/kaggle/paddy</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="ex">kaggle</span> competitions download <span class="at">-c</span> paddy-disease-classification</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Unzip and then look at directory structure, number of files</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-type</span> d <span class="at">-print0</span> <span class="kw">|</span> </span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="bu">read</span> <span class="at">-d</span> <span class="st">''</span> <span class="at">-r</span> <span class="va">dir</span><span class="kw">;</span> <span class="cf">do</span>     </span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>    <span class="va">files</span><span class="op">=</span><span class="va">(</span><span class="st">"</span><span class="va">$dir</span><span class="st">"</span>/<span class="pp">*</span><span class="va">)</span><span class="kw">;</span>     </span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">printf</span> <span class="st">"%5d files in directory %s\n"</span> <span class="st">"</span><span class="va">${</span><span class="op">#</span><span class="va">files</span><span class="op">[@]</span><span class="va">}</span><span class="st">"</span> <span class="st">"</span><span class="va">$dir</span><span class="st">"</span><span class="kw">;</span> </span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>    <span class="ex">5</span> files in directory .</span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a> <span class="ex">3469</span> files in directory ./test_images</span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>   <span class="ex">10</span> files in directory ./train_images</span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>  <span class="ex">380</span> files in directory ./train_images/bacterial_leaf_streak</span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a> <span class="ex">1088</span> files in directory ./train_images/tungro</span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>  <span class="ex">965</span> files in directory ./train_images/brown_spot</span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a> <span class="ex">1442</span> files in directory ./train_images/dead_heart</span>
+<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a> <span class="ex">1594</span> files in directory ./train_images/hispa</span>
+<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a> <span class="ex">1764</span> files in directory ./train_images/normal</span>
+<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a>  <span class="ex">620</span> files in directory ./train_images/downy_mildew</span>
+<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a>  <span class="ex">337</span> files in directory ./train_images/bacterial_panicle_blight</span>
+<span id="cb33-18"><a href="#cb33-18" aria-hidden="true" tabindex="-1"></a> <span class="ex">1738</span> files in directory ./train_images/blast</span>
+<span id="cb33-19"><a href="#cb33-19" aria-hidden="true" tabindex="-1"></a>  <span class="ex">479</span> files in directory ./train_images/bacterial_leaf_blight</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>And then we can start to work on it.</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-02-06T09:05:19.533911Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-02-06T09:05:19.533229Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-02-06T09:05:19.540151Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-02-06T09:05:19.539469Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-02-06T09:05:19.533890Z&quot;}" data-tags="[]" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastai.vision.<span class="bu">all</span> <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>Path.BASE_PATH <span class="op">=</span> path <span class="op">=</span> Path.home()<span class="op">/</span><span class="st">'git'</span><span class="op">/</span><span class="st">'kaggle'</span><span class="op">/</span><span class="st">'paddy'</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>path.ls()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<pre><code>(#5) [Path('paddy-disease-classification.zip'),Path('sample_submission.csv'),Path('test_images'),Path('train.csv'),Path('train_images')]</code></pre>
+</div>
+</div>
+<p>Path is neat. Define this <code>BASE_PATH</code> to simplify <code>ls()</code> output.</p>
+<p>Had to insert</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> ssl</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>ssl._create_default_https_context <span class="op">=</span> ssl._create_unverified_context</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>to be able to download resnet34</p>
+<p>For a reason, surely the same issue as I got with diffusion model, my kernel dies when training</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2023-01-25-fastai-live-coding-sessions_files/figure-html/c816e1ba-87b4-4c66-be60-eed0301cab13-1-19cccd57-7103-4c3e-b6f1-bf6edacc69ef.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+<p>And Jeremy shares some tip about nvidia-smi. He suggests to use <code>nvidia-smi dmon</code> instead of <code>watch nvidia-smi</code> (and monitor <code>sm</code> column and see if io allow it to be high enough)</p>
+<p>Running it in vscode, I have more information</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2023-01-25-fastai-live-coding-sessions_files/figure-html/67cbea49-7566-401f-9894-6e671efdb256-1-544212c8-91e0-4136-ba57-0cd336898749.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+<p><code>Could not load library libcudnn_cnn_infer.so.8. Error: libcuda.so: cannot open shared object file: No such file or directory</code></p>
+<p>And to fix it, quite easy</p>
+<p>add this to <code>.bashrc</code></p>
+<blockquote class="blockquote">
+<p><code>export LD_LIBRARY_PATH=/usr/lib/wsl/lib</code></p>
+</blockquote>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var filterRegex = new RegExp(/^(?:http:|https:)\/\/castorfou\.github\.io\//);
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+    var links = window.document.querySelectorAll('a:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          // default icon
+          link.classList.add("external");
+      }
+    }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

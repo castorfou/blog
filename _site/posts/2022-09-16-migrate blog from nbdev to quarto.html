@@ -141,8 +141,6 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 <meta name="twitter:title" content="Guillaume’s blog - Blog - migrate to quarto">
 <meta name="twitter:description" content="following migration guide from Hamel Hussain">
 <meta name="twitter:image" content="https://castorfou.github.io/posts/images/icons/fastai.png">
-<meta name="twitter:image-height" content="234">
-<meta name="twitter:image-width" content="576">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -246,6 +244,10 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
   </ul></li>
   <li><a href="#open-external-links-in-new-tabs" id="toc-open-external-links-in-new-tabs" class="nav-link" data-scroll-target="#open-external-links-in-new-tabs">open external links in new tabs</a></li>
   <li><a href="#setup-favicon.ico" id="toc-setup-favicon.ico" class="nav-link" data-scroll-target="#setup-favicon.ico">setup favicon.ico</a></li>
+  <li><a href="#setup-rss-feed" id="toc-setup-rss-feed" class="nav-link" data-scroll-target="#setup-rss-feed">setup RSS feed</a>
+  <ul class="collapse">
+  <li><a href="#to-be-improved" id="toc-to-be-improved" class="nav-link" data-scroll-target="#to-be-improved">to be improved</a></li>
+  </ul></li>
   <li><a href="#tbd-detect-broken-links" id="toc-tbd-detect-broken-links" class="nav-link" data-scroll-target="#tbd-detect-broken-links">(tbd) detect broken links</a></li>
   <li><a href="#change-theme-and-allow-lightdark-mode" id="toc-change-theme-and-allow-lightdark-mode" class="nav-link" data-scroll-target="#change-theme-and-allow-lightdark-mode">change theme and allow light/dark mode</a></li>
   <li><a href="#tbd-fix-latex-expressions" id="toc-tbd-fix-latex-expressions" class="nav-link" data-scroll-target="#tbd-fix-latex-expressions">(tbd) fix latex expressions</a></li>
@@ -466,13 +468,51 @@ jobs:
 </div>
 </div>
 <p>And <code>favicon_small.png</code> is just at root.</p>
-<div class="cell" data-execution_count="5">
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-01-19T07:09:26.106099Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-01-19T07:09:26.105606Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-01-19T07:09:28.531126Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-01-19T07:09:28.530318Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-01-19T07:09:26.106050Z&quot;}" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>find ..<span class="op">/</span>  <span class="op">-</span>name <span class="st">'favicon_small.png'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>../favicon_small.png
 ../_site/favicon_small.png</code></pre>
 </div>
 </div>
+</section>
+<section id="setup-rss-feed" class="level2">
+<h2 class="anchored" data-anchor-id="setup-rss-feed">setup RSS feed</h2>
+<p>Discussing with my colleague Jerome, he was interested to get RSS feed from my blog.</p>
+<p>I was kind of reluctant because it is not really a blog, it is more a wiki-log. I constantly update articles, sometimes months after the 1st publication.</p>
+<p>Anyway, here is how I did to activate RSS feed: just add the option <code>feed: true</code> in <code>index.qmd</code></p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-01-19T07:14:16.659354Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-01-19T07:14:16.659159Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-01-19T07:14:16.772342Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-01-19T07:14:16.771659Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-01-19T07:14:16.659341Z&quot;}" data-tags="[]" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cat ..<span class="op">/</span>index.qmd <span class="op">|</span> grep <span class="op">--</span>color<span class="op">=</span>always <span class="op">-</span>z <span class="st">'feed: true'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>---
+title: "blog"
+listing:
+  contents: posts
+  sort: "date desc"
+  type: default
+  categories: true
+  sort-ui: false
+  filter-ui: true
+  feed: true
+page-layout: full
+title-block-banner: false
+---
+
+
+</code></pre>
+</div>
+</div>
+<p>And here is the result in Feedly</p>
+<div>
+<p><img src="2022-09-16-migrate blog from nbdev to quarto_files/figure-html/857c6ba7-1-f083faf4-fb32-43c8-b47e-fcfbb8a841ba.png" width="300"></p>
+</div>
+<section id="to-be-improved" class="level3">
+<h3 class="anchored" data-anchor-id="to-be-improved">to be improved</h3>
+<ul>
+<li>no icon in feedly for this feed (I would like it to use my favicon)</li>
+<li>when publishing an update on article, create new entry in rss feed</li>
+</ul>
+</section>
 </section>
 <section id="tbd-detect-broken-links" class="level2">
 <h2 class="anchored" data-anchor-id="tbd-detect-broken-links">(tbd) detect broken links</h2>
@@ -488,7 +528,7 @@ jobs:
 <section id="change-theme-and-allow-lightdark-mode" class="level2">
 <h2 class="anchored" data-anchor-id="change-theme-and-allow-lightdark-mode">change theme and allow light/dark mode</h2>
 <div class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cat ..<span class="op">/</span>_quarto.yml <span class="op">|</span> grep <span class="op">-</span>A2 theme</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cat ..<span class="op">/</span>_quarto.yml <span class="op">|</span> grep <span class="op">-</span>A2 theme</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    theme: 
       light: journal
@@ -497,7 +537,7 @@ jobs:
 </div>
 <p>And to have a light banner in the landing page</p>
 <div class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cat ..<span class="op">/</span>index.qmd <span class="op">|</span> grep banner</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cat ..<span class="op">/</span>index.qmd <span class="op">|</span> grep banner</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>title-block-banner: false</code></pre>
 </div>
@@ -521,7 +561,7 @@ jobs:
 <section id="publication-process" class="level1">
 <h1>Publication process</h1>
 <div class="cell" data-tags="[]" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cat ..<span class="op">/</span>publish.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cat ..<span class="op">/</span>publish.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>NOW=`date '+%F_%H:%M'`;
 #quarto render
@@ -538,23 +578,23 @@ git push
 <h2 class="anchored" data-anchor-id="workaround-quarto-publishing-issue-behind-firewall">[workaround] quarto publishing issue behind firewall</h2>
 <p>Identical to error happening when installing quarto extension</p>
 <p><a href="https://github.com/quarto-ext/video/issues/27" class="uri">https://github.com/quarto-ext/video/issues/27</a></p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> quarto publish</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="ex">?</span> Publish update to: › https://castorfou.github.io/blog/ <span class="er">(</span><span class="ex">GitHub</span> Pages<span class="kw">)</span></span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="ex">From</span> https://github.com/castorfou/blog</span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a> <span class="ex">*</span> branch            gh-pages   <span class="at">-</span><span class="op">&gt;</span> FETCH_HEAD</span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="ex">origin</span>  https://github.com/castorfou/blog.git <span class="er">(</span><span class="ex">fetch</span><span class="kw">)</span></span>
-<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="ex">origin</span>  https://github.com/castorfou/blog.git <span class="er">(</span><span class="ex">push</span><span class="kw">)</span></span>
-<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a><span class="ex">To</span> https://github.com/castorfou/blog.git</span>
-<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a> <span class="ex">+</span> 0a3710d...1aeaf23 HEAD <span class="at">-</span><span class="op">&gt;</span> gh-pages <span class="er">(</span><span class="ex">forced</span> update<span class="kw">)</span></span>
-<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a><span class="ex">fatal:</span> <span class="st">'fadc274b'</span> is not a working tree</span>
-<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a><span class="ex">NOTE:</span> GitHub Pages sites use caching so you might need to click the refresh</span>
-<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a><span class="ex">button</span> within your web browser to see changes after deployment.</span>
-<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">\)</span> Deploying gh-pages branch to website <span class="er">(</span><span class="ex">this</span> may take a few minutes<span class="kw">)</span><span class="ex">Sending</span> fatal alert BadCertificate</span>
-<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a><span class="ex">[✓]</span> Deploying gh-pages branch to website <span class="er">(</span><span class="ex">this</span> may take a few minutes<span class="kw">)</span></span>
-<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a><span class="ex">ERROR:</span> TypeError: error sending request for url <span class="er">(</span><span class="ex">https://castorfou.github.io/blog/.nojekyll</span><span class="kw">)</span><span class="bu">:</span> error trying to connect: invalid peer certificate contents: invalid peer certificate: UnknownIssuer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> quarto publish</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="ex">?</span> Publish update to: › https://castorfou.github.io/blog/ <span class="er">(</span><span class="ex">GitHub</span> Pages<span class="kw">)</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="ex">From</span> https://github.com/castorfou/blog</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a> <span class="ex">*</span> branch            gh-pages   <span class="at">-</span><span class="op">&gt;</span> FETCH_HEAD</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="ex">origin</span>  https://github.com/castorfou/blog.git <span class="er">(</span><span class="ex">fetch</span><span class="kw">)</span></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="ex">origin</span>  https://github.com/castorfou/blog.git <span class="er">(</span><span class="ex">push</span><span class="kw">)</span></span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a><span class="ex">To</span> https://github.com/castorfou/blog.git</span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a> <span class="ex">+</span> 0a3710d...1aeaf23 HEAD <span class="at">-</span><span class="op">&gt;</span> gh-pages <span class="er">(</span><span class="ex">forced</span> update<span class="kw">)</span></span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a><span class="ex">fatal:</span> <span class="st">'fadc274b'</span> is not a working tree</span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a><span class="ex">NOTE:</span> GitHub Pages sites use caching so you might need to click the refresh</span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a><span class="ex">button</span> within your web browser to see changes after deployment.</span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">\)</span> Deploying gh-pages branch to website <span class="er">(</span><span class="ex">this</span> may take a few minutes<span class="kw">)</span><span class="ex">Sending</span> fatal alert BadCertificate</span>
+<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a><span class="ex">[✓]</span> Deploying gh-pages branch to website <span class="er">(</span><span class="ex">this</span> may take a few minutes<span class="kw">)</span></span>
+<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a><span class="ex">ERROR:</span> TypeError: error sending request for url <span class="er">(</span><span class="ex">https://castorfou.github.io/blog/.nojekyll</span><span class="kw">)</span><span class="bu">:</span> error trying to connect: invalid peer certificate contents: invalid peer certificate: UnknownIssuer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>For context, I use quarto as a replacement of fastai/fastpages and followed a migration guide from Hamel Hussain asking for this installation.</p>
 <p>And I’m in a corporate environment with transparent proxies and self signed certificates. My system has updated CERT in /usr/local/share/ca-certificates/, and SSL_CERT_FILE environment variable pointing to updated corporate pem.</p>
 <pre><code>$ quarto install extension quarto-ext/lightbox
@@ -585,12 +625,12 @@ ERROR: TypeError: error sending request for url (https://github.com/quarto-ext/l
 <p>Just modifying <code>_quarto.yml</code> in ( format &gt; html &gt; from ) option</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="2022-09-16-migrate blog from nbdev to quarto_files/figure-html/0e9e2f8f-1-98d6bda2-f07a-4b7d-bfaf-68dc5f46130f.png" class="img-fluid figure-img"></p>
+<p><img src="2022-09-16-migrate blog from nbdev to quarto_files/figure-html/ef114db0-1-98d6bda2-f07a-4b7d-bfaf-68dc5f46130f.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
 </figure>
 </div>
 <div class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cat ..<span class="op">/</span>_quarto.yml <span class="op">|</span> grep <span class="op">-</span>B5 autolink</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cat ..<span class="op">/</span>_quarto.yml <span class="op">|</span> grep <span class="op">-</span>B5 autolink</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  html:
     theme: 
@@ -604,12 +644,12 @@ ERROR: TypeError: error sending request for url (https://github.com/quarto-ext/l
 </section>
 <section id="quarto-updated-to-version-1.2.269" class="level2">
 <h2 class="anchored" data-anchor-id="quarto-updated-to-version-1.2.269">quarto updated to version 1.2.269</h2>
-<div class="sourceCode" id="cb32"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="ex">~/temp$</span> wget https://github.com/quarto-dev/quarto-cli/releases/download/v1.2.269/quarto-1.2.269-linux-amd64.deb</span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="ex">~/temp$</span> sudo apt install ./quarto-1.2.269-linux-amd64.deb </span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="ex">~/temp$</span> quarto <span class="at">-V</span></span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="ex">1.2.269</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="ex">~/temp$</span> wget https://github.com/quarto-dev/quarto-cli/releases/download/v1.2.269/quarto-1.2.269-linux-amd64.deb</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="ex">~/temp$</span> sudo apt install ./quarto-1.2.269-linux-amd64.deb </span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="ex">~/temp$</span> quarto <span class="at">-V</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="ex">1.2.269</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>I don’t know what is the changelog. Looks like we don’t need to install video extension anymore. (quarto install extension quarto-ext/video)</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="ex">~/git/blog$</span> quarto remove extension quarto-ext/video</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="ex">~/git/blog$</span> quarto remove extension quarto-ext/video</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>I have started a <a href="https://forums.fast.ai/t/new-quarto-version-whats-new/102042">thread</a> in fastai forum. There are updates with widget states and inline images. Update worth running!</p>
 
 

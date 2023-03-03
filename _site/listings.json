@@ -2,6 +2,14 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/2023-03-03-icon-support-in-wsl.html",
+      "/posts/2023-03-01-logbook-March-23.html",
+      "/posts/2023-02-01-logbook-February-23.html",
+      "/posts/2023-01-25-fastai-live-coding-sessions.html",
+      "/posts/2023-01-23-latex_reference.html",
+      "/posts/2023-01-17-chord-diagram.html",
+      "/posts/2023-01-12-fastai-stable-diffusion.html",
+      "/posts/2023-01-11-zotero-manage-datascience-paper.html",
       "/posts/2023-01-02-logbook-January-23.html",
       "/posts/2022-12-19-wsl2-from-windows-store.html",
       "/posts/2022-12-15-wsl2-fresh-pc.html",
