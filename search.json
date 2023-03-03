@@ -2160,7 +2160,7 @@
     "href": "posts/2023-03-01-logbook-March-23.html",
     "title": "Logbook for March 23",
     "section": "",
-    "text": "Will use tilix as terminal in WSL\n\n\n\nimage.png\n\n\n\n\n\nbug with version 1.3.242, switched back to stable version\nsee ERROR: File name too longERROR: File name too long"
+    "text": "Will use tilix as terminal in WSL\n\n\n\nimage.png\n\n\n\n\n\nbug with version 1.3.242, switched back to stable version\nsee ERROR: File name too longERROR: File name too long\n\n\n\nIt has already hapenned once with bash and agin now that I have switched to zsh.\nI don’t see snap apps from nautilus (for example to edit a text file with sublime-text)\nOption was to ensure to have XDG_DATA_DIRS variable set up. But here it doesn’t help.\nhttps://askubuntu.com/questions/910821/programs-installed-via-snap-not-showing-up-in-launcher"
   },
   {
     "objectID": "posts/2021-03-09-clustergit.html",
