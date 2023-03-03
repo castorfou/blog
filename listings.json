@@ -2,6 +2,8 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/2023-03-03-icon-support-in-wsl.html",
+      "/posts/2023-03-01-logbook-March-23.html",
       "/posts/2023-02-01-logbook-February-23.html",
       "/posts/2023-01-25-fastai-live-coding-sessions.html",
       "/posts/2023-01-23-latex_reference.html",
