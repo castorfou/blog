@@ -1064,6 +1064,20 @@
     "text": "quarto updated to version 1.2.269\n~/temp$ wget https://github.com/quarto-dev/quarto-cli/releases/download/v1.2.269/quarto-1.2.269-linux-amd64.deb\n~/temp$ sudo apt install ./quarto-1.2.269-linux-amd64.deb \n~/temp$ quarto -V\n1.2.269\nI don’t know what is the changelog. Looks like we don’t need to install video extension anymore. (quarto install extension quarto-ext/video)\n~/git/blog$ quarto remove extension quarto-ext/video\nI have started a thread in fastai forum. There are updates with widget states and inline images. Update worth running!"
   },
   {
+    "objectID": "posts/2022-09-16-migrate blog from nbdev to quarto.html#move-to-quarto-1.3",
+    "href": "posts/2022-09-16-migrate blog from nbdev to quarto.html#move-to-quarto-1.3",
+    "title": "Blog - migrate to quarto",
+    "section": "move to quarto > 1.3",
+    "text": "move to quarto > 1.3\nwith quarto 1.3, we have acces to code annotation which is a fancy feature https://quarto.org/docs/prerelease/1.3/code-annotation.html#overview\nand to use it in my blog, I have to switch to quarto pre-release version.\nThis happens in blog/publish.yml\n      - name: Set up Quarto\n        uses: quarto-dev/quarto-actions/setup@v2\n        with:\n          version: 'pre-release'"
+  },
+  {
+    "objectID": "posts/2022-09-16-migrate blog from nbdev to quarto.html#bug-error-file-name-too-long-os-error-36-when-rendering-with-v1.3.242",
+    "href": "posts/2022-09-16-migrate blog from nbdev to quarto.html#bug-error-file-name-too-long-os-error-36-when-rendering-with-v1.3.242",
+    "title": "Blog - migrate to quarto",
+    "section": "[bug] ERROR: File name too long (os error 36), when rendering with v1.3.242",
+    "text": "[bug] ERROR: File name too long (os error 36), when rendering with v1.3.242\nMar-03 23\nJust opened this https://github.com/quarto-dev/quarto-cli/issues/4613\nand to fix it I moved back to stable quarto version (removed pre-release version from publish.yml)\nit uses quarto 1.2.335"
+  },
+  {
     "objectID": "posts/2020-09-26-matplotlib-multiple-subplots-and-animations.html",
     "href": "posts/2020-09-26-matplotlib-multiple-subplots-and-animations.html",
     "title": "Multiple subplots and animations with matplotlib",
@@ -2146,7 +2160,7 @@
     "href": "posts/2023-03-01-logbook-March-23.html",
     "title": "Logbook for March 23",
     "section": "",
-    "text": "Will use tilix as terminal in WSL\n\n\n\nimage.png"
+    "text": "Will use tilix as terminal in WSL\n\n\n\nimage.png\n\n\n\n\n\nbug with version 1.3.242, switched back to stable version\nsee ERROR: File name too longERROR: File name too long"
   },
   {
     "objectID": "posts/2021-03-09-clustergit.html",
