@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.335">
+<meta name="generator" content="quarto-1.2.475">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -235,6 +235,7 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
   <li><a href="#install-ubuntu-in-wsl" id="toc-install-ubuntu-in-wsl" class="nav-link" data-scroll-target="#install-ubuntu-in-wsl">install Ubuntu in WSL</a>
   <ul class="collapse">
   <li><a href="#activate-wsl" id="toc-activate-wsl" class="nav-link" data-scroll-target="#activate-wsl">activate WSL</a></li>
+  <li><a href="#update-wsl-upgrade-wsl" id="toc-update-wsl-upgrade-wsl" class="nav-link" data-scroll-target="#update-wsl-upgrade-wsl">update WSL, upgrade WSL</a></li>
   <li><a href="#install-ubuntu-lts" id="toc-install-ubuntu-lts" class="nav-link" data-scroll-target="#install-ubuntu-lts">install Ubuntu LTS</a></li>
   <li><a href="#activate-systemd" id="toc-activate-systemd" class="nav-link" data-scroll-target="#activate-systemd">activate systemd</a></li>
   </ul></li>
@@ -339,6 +340,12 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 <p>as admin, open windows terminal, and run</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">wsl</span> <span class="at">--install</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">wsl</span> <span class="at">--set-default-version</span> 2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="update-wsl-upgrade-wsl" class="level3">
+<h3 class="anchored" data-anchor-id="update-wsl-upgrade-wsl">update WSL, upgrade WSL</h3>
+<p>I am closely following new updates from WSL and WSLg at <a href="https://github.com/microsoft/WSL/releases" class="uri">https://github.com/microsoft/WSL/releases</a></p>
+<p>To know which version we use, run <code>wsl --version</code> in Powershell.</p>
+<p>And to upgrade to the latest version, run <code>wsl --update --pre-release</code></p>
 </section>
 <section id="install-ubuntu-lts" class="level3">
 <h3 class="anchored" data-anchor-id="install-ubuntu-lts">install Ubuntu LTS</h3>
