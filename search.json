@@ -1173,7 +1173,7 @@
     "href": "posts/2022-12-15-wsl2-fresh-pc.html#pdf-support",
     "title": "WSL2 on a fresh new PC",
     "section": "pdf support",
-    "text": "pdf support\n#acrobat reader (which uses wine)\nsudo snap install acrordrdc\n\n#evince universal documen reader for ubuntu\nsudo snap install evince"
+    "text": "pdf support\n#acrobat reader (which uses wine)\nsudo snap install acrordrdc\n\n#evince universal documen reader for ubuntu\nsudo apt install evince"
   },
   {
     "objectID": "posts/2022-12-15-wsl2-fresh-pc.html#install-test-distro-from-scratch",
