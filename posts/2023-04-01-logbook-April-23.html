@@ -302,6 +302,7 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 <h3 class="anchored" data-anchor-id="wsl-upgrade">wsl upgrade</h3>
 <p><a href="https://github.com/microsoft/WSL/releases/tag/1.1.7">1.1.7</a> has been released and it fixes my <a href="../posts/2023-03-03-icon-support-in-wsl.html">icons issue</a>.</p>
 <p>Unfortunately a side effect is <a href="https://github.com/microsoft/wslg/issues/1030">Starting GUI apps takes longer with new version</a></p>
+<p>(update April/11) sarim suggests to create these links <code>ln -s /mnt/wslg/runtime-dir/wayland-0* /run/user/1000/</code>. And then I deleted them due to side effects but at the end it fixed it anyway.</p>
 </section>
 </section>
 <section id="wednesday-0405" class="level2">
