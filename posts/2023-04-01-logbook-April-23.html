@@ -237,6 +237,7 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
   <li><a href="#friday-0421" id="toc-friday-0421" class="nav-link" data-scroll-target="#friday-0421">Friday 04/21</a>
   <ul class="collapse">
   <li><a href="#wsl-upgrade-2" id="toc-wsl-upgrade-2" class="nav-link" data-scroll-target="#wsl-upgrade-2">wsl upgrade</a></li>
+  <li><a href="#snap" id="toc-snap" class="nav-link" data-scroll-target="#snap">snap</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -340,6 +341,11 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 <p><a href="https://github.com/microsoft/wslg/issues/1030">Issue Starting GUI apps takes longer with new version</a> fixed</p>
 <p><a href="https://github.com/microsoft/wslg/issues/944">Issue WSL some icons in taskbar for linux applications are defaulting to Tux</a> back</p>
 <p>and a new issue when starting sublime-text (kill the session), I should open a ticket</p>
+</section>
+<section id="snap" class="level3">
+<h3 class="anchored" data-anchor-id="snap">snap</h3>
+<p>Strange that we need sudo to install snap apps.</p>
+<p>Found this <a href="https://forum.snapcraft.io/t/sudo-snap-install-or-just-snap-install/3909" class="uri">https://forum.snapcraft.io/t/sudo-snap-install-or-just-snap-install/3909</a> that explains that <code>sudo snap login</code> is needed then snap can be used without sudo. Should try that but it requires an Ubuntu account.</p>
 
 
 </section>

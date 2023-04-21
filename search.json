@@ -536,7 +536,7 @@
     "href": "posts/2023-04-01-logbook-April-23.html#friday-0421",
     "title": "Logbook for April 23",
     "section": "Friday 04/21",
-    "text": "Friday 04/21\n\nwsl upgrade\n1.2.5 released and installed\nIssue Starting GUI apps takes longer with new version fixed\nIssue WSL some icons in taskbar for linux applications are defaulting to Tux back\nand a new issue when starting sublime-text (kill the session), I should open a ticket"
+    "text": "Friday 04/21\n\nwsl upgrade\n1.2.5 released and installed\nIssue Starting GUI apps takes longer with new version fixed\nIssue WSL some icons in taskbar for linux applications are defaulting to Tux back\nand a new issue when starting sublime-text (kill the session), I should open a ticket\n\n\nsnap\nStrange that we need sudo to install snap apps.\nFound this https://forum.snapcraft.io/t/sudo-snap-install-or-just-snap-install/3909 that explains that sudo snap login is needed then snap can be used without sudo. Should try that but it requires an Ubuntu account."
   },
   {
     "objectID": "posts/2020-10-09-gan-course2-week1-evaluations-on-gans.html",
