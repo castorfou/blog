@@ -539,6 +539,13 @@
     "text": "Friday 04/21\n\nwsl upgrade\n1.2.5 released and installed\nIssue Starting GUI apps takes longer with new version fixed\nIssue WSL some icons in taskbar for linux applications are defaulting to Tux back\nand a new issue when starting sublime-text (kill the session), I should open a ticket\n\n\nsnap\nStrange that we need sudo to install snap apps.\nFound this https://forum.snapcraft.io/t/sudo-snap-install-or-just-snap-install/3909 that explains that sudo snap login is needed then snap can be used without sudo. Should try that but it requires an Ubuntu account."
   },
   {
+    "objectID": "posts/2023-04-01-logbook-April-23.html#monday-0424",
+    "href": "posts/2023-04-01-logbook-April-23.html#monday-0424",
+    "title": "Logbook for April 23",
+    "section": "Monday 04/24",
+    "text": "Monday 04/24\n\nwsl crash with sublime-text\nIssue opened: https://github.com/microsoft/wslg/issues/1051"
+  },
+  {
     "objectID": "posts/2020-10-09-gan-course2-week1-evaluations-on-gans.html",
     "href": "posts/2020-10-09-gan-course2-week1-evaluations-on-gans.html",
     "title": "GAN Specialization course 2 week 1 - evaluations on GANs",
@@ -2847,6 +2854,27 @@
     "title": "WSL2 from Windows Store",
     "section": "Cannot install from snap-store",
     "text": "Cannot install from snap-store\n\n\n\nimage.png\n\n\n14:12:09:0637 Gs  not handling error no-security for action refresh: Failed to obtain authentication.\n14:12:09:0638 Gs  not handling error not-supported for action get-updates-historical: The name org.freedesktop.fwupd was not provided by any .service files"
+  },
+  {
+    "objectID": "posts/2022-12-19-wsl2-from-windows-store.html#wsl-some-icons-in-taskbar-for-linux-applications-are-defaulting-to-tux",
+    "href": "posts/2022-12-19-wsl2-from-windows-store.html#wsl-some-icons-in-taskbar-for-linux-applications-are-defaulting-to-tux",
+    "title": "WSL2 from Windows Store",
+    "section": "WSL some icons in taskbar for linux applications are defaulting to Tux",
+    "text": "WSL some icons in taskbar for linux applications are defaulting to Tux\nhttps://github.com/microsoft/wslg/issues/944\n\n\n\nimage.png"
+  },
+  {
+    "objectID": "posts/2022-12-19-wsl2-from-windows-store.html#fixed-starting-gui-apps-takes-longer-with-new-version",
+    "href": "posts/2022-12-19-wsl2-from-windows-store.html#fixed-starting-gui-apps-takes-longer-with-new-version",
+    "title": "WSL2 from Windows Store",
+    "section": "[FIXED] Starting GUI apps takes longer with new version",
+    "text": "[FIXED] Starting GUI apps takes longer with new version\nhttps://github.com/microsoft/wslg/issues/1030"
+  },
+  {
+    "objectID": "posts/2022-12-19-wsl2-from-windows-store.html#launching-sublime-text-is-crashing-wsl",
+    "href": "posts/2022-12-19-wsl2-from-windows-store.html#launching-sublime-text-is-crashing-wsl",
+    "title": "WSL2 from Windows Store",
+    "section": "Launching sublime-text is crashing WSL",
+    "text": "Launching sublime-text is crashing WSL\nhttps://github.com/microsoft/wslg/issues/1051\n\n\n\nimage.png"
   },
   {
     "objectID": "posts/2021-03-25-contribute to a project with git.html",
