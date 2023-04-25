@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/2023-04-24-extract-python-scripts-with-nbdev.html",
       "/posts/2023-04-01-logbook-April-23.html",
       "/posts/2023-03-03-icon-support-in-wsl.html",
       "/posts/2023-03-01-logbook-March-23.html",
