@@ -669,7 +669,7 @@
     "href": "posts/2023-04-24-extract-python-scripts-with-nbdev.html#create-python-script",
     "title": "Python scripts from notebooks",
     "section": "create python script",
-    "text": "create python script\nStart from a notebook, and\n\nadd #|default_exp app in a cell of your notebook, where app is the name of the module to be extracted\nadd #| export in each cell you want to extract\ninsert this in the last cell of your notebook. ‘path’ will be the module location\n\nimport nbdev\nnbdev.export.nb_export('app.ipynb', 'path')\nprint('Export successful')\nExecute the notebook, it will create an app.py file in path"
+    "text": "create python script\nStart from a notebook, and\n\nadd #|default_exp app in a cell of your notebook, where app is the name of the module to be extracted\nadd #| export in each cell you want to extract\ninsert this in the last cell of your notebook. ‘path’ will be the module location\n\nimport nbdev\nnbdev.export.nb_export('app.ipynb', 'path')\nExecute the notebook, it will create an app.py file in path"
   },
   {
     "objectID": "posts/2023-04-24-extract-python-scripts-with-nbdev.html#use-this-python-script",
@@ -683,7 +683,7 @@
     "href": "posts/2023-04-24-extract-python-scripts-with-nbdev.html#create-python-script-1",
     "title": "Python scripts from notebooks",
     "section": "create python script",
-    "text": "create python script\n::: {.cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’ execution=‘{“iopub.execute_input”:“2023-04-25T08:43:22.663943Z”,“iopub.status.busy”:“2023-04-25T08:43:22.663736Z”,“iopub.status.idle”:“2023-04-25T08:43:22.666717Z”,“shell.execute_reply”:“2023-04-25T08:43:22.666190Z”,“shell.execute_reply.started”:“2023-04-25T08:43:22.663930Z”}’ tags=‘[]’ execution_count=3}\ndef nbdev_print():\n    print('This is a nbdev example')\n:::\n\nfrom nbdev.export import nb_export\nnb_export('2023-04-24-extract-python-scripts-with-nbdev.ipynb', '.')\nprint('Export successful')\n!ls -l *.py\n\nExport successful\n-rwxrwxrwx 1 guillaume guillaume 251 Apr 25 10:43 example_nbdev.py"
+    "text": "create python script\n#|default_exp example_nbdev\n#|export\n\ndef nbdev_print():\n    print('This is a nbdev example')\nfrom nbdev.export import nb_export\nnb_export('2023-04-24-extract-python-scripts-with-nbdev.ipynb', '.')\n\n!ls -l *.py\n\n-rwxrwxrwx 1 guillaume guillaume 251 Apr 25 10:43 example_nbdev.py"
   },
   {
     "objectID": "posts/2023-04-24-extract-python-scripts-with-nbdev.html#use-this-python-script-1",

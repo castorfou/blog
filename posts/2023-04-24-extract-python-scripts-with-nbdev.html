@@ -295,8 +295,7 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 <li>insert this in the last cell of your notebook. ‘path’ will be the module location</li>
 </ul>
 <div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> nbdev</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>nbdev.export.nb_export(<span class="st">'app.ipynb'</span>, <span class="st">'path'</span>)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Export successful'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>nbdev.export.nb_export(<span class="st">'app.ipynb'</span>, <span class="st">'path'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Execute the notebook, it will create an <code>app.py</code> file in <code>path</code></p>
 </section>
 <section id="use-this-python-script" class="level2">
@@ -317,27 +316,26 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 <h1>Example</h1>
 <section id="create-python-script-1" class="level2">
 <h2 class="anchored" data-anchor-id="create-python-script-1">create python script</h2>
-<p>::: {.cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’ execution=‘{“iopub.execute_input”:“2023-04-25T08:43:22.663943Z”,“iopub.status.busy”:“2023-04-25T08:43:22.663736Z”,“iopub.status.idle”:“2023-04-25T08:43:22.666717Z”,“shell.execute_reply”:“2023-04-25T08:43:22.666190Z”,“shell.execute_reply.started”:“2023-04-25T08:43:22.663930Z”}’ tags=‘[]’ execution_count=3}</p>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> nbdev_print():</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'This is a nbdev example'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>:::</p>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-25T08:43:22.667746Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-25T08:43:22.667379Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-25T08:43:22.828706Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-25T08:43:22.827871Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-04-25T08:43:22.667727Z&quot;}" data-tags="[]" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nbdev.export <span class="im">import</span> nb_export</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>nb_export(<span class="st">'2023-04-24-extract-python-scripts-with-nbdev.ipynb'</span>, <span class="st">'.'</span>)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Export successful'</span>)</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>ls <span class="op">-</span>l <span class="op">*</span>.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#|default_exp example_nbdev</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#|export</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> nbdev_print():</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'This is a nbdev example'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nbdev.export <span class="im">import</span> nb_export</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>nb_export(<span class="st">'2023-04-24-extract-python-scripts-with-nbdev.ipynb'</span>, <span class="st">'.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-25T09:43:21.910021Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-25T09:43:21.909772Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-25T09:43:22.036762Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-25T09:43:22.035778Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-04-25T09:43:21.910006Z&quot;}" data-tags="[]" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>ls <span class="op">-</span>l <span class="op">*</span>.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Export successful
--rwxrwxrwx 1 guillaume guillaume 251 Apr 25 10:43 example_nbdev.py</code></pre>
+<pre><code>-rwxrwxrwx 1 guillaume guillaume 251 Apr 25 10:43 example_nbdev.py</code></pre>
 </div>
 </div>
 </section>
 <section id="use-this-python-script-1" class="level2">
 <h2 class="anchored" data-anchor-id="use-this-python-script-1">use this python script</h2>
 <div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-25T08:44:28.427320Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-25T08:44:28.427046Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-25T08:44:28.430706Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-25T08:44:28.430014Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-04-25T08:44:28.427297Z&quot;}" data-tags="[]" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> example_nbdev</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>example_nbdev.nbdev_print()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> example_nbdev</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>example_nbdev.nbdev_print()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>This is a nbdev example</code></pre>
 </div>
