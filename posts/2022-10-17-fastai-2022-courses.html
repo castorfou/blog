@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.475">
+<meta name="generator" content="quarto-1.3.340">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -19,9 +19,10 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -48,43 +49,13 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -160,30 +131,30 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
     <span class="navbar-title">Guillaume’s blog</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../about.html">
+    <a class="nav-link" href="../about.html" rel="" target="">
  <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/castorfou"><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/castorfou" rel="" target=""><i class="bi bi-github" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com/GuillaumeRamel1"><i class="bi bi-twitter" role="img">
+    <a class="nav-link" href="https://twitter.com/GuillaumeRamel1" rel="" target=""><i class="bi bi-twitter" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
 </ul>
-              <div class="quarto-toggle-container">
-                  <a href="" class="quarto-color-scheme-toggle nav-link" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
-              </div>
-              <div id="quarto-search" class="" title="Search"></div>
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
@@ -343,7 +314,7 @@ pip install -U gradio </code></pre>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-10-17-fastai-2022-courses_files/figure-html/c8926a88-d5b7-4214-ac5d-bcaf818f8c59-1-3a059c3a-b170-4943-b7bd-c44c96211fa3.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+<figcaption class="figure-caption">image.png</figcaption>
 </figure>
 </div>
 </section>
@@ -356,7 +327,7 @@ pip install -U gradio </code></pre>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-10-17-fastai-2022-courses_files/figure-html/a63057aa-0968-4c37-95fb-369f8e4d3ae5-1-31e16cdc-010d-4056-b275-a5feb523c752.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+<figcaption class="figure-caption">image.png</figcaption>
 </figure>
 </div>
 </section>
@@ -366,7 +337,7 @@ pip install -U gradio </code></pre>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-10-17-fastai-2022-courses_files/figure-html/9206f93d-2255-404a-87b2-a87fbf7dc8bc-1-f65839a7-cf1c-4da2-a395-7818e5241abe.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+<figcaption class="figure-caption">image.png</figcaption>
 </figure>
 </div>
 <blockquote class="blockquote">
@@ -379,7 +350,7 @@ So, let’s get started!</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-10-17-fastai-2022-courses_files/figure-html/f3d59743-04e9-4fdb-b22e-e806b84aa958-1-d9a38f06-b9ab-4b1c-8dca-8187fbb0355c.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+<figcaption class="figure-caption">image.png</figcaption>
 </figure>
 </div>
 <p>In 2015, nearly impossible to recognize a bird with CS. And Jeremy doing that in 2 minutes ;)</p>
@@ -398,7 +369,7 @@ So, let’s get started!</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-10-17-fastai-2022-courses_files/figure-html/a855fd4d-0ffb-4a62-bd66-2b6feaf8bdc0-1-374144e3-fa7b-4cf5-ba83-6a1d37a72288.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+<figcaption class="figure-caption">image.png</figcaption>
 </figure>
 </div>
 </section>
@@ -411,7 +382,7 @@ So, let’s get started!</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-10-17-fastai-2022-courses_files/figure-html/f67b71f4-57d0-4494-b202-114f06b7fed3-2-521368e2-f88d-4fd0-a52c-d3ddbef3cfc6.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+<figcaption class="figure-caption">image.png</figcaption>
 </figure>
 </div>
 <ul>
@@ -420,7 +391,7 @@ So, let’s get started!</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-10-17-fastai-2022-courses_files/figure-html/f67b71f4-57d0-4494-b202-114f06b7fed3-3-99638923-aae2-43cf-aaa2-ada718cf6cae.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+<figcaption class="figure-caption">image.png</figcaption>
 </figure>
 </div>
 <ul>
@@ -429,7 +400,7 @@ So, let’s get started!</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-10-17-fastai-2022-courses_files/figure-html/f67b71f4-57d0-4494-b202-114f06b7fed3-1-3e04cfbd-19d4-49a3-922e-70da10f0bf44.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+<figcaption class="figure-caption">image.png</figcaption>
 </figure>
 </div>
 </section>
@@ -478,7 +449,7 @@ So, let’s get started!</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-10-17-fastai-2022-courses_files/figure-html/245ad086-5bae-4405-aeb7-bcfd2c6eb798-1-18981c69-5b80-4d5b-a8c6-24710ba3d0fb.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+<figcaption class="figure-caption">image.png</figcaption>
 </figure>
 </div>
 </section>
@@ -490,7 +461,7 @@ So, let’s get started!</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-10-17-fastai-2022-courses_files/figure-html/1d6931ed-c358-4c9c-a75d-e22d417160ce-1-7d714c96-df7f-4758-9e69-93aa3a810658.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+<figcaption class="figure-caption">image.png</figcaption>
 </figure>
 </div>
 <p>And here we don’t have datablock but direclty dataloaders</p>
@@ -501,7 +472,7 @@ So, let’s get started!</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-10-17-fastai-2022-courses_files/figure-html/3850c635-af2c-401c-9cf3-0e38301b8957-1-83f9e7f9-0495-4d89-82c5-15e21bddaa31.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+<figcaption class="figure-caption">image.png</figcaption>
 </figure>
 </div>
 <p>And the <code>tabular_learner</code> wich takes dls and metric.</p>
@@ -516,7 +487,7 @@ So, let’s get started!</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-10-17-fastai-2022-courses_files/figure-html/6deea125-0962-4449-89e7-602fa5f876f5-1-dd1b59e1-eaa3-486f-b8ac-519f4ba1e3a8.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+<figcaption class="figure-caption">image.png</figcaption>
 </figure>
 </div>
 <blockquote class="blockquote">
@@ -535,7 +506,7 @@ So, let’s get started!</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-10-17-fastai-2022-courses_files/figure-html/15d3e6f7-032e-49ca-8ff1-6846909cd2a5-1-f95a61af-e56e-4650-b51a-c9a017744a5d.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+<figcaption class="figure-caption">image.png</figcaption>
 </figure>
 </div>
 </section>
@@ -545,7 +516,7 @@ So, let’s get started!</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-10-17-fastai-2022-courses_files/figure-html/a75f8c4f-d400-4343-8080-e5b4dcc749a6-1-46b3093a-b3cb-45dc-82e7-30e6d9e8423a.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+<figcaption class="figure-caption">image.png</figcaption>
 </figure>
 </div>
 <p>Nothing new because I played with <a href="../posts/2022-10-12-gradio_huggingface.html">gradio and HF</a> couple of weeks ago.</p>
@@ -560,7 +531,7 @@ So, let’s get started!</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-10-17-fastai-2022-courses_files/figure-html/64ceac72-ba74-41b6-a8f8-492fc045312d-1-395df238-6c39-4ca7-87fa-812471437c69.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+<figcaption class="figure-caption">image.png</figcaption>
 </figure>
 </div>
 <p>And copy/past it to your local minima repo. Push it to HF.</p>
@@ -570,7 +541,7 @@ So, let’s get started!</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-10-17-fastai-2022-courses_files/figure-html/1050ea4d-4e98-4c77-b7e2-c0edbaa51443-1-8dfac218-e7a8-4b71-a053-eea355eb97c5.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+<figcaption class="figure-caption">image.png</figcaption>
 </figure>
 </div>
 <p>And Jeremy illustrates how to do it with a notebook and nbdev. Exactly as I did in <a href="../posts/2022-10-12-gradio_huggingface.html">gradio and huggingface - handson</a></p>
@@ -616,7 +587,7 @@ So, let’s get started!</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-10-17-fastai-2022-courses_files/figure-html/eb0aa304-6cbc-438c-9ce9-d754ed437cf0-1-4d65166a-5f79-431a-9bf5-e7192e6815ae.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+<figcaption class="figure-caption">image.png</figcaption>
 </figure>
 </div>
 </section>
@@ -657,7 +628,7 @@ So, let’s get started!</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-10-17-fastai-2022-courses_files/figure-html/ae5534c2-d593-455e-8a8b-c7624e9b09d8-1-0e4921b6-7f1f-4ead-a7cf-e75df376aa4f.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+<figcaption class="figure-caption">image.png</figcaption>
 </figure>
 </div>
 </section>
@@ -717,7 +688,7 @@ So, let’s get started!</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-10-17-fastai-2022-courses_files/figure-html/35e779a3-c3ad-43e9-bb90-4371217829ad-1-60c95ea4-29b6-42e6-9827-1cdafd04e705.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+<figcaption class="figure-caption">image.png</figcaption>
 </figure>
 </div>
 <p>Looks like we can browse through these jekyll themes at <a href="http://jekyllthemes.org/" class="uri">http://jekyllthemes.org/</a></p>
@@ -729,7 +700,7 @@ So, let’s get started!</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-10-17-fastai-2022-courses_files/figure-html/1cb73eaa-2f68-4fba-b4c0-d24170f98917-1-d4e08165-739e-4034-843b-1efe335281ad.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+<figcaption class="figure-caption">image.png</figcaption>
 </figure>
 </div>
 <blockquote class="blockquote">
@@ -745,7 +716,7 @@ So, let’s get started!</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-10-17-fastai-2022-courses_files/figure-html/bb0e4629-a800-4743-a8cc-92a8763ec532-1-56e655b6-1940-4766-bf49-ff76de4ad4b7.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+<figcaption class="figure-caption">image.png</figcaption>
 </figure>
 </div>
 <p>Convnext models seem to be a good fit.</p>
@@ -854,7 +825,7 @@ So, let’s get started!</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-10-17-fastai-2022-courses_files/figure-html/fd076952-c3a5-4a41-be6e-81395db0ee12-1-67afa14d-fd26-45ed-8d09-82a97458787d.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+<figcaption class="figure-caption">image.png</figcaption>
 </figure>
 </div>
 <blockquote class="blockquote">
@@ -873,7 +844,7 @@ So, let’s get started!</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-10-17-fastai-2022-courses_files/figure-html/85af52d2-9674-45b5-b71c-2576078497f9-1-dbe1075e-9548-4e54-9924-ca99f1e6649f.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+<figcaption class="figure-caption">image.png</figcaption>
 </figure>
 </div>
 <blockquote class="blockquote">
@@ -915,7 +886,7 @@ So, let’s get started!</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-10-17-fastai-2022-courses_files/figure-html/1be83661-8a7f-45af-acfe-3045c8c77946-1-2af8bec3-ac03-4b00-97a6-d70bec83e724.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+<figcaption class="figure-caption">image.png</figcaption>
 </figure>
 </div>
 <blockquote class="blockquote">
@@ -936,7 +907,7 @@ So, let’s get started!</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-10-17-fastai-2022-courses_files/figure-html/56a8e326-0b24-4b49-bc0e-f4a44ab10a65-1-ddf78814-ef73-4ad3-8cc5-3e4896f575cb.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+<figcaption class="figure-caption">image.png</figcaption>
 </figure>
 </div>
 <p>There are 6 videos (walkthrough) from Jeremy, I think 6 hours long to enter into each detail of his process to be a kaggle grandmaster.</p>
@@ -961,7 +932,7 @@ So, let’s get started!</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-10-17-fastai-2022-courses_files/figure-html/29f01da0-60c7-40bc-b4a2-ff2655209a33-1-e97eb590-fbad-4ca4-b1f1-affa840869fc.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+<figcaption class="figure-caption">image.png</figcaption>
 </figure>
 </div>
 <blockquote class="blockquote">
@@ -975,7 +946,7 @@ So, let’s get started!</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-10-17-fastai-2022-courses_files/figure-html/878f5f41-fb02-4d76-8e07-e3a3a0884608-1-9f314285-1119-4290-87ef-5c0d1ab5581d.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+<figcaption class="figure-caption">image.png</figcaption>
 </figure>
 </div>
 <p>Jeremy explains latent factor, the way to implement them in pytorch. Then bias factor added to these matrices to adjust bias. ProductBias to calculate similarity. And the full learning process. Then introduces weight decay as a way to regularize (avoid overfitting).</p>
@@ -987,7 +958,7 @@ So, let’s get started!</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-10-17-fastai-2022-courses_files/figure-html/cee3aee1-77c8-4a3a-93d5-ddcc0958d0b0-1-937c5629-1a79-4873-966f-05458b912588.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+<figcaption class="figure-caption">image.png</figcaption>
 </figure>
 </div>
 <blockquote class="blockquote">
@@ -1003,7 +974,7 @@ So, let’s get started!</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-10-17-fastai-2022-courses_files/figure-html/09dbdd7a-6fba-4792-b34b-9f982ae241d6-1-50be3667-b78e-4934-a5db-954d2137942b.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+<figcaption class="figure-caption">image.png</figcaption>
 </figure>
 </div>
 
@@ -1153,9 +1124,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -1220,6 +1205,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -1258,12 +1329,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var filterRegex = new RegExp(/^(?:http:|https:)\/\/castorfou\.github\.io\//);
+      var filterRegex = new RegExp("^(?:http:|https:)\/\/castorfou\.github\.io\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
-    var links = window.document.querySelectorAll('a:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
