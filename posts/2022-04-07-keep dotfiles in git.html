@@ -220,51 +220,60 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 <p>I keep one separate branch per machine. Current branches: master (empty), and WSL2.</p>
 <p>I am going to add a machine called iolab.</p>
 </section>
-<section id="from-iolab" class="level4">
-<h4 class="anchored" data-anchor-id="from-iolab">from iolab</h4>
+<section id="from-iolab---.cfg-in-home" class="level4">
+<h4 class="anchored" data-anchor-id="from-iolab---.cfg-in-home">from iolab - .cfg in $HOME</h4>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> init <span class="at">--bare</span> <span class="va">$HOME</span>/.cfg</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">alias</span> config=<span class="st">'/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">config</span> config <span class="at">--local</span> status.showUntrackedFiles no</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"alias config='/usr/bin/git --git-dir=</span><span class="va">$HOME</span><span class="st">/.cfg/ --work-tree=</span><span class="va">$HOME</span><span class="st">'"</span> <span class="op">&gt;&gt;</span> <span class="va">$HOME</span>/.bash_aliases</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="from-iolab---.cfg-in" class="level4">
+<h4 class="anchored" data-anchor-id="from-iolab---.cfg-in">from iolab - .cfg in /</h4>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> mkdir /.cfg</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> chown uid:gid /.cfg</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> init <span class="at">--bare</span> /.cfg</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="bu">alias</span> config=<span class="st">'/usr/bin/git --git-dir=/.cfg/ --work-tree=/'</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ex">config</span> config <span class="at">--local</span> status.showUntrackedFiles no</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"alias config='/usr/bin/git --git-dir=/.cfg/ --work-tree=/'"</span> <span class="op">&gt;&gt;</span> <span class="va">$HOME</span>/.bash_aliases</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>And we can now run <code>config status</code></p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="bu">[</span> 09:53:56 ][ id: <span class="er">~</span> <span class="ex">]$</span> config status</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># On branch master</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Initial commit</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="ex">nothing</span> to commit <span class="er">(</span><span class="ex">create/copy</span> files and use <span class="st">"git add"</span> to track<span class="kw">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="bu">[</span> 09:53:56 ][ id: <span class="er">~</span> <span class="ex">]$</span> config status</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># On branch master</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Initial commit</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="ex">nothing</span> to commit <span class="er">(</span><span class="ex">create/copy</span> files and use <span class="st">"git add"</span> to track<span class="kw">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>but now we would like to create a new branch, and push all this to our central repo.</p>
 <p>First we have to set this central repo.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">config</span> remote add origin git@<span class="op">&lt;</span>your_gitlab_address<span class="op">&gt;</span>:<span class="op">&lt;</span>your_id<span class="op">&gt;</span>/dotfiles.git</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">config</span> fetch</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">config</span> remote add origin git@<span class="op">&lt;</span>your_gitlab_address<span class="op">&gt;</span>:<span class="op">&lt;</span>your_id<span class="op">&gt;</span>/dotfiles.git</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">config</span> fetch</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Before creating our branch, we have to commit something (to really create our local branch master)</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">config</span> add .bashrc</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">config</span> commit <span class="at">-m</span> <span class="st">'init with .bashrc'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">config</span> add .bashrc</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">config</span> commit <span class="at">-m</span> <span class="st">'init with .bashrc'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>And then only we can create our branch iolab</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">config</span> branch iolab</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">config</span> checkout iolab</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="ex">config</span> push <span class="at">--set-upstream</span> origin iolab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">config</span> branch iolab</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">config</span> checkout iolab</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="ex">config</span> push <span class="at">--set-upstream</span> origin iolab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>we are now ready to use it</p>
 </section>
 </section>
 <section id="how-to-use-it" class="level2">
 <h2 class="anchored" data-anchor-id="how-to-use-it">How to use it</h2>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">config</span> add .bash_aliases</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">config</span> commit <span class="at">-m</span><span class="st">'bash aliases'</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="ex">config</span> push</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">config</span> add .bash_aliases</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">config</span> commit <span class="at">-m</span><span class="st">'bash aliases'</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="ex">config</span> push</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="how-to-setup-2-remote-repo" class="level2">
 <h2 class="anchored" data-anchor-id="how-to-setup-2-remote-repo">How to setup 2 remote repo</h2>
 <p>There is a nice explanation abut how to work with multiple repos in <a href="https://jigarius.com/blog/multiple-git-remote-repositories">https://jigarius.com/blog/multiple-git-remote-repositories</a>.</p>
 <p>To follow that, I will configure my dotfile repo from WSL2 to push to 2 remotes, one on gitlab (internal) and one on github.</p>
 <p>For the moment it is only connected to gitlab.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> config remote <span class="at">-v</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">origin</span>  git@gitlab.michelin.com:janus/dotfiles.git <span class="er">(</span><span class="ex">fetch</span><span class="kw">)</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="ex">origin</span>  git@gitlab.michelin.com:janus/dotfiles.git <span class="er">(</span><span class="ex">push</span><span class="kw">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> config remote <span class="at">-v</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">origin</span>  git@gitlab.michelin.com:janus/dotfiles.git <span class="er">(</span><span class="ex">fetch</span><span class="kw">)</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="ex">origin</span>  git@gitlab.michelin.com:janus/dotfiles.git <span class="er">(</span><span class="ex">push</span><span class="kw">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>My github repo is at: <a href="https://github.com/castorfou/dotfiles.git" class="uri">https://github.com/castorfou/dotfiles.git</a> (I use https, because of my local firewall)</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> config remote set-url <span class="at">--add</span> <span class="at">--push</span> origin git@gitlab.michelin.com:janus/dotfiles.git</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> config remote set-url <span class="at">--add</span> <span class="at">--push</span> origin https://github.com/castorfou/dotfiles.git</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> config push origin GR_WSL2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> config remote set-url <span class="at">--add</span> <span class="at">--push</span> origin git@gitlab.michelin.com:janus/dotfiles.git</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> config remote set-url <span class="at">--add</span> <span class="at">--push</span> origin https://github.com/castorfou/dotfiles.git</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> config push origin GR_WSL2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>I have to get a token from github to access in https</p>
 <p>To generate a token:</p>
 <ol type="1">
