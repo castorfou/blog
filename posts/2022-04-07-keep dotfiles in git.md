@@ -33,13 +33,24 @@ I am going to add a machine called iolab.
 
 
 
-#### from iolab
+#### from iolab - .cfg in $HOME
 
 ```bash
 git init --bare $HOME/.cfg
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 config config --local status.showUntrackedFiles no
 echo "alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'" >> $HOME/.bash_aliases
+```
+
+#### from iolab - .cfg in /
+
+```bash
+sudo mkdir /.cfg
+sudo chown uid:gid /.cfg
+git init --bare /.cfg
+alias config='/usr/bin/git --git-dir=/.cfg/ --work-tree=/'
+config config --local status.showUntrackedFiles no
+echo "alias config='/usr/bin/git --git-dir=/.cfg/ --work-tree=/'" >> $HOME/.bash_aliases
 ```
 
 And we can now run `config status`
