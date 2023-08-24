@@ -110,6 +110,7 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 
 <link rel="stylesheet" href="../styles.css">
 <meta name="twitter:title" content="Guillaume’s blog - Logbook for August 23">
+<meta name="twitter:description" content="">
 <meta name="twitter:image" content="https://castorfou.github.io/images/logbook.jpg">
 <meta name="twitter:card" content="summary_large_image">
 </head>
@@ -162,6 +163,7 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
                 <div class="quarto-category">logbook</div>
                 <div class="quarto-category">git</div>
                 <div class="quarto-category">holoviz</div>
+                <div class="quarto-category">nbdev</div>
               </div>
                   </div>
   </div>
@@ -192,6 +194,7 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
   <li><a href="#week-34---august-23" id="toc-week-34---august-23" class="nav-link active" data-scroll-target="#week-34---august-23">Week 34 - August 23</a>
   <ul class="collapse">
   <li><a href="#monday-0821" id="toc-monday-0821" class="nav-link" data-scroll-target="#monday-0821">Monday 08/21</a></li>
+  <li><a href="#tuesday-0822" id="toc-tuesday-0822" class="nav-link" data-scroll-target="#tuesday-0822">Tuesday 08/22</a></li>
   <li><a href="#thursday-0824" id="toc-thursday-0824" class="nav-link" data-scroll-target="#thursday-0824">Thursday 08/24</a></li>
   </ul></li>
   </ul>
@@ -203,6 +206,7 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 
 
 
+<p>holoviz and datashader, nbdev-mkdocs, git revert</p>
 <section id="week-34---august-23" class="level1">
 <h1>Week 34 - August 23</h1>
 <section id="monday-0821" class="level2">
@@ -217,6 +221,12 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 <div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> hvplot.pandas</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>df.hvplot.scatter(x<span class="op">=</span><span class="st">'x'</span>, y<span class="op">=</span><span class="st">'y'</span>, rasterize<span class="op">=</span><span class="va">True</span>, cnorm<span class="op">=</span><span class="st">'eq_hist'</span>, width<span class="op">=</span><span class="dv">1200</span>, height<span class="op">=</span><span class="dv">600</span>, c<span class="op">=</span><span class="st">'sigma_1'</span>, dynspread<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Should now create a blog entry to fully present that.</p>
+</section>
+<section id="tuesday-0822" class="level2">
+<h2 class="anchored" data-anchor-id="tuesday-0822">Tuesday 08/22</h2>
+<p>Trying <a href="https://nbdev-mkdocs.airt.ai/">nbdev-mkdocs</a> which is providing a more modern version of doc website for nbdev using mkdocs.</p>
+<p>But I have an issue when converting for janus-tools lib, as explained in <a href="https://github.com/airtai/nbdev-mkdocs/issues/209">issue #209</a></p>
+<p>Should start from scratch or bisect existing lib.</p>
 </section>
 <section id="thursday-0824" class="level2">
 <h2 class="anchored" data-anchor-id="thursday-0824">Thursday 08/24</h2>
