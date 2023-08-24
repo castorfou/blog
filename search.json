@@ -4323,14 +4323,14 @@
     "href": "posts/2023-05-01-logbook-May-23.html",
     "title": "Logbook for May 23",
     "section": "",
-    "text": "https://github.com/jupyterlab/jupyterlab/releases/tag/v4.0.0\nTo update\nconda activate base_jupyter\nmamba update -c conda-forge jupyterlab\nit is not yet in conda repos, and I will try later.\nIs there a way to be notified when a monitored package is updated?"
+    "text": "jupyterlab 4.0 is available"
   },
   {
     "objectID": "posts/2023-05-01-logbook-May-23.html#tuesday-0516",
     "href": "posts/2023-05-01-logbook-May-23.html#tuesday-0516",
     "title": "Logbook for May 23",
-    "section": "",
-    "text": "https://github.com/jupyterlab/jupyterlab/releases/tag/v4.0.0\nTo update\nconda activate base_jupyter\nmamba update -c conda-forge jupyterlab\nit is not yet in conda repos, and I will try later.\nIs there a way to be notified when a monitored package is updated?"
+    "section": "Tuesday 05/16",
+    "text": "Tuesday 05/16\n\njupyter 4.0 is out\nhttps://github.com/jupyterlab/jupyterlab/releases/tag/v4.0.0\nTo update\nconda activate base_jupyter\nmamba update -c conda-forge jupyterlab\nit is not yet in conda repos, and I will try later.\nIs there a way to be notified when a monitored package is updated?"
   },
   {
     "objectID": "posts/2021-03-25-headless-raspberry-pi-bridge-network.html",
