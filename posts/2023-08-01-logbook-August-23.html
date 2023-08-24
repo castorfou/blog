@@ -6,10 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2020-12-02">
-<meta name="description" content="to answer to exceeding GitHub’s file size limit of 100.00 MB">
+<meta name="dcterms.date" content="2023-08-01">
 
-<title>Guillaume’s blog - Push large files to github: git-lfs</title>
+<title>Guillaume’s blog - Logbook for August 23</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -110,9 +109,8 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 
 
 <link rel="stylesheet" href="../styles.css">
-<meta name="twitter:title" content="Guillaume’s blog - Push large files to github: git-lfs">
-<meta name="twitter:description" content="to answer to exceeding GitHub’s file size limit of 100.00 MB">
-<meta name="twitter:image" content="https://castorfou.github.io/posts/images/git.png">
+<meta name="twitter:title" content="Guillaume’s blog - Logbook for August 23">
+<meta name="twitter:image" content="https://castorfou.github.io/images/logbook.jpg">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -159,14 +157,11 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Push large files to github: git-lfs</h1>
-                  <div>
-        <div class="description">
-          to answer to exceeding GitHub’s file size limit of 100.00 MB
-        </div>
-      </div>
-                          <div class="quarto-categories">
+      <h1 class="title">Logbook for August 23</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">logbook</div>
                 <div class="quarto-category">git</div>
+                <div class="quarto-category">holoviz</div>
               </div>
                   </div>
   </div>
@@ -178,7 +173,7 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">December 2, 2020</p>
+        <p class="date">August 1, 2023</p>
       </div>
     </div>
     
@@ -194,8 +189,11 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#where-is-the-problem" id="toc-where-is-the-problem" class="nav-link active" data-scroll-target="#where-is-the-problem">Where is the problem</a></li>
-  <li><a href="#solution-git-lfs" id="toc-solution-git-lfs" class="nav-link" data-scroll-target="#solution-git-lfs">Solution: git-lfs</a></li>
+  <li><a href="#week-34---august-23" id="toc-week-34---august-23" class="nav-link active" data-scroll-target="#week-34---august-23">Week 34 - August 23</a>
+  <ul class="collapse">
+  <li><a href="#monday-0821" id="toc-monday-0821" class="nav-link" data-scroll-target="#monday-0821">Monday 08/21</a></li>
+  <li><a href="#thursday-0824" id="toc-thursday-0824" class="nav-link" data-scroll-target="#thursday-0824">Thursday 08/24</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -205,53 +203,36 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 
 
 
-<section id="where-is-the-problem" class="level1">
-<h1>Where is the problem</h1>
-<p>I am currently following deep learning specialization from Andrew Ng on coursera.</p>
-<p>In the course 4 about CNNs, there are some pre-trained yolo models that we use to do object detection. And these models come as large <code>.h5</code> files.</p>
-<p>Because I run all programming assignments locally and keep everything (lectures + codes) on my local repo, when I pushed to github I got this error:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">explore@explore-ThinkPad-P53:~/git/guillaume/deeplearning_specialization$</span> git push</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Enumerating</span> objects: 247, done.</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Counting</span> objects: 100% <span class="er">(</span><span class="ex">247/247</span><span class="kw">)</span><span class="ex">,</span> done.</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">Delta</span> compression using up to 12 threads</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">Compressing</span> objects: 100% <span class="er">(</span><span class="ex">239/239</span><span class="kw">)</span><span class="ex">,</span> done.</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ex">Writing</span> objects: 100% <span class="er">(</span><span class="ex">242/242</span><span class="kw">)</span><span class="ex">,</span> 707.06 MiB <span class="kw">|</span> <span class="ex">4.74</span> MiB/s, done.</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="ex">Total</span> 242 <span class="er">(</span><span class="ex">delta</span> 6<span class="kw">)</span><span class="ex">,</span> reused 0 <span class="er">(</span><span class="ex">delta</span> 0<span class="kw">)</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="ex">remote:</span> Resolving deltas: 100% <span class="er">(</span><span class="ex">6/6</span><span class="kw">)</span><span class="ex">,</span> completed with 3 local objects.</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="ex">remote:</span> warning: File notebooks/C4W3/nb_images/pred_video.mp4 is 85.44 MB<span class="kw">;</span> <span class="ex">this</span> is larger than GitHub<span class="st">'s recommended maximum file size of 50.00 MB</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="st">remote: warning: File notebooks/C4W3/nb_images/road_video.mp4 is 81.71 MB; this is larger than GitHub'</span>s recommended maximum file size of 50.00 MB</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="ex">remote:</span> error: GH001: Large files detected. You may want to try Git Large File Storage <span class="at">-</span> https://git-lfs.github.com.</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="ex">remote:</span> error: Trace: 2d1944991c30279b831124b51e4aac57a17a860f2ef789b4e32801fb65282244</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="ex">remote:</span> error: See http://git.io/iEPt8g for more information.</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="ex">remote:</span> error: File notebooks/C4W2/ResNet50.h5 is 270.32 MB<span class="kw">;</span> <span class="ex">this</span> exceeds GitHub<span class="st">'s file size limit of 100.00 MB</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="st">remote: error: File notebooks/C4W3/model_data/yolo.h5 is 194.69 MB; this exceeds GitHub'</span>s file size limit of 100.00 MB</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="ex">To</span> github.com:castorfou/deeplearning_specialization.git</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a> <span class="ot">! </span><span class="ex">[remote</span> rejected] master <span class="at">-</span><span class="op">&gt;</span> master <span class="er">(</span><span class="ex">pre-receive</span> hook declined<span class="kw">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="week-34---august-23" class="level1">
+<h1>Week 34 - August 23</h1>
+<section id="monday-0821" class="level2">
+<h2 class="anchored" data-anchor-id="monday-0821">Monday 08/21</h2>
+<p><strong>datashader</strong> or how to use plotly/bokeh with millions of points</p>
+<p>Before vacations I had some <a href="../posts/2023-07-01-logbook-July-23.html#friday-0721">issues</a> to have it run in a custom python environment.</p>
+<p>Now I have fixed it by: * installing <code>pyviz_comms</code> in my jupyter environment (e.g.&nbsp;<code>conda install -n base_jupyter -c pyviz pyviz_comms</code>) * adding these commands to my active environment</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> install <span class="at">-c</span> pyviz hvplot datashader</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-I</span> pyarrow==11.0.0</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-Iv</span> numpy==1.23.0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>And then I can just use it with:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> hvplot.pandas</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>df.hvplot.scatter(x<span class="op">=</span><span class="st">'x'</span>, y<span class="op">=</span><span class="st">'y'</span>, rasterize<span class="op">=</span><span class="va">True</span>, cnorm<span class="op">=</span><span class="st">'eq_hist'</span>, width<span class="op">=</span><span class="dv">1200</span>, height<span class="op">=</span><span class="dv">600</span>, c<span class="op">=</span><span class="st">'sigma_1'</span>, dynspread<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Should now create a blog entry to fully present that.</p>
 </section>
-<section id="solution-git-lfs" class="level1">
-<h1>Solution: git-lfs</h1>
-<p>As explained in <a href="https://github.com/git-lfs/git-lfs/wiki/Tutorial" class="uri">https://github.com/git-lfs/git-lfs/wiki/Tutorial</a>, there is (always) a way to do it properly.</p>
-<p>First it is a matter of installing git-lfs:</p>
-<p><code>sudo apt-get install git-lfs</code></p>
-<p>Then to setup git lfs</p>
-<p><code>git lfs install</code></p>
-<p>And then to “migrate” big files to lfs:</p>
-<p><code>git lfs migrate import --include="*.mp4"</code></p>
-<p><code>git lfs migrate import --include="*.h5"</code></p>
-<p>And now to <code>git push</code></p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">explore@explore-ThinkPad-P53:~/git/guillaume/deeplearning_specialization$</span> git push</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Uploading</span> LFS objects: 100% <span class="er">(</span><span class="ex">25/25</span><span class="kw">)</span><span class="ex">,</span> 954 MB <span class="kw">|</span> <span class="ex">37</span> MB/s, done.                                                                 </span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Enumerating</span> objects: 311, done.</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">Counting</span> objects: 100% <span class="er">(</span><span class="ex">311/311</span><span class="kw">)</span><span class="ex">,</span> done.</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ex">Delta</span> compression using up to 12 threads</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="ex">Compressing</span> objects: 100% <span class="er">(</span><span class="ex">273/273</span><span class="kw">)</span><span class="ex">,</span> done.</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="ex">Writing</span> objects: 100% <span class="er">(</span><span class="ex">276/276</span><span class="kw">)</span><span class="ex">,</span> 60.49 MiB <span class="kw">|</span> <span class="ex">5.59</span> MiB/s, done.</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="ex">Total</span> 276 <span class="er">(</span><span class="ex">delta</span> 18<span class="kw">)</span><span class="ex">,</span> reused 0 <span class="er">(</span><span class="ex">delta</span> 0<span class="kw">)</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="ex">remote:</span> Resolving deltas: 100% <span class="er">(</span><span class="ex">18/18</span><span class="kw">)</span><span class="ex">,</span> completed with 16 local objects.</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="ex">To</span> github.com:castorfou/deeplearning_specialization.git</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>   <span class="ex">d0d2dc2..004fa09</span>  master <span class="at">-</span><span class="op">&gt;</span> master</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="thursday-0824" class="level2">
+<h2 class="anchored" data-anchor-id="thursday-0824">Thursday 08/24</h2>
+<p><strong>git</strong> or how to revert one file from a previous commit</p>
+<p>Let’s say I want to revert to a previous commit the file <code>3 - uq_conformal - dataset_S.ipynb</code></p>
+<p>1st to do is to list all known commits where this file is involved with <strong>git log –oneline</strong></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">❯</span> git log <span class="at">--oneline</span> 3<span class="dt">\ </span>-<span class="dt">\ </span>uq_conformal<span class="dt">\ </span>-<span class="dt">\ </span>dataset_S.ipynb</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">2888291</span> exploration espace latent</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">f16fce7</span> training on dataset_S</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>I would like to get back to the version in commit <code>f16fce7</code></p>
+<p>Then to revert, it is just about using <strong>git checkout</strong></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout f16fce7 <span class="at">--</span> 3<span class="dt">\ </span>-<span class="dt">\ </span>uq_conformal<span class="dt">\ </span>-<span class="dt">\ </span>dataset_S.ipynb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>and then to commit and push</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
