@@ -1740,7 +1740,7 @@
     "href": "posts/2023-08-01-logbook-August-23.html#monday-0821",
     "title": "Logbook for August 23",
     "section": "Monday 08/21",
-    "text": "Monday 08/21\ndatashader or how to use plotly/bokeh with millions of points\nBefore vacations I had some issues to have it run in a custom python environment.\nNow I have fixed it by: * installing pyviz_comms in my jupyter environment (e.g. conda install -n base_jupyter -c pyviz pyviz_comms) * adding these commands to my active environment\nconda install -c pyviz hvplot datashader\npip install -I pyarrow==11.0.0\npip install -Iv numpy==1.23.0\nAnd then I can just use it with:\nimport hvplot.pandas\ndf.hvplot.scatter(x='x', y='y', rasterize=True, cnorm='eq_hist', width=1200, height=600, c='sigma_1', dynspread=True)\nShould now create a blog entry to fully present that."
+    "text": "Monday 08/21\ndatashader or how to use plotly/bokeh with millions of points\nBefore vacations I had some issues to have it run in a custom python environment.\nNow I have fixed it by: * installing pyviz_comms in my jupyter environment (e.g. conda install -n base_jupyter -c pyviz pyviz_comms) * adding these commands to my active environment\nconda install -c pyviz hvplot datashader\npip install -I pyarrow==11.0.0\npip install -Iv numpy==1.23.0\nAnd then I can just use it with:\nimport hvplot.pandas\ndf.hvplot.scatter(x='x', y='y', rasterize=True, cnorm='eq_hist', width=1200, height=600, c='sigma_1', dynspread=True)\nShould now create a blog entry to fully present that. Can start from the working example at gitlab &gt; dataprophet_TL &gt; nbs &gt; 7_datashader.ipynb"
   },
   {
     "objectID": "posts/2023-08-01-logbook-August-23.html#tuesday-0822",
