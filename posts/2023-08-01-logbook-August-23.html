@@ -164,6 +164,7 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
                 <div class="quarto-category">git</div>
                 <div class="quarto-category">holoviz</div>
                 <div class="quarto-category">nbdev</div>
+                <div class="quarto-category">wsl</div>
               </div>
                   </div>
   </div>
@@ -196,6 +197,7 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
   <li><a href="#monday-0821" id="toc-monday-0821" class="nav-link" data-scroll-target="#monday-0821">Monday 08/21</a></li>
   <li><a href="#tuesday-0822" id="toc-tuesday-0822" class="nav-link" data-scroll-target="#tuesday-0822">Tuesday 08/22</a></li>
   <li><a href="#thursday-0824" id="toc-thursday-0824" class="nav-link" data-scroll-target="#thursday-0824">Thursday 08/24</a></li>
+  <li><a href="#friday-0825" id="toc-friday-0825" class="nav-link" data-scroll-target="#friday-0825">Friday 08/25</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -206,7 +208,7 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 
 
 
-<p>holoviz and datashader, nbdev-mkdocs, git revert</p>
+<p>holoviz and datashader, nbdev-mkdocs, git revert, wsl-vpnkit stopped to work</p>
 <section id="week-34---august-23" class="level1">
 <h1>Week 34 - August 23</h1>
 <section id="monday-0821" class="level2">
@@ -240,6 +242,35 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 <p>Then to revert, it is just about using <strong>git checkout</strong></p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout f16fce7 <span class="at">--</span> 3<span class="dt">\ </span>-<span class="dt">\ </span>uq_conformal<span class="dt">\ </span>-<span class="dt">\ </span>dataset_S.ipynb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>and then to commit and push</p>
+</section>
+<section id="friday-0825" class="level2">
+<h2 class="anchored" data-anchor-id="friday-0825">Friday 08/25</h2>
+<p>Looks like no dns access today on my wsl.</p>
+<p>1st symptom was a timeout on a <code>git fetch</code>.</p>
+<p>Then <code>host google.fr</code> has a timeoiut as well.</p>
+<p>I then realized that wsl-vpnkit was stopped. Strange it is supposed to be launched automatically with my distro.</p>
+<p>Starting wsl-vpnkit manually (<code>wsl -d wsl-vpnkit service wsl-vpnkit start</code>) doesn’t help because at each DNS request, wsl-vpnkit is killed.</p>
+<p>Looking at the wsl-vpnkit logs with <code>wsl.exe -d wsl-vpnkit --cd /app tail -f /var/log/wsl-vpnkit.log</code></p>
+<p>gives this</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ip:</span> RTNETLINK answers: File exists</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">ip:</span> RTNETLINK answers: File exists</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="ex">restored</span> WSL 2 ip route</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="ex">wsl-gvproxy.exe</span> exists at ./wsl-vpnkit/wsl-gvproxy.exe</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="ex">starting</span> gvproxy at ./wsl-vpnkit/wsl-gvproxy.exe...</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="ex">started</span> gvproxy</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="ex">waiting</span> for dhcp...</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="va">time</span><span class="op">=</span><span class="st">"2023-08-25T07:47:08Z"</span> <span class="va">level</span><span class="op">=</span>fatal <span class="va">msg</span><span class="op">=</span><span class="st">"cannot connect to host: fork/exec ./wsl-vpnkit/wsl-gvproxy.exe: exec format error"</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="ex">sh:</span> can<span class="st">'t kill pid 51: No such process</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="st">wsl-vm exited</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Googling this error gives me <a href="https://github.com/sakai135/wsl-vpnkit/issues/217">cannot connect to host: fork/exec /app/wsl-gvproxy.exe: no such file or directory #217</a> on wsl-vpnkit github issues.</p>
+<p>And points to <a href="https://github.com/microsoft/WSL/issues/8952#issuecomment-1568212651">WSL2 (Preview) cannot run .exe files: exec format error: wsl.exe #8952</a> on WSL github issues.</p>
+<p>Suggestion is to run:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> sh <span class="at">-c</span> <span class="st">'echo :WSLInterop:M::MZ::/init:PF &gt; /usr/lib/binfmt.d/WSLInterop.conf'</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl unmask systemd-binfmt.service</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl restart systemd-binfmt</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl mask systemd-binfmt.service</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>And it works</p>
+<p>Adding this to <a href="../posts/2022-12-15-wsl2-fresh-pc.html">WSL2 blog entry</a>.</p>
 
 
 </section>

@@ -333,6 +333,12 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 <pre><code>wsl --import wsl-vpnkit $env:USERPROFILE\wsl-vpnkit C:\wsl\ubuntu-22.04\download\wsl-vpnkit.tar.gz
 wsl -d wsl-vpnkit
 wsl -d wsl-vpnkit service wsl-vpnkit start</code></pre>
+<p>If wsl-vpnkit stopped unexpectedly, check logs with <code>wsl.exe -d wsl-vpnkit --cd /app tail -f /var/log/wsl-vpnkit.log</code>. If “cannot connect to host: fork/exec ./wsl-vpnkit/wsl-gvproxy.exe: exec format error” appears, apply this solution:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> sh <span class="at">-c</span> <span class="st">'echo :WSLInterop:M::MZ::/init:PF &gt; /usr/lib/binfmt.d/WSLInterop.conf'</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl unmask systemd-binfmt.service</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl restart systemd-binfmt</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl mask systemd-binfmt.service</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>More details at <a href="../posts/2023-08-01-logbook-August-23.html#Friday-08/25">logbook Aug 23</a></p>
 </section>
 <section id="install-ubuntu-and-setup-root" class="level4">
 <h4 class="anchored" data-anchor-id="install-ubuntu-and-setup-root">install ubuntu and setup root</h4>
@@ -371,11 +377,11 @@ chmod +x setup_wsl_root.sh
 <h3 class="anchored" data-anchor-id="activate-systemd">activate systemd</h3>
 <p>If running wsl version &gt; 1.0, you can <a href="../posts/2022-12-19-wsl2-from-windows-store.html#systemd">activate systemd</a></p>
 <p>Modify <code>/etc/wsl.conf</code> with</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[boot]</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="va">systemd</span><span class="op">=</span>true</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[boot]</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="va">systemd</span><span class="op">=</span>true</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>And restart wsl image (<code>wsl -t ubuntu-22.04</code>)</p>
 <p>Test that it works by running</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">systemctl</span> list-unit-files <span class="at">--type</span><span class="op">=</span>service</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">systemctl</span> list-unit-files <span class="at">--type</span><span class="op">=</span>service</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-12-15-wsl2-fresh-pc_files/figure-html/4c52acb2-3c41-4b7f-9ab3-c4724c59cb54-1-ab0bb1c5-0d39-4110-a50d-9c98ac95cb6d.png" class="img-fluid figure-img"></p>
@@ -390,14 +396,14 @@ chmod +x setup_wsl_root.sh
 <section id="keep-config-files-in-git" class="level2">
 <h2 class="anchored" data-anchor-id="keep-config-files-in-git">keep config files in git</h2>
 <p>I have explained how and why to do this step at <a href="../posts/2022-04-07-keep dotfiles in git.html">keep dotfiles in git</a></p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">--no-check-certificate</span> <span class="at">--content-disposition</span> <span class="at">-O</span> <span class="at">-</span> https://raw.githubusercontent.com/castorfou/blog/master/files/setup_wsl_00_config_files_in_git.sh <span class="kw">|</span> <span class="fu">bash</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> ~/.bashrc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">--no-check-certificate</span> <span class="at">--content-disposition</span> <span class="at">-O</span> <span class="at">-</span> https://raw.githubusercontent.com/castorfou/blog/master/files/setup_wsl_00_config_files_in_git.sh <span class="kw">|</span> <span class="fu">bash</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> ~/.bashrc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>TODO: take branch name as a parameter. Meanwhile download the script and update branch name to something new</p>
 </section>
 <section id="git-credential-manager-to-push-on-github" class="level2">
 <h2 class="anchored" data-anchor-id="git-credential-manager-to-push-on-github">git credential manager to push on github</h2>
 <p>This is explained at <a href="https://github.com/GitCredentialManager/git-credential-manager/blob/main/README.md">git-credential-manager repo</a></p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">--no-check-certificate</span> <span class="at">--content-disposition</span> <span class="at">-O</span> <span class="at">-</span> https://raw.githubusercontent.com/castorfou/blog/master/files/setup_wsl_06_git_credential_manager.sh <span class="kw">|</span> <span class="fu">bash</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">--no-check-certificate</span> <span class="at">--content-disposition</span> <span class="at">-O</span> <span class="at">-</span> https://raw.githubusercontent.com/castorfou/blog/master/files/setup_wsl_06_git_credential_manager.sh <span class="kw">|</span> <span class="fu">bash</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>You need to create a personal access token in github.</p>
 <p>And when pushing to a github repo, use this token as the password</p>
 <div class="quarto-figure quarto-figure-center">
@@ -410,50 +416,50 @@ chmod +x setup_wsl_root.sh
 <section id="optional-automount-secured-vbox" class="level2">
 <h2 class="anchored" data-anchor-id="optional-automount-secured-vbox">(optional) automount secured vbox</h2>
 <p>Because I keep secured data within my secured disks mounted in windows (Z:, Y:, …)</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">--no-check-certificate</span> <span class="at">--content-disposition</span> <span class="at">-O</span> <span class="at">-</span> https://raw.githubusercontent.com/castorfou/blog/master/files/setup_wsl_01_automount_secured_vbox.sh <span class="kw">|</span> <span class="fu">bash</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">--no-check-certificate</span> <span class="at">--content-disposition</span> <span class="at">-O</span> <span class="at">-</span> https://raw.githubusercontent.com/castorfou/blog/master/files/setup_wsl_01_automount_secured_vbox.sh <span class="kw">|</span> <span class="fu">bash</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Modify <code>/etc/vbox.autofs</code> to match your actual mounted disks. <code>sudo service autofs start</code> to start the service.</p>
 <p>if it fails, check that kernel is at least v5. <code>uname -a</code>. If not maybe in WSL 1 insted of WSL 2? (<code>sudo automount -f -v</code> should provide more information)</p>
 <div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-12-15T06:59:08.940563Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-12-15T06:59:08.939739Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-12-15T06:59:09.054598Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-12-15T06:59:09.053780Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2022-12-15T06:59:08.940524Z&quot;}" data-tags="[]" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#my vbox.autofs file</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cat <span class="op">/</span>etc<span class="op">/</span>vbox.autofs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#my vbox.autofs file</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cat <span class="op">/</span>etc<span class="op">/</span>vbox.autofs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>janus   -fstype=drvfs,uid=1000,gid=1000 :Z:</code></pre>
 </div>
 </div>
 <p>if <code>systemd</code> is activated, we can manage services with <code>journalctl</code></p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#restart autofs</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl restart autofs.service</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co">#read logs for autofs (-r: display last entries first)</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co">#to use it as user, add your user to adm group</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co">#sudo usermod -a -G adm &lt;your_username&gt;</span></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="ex">journalctl</span> <span class="at">-r</span> <span class="at">-u</span> autofs</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="co">#print warning</span></span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="ex">journalctl</span> <span class="at">-r</span> <span class="at">-p</span> warning</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#restart autofs</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl restart autofs.service</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co">#read logs for autofs (-r: display last entries first)</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co">#to use it as user, add your user to adm group</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="co">#sudo usermod -a -G adm &lt;your_username&gt;</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="ex">journalctl</span> <span class="at">-r</span> <span class="at">-u</span> autofs</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="co">#print warning</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="ex">journalctl</span> <span class="at">-r</span> <span class="at">-p</span> warning</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>other examples with journalctl:</p>
 <p><a href="https://www.geeksforgeeks.org/journalctl-command-in-linux-with-examples/" class="uri">https://www.geeksforgeeks.org/journalctl-command-in-linux-with-examples/</a></p>
 </section>
 <section id="python-with-conda-and-configure-base-environment-jupyterlab-mamba" class="level2">
 <h2 class="anchored" data-anchor-id="python-with-conda-and-configure-base-environment-jupyterlab-mamba">python with conda and configure base environment (jupyterlab, mamba)</h2>
 <p>Give a look to <a href="../posts/2022-04-25-install ubuntu 22.04 on WSL.html#python-with-conda-and-configure-base-environment-jupyterlab-mamba">script sources</a></p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install miniconda</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">--no-check-certificate</span> <span class="at">--content-disposition</span> <span class="at">-O</span> <span class="at">-</span> https://raw.githubusercontent.com/castorfou/blog/master/files/setup_wsl_02_install_python_conda_part1.sh <span class="kw">|</span> <span class="fu">bash</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> ~/.bashrc</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># install mamba</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">--no-check-certificate</span> <span class="at">--content-disposition</span> <span class="at">-O</span> <span class="at">-</span> https://raw.githubusercontent.com/castorfou/blog/master/files/setup_wsl_02_install_python_conda_part2.sh <span class="kw">|</span> <span class="fu">bash</span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> ~/.bashrc</span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co"># install certificates for Python</span></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">--no-check-certificate</span> <span class="at">--content-disposition</span> <span class="at">-O</span> <span class="at">-</span> https://raw.githubusercontent.com/castorfou/blog/master/files/setup_wsl_02_install_python_conda_part3.sh <span class="kw">|</span> <span class="fu">bash</span></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> ~/.bashrc</span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="co"># create base_jupyter environment</span></span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">--no-check-certificate</span> <span class="at">--content-disposition</span> <span class="at">-O</span> <span class="at">-</span> https://raw.githubusercontent.com/castorfou/blog/master/files/setup_wsl_02_install_python_conda_part4.sh <span class="kw">|</span> <span class="fu">bash</span></span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> ~/.bashrc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install miniconda</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">--no-check-certificate</span> <span class="at">--content-disposition</span> <span class="at">-O</span> <span class="at">-</span> https://raw.githubusercontent.com/castorfou/blog/master/files/setup_wsl_02_install_python_conda_part1.sh <span class="kw">|</span> <span class="fu">bash</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> ~/.bashrc</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># install mamba</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">--no-check-certificate</span> <span class="at">--content-disposition</span> <span class="at">-O</span> <span class="at">-</span> https://raw.githubusercontent.com/castorfou/blog/master/files/setup_wsl_02_install_python_conda_part2.sh <span class="kw">|</span> <span class="fu">bash</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> ~/.bashrc</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co"># install certificates for Python</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">--no-check-certificate</span> <span class="at">--content-disposition</span> <span class="at">-O</span> <span class="at">-</span> https://raw.githubusercontent.com/castorfou/blog/master/files/setup_wsl_02_install_python_conda_part3.sh <span class="kw">|</span> <span class="fu">bash</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> ~/.bashrc</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="co"># create base_jupyter environment</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">--no-check-certificate</span> <span class="at">--content-disposition</span> <span class="at">-O</span> <span class="at">-</span> https://raw.githubusercontent.com/castorfou/blog/master/files/setup_wsl_02_install_python_conda_part4.sh <span class="kw">|</span> <span class="fu">bash</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> ~/.bashrc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="python-with-pip" class="level2">
 <h2 class="anchored" data-anchor-id="python-with-pip">python with pip</h2>
 <p>Give a look to <a href="../posts/2022-04-25-install ubuntu 22.04 on WSL.html#configure-pip">script sources</a></p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">--no-check-certificate</span> <span class="at">--content-disposition</span> <span class="at">-O</span> <span class="at">-</span> https://raw.githubusercontent.com/castorfou/blog/master/files/setup_wsl_08_pip.sh <span class="kw">|</span> <span class="fu">bash</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">--no-check-certificate</span> <span class="at">--content-disposition</span> <span class="at">-O</span> <span class="at">-</span> https://raw.githubusercontent.com/castorfou/blog/master/files/setup_wsl_08_pip.sh <span class="kw">|</span> <span class="fu">bash</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="jupyter-lab" class="level2">
 <h2 class="anchored" data-anchor-id="jupyter-lab">jupyter lab</h2>
@@ -461,7 +467,7 @@ chmod +x setup_wsl_root.sh
 <p>I will create a <code>base_jupyter</code> env with what is needed for running jupyter lab. And create a jupyterlab service to automatically start jupyter lab with my distro (and stop/restart it)</p>
 <p><code>base_jupyter</code></p>
 <div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-02-06T15:25:26.410535Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-02-06T15:25:26.410306Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-02-06T15:25:26.527998Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-02-06T15:25:26.527096Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-02-06T15:25:26.410519Z&quot;}" data-tags="[]" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cat <span class="op">/</span>home<span class="op">/</span>guillaume<span class="op">/</span>_conda_env<span class="op">/</span>base_jupyter.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cat <span class="op">/</span>home<span class="op">/</span>guillaume<span class="op">/</span>_conda_env<span class="op">/</span>base_jupyter.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>conda remove --name base_jupyter --all
 mamba create -n base_jupyter python=3.9
@@ -484,31 +490,31 @@ pip install azure-cli</code></pre>
 </div>
 <p>jupyterlab as a service:</p>
 <p>FILE /etc/systemd/system/jupyterlab.service</p>
-<div class="sourceCode" id="annotated-cell-15"><pre class="sourceCode bash code-annotation-code code-with-copy code-annotated"><code class="sourceCode bash"><span id="annotated-cell-15-1"><a href="#annotated-cell-15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[Unit]</span></span>
-<span id="annotated-cell-15-2"><a href="#annotated-cell-15-2" aria-hidden="true" tabindex="-1"></a><span class="va">Description</span><span class="op">=</span>Jupyter <span class="ex">lab</span> boot scriptJupyter lab boot script</span>
-<span id="annotated-cell-15-3"><a href="#annotated-cell-15-3" aria-hidden="true" tabindex="-1"></a><span class="va">DefaultDependencies</span><span class="op">=</span>no</span>
-<span id="annotated-cell-15-4"><a href="#annotated-cell-15-4" aria-hidden="true" tabindex="-1"></a><span class="va">After</span><span class="op">=</span>network.target</span>
-<span id="annotated-cell-15-5"><a href="#annotated-cell-15-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-15-6"><a href="#annotated-cell-15-6" aria-hidden="true" tabindex="-1"></a><span class="ex">[Service]</span></span>
-<span id="annotated-cell-15-7"><a href="#annotated-cell-15-7" aria-hidden="true" tabindex="-1"></a><span class="va">Type</span><span class="op">=</span>simple</span>
-<span id="annotated-cell-15-8"><a href="#annotated-cell-15-8" aria-hidden="true" tabindex="-1"></a><span class="va">User</span><span class="op">=</span>guillaume</span>
-<span id="annotated-cell-15-9"><a href="#annotated-cell-15-9" aria-hidden="true" tabindex="-1"></a><span class="va">Group</span><span class="op">=</span>adm</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-15-10" class="code-annotation-target"><a href="#annotated-cell-15-10" aria-hidden="true" tabindex="-1"></a><span class="va">Environment</span><span class="op">=</span><span class="st">"LD_LIBRARY_PATH=/usr/lib/wsl/lib"</span></span>
-<span id="annotated-cell-15-11"><a href="#annotated-cell-15-11" aria-hidden="true" tabindex="-1"></a><span class="va">ExecStart</span><span class="op">=</span>/home/guillaume/bin/jupyterlab.sh</span>
-<span id="annotated-cell-15-12"><a href="#annotated-cell-15-12" aria-hidden="true" tabindex="-1"></a><span class="va">ExecStop</span><span class="op">=</span>screen <span class="ex">-X</span> <span class="at">-S</span> jupyter_screen kill</span>
-<span id="annotated-cell-15-13"><a href="#annotated-cell-15-13" aria-hidden="true" tabindex="-1"></a><span class="va">TimeoutStartSec</span><span class="op">=</span>0</span>
-<span id="annotated-cell-15-14"><a href="#annotated-cell-15-14" aria-hidden="true" tabindex="-1"></a><span class="va">RemainAfterExit</span><span class="op">=</span>yes</span>
-<span id="annotated-cell-15-15"><a href="#annotated-cell-15-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-15-16"><a href="#annotated-cell-15-16" aria-hidden="true" tabindex="-1"></a><span class="ex">[Install]</span></span>
-<span id="annotated-cell-15-17"><a href="#annotated-cell-15-17" aria-hidden="true" tabindex="-1"></a><span class="va">WantedBy</span><span class="op">=</span>default.target</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="annotated-cell-16"><pre class="sourceCode bash code-annotation-code code-with-copy code-annotated"><code class="sourceCode bash"><span id="annotated-cell-16-1"><a href="#annotated-cell-16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[Unit]</span></span>
+<span id="annotated-cell-16-2"><a href="#annotated-cell-16-2" aria-hidden="true" tabindex="-1"></a><span class="va">Description</span><span class="op">=</span>Jupyter <span class="ex">lab</span> boot scriptJupyter lab boot script</span>
+<span id="annotated-cell-16-3"><a href="#annotated-cell-16-3" aria-hidden="true" tabindex="-1"></a><span class="va">DefaultDependencies</span><span class="op">=</span>no</span>
+<span id="annotated-cell-16-4"><a href="#annotated-cell-16-4" aria-hidden="true" tabindex="-1"></a><span class="va">After</span><span class="op">=</span>network.target</span>
+<span id="annotated-cell-16-5"><a href="#annotated-cell-16-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-16-6"><a href="#annotated-cell-16-6" aria-hidden="true" tabindex="-1"></a><span class="ex">[Service]</span></span>
+<span id="annotated-cell-16-7"><a href="#annotated-cell-16-7" aria-hidden="true" tabindex="-1"></a><span class="va">Type</span><span class="op">=</span>simple</span>
+<span id="annotated-cell-16-8"><a href="#annotated-cell-16-8" aria-hidden="true" tabindex="-1"></a><span class="va">User</span><span class="op">=</span>guillaume</span>
+<span id="annotated-cell-16-9"><a href="#annotated-cell-16-9" aria-hidden="true" tabindex="-1"></a><span class="va">Group</span><span class="op">=</span>adm</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-16-10" class="code-annotation-target"><a href="#annotated-cell-16-10" aria-hidden="true" tabindex="-1"></a><span class="va">Environment</span><span class="op">=</span><span class="st">"LD_LIBRARY_PATH=/usr/lib/wsl/lib"</span></span>
+<span id="annotated-cell-16-11"><a href="#annotated-cell-16-11" aria-hidden="true" tabindex="-1"></a><span class="va">ExecStart</span><span class="op">=</span>/home/guillaume/bin/jupyterlab.sh</span>
+<span id="annotated-cell-16-12"><a href="#annotated-cell-16-12" aria-hidden="true" tabindex="-1"></a><span class="va">ExecStop</span><span class="op">=</span>screen <span class="ex">-X</span> <span class="at">-S</span> jupyter_screen kill</span>
+<span id="annotated-cell-16-13"><a href="#annotated-cell-16-13" aria-hidden="true" tabindex="-1"></a><span class="va">TimeoutStartSec</span><span class="op">=</span>0</span>
+<span id="annotated-cell-16-14"><a href="#annotated-cell-16-14" aria-hidden="true" tabindex="-1"></a><span class="va">RemainAfterExit</span><span class="op">=</span>yes</span>
+<span id="annotated-cell-16-15"><a href="#annotated-cell-16-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-16-16"><a href="#annotated-cell-16-16" aria-hidden="true" tabindex="-1"></a><span class="ex">[Install]</span></span>
+<span id="annotated-cell-16-17"><a href="#annotated-cell-16-17" aria-hidden="true" tabindex="-1"></a><span class="va">WantedBy</span><span class="op">=</span>default.target</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-15" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-16" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-lines="10" data-code-cell="annotated-cell-15">This is to allow execution of GPU instructions within jupyter lab</span>
+<span data-code-cell="annotated-cell-16" data-code-annotation="1" data-code-lines="10">This is to allow execution of GPU instructions within jupyter lab</span>
 </dd>
 </dl>
 <div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-02-06T15:35:32.152159Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-02-06T15:35:32.151920Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-02-06T15:35:32.266905Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-02-06T15:35:32.266187Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-02-06T15:35:32.152141Z&quot;}" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cat <span class="op">/</span>home<span class="op">/</span>guillaume<span class="op">/</span><span class="bu">bin</span><span class="op">/</span>jupyterlab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cat <span class="op">/</span>home<span class="op">/</span>guillaume<span class="op">/</span><span class="bu">bin</span><span class="op">/</span>jupyterlab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#!/bin/bash
 cd ~
@@ -518,26 +524,26 @@ jupyter lab</code></pre>
 </div>
 </div>
 <div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-02-06T15:36:14.832324Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-02-06T15:36:14.832039Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-02-06T15:36:14.945169Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-02-06T15:36:14.944418Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-02-06T15:36:14.832294Z&quot;}" data-tags="[]" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cat <span class="op">/</span>home<span class="op">/</span>guillaume<span class="op">/</span><span class="bu">bin</span><span class="op">/</span>jupyterlab.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cat <span class="op">/</span>home<span class="op">/</span>guillaume<span class="op">/</span><span class="bu">bin</span><span class="op">/</span>jupyterlab.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#!/bin/bash -x
 screen -d -S "jupyter_screen" -m ~guillaume/bin/jupyterlab</code></pre>
 </div>
 </div>
 <div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-02-06T15:36:39.922388Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-02-06T15:36:39.922142Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-02-06T15:36:40.033861Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-02-06T15:36:40.033127Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-02-06T15:36:39.922369Z&quot;}" data-tags="[]" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cat <span class="op">/</span>home<span class="op">/</span>guillaume<span class="op">/</span><span class="bu">bin</span><span class="op">/</span>jupyterlab_stop.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cat <span class="op">/</span>home<span class="op">/</span>guillaume<span class="op">/</span><span class="bu">bin</span><span class="op">/</span>jupyterlab_stop.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#!/bin/bash -x
 screen -X -S jupyter_screen kill</code></pre>
 </div>
 </div>
 <p>Then enable this service</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> +x /home/guillaume/bin/jupyterlab.sh</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl daemon-reload</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl enable jupyterlab.service</span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl restart jupyterlab.service</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> +x /home/guillaume/bin/jupyterlab.sh</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl daemon-reload</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl enable jupyterlab.service</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl restart jupyterlab.service</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>and to monitor logs of this service</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="ex">journalctl</span> <span class="at">-xefu</span> jupyterlab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="ex">journalctl</span> <span class="at">-xefu</span> jupyterlab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Just pointing to <a href="http://localhost:8888/lab" class="uri">http://localhost:8888/lab</a></p>
 <p>and if you want we can add an alias <code>alias jl='/home/guillaume/bin/jupyterlab.sh'</code> in <code>.bash_aliases</code></p>
 </section>
@@ -545,22 +551,22 @@ screen -X -S jupyter_screen kill</code></pre>
 <h2 class="anchored" data-anchor-id="optional-zsh-oh-my-zsh-powerlevel10k">(optional) zsh oh-my-zsh powerlevel10k</h2>
 <p>following <a href="https://medium.com/@satriajanaka09/setup-zsh-oh-my-zsh-powerlevel10k-on-ubuntu-20-04-c4a4052508fd" class="uri">https://medium.com/@satriajanaka09/setup-zsh-oh-my-zsh-powerlevel10k-on-ubuntu-20-04-c4a4052508fd</a></p>
 <p>Install zsh</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install zsh</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">zsh</span> <span class="at">--version</span></span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co">#set as default shell for current user</span></span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="fu">chsh</span> <span class="at">-s</span> /usr/bin/zsh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install zsh</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">zsh</span> <span class="at">--version</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="co">#set as default shell for current user</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="fu">chsh</span> <span class="at">-s</span> /usr/bin/zsh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Some settings to be set to start <code>wsl-vpnkit</code> with my user with zsh.</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode zsh code-with-copy"><code class="sourceCode zsh"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tee</span> ~/.zprofile <span class="op">&lt;&lt; EOF</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="st">emulate sh</span></span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="st">. ~/.profile</span></span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="st">emulate zsh</span></span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="op">EOF</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode zsh code-with-copy"><code class="sourceCode zsh"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tee</span> ~/.zprofile <span class="op">&lt;&lt; EOF</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="st">emulate sh</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="st">. ~/.profile</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="st">emulate zsh</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="op">EOF</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Here I have to restart ubuntu and <code>wsl-vpnkit</code>. (from powershell <code>wsl --shutdown</code>) and check network is fine (e.g.&nbsp;<code>wget https://wwww.google.com</code>)</p>
 <p>Install oh-my-zsh</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode zsh code-with-copy"><code class="sourceCode zsh"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sh</span> <span class="at">-c</span> <span class="st">"</span><span class="va">$(</span><span class="ex">curl</span> <span class="at">-fsSL</span> https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh<span class="va">)</span><span class="st">"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode zsh code-with-copy"><code class="sourceCode zsh"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sh</span> <span class="at">-c</span> <span class="st">"</span><span class="va">$(</span><span class="ex">curl</span> <span class="at">-fsSL</span> https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh<span class="va">)</span><span class="st">"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Switch to other theme - agnoster Change ZSH_THEME=“agnoster” And apply change <code>exec zsh</code></p>
 <p>Install fonts</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode zsh code-with-copy"><code class="sourceCode zsh"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get install fonts-powerline</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode zsh code-with-copy"><code class="sourceCode zsh"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get install fonts-powerline</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="attachment:efbeb000-bfc0-4f5d-96fd-cc2e42c0e41b.png" class="img-fluid figure-img"></p>
@@ -568,42 +574,42 @@ screen -X -S jupyter_screen kill</code></pre>
 </figure>
 </div>
 <p>Load bash aliases</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode zsh code-with-copy"><code class="sourceCode zsh"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tee</span> <span class="at">-a</span> ~/.zshrc <span class="op">&lt;&lt; EOF</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="st">source </span><span class="va">$HOME</span><span class="st">/.bash_aliases</span></span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="op">EOF</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Update PATH and other variables</p>
 <div class="sourceCode" id="cb30"><pre class="sourceCode zsh code-with-copy"><code class="sourceCode zsh"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tee</span> <span class="at">-a</span> ~/.zshrc <span class="op">&lt;&lt; EOF</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="st">export OPENSSL_CONF=/etc/ssl/openssl.cnf</span></span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="st">sudo /usr/sbin/service autofs start</span></span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="st">export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt</span></span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="st">export SSL_CERT_FILE=/home/guillaume/miniconda/lib/python3.9/site-packages/certifi/cacert.pem</span></span>
-<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="st">export BROWSER='chrome.exe'</span></span>
-<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="st">export PATH=</span><span class="va">$PATH</span><span class="st">:"/mnt/c/Program Files/Google/Chrome/Application:/home/guillaume/miniconda/condabin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Program Files (x86)/Java/jre8/bin:/mnt/c/ProgramData/Oracle/Java/javapath:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0:/mnt/c/WINDOWS/System32/OpenSSH:/mnt/c/Program Files/SafeNet/Authentication/SAC/x64:/mnt/c/Program Files/SafeNet/Authentication/SAC/x32:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Users/f279814/AppData/Local/Microsoft/WindowsApps:/snap/bin:/home/guillaume/bin"</span></span>
-<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a><span class="st">export PATH=</span><span class="va">$PATH</span><span class="st">:"/mnt/c/Users/f279814/AppData/Local/Programs/Microsoft VS Code/bin"</span></span>
-<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a><span class="st">export GPG_TTY=</span><span class="va">$(</span><span class="fu">tty</span><span class="va">)</span></span>
-<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a><span class="st">export DISPLAY=:0</span></span>
-<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a><span class="st"># Could not load library libcudnn_cnn_infer.so.8. Error: libcuda.so: cannot open shared object file: No such file or directory</span></span>
-<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a><span class="st">export LD_LIBRARY_PATH=/usr/lib/wsl/lib</span></span>
-<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a><span class="op">EOF</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="st">source </span><span class="va">$HOME</span><span class="st">/.bash_aliases</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="op">EOF</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Update PATH and other variables</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode zsh code-with-copy"><code class="sourceCode zsh"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tee</span> <span class="at">-a</span> ~/.zshrc <span class="op">&lt;&lt; EOF</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="st">export OPENSSL_CONF=/etc/ssl/openssl.cnf</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="st">sudo /usr/sbin/service autofs start</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="st">export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="st">export SSL_CERT_FILE=/home/guillaume/miniconda/lib/python3.9/site-packages/certifi/cacert.pem</span></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="st">export BROWSER='chrome.exe'</span></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="st">export PATH=</span><span class="va">$PATH</span><span class="st">:"/mnt/c/Program Files/Google/Chrome/Application:/home/guillaume/miniconda/condabin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Program Files (x86)/Java/jre8/bin:/mnt/c/ProgramData/Oracle/Java/javapath:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0:/mnt/c/WINDOWS/System32/OpenSSH:/mnt/c/Program Files/SafeNet/Authentication/SAC/x64:/mnt/c/Program Files/SafeNet/Authentication/SAC/x32:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Users/f279814/AppData/Local/Microsoft/WindowsApps:/snap/bin:/home/guillaume/bin"</span></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a><span class="st">export PATH=</span><span class="va">$PATH</span><span class="st">:"/mnt/c/Users/f279814/AppData/Local/Programs/Microsoft VS Code/bin"</span></span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a><span class="st">export GPG_TTY=</span><span class="va">$(</span><span class="fu">tty</span><span class="va">)</span></span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a><span class="st">export DISPLAY=:0</span></span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a><span class="st"># Could not load library libcudnn_cnn_infer.so.8. Error: libcuda.so: cannot open shared object file: No such file or directory</span></span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a><span class="st">export LD_LIBRARY_PATH=/usr/lib/wsl/lib</span></span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a><span class="op">EOF</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Double check PATH env</p>
 <p>Install power10klevel</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode zsh code-with-copy"><code class="sourceCode zsh"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone <span class="at">--depth</span><span class="op">=</span>1 https://github.com/romkatv/powerlevel10k.git <span class="va">${ZSH_CUSTOM</span><span class="op">:-</span><span class="va">$HOME</span>/.oh-my-zsh/custom<span class="va">}</span>/themes/powerlevel10k</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode zsh code-with-copy"><code class="sourceCode zsh"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone <span class="at">--depth</span><span class="op">=</span>1 https://github.com/romkatv/powerlevel10k.git <span class="va">${ZSH_CUSTOM</span><span class="op">:-</span><span class="va">$HOME</span>/.oh-my-zsh/custom<span class="va">}</span>/themes/powerlevel10k</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>and update in <code>.zshrc</code> <code>ZSH_THEME="powerlevel10k/powerlevel10k"</code></p>
 <p>Install fonts for power10klevel <a href="https://github.com/romkatv/powerlevel10k#manual-font-installation" class="uri">https://github.com/romkatv/powerlevel10k#manual-font-installation</a></p>
 <p>Could need installation of font-manager <code>sudo apt install font-manager</code> And install them in windows as well to have it properly rendered in Windows Terminal <a href="https://sicse.dev/blog/wsl-2-prompt-powerlevel10k-theme" class="uri">https://sicse.dev/blog/wsl-2-prompt-powerlevel10k-theme</a></p>
 <p>Manually configure or get a version from dotfiles</p>
 <p>Install plugins</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode zsh code-with-copy"><code class="sourceCode zsh"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co">#zsh autosuggestions</span></span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/zsh-users/zsh-autosuggestions <span class="va">${ZSH_CUSTOM</span><span class="op">:-</span><span class="pp">~</span>/.oh-my-zsh/custom<span class="va">}</span>/plugins/zsh-autosuggestions</span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="co">#zsh syntax highlighting</span></span>
-<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/zsh-users/zsh-syntax-highlighting.git <span class="va">${ZSH_CUSTOM</span><span class="op">:-</span><span class="pp">~</span>/.oh-my-zsh/custom<span class="va">}</span>/plugins/zsh-syntax-highlighting</span>
-<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a><span class="ex">and</span> in .zshrc</span>
-<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a><span class="va">plugins</span><span class="op">=</span><span class="va">(</span>git zsh-autosuggestions zsh-syntax-highlighting python history<span class="va">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode zsh code-with-copy"><code class="sourceCode zsh"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co">#zsh autosuggestions</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/zsh-users/zsh-autosuggestions <span class="va">${ZSH_CUSTOM</span><span class="op">:-</span><span class="pp">~</span>/.oh-my-zsh/custom<span class="va">}</span>/plugins/zsh-autosuggestions</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="co">#zsh syntax highlighting</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/zsh-users/zsh-syntax-highlighting.git <span class="va">${ZSH_CUSTOM</span><span class="op">:-</span><span class="pp">~</span>/.oh-my-zsh/custom<span class="va">}</span>/plugins/zsh-syntax-highlighting</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="ex">and</span> in .zshrc</span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a><span class="va">plugins</span><span class="op">=</span><span class="va">(</span>git zsh-autosuggestions zsh-syntax-highlighting python history<span class="va">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="configure-ubuntu-lts-as-desktop---run-standalone-applications" class="level1">
@@ -613,21 +619,21 @@ screen -X -S jupyter_screen kill</code></pre>
 <section id="snapd" class="level2">
 <h2 class="anchored" data-anchor-id="snapd">snapd</h2>
 <p>Upgrade snap</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get <span class="at">-y</span> upgrade snapd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get <span class="at">-y</span> upgrade snapd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Check it is running</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> snap list</span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Name</span>    Version        Rev    Tracking       Publisher   Notes</span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="ex">core20</span>  20220318       1405   latest/stable  canonical✓  base</span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="ex">lxd</span>     5.0.0-b0287c1  22923  5.0/stable/…   canonical✓  <span class="at">-</span></span>
-<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="ex">snapd</span>   2.55.3         15534  latest/stable  canonical✓  snapd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> snap list</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Name</span>    Version        Rev    Tracking       Publisher   Notes</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="ex">core20</span>  20220318       1405   latest/stable  canonical✓  base</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="ex">lxd</span>     5.0.0-b0287c1  22923  5.0/stable/…   canonical✓  <span class="at">-</span></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="ex">snapd</span>   2.55.3         15534  latest/stable  canonical✓  snapd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="firefox" class="level2">
 <h2 class="anchored" data-anchor-id="firefox">firefox</h2>
 <p>And install firefox</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> snap install firefox</span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="co"># due to a bug when opening settings</span></span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="co"># https://answers.launchpad.net/ubuntu/+question/701403https://answers.launchpad.net/ubuntu/+question/701403</span></span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install xdg-desktop-portal-gtk</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> snap install firefox</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="co"># due to a bug when opening settings</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="co"># https://answers.launchpad.net/ubuntu/+question/701403https://answers.launchpad.net/ubuntu/+question/701403</span></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install xdg-desktop-portal-gtk</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-12-15-wsl2-fresh-pc_files/figure-html/a23898c4-f3f8-40e6-abf4-e46c06ceaa66-1-f65bdbb3-c8f4-4a30-ac69-54727b96e6e4.png" class="img-fluid figure-img"></p>
@@ -645,7 +651,7 @@ screen -X -S jupyter_screen kill</code></pre>
 <section id="nautilus" class="level2">
 <h2 class="anchored" data-anchor-id="nautilus">nautilus</h2>
 <p>And install nautilus</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install nautilus nautilus-extension-gnome-terminal</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install nautilus nautilus-extension-gnome-terminal</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-12-15-wsl2-fresh-pc_files/figure-html/ddff4bbe-8c2c-44ef-9df8-bdc6c06ba501-1-27246a86-24d7-4131-adad-4a50fd9cbe92.png" class="img-fluid figure-img"></p>
@@ -658,25 +664,25 @@ screen -X -S jupyter_screen kill</code></pre>
 <p>I like this text editor even if it is not exactly opensource.</p>
 <p>I may even buy a license later.</p>
 <p>Anyway I will use the snap version</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> snap install sublime-text <span class="at">--classic</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> snap install sublime-text <span class="at">--classic</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>and because of this issue from WSLg <a href="https://github.com/microsoft/wslg/issues/944#issuecomment-1399107496">WSL some icons in taskbar for linux applications are defaulting to Tux</a>, I add this</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /var/lib/snapd/desktop/applications</span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ln <span class="at">-s</span> sublime-text_subl.desktop  sublime_text.desktop</span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/bin</span>
-<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> sublime_text</span>
-<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> +x sublime_text</span>
-<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a><span class="fu">tee</span> sublime_text <span class="op">&lt;&lt; EOF</span></span>
-<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a><span class="st">#!/bin/bash</span></span>
-<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a><span class="st">env BAMF_DESKTOP_FILE_HINT=/var/lib/snapd/desktop/applications/sublime-text_subl.desktop /snap/bin/sublime-text.subl --launch-or-new-window</span></span>
-<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a><span class="op">EOF</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /var/lib/snapd/desktop/applications</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ln <span class="at">-s</span> sublime-text_subl.desktop  sublime_text.desktop</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/bin</span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> sublime_text</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> +x sublime_text</span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a><span class="fu">tee</span> sublime_text <span class="op">&lt;&lt; EOF</span></span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a><span class="st">#!/bin/bash</span></span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a><span class="st">env BAMF_DESKTOP_FILE_HINT=/var/lib/snapd/desktop/applications/sublime-text_subl.desktop /snap/bin/sublime-text.subl --launch-or-new-window</span></span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a><span class="op">EOF</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Launching <code>sublime_text</code> in command line should open sublime_text with matching icon in taskbar. The same when right clicking a text file in nautilus and editing with sublime text.</p>
 </section>
 <section id="gnome-tweaks-and-yaru-theme" class="level2">
 <h2 class="anchored" data-anchor-id="gnome-tweaks-and-yaru-theme">gnome-tweaks and yaru theme</h2>
-<div class="sourceCode" id="cb39"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> add-apt-repository univ</span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get <span class="at">-y</span> install gnome-tweaks</span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get <span class="at">-y</span> install yaru-theme-gtk</span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get <span class="at">-y</span> install yaru-theme-icon</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> add-apt-repository univ</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get <span class="at">-y</span> install gnome-tweaks</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get <span class="at">-y</span> install yaru-theme-gtk</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get <span class="at">-y</span> install yaru-theme-icon</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-12-15-wsl2-fresh-pc_files/figure-html/ae8205fb-aa09-48c5-9738-a917a104644e-1-1a4c2bac-a4ff-46fb-b5b6-ae40add3390d.png" class="img-fluid figure-img"></p>
@@ -694,45 +700,45 @@ screen -X -S jupyter_screen kill</code></pre>
 <section id="tilix" class="level2">
 <h2 class="anchored" data-anchor-id="tilix">tilix</h2>
 <p>tilix is a terminal with split windows integrated (as with tmux or screen or vi)</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install tilix</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install tilix</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>use zsh / powerlevel10k fonts</strong> sandwich &gt; Preferences &gt; Profiles / Default &gt; Text Appearance / Custom Font &gt; MesloLGS NF Regular</p>
 <p><strong>update Copy/Paste shortcuts</strong> sandwich &gt; Preferences &gt; Shortcuts &gt; Copy (Ctrl-C) and Paste (Ctrl-V) as for other terminals, interrupt is now Shift-Ctrl-C</p>
 <p><strong>vte config</strong> as explained in <a href="https://gnunn1.github.io/tilix-web/manual/vteconfig/" class="uri">https://gnunn1.github.io/tilix-web/manual/vteconfig/</a> add this in <code>.zshrc</code></p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">[</span> <span class="va">$TILIX_ID</span> <span class="bu">]</span> <span class="kw">||</span> <span class="bu">[</span> <span class="va">$VTE_VERSION</span> <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span></span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>        <span class="bu">source</span> /etc/profile.d/vte.sh</span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="cf">fi</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">[</span> <span class="va">$TILIX_ID</span> <span class="bu">]</span> <span class="kw">||</span> <span class="bu">[</span> <span class="va">$VTE_VERSION</span> <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>        <span class="bu">source</span> /etc/profile.d/vte.sh</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="cf">fi</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>and create this symlink</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ln</span> <span class="at">-s</span> /etc/profile.d/vte-2.91.sh /etc/profile.d/vte.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ln</span> <span class="at">-s</span> /etc/profile.d/vte-2.91.sh /etc/profile.d/vte.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="gimp" class="level2">
 <h2 class="anchored" data-anchor-id="gimp">gimp</h2>
 <p>And install gimp</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install gimp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install gimp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="zotero" class="level2">
 <h2 class="anchored" data-anchor-id="zotero">zotero</h2>
-<div class="sourceCode" id="cb44"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snap</span> find zotero</span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Name</span>         Version  Publisher   Notes  Summary</span>
-<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="ex">zotero-snap</span>  6.0.18   extraymond  <span class="at">-</span>      Zotero helps you collect, organize, cite, and share research.</span>
-<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="ex">qnotero</span>      2.3.1    ealbiter    <span class="at">-</span>      Standalone sidekick to Zotero reference manager.</span>
-<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a><span class="ex">zotviewer</span>    1.5.0    fvalle      <span class="at">-</span>      Zotero Visualizer</span>
-<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> snap install zotero-snap</span>
-<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a><span class="ex">zotero-snap</span> 6.0.18 from extraymond installed</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snap</span> find zotero</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Name</span>         Version  Publisher   Notes  Summary</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="ex">zotero-snap</span>  6.0.18   extraymond  <span class="at">-</span>      Zotero helps you collect, organize, cite, and share research.</span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="ex">qnotero</span>      2.3.1    ealbiter    <span class="at">-</span>      Standalone sidekick to Zotero reference manager.</span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a><span class="ex">zotviewer</span>    1.5.0    fvalle      <span class="at">-</span>      Zotero Visualizer</span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> snap install zotero-snap</span>
+<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a><span class="ex">zotero-snap</span> 6.0.18 from extraymond installed</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>and there is something to do to activate sync: <a href="https://github.com/extraymond/zotero-snap/issues/29" class="uri">https://github.com/extraymond/zotero-snap/issues/29</a></p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="va">FIREFOX_PROFILE</span><span class="op">=</span><span class="kw">`</span><span class="fu">find</span> ~/snap/firefox/common/.mozilla/ <span class="at">-name</span> <span class="pp">*</span>.default<span class="kw">`</span></span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="va">ZOTERO_PROFILE</span><span class="op">=</span><span class="kw">`</span><span class="fu">find</span> ~/snap/zotero-snap/common/.zotero/ <span class="at">-name</span> <span class="pp">*</span>.default<span class="kw">`</span></span>
-<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="va">$FIREFOX_PROFILE</span>/cert9.db <span class="va">$ZOTERO_PROFILE</span></span>
-<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="va">$FIREFOX_PROFILE</span>/key4.db <span class="va">$ZOTERO_PROFILE</span></span>
-<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="va">$FIREFOX_PROFILE</span>/pkcs11.txt <span class="va">$ZOTERO_PROFILE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="va">FIREFOX_PROFILE</span><span class="op">=</span><span class="kw">`</span><span class="fu">find</span> ~/snap/firefox/common/.mozilla/ <span class="at">-name</span> <span class="pp">*</span>.default<span class="kw">`</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="va">ZOTERO_PROFILE</span><span class="op">=</span><span class="kw">`</span><span class="fu">find</span> ~/snap/zotero-snap/common/.zotero/ <span class="at">-name</span> <span class="pp">*</span>.default<span class="kw">`</span></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="va">$FIREFOX_PROFILE</span>/cert9.db <span class="va">$ZOTERO_PROFILE</span></span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="va">$FIREFOX_PROFILE</span>/key4.db <span class="va">$ZOTERO_PROFILE</span></span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="va">$FIREFOX_PROFILE</span>/pkcs11.txt <span class="va">$ZOTERO_PROFILE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="pdf-support" class="level2">
 <h2 class="anchored" data-anchor-id="pdf-support">pdf support</h2>
-<div class="sourceCode" id="cb46"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co">#acrobat reader (which uses wine)</span></span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> snap install acrordrdc</span>
-<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="co">#evince universal documen reader for ubuntu</span></span>
-<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install evince</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co">#acrobat reader (which uses wine)</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> snap install acrordrdc</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a><span class="co">#evince universal documen reader for ubuntu</span></span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install evince</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="run-gnome-session-in-ubuntu-lts" class="level1">
@@ -742,14 +748,14 @@ screen -X -S jupyter_screen kill</code></pre>
 <section id="install-test-distro-from-scratch" class="level2">
 <h2 class="anchored" data-anchor-id="install-test-distro-from-scratch">install test distro <strong>from scratch</strong></h2>
 <p>from powershell</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="ex">wsl</span> <span class="at">--import</span> ubuntu-x11 C:<span class="dt">\w</span>sl<span class="dt">\U</span>buntu-22.04_X11<span class="dt">\i</span>nstance C:<span class="dt">\w</span>sl<span class="dt">\U</span>buntu-22.04_X11<span class="dt">\d</span>ownload<span class="dt">\u</span>buntu-jammy-wsl-amd64-wsl.rootfs.tar.gz</span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="ex">wsl</span> <span class="at">-d</span> ubuntu-x11</span>
-<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span></span>
-<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> /mnt/c/wsl/Ubuntu-22.04_X11/download/setup_wsl_<span class="pp">*</span> ~/</span>
-<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> +x setup_wsl_root.sh</span>
-<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a><span class="ex">./setup_wsl_root.sh</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="ex">wsl</span> <span class="at">--import</span> ubuntu-x11 C:<span class="dt">\w</span>sl<span class="dt">\U</span>buntu-22.04_X11<span class="dt">\i</span>nstance C:<span class="dt">\w</span>sl<span class="dt">\U</span>buntu-22.04_X11<span class="dt">\d</span>ownload<span class="dt">\u</span>buntu-jammy-wsl-amd64-wsl.rootfs.tar.gz</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="ex">wsl</span> <span class="at">-d</span> ubuntu-x11</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span></span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> /mnt/c/wsl/Ubuntu-22.04_X11/download/setup_wsl_<span class="pp">*</span> ~/</span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> +x setup_wsl_root.sh</span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a><span class="ex">./setup_wsl_root.sh</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>from powershell</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="ex">wsl</span> <span class="at">-t</span> ubuntu-x11</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="ex">wsl</span> <span class="at">-t</span> ubuntu-x11</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>start ubuntu-x11 from windows terminal menu</p>
 <p>and enter informations requested (ssh keys (paste to gitlab), update certificates (enter password)). Other steps are automatic.</p>
 <p>Other steps: - activate systemd (by modifying /etc/wsl.conf) - restart</p>
@@ -768,21 +774,21 @@ screen -X -S jupyter_screen kill</code></pre>
 </ul></li>
 <li>activate x11 config at boot</li>
 </ul>
-<div class="sourceCode" id="cb49"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl is-enabled rc-local.service</span>
-<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="cf">if</span> <span class="ex">static</span> it means it has be activated<span class="kw">)</span></span>
-<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl enable rc-local.service</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb50"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co">#create rc.local file</span></span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> vi /etc/rc.local</span>
-<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/sh -e</span></span>
-<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mount</span> <span class="at">-o</span> rw,remount /tmp/.X11-unix/</span>
-<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> +t /tmp/.X11-unix</span>
-<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> o+rw /dev/dri/renderD128</span>
-<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a><span class="ex">/usr/libexec/at-spi-bus-launcher</span> <span class="at">--launch-immediately</span> <span class="kw">&amp;</span></span>
-<span id="cb50-9"><a href="#cb50-9" aria-hidden="true" tabindex="-1"></a><span class="bu">exit</span> 0</span>
-<span id="cb50-10"><a href="#cb50-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-11"><a href="#cb50-11" aria-hidden="true" tabindex="-1"></a><span class="co">#save &amp; exit</span></span>
-<span id="cb50-12"><a href="#cb50-12" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> chmod 700 /etc/rc.local</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl is-enabled rc-local.service</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="cf">if</span> <span class="ex">static</span> it means it has be activated<span class="kw">)</span></span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl enable rc-local.service</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co">#create rc.local file</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> vi /etc/rc.local</span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/sh -e</span></span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mount</span> <span class="at">-o</span> rw,remount /tmp/.X11-unix/</span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> +t /tmp/.X11-unix</span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> o+rw /dev/dri/renderD128</span>
+<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a><span class="ex">/usr/libexec/at-spi-bus-launcher</span> <span class="at">--launch-immediately</span> <span class="kw">&amp;</span></span>
+<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a><span class="bu">exit</span> 0</span>
+<span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-11"><a href="#cb51-11" aria-hidden="true" tabindex="-1"></a><span class="co">#save &amp; exit</span></span>
+<span id="cb51-12"><a href="#cb51-12" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> chmod 700 /etc/rc.local</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li><code>sudo usermod -a -G adm guillaume</code></li>
 <li>Restart distro</li>
@@ -799,9 +805,9 @@ screen -X -S jupyter_screen kill</code></pre>
 </figure>
 </div>
 <p>Then we can start it by running <code>gnomeshell.sh</code></p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> bin/gnomeshell.sh</span>
-<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="va">MUTTER_DEBUG_DUMMY_MODE_SPECS</span><span class="op">=</span>1920x1080 <span class="ex">gnome-shell</span> <span class="at">--nested</span> <span class="at">--no-x11</span> <span class="dv">2</span><span class="op">&gt;</span> /dev/null <span class="kw">&amp;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> bin/gnomeshell.sh</span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a><span class="va">MUTTER_DEBUG_DUMMY_MODE_SPECS</span><span class="op">=</span>1920x1080 <span class="ex">gnome-shell</span> <span class="at">--nested</span> <span class="at">--no-x11</span> <span class="dv">2</span><span class="op">&gt;</span> /dev/null <span class="kw">&amp;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>
