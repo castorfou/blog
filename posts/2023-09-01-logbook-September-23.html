@@ -21,6 +21,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -158,6 +192,7 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
   <li><a href="#week-37---september-23" id="toc-week-37---september-23" class="nav-link active" data-scroll-target="#week-37---september-23">Week 37 - September 23</a>
   <ul class="collapse">
   <li><a href="#monday-0911" id="toc-monday-0911" class="nav-link" data-scroll-target="#monday-0911">Monday 09/11</a></li>
+  <li><a href="#tuesday-0913" id="toc-tuesday-0913" class="nav-link" data-scroll-target="#tuesday-0913">Tuesday 09/13</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -168,7 +203,7 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 
 
 
-<p>wslg x11 apps freeze</p>
+<p>wslg x11 apps freeze, video compression</p>
 <section id="week-37---september-23" class="level1">
 <h1>Week 37 - September 23</h1>
 <section id="monday-0911" class="level2">
@@ -176,6 +211,17 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 <p>I have just opened an issue at wslg <a href="https://github.com/microsoft/wslg/issues/1108">GUI apps freeze as soon as detecting network change</a></p>
 <p>After inactivity or network change, x11 apps freeze.</p>
 <p>Have not yet identified why.</p>
+</section>
+<section id="tuesday-0913" class="level2">
+<h2 class="anchored" data-anchor-id="tuesday-0913">Tuesday 09/13</h2>
+<p><strong>Video compression with ffmpeg</strong></p>
+<p>I have used standard Windows screenshot tool to record a video illsutrating <a href="https://github.com/microsoft/wslg/issues/1108">GUI apps freeze as soon as detecting network change</a> issue.</p>
+<p>It is short and its size is 175 MB. A little bit to much to add it to github issue.</p>
+<p>I used <strong>ffmpeg</strong> to compress it.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ffmpeg</span> <span class="at">-i</span> input.mp4 <span class="at">-vcodec</span> libx265 <span class="at">-crf</span> 20 output.mp4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>-crf 20</code> is a compression parameter. Higher parameter will result a lighter video but with negative quality impact.</p>
+<p>Compressed video is 5 MB. (30x size reduction, not that bad)</p>
+<p>I can use it in github issues.</p>
 
 
 </section>

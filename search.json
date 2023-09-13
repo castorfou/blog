@@ -3504,7 +3504,7 @@
     "href": "posts/2023-09-01-logbook-September-23.html",
     "title": "Logbook for September 23",
     "section": "",
-    "text": "wslg x11 apps freeze"
+    "text": "wslg x11 apps freeze, video compression"
   },
   {
     "objectID": "posts/2023-09-01-logbook-September-23.html#monday-0911",
@@ -3512,6 +3512,13 @@
     "title": "Logbook for September 23",
     "section": "Monday 09/11",
     "text": "Monday 09/11\nI have just opened an issue at wslg GUI apps freeze as soon as detecting network change\nAfter inactivity or network change, x11 apps freeze.\nHave not yet identified why."
+  },
+  {
+    "objectID": "posts/2023-09-01-logbook-September-23.html#tuesday-0913",
+    "href": "posts/2023-09-01-logbook-September-23.html#tuesday-0913",
+    "title": "Logbook for September 23",
+    "section": "Tuesday 09/13",
+    "text": "Tuesday 09/13\nVideo compression with ffmpeg\nI have used standard Windows screenshot tool to record a video illsutrating GUI apps freeze as soon as detecting network change issue.\nIt is short and its size is 175 MB. A little bit to much to add it to github issue.\nI used ffmpeg to compress it.\nffmpeg -i input.mp4 -vcodec libx265 -crf 20 output.mp4\n-crf 20 is a compression parameter. Higher parameter will result a lighter video but with negative quality impact.\nCompressed video is 5 MB. (30x size reduction, not that bad)\nI can use it in github issues."
   },
   {
     "objectID": "posts/2022-04-25-install ubuntu 22.04 on WSL.html",
