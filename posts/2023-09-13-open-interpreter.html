@@ -424,6 +424,18 @@ Discord and consider contributing the project's development. )</code></pre>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="ex">CUDA</span> error 222 at /tmp/pip-install-7adlwzq5/llama-cpp-python_3c7138fe0e4b431896302eb4fb73f813/vendor/llama.cpp/ggml-cuda.cu:6233: the provided PTX was compiled with an unsupported toolchain.</span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="ex">current</span> device: 0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>There is an issue reported at llama-cpp-python repo <a href="https://github.com/abetlen/llama-cpp-python/issues/401#issuecomment-1658016387">CUDA Error 222 - provided PTX was compiled with an unsupported toolchain</a></p>
+<p>With this option</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/temp</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone <span class="at">--recursive</span> https://github.com/ggerganov/llama.cpp.git</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> llama.cpp</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="va">CUDA_PATH</span><span class="op">=</span>/usr/local/cuda <span class="va">PATH</span><span class="op">=</span>/usr/local/cuda/bin:<span class="va">$PATH</span> <span class="fu">make</span> LLAMA_CUBLAS=1 <span class="at">-j</span> libllama.so</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">HACK</span><span class="co">: Use custom compiled libllama.so</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> ~/temp/llama.cpp/libllama.so /home/guillaume/miniconda/envs/interpreter/lib/python3.11/site-packages/llama_cpp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>We can know try again, and this time it “technically” works:</p>
+<p>%%HTML <video width="750" height="500" controls=""> <source src="../images/videos/open-interpreter-small-model-x265.mp4" type="video/mp4"> </video></p>
+<p>but answer is not really what we expect, isn’t it?</p>
 
 
 </section>
