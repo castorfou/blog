@@ -434,7 +434,17 @@ Discord and consider contributing the project's development. )</code></pre>
 <span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">HACK</span><span class="co">: Use custom compiled libllama.so</span></span>
 <span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> ~/temp/llama.cpp/libllama.so /home/guillaume/miniconda/envs/interpreter/lib/python3.11/site-packages/llama_cpp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>We can know try again, and this time it “technically” works:</p>
-<p>%%HTML <video width="750" height="500" controls=""> <source src="../images/videos/open-interpreter-small-model-x265.mp4" type="video/mp4"> </video></p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-14T09:21:10.711661Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-14T09:21:10.710703Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-14T09:21:10.726187Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-14T09:21:10.725004Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-09-14T09:21:10.711608Z&quot;}" data-tags="[]" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>HTML</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>video width<span class="op">=</span><span class="st">"750"</span> height<span class="op">=</span><span class="st">"500"</span> controls<span class="op">&gt;</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">&lt;</span>source src<span class="op">=</span><span class="st">"../images/videos/open-interpreter-small-model-x265.mp4"</span> <span class="bu">type</span><span class="op">=</span><span class="st">"video/mp4"</span><span class="op">&gt;</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;/</span>video<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<video width="750" height="500" controls="">
+  <source src="../images/videos/open-interpreter-small-model-x265.mp4" type="video/mp4">
+</video>
+</div>
+</div>
 <p>but answer is not really what we expect, isn’t it?</p>
 
 
