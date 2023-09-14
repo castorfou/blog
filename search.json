@@ -3199,6 +3199,20 @@
     "text": "with a smaller modele\n\n\n\nimage.png\n\n\nHere this is reasonnably fast but runs in CPU and answers are not what I expect. Is it due to smaller model? Do I have to switch to a bigger one on GPU? Or to GPT-4 ?"
   },
   {
+    "objectID": "posts/2023-09-13-open-interpreter.html#option-1---install-nvidia-toolkit-for-wsl2",
+    "href": "posts/2023-09-13-open-interpreter.html#option-1---install-nvidia-toolkit-for-wsl2",
+    "title": "Open Interpreter",
+    "section": "option 1 - install NVIDIA toolkit for WSL2",
+    "text": "option 1 - install NVIDIA toolkit for WSL2\nAs explained in https://github.com/KillianLucas/open-interpreter/blob/main/docs/GPU.md#windows-subsystem-for-linux-2-wsl2\nGet the latest NVIDIA CUDA Toolkit for WSL2 and run the provided steps in a WSL terminal.\n\nOperating System: Linux\nArchitecture: x86_64\nDistribution: WSL-Ubuntu\nVersion: 2.0\nInstaller Type: deb (local) (recommended network but it cannot work in my configuration)\n\nInstall it\nwget https://developer.download.nvidia.com/compute/cuda/repos/wsl-ubuntu/x86_64/cuda-wsl-ubuntu.pin\nsudo mv cuda-wsl-ubuntu.pin /etc/apt/preferences.d/cuda-repository-pin-600\nwget https://developer.download.nvidia.com/compute/cuda/12.2.2/local_installers/cuda-repo-wsl-ubuntu-12-2-local_12.2.2-1_amd64.deb\nsudo dpkg -i cuda-repo-wsl-ubuntu-12-2-local_12.2.2-1_amd64.deb\nsudo cp /var/cuda-repo-wsl-ubuntu-12-2-local/cuda-*-keyring.gpg /usr/share/keyrings/\nsudo apt-get update\nsudo apt-get -y install cuda\nAnd check if it is installed correctly\n&gt; ls /usr/local/cuda/bin/nvcc\n/usr/local/cuda/bin/nvcc\nLet’s reinstall llama-cpp-python\nCUDA_PATH=/usr/local/cuda FORCE_CMAKE=1 CMAKE_ARGS='-DLLAMA_CUBLAS=on' \\\npip install llama-cpp-python --force-reinstall --upgrade --no-cache-dir -vv\nAnd now it should run on GPU\n❯ python -c \"from llama_cpp import GGML_USE_CUBLAS; print(GGML_USE_CUBLAS)\"\nTrue"
+  },
+  {
+    "objectID": "posts/2023-09-13-open-interpreter.html#option-2---install-nvidia-toolkit-for-wsl2",
+    "href": "posts/2023-09-13-open-interpreter.html#option-2---install-nvidia-toolkit-for-wsl2",
+    "title": "Open Interpreter",
+    "section": "option 2 - install NVIDIA toolkit for WSL2",
+    "text": "option 2 - install NVIDIA toolkit for WSL2\nThis PR installs official NVIDIA wheels for CUDA support so the CUDA Toolkit does not need to be installed.\nIt has not yet been integrated but it will with no doubt be the next preferred way to setup interpreter."
+  },
+  {
     "objectID": "posts/2022-12-01-logbook-December-22.html",
     "href": "posts/2022-12-01-logbook-December-22.html",
     "title": "Logbook for December 22",

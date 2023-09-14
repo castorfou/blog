@@ -115,7 +115,9 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 <link rel="stylesheet" href="../styles.css">
 <meta name="twitter:title" content="Guillaume’s blog - Open Interpreter">
 <meta name="twitter:description" content="an open-source Code Interpreter that runs locally. Summarize PDFs, visualize datasets, and control your browser — all from a ChatGPT-like interface in your terminal.">
-<meta name="twitter:image" content="https://castorfou.github.io/images/icons/chatgpt.jpeg">
+<meta name="twitter:image" content="https://castorfou.github.io/images/icons/chatgpt.png">
+<meta name="twitter:image-height" content="1000">
+<meta name="twitter:image-width" content="1000">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -207,10 +209,16 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
   <li><a href="#interpreter-help" id="toc-interpreter-help" class="nav-link" data-scroll-target="#interpreter-help">interpreter help</a></li>
   </ul></li>
   </ul></li>
-  <li><a href="#execution" id="toc-execution" class="nav-link" data-scroll-target="#execution">execution</a>
+  <li><a href="#first-execution" id="toc-first-execution" class="nav-link" data-scroll-target="#first-execution">First execution</a>
   <ul class="collapse">
   <li><a href="#with-a-smaller-modele" id="toc-with-a-smaller-modele" class="nav-link" data-scroll-target="#with-a-smaller-modele">with a smaller modele</a></li>
   </ul></li>
+  <li><a href="#activate-gpu" id="toc-activate-gpu" class="nav-link" data-scroll-target="#activate-gpu">Activate GPU</a>
+  <ul class="collapse">
+  <li><a href="#option-1---install-nvidia-toolkit-for-wsl2" id="toc-option-1---install-nvidia-toolkit-for-wsl2" class="nav-link" data-scroll-target="#option-1---install-nvidia-toolkit-for-wsl2">option 1 - install NVIDIA toolkit for WSL2</a></li>
+  <li><a href="#option-2---install-nvidia-toolkit-for-wsl2" id="toc-option-2---install-nvidia-toolkit-for-wsl2" class="nav-link" data-scroll-target="#option-2---install-nvidia-toolkit-for-wsl2">option 2 - install NVIDIA toolkit for WSL2</a></li>
+  </ul></li>
+  <li><a href="#same-player-plays-again" id="toc-same-player-plays-again" class="nav-link" data-scroll-target="#same-player-plays-again">Same player plays again</a></li>
   </ul>
 </nav>
     </div>
@@ -330,8 +338,8 @@ Discord and consider contributing the project's development. )</code></pre>
 </section>
 </section>
 </section>
-<section id="execution" class="level1">
-<h1>execution</h1>
+<section id="first-execution" class="level1">
+<h1>First execution</h1>
 <p>Just run <code>interpreter -y --local</code></p>
 <p>1st tests, this is extremely slow, and it doesn’t seem to use GPU. (that’s maybe why)</p>
 <p>Maybe I can switch to a lighter model, since I have only 16 GB of GPU RAM.</p>
@@ -363,9 +371,61 @@ Discord and consider contributing the project's development. )</code></pre>
 </figure>
 </div>
 <p>Here this is reasonnably fast but runs in CPU and answers are not what I expect. Is it due to smaller model? Do I have to switch to a bigger one on GPU? Or to GPT-4 ?</p>
-
-
 </section>
+</section>
+<section id="activate-gpu" class="level1">
+<h1>Activate GPU</h1>
+<p>With this command you can check if GPU is in used:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> python <span class="ex">-c</span> <span class="st">"from llama_cpp import GGML_USE_CUBLAS; print(GGML_USE_CUBLAS)"</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">False</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>And as suspected, it is not.</p>
+<p>I can get back to CUDA toolkit installation issue.</p>
+<p>To verify it is correctly installed, just see if something is in</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> ls <span class="ex">/usr/local/cuda/bin/nvcc</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">ls:</span> cannot access <span class="st">'/usr/local/cuda/bin/nvcc'</span>: No such file or directory</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="option-1---install-nvidia-toolkit-for-wsl2" class="level2">
+<h2 class="anchored" data-anchor-id="option-1---install-nvidia-toolkit-for-wsl2">option 1 - install NVIDIA toolkit for WSL2</h2>
+<p>As explained in <a href="https://github.com/KillianLucas/open-interpreter/blob/main/docs/GPU.md#windows-subsystem-for-linux-2-wsl2" class="uri">https://github.com/KillianLucas/open-interpreter/blob/main/docs/GPU.md#windows-subsystem-for-linux-2-wsl2</a></p>
+<p>Get the latest <a href="https://developer.nvidia.com/cuda-downloads">NVIDIA CUDA Toolkit for WSL2</a> and run the provided steps in a WSL terminal.</p>
+<ul>
+<li><p>Operating System: Linux</p></li>
+<li><p>Architecture: x86_64</p></li>
+<li><p>Distribution: WSL-Ubuntu</p></li>
+<li><p>Version: 2.0</p></li>
+<li><p>Installer Type: deb (local) (recommended network but it cannot work in my configuration)</p></li>
+</ul>
+<p>Install it</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://developer.download.nvidia.com/compute/cuda/repos/wsl-ubuntu/x86_64/cuda-wsl-ubuntu.pin</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> mv cuda-wsl-ubuntu.pin /etc/apt/preferences.d/cuda-repository-pin-600</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://developer.download.nvidia.com/compute/cuda/12.2.2/local_installers/cuda-repo-wsl-ubuntu-12-2-local_12.2.2-1_amd64.deb</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> dpkg <span class="at">-i</span> cuda-repo-wsl-ubuntu-12-2-local_12.2.2-1_amd64.deb</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> cp /var/cuda-repo-wsl-ubuntu-12-2-local/cuda-<span class="pp">*</span>-keyring.gpg /usr/share/keyrings/</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get update</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get <span class="at">-y</span> install cuda</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>And check if it is installed correctly</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> ls <span class="ex">/usr/local/cuda/bin/nvcc</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/usr/local/cuda/bin/nvcc</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Let’s reinstall <code>llama-cpp-python</code></p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="va">CUDA_PATH</span><span class="op">=</span>/usr/local/cuda <span class="va">FORCE_CMAKE</span><span class="op">=</span>1 <span class="va">CMAKE_ARGS</span><span class="op">=</span><span class="st">'-DLLAMA_CUBLAS=on'</span> <span class="dt">\</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install llama-cpp-python <span class="at">--force-reinstall</span> <span class="at">--upgrade</span> <span class="at">--no-cache-dir</span> <span class="at">-vv</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>And now it should run on GPU</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">❯</span> python <span class="at">-c</span> <span class="st">"from llama_cpp import GGML_USE_CUBLAS; print(GGML_USE_CUBLAS)"</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">True</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="option-2---install-nvidia-toolkit-for-wsl2" class="level2">
+<h2 class="anchored" data-anchor-id="option-2---install-nvidia-toolkit-for-wsl2">option 2 - install NVIDIA toolkit for WSL2</h2>
+<p>This <a href="https://github.com/KillianLucas/open-interpreter/pull/339">PR</a> installs official NVIDIA wheels for CUDA support so the CUDA Toolkit does not need to be installed.</p>
+<p>It has not yet been integrated but it will with no doubt be the next preferred way to setup interpreter.</p>
+</section>
+</section>
+<section id="same-player-plays-again" class="level1">
+<h1>Same player plays again</h1>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> can <span class="ex">you</span> extract image thumbnails from videos located at ~/temp. I would like one thumbnail every 30 sec</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="ex">CUDA</span> error 222 at /tmp/pip-install-7adlwzq5/llama-cpp-python_3c7138fe0e4b431896302eb4fb73f813/vendor/llama.cpp/ggml-cuda.cu:6233: the provided PTX was compiled with an unsupported toolchain.</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="ex">current</span> device: 0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+
 </section>
 
 </main> <!-- /main -->
