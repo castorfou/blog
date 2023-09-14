@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/2023-09-13-open-interpreter.html",
       "/posts/2023-09-04-wsl-no-space-left.html",
       "/posts/2023-09-01-logbook-September-23.html",
       "/posts/2023-08-24-update-jupyterlab-v4.html",
