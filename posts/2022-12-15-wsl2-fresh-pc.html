@@ -219,7 +219,10 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
   <li><a href="#optional-automount-secured-vbox" id="toc-optional-automount-secured-vbox" class="nav-link" data-scroll-target="#optional-automount-secured-vbox">(optional) automount secured vbox</a></li>
   <li><a href="#python-with-conda-and-configure-base-environment-jupyterlab-mamba" id="toc-python-with-conda-and-configure-base-environment-jupyterlab-mamba" class="nav-link" data-scroll-target="#python-with-conda-and-configure-base-environment-jupyterlab-mamba">python with conda and configure base environment (jupyterlab, mamba)</a></li>
   <li><a href="#python-with-pip" id="toc-python-with-pip" class="nav-link" data-scroll-target="#python-with-pip">python with pip</a></li>
-  <li><a href="#jupyter-lab" id="toc-jupyter-lab" class="nav-link" data-scroll-target="#jupyter-lab">jupyter lab</a></li>
+  <li><a href="#jupyter-lab" id="toc-jupyter-lab" class="nav-link" data-scroll-target="#jupyter-lab">jupyter lab</a>
+  <ul class="collapse">
+  <li><a href="#screen-tips" id="toc-screen-tips" class="nav-link" data-scroll-target="#screen-tips">screen tips</a></li>
+  </ul></li>
   <li><a href="#optional-zsh-oh-my-zsh-powerlevel10k" id="toc-optional-zsh-oh-my-zsh-powerlevel10k" class="nav-link" data-scroll-target="#optional-zsh-oh-my-zsh-powerlevel10k">(optional) zsh oh-my-zsh powerlevel10k</a></li>
   </ul></li>
   <li><a href="#configure-ubuntu-lts-as-desktop---run-standalone-applications" id="toc-configure-ubuntu-lts-as-desktop---run-standalone-applications" class="nav-link" data-scroll-target="#configure-ubuntu-lts-as-desktop---run-standalone-applications">Configure Ubuntu LTS as desktop - run standalone applications</a>
@@ -510,7 +513,7 @@ pip install azure-cli</code></pre>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-16" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="10" data-code-annotation="1" data-code-cell="annotated-cell-16">This is to allow execution of GPU instructions within jupyter lab</span>
+<span data-code-cell="annotated-cell-16" data-code-annotation="1" data-code-lines="10">This is to allow execution of GPU instructions within jupyter lab</span>
 </dd>
 </dl>
 <div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-02-06T15:35:32.152159Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-02-06T15:35:32.151920Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-02-06T15:35:32.266905Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-02-06T15:35:32.266187Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-02-06T15:35:32.152141Z&quot;}" data-execution_count="1">
@@ -546,6 +549,18 @@ screen -X -S jupyter_screen kill</code></pre>
 <div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="ex">journalctl</span> <span class="at">-xefu</span> jupyterlab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Just pointing to <a href="http://localhost:8888/lab" class="uri">http://localhost:8888/lab</a></p>
 <p>and if you want we can add an alias <code>alias jl='/home/guillaume/bin/jupyterlab.sh'</code> in <code>.bash_aliases</code></p>
+<section id="screen-tips" class="level3">
+<h3 class="anchored" data-anchor-id="screen-tips">screen tips</h3>
+<p>In order to do some basics modifications with <code>screen</code>, here are some useful commands:</p>
+<ul>
+<li><p><code>screen -ls</code> - list active screen sessions (e.g.&nbsp;it may return <code>463.jupyter_screen</code>)</p></li>
+<li><p><code>screen -x "screen session"</code> - enter into that specific session (e.g.&nbsp;<code>screen -x 463.jupyter_screen</code>)</p></li>
+<li><p><code>Ctrl-A then Esc</code> - Navigate into session then UP or DOWN (PGUP PGDOWN)</p></li>
+<li><p><code>Ctrl-A then d</code> - exit the screen session and let it run</p></li>
+</ul>
+<p>It has happened I had to enter jupyter token. To get it I had to enter into my jupyter session, and find the launch url (at the top of log screen)</p>
+<p>TODO - move from tokens to password (see <a href="https://jupyter-server.readthedocs.io/en/latest/operators/security.html#alternatives-to-token-authentication">Alternatives to token authentication</a>)</p>
+</section>
 </section>
 <section id="optional-zsh-oh-my-zsh-powerlevel10k" class="level2">
 <h2 class="anchored" data-anchor-id="optional-zsh-oh-my-zsh-powerlevel10k">(optional) zsh oh-my-zsh powerlevel10k</h2>
