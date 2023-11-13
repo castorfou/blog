@@ -221,6 +221,8 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
   <li><a href="#python-with-pip" id="toc-python-with-pip" class="nav-link" data-scroll-target="#python-with-pip">python with pip</a></li>
   <li><a href="#jupyter-lab" id="toc-jupyter-lab" class="nav-link" data-scroll-target="#jupyter-lab">jupyter lab</a>
   <ul class="collapse">
+  <li><a href="#password-instead-of-token" id="toc-password-instead-of-token" class="nav-link" data-scroll-target="#password-instead-of-token">password instead of token</a></li>
+  <li><a href="#jupyterlab-as-a-service" id="toc-jupyterlab-as-a-service" class="nav-link" data-scroll-target="#jupyterlab-as-a-service">jupyterlab as a service</a></li>
   <li><a href="#screen-tips" id="toc-screen-tips" class="nav-link" data-scroll-target="#screen-tips">screen tips</a></li>
   </ul></li>
   <li><a href="#optional-zsh-oh-my-zsh-powerlevel10k" id="toc-optional-zsh-oh-my-zsh-powerlevel10k" class="nav-link" data-scroll-target="#optional-zsh-oh-my-zsh-powerlevel10k">(optional) zsh oh-my-zsh powerlevel10k</a></li>
@@ -467,31 +469,41 @@ chmod +x setup_wsl_root.sh
 <section id="jupyter-lab" class="level2">
 <h2 class="anchored" data-anchor-id="jupyter-lab">jupyter lab</h2>
 <p>In order to preserve base environment, I won’t install anything in it.</p>
-<p>I will create a <code>base_jupyter</code> env with what is needed for running jupyter lab. And create a jupyterlab service to automatically start jupyter lab with my distro (and stop/restart it)</p>
-<p><code>base_jupyter</code></p>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-02-06T15:25:26.410535Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-02-06T15:25:26.410306Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-02-06T15:25:26.527998Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-02-06T15:25:26.527096Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-02-06T15:25:26.410519Z&quot;}" data-tags="[]" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cat <span class="op">/</span>home<span class="op">/</span>guillaume<span class="op">/</span>_conda_env<span class="op">/</span>base_jupyter.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>I will create a <code>base_jupyter_v4</code> env with what is needed for running jupyter lab. And create a jupyterlab service to automatically start jupyter lab with my distro (and stop/restart it)</p>
+<p><code>base_jupyter_v4</code></p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-11-13T10:26:07.408215Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-11-13T10:26:07.408009Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-11-13T10:26:07.525724Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-11-13T10:26:07.524974Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-11-13T10:26:07.408196Z&quot;}" data-tags="[]" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cat <span class="op">/</span>home<span class="op">/</span>guillaume<span class="op">/</span>_conda_env<span class="op">/</span>base_jupyter_v4.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>conda remove --name base_jupyter --all
-mamba create -n base_jupyter python=3.9
-conda activate base_jupyter
-mamba install -c conda-forge jupyterlab
-mamba install -c conda-forge ipywidgets
-jupyter labextension install jupyterlab-plotly
+<pre><code>mamba remove --name base_jupyter_v4 --all
 
-jupyter-lab --generate-config
-# in .jupyter/jupyter_lab_config.py
-# replace # c.ServerApp.use_redirect_file = True
-# with c.ServerApp.use_redirect_file = False
-# or get it from gitlab/JANUS/dotfiles
+mamba create -n base_jupyter_v4 --override-channels --strict-channel-priority -c conda-forge -c nodefaults jupyterlab ipywidgets tqdm python==3.11
+mamba activate base_jupyter_v4
 
+clean directories: .jupyter and .local/share/jupyter
+and launch with jupyter lab
 
-mamba install -c conda-forge jupyterlab_execute_time
+mamba install --strict-channel-priority -c conda-forge -c nodefaults  nb_conda_kernels --yes
+mamba install -y -c conda-forge -c plotly jupyter-dash
+mamba install -y -c conda-forge jupyterlab_execute_time
+# for holoviz, install version &gt;= 3.0
+mamba install -y -c conda-forge pyviz_comms
 
-pip install azure-cli</code></pre>
+# for nbdev
+pip install jupyterlab-quarto
+
+#in case of jupyterlab update
+mamba update --strict-channel-priority -c conda-forge -c nodefaults  jupyterlab</code></pre>
 </div>
 </div>
-<p>jupyterlab as a service:</p>
+<section id="password-instead-of-token" class="level3">
+<h3 class="anchored" data-anchor-id="password-instead-of-token">password instead of token</h3>
+<p>From <a href="https://jupyter-notebook.readthedocs.io/en/5.7.1/security.html#alternatives-to-token-authentication">security in jupyter server</a></p>
+<blockquote class="blockquote">
+<p>If a generated token doesn’t work well for you, you can set a password for your notebook. <code>jupyter notebook password</code> will prompt you for a password, and store the hashed password in your <code>jupyter_notebook_config.json</code>.</p>
+</blockquote>
+</section>
+<section id="jupyterlab-as-a-service" class="level3">
+<h3 class="anchored" data-anchor-id="jupyterlab-as-a-service">jupyterlab as a service</h3>
 <p>FILE /etc/systemd/system/jupyterlab.service</p>
 <div class="sourceCode" id="annotated-cell-16"><pre class="sourceCode bash code-annotation-code code-with-copy code-annotated"><code class="sourceCode bash"><span id="annotated-cell-16-1"><a href="#annotated-cell-16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[Unit]</span></span>
 <span id="annotated-cell-16-2"><a href="#annotated-cell-16-2" aria-hidden="true" tabindex="-1"></a><span class="va">Description</span><span class="op">=</span>Jupyter <span class="ex">lab</span> boot scriptJupyter lab boot script</span>
@@ -513,27 +525,27 @@ pip install azure-cli</code></pre>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-16" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-16" data-code-annotation="1" data-code-lines="10">This is to allow execution of GPU instructions within jupyter lab</span>
+<span data-code-cell="annotated-cell-16" data-code-lines="10" data-code-annotation="1">This is to allow execution of GPU instructions within jupyter lab</span>
 </dd>
 </dl>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-02-06T15:35:32.152159Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-02-06T15:35:32.151920Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-02-06T15:35:32.266905Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-02-06T15:35:32.266187Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-02-06T15:35:32.152141Z&quot;}" data-execution_count="1">
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-11-13T10:26:23.059729Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-11-13T10:26:23.059519Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-11-13T10:26:23.176256Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-11-13T10:26:23.175436Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-11-13T10:26:23.059710Z&quot;}" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cat <span class="op">/</span>home<span class="op">/</span>guillaume<span class="op">/</span><span class="bu">bin</span><span class="op">/</span>jupyterlab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#!/bin/bash
 cd ~
 source ~/miniconda/etc/profile.d/conda.sh
-conda activate base_jupyter
+conda activate base_jupyter_v4
 jupyter lab</code></pre>
 </div>
 </div>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-02-06T15:36:14.832324Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-02-06T15:36:14.832039Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-02-06T15:36:14.945169Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-02-06T15:36:14.944418Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-02-06T15:36:14.832294Z&quot;}" data-tags="[]" data-execution_count="3">
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-11-13T10:26:26.666549Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-11-13T10:26:26.666353Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-11-13T10:26:26.784376Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-11-13T10:26:26.783605Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-11-13T10:26:26.666533Z&quot;}" data-tags="[]" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cat <span class="op">/</span>home<span class="op">/</span>guillaume<span class="op">/</span><span class="bu">bin</span><span class="op">/</span>jupyterlab.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#!/bin/bash -x
 screen -d -S "jupyter_screen" -m ~guillaume/bin/jupyterlab</code></pre>
 </div>
 </div>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-02-06T15:36:39.922388Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-02-06T15:36:39.922142Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-02-06T15:36:40.033861Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-02-06T15:36:40.033127Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-02-06T15:36:39.922369Z&quot;}" data-tags="[]" data-execution_count="5">
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-11-13T10:26:27.367137Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-11-13T10:26:27.366936Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-11-13T10:26:27.483046Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-11-13T10:26:27.482492Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-11-13T10:26:27.367120Z&quot;}" data-tags="[]" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cat <span class="op">/</span>home<span class="op">/</span>guillaume<span class="op">/</span><span class="bu">bin</span><span class="op">/</span>jupyterlab_stop.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#!/bin/bash -x
@@ -548,7 +560,7 @@ screen -X -S jupyter_screen kill</code></pre>
 <p>and to monitor logs of this service</p>
 <div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="ex">journalctl</span> <span class="at">-xefu</span> jupyterlab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Just pointing to <a href="http://localhost:8888/lab" class="uri">http://localhost:8888/lab</a></p>
-<p>and if you want we can add an alias <code>alias jl='/home/guillaume/bin/jupyterlab.sh'</code> in <code>.bash_aliases</code></p>
+</section>
 <section id="screen-tips" class="level3">
 <h3 class="anchored" data-anchor-id="screen-tips">screen tips</h3>
 <p>In order to do some basics modifications with <code>screen</code>, here are some useful commands:</p>
