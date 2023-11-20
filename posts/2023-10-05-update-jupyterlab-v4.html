@@ -204,6 +204,7 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
   <li><a href="#clean-jupyterlab-config-files" id="toc-clean-jupyterlab-config-files" class="nav-link active" data-scroll-target="#clean-jupyterlab-config-files">clean jupyterlab config files</a></li>
   <li><a href="#create-base_jupyter_v4-environment" id="toc-create-base_jupyter_v4-environment" class="nav-link" data-scroll-target="#create-base_jupyter_v4-environment">create <code>base_jupyter_v4</code> environment</a></li>
   <li><a href="#launch-it-as-a-service" id="toc-launch-it-as-a-service" class="nav-link" data-scroll-target="#launch-it-as-a-service">launch it as a service</a></li>
+  <li><a href="#upgrade-jupyter-lab-version" id="toc-upgrade-jupyter-lab-version" class="nav-link" data-scroll-target="#upgrade-jupyter-lab-version">upgrade jupyter lab version</a></li>
   <li><a href="#unit-test" id="toc-unit-test" class="nav-link" data-scroll-target="#unit-test">unit test</a>
   <ul class="collapse">
   <li><a href="#tqdm" id="toc-tqdm" class="nav-link" data-scroll-target="#tqdm">tqdm</a></li>
@@ -238,30 +239,42 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 <h1>create <code>base_jupyter_v4</code> environment</h1>
 <p>Here is how I created it</p>
 <div class="sourceCode" id="annotated-cell-1"><pre class="sourceCode bash code-annotation-code code-with-copy code-annotated"><code class="sourceCode bash"><span id="annotated-cell-1-1"><a href="#annotated-cell-1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> remove <span class="at">--name</span> base_jupyter_v4 <span class="at">--all</span></span>
-<span id="annotated-cell-1-2"><a href="#annotated-cell-1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> create <span class="at">-y</span> <span class="at">-n</span> base_jupyter_v4 <span class="at">-c</span> conda-forge python=3.9 <span class="at">--yes</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-1-2" class="code-annotation-target"><a href="#annotated-cell-1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> create <span class="at">-n</span> base_jupyter_v4 <span class="at">--override-channels</span> <span class="at">--strict-channel-priority</span> <span class="at">-c</span> conda-forge <span class="at">-c</span> nodefaults jupyterlab ipywidgets tqdm python==3.11</span>
 <span id="annotated-cell-1-3"><a href="#annotated-cell-1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> activate base_jupyter_v4</span>
 <span id="annotated-cell-1-4"><a href="#annotated-cell-1-4" aria-hidden="true" tabindex="-1"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-1-5" class="code-annotation-target"><a href="#annotated-cell-1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install jupyterlab ipywidgets tqdm</span>
-<span id="annotated-cell-1-6"><a href="#annotated-cell-1-6" aria-hidden="true" tabindex="-1"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-1-7" class="code-annotation-target"><a href="#annotated-cell-1-7" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> install nb_conda_kernels <span class="at">--yes</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-1-8" class="code-annotation-target"><a href="#annotated-cell-1-8" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> install <span class="at">-y</span> <span class="at">-c</span> conda-forge <span class="at">-c</span> plotly jupyter-dash</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-1-9" class="code-annotation-target"><a href="#annotated-cell-1-9" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> install <span class="at">-y</span> <span class="at">-c</span> conda-forge jupyterlab_execute_time</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="annotated-cell-1-5"><a href="#annotated-cell-1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># clean directories: .jupyter and .local/share/jupyter</span></span>
+<span id="annotated-cell-1-6"><a href="#annotated-cell-1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># and launch with `jupyter lab`</span></span>
+<span id="annotated-cell-1-7"><a href="#annotated-cell-1-7" aria-hidden="true" tabindex="-1"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-1-8" class="code-annotation-target"><a href="#annotated-cell-1-8" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> install <span class="at">--strict-channel-priority</span> <span class="at">-c</span> conda-forge <span class="at">-c</span> nodefaults  nb_conda_kernels <span class="at">--yes</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-1-9" class="code-annotation-target"><a href="#annotated-cell-1-9" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> install <span class="at">-y</span> <span class="at">-c</span> conda-forge <span class="at">-c</span> plotly jupyter-dash</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-1-10" class="code-annotation-target"><a href="#annotated-cell-1-10" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> install <span class="at">-y</span> <span class="at">-c</span> conda-forge jupyterlab_execute_time</span>
+<span id="annotated-cell-1-11"><a href="#annotated-cell-1-11" aria-hidden="true" tabindex="-1"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-1-12" class="code-annotation-target"><a href="#annotated-cell-1-12" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> install <span class="at">-y</span> <span class="at">-c</span> conda-forge pyviz_comms</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-1-13" class="code-annotation-target"><a href="#annotated-cell-1-13" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install jupyterlab-quarto</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-1" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-1" data-code-annotation="1" data-code-lines="5">tqdm available for all kernels (true?)</span>
+<span data-code-annotation="1" data-code-lines="2" data-code-cell="annotated-cell-1">tqdm available for all kernels (true?)</span>
 </dd>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-1" data-code-annotation="2" data-code-lines="7">kernels are already listed against each conda environment (I won’t manually install kernels anymore <code>python -m ipykernel install --user --name=my_env</code>)</span>
+<span data-code-annotation="2" data-code-lines="8" data-code-cell="annotated-cell-1">kernels are already listed against each conda environment (I won’t manually install kernels anymore <code>python -m ipykernel install --user --name=my_env</code>)</span>
 </dd>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-1" data-code-annotation="3" data-code-lines="8">plotly extension installed</span>
+<span data-code-annotation="3" data-code-lines="9" data-code-cell="annotated-cell-1">plotly extension</span>
 </dd>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-1" data-code-annotation="4" data-code-lines="9">execute time installed</span>
+<span data-code-annotation="4" data-code-lines="10" data-code-cell="annotated-cell-1">execute time</span>
+</dd>
+<dt data-target-cell="annotated-cell-1" data-target-annotation="5">5</dt>
+<dd>
+<span data-code-annotation="5" data-code-lines="12" data-code-cell="annotated-cell-1">in case of holoviz usage (see datashadering), pyviz_comms version &gt;=3.0 required</span>
+</dd>
+<dt data-target-cell="annotated-cell-1" data-target-annotation="6">6</dt>
+<dd>
+<span data-code-annotation="6" data-code-lines="13" data-code-cell="annotated-cell-1">in case of nbdev usage: <a href="https://quarto.org/docs/tools/jupyter-lab-extension.html" class="uri">https://quarto.org/docs/tools/jupyter-lab-extension.html</a></span>
 </dd>
 </dl>
 </section>
@@ -293,17 +306,26 @@ jupyter lab</code></pre>
 <div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">journalctl</span> <span class="at">-xefu</span> jupyterlab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Just pointing to <a href="http://localhost:8888/lab" class="uri">http://localhost:8888/lab</a></p>
 </section>
+<section id="upgrade-jupyter-lab-version" class="level1">
+<h1>upgrade jupyter lab version</h1>
+<p>In case of update detected in jupyter lab version.</p>
+<p>Here is my procedure.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> activate base_jupyter_v4</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl stop jupyterlab</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> update <span class="at">--strict-channel-priority</span> <span class="at">-c</span> conda-forge <span class="at">-c</span> nodefaults  jupyterlab</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl start jupyterlab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
 <section id="unit-test" class="level1">
 <h1>unit test</h1>
 <section id="tqdm" class="level2">
 <h2 class="anchored" data-anchor-id="tqdm">tqdm</h2>
 <div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-10-05T10:10:30.402580Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-10-05T10:10:30.402366Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-10-05T10:10:33.593447Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-10-05T10:10:33.592043Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-10-05T10:10:30.402560Z&quot;}" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tqdm.notebook <span class="im">import</span> trange, tqdm</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> time <span class="im">import</span> sleep</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> trange(<span class="dv">3</span>, desc<span class="op">=</span><span class="st">'1st loop'</span>):</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="kw">in</span> tqdm(<span class="bu">range</span>(<span class="dv">100</span>), desc<span class="op">=</span><span class="st">'2nd loop'</span>):</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>        sleep(<span class="fl">0.01</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tqdm.notebook <span class="im">import</span> trange, tqdm</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> time <span class="im">import</span> sleep</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> trange(<span class="dv">3</span>, desc<span class="op">=</span><span class="st">'1st loop'</span>):</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="kw">in</span> tqdm(<span class="bu">range</span>(<span class="dv">100</span>), desc<span class="op">=</span><span class="st">'2nd loop'</span>):</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>        sleep(<span class="fl">0.01</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id":"abcf64eb40764aa599ca3b7517d74426","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
@@ -329,14 +351,14 @@ jupyter lab</code></pre>
 <section id="ipywidgets" class="level2">
 <h2 class="anchored" data-anchor-id="ipywidgets">ipywidgets</h2>
 <div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-10-05T10:11:10.859933Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-10-05T10:11:10.859737Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-10-05T10:11:10.864959Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-10-05T10:11:10.864193Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-10-05T10:11:10.859920Z&quot;}" data-tags="[]" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> ipywidgets</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>ipywidgets.__version__</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> ipywidgets</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>ipywidgets.__version__</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>'8.1.1'</code></pre>
 </div>
 </div>
 <div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-10-05T10:11:11.533305Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-10-05T10:11:11.532957Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-10-05T10:11:11.539234Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-10-05T10:11:11.538714Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-10-05T10:11:11.533286Z&quot;}" data-tags="[]" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>ipywidgets.widgets.Button(description<span class="op">=</span><span class="st">"Hello World!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>ipywidgets.widgets.Button(description<span class="op">=</span><span class="st">"Hello World!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id":"8894ad7e0a2e4d69a81c6c517d0899f8","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
