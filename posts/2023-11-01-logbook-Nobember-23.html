@@ -162,6 +162,7 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
                                 <div class="quarto-categories">
                 <div class="quarto-category">logbook</div>
                 <div class="quarto-category">jupyter</div>
+                <div class="quarto-category">git</div>
               </div>
                   </div>
   </div>
@@ -192,6 +193,7 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
   <li><a href="#week-47---november-23" id="toc-week-47---november-23" class="nav-link active" data-scroll-target="#week-47---november-23">Week 47 - November 23</a>
   <ul class="collapse">
   <li><a href="#monday-1120" id="toc-monday-1120" class="nav-link" data-scroll-target="#monday-1120">Monday 11/20</a></li>
+  <li><a href="#tuesday-1121" id="toc-tuesday-1121" class="nav-link" data-scroll-target="#tuesday-1121">Tuesday 11/21</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -202,7 +204,7 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 
 
 
-<p>jupyter lab upgrade procedure</p>
+<p>jupyter lab upgrade procedure, git (or config dotfiles) show retrieve old commit</p>
 <section id="week-47---november-23" class="level1">
 <h1>Week 47 - November 23</h1>
 <section id="monday-1120" class="level2">
@@ -213,6 +215,38 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl stop jupyterlab</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> update <span class="at">--strict-channel-priority</span> <span class="at">-c</span> conda-forge <span class="at">-c</span> nodefaults  jupyterlab</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl start jupyterlab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="tuesday-1121" class="level2">
+<h2 class="anchored" data-anchor-id="tuesday-1121">Tuesday 11/21</h2>
+<p>A reminder of basic git commands:</p>
+<p><strong>list all commits of a given file</strong></p>
+<p><code>git rev-list HEAD --oneline filename</code></p>
+<p><strong>display file content of a given commit</strong></p>
+<p><code>git show &lt;SHA1&gt;:./filename</code></p>
+<p><strong>restore a commit</strong></p>
+<p><code>git restore -s &lt;SHA1&gt; -- filename</code></p>
+<p>And as a real example with <code>config</code></p>
+<p><strong>list pip.conf commits</strong></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">❯</span> config  rev-list HEAD <span class="at">--oneline</span> pip.conf</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">d9380e3</span> increase timeout for network hicup</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">621e022</span> correct way to setup extra-index-url</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">1dfd028</span> dcy-pypi-snapshot-fed</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ex">20c75d6</span> config artifactry</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="ex">**what</span> was in 20c75d6<span class="pp">**</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="kw">```</span><span class="fu">bash</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="ex">❯</span> config show 20c75d6:./pip.conf</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="ex">[global]</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="fu">timeout</span> = 1000</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="ex">index-url</span> = https://pypi.org/simple/</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="ex">trusted-host</span> = download.pytorch.org</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>               <span class="ex">pypi.python.org</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>               <span class="ex">files.pythonhosted.org</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>               <span class="ex">pypi.org</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>                <span class="ex">artifactory.acme.com</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="ex">extra-index-url=artifactory.acme.com/api/pypi/pypi/simple</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>restore commit 20c75d6</strong></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">❯</span> config restore <span class="at">-s</span> 20c75d6 <span class="at">--</span> ./pip.conf</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>
