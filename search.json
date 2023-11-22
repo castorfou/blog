@@ -1075,7 +1075,21 @@
     "href": "posts/2023-11-22-pre-commit-jupyter.html#how-to-use-it",
     "title": "Using notebooks within a team for exploration",
     "section": "how to use it",
-    "text": "how to use it\nThe magic happens when you run git commit\ngit commit -m 'pre-commit setup'\n[INFO] Initializing environment for https://github.com/pre-commit/pre-commit-hooks.\n[INFO] Installing environment for https://github.com/fastai/nbdev.\n[INFO] Once installed this environment will be reused.\n[INFO] This may take a few minutes...\n[INFO] Installing environment for https://github.com/psf/black.\n[INFO] Once installed this environment will be reused.\n[INFO] This may take a few minutes...\n[INFO] Installing environment for https://github.com/pre-commit/pre-commit-hooks.\n[INFO] Once installed this environment will be reused.\n[INFO] This may take a few minutes...\nnbdev_clean..............................................................Passed\nblack-jupyter............................................................Failed\n- hook id: black-jupyter\n- files were modified by this hook\n\nreformatted nbs/index.ipynb\n\nAll done! ✨ 🍰 ✨\n1 file reformatted, 1 f\n```ile left unchanged.\n\nWhen a modif is done by a pre-hook, you have to re-add this modification in git.\n\nThis is a matter of repeating `git add` `git commit`\n\n# nbdime\n\n[https://nbdime.readthedocs.io/en/latest/](https://nbdime.readthedocs.io/en/latest/)\n\n![image.png](2023-11-22-pre-commit-jupyter_files/figure-html/d9c05f6d-2ec0-416b-8205-89462d1874e2-1-426db974-8a53-4210-933b-16be61cd4404.png)\n\n## what is it\n\n**nbdime** provides tools for diffing and merging [Jupyter notebooks](http://jupyter-notebook.readthedocs.io/en/latest/).\n\n## install setup\n\n1st you need to **install** nbdime\n\n```bash\npip install nbdime\n2nd you integrate nbdime and git\nnbdime config-git --enable"
+    "text": "how to use it\nThe magic happens when you run git commit\ngit commit -m 'pre-commit setup'\n[INFO] Initializing environment for https://github.com/pre-commit/pre-commit-hooks.\n[INFO] Installing environment for https://github.com/fastai/nbdev.\n[INFO] Once installed this environment will be reused.\n[INFO] This may take a few minutes...\n[INFO] Installing environment for https://github.com/psf/black.\n[INFO] Once installed this environment will be reused.\n[INFO] This may take a few minutes...\n[INFO] Installing environment for https://github.com/pre-commit/pre-commit-hooks.\n[INFO] Once installed this environment will be reused.\n[INFO] This may take a few minutes...\nnbdev_clean..............................................................Passed\nblack-jupyter............................................................Failed\n- hook id: black-jupyter\n- files were modified by this hook\n\nreformatted nbs/index.ipynb\n\nAll done! ✨ 🍰 ✨\n1 file reformatted, 1 file left unchanged.\nWhen a modif is done by a pre-hook, you have to re-add this modification in git.\nThis is a matter of repeating git add git commit"
+  },
+  {
+    "objectID": "posts/2023-11-22-pre-commit-jupyter.html#what-is-it-1",
+    "href": "posts/2023-11-22-pre-commit-jupyter.html#what-is-it-1",
+    "title": "Using notebooks within a team for exploration",
+    "section": "what is it",
+    "text": "what is it\nnbdime provides tools for diffing and merging Jupyter notebooks."
+  },
+  {
+    "objectID": "posts/2023-11-22-pre-commit-jupyter.html#install-setup-1",
+    "href": "posts/2023-11-22-pre-commit-jupyter.html#install-setup-1",
+    "title": "Using notebooks within a team for exploration",
+    "section": "install setup",
+    "text": "install setup\n1st you need to install nbdime\npip install nbdime\n2nd you integrate nbdime and git\nnbdime config-git --enable"
   },
   {
     "objectID": "posts/2023-11-22-pre-commit-jupyter.html#how-to-use-it-1",
