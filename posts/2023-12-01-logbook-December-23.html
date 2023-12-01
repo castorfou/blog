@@ -6,10 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2023-10-05">
-<meta name="description" content="and perform all unit tests with tqdm, ipywidget, plotly and everything">
+<meta name="dcterms.date" content="2023-12-01">
 
-<title>Guillaume’s blog - Update jupyter lab to v4</title>
+<title>Guillaume’s blog - Logbook for December 23</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -107,18 +106,12 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
-<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
-<script src="https://unpkg.com/@jupyter-widgets/html-manager@*/dist/embed-amd.js" crossorigin="anonymous"></script>
 
 
 <link rel="stylesheet" href="../styles.css">
-<meta name="twitter:title" content="Guillaume’s blog - Update jupyter lab to v4">
-<meta name="twitter:description" content="and perform all unit tests with tqdm, ipywidget, plotly and everything">
-<meta name="twitter:image" content="https://castorfou.github.io/images/icons/jupyter.png">
-<meta name="twitter:image-height" content="290">
-<meta name="twitter:image-width" content="638">
+<meta name="twitter:title" content="Guillaume’s blog - Logbook for December 23">
+<meta name="twitter:description" content="">
+<meta name="twitter:image" content="https://castorfou.github.io/images/logbook.jpg">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -165,15 +158,10 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Update jupyter lab to v4</h1>
-                  <div>
-        <div class="description">
-          and perform all unit tests with tqdm, ipywidget, plotly and everything
-        </div>
-      </div>
-                          <div class="quarto-categories">
-                <div class="quarto-category">jupyter</div>
-                <div class="quarto-category">plotly</div>
+      <h1 class="title">Logbook for December 23</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">logbook</div>
+                <div class="quarto-category">wsl</div>
               </div>
                   </div>
   </div>
@@ -185,7 +173,7 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">October 5, 2023</p>
+        <p class="date">December 1, 2023</p>
       </div>
     </div>
     
@@ -201,14 +189,9 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#clean-jupyterlab-config-files" id="toc-clean-jupyterlab-config-files" class="nav-link active" data-scroll-target="#clean-jupyterlab-config-files">clean jupyterlab config files</a></li>
-  <li><a href="#create-base_jupyter_v4-environment" id="toc-create-base_jupyter_v4-environment" class="nav-link" data-scroll-target="#create-base_jupyter_v4-environment">create <code>base_jupyter_v4</code> environment</a></li>
-  <li><a href="#launch-it-as-a-service" id="toc-launch-it-as-a-service" class="nav-link" data-scroll-target="#launch-it-as-a-service">launch it as a service</a></li>
-  <li><a href="#upgrade-jupyter-lab-version" id="toc-upgrade-jupyter-lab-version" class="nav-link" data-scroll-target="#upgrade-jupyter-lab-version">upgrade jupyter lab version</a></li>
-  <li><a href="#unit-test" id="toc-unit-test" class="nav-link" data-scroll-target="#unit-test">unit test</a>
+  <li><a href="#week-48---december-23" id="toc-week-48---december-23" class="nav-link active" data-scroll-target="#week-48---december-23">Week 48 - December 23</a>
   <ul class="collapse">
-  <li><a href="#tqdm" id="toc-tqdm" class="nav-link" data-scroll-target="#tqdm">tqdm</a></li>
-  <li><a href="#ipywidgets" id="toc-ipywidgets" class="nav-link" data-scroll-target="#ipywidgets">ipywidgets</a></li>
+  <li><a href="#friday-1201" id="toc-friday-1201" class="nav-link" data-scroll-target="#friday-1201">Friday 12/01</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -219,152 +202,78 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 
 
 
-<p>As mentionned in <a href="../posts/2023-05-01-logbook-May-23.html#jupyter-4.0-is-out">logbook May-23</a>, jupyter lab v4 is now available.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="2023-10-05-update-jupyterlab-v4_files/figure-html/54534f72-8de8-4202-a9d6-2580890cba5f-1-image.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
-</figure>
-</div>
-<section id="clean-jupyterlab-config-files" class="level1">
-<h1>clean jupyterlab config files</h1>
-<p>2 config files in linux:</p>
-<ul>
-<li><p><code>.jupyter</code></p></li>
-<li><p><code>.local/share/jupyter</code></p></li>
-</ul>
-<p>I have removed them (actually mv with <code>_backup_&lt;date&gt;</code> suffix</p>
-</section>
-<section id="create-base_jupyter_v4-environment" class="level1">
-<h1>create <code>base_jupyter_v4</code> environment</h1>
-<p>Here is how I created it</p>
-<div class="sourceCode" id="annotated-cell-1"><pre class="sourceCode bash code-annotation-code code-with-copy code-annotated"><code class="sourceCode bash"><span id="annotated-cell-1-1"><a href="#annotated-cell-1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> remove <span class="at">--name</span> base_jupyter_v4 <span class="at">--all</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-1-2" class="code-annotation-target"><a href="#annotated-cell-1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> create <span class="at">-n</span> base_jupyter_v4 <span class="at">--override-channels</span> <span class="at">--strict-channel-priority</span> <span class="at">-c</span> conda-forge <span class="at">-c</span> nodefaults jupyterlab ipywidgets tqdm python==3.11</span>
-<span id="annotated-cell-1-3"><a href="#annotated-cell-1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> activate base_jupyter_v4</span>
-<span id="annotated-cell-1-4"><a href="#annotated-cell-1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-1-5"><a href="#annotated-cell-1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># clean directories: .jupyter and .local/share/jupyter</span></span>
-<span id="annotated-cell-1-6"><a href="#annotated-cell-1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># and launch with `jupyter lab`</span></span>
-<span id="annotated-cell-1-7"><a href="#annotated-cell-1-7" aria-hidden="true" tabindex="-1"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-1-8" class="code-annotation-target"><a href="#annotated-cell-1-8" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> install <span class="at">--strict-channel-priority</span> <span class="at">-c</span> conda-forge <span class="at">-c</span> nodefaults  nb_conda_kernels <span class="at">--yes</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-1-9" class="code-annotation-target"><a href="#annotated-cell-1-9" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> install <span class="at">-y</span> <span class="at">-c</span> conda-forge <span class="at">-c</span> plotly jupyter-dash</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-1-10" class="code-annotation-target"><a href="#annotated-cell-1-10" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> install <span class="at">-y</span> <span class="at">-c</span> conda-forge jupyterlab_execute_time</span>
-<span id="annotated-cell-1-11"><a href="#annotated-cell-1-11" aria-hidden="true" tabindex="-1"></a></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-1-12" class="code-annotation-target"><a href="#annotated-cell-1-12" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> install <span class="at">-y</span> <span class="at">-c</span> conda-forge pyviz_comms</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-1-13" class="code-annotation-target"><a href="#annotated-cell-1-13" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install jupyterlab-quarto</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-1" data-target-annotation="1">1</dt>
-<dd>
-<span data-code-cell="annotated-cell-1" data-code-annotation="1" data-code-lines="2">tqdm available for all kernels (true?)</span>
-</dd>
-<dt data-target-cell="annotated-cell-1" data-target-annotation="2">2</dt>
-<dd>
-<span data-code-cell="annotated-cell-1" data-code-annotation="2" data-code-lines="8">kernels are already listed against each conda environment (I won’t manually install kernels anymore <code>python -m ipykernel install --user --name=my_env</code>)</span>
-</dd>
-<dt data-target-cell="annotated-cell-1" data-target-annotation="3">3</dt>
-<dd>
-<span data-code-cell="annotated-cell-1" data-code-annotation="3" data-code-lines="9">plotly extension</span>
-</dd>
-<dt data-target-cell="annotated-cell-1" data-target-annotation="4">4</dt>
-<dd>
-<span data-code-cell="annotated-cell-1" data-code-annotation="4" data-code-lines="10">execute time</span>
-</dd>
-<dt data-target-cell="annotated-cell-1" data-target-annotation="5">5</dt>
-<dd>
-<span data-code-cell="annotated-cell-1" data-code-annotation="5" data-code-lines="12">in case of holoviz usage (see datashadering), pyviz_comms version &gt;=3.0 required</span>
-</dd>
-<dt data-target-cell="annotated-cell-1" data-target-annotation="6">6</dt>
-<dd>
-<span data-code-cell="annotated-cell-1" data-code-annotation="6" data-code-lines="13">in case of nbdev usage: <a href="https://quarto.org/docs/tools/jupyter-lab-extension.html" class="uri">https://quarto.org/docs/tools/jupyter-lab-extension.html</a></span>
-</dd>
-</dl>
-</section>
-<section id="launch-it-as-a-service" class="level1">
-<h1>launch it as a service</h1>
-<p>As explained in <a href="../posts/2022-12-15-wsl2-fresh-pc.html#jupyter-lab">WSL2 on a fresh new PC / jupyter lab</a></p>
-<p>I have setup jupyterlab as a service. Jupyter lab is automatically started with WSL.</p>
-<p>thanks to - <code>/etc/systemd/system/jupyterlab.service</code> nothing to be changed here</p>
-<ul>
-<li><p><code>~/bin/jupyterlab</code> and here I have to update to <code>base_jupyter</code> to <code>base_jupyter_v4</code></p></li>
-<li><p><code>~/bin/jupyterlab.sh</code>, <code>~/bin/jupyterlab.sh</code> nothing to be changed here</p></li>
-</ul>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-10-05T10:09:29.516832Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-10-05T10:09:29.516628Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-10-05T10:09:29.635377Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-10-05T10:09:29.634522Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-10-05T10:09:29.516818Z&quot;}" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cat <span class="op">/</span>home<span class="op">/</span>guillaume<span class="op">/</span><span class="bu">bin</span><span class="op">/</span>jupyterlab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>#!/bin/bash
-cd ~
-source ~/miniconda/etc/profile.d/conda.sh
-conda activate base_jupyter_v4
-jupyter lab</code></pre>
-</div>
-</div>
-<p>Then enable this service</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> +x /home/guillaume/bin/jupyterlab.sh</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl daemon-reload</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl enable jupyterlab.service</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl restart jupyterlab.service</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>and to monitor logs of this service</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">journalctl</span> <span class="at">-xefu</span> jupyterlab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Just pointing to <a href="http://localhost:8888/lab" class="uri">http://localhost:8888/lab</a></p>
-</section>
-<section id="upgrade-jupyter-lab-version" class="level1">
-<h1>upgrade jupyter lab version</h1>
-<p>In case of update detected in jupyter lab version.</p>
-<p>Here is my procedure.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> activate base_jupyter_v4</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl stop jupyterlab</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> update <span class="at">--strict-channel-priority</span> <span class="at">-c</span> conda-forge <span class="at">-c</span> nodefaults  jupyterlab</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl start jupyterlab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="unit-test" class="level1">
-<h1>unit test</h1>
-<section id="tqdm" class="level2">
-<h2 class="anchored" data-anchor-id="tqdm">tqdm</h2>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-10-05T10:10:30.402580Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-10-05T10:10:30.402366Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-10-05T10:10:33.593447Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-10-05T10:10:33.592043Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-10-05T10:10:30.402560Z&quot;}" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tqdm.notebook <span class="im">import</span> trange, tqdm</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> time <span class="im">import</span> sleep</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> trange(<span class="dv">3</span>, desc<span class="op">=</span><span class="st">'1st loop'</span>):</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="kw">in</span> tqdm(<span class="bu">range</span>(<span class="dv">100</span>), desc<span class="op">=</span><span class="st">'2nd loop'</span>):</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>        sleep(<span class="fl">0.01</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"abcf64eb40764aa599ca3b7517d74426","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
-</script>
-</div>
-<div class="cell-output cell-output-display">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"9ba4404588ca4e33a024348db9ae181f","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
-</script>
-</div>
-<div class="cell-output cell-output-display">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"3f512ab969b24fab9bc886f722790c39","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
-</script>
-</div>
-<div class="cell-output cell-output-display">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"ba4459311ad0499aaad7bd2a3ac29bbf","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
-</script>
-</div>
-</div>
-</section>
-<section id="ipywidgets" class="level2">
-<h2 class="anchored" data-anchor-id="ipywidgets">ipywidgets</h2>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-10-05T10:11:10.859933Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-10-05T10:11:10.859737Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-10-05T10:11:10.864959Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-10-05T10:11:10.864193Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-10-05T10:11:10.859920Z&quot;}" data-tags="[]" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> ipywidgets</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>ipywidgets.__version__</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="4">
-<pre><code>'8.1.1'</code></pre>
-</div>
-</div>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-10-05T10:11:11.533305Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-10-05T10:11:11.532957Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-10-05T10:11:11.539234Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-10-05T10:11:11.538714Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-10-05T10:11:11.533286Z&quot;}" data-tags="[]" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>ipywidgets.widgets.Button(description<span class="op">=</span><span class="st">"Hello World!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="5">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"8894ad7e0a2e4d69a81c6c517d0899f8","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
-</script>
-</div>
-</div>
+<p>wsl (vpnkit as a service)</p>
+<section id="week-48---december-23" class="level1">
+<h1>Week 48 - December 23</h1>
+<section id="friday-1201" class="level2">
+<h2 class="anchored" data-anchor-id="friday-1201">Friday 12/01</h2>
+<p><a href="https://github.com/sakai135/wsl-vpnkit/releases">wsl-vpnkit</a> v0.4 does not support running wsl-vpnkit using <code>wsl.exe -d wsl-vpnkit service wsl-vpnkit start</code>. A systemd service file is provided to help us setup a systemd service in distro to run wsl-vpnkit in the background.</p>
+<p>Here are the steps:</p>
+<p><strong>dependencies</strong></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install <span class="at">-y</span> iproute2 iptables iputils-ping dnsutils wget</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>binary installation</strong></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="va">VERSION</span><span class="op">=</span>v0.4.1</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> mkdir <span class="at">-p</span> /opt/vpnkit</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /opt/vpnkit</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> wget https://github.com/sakai135/wsl-vpnkit/releases/download/<span class="va">$VERSION</span>/wsl-vpnkit.tar.gz</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> tar <span class="at">--strip-components</span><span class="op">=</span>1 <span class="at">-xzf</span> wsl-vpnkit.tar.gz <span class="dt">\</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  app/wsl-vpnkit <span class="dt">\</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  app/wsl-gvproxy.exe <span class="dt">\</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  app/wsl-vm <span class="dt">\</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  app/wsl-vpnkit.service <span class="dt">\</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">-C</span> /opt/vpnkit</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> rm wsl-vpnkit.tar.gz</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="at">-</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>configuration</strong></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> cat <span class="op">&lt;&lt;'EOT'</span> <span class="op">&gt;</span> /opt/vpnkit/wsl-vpnkit.service</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="st">[Unit]</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="st">Description=wsl-vpnkit</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="st">[Service]</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="st"># for wsl-vpnkit setup as a standalone script</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="st"># important to set type to idle, we want the service to be one of the last ones to be executed</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="st">Type=idle</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="st"># before running the wsl-vpnkit script we want to provide the correct WSL_INTEROP variable</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="st">ExecStart=/bin/sh -c '. /opt/vpnkit/wsl-interop-env.sh; /opt/vpnkit/wsl-vpnkit'</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="st">Environment=VMEXEC_PATH=/opt/vpnkit/wsl-vm</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="st">Environment=GVPROXY_PATH=/opt/vpnkit/wsl-gvproxy.exe</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="st">Restart=always</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="st">KillMode=mixed</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="st">[Install]</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="st">WantedBy=multi-user.target</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="op">EOT</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> cat <span class="op">&lt;&lt;'EOT'</span> <span class="op">&gt;</span> /opt/vpnkit/wsl-interop-env.sh</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="st">#!/bin/sh</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="st">export WSL_INTEROP=</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="st">for socket in $(ls /run/WSL|sort -n); do</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="st">if ss -elx | grep "$socket"; then</span></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a><span class="st">  export WSL_INTEROP=/run/WSL/$socket</span></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="st">else</span></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a><span class="st">  rm $socket</span></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a><span class="st">fi</span></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a><span class="st">done</span></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a><span class="op">EOT</span></span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> chmod +x /opt/vpnkit/wsl-interop-env.sh</span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> cp /opt/vpnkit/wsl-vpnkit.service /etc/systemd/system/</span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl enable wsl-vpnkit.service</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>start service</strong></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl start wsl-vpnkit.service</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>and to test</p>
+<p>from powershell</p>
+<pre class="shell"><code>wsl -t wsl-vpnkit</code></pre>
+<p>from wsl image</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">host</span> google.fr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>we can see <code>wsl-vpnkit</code> logs with <code>sudo systemctl status wsl-vpnkit.service</code></p>
+<p>and as soon as it is ok, we can unregister wsl-vpnkit</p>
+<pre class="shell"><code>wsl --unregister wsl-vpnkit</code></pre>
 
 
 </section>

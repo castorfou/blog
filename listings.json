@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/2023-12-01-logbook-December-23.html",
       "/posts/2023-11-22-pre-commit-jupyter.html",
       "/posts/2023-11-01-logbook-November-23.html",
       "/posts/2023-10-05-update-jupyterlab-v4.html",
