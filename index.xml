@@ -19,11 +19,13 @@
 
 
 
-<p>wsl (vpnkit as a service)</p>
+<p>wsl (vpnkit as a service, apt trick for GP)</p>
 <section id="week-48---december-23" class="level1">
 <h1>Week 48 - December 23</h1>
 <section id="friday-1201" class="level2">
 <h2 class="anchored" data-anchor-id="friday-1201">Friday 12/01</h2>
+<section id="wsl-vpnkit-as-a-service" class="level3">
+<h3 class="anchored" data-anchor-id="wsl-vpnkit-as-a-service">wsl-vpnkit as a service</h3>
 <p><a href="https://github.com/sakai135/wsl-vpnkit/releases">wsl-vpnkit</a> v0.4 does not support running wsl-vpnkit using <code>wsl.exe -d wsl-vpnkit service wsl-vpnkit start</code>. A systemd service file is provided to help us setup a systemd service in distro to run wsl-vpnkit in the background.</p>
 <p>Here are the steps:</p>
 <p><strong>dependencies</strong></p>
@@ -207,14 +209,109 @@ font-style: inherit;">host</span> google.fr</span></code></pre></div>
 <p>we can see <code>wsl-vpnkit</code> logs with <code>sudo systemctl status wsl-vpnkit.service</code></p>
 <p>and as soon as it is ok, we can unregister wsl-vpnkit</p>
 <pre class="shell"><code>wsl --unregister wsl-vpnkit</code></pre>
+</section>
+<section id="apt-trick-for-gp" class="level3">
+<h3 class="anchored" data-anchor-id="apt-trick-for-gp">apt trick for GP</h3>
+<p>This allows apt connectivity with GP</p>
+<div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Update apt conf for global protect</span></span>
+<span id="cb8-2"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">echo</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"*** Configuring apt User-Agent for GlobalProtect compatibility"</span></span>
+<span id="cb8-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># RANDOM doesn't like subshell so we need to generate the value beforehand</span></span>
+<span id="cb8-4"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Generate a random integer with a range between 1 and 32 used for User-Agent generation</span></span>
+<span id="cb8-5"><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">random_int</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">$((</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">RANDOM</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">32</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">))</span></span>
+<span id="cb8-6"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Generate a random string User-Agent to trick GlobalProtect :wink:</span></span>
+<span id="cb8-7"><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">random_useragent</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">$(</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">tr</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-dc</span> A-Za-z0-9 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;</span> /dev/urandom <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">|</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">head</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-c</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">$random_int)</span></span>
+<span id="cb8-8"></span>
+<span id="cb8-9"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">cat</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;&lt; ESH</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> /etc/apt/apt.conf.d/90globalprotectconf</span>
+<span id="cb8-10"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">Acquire {</span></span>
+<span id="cb8-11"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  http::User-Agent "</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">$random_useragent</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">";</span></span>
+<span id="cb8-12"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">  https::User-Agent "</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">$random_useragent</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">";</span></span>
+<span id="cb8-13"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">};</span></span>
+<span id="cb8-14"><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">ESH</span></span></code></pre></div>
+<p>as root</p>
 
 
+</section>
 </section>
 </section>
 
  ]]></description>
   <category>logbook</category>
   <category>wsl</category>
+  <category>wsl_latest</category>
   <guid>https://castorfou.github.io/posts/2023-12-01-logbook-December-23.html</guid>
   <pubDate>Fri, 01 Dec 2023 00:00:00 GMT</pubDate>
   <media:content url="https://castorfou.github.io/images/logbook.jpg" medium="image" type="image/jpeg"/>

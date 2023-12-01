@@ -162,6 +162,7 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
                                 <div class="quarto-categories">
                 <div class="quarto-category">logbook</div>
                 <div class="quarto-category">wsl</div>
+                <div class="quarto-category">wsl_latest</div>
               </div>
                   </div>
   </div>
@@ -191,7 +192,11 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
   <ul>
   <li><a href="#week-48---december-23" id="toc-week-48---december-23" class="nav-link active" data-scroll-target="#week-48---december-23">Week 48 - December 23</a>
   <ul class="collapse">
-  <li><a href="#friday-1201" id="toc-friday-1201" class="nav-link" data-scroll-target="#friday-1201">Friday 12/01</a></li>
+  <li><a href="#friday-1201" id="toc-friday-1201" class="nav-link" data-scroll-target="#friday-1201">Friday 12/01</a>
+  <ul class="collapse">
+  <li><a href="#wsl-vpnkit-as-a-service" id="toc-wsl-vpnkit-as-a-service" class="nav-link" data-scroll-target="#wsl-vpnkit-as-a-service">wsl-vpnkit as a service</a></li>
+  <li><a href="#apt-trick-for-gp" id="toc-apt-trick-for-gp" class="nav-link" data-scroll-target="#apt-trick-for-gp">apt trick for GP</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -202,11 +207,13 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 
 
 
-<p>wsl (vpnkit as a service)</p>
+<p>wsl (vpnkit as a service, apt trick for GP)</p>
 <section id="week-48---december-23" class="level1">
 <h1>Week 48 - December 23</h1>
 <section id="friday-1201" class="level2">
 <h2 class="anchored" data-anchor-id="friday-1201">Friday 12/01</h2>
+<section id="wsl-vpnkit-as-a-service" class="level3">
+<h3 class="anchored" data-anchor-id="wsl-vpnkit-as-a-service">wsl-vpnkit as a service</h3>
 <p><a href="https://github.com/sakai135/wsl-vpnkit/releases">wsl-vpnkit</a> v0.4 does not support running wsl-vpnkit using <code>wsl.exe -d wsl-vpnkit service wsl-vpnkit start</code>. A systemd service file is provided to help us setup a systemd service in distro to run wsl-vpnkit in the background.</p>
 <p>Here are the steps:</p>
 <p><strong>dependencies</strong></p>
@@ -274,8 +281,28 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 <p>we can see <code>wsl-vpnkit</code> logs with <code>sudo systemctl status wsl-vpnkit.service</code></p>
 <p>and as soon as it is ok, we can unregister wsl-vpnkit</p>
 <pre class="shell"><code>wsl --unregister wsl-vpnkit</code></pre>
+</section>
+<section id="apt-trick-for-gp" class="level3">
+<h3 class="anchored" data-anchor-id="apt-trick-for-gp">apt trick for GP</h3>
+<p>This allows apt connectivity with GP</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Update apt conf for global protect</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"*** Configuring apt User-Agent for GlobalProtect compatibility"</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># RANDOM doesn't like subshell so we need to generate the value beforehand</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a random integer with a range between 1 and 32 used for User-Agent generation</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="va">random_int</span><span class="op">=</span><span class="va">$((</span><span class="dv">1</span> <span class="op">+</span> <span class="va">RANDOM</span> <span class="op">%</span> <span class="dv">32</span><span class="va">))</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a random string User-Agent to trick GlobalProtect :wink:</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="va">random_useragent</span><span class="op">=</span><span class="va">$(</span><span class="fu">tr</span> <span class="at">-dc</span> A-Za-z0-9 <span class="op">&lt;</span> /dev/urandom <span class="kw">|</span> <span class="fu">head</span> <span class="at">-c</span> <span class="va">$random_int)</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> <span class="op">&lt;&lt; ESH</span> <span class="op">&gt;</span> /etc/apt/apt.conf.d/90globalprotectconf</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="st">Acquire {</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="st">  http::User-Agent "</span><span class="va">$random_useragent</span><span class="st">";</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="st">  https::User-Agent "</span><span class="va">$random_useragent</span><span class="st">";</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="st">};</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="op">ESH</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>as root</p>
 
 
+</section>
 </section>
 </section>
 
