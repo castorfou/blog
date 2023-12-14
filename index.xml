@@ -10,7 +10,315 @@
 <atom:link href="https://castorfou.github.io/index.xml" rel="self" type="application/rss+xml"/>
 <description>This is Guillaume Ramelet&#39;s personal blog.</description>
 <generator>quarto-1.3.450</generator>
-<lastBuildDate>Fri, 01 Dec 2023 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Wed, 13 Dec 2023 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Automount blobfuse2 containers in linux</title>
+  <link>https://castorfou.github.io/posts/2023-12-13-blobfuse2.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>An easy and secure way to share data with colleagues is using Azure Data Storage containers.</p>
+<p>This is how I mount such container using <code>bibfuse</code> (developped by my friend Sylvain) and <code>systemctl --user</code></p>
+<section id="about-azure-containers" class="level1">
+<h1>About Azure containers</h1>
+<p>From <a href="https://portal.azure.com/">Azure Portal</a>, you can filter for “Storage Account”</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://castorfou.github.io/posts/2023-12-13-blobfuse2_files/figure-html/9c109e14-a018-41d0-9cf9-e8b490fa8c03-1-928521a8-f031-4826-9f58-27628d5b5b9c.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">image.png</figcaption>
+</figure>
+</div>
+<p>In the following page, I will use “my_storage_account”</p>
+<p>And from “my_storage_account”, I can get my storage key from “Access keys”</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://castorfou.github.io/posts/2023-12-13-blobfuse2_files/figure-html/bbf09530-249c-4442-be2d-9da250c9a1fe-1-4a3a0d22-330b-427c-9ebd-e8f005264c2f.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">image.png</figcaption>
+</figure>
+</div>
+<p>In the following page, I will use “my_storage_key”</p>
+</section>
+<section id="installation---set-up" class="level1">
+<h1>Installation - Set-up</h1>
+<section id="install-dependancies" class="level2">
+<h2 class="anchored" data-anchor-id="install-dependancies">install dependancies</h2>
+<div class="sourceCode" id="annotated-cell-1" style="background: #f1f3f5;"><pre class="sourceCode bash code-annotation-code code-with-copy code-annotated"><code class="sourceCode bash"><span id="annotated-cell-1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sudo</span> apt-get install libfuse3-dev fuse3</span>
+<span id="annotated-cell-1-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sudo</span> apt-get install blobfuse2</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-1-3" class="code-annotation-target"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">pip</span> install bibfuse</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div>
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-1" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-lines="3" data-code-cell="annotated-cell-1" data-code-annotation="1">install in base</span>
+</dd>
+</dl>
+</section>
+<section id="configure-bibfuse" class="level2">
+<h2 class="anchored" data-anchor-id="configure-bibfuse">configure bibfuse</h2>
+<p>Config will be in <code>~/.config/bibfuse</code>, we store that in env variable <code>BIBFUSE_SECURE_PATH</code></p>
+<p>And a passphrase of exactly 16-chars is expected, we store that in env variable <code>BLOBFUSE2_SECURE_CONFIG_PASSPHRASE</code></p>
+<p>And call <code>bibfuse encrypt</code> to create the config</p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mkdir</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-p</span> ~/.config/bibfuse</span>
+<span id="cb1-2"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">export</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">BIBFUSE_SECURE_PATH</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>~/.config/bibfuse</span>
+<span id="cb1-3"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">export</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">BLOBFUSE2_SECURE_CONFIG_PASSPHRASE</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>anypassphrase<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;</span>16</span>
+<span id="cb1-4"></span>
+<span id="cb1-5"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">bibfuse</span> encrypt <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">--account</span> my_storage_account <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">--key</span> my_storage_key</span></code></pre></div>
+<p>This creates a <code>my_storage_account.yaml</code> config file under <code>~/.config/bibfuse</code></p>
+<p>And modify startup script (<code>.bashrc</code>, <code>.zshrc</code>) to export <code>BIBFUSE_SECURE_PATH</code>, <code>BLOBFUSE2_SECURE_CONFIG_PASSPHRASE</code></p>
+<p>Will be used by bibfuse commands</p>
+</section>
+</section>
+<section id="usage" class="level1">
+<h1>Usage</h1>
+<section id="list-all-storage-accounts" class="level2">
+<h2 class="anchored" data-anchor-id="list-all-storage-accounts">list all storage accounts</h2>
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">bibfuse</span> list <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">--accounts</span></span>
+<span id="cb2-2"><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> my_storage_account</span></code></pre></div>
+</section>
+<section id="mount-all-containers-from-a-storage-account" class="level2">
+<h2 class="anchored" data-anchor-id="mount-all-containers-from-a-storage-account">mount all containers from a storage account</h2>
+<p>in <code>~/AZURE</code></p>
+<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">bibfuse</span> mount ~/AZURE <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">--account</span> my_storage_account <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">--all</span>  </span></code></pre></div>
+</section>
+<section id="unmount-all-containers" class="level2">
+<h2 class="anchored" data-anchor-id="unmount-all-containers">unmount all containers</h2>
+<p>should be called from <code>~/AZURE</code></p>
+<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">cd</span> ~/AZURE</span>
+<span id="cb4-2"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">bibfuse</span> unmount –-all</span>
+<span id="cb4-3"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">cd</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-</span> </span></code></pre></div>
+</section>
+<section id="mount-a-given-container-container_1" class="level2">
+<h2 class="anchored" data-anchor-id="mount-a-given-container-container_1">mount a given container <code>container_1</code></h2>
+<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">bibfuse</span> mount ~/AZURE/container_1 <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">--account</span> my_storage_account <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">--container</span> container_1</span></code></pre></div>
+</section>
+</section>
+<section id="start-this-with-systemd---user" class="level1">
+<h1>Start this with <code>systemd --user</code></h1>
+<p>I will use 4 files for that:</p>
+<ul>
+<li><p><code>mount_azure.sh</code> in <code>~/bin</code> to mount all containers</p></li>
+<li><p><code>unmount_azure.sh</code> in <code>~/bin</code> to unmount all containers</p></li>
+<li><p><code>mount_azure.conf</code> in <code>~/bin</code> to store BIBFUSE_SECURE_PATH, BLOBFUSE2_SECURE_CONFIG_PASSPHRASE</p></li>
+<li><p><code>bibfuse.service</code> in <code>~/.config/systemd/user</code> with the service logic</p></li>
+</ul>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-12-14T13:52:15.457967Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-12-14T13:52:15.457705Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-12-14T13:52:15.568541Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-12-14T13:52:15.567661Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-12-14T13:52:15.457945Z&quot;}" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#changed filename for confidentiality reason</span></span>
+<span id="cb6-2"><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">!</span>cat <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~/</span><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">bin</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>mount_azure\ \(copy\).sh</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#!/bin/bash
+source ~/miniconda/etc/profile.d/conda.sh
+source ~/bin/mount_azure.conf
+export BLOBFUSE2_SECURE_CONFIG_PASSPHRASE
+export BIBFUSE_SECURE_PATH
+conda activate base
+bibfuse mount ~/AZURE/zyoung --account my_storage_account --container container_1</code></pre>
+</div>
+</div>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-12-14T13:52:27.313159Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-12-14T13:52:27.312776Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-12-14T13:52:27.423121Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-12-14T13:52:27.422451Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-12-14T13:52:27.313123Z&quot;}" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">!</span>cat <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~/</span><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">bin</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>unmount_azure.sh</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#!/bin/bash
+cd ~/AZURE
+source ~/miniconda/etc/profile.d/conda.sh
+source ~/bin/mount_azure.conf
+export BLOBFUSE2_SECURE_CONFIG_PASSPHRASE
+export BIBFUSE_SECURE_PATH
+conda activate base
+bibfuse unmount --all
+cd -</code></pre>
+</div>
+</div>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-12-14T13:53:33.779237Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-12-14T13:53:33.778618Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-12-14T13:53:33.889149Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-12-14T13:53:33.888500Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-12-14T13:53:33.779218Z&quot;}" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#changed filename for confidentiality reason</span></span>
+<span id="cb10-2"><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">!</span>cat <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~/</span><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">bin</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>mount_azure\ \(copy\).conf</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>BIBFUSE_SECURE_PATH=/home/guillaume/.config/bibfuse
+BLOBFUSE2_SECURE_CONFIG_PASSPHRASE=anypassphrase&lt;16</code></pre>
+</div>
+</div>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-12-14T13:47:46.199255Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-12-14T13:47:46.199036Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-12-14T13:47:46.309598Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-12-14T13:47:46.309007Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-12-14T13:47:46.199239Z&quot;}" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">!</span>cat <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~/</span>.config<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>systemd<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>user<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>bibfuse.service</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[Unit]
+Description=Mount azure storage account with bibfuse
+DefaultDependencies=no
+After=network.target
+
+[Service]
+Type=simple
+#User=guillaume
+#Group=guillaume
+EnvironmentFile=/home/guillaume/bin/mount_azure.conf
+ExecStart=/home/guillaume/bin/mount_azure.sh
+ExecStop=/home/guillaume/bin/unmount_azure.sh
+TimeoutStartSec=5
+RemainAfterExit=yes
+
+[Install]
+WantedBy=default.target</code></pre>
+</div>
+</div>
+<section id="setup-systemd-user-bibfuse.service" class="level2">
+<h2 class="anchored" data-anchor-id="setup-systemd-user-bibfuse.service">setup systemd –user bibfuse.service</h2>
+<p>Activate systemd for users</p>
+<div class="sourceCode" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">loginctl</span> enable-linger guillaume</span></code></pre></div>
+<p>Load <code>bibfuse</code> service</p>
+<div class="sourceCode" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">systemctl</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">--user</span> daemon-reload</span></code></pre></div>
+<p>Start / Stop / Status</p>
+<div class="sourceCode" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">systemctl</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">--user</span> start bibfuse</span>
+<span id="cb16-2"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">systemctl</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">--user</span> stop bibfuse</span>
+<span id="cb16-3"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">systemctl</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">--user</span> status bibfuse</span></code></pre></div>
+<p>and everything looks great, activate to start at boot time</p>
+<div class="sourceCode" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">systemctl</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">--user</span> enable bibfuse</span></code></pre></div>
+</section>
+<section id="monitor-logs-for-bibfuse" class="level2">
+<h2 class="anchored" data-anchor-id="monitor-logs-for-bibfuse">monitor logs for bibfuse</h2>
+<p>Just the standard way, but using <code>--user</code></p>
+<div class="sourceCode" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">journalctl</span> –-user <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-f</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-u</span> bibfuse</span>
+<span id="cb18-2"></span>
+<span id="cb18-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># or without -f (output appended data)</span></span>
+<span id="cb18-4"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">journalctl</span> –-user <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-u</span> bibfuse</span></code></pre></div>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <category>wsl</category>
+  <category>aml</category>
+  <guid>https://castorfou.github.io/posts/2023-12-13-blobfuse2.html</guid>
+  <pubDate>Wed, 13 Dec 2023 00:00:00 GMT</pubDate>
+  <media:content url="https://castorfou.github.io/images/icons/image_linux.jpg" medium="image" type="image/jpeg"/>
+</item>
 <item>
   <title>Logbook for December 23</title>
   <link>https://castorfou.github.io/posts/2023-12-01-logbook-December-23.html</link>
@@ -834,27 +1142,27 @@ font-style: inherit;">pip</span> install jupyterlab-quarto</span><div class="cod
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-1" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-lines="2" data-code-cell="annotated-cell-1">tqdm available for all kernels (true?)</span>
+<span data-code-annotation="1" data-code-cell="annotated-cell-1" data-code-lines="2">tqdm available for all kernels (true?)</span>
 </dd>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-annotation="2" data-code-lines="8" data-code-cell="annotated-cell-1">kernels are already listed against each conda environment (I won’t manually install kernels anymore <code>python -m ipykernel install --user --name=my_env</code>)</span>
+<span data-code-annotation="2" data-code-cell="annotated-cell-1" data-code-lines="8">kernels are already listed against each conda environment (I won’t manually install kernels anymore <code>python -m ipykernel install --user --name=my_env</code>)</span>
 </dd>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-annotation="3" data-code-lines="9" data-code-cell="annotated-cell-1">plotly extension</span>
+<span data-code-annotation="3" data-code-cell="annotated-cell-1" data-code-lines="9">plotly extension</span>
 </dd>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-annotation="4" data-code-lines="10" data-code-cell="annotated-cell-1">execute time</span>
+<span data-code-annotation="4" data-code-cell="annotated-cell-1" data-code-lines="10">execute time</span>
 </dd>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-annotation="5" data-code-lines="12" data-code-cell="annotated-cell-1">in case of holoviz usage (see datashadering), pyviz_comms version &gt;=3.0 required</span>
+<span data-code-annotation="5" data-code-cell="annotated-cell-1" data-code-lines="12">in case of holoviz usage (see datashadering), pyviz_comms version &gt;=3.0 required</span>
 </dd>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-annotation="6" data-code-lines="13" data-code-cell="annotated-cell-1">in case of nbdev usage: <a href="https://quarto.org/docs/tools/jupyter-lab-extension.html" class="uri">https://quarto.org/docs/tools/jupyter-lab-extension.html</a></span>
+<span data-code-annotation="6" data-code-cell="annotated-cell-1" data-code-lines="13">in case of nbdev usage: <a href="https://quarto.org/docs/tools/jupyter-lab-extension.html" class="uri">https://quarto.org/docs/tools/jupyter-lab-extension.html</a></span>
 </dd>
 </dl>
 </section>
@@ -4762,168 +5070,6 @@ font-style: inherit;">=</span> ssl._create_unverified_context</span></code></pre
   <guid>https://castorfou.github.io/posts/2023-01-25-fastai-live-coding-sessions.html</guid>
   <pubDate>Wed, 25 Jan 2023 00:00:00 GMT</pubDate>
   <media:content url="https://castorfou.github.io/images/icons/fastai.png" medium="image" type="image/png" height="59" width="144"/>
-</item>
-<item>
-  <title>Latex in markdown reference</title>
-  <link>https://castorfou.github.io/posts/2023-01-23-latex_reference.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<section id="reference" class="level1">
-<h1>Reference</h1>
-<p><a href="https://en.wikibooks.org/wiki/LaTeX/Mathematics" class="uri">https://en.wikibooks.org/wiki/LaTeX/Mathematics</a></p>
-</section>
-<section id="examples" class="level1">
-<h1>Examples</h1>
-<p>We can integrate markdown between <code>$ $</code> or <code>$$ $$</code></p>
-<p>Single <code>$</code> will be inline</p>
-<p>Double <code>$$</code> will be centered into a new line</p>
-<table class="table">
-<colgroup>
-<col style="width: 55%">
-<col style="width: 45%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>LaTeX</th>
-<th>Markdow</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><img src="https://latex.codecogs.com/png.latex?%5Cwidehat%7Bq%7D"></td>
-<td><code>\widehat{q}</code></td>
-</tr>
-<tr class="even">
-<td><img src="https://latex.codecogs.com/png.latex?%7Cx-x_M%7C"></td>
-<td><code>|x-x_M|</code></td>
-</tr>
-<tr class="odd">
-<td><img src="https://latex.codecogs.com/png.latex?f_M(x)"></td>
-<td><code>f_M(x)</code></td>
-</tr>
-<tr class="even">
-<td><img src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%5Csum_%7Bm%7D"></td>
-<td><code>\displaystyle\sum_{m}</code></td>
-</tr>
-<tr class="odd">
-<td><img src="https://latex.codecogs.com/png.latex?%5Clangle%7Bx,w_m%7D%5Crangle"></td>
-<td><code>\langle{x,w_m}\rangle</code></td>
-</tr>
-<tr class="even">
-<td><img src="https://latex.codecogs.com/png.latex?%5C%7C%20v_m%20%5C%7C"></td>
-<td><code>\| v_m \|</code></td>
-</tr>
-<tr class="odd">
-<td><img src="https://latex.codecogs.com/png.latex?%5Ccos"></td>
-<td><code>\cos</code></td>
-</tr>
-<tr class="even">
-<td><img src="https://latex.codecogs.com/png.latex?%5Cmathbb%7BZ%7D%5Ed"></td>
-<td><code>\mathbb{Z}$^d</code></td>
-</tr>
-<tr class="odd">
-<td><img src="https://latex.codecogs.com/png.latex?%5Cinfty"></td>
-<td><code>\infty</code></td>
-</tr>
-<tr class="even">
-<td><img src="https://latex.codecogs.com/png.latex?f%20%5Cin%20L%5E2"></td>
-<td><code>f \in L^2</code></td>
-</tr>
-<tr class="odd">
-<td>$$</td>
-<td><code>\implies</code></td>
-</tr>
-<tr class="even">
-<td><img src="https://latex.codecogs.com/png.latex?%5Clim%5Climits_%7BM%20%5Cto%20%5Cinfty%7D"></td>
-<td><code>\lim\limits_{M \to \infty}</code></td>
-</tr>
-<tr class="odd">
-<td><img src="https://latex.codecogs.com/png.latex?P(A%7CB)%20=%20%5Cfrac%7BP(B%7CA)*P(A)%7D%7BP(B)%7D"></td>
-<td><code>P(A|B) = \frac{P(B|A)*P(A)}{P(B)}</code></td>
-</tr>
-<tr class="even">
-<td><img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Balign%7D%20%5C%5C%20Q_t(a)%20&amp;=%20%5Cfrac%7B%5Ctext%7Bsum%20of%20rewards%20when%20%7D%20%5Cmathit%7Ba%7D%20%5Ctext%7B%20taken%20prior%20to%20%7D%5Cmathit%7Bt%7D%7D%7B%5Ctext%7Bnumber%20of%20times%20%7D%20%5Cmathit%7Ba%7D%20%5Ctext%7B%20taken%20prior%20to%20%7D%5Cmathit%7Bt%7D%7D%20%5C%5C%20&amp;%20=%20%5Cfrac%7B%5Cdisplaystyle%5Csum_%7Bi=1%7D%5E%7Bt-1%7D%20R_i.%5Cmathcal%7B1%7D_%7BA_i=a%7D%7D%7B%5Cdisplaystyle%5Csum_%7Bi=1%7D%5E%7Bt-1%7D%20%5Cmathcal%7B1%7D_%7BA_i=a%7D%7D%20%5Cend%7Balign%7D"></td>
-<td><code>\begin{align} \\</code> &nbsp;<code>Q_t(a) &amp;= \frac{\text{sum of rewards when } \mathit{a} \text{ taken prior to }\mathit{t}}{\text{number of times } \mathit{a} \text{ taken prior to }\mathit{t}} \\</code> &nbsp;<code>&amp; = \frac{\displaystyle\sum_{i=1}^{t-1} R_i.\mathcal{1}_{A_i=a}}{\displaystyle\sum_{i=1}^{t-1} \mathcal{1}_{A_i=a}}</code> &nbsp;<code>\end{align}</code></td>
-</tr>
-<tr class="odd">
-<td><img src="https://latex.codecogs.com/png.latex?A_t=%5Cunderset%7Ba%7D%7B%5Cmathrm%7Bargmax%7D%7D%7B%5Ctext%7B%20%7DQ_t(a)%7D"></td>
-<td><code>A_t=\underset{a}{\mathrm{argmax}}{\text{ }Q_t(a)}</code></td>
-</tr>
-<tr class="even">
-<td><img src="https://latex.codecogs.com/png.latex?p(s',r%7Cs,a)%20%5Cdoteq%20Pr%5C%7BS_t=s',%20R_t=r%7CS_%7Bt-1%7D=s,%20A_%7Bt-1%7D=a%5C%7D"></td>
-<td><code>p(s',r|s,a) \doteq Pr\{S_t=s', R_t=r|S_{t-1}=s, A_{t-1}=a\}</code></td>
-</tr>
-<tr class="odd">
-<td><img src="https://latex.codecogs.com/png.latex?q_%5Cpi(s,a)%20%5Cdoteq%20%5Cmathbb%7BE%7D%5BR_%7Bt+1%7D+%5Cgamma.G_%7Bt+1%7D%7CS_t=s,%20A_t=a%5D"></td>
-<td><code>q_\pi(s,a) \doteq \mathbb{E}[R_{t+1}+\gamma.G_{t+1}|S_t=s, A_t=a]</code></td>
-</tr>
-<tr class="even">
-<td><img src="https://latex.codecogs.com/png.latex?v_*(s)%5Cdoteq%20%5Cmax%5Climits_%7B%5Cpi%7D%20v_%5Cpi(s),%20%5Cforall%20s%20%5Cin%20S"></td>
-<td><code>v_*(s)\doteq \max\limits_{\pi} v_\pi(s), \forall s \in S</code></td>
-</tr>
-<tr class="odd">
-<td><img src="https://latex.codecogs.com/png.latex?q_%5Cpi(s,a)%20%5Cdoteq%20%5Cmathbb%7BE%7D%5BR_%7Bt+1%7D+%5Cgamma.G_%7Bt+1%7D%7CS_t=s,%20A_t=a%5D"></td>
-<td><code>q_\pi(s,a) \doteq \mathbb{E}[R_{t+1}+\gamma.G_{t+1}|S_t=s, A_t=a]</code></td>
-</tr>
-<tr class="even">
-<td><img src="https://latex.codecogs.com/png.latex?l(w,b)=%5Cfrac%7B1%7D%7BN%7D%5Cdisplaystyle%5Csum_%7Bn=1%7D%5E%7BN%7D(y_n-(x_nw+b))%5E2"></td>
-<td><code>l(w,b)=\frac{1}{N}\displaystyle\sum_{n=1}^{N}(y_n-(x_nw+b))^2</code></td>
-</tr>
-<tr class="odd">
-<td><img src="https://latex.codecogs.com/png.latex?%5Cnabla%20l(w,b)%20=%20%5Cbegin%7Bbmatrix%7D%5Cfrac%7B%5Cpartial%20l(w,b)%7D%7B%5Cpartial%20w_1%7D%5C%5C%20%5Cvdots%20%5C%5C%5Cfrac%7B%5Cpartial%20l(w,b)%7D%7B%5Cpartial%20w_d%7D%5Cend%7Bbmatrix%7D"></td>
-<td><code>\nabla l(w,b) = \begin{bmatrix}\frac{\partial l(w,b)}{\partial w_1}\\ \vdots \\\frac{\partial l(w,b)}{\partial w_d}\end{bmatrix}</code></td>
-</tr>
-<tr class="even">
-<td><img src="https://latex.codecogs.com/png.latex?%5C%5C%20H(X)%20=%20%E2%80%93%20%5Csum_%7Bx%20%5Cin%20X%7D%20P(x)%20*%20%5Clog(P(x))"></td>
-<td><code>\\ H(X) = – \sum_{x \in X} P(x) * \log(P(x))</code></td>
-</tr>
-<tr class="odd">
-<td><img src="https://latex.codecogs.com/png.latex?X%20%5Csim%20%5Cmathcal%7BN%7D(%5Cmu,%5C,%5Csigma%5E%7B2%7D)"></td>
-<td><code>X \sim \mathcal{N}(\mu,\,\sigma^{2})</code></td>
-</tr>
-<tr class="even">
-<td><img src="https://latex.codecogs.com/png.latex?%5Csqrt%5Bn%5D%7B1+x+x%5E2+x%5E3+%5Cdots+x%5En%7D"></td>
-<td><code>\sqrt[n]{1+x+x^2+x^3+\dots+x^n}</code></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-
-
-</section>
-
- ]]></description>
-  <category>jupyter</category>
-  <category>latex</category>
-  <guid>https://castorfou.github.io/posts/2023-01-23-latex_reference.html</guid>
-  <pubDate>Mon, 23 Jan 2023 00:00:00 GMT</pubDate>
-  <media:content url="https://castorfou.github.io/images/icons/jupyter.png" medium="image" type="image/png" height="65" width="144"/>
 </item>
 </channel>
 </rss>
