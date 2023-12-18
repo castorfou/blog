@@ -638,6 +638,7 @@ font-style: inherit;">ESH</span></span></code></pre></div>
 <li><p>accidently pushing large (e.g.&nbsp;&gt;100MB) files to gitlab (and then to clean afterward <a href="../posts/2021-07-29-git-clean-large-files.html#remove-big-files">git clean repo with bfg</a>)</p></li>
 <li><p>identify what has changed between 2 commits of a notebook</p></li>
 </ul>
+<p>(Dec-23 update) - moved from black to ruff, inspired by <a href="https://twitter.com/ChaseMc67/status/1736196200553181598" class="uri">https://twitter.com/ChaseMc67/status/1736196200553181598</a></p>
 <section id="pre-commit" class="level1">
 <h1>pre-commit</h1>
 <p><a href="https://pre-commit.com/">https://pre-commit.com/</a></p>
@@ -655,7 +656,8 @@ font-style: inherit;">ESH</span></span></code></pre></div>
 <p>Here are the hooks of interest for me:</p>
 <ul>
 <li><p><strong>nbdev_clean</strong> will force cleaning of metadata in notebooks, here is a nice explanation <a href="https://nbdev.fast.ai/tutorials/git_friendly_jupyter.html">Git-Friendly Jupyter</a></p></li>
-<li><p><strong>black-jupyter</strong> will make your python code in notebooks PEP compliant</p></li>
+<li><p><del><strong>black-jupyter</strong>– will make your python code in notebooks PEP compliant</del></p></li>
+<li><p><strong>ruff</strong> which is a way to integrate black+isort+flake8 in one step</p></li>
 <li><p><strong>check-added-large-files</strong> with 90MB will ensure you don’t push large files to gitlab (internal limit of 100 MB and it is tedious to clean)</p></li>
 </ul>
 </section>
@@ -671,7 +673,7 @@ font-style: inherit;">pip</span> install pre-commit</span></code></pre></div>
 background-color: null;
 font-style: inherit;">pre-commit</span> install</span></code></pre></div>
 <p>Here is an example of <code>.pre-commit-config.yaml</code></p>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-11-22T09:19:13.188466Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-11-22T09:19:13.188222Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-11-22T09:19:13.309528Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-11-22T09:19:13.308319Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-11-22T09:19:13.188452Z&quot;}" data-execution_count="2">
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-12-18T10:25:56.415930Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-12-18T10:25:56.415522Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-12-18T10:25:56.536013Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-12-18T10:25:56.535198Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-12-18T10:25:56.415900Z&quot;}" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">!</span>cat ..<span class="op" style="color: #5E5E5E;
@@ -690,10 +692,17 @@ font-style: inherit;">-</span>config.yaml</span></code></pre></div>
   hooks:
   - id: nbdev_clean
 
-- repo: https://github.com/psf/black
-  rev: "23.11.0"
+- repo: https://github.com/astral-sh/ruff-pre-commit
+  # Ruff version.
+  rev: v0.1.8
   hooks:
-  - id: black-jupyter
+    # Run the linter.
+    - id: ruff
+      types_or: [ python, pyi, jupyter ]
+      args: [ --fix ]
+    # Run the formatter.
+    - id: ruff-format
+      types_or: [ python, pyi, jupyter ]
 
 - repo: https://github.com/pre-commit/pre-commit-hooks
   rev: v4.5.0 # Use the version you want
@@ -767,7 +776,7 @@ font-style: inherit;">All</span> done! ✨ 🍰 ✨</span>
 background-color: null;
 font-style: inherit;">1</span> file reformatted, 1 file left unchanged.</span></code></pre></div>
 <p>When a modif is done by a pre-hook, you have to re-add this modification in git.</p>
-<p>This is a matter of repeating <code>git add</code> <code>git commit</code></p>
+<p>This is a matter of repeating <code>git add</code> <code>git commit</code> or to run <code>git add -u &amp;&amp; !!</code></p>
 <section id="test-of-check-added-large-files" class="level3">
 <h3 class="anchored" data-anchor-id="test-of-check-added-large-files">test of <code>check-added-large-files</code></h3>
 <div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><span class="co" style="color: #5E5E5E;
@@ -1142,27 +1151,27 @@ font-style: inherit;">pip</span> install jupyterlab-quarto</span><div class="cod
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-1" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-cell="annotated-cell-1" data-code-lines="2">tqdm available for all kernels (true?)</span>
+<span data-code-lines="2" data-code-annotation="1" data-code-cell="annotated-cell-1">tqdm available for all kernels (true?)</span>
 </dd>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-annotation="2" data-code-cell="annotated-cell-1" data-code-lines="8">kernels are already listed against each conda environment (I won’t manually install kernels anymore <code>python -m ipykernel install --user --name=my_env</code>)</span>
+<span data-code-lines="8" data-code-annotation="2" data-code-cell="annotated-cell-1">kernels are already listed against each conda environment (I won’t manually install kernels anymore <code>python -m ipykernel install --user --name=my_env</code>)</span>
 </dd>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-annotation="3" data-code-cell="annotated-cell-1" data-code-lines="9">plotly extension</span>
+<span data-code-lines="9" data-code-annotation="3" data-code-cell="annotated-cell-1">plotly extension</span>
 </dd>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-annotation="4" data-code-cell="annotated-cell-1" data-code-lines="10">execute time</span>
+<span data-code-lines="10" data-code-annotation="4" data-code-cell="annotated-cell-1">execute time</span>
 </dd>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-annotation="5" data-code-cell="annotated-cell-1" data-code-lines="12">in case of holoviz usage (see datashadering), pyviz_comms version &gt;=3.0 required</span>
+<span data-code-lines="12" data-code-annotation="5" data-code-cell="annotated-cell-1">in case of holoviz usage (see datashadering), pyviz_comms version &gt;=3.0 required</span>
 </dd>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-annotation="6" data-code-cell="annotated-cell-1" data-code-lines="13">in case of nbdev usage: <a href="https://quarto.org/docs/tools/jupyter-lab-extension.html" class="uri">https://quarto.org/docs/tools/jupyter-lab-extension.html</a></span>
+<span data-code-lines="13" data-code-annotation="6" data-code-cell="annotated-cell-1">in case of nbdev usage: <a href="https://quarto.org/docs/tools/jupyter-lab-extension.html" class="uri">https://quarto.org/docs/tools/jupyter-lab-extension.html</a></span>
 </dd>
 </dl>
 </section>

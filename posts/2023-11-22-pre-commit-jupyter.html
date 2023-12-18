@@ -232,6 +232,7 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 <li><p>accidently pushing large (e.g.&nbsp;&gt;100MB) files to gitlab (and then to clean afterward <a href="../posts/2021-07-29-git-clean-large-files.html#remove-big-files">git clean repo with bfg</a>)</p></li>
 <li><p>identify what has changed between 2 commits of a notebook</p></li>
 </ul>
+<p>(Dec-23 update) - moved from black to ruff, inspired by <a href="https://twitter.com/ChaseMc67/status/1736196200553181598" class="uri">https://twitter.com/ChaseMc67/status/1736196200553181598</a></p>
 <section id="pre-commit" class="level1">
 <h1>pre-commit</h1>
 <p><a href="https://pre-commit.com/">https://pre-commit.com/</a></p>
@@ -249,7 +250,8 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 <p>Here are the hooks of interest for me:</p>
 <ul>
 <li><p><strong>nbdev_clean</strong> will force cleaning of metadata in notebooks, here is a nice explanation <a href="https://nbdev.fast.ai/tutorials/git_friendly_jupyter.html">Git-Friendly Jupyter</a></p></li>
-<li><p><strong>black-jupyter</strong> will make your python code in notebooks PEP compliant</p></li>
+<li><p><del><strong>black-jupyter</strong>– will make your python code in notebooks PEP compliant</del></p></li>
+<li><p><strong>ruff</strong> which is a way to integrate black+isort+flake8 in one step</p></li>
 <li><p><strong>check-added-large-files</strong> with 90MB will ensure you don’t push large files to gitlab (internal limit of 100 MB and it is tedious to clean)</p></li>
 </ul>
 </section>
@@ -261,7 +263,7 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 <p>3rd you need to <strong>activate</strong> pre-commit</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pre-commit</span> install</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Here is an example of <code>.pre-commit-config.yaml</code></p>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-11-22T09:19:13.188466Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-11-22T09:19:13.188222Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-11-22T09:19:13.309528Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-11-22T09:19:13.308319Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-11-22T09:19:13.188452Z&quot;}" data-execution_count="2">
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-12-18T10:25:56.415930Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-12-18T10:25:56.415522Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-12-18T10:25:56.536013Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-12-18T10:25:56.535198Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-12-18T10:25:56.415900Z&quot;}" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cat ..<span class="op">/</span>files<span class="op">/</span>.pre<span class="op">-</span>commit<span class="op">-</span>config.yaml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>repos:
@@ -270,10 +272,17 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
   hooks:
   - id: nbdev_clean
 
-- repo: https://github.com/psf/black
-  rev: "23.11.0"
+- repo: https://github.com/astral-sh/ruff-pre-commit
+  # Ruff version.
+  rev: v0.1.8
   hooks:
-  - id: black-jupyter
+    # Run the linter.
+    - id: ruff
+      types_or: [ python, pyi, jupyter ]
+      args: [ --fix ]
+    # Run the formatter.
+    - id: ruff-format
+      types_or: [ python, pyi, jupyter ]
 
 - repo: https://github.com/pre-commit/pre-commit-hooks
   rev: v4.5.0 # Use the version you want
@@ -307,7 +316,7 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 <span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="ex">All</span> done! ✨ 🍰 ✨</span>
 <span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="ex">1</span> file reformatted, 1 file left unchanged.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>When a modif is done by a pre-hook, you have to re-add this modification in git.</p>
-<p>This is a matter of repeating <code>git add</code> <code>git commit</code></p>
+<p>This is a matter of repeating <code>git add</code> <code>git commit</code> or to run <code>git add -u &amp;&amp; !!</code></p>
 <section id="test-of-check-added-large-files" class="level3">
 <h3 class="anchored" data-anchor-id="test-of-check-added-large-files">test of <code>check-added-large-files</code></h3>
 <div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a 100 MB file</span></span>
