@@ -1474,7 +1474,7 @@
     "href": "posts/2023-11-22-pre-commit-jupyter.html",
     "title": "Using notebooks within a team for exploration",
     "section": "",
-    "text": "When running explorations, and specially when collaborating with colleagues, it may be difficult to use notebooks.\nHere are some issues I encounter regularly:\n(Dec-23 update) - moved from black to ruff, inspired by https://twitter.com/ChaseMc67/status/1736196200553181598"
+    "text": "When running explorations, and specially when collaborating with colleagues, it may be difficult to use notebooks.\nHere are some issues I encounter regularly:\n(Dec-23 update) - moved from black to ruff, inspired by https://twitter.com/ChaseMc67/status/1736196200553181598\n(Dec-23 update) - moved back to black. In some cases I have loops when running ruff-format."
   },
   {
     "objectID": "posts/2023-11-22-pre-commit-jupyter.html#what-is-it",
@@ -1488,7 +1488,7 @@
     "href": "posts/2023-11-22-pre-commit-jupyter.html#install-setup",
     "title": "Using notebooks within a team for exploration",
     "section": "install setup",
-    "text": "install setup\n1st you need to install pre_commit\npip install pre-commit\n2nd you need a config file .pre-commit-config.yaml\n3rd you need to activate pre-commit\npre-commit install\nHere is an example of .pre-commit-config.yaml\n\n!cat ../files/.pre-commit-config.yaml\n\nrepos:\n- repo: https://github.com/fastai/nbdev\n  rev: 2.3.13\n  hooks:\n  - id: nbdev_clean\n\n- repo: https://github.com/astral-sh/ruff-pre-commit\n  # Ruff version.\n  rev: v0.1.8\n  hooks:\n    # Run the linter.\n    - id: ruff\n      types_or: [ python, pyi, jupyter ]\n      args: [ --fix ]\n    # Run the formatter.\n    - id: ruff-format\n      types_or: [ python, pyi, jupyter ]\n\n- repo: https://github.com/pre-commit/pre-commit-hooks\n  rev: v4.5.0 # Use the version you want\n  hooks:\n    - id: check-added-large-files\n      args: [\"--maxkb=90000\"]"
+    "text": "install setup\n1st you need to install pre_commit\npip install pre-commit\n2nd you need a config file .pre-commit-config.yaml\n3rd you need to activate pre-commit\npre-commit install\nHere is an example of .pre-commit-config.yaml\n\n!cat ../files/pre-commit-config.yaml\n\nrepos:\n- repo: https://github.com/fastai/nbdev\n  rev: 2.3.13\n  hooks:\n  - id: nbdev_clean\n\n- repo: https://github.com/psf/black-pre-commit-mirror\n  rev: 23.12.0\n  hooks:\n  - id: black-jupyter\n\n# - repo: https://github.com/astral-sh/ruff-pre-commit\n#   # Ruff version.\n#   rev: v0.1.8\n#   hooks:\n#     # Run the linter.\n#     - id: ruff\n#       types_or: [ python, pyi, jupyter ]\n#       args: [ --fix ]\n#     # Run the formatter.\n#     - id: ruff-format\n#       types_or: [ python, pyi, jupyter ]\n\n- repo: https://github.com/pre-commit/pre-commit-hooks\n  rev: v4.5.0 # Use the version you want\n  hooks:\n    - id: check-added-large-files\n      args: [\"--maxkb=90000\"]"
   },
   {
     "objectID": "posts/2023-11-22-pre-commit-jupyter.html#how-to-use-it",

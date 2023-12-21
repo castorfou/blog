@@ -56,7 +56,7 @@ font-style: inherit;">pip</span> install bibfuse</span><div class="code-annotati
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-1" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="3" data-code-cell="annotated-cell-1" data-code-annotation="1">install in base</span>
+<span data-code-annotation="1" data-code-lines="3" data-code-cell="annotated-cell-1">install in base</span>
 </dd>
 </dl>
 </section>
@@ -639,6 +639,7 @@ font-style: inherit;">ESH</span></span></code></pre></div>
 <li><p>identify what has changed between 2 commits of a notebook</p></li>
 </ul>
 <p>(Dec-23 update) - moved from black to ruff, inspired by <a href="https://twitter.com/ChaseMc67/status/1736196200553181598" class="uri">https://twitter.com/ChaseMc67/status/1736196200553181598</a></p>
+<p>(Dec-23 update) - moved back to black. In some cases I have loops when running ruff-format.</p>
 <section id="pre-commit" class="level1">
 <h1>pre-commit</h1>
 <p><a href="https://pre-commit.com/">https://pre-commit.com/</a></p>
@@ -673,14 +674,14 @@ font-style: inherit;">pip</span> install pre-commit</span></code></pre></div>
 background-color: null;
 font-style: inherit;">pre-commit</span> install</span></code></pre></div>
 <p>Here is an example of <code>.pre-commit-config.yaml</code></p>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-12-18T10:25:56.415930Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-12-18T10:25:56.415522Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-12-18T10:25:56.536013Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-12-18T10:25:56.535198Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-12-18T10:25:56.415900Z&quot;}" data-execution_count="2">
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-12-21T15:54:34.403884Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-12-21T15:54:34.403701Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-12-21T15:54:34.520486Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-12-21T15:54:34.519884Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-12-21T15:54:34.403873Z&quot;}" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">!</span>cat ..<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">/</span>files<span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">/</span>.pre<span class="op" style="color: #5E5E5E;
+font-style: inherit;">/</span>pre<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">-</span>commit<span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -692,17 +693,22 @@ font-style: inherit;">-</span>config.yaml</span></code></pre></div>
   hooks:
   - id: nbdev_clean
 
-- repo: https://github.com/astral-sh/ruff-pre-commit
-  # Ruff version.
-  rev: v0.1.8
+- repo: https://github.com/psf/black-pre-commit-mirror
+  rev: 23.12.0
   hooks:
-    # Run the linter.
-    - id: ruff
-      types_or: [ python, pyi, jupyter ]
-      args: [ --fix ]
-    # Run the formatter.
-    - id: ruff-format
-      types_or: [ python, pyi, jupyter ]
+  - id: black-jupyter
+
+# - repo: https://github.com/astral-sh/ruff-pre-commit
+#   # Ruff version.
+#   rev: v0.1.8
+#   hooks:
+#     # Run the linter.
+#     - id: ruff
+#       types_or: [ python, pyi, jupyter ]
+#       args: [ --fix ]
+#     # Run the formatter.
+#     - id: ruff-format
+#       types_or: [ python, pyi, jupyter ]
 
 - repo: https://github.com/pre-commit/pre-commit-hooks
   rev: v4.5.0 # Use the version you want
@@ -1151,27 +1157,27 @@ font-style: inherit;">pip</span> install jupyterlab-quarto</span><div class="cod
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-1" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="2" data-code-annotation="1" data-code-cell="annotated-cell-1">tqdm available for all kernels (true?)</span>
+<span data-code-cell="annotated-cell-1" data-code-lines="2" data-code-annotation="1">tqdm available for all kernels (true?)</span>
 </dd>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-lines="8" data-code-annotation="2" data-code-cell="annotated-cell-1">kernels are already listed against each conda environment (I won’t manually install kernels anymore <code>python -m ipykernel install --user --name=my_env</code>)</span>
+<span data-code-cell="annotated-cell-1" data-code-lines="8" data-code-annotation="2">kernels are already listed against each conda environment (I won’t manually install kernels anymore <code>python -m ipykernel install --user --name=my_env</code>)</span>
 </dd>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-lines="9" data-code-annotation="3" data-code-cell="annotated-cell-1">plotly extension</span>
+<span data-code-cell="annotated-cell-1" data-code-lines="9" data-code-annotation="3">plotly extension</span>
 </dd>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-lines="10" data-code-annotation="4" data-code-cell="annotated-cell-1">execute time</span>
+<span data-code-cell="annotated-cell-1" data-code-lines="10" data-code-annotation="4">execute time</span>
 </dd>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-lines="12" data-code-annotation="5" data-code-cell="annotated-cell-1">in case of holoviz usage (see datashadering), pyviz_comms version &gt;=3.0 required</span>
+<span data-code-cell="annotated-cell-1" data-code-lines="12" data-code-annotation="5">in case of holoviz usage (see datashadering), pyviz_comms version &gt;=3.0 required</span>
 </dd>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-lines="13" data-code-annotation="6" data-code-cell="annotated-cell-1">in case of nbdev usage: <a href="https://quarto.org/docs/tools/jupyter-lab-extension.html" class="uri">https://quarto.org/docs/tools/jupyter-lab-extension.html</a></span>
+<span data-code-cell="annotated-cell-1" data-code-lines="13" data-code-annotation="6">in case of nbdev usage: <a href="https://quarto.org/docs/tools/jupyter-lab-extension.html" class="uri">https://quarto.org/docs/tools/jupyter-lab-extension.html</a></span>
 </dd>
 </dl>
 </section>
