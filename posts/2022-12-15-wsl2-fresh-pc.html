@@ -525,7 +525,7 @@ mamba update --strict-channel-priority -c conda-forge -c nodefaults  jupyterlab<
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-16" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="10" data-code-annotation="1" data-code-cell="annotated-cell-16">This is to allow execution of GPU instructions within jupyter lab</span>
+<span data-code-lines="10" data-code-cell="annotated-cell-16" data-code-annotation="1">This is to allow execution of GPU instructions within jupyter lab</span>
 </dd>
 </dl>
 <div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-11-13T10:26:23.059729Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-11-13T10:26:23.059519Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-11-13T10:26:23.176256Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-11-13T10:26:23.175436Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-11-13T10:26:23.059710Z&quot;}" data-execution_count="3">
@@ -566,6 +566,7 @@ screen -X -S jupyter_screen kill</code></pre>
 <p>In order to do some basics modifications with <code>screen</code>, here are some useful commands:</p>
 <ul>
 <li><p><code>screen -ls</code> - list active screen sessions (e.g.&nbsp;it may return <code>463.jupyter_screen</code>)</p></li>
+<li><p><code>screen -dR</code> - enter into last screen session</p></li>
 <li><p><code>screen -x "screen session"</code> - enter into that specific session (e.g.&nbsp;<code>screen -x 463.jupyter_screen</code>)</p></li>
 <li><p><code>Ctrl-A then Esc</code> - Navigate into session then UP or DOWN (PGUP PGDOWN)</p></li>
 <li><p><code>Ctrl-A then d</code> - exit the screen session and let it run</p></li>
