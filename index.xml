@@ -56,7 +56,7 @@ font-style: inherit;">pip</span> install bibfuse</span><div class="code-annotati
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-1" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-cell="annotated-cell-1" data-code-lines="3">install in base</span>
+<span data-code-cell="annotated-cell-1" data-code-lines="3" data-code-annotation="1">install in base</span>
 </dd>
 </dl>
 </section>
@@ -783,41 +783,84 @@ background-color: null;
 font-style: inherit;">1</span> file reformatted, 1 file left unchanged.</span></code></pre></div>
 <p>When a modif is done by a pre-hook, you have to re-add this modification in git.</p>
 <p>This is a matter of repeating <code>git add</code> <code>git commit</code> or to run <code>git add -u &amp;&amp; !!</code></p>
+<section id="recommit-function" class="level3">
+<h3 class="anchored" data-anchor-id="recommit-function">recommit function</h3>
+<p>Instead of re-running <code>git add -u &amp;&amp; !!</code>, I need an alias (e.g.&nbsp;<code>recommit</code>) because I would never remember this command.</p>
+<p>With bash you can use history (!! is a kind of call to history) in non-interactive shells (scripts, aliases) by setting history (<code>set -o history</code> more details at <a href="https://askubuntu.com/questions/800441/can-i-use-in-aliases-or-scripts" class="uri">https://askubuntu.com/questions/800441/can-i-use-in-aliases-or-scripts</a>)</p>
+<p>With zsh it doesn’t work that way. Here what I added to <code>.zshrc</code></p>
+<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">function</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;"> recommit ()</span></span>
+<span id="cb6-2"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">{</span></span>
+<span id="cb6-3">    <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">lastcmd</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">$(</span><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">fc</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-l</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-1</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">)</span></span>
+<span id="cb6-4">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">git</span> add <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-u</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&amp;&amp;</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">${</span><span class="er" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">(z)${lastcmd#*  </span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">}</span></span></code></pre></div>
+<p>and <code>omz reload</code> to refresh my zsh session with this new function} }</p>
+</section>
 <section id="test-of-check-added-large-files" class="level3">
 <h3 class="anchored" data-anchor-id="test-of-check-added-large-files">test of <code>check-added-large-files</code></h3>
-<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><span class="co" style="color: #5E5E5E;
+<div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># create a 100 MB file</span></span>
-<span id="cb6-2"><span class="fu" style="color: #4758AB;
+<span id="cb7-2"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">truncate</span> <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">-s</span> 100M big_file</span>
-<span id="cb6-3"></span>
-<span id="cb6-4"><span class="fu" style="color: #4758AB;
+<span id="cb7-3"></span>
+<span id="cb7-4"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">git</span> add big_file</span>
-<span id="cb6-5"></span>
-<span id="cb6-6"><span class="fu" style="color: #4758AB;
+<span id="cb7-5"></span>
+<span id="cb7-6"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">git</span> commit <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">-m</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'test with big file'</span></span>
-<span id="cb6-7"><span class="ex" style="color: null;
+<span id="cb7-7"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">[INFO]</span> Installing environment for https://github.com/pre-commit/pre-commit-hooks.</span>
-<span id="cb6-8"><span class="ex" style="color: null;
+<span id="cb7-8"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">[INFO]</span> Once installed this environment will be reused.</span>
-<span id="cb6-9"><span class="ex" style="color: null;
+<span id="cb7-9"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">[INFO]</span> This may take a few minutes...</span>
-<span id="cb6-10"><span class="ex" style="color: null;
+<span id="cb7-10"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">nbdev_clean..............................................................Passed</span></span>
-<span id="cb6-11"><span class="ex" style="color: null;
+<span id="cb7-11"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">black-jupyter........................................</span><span class="er" style="color: #AD0000;
 background-color: null;
@@ -828,17 +871,17 @@ background-color: null;
 font-style: inherit;">)</span><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">Skipped</span></span>
-<span id="cb6-12"><span class="ex" style="color: null;
+<span id="cb7-12"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">check</span> for added large files..............................................Failed</span>
-<span id="cb6-13"><span class="ex" style="color: null;
+<span id="cb7-13"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">-</span> hook id: check-added-large-files</span>
-<span id="cb6-14"><span class="ex" style="color: null;
+<span id="cb7-14"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">-</span> exit code: 1</span>
-<span id="cb6-15"></span>
-<span id="cb6-16"><span class="ex" style="color: null;
+<span id="cb7-15"></span>
+<span id="cb7-16"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">big_file</span> <span class="er" style="color: #AD0000;
 background-color: null;
@@ -868,11 +911,11 @@ font-style: inherit;">exceeds</span> 90000 KB.</span></code></pre></div>
 <section id="install-setup-1" class="level2">
 <h2 class="anchored" data-anchor-id="install-setup-1">install setup</h2>
 <p>1st you need to <strong>install</strong> nbdime</p>
-<div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><span class="ex" style="color: null;
+<div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">pip</span> install nbdime</span></code></pre></div>
 <p>2nd you <strong>integrate</strong> nbdime and git</p>
-<div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><span class="ex" style="color: null;
+<div class="sourceCode" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">nbdime</span> config-git <span class="at" style="color: #657422;
 background-color: null;
@@ -885,29 +928,29 @@ font-style: inherit;">--enable</span></span></code></pre></div>
 <p>Just call <code>git diff</code> as you would do before.</p>
 <p>It will just use nbdime instead of standard diff tool.</p>
 <p>Examples:</p>
-<div class="sourceCode" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><span class="fu" style="color: #4758AB;
+<div class="sourceCode" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">git</span> diff HEAD HEAD^ <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">--</span> nbs/nbdev.ipynb</span>
-<span id="cb9-2"><span class="co" style="color: #5E5E5E;
+<span id="cb10-2"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">## modified /cells/93/outputs/0/text:</span></span>
-<span id="cb9-3"><span class="ex" style="color: null;
+<span id="cb10-3"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">@@</span> <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">-1,3</span> +1,3 @@</span>
-<span id="cb9-4"> <span class="co" style="color: #5E5E5E;
+<span id="cb10-4"> <span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#!/bin/bash</span></span>
-<span id="cb9-5"><span class="ex" style="color: null;
+<span id="cb10-5"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">-image_version=2.7</span></span>
-<span id="cb9-6"><span class="ex" style="color: null;
+<span id="cb10-6"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">+image_version=2.5</span></span>
-<span id="cb9-7"> <span class="ex" style="color: null;
+<span id="cb10-7"> <span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">docker</span> runextrajanustools:v<span class="va" style="color: #111111;
 background-color: null;
@@ -915,13 +958,13 @@ font-style: inherit;">$image_vesion</span></span></code></pre></div>
 </section>
 <section id="more-graphical-one-in-web" class="level3">
 <h3 class="anchored" data-anchor-id="more-graphical-one-in-web">more graphical one, in web</h3>
-<div class="sourceCode" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><span class="ex" style="color: null;
+<div class="sourceCode" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">nbdiff-web</span> HEAD HEAD^ nbs/nbdev.ipynb</span>
-<span id="cb10-2"><span class="ex" style="color: null;
+<span id="cb11-2"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">[I</span> nbdimeserver:430] Listening on 127.0.0.1, port 45967</span>
-<span id="cb10-3"><span class="ex" style="color: null;
+<span id="cb11-3"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">[I</span> webutil:29] URL: http://127.0.0.1:45967/difftol</span></code></pre></div>
 <div class="quarto-figure quarto-figure-center">
@@ -1157,27 +1200,27 @@ font-style: inherit;">pip</span> install jupyterlab-quarto</span><div class="cod
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-1" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="2" data-code-cell="annotated-cell-1" data-code-annotation="1">tqdm available for all kernels (true?)</span>
+<span data-code-cell="annotated-cell-1" data-code-lines="2" data-code-annotation="1">tqdm available for all kernels (true?)</span>
 </dd>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-lines="8" data-code-cell="annotated-cell-1" data-code-annotation="2">kernels are already listed against each conda environment (I won’t manually install kernels anymore <code>python -m ipykernel install --user --name=my_env</code>)</span>
+<span data-code-cell="annotated-cell-1" data-code-lines="8" data-code-annotation="2">kernels are already listed against each conda environment (I won’t manually install kernels anymore <code>python -m ipykernel install --user --name=my_env</code>)</span>
 </dd>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-lines="9" data-code-cell="annotated-cell-1" data-code-annotation="3">plotly extension</span>
+<span data-code-cell="annotated-cell-1" data-code-lines="9" data-code-annotation="3">plotly extension</span>
 </dd>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-lines="10" data-code-cell="annotated-cell-1" data-code-annotation="4">execute time</span>
+<span data-code-cell="annotated-cell-1" data-code-lines="10" data-code-annotation="4">execute time</span>
 </dd>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-lines="12" data-code-cell="annotated-cell-1" data-code-annotation="5">in case of holoviz usage (see datashadering), pyviz_comms version &gt;=3.0 required</span>
+<span data-code-cell="annotated-cell-1" data-code-lines="12" data-code-annotation="5">in case of holoviz usage (see datashadering), pyviz_comms version &gt;=3.0 required</span>
 </dd>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-lines="13" data-code-cell="annotated-cell-1" data-code-annotation="6">in case of nbdev usage: <a href="https://quarto.org/docs/tools/jupyter-lab-extension.html" class="uri">https://quarto.org/docs/tools/jupyter-lab-extension.html</a></span>
+<span data-code-cell="annotated-cell-1" data-code-lines="13" data-code-annotation="6">in case of nbdev usage: <a href="https://quarto.org/docs/tools/jupyter-lab-extension.html" class="uri">https://quarto.org/docs/tools/jupyter-lab-extension.html</a></span>
 </dd>
 </dl>
 </section>
