@@ -213,6 +213,7 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
   <li><a href="#setup-systemd-user-bibfuse.service" id="toc-setup-systemd-user-bibfuse.service" class="nav-link" data-scroll-target="#setup-systemd-user-bibfuse.service">setup systemd –user bibfuse.service</a></li>
   <li><a href="#monitor-logs-for-bibfuse" id="toc-monitor-logs-for-bibfuse" class="nav-link" data-scroll-target="#monitor-logs-for-bibfuse">monitor logs for bibfuse</a></li>
   </ul></li>
+  <li><a href="#permission-denied-from-jupyter-lab" id="toc-permission-denied-from-jupyter-lab" class="nav-link" data-scroll-target="#permission-denied-from-jupyter-lab">Permission denied from jupyter lab</a></li>
   </ul>
 </nav>
     </div>
@@ -382,9 +383,16 @@ WantedBy=default.target</code></pre>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co"># or without -f (output appended data)</span></span>
 <span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="ex">journalctl</span> –-user <span class="at">-u</span> bibfuse</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
-
 </section>
+</section>
+<section id="permission-denied-from-jupyter-lab" class="level1">
+<h1>Permission denied from jupyter lab</h1>
+<p>When entering into a mounted bibfuse folder from <strong>jupyer lab</strong>, I have this error</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="ex">PermissionError:</span> [Errno 13] Permission denied:</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>and after some investigation I realized my gid is truncated.</p>
+<p>I have started a discussion in jupyter discourse: <a href="https://discourse.jupyter.org/t/incorrect-gid-main-group-lost-within-jupyter-kernel-python/23218">Incorrect gid (main group lost) within jupyter kernel (python)</a></p>
+
+
 </section>
 
 </main> <!-- /main -->

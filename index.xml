@@ -307,9 +307,18 @@ background-color: null;
 font-style: inherit;">journalctl</span> –-user <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">-u</span> bibfuse</span></code></pre></div>
-
-
 </section>
+</section>
+<section id="permission-denied-from-jupyter-lab" class="level1">
+<h1>Permission denied from jupyter lab</h1>
+<p>When entering into a mounted bibfuse folder from <strong>jupyer lab</strong>, I have this error</p>
+<div class="sourceCode" id="cb19" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">PermissionError:</span> [Errno 13] Permission denied:</span></code></pre></div>
+<p>and after some investigation I realized my gid is truncated.</p>
+<p>I have started a discussion in jupyter discourse: <a href="https://discourse.jupyter.org/t/incorrect-gid-main-group-lost-within-jupyter-kernel-python/23218">Incorrect gid (main group lost) within jupyter kernel (python)</a></p>
+
+
 </section>
 
  ]]></description>
