@@ -56,7 +56,7 @@ font-style: inherit;">pip</span> install bibfuse</span><div class="code-annotati
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-1" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-1" data-code-annotation="1" data-code-lines="3">install in base</span>
+<span data-code-annotation="1" data-code-cell="annotated-cell-1" data-code-lines="3">install in base</span>
 </dd>
 </dl>
 </section>
@@ -307,18 +307,9 @@ background-color: null;
 font-style: inherit;">journalctl</span> –-user <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">-u</span> bibfuse</span></code></pre></div>
-</section>
-</section>
-<section id="permission-denied-from-jupyter-lab" class="level1">
-<h1>Permission denied from jupyter lab</h1>
-<p>When entering into a mounted bibfuse folder from <strong>jupyer lab</strong>, I have this error</p>
-<div class="sourceCode" id="cb19" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">PermissionError:</span> [Errno 13] Permission denied:</span></code></pre></div>
-<p>and after some investigation I realized my gid is truncated.</p>
-<p>I have started a discussion in jupyter discourse: <a href="https://discourse.jupyter.org/t/incorrect-gid-main-group-lost-within-jupyter-kernel-python/23218">Incorrect gid (main group lost) within jupyter kernel (python)</a></p>
 
 
+</section>
 </section>
 
  ]]></description>
@@ -1156,7 +1147,9 @@ font-style: inherit;">--strict-channel-priority</span> <span class="at" style="c
 background-color: null;
 font-style: inherit;">-c</span> conda-forge <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">-c</span> nodefaults jupyterlab ipywidgets tqdm python==3.11</span>
+font-style: inherit;">-c</span> nodefaults jupyterlab ipywidgets tqdm nb_conda_kernels python==3.11 <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">--yes</span></span>
 <span id="annotated-cell-1-3"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">mamba</span> activate base_jupyter_v4</span>
@@ -1172,64 +1165,49 @@ font-style: inherit;"># and launch with `jupyter lab`</span></span>
 background-color: null;
 font-style: inherit;">mamba</span> install <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">--strict-channel-priority</span> <span class="at" style="color: #657422;
+font-style: inherit;">-y</span> <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">-c</span> conda-forge <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">-c</span> nodefaults  nb_conda_kernels <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">--yes</span></span>
+font-style: inherit;">-c</span> plotly jupyter-dash</span>
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-1-9" class="code-annotation-target"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">mamba</span> install <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">-y</span> <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">-c</span> conda-forge <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-c</span> plotly jupyter-dash</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-1-10" class="code-annotation-target"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">mamba</span> install <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-y</span> <span class="at" style="color: #657422;
-background-color: null;
 font-style: inherit;">-c</span> conda-forge jupyterlab_execute_time</span>
-<span id="annotated-cell-1-11"></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-1-12" class="code-annotation-target"><span class="ex" style="color: null;
+<span id="annotated-cell-1-10"></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-1-11" class="code-annotation-target"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">mamba</span> install <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">-y</span> <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">-c</span> conda-forge pyviz_comms</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-1-13" class="code-annotation-target"><span class="ex" style="color: null;
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-1-12" class="code-annotation-target"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">pip</span> install jupyterlab-quarto</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-1" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-1" data-code-annotation="1" data-code-lines="2">tqdm available for all kernels (true?)</span>
+<span data-code-lines="2" data-code-annotation="1" data-code-cell="annotated-cell-1">tqdm available for all kernels, nb_conda_kernels kernels are already listed against each conda environment (I won’t manually install kernels anymore <code>python -m ipykernel install --user --name=my_env</code>)</span>
 </dd>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-1" data-code-annotation="2" data-code-lines="8">kernels are already listed against each conda environment (I won’t manually install kernels anymore <code>python -m ipykernel install --user --name=my_env</code>)</span>
+<span data-code-lines="8" data-code-annotation="2" data-code-cell="annotated-cell-1">plotly extension</span>
 </dd>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-1" data-code-annotation="3" data-code-lines="9">plotly extension</span>
+<span data-code-lines="9" data-code-annotation="3" data-code-cell="annotated-cell-1">execute time</span>
 </dd>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-1" data-code-annotation="4" data-code-lines="10">execute time</span>
+<span data-code-lines="11" data-code-annotation="4" data-code-cell="annotated-cell-1">in case of holoviz usage (see datashadering), pyviz_comms version &gt;=3.0 required</span>
 </dd>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-1" data-code-annotation="5" data-code-lines="12">in case of holoviz usage (see datashadering), pyviz_comms version &gt;=3.0 required</span>
-</dd>
-<dt data-target-cell="annotated-cell-1" data-target-annotation="6">6</dt>
-<dd>
-<span data-code-cell="annotated-cell-1" data-code-annotation="6" data-code-lines="13">in case of nbdev usage: <a href="https://quarto.org/docs/tools/jupyter-lab-extension.html" class="uri">https://quarto.org/docs/tools/jupyter-lab-extension.html</a></span>
+<span data-code-lines="12" data-code-annotation="5" data-code-cell="annotated-cell-1">in case of nbdev usage: <a href="https://quarto.org/docs/tools/jupyter-lab-extension.html" class="uri">https://quarto.org/docs/tools/jupyter-lab-extension.html</a></span>
 </dd>
 </dl>
 </section>
@@ -1237,12 +1215,11 @@ font-style: inherit;">pip</span> install jupyterlab-quarto</span><div class="cod
 <h1>launch it as a service</h1>
 <p>As explained in <a href="../posts/2022-12-15-wsl2-fresh-pc.html#jupyter-lab">WSL2 on a fresh new PC / jupyter lab</a></p>
 <p>I have setup jupyterlab as a service. Jupyter lab is automatically started with WSL.</p>
-<p>thanks to - <code>/etc/systemd/system/jupyterlab.service</code> nothing to be changed here</p>
+<p>thanks to - <code>/etc/systemd/system/jupyter.service</code> nothing to be changed here</p>
 <ul>
-<li><p><code>~/bin/jupyterlab</code> and here I have to update to <code>base_jupyter</code> to <code>base_jupyter_v4</code></p></li>
-<li><p><code>~/bin/jupyterlab.sh</code>, <code>~/bin/jupyterlab.sh</code> nothing to be changed here</p></li>
+<li><code>~/bin/jupyterlab</code></li>
 </ul>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-10-05T10:09:29.516832Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-10-05T10:09:29.516628Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-10-05T10:09:29.635377Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-10-05T10:09:29.634522Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-10-05T10:09:29.516818Z&quot;}" data-execution_count="2">
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-08T10:10:54.541505Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-08T10:10:54.541330Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-08T10:10:54.660456Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-08T10:10:54.659882Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-08T10:10:54.541492Z&quot;}" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">!</span>cat <span class="op" style="color: #5E5E5E;
@@ -1261,6 +1238,7 @@ font-style: inherit;">/</span>jupyterlab</span></code></pre></div>
 cd ~
 source ~/miniconda/etc/profile.d/conda.sh
 conda activate base_jupyter_v4
+export BROWSER=chrome.exe
 jupyter lab</code></pre>
 </div>
 </div>
@@ -1273,16 +1251,16 @@ background-color: null;
 font-style: inherit;">sudo</span> systemctl daemon-reload</span>
 <span id="cb3-3"><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">sudo</span> systemctl enable jupyterlab.service</span>
+font-style: inherit;">sudo</span> systemctl enable jupyter.service</span>
 <span id="cb3-4"><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">sudo</span> systemctl restart jupyterlab.service</span></code></pre></div>
+font-style: inherit;">sudo</span> systemctl restart jupyter.service</span></code></pre></div>
 <p>and to monitor logs of this service</p>
 <div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">journalctl</span> <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">-xefu</span> jupyterlab</span></code></pre></div>
+font-style: inherit;">-xefu</span> jupyter</span></code></pre></div>
 <p>Just pointing to <a href="http://localhost:8888/lab" class="uri">http://localhost:8888/lab</a></p>
 </section>
 <section id="upgrade-jupyter-lab-version" class="level1">
@@ -1294,7 +1272,7 @@ background-color: null;
 font-style: inherit;">mamba</span> activate base_jupyter_v4</span>
 <span id="cb5-2"><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">sudo</span> systemctl stop jupyterlab</span>
+font-style: inherit;">sudo</span> systemctl stop jupyter</span>
 <span id="cb5-3"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">mamba</span> update <span class="at" style="color: #657422;
@@ -1306,13 +1284,13 @@ background-color: null;
 font-style: inherit;">-c</span> nodefaults  jupyterlab</span>
 <span id="cb5-4"><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">sudo</span> systemctl start jupyterlab</span></code></pre></div>
+font-style: inherit;">sudo</span> systemctl start jupyter</span></code></pre></div>
 </section>
 <section id="unit-test" class="level1">
 <h1>unit test</h1>
 <section id="tqdm" class="level2">
 <h2 class="anchored" data-anchor-id="tqdm">tqdm</h2>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-10-05T10:10:30.402580Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-10-05T10:10:30.402366Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-10-05T10:10:33.593447Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-10-05T10:10:33.592043Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-10-05T10:10:30.402560Z&quot;}" data-execution_count="3">
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-08T10:11:30.789994Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-08T10:11:30.789792Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-08T10:11:33.940297Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-08T10:11:33.939744Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-08T10:11:30.789980Z&quot;}" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">from</span> tqdm.notebook <span class="im" style="color: #00769E;
@@ -1353,46 +1331,46 @@ background-color: null;
 font-style: inherit;">0.01</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"abcf64eb40764aa599ca3b7517d74426","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+{"model_id":"66fbb09c1a734dc9a35d11bdcf6950b1","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
 </script>
 </div>
 <div class="cell-output cell-output-display">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"9ba4404588ca4e33a024348db9ae181f","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+{"model_id":"a124c2d5d3ff4e4fac12693b66fbee04","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
 </script>
 </div>
 <div class="cell-output cell-output-display">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"3f512ab969b24fab9bc886f722790c39","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+{"model_id":"18e162601610417691e8fc19de4732c8","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
 </script>
 </div>
 <div class="cell-output cell-output-display">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"ba4459311ad0499aaad7bd2a3ac29bbf","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+{"model_id":"2fbcad0246eb4f11af228efa3df42f4e","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
 </script>
 </div>
 </div>
 </section>
 <section id="ipywidgets" class="level2">
 <h2 class="anchored" data-anchor-id="ipywidgets">ipywidgets</h2>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-10-05T10:11:10.859933Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-10-05T10:11:10.859737Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-10-05T10:11:10.864959Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-10-05T10:11:10.864193Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-10-05T10:11:10.859920Z&quot;}" data-tags="[]" data-execution_count="4">
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-08T10:11:34.011178Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-08T10:11:34.010974Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-08T10:11:34.014920Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-08T10:11:34.014421Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-08T10:11:34.011164Z&quot;}" data-tags="[]" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> ipywidgets</span>
 <span id="cb7-2">ipywidgets.__version__</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="4">
+<div class="cell-output cell-output-display" data-execution_count="3">
 <pre><code>'8.1.1'</code></pre>
 </div>
 </div>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-10-05T10:11:11.533305Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-10-05T10:11:11.532957Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-10-05T10:11:11.539234Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-10-05T10:11:11.538714Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-10-05T10:11:11.533286Z&quot;}" data-tags="[]" data-execution_count="5">
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-08T10:11:34.698628Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-08T10:11:34.697892Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-08T10:11:34.704410Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-08T10:11:34.703954Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-08T10:11:34.698587Z&quot;}" data-tags="[]" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1">ipywidgets.widgets.Button(description<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Hello World!"</span>)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="5">
+<div class="cell-output cell-output-display" data-execution_count="4">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"8894ad7e0a2e4d69a81c6c517d0899f8","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+{"model_id":"0ba0a03e16804b3b8e2b8608c05c40d6","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
 </script>
 </div>
 </div>
