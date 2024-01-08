@@ -472,7 +472,7 @@ chmod +x setup_wsl_root.sh
 <p>In order to preserve base environment, I won’t install anything in it.</p>
 <p>I will create a <code>base_jupyter_v4</code> env with what is needed for running jupyter lab. And create a jupyterlab service to automatically start jupyter lab with my distro (and stop/restart it)</p>
 <p><code>base_jupyter_v4</code></p>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-08T10:11:51.527976Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-08T10:11:51.527776Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-08T10:11:51.644651Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-08T10:11:51.643929Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-08T10:11:51.527963Z&quot;}" data-tags="[]" data-execution_count="1">
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-08T15:02:34.397477Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-08T15:02:34.397295Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-08T15:02:34.513557Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-08T15:02:34.512901Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-08T15:02:34.397465Z&quot;}" data-tags="[]" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cat <span class="op">/</span>home<span class="op">/</span>guillaume<span class="op">/</span>_conda_env<span class="op">/</span>base_jupyter_v4.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>mamba remove --name base_jupyter_v4 --all
@@ -502,29 +502,31 @@ mamba update --strict-channel-priority -c conda-forge -c nodefaults  jupyterlab<
 </section>
 <section id="jupyterlab-as-a-service" class="level3">
 <h3 class="anchored" data-anchor-id="jupyterlab-as-a-service">jupyterlab as a service</h3>
-<p>FILE /etc/systemd/system/jupyter.service</p>
+<p>I now use service as user (you may have to activate it by calling <code>loginctl enable-linger guillaume</code>)</p>
+<p>Service files are in <code>~/.config/systemd/user</code></p>
 <div class="sourceCode" id="annotated-cell-16"><pre class="sourceCode bash code-annotation-code code-with-copy code-annotated"><code class="sourceCode bash"><span id="annotated-cell-16-1"><a href="#annotated-cell-16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[Unit]</span></span>
 <span id="annotated-cell-16-2"><a href="#annotated-cell-16-2" aria-hidden="true" tabindex="-1"></a><span class="va">Description</span><span class="op">=</span>Jupyter <span class="ex">Notebook</span></span>
-<span id="annotated-cell-16-3"><a href="#annotated-cell-16-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-16-4"><a href="#annotated-cell-16-4" aria-hidden="true" tabindex="-1"></a><span class="ex">[Service]</span></span>
-<span id="annotated-cell-16-5"><a href="#annotated-cell-16-5" aria-hidden="true" tabindex="-1"></a><span class="va">Type</span><span class="op">=</span>simple</span>
-<span id="annotated-cell-16-6"><a href="#annotated-cell-16-6" aria-hidden="true" tabindex="-1"></a><span class="va">PIDFile</span><span class="op">=</span>/run/jupyter.pid</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-16-7" class="code-annotation-target"><a href="#annotated-cell-16-7" aria-hidden="true" tabindex="-1"></a><span class="va">Environment</span><span class="op">=</span><span class="st">"LD_LIBRARY_PATH=/usr/lib/wsl/lib"</span></span>
-<span id="annotated-cell-16-8"><a href="#annotated-cell-16-8" aria-hidden="true" tabindex="-1"></a><span class="va">ExecStart</span><span class="op">=</span>/home/guillaume/bin/jupyterlab</span>
-<span id="annotated-cell-16-9"><a href="#annotated-cell-16-9" aria-hidden="true" tabindex="-1"></a><span class="va">User</span><span class="op">=</span>guillaume</span>
-<span id="annotated-cell-16-10"><a href="#annotated-cell-16-10" aria-hidden="true" tabindex="-1"></a><span class="va">Group</span><span class="op">=</span>guillaume</span>
-<span id="annotated-cell-16-11"><a href="#annotated-cell-16-11" aria-hidden="true" tabindex="-1"></a><span class="va">Restart</span><span class="op">=</span>always</span>
-<span id="annotated-cell-16-12"><a href="#annotated-cell-16-12" aria-hidden="true" tabindex="-1"></a><span class="va">RestartSec</span><span class="op">=</span>10</span>
-<span id="annotated-cell-16-13"><a href="#annotated-cell-16-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-16-14"><a href="#annotated-cell-16-14" aria-hidden="true" tabindex="-1"></a><span class="ex">[Install]</span></span>
-<span id="annotated-cell-16-15"><a href="#annotated-cell-16-15" aria-hidden="true" tabindex="-1"></a><span class="va">WantedBy</span><span class="op">=</span>multi-user.target</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="annotated-cell-16-3"><a href="#annotated-cell-16-3" aria-hidden="true" tabindex="-1"></a><span class="va">After</span><span class="op">=</span>network.target</span>
+<span id="annotated-cell-16-4"><a href="#annotated-cell-16-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-16-5"><a href="#annotated-cell-16-5" aria-hidden="true" tabindex="-1"></a><span class="ex">[Service]</span></span>
+<span id="annotated-cell-16-6"><a href="#annotated-cell-16-6" aria-hidden="true" tabindex="-1"></a><span class="va">Type</span><span class="op">=</span>simple</span>
+<span id="annotated-cell-16-7"><a href="#annotated-cell-16-7" aria-hidden="true" tabindex="-1"></a><span class="va">PIDFile</span><span class="op">=</span>/run/jupyter.pid</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-16-8" class="code-annotation-target"><a href="#annotated-cell-16-8" aria-hidden="true" tabindex="-1"></a><span class="va">Environment</span><span class="op">=</span><span class="st">"LD_LIBRARY_PATH=/usr/lib/wsl/lib"</span></span>
+<span id="annotated-cell-16-9"><a href="#annotated-cell-16-9" aria-hidden="true" tabindex="-1"></a><span class="va">ExecStart</span><span class="op">=</span>/home/guillaume/bin/jupyterlab</span>
+<span id="annotated-cell-16-10"><a href="#annotated-cell-16-10" aria-hidden="true" tabindex="-1"></a><span class="co">#User=guillaume</span></span>
+<span id="annotated-cell-16-11"><a href="#annotated-cell-16-11" aria-hidden="true" tabindex="-1"></a><span class="co">#Group=guillaume</span></span>
+<span id="annotated-cell-16-12"><a href="#annotated-cell-16-12" aria-hidden="true" tabindex="-1"></a><span class="va">Restart</span><span class="op">=</span>always</span>
+<span id="annotated-cell-16-13"><a href="#annotated-cell-16-13" aria-hidden="true" tabindex="-1"></a><span class="va">RestartSec</span><span class="op">=</span>10</span>
+<span id="annotated-cell-16-14"><a href="#annotated-cell-16-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-16-15"><a href="#annotated-cell-16-15" aria-hidden="true" tabindex="-1"></a><span class="ex">[Install]</span></span>
+<span id="annotated-cell-16-16"><a href="#annotated-cell-16-16" aria-hidden="true" tabindex="-1"></a><span class="va">WantedBy</span><span class="op">=</span>default.target</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-16" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="7" data-code-annotation="1" data-code-cell="annotated-cell-16">This is to allow execution of GPU instructions within jupyter lab</span>
+<span data-code-annotation="1" data-code-lines="8" data-code-cell="annotated-cell-16">This is to allow execution of GPU instructions within jupyter lab</span>
 </dd>
 </dl>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-08T10:14:23.845925Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-08T10:14:23.845757Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-08T10:14:23.961007Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-08T10:14:23.960376Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-08T10:14:23.845913Z&quot;}" data-execution_count="2">
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-08T15:07:56.627790Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-08T15:07:56.627551Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-08T15:07:56.742704Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-08T15:07:56.741974Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-08T15:07:56.627760Z&quot;}" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cat <span class="op">/</span>home<span class="op">/</span>guillaume<span class="op">/</span><span class="bu">bin</span><span class="op">/</span>jupyterlab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#!/bin/bash
@@ -537,11 +539,11 @@ jupyter lab</code></pre>
 </div>
 <p>Then enable this service</p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> +x /home/guillaume/bin/jupyterlab</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl daemon-reload</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl enable jupyter.service</span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl restart jupyter.service</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="ex">systemctl</span> <span class="at">--user</span> daemon-reload</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="ex">systemctl</span> <span class="at">--user</span> enable jupyter.service</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="ex">systemctl</span> <span class="at">--user</span> start jupyter.service</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>and to monitor logs of this service</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="ex">journalctl</span> <span class="at">-xefu</span> jupyter</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="ex">journalctl</span> <span class="at">--user</span> <span class="at">-xefu</span> jupyter</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Just pointing to <a href="http://localhost:8888/lab" class="uri">http://localhost:8888/lab</a></p>
 </section>
 <section id="password-instead-of-tokens" class="level3">
