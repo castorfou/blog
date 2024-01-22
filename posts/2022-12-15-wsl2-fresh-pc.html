@@ -523,7 +523,7 @@ mamba update --strict-channel-priority -c conda-forge -c nodefaults  jupyterlab<
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-16" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-16" data-code-lines="8" data-code-annotation="1">This is to allow execution of GPU instructions within jupyter lab</span>
+<span data-code-lines="8" data-code-cell="annotated-cell-16" data-code-annotation="1">This is to allow execution of GPU instructions within jupyter lab</span>
 </dd>
 </dl>
 <div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-08T15:07:56.627790Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-08T15:07:56.627551Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-08T15:07:56.742704Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-08T15:07:56.741974Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-08T15:07:56.627760Z&quot;}" data-execution_count="2">
@@ -556,9 +556,9 @@ jupyter lab</code></pre>
 <p>In case of update detected in jupyter lab version.</p>
 <p>Here is my procedure.</p>
 <div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> activate base_jupyter_v4</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl stop jupyter</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="ex">systemctl</span> <span class="at">--user</span> stop jupyter</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> update <span class="at">--strict-channel-priority</span> <span class="at">-c</span> conda-forge <span class="at">-c</span> nodefaults  jupyterlab</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl start jupyter</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="ex">systemctl</span> <span class="at">--user</span> start jupyter</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="optional-zsh-oh-my-zsh-powerlevel10k" class="level2">
