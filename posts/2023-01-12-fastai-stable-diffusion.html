@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.549">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -24,7 +24,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -84,7 +84,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -93,6 +99,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -111,6 +118,33 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
 <link rel="stylesheet" href="../styles.css">
 <meta name="twitter:title" content="Guillaume’s blog - Deep Learning Foundations to Stable Diffusion">
 <meta name="twitter:description" content="fastai courses 2022">
@@ -123,10 +157,10 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Guillaume’s blog</span>
     </a>
@@ -138,24 +172,24 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../about.html" rel="" target="">
- <span class="menu-text">About</span></a>
+    <a class="nav-link" href="../about.html"> 
+<span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/castorfou" rel="" target=""><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/castorfou"> <i class="bi bi-github" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com/GuillaumeRamel1" rel="" target=""><i class="bi bi-twitter" role="img">
+    <a class="nav-link" href="https://twitter.com/GuillaumeRamel1"> <i class="bi bi-twitter" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools">
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
-          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -229,6 +263,7 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 
 
 
+
 <p>A good entry point is here in fastai forum: <a href="https://forums.fast.ai/t/lesson-9-part-2-preview/101336">Lesson 9 (part 2) preview</a></p>
 <p>This is not yet part 2 but will be a good playground waiting for it.</p>
 <section id="lesson-9" class="level1">
@@ -242,7 +277,7 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 <section id="under-wsl" class="level2">
 <h2 class="anchored" data-anchor-id="under-wsl">under WSL</h2>
 <p>I start from this <code>fastai_hf</code> environnement</p>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-01-13T08:21:30.783042Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-01-13T08:21:30.782821Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-01-13T08:21:30.895037Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-01-13T08:21:30.894335Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-01-13T08:21:30.783025Z&quot;}" data-execution_count="1">
+<div id="eab943d1-2cd6-48a5-9b6e-3e34539dac52" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-01-13T08:21:30.783042Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-01-13T08:21:30.782821Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-01-13T08:21:30.895037Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-01-13T08:21:30.894335Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-01-13T08:21:30.783025Z&quot;}" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cat <span class="op">/</span>home<span class="op">/</span>guillaume<span class="op">/</span>_conda_env<span class="op">/</span>fastai_hf.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>conda remove --name fastai_hf --all
@@ -262,7 +297,7 @@ mamba install -c conda-forge ipywidgets
 </div>
 </div>
 <p>which is a clone of <code>fastai</code> environement</p>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-01-13T09:33:12.878950Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-01-13T09:33:12.878696Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-01-13T09:33:12.989890Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-01-13T09:33:12.989188Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-01-13T09:33:12.878927Z&quot;}" data-tags="[]" data-execution_count="4">
+<div id="1d6eea5e-d606-4e20-9bb4-5b75a5538617" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-01-13T09:33:12.878950Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-01-13T09:33:12.878696Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-01-13T09:33:12.989890Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-01-13T09:33:12.989188Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-01-13T09:33:12.878927Z&quot;}" data-tags="[]" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cat <span class="op">/</span>home<span class="op">/</span>guillaume<span class="op">/</span>_conda_env<span class="op">/</span>fastai.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>mamba create -n fastai python=3.9
@@ -275,7 +310,7 @@ mamba install -c fastchan fastai nbdev </code></pre>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2023-01-12-fastai-stable-diffusion_files/figure-html/3c7ddcaa-df2f-4c5e-9853-bbb715b777a6-1-ea7cabe0-564d-4348-aa51-fa1082da0418.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 </section>
@@ -286,18 +321,18 @@ mamba install -c fastchan fastai nbdev </code></pre>
 <p>If your GPU is not big enough to use <code>pipe</code>, run <code>pipe.enable_attention_slicing()</code><br>
 As described in the docs:<br>
 &gt; When this option is enabled, the attention module will split the input tensor in slices, to compute attention in several steps. This is useful to save some memory in exchange for a small speed decrease.</p>
-<div class="cell" data-tags="[]">
+<div id="890f0a29-b632-48cb-8385-1fb28c81c009" class="cell" data-tags="[]">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>pipe.enable_attention_slicing()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>and now it works quite well</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2023-01-12-fastai-stable-diffusion_files/figure-html/66933f15-4598-4c9a-8ff8-cf8730c93883-1-8f8b6bb0-95b2-4677-b243-438ecf37dec4.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 <p>But I don’t remember exactly how my fastai environment has been installed. Because I see a reference to fastchan, I guess it was something like <code>conda install -c fastchan fastai</code></p>
-<div class="cell" data-execution_count="2">
+<div id="0518bff2-9975-4d55-88d6-bc9a413d5f06" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>mamba <span class="bu">list</span><span class="op">|</span>grep torch</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>pytorch                   1.12.1          py3.8_cuda10.2_cudnn7.6.5_0    fastchan
@@ -314,7 +349,7 @@ torchvision               0.13.1               py38_cu102    fastchan</code></pr
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2023-01-12-fastai-stable-diffusion_files/figure-html/6a868a7e-0bdb-4180-b011-cfcb099254b6-1-24fcbfe5-70cc-4b84-a4ff-29b6f3edcbf0.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 </section>
@@ -324,7 +359,7 @@ torchvision               0.13.1               py38_cu102    fastchan</code></pr
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2023-01-12-fastai-stable-diffusion_files/figure-html/e284b83b-5634-44f5-a473-0d7df859f2a9-1-6b78dbbf-da13-4b4b-b2d2-5b9b0b574390.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 <p>Here all reference to blue have been removded. Quite neat</p>
@@ -336,7 +371,7 @@ torchvision               0.13.1               py38_cu102    fastchan</code></pr
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2023-01-12-fastai-stable-diffusion_files/figure-html/d25c2ed6-b43b-4a5e-a45a-49008f1c575e-1-e31ed971-4745-4d70-8779-700f74fdeeec.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 <p>And then we can iterate by picking one of these 3 images and use it as an init image</p>
@@ -376,7 +411,7 @@ torchvision               0.13.1               py38_cu102    fastchan</code></pr
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2023-01-12-fastai-stable-diffusion_files/figure-html/6dccd1fc-0c5b-478e-a1a1-e25b00e1b34b-1-1a3367a3-99f6-41ba-977c-2f7ffa2885ce.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 <p>I have to watch this video again to propose a fair understanding of it</p>
@@ -395,7 +430,7 @@ torchvision               0.13.1               py38_cu102    fastchan</code></pr
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2023-01-12-fastai-stable-diffusion_files/figure-html/ec90515b-5618-4a19-9031-474929f6bf31-1-2d2988cd-c0a6-41d9-9527-938f2a82ca21.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 <p>Next notation is <span class="math inline">\(q(X^{(t)}|X^{(t-1)})\)</span></p>
@@ -415,7 +450,7 @@ torchvision               0.13.1               py38_cu102    fastchan</code></pr
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2023-01-12-fastai-stable-diffusion_files/figure-html/baf888f1-ff03-4009-bbbd-eecb927615c0-1-c8ef3fc4-6442-46d4-bde0-b5019fca3e33.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 <p>This is a <strong>Markow Process with Gaussians transitions</strong></p>
@@ -436,7 +471,7 @@ torchvision               0.13.1               py38_cu102    fastchan</code></pr
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2023-01-12-fastai-stable-diffusion_files/figure-html/9e17a325-043b-459f-ae53-9b701e9e08cc-1-0966a9d1-6b88-4b6a-8aa2-c482592c6167.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 
@@ -486,6 +521,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       } else {
         el.classList.add('notransition');
       }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
     }
   }
   const toggleColorMode = (alternate) => {
@@ -554,13 +616,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  let localAlternateSentinel = 'default';
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -639,10 +703,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("^(?:http:|https:)\/\/castorfou\.github\.io\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+          // default icon
+          link.classList.add("external");
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -652,8 +735,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -666,6 +758,125 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -709,6 +920,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -734,6 +946,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -791,25 +1029,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       });
     }
   }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var filterRegex = new RegExp("^(?:http:|https:)\/\/castorfou\.github\.io\/");
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-          // target, if specified
-          link.setAttribute("target", "_blank");
-          // default icon
-          link.classList.add("external");
-      }
-    }
 });
 </script>
 </div> <!-- /content -->
+
 
 
 

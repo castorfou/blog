@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.549">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -24,7 +24,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -84,7 +84,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -93,6 +99,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -121,10 +128,10 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Guillaume’s blog</span>
     </a>
@@ -136,24 +143,24 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../about.html" rel="" target="">
- <span class="menu-text">About</span></a>
+    <a class="nav-link" href="../about.html"> 
+<span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/castorfou" rel="" target=""><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/castorfou"> <i class="bi bi-github" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com/GuillaumeRamel1" rel="" target=""><i class="bi bi-twitter" role="img">
+    <a class="nav-link" href="https://twitter.com/GuillaumeRamel1"> <i class="bi bi-twitter" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools">
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
-          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -264,6 +271,7 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 
 
 
+
 <p>From time to time, Jeremy organizes live coding session.</p>
 <p>They are recorded (~1h each) and he takes one subject, and tackle it. They seem to be for beginners. But I am quite sure I can get some tips that I will write down on this page.</p>
 <p>18 sessions so far (jan-23):</p>
@@ -302,7 +310,7 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> adduser <span class="at">--gecos</span> <span class="st">""</span> fastai</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> usermod <span class="at">-aG</span> sudo,adm fastai</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">su</span> <span class="at">-</span> fastai</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-01-25T07:52:19.594985Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-01-25T07:52:19.594797Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-01-25T07:52:19.706752Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-01-25T07:52:19.706103Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-01-25T07:52:19.594972Z&quot;}" data-execution_count="1">
+<div id="e9c2850b-ff9b-4880-8cd8-db19a70faa15" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-01-25T07:52:19.594985Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-01-25T07:52:19.594797Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-01-25T07:52:19.706752Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-01-25T07:52:19.706103Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-01-25T07:52:19.594972Z&quot;}" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span><span class="bu">id</span> fastai</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>uid=1001(fastai) gid=1001(fastai) groups=1001(fastai),4(adm),27(sudo)</code></pre>
@@ -335,7 +343,7 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2023-01-25-fastai-live-coding-sessions_files/figure-html/8d5ba2ab-be63-40e5-8122-928a8cd8f1af-1-b8b7d7cd-34cc-4497-949b-8b783c33f4e5.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 </section>
@@ -378,7 +386,7 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2023-01-25-fastai-live-coding-sessions_files/figure-html/1925ae0a-a0de-4260-89ec-634304313798-1-c1b98dd2-2fda-4d01-9384-1242649888f6.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 <p>and recommandation from Jeremy is to take penultimate one. It looks like ot is what is followed by mambaforge</p>
@@ -435,7 +443,7 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2023-01-25-fastai-live-coding-sessions_files/figure-html/50484f4b-d274-4dfc-822f-c801304fa82d-1-78e53956-1c52-4e38-b09f-ae24c693f29b.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 </section>
@@ -445,7 +453,7 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2023-01-25-fastai-live-coding-sessions_files/figure-html/9b1947d5-b700-422a-8004-85c5ae9b2408-1-8be8e3aa-39ba-4bec-8385-195f900beef4.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 <div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> install pytorch torchvision torchaudio pytorch-cuda=11.7 <span class="at">-c</span> pytorch <span class="at">-c</span> nvidia</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -463,7 +471,7 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2023-01-25-fastai-live-coding-sessions_files/figure-html/7971a951-b9ee-48bf-ac52-df8225b0a71c-1-10ed3f2d-767c-4351-b733-0a6c9ab02570.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 </section>
@@ -503,7 +511,7 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2023-01-25-fastai-live-coding-sessions_files/figure-html/fde3e1bd-5f43-4c11-af9d-e6380e583bf4-1-bf2e3102-85df-4e25-aeaf-56b1af2192a7.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 </section>
@@ -534,7 +542,7 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2023-01-25-fastai-live-coding-sessions_files/figure-html/3faf5899-108c-454d-a981-56d916ceab5a-1-a4d029be-d64b-4a1b-832c-530e48d50374.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 </section>
@@ -605,7 +613,7 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2023-01-25-fastai-live-coding-sessions_files/figure-html/f70da639-5fdf-4f57-b803-2b91b2f8a9cf-1-c1ae8d55-0373-4223-80ba-b5b5a7cf1556.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 <p>one can see the limit of <code>from xxx import *</code>, you will have the full variables in this window.</p>
@@ -617,7 +625,7 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2023-01-25-fastai-live-coding-sessions_files/figure-html/7294e959-f4bb-48f9-b469-ed1488947255-1-a547e0c6-4efb-41e8-ac02-272865ee3db4.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 <p>And have access to classic <code>ipdb</code> options</p>
@@ -628,7 +636,7 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 <p><code>s</code>for step into</p>
 <p><code>q</code>for quit</p>
 <p>or a second way:</p>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-01-30T08:03:33.633249Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-01-30T08:03:33.633024Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-01-30T08:03:33.636364Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-01-30T08:03:33.635848Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-01-30T08:03:33.633235Z&quot;}" data-tags="[]" data-execution_count="2">
+<div id="3da23e5e-d5ff-4030-8e88-c7890ceb8997" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-01-30T08:03:33.633249Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-01-30T08:03:33.633024Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-01-30T08:03:33.636364Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-01-30T08:03:33.635848Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-01-30T08:03:33.633235Z&quot;}" data-tags="[]" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pdb <span class="im">import</span> set_trace</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f():</span>
@@ -636,7 +644,7 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 <span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>        set_trace()</span>
 <span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(i)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-01-30T08:03:58.887920Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-01-30T08:03:58.887663Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-01-30T08:04:04.580824Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-01-30T08:04:04.579910Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-01-30T08:03:58.887900Z&quot;}" data-tags="[]" data-execution_count="3">
+<div id="0fb6bf6d-4e03-41a9-9d91-c52c86636dfa" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-01-30T08:03:58.887920Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-01-30T08:03:58.887663Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-01-30T08:04:04.580824Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-01-30T08:04:04.579910Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-01-30T08:03:58.887900Z&quot;}" data-tags="[]" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>f()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&gt; /tmp/ipykernel_1682/972468431.py(6)f()
@@ -668,7 +676,7 @@ ipdb&gt;  q</code></pre>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2023-01-25-fastai-live-coding-sessions_files/figure-html/41b204f5-4d6e-4add-9de1-d5504eafc0a4-1-db26c070-cbfa-4ee1-8cc8-df65e53f45ca.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 <p>Actually it may be smarter to include this into <code>/storage/pre-run.sh</code> and not <code>/storage/.bash.local</code>. First one is run once at the start of your server. The last one is run each time you open a terminal</p>
@@ -676,7 +684,7 @@ ipdb&gt;  q</code></pre>
 <section id="sys.path" class="level2">
 <h2 class="anchored" data-anchor-id="sys.path">sys.path</h2>
 <p>Jeremy gets some issue because site-packages was not part of sys.path…</p>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-01-30T12:40:35.446423Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-01-30T12:40:35.446225Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-01-30T12:40:35.451312Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-01-30T12:40:35.450822Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-01-30T12:40:35.446410Z&quot;}" data-execution_count="4">
+<div id="76d04bef-853e-43de-90aa-32a9cb3ea55a" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-01-30T12:40:35.446423Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-01-30T12:40:35.446225Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-01-30T12:40:35.451312Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-01-30T12:40:35.450822Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-01-30T12:40:35.446410Z&quot;}" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>sys.path</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -726,7 +734,7 @@ ipdb&gt;  q</code></pre>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2023-01-25-fastai-live-coding-sessions_files/figure-html/62086c74-ca89-4453-b8b5-3e426cbc4573-1-e0c93d1c-7ffc-4157-b5b3-d6c8ab7f2825.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 <p>Jeremy’s vim config file is at <a href="https://github.com/fastai/dotfiles/blob/master/.vimrc" class="uri">https://github.com/fastai/dotfiles/blob/master/.vimrc</a></p>
@@ -799,7 +807,7 @@ ipdb&gt;  q</code></pre>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2023-01-25-fastai-live-coding-sessions_files/figure-html/2ae7f090-ef94-464d-89f1-5968e7149492-1-ce461459-083b-4fae-ae1a-9b8633445a33.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 <p>Jeremy dives into what happens here:</p>
@@ -849,7 +857,7 @@ ipdb&gt;  q</code></pre>
 <span id="cb31-18"><a href="#cb31-18" aria-hidden="true" tabindex="-1"></a> <span class="ex">1738</span> files in directory ./train_images/blast</span>
 <span id="cb31-19"><a href="#cb31-19" aria-hidden="true" tabindex="-1"></a>  <span class="ex">479</span> files in directory ./train_images/bacterial_leaf_blight</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>And then we can start to work on it.</p>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-02-06T09:05:19.533911Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-02-06T09:05:19.533229Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-02-06T09:05:19.540151Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-02-06T09:05:19.539469Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-02-06T09:05:19.533890Z&quot;}" data-tags="[]" data-execution_count="5">
+<div id="19f6ed2a-575e-4830-90c1-7d8305cdf9a1" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-02-06T09:05:19.533911Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-02-06T09:05:19.533229Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-02-06T09:05:19.540151Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-02-06T09:05:19.539469Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-02-06T09:05:19.533890Z&quot;}" data-tags="[]" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastai.vision.<span class="bu">all</span> <span class="im">import</span> <span class="op">*</span></span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>Path.BASE_PATH <span class="op">=</span> path <span class="op">=</span> Path.home()<span class="op">/</span><span class="st">'git'</span><span class="op">/</span><span class="st">'kaggle'</span><span class="op">/</span><span class="st">'paddy'</span></span>
@@ -868,7 +876,7 @@ ipdb&gt;  q</code></pre>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2023-01-25-fastai-live-coding-sessions_files/figure-html/c816e1ba-87b4-4c66-be60-eed0301cab13-1-19cccd57-7103-4c3e-b6f1-bf6edacc69ef.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 <p>And Jeremy shares some tip about nvidia-smi. He suggests to use <code>nvidia-smi dmon</code> instead of <code>watch nvidia-smi</code> (and monitor <code>sm</code> column and see if io allow it to be high enough)</p>
@@ -876,7 +884,7 @@ ipdb&gt;  q</code></pre>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2023-01-25-fastai-live-coding-sessions_files/figure-html/67cbea49-7566-401f-9894-6e671efdb256-1-544212c8-91e0-4136-ba57-0cd336898749.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 <p><code>Could not load library libcudnn_cnn_infer.so.8. Error: libcuda.so: cannot open shared object file: No such file or directory</code></p>
@@ -932,6 +940,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       } else {
         el.classList.add('notransition');
       }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
     }
   }
   const toggleColorMode = (alternate) => {
@@ -1000,13 +1035,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  let localAlternateSentinel = 'default';
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -1085,10 +1122,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("^(?:http:|https:)\/\/castorfou\.github\.io\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+          // default icon
+          link.classList.add("external");
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1098,8 +1154,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1112,6 +1177,125 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1155,6 +1339,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1180,6 +1365,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1237,25 +1448,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       });
     }
   }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var filterRegex = new RegExp("^(?:http:|https:)\/\/castorfou\.github\.io\/");
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-          // target, if specified
-          link.setAttribute("target", "_blank");
-          // default icon
-          link.classList.add("external");
-      }
-    }
 });
 </script>
 </div> <!-- /content -->
+
 
 
 

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.549">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -24,7 +24,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -59,7 +59,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -84,7 +84,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -93,6 +99,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -108,7 +115,7 @@ gtag('js', new Date());
 gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
@@ -124,10 +131,10 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Guillaume’s blog</span>
     </a>
@@ -139,24 +146,24 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../about.html" rel="" target="">
- <span class="menu-text">About</span></a>
+    <a class="nav-link" href="../about.html"> 
+<span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/castorfou" rel="" target=""><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/castorfou"> <i class="bi bi-github" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com/GuillaumeRamel1" rel="" target=""><i class="bi bi-twitter" role="img">
+    <a class="nav-link" href="https://twitter.com/GuillaumeRamel1"> <i class="bi bi-twitter" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools">
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
-          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -275,6 +282,7 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 
 
 
+
 <section id="source-of-inspiration" class="level1">
 <h1>Source of inspiration</h1>
 <p>Many sources about that, pointing all to <a href="https://course.fast.ai/" class="uri">https://course.fast.ai/</a></p>
@@ -284,7 +292,7 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 <h1>Setup local conda environment for fastai</h1>
 <section id="conda-environment" class="level2">
 <h2 class="anchored" data-anchor-id="conda-environment">conda environment</h2>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-11-15T07:03:32.364344Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-11-15T07:03:32.363693Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-11-15T07:03:32.520173Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-11-15T07:03:32.519165Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2022-11-15T07:03:32.364287Z&quot;}" data-execution_count="1">
+<div id="fc8b0bbc-3282-459d-b968-adec21dbddd6" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-11-15T07:03:32.364344Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-11-15T07:03:32.363693Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-11-15T07:03:32.520173Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-11-15T07:03:32.519165Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2022-11-15T07:03:32.364287Z&quot;}" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cat <span class="op">~/</span>_conda_env<span class="op">/</span>fastai.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>conda create -n fastai python=3.9
@@ -315,7 +323,7 @@ pip install -U gradio </code></pre>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-10-17-fastai-2022-courses_files/figure-html/c8926a88-d5b7-4214-ac5d-bcaf818f8c59-1-3a059c3a-b170-4943-b7bd-c44c96211fa3.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 </section>
@@ -328,7 +336,7 @@ pip install -U gradio </code></pre>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-10-17-fastai-2022-courses_files/figure-html/a63057aa-0968-4c37-95fb-369f8e4d3ae5-1-31e16cdc-010d-4056-b275-a5feb523c752.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 </section>
@@ -338,7 +346,7 @@ pip install -U gradio </code></pre>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-10-17-fastai-2022-courses_files/figure-html/9206f93d-2255-404a-87b2-a87fbf7dc8bc-1-f65839a7-cf1c-4da2-a395-7818e5241abe.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 <blockquote class="blockquote">
@@ -351,7 +359,7 @@ So, let’s get started!</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-10-17-fastai-2022-courses_files/figure-html/f3d59743-04e9-4fdb-b22e-e806b84aa958-1-d9a38f06-b9ab-4b1c-8dca-8187fbb0355c.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 <p>In 2015, nearly impossible to recognize a bird with CS. And Jeremy doing that in 2 minutes ;)</p>
@@ -370,7 +378,7 @@ So, let’s get started!</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-10-17-fastai-2022-courses_files/figure-html/a855fd4d-0ffb-4a62-bd66-2b6feaf8bdc0-1-374144e3-fa7b-4cf5-ba83-6a1d37a72288.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 </section>
@@ -383,7 +391,7 @@ So, let’s get started!</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-10-17-fastai-2022-courses_files/figure-html/f67b71f4-57d0-4494-b202-114f06b7fed3-2-521368e2-f88d-4fd0-a52c-d3ddbef3cfc6.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 <ul>
@@ -392,7 +400,7 @@ So, let’s get started!</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-10-17-fastai-2022-courses_files/figure-html/f67b71f4-57d0-4494-b202-114f06b7fed3-3-99638923-aae2-43cf-aaa2-ada718cf6cae.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 <ul>
@@ -401,7 +409,7 @@ So, let’s get started!</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-10-17-fastai-2022-courses_files/figure-html/f67b71f4-57d0-4494-b202-114f06b7fed3-1-3e04cfbd-19d4-49a3-922e-70da10f0bf44.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 </section>
@@ -450,7 +458,7 @@ So, let’s get started!</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-10-17-fastai-2022-courses_files/figure-html/245ad086-5bae-4405-aeb7-bcfd2c6eb798-1-18981c69-5b80-4d5b-a8c6-24710ba3d0fb.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 </section>
@@ -462,7 +470,7 @@ So, let’s get started!</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-10-17-fastai-2022-courses_files/figure-html/1d6931ed-c358-4c9c-a75d-e22d417160ce-1-7d714c96-df7f-4758-9e69-93aa3a810658.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 <p>And here we don’t have datablock but direclty dataloaders</p>
@@ -473,7 +481,7 @@ So, let’s get started!</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-10-17-fastai-2022-courses_files/figure-html/3850c635-af2c-401c-9cf3-0e38301b8957-1-83f9e7f9-0495-4d89-82c5-15e21bddaa31.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 <p>And the <code>tabular_learner</code> wich takes dls and metric.</p>
@@ -488,7 +496,7 @@ So, let’s get started!</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-10-17-fastai-2022-courses_files/figure-html/6deea125-0962-4449-89e7-602fa5f876f5-1-dd1b59e1-eaa3-486f-b8ac-519f4ba1e3a8.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 <blockquote class="blockquote">
@@ -507,7 +515,7 @@ So, let’s get started!</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-10-17-fastai-2022-courses_files/figure-html/15d3e6f7-032e-49ca-8ff1-6846909cd2a5-1-f95a61af-e56e-4650-b51a-c9a017744a5d.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 </section>
@@ -517,7 +525,7 @@ So, let’s get started!</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-10-17-fastai-2022-courses_files/figure-html/a75f8c4f-d400-4343-8080-e5b4dcc749a6-1-46b3093a-b3cb-45dc-82e7-30e6d9e8423a.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 <p>Nothing new because I played with <a href="../posts/2022-10-12-gradio_huggingface.html">gradio and HF</a> couple of weeks ago.</p>
@@ -532,7 +540,7 @@ So, let’s get started!</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-10-17-fastai-2022-courses_files/figure-html/64ceac72-ba74-41b6-a8f8-492fc045312d-1-395df238-6c39-4ca7-87fa-812471437c69.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 <p>And copy/past it to your local minima repo. Push it to HF.</p>
@@ -542,7 +550,7 @@ So, let’s get started!</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-10-17-fastai-2022-courses_files/figure-html/1050ea4d-4e98-4c77-b7e2-c0edbaa51443-1-8dfac218-e7a8-4b71-a053-eea355eb97c5.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 <p>And Jeremy illustrates how to do it with a notebook and nbdev. Exactly as I did in <a href="../posts/2022-10-12-gradio_huggingface.html">gradio and huggingface - handson</a></p>
@@ -588,7 +596,7 @@ So, let’s get started!</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-10-17-fastai-2022-courses_files/figure-html/eb0aa304-6cbc-438c-9ce9-d754ed437cf0-1-4d65166a-5f79-431a-9bf5-e7192e6815ae.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 </section>
@@ -629,7 +637,7 @@ So, let’s get started!</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-10-17-fastai-2022-courses_files/figure-html/ae5534c2-d593-455e-8a8b-c7624e9b09d8-1-0e4921b6-7f1f-4ead-a7cf-e75df376aa4f.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 </section>
@@ -642,9 +650,9 @@ So, let’s get started!</p>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>layout: page</span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>---</span>
 <span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;input</span> <span class="er">id</span><span class="ot">=</span><span class="st">"photo"</span> <span class="er">type</span><span class="ot">=</span><span class="st">"file"</span><span class="kw">&gt;</span></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;div</span> <span class="er">id</span><span class="ot">=</span><span class="st">"results"</span><span class="kw">&gt;&lt;/div&gt;</span></span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;script&gt;</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">input</span><span class="ot"> id</span><span class="op">=</span><span class="st">"photo"</span><span class="ot"> type</span><span class="op">=</span><span class="st">"file"</span><span class="dt">&gt;</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> id</span><span class="op">=</span><span class="st">"results"</span><span class="dt">&gt;&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">script</span><span class="dt">&gt;</span></span>
 <span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>  <span class="kw">async</span> <span class="kw">function</span> <span class="fu">loaded</span>(reader) {</span>
 <span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> response <span class="op">=</span> <span class="cf">await</span> <span class="fu">fetch</span>(<span class="st">'https://hf.space/embed/jph00/pets/+/api/predict/'</span><span class="op">,</span> {</span>
 <span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>      <span class="dt">method</span><span class="op">:</span> <span class="st">"POST"</span><span class="op">,</span> <span class="dt">body</span><span class="op">:</span> <span class="bu">JSON</span><span class="op">.</span><span class="fu">stringify</span>({ <span class="st">"data"</span><span class="op">:</span> [reader<span class="op">.</span><span class="at">result</span>] })<span class="op">,</span></span>
@@ -660,7 +668,7 @@ So, let’s get started!</p>
 <span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>    reader<span class="op">.</span><span class="fu">readAsDataURL</span>(photo<span class="op">.</span><span class="at">files</span>[<span class="dv">0</span>])<span class="op">;</span></span>
 <span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>  }</span>
 <span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>  photo<span class="op">.</span><span class="fu">addEventListener</span>(<span class="st">'input'</span><span class="op">,</span> read)<span class="op">;</span></span>
-<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/script&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="gh-pages" class="level2">
@@ -689,7 +697,7 @@ So, let’s get started!</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-10-17-fastai-2022-courses_files/figure-html/35e779a3-c3ad-43e9-bb90-4371217829ad-1-60c95ea4-29b6-42e6-9827-1cdafd04e705.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 <p>Looks like we can browse through these jekyll themes at <a href="http://jekyllthemes.org/" class="uri">http://jekyllthemes.org/</a></p>
@@ -701,7 +709,7 @@ So, let’s get started!</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-10-17-fastai-2022-courses_files/figure-html/1cb73eaa-2f68-4fba-b4c0-d24170f98917-1-d4e08165-739e-4034-843b-1efe335281ad.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 <blockquote class="blockquote">
@@ -717,11 +725,11 @@ So, let’s get started!</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-10-17-fastai-2022-courses_files/figure-html/bb0e4629-a800-4743-a8cc-92a8763ec532-1-56e655b6-1940-4766-bf49-ff76de4ad4b7.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 <p>Convnext models seem to be a good fit.</p>
-<div class="cell" data-execution_count="2">
+<div id="8f83be3d-bdaa-4ef1-ab58-ff1090edef2f" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> timm</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>timm.list_models(<span class="st">'convnext*'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -792,11 +800,11 @@ So, let’s get started!</p>
 <h2 class="anchored" data-anchor-id="inside-nn">Inside NN</h2>
 <p><a href="https://www.kaggle.com/code/jhoward/how-does-a-neural-net-really-work" class="uri">https://www.kaggle.com/code/jhoward/how-does-a-neural-net-really-work</a></p>
 <p>Illustration of a powerfull python function <code>partial</code></p>
-<div class="cell" data-execution_count="16">
+<div id="f9d1a483-538f-4da6-aac5-d5f1ac5516b3" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> functools <span class="im">import</span> partial</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> mk_quad(a, b, c): <span class="cf">return</span> partial(quad, a, b, c)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="17">
+<div id="dab0c516-51c5-4b26-bfc3-7ee331a383c0" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> mk_quad(<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">1</span>)</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>f(<span class="fl">1.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="17">
@@ -826,7 +834,7 @@ So, let’s get started!</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-10-17-fastai-2022-courses_files/figure-html/fd076952-c3a5-4a41-be6e-81395db0ee12-1-67afa14d-fd26-45ed-8d09-82a97458787d.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 <blockquote class="blockquote">
@@ -845,7 +853,7 @@ So, let’s get started!</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-10-17-fastai-2022-courses_files/figure-html/85af52d2-9674-45b5-b71c-2576078497f9-1-dbe1075e-9548-4e54-9924-ca99f1e6649f.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 <blockquote class="blockquote">
@@ -862,7 +870,7 @@ So, let’s get started!</p>
 <h2 class="anchored" data-anchor-id="why-you-should-use-a-framework">Why you should use a framework</h2>
 <p>It is in kaggle <a href="https://www.kaggle.com/code/jhoward/why-you-should-use-a-framework">Why you should use a framework</a>. As usually upvote &amp; copy/edit to start using it. Or get the notebooks from <a href="https://github.com/fastai/course22/blob/master/06-why-you-should-use-a-framework.ipynb">github</a>.</p>
 <p>Jeremy used TabularPandas, lr_find, ensemble</p>
-<div class="cell" data-tags="[]" data-execution_count="14">
+<div id="fcfeb9ae-2064-48e6-9bf0-4df2af71ec7d" class="cell" data-tags="[]" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>learn.lr_find(suggest_funcs<span class="op">=</span>(slide, valley))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 
@@ -871,7 +879,11 @@ So, let’s get started!</p>
 <pre><code>SuggestedLRs(slide=0.0831763744354248, valley=0.007585775572806597)</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-10-17-fastai-2022-courses_files/figure-html/cell-6-output-3.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-10-17-fastai-2022-courses_files/figure-html/cell-6-output-3.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>I could try this for autoencoders: <a href="https://alanbertl.com/autoencoder-with-fast-ai/" class="uri">https://alanbertl.com/autoencoder-with-fast-ai/</a> (this is v1 but should be easy to adapt to v2)</p>
@@ -887,7 +899,7 @@ So, let’s get started!</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-10-17-fastai-2022-courses_files/figure-html/1be83661-8a7f-45af-acfe-3045c8c77946-1-2af8bec3-ac03-4b00-97a6-d70bec83e724.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 <blockquote class="blockquote">
@@ -895,10 +907,14 @@ So, let’s get started!</p>
 </blockquote>
 <p>We continue on the previous notebook <a href="https://www.kaggle.com/code/jhoward/how-random-forests-really-work">How random forests really work</a>.</p>
 <p>And repeating binary split on 2 dataset already split makes it a TwoR approach… And we can continue recursively. This is what a DecisionTree is.</p>
-<div class="cell" data-tags="[]" data-execution_count="35">
+<div id="653b40e5-1826-4322-931a-970383100f81" class="cell" data-tags="[]" data-execution_count="35">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>draw_tree(m, trn_xs, size<span class="op">=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="35">
-<p><img src="2022-10-17-fastai-2022-courses_files/figure-html/cell-7-output-1.svg" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-10-17-fastai-2022-courses_files/figure-html/cell-7-output-1.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Then Jeremy explains different ensemble approached: - by subsetting rows (and columns) and averaging predictions - this is bagging and random forest is one implementation - by focusing on residuals on each steps and summing predictions - this is boosting and gradient boosting decision trees is one implementation. Jeremys’explanation at <a href="https://explained.ai/gradient-boosting/">explained ai</a></p>
@@ -908,7 +924,7 @@ So, let’s get started!</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-10-17-fastai-2022-courses_files/figure-html/56a8e326-0b24-4b49-bc0e-f4a44ab10a65-1-ddf78814-ef73-4ad3-8cc5-3e4896f575cb.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 <p>There are 6 videos (walkthrough) from Jeremy, I think 6 hours long to enter into each detail of his process to be a kaggle grandmaster.</p>
@@ -933,7 +949,7 @@ So, let’s get started!</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-10-17-fastai-2022-courses_files/figure-html/29f01da0-60c7-40bc-b4a2-ff2655209a33-1-e97eb590-fbad-4ca4-b1f1-affa840869fc.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 <blockquote class="blockquote">
@@ -947,7 +963,7 @@ So, let’s get started!</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-10-17-fastai-2022-courses_files/figure-html/878f5f41-fb02-4d76-8e07-e3a3a0884608-1-9f314285-1119-4290-87ef-5c0d1ab5581d.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 <p>Jeremy explains latent factor, the way to implement them in pytorch. Then bias factor added to these matrices to adjust bias. ProductBias to calculate similarity. And the full learning process. Then introduces weight decay as a way to regularize (avoid overfitting).</p>
@@ -959,7 +975,7 @@ So, let’s get started!</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-10-17-fastai-2022-courses_files/figure-html/cee3aee1-77c8-4a3a-93d5-ddcc0958d0b0-1-937c5629-1a79-4873-966f-05458b912588.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 <blockquote class="blockquote">
@@ -975,7 +991,7 @@ So, let’s get started!</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-10-17-fastai-2022-courses_files/figure-html/09dbdd7a-6fba-4792-b34b-9f982ae241d6-1-50be3667-b78e-4934-a5db-954d2137942b.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 
@@ -1024,6 +1040,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       } else {
         el.classList.add('notransition');
       }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
     }
   }
   const toggleColorMode = (alternate) => {
@@ -1092,13 +1135,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  let localAlternateSentinel = 'default';
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -1177,10 +1222,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("^(?:http:|https:)\/\/castorfou\.github\.io\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+          // default icon
+          link.classList.add("external");
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1190,8 +1254,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1204,6 +1277,125 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1247,6 +1439,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1272,6 +1465,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1329,25 +1548,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       });
     }
   }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var filterRegex = new RegExp("^(?:http:|https:)\/\/castorfou\.github\.io\/");
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-          // target, if specified
-          link.setAttribute("target", "_blank");
-          // default icon
-          link.classList.add("external");
-      }
-    }
 });
 </script>
 </div> <!-- /content -->
+
 
 
 

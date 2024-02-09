@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.549">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -24,7 +24,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -84,7 +84,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -93,6 +99,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -119,10 +126,10 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Guillaume’s blog</span>
     </a>
@@ -134,24 +141,24 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../about.html" rel="" target="">
- <span class="menu-text">About</span></a>
+    <a class="nav-link" href="../about.html"> 
+<span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/castorfou" rel="" target=""><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/castorfou"> <i class="bi bi-github" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com/GuillaumeRamel1" rel="" target=""><i class="bi bi-twitter" role="img">
+    <a class="nav-link" href="https://twitter.com/GuillaumeRamel1"> <i class="bi bi-twitter" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools">
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
-          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -254,6 +261,7 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 
 
 
+
 <p>As an example from T15Gen2, corporate mastered.</p>
 <p>This procedure needs admin rights on 2 steps (<a href="../posts/2022-12-15-wsl2-fresh-pc.html#install-nvidia-driver">install nvidia drivers</a>, <a href="../posts/2022-12-15-wsl2-fresh-pc.html#activate-wsl">activate wsl</a>)</p>
 <p>And if based on WSL from Windows store (<code>wsl --version</code>&gt;=1.0), lots of new features such as systemd, snap, integrated display, etc. Detailed in <a href="../posts/2022-12-19-wsl2-from-windows-store.html">WSL2 from Windows Store</a></p>
@@ -265,7 +273,7 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-12-15-wsl2-fresh-pc_files/figure-html/ffa57bab-f1f8-4769-89ca-80befe985bff-1-14214012-dafb-4ce0-8960-d2acc3d4dcb1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 </section>
@@ -276,7 +284,7 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-12-15-wsl2-fresh-pc_files/figure-html/8f2e1657-0713-4876-b718-2b3a8950bfff-1-ea15f896-fce8-40d7-b994-d67fbe69d22f.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 <p>(Jan-18 23: cuda 11.7.1 using <code>cuda_11.7.1_516.94_windows.exe</code>)</p>
@@ -299,7 +307,7 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-12-15-wsl2-fresh-pc_files/figure-html/feea4b16-9560-4376-ac20-6ebcd81a2602-1-9bc2eacb-1523-4584-8fcc-5cb94c33c578.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 <p>(Dec-22: this file <code>ubuntu-jammy-wsl-amd64-wsl.rootfs.tar.gz</code>)</p>
@@ -361,7 +369,7 @@ chmod +x setup_wsl_root.sh
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-12-15-wsl2-fresh-pc_files/figure-html/55a8442c-ed78-4d61-82ed-eeba534ab895-1-edf2fa53-fb5b-41ec-b04b-b55116f2125b.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 </section>
@@ -372,7 +380,7 @@ chmod +x setup_wsl_root.sh
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-12-15-wsl2-fresh-pc_files/figure-html/110ff48d-cd3c-4c9c-bf2a-22639a9601bc-1-8e9bca5e-c0bf-4ef4-947b-f5fec289c9a4.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 <p>Step 2: accept default entries (type enter). Add the generated key to gitlab &gt; preferences &gt; SSH keys. And then resume.</p>
@@ -391,7 +399,7 @@ chmod +x setup_wsl_root.sh
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-12-15-wsl2-fresh-pc_files/figure-html/4c52acb2-3c41-4b7f-9ab3-c4724c59cb54-1-ab0bb1c5-0d39-4110-a50d-9c98ac95cb6d.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 </section>
@@ -415,7 +423,7 @@ chmod +x setup_wsl_root.sh
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-12-15-wsl2-fresh-pc_files/figure-html/6d6341d7-6604-405d-955f-8234907f503d-1-4129a8f8-597d-439a-9d53-55d7c0022a51.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 </section>
@@ -425,7 +433,7 @@ chmod +x setup_wsl_root.sh
 <div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">--no-check-certificate</span> <span class="at">--content-disposition</span> <span class="at">-O</span> <span class="at">-</span> https://raw.githubusercontent.com/castorfou/blog/master/files/setup_wsl_01_automount_secured_vbox.sh <span class="kw">|</span> <span class="fu">bash</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Modify <code>/etc/vbox.autofs</code> to match your actual mounted disks. <code>sudo service autofs start</code> to start the service.</p>
 <p>if it fails, check that kernel is at least v5. <code>uname -a</code>. If not maybe in WSL 1 insted of WSL 2? (<code>sudo automount -f -v</code> should provide more information)</p>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-12-15T06:59:08.940563Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-12-15T06:59:08.939739Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-12-15T06:59:09.054598Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-12-15T06:59:09.053780Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2022-12-15T06:59:08.940524Z&quot;}" data-tags="[]" data-execution_count="5">
+<div id="e0dfdc25-ee2e-4455-a270-f5db4705f77e" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-12-15T06:59:08.940563Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-12-15T06:59:08.939739Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-12-15T06:59:09.054598Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-12-15T06:59:09.053780Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2022-12-15T06:59:08.940524Z&quot;}" data-tags="[]" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#my vbox.autofs file</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cat <span class="op">/</span>etc<span class="op">/</span>vbox.autofs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -472,7 +480,7 @@ chmod +x setup_wsl_root.sh
 <p>In order to preserve base environment, I won’t install anything in it.</p>
 <p>I will create a <code>base_jupyter_v4</code> env with what is needed for running jupyter lab. And create a jupyterlab service to automatically start jupyter lab with my distro (and stop/restart it)</p>
 <p><code>base_jupyter_v4</code></p>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-08T15:02:34.397477Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-08T15:02:34.397295Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-08T15:02:34.513557Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-08T15:02:34.512901Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-08T15:02:34.397465Z&quot;}" data-tags="[]" data-execution_count="1">
+<div id="3ecda046-90d1-4918-9f10-4face271e9f9" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-08T15:02:34.397477Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-08T15:02:34.397295Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-08T15:02:34.513557Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-08T15:02:34.512901Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-08T15:02:34.397465Z&quot;}" data-tags="[]" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cat <span class="op">/</span>home<span class="op">/</span>guillaume<span class="op">/</span>_conda_env<span class="op">/</span>base_jupyter_v4.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>mamba remove --name base_jupyter_v4 --all
@@ -523,10 +531,10 @@ mamba update --strict-channel-priority -c conda-forge -c nodefaults  jupyterlab<
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-16" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="8" data-code-cell="annotated-cell-16" data-code-annotation="1">This is to allow execution of GPU instructions within jupyter lab</span>
+<span data-code-cell="annotated-cell-16" data-code-lines="8" data-code-annotation="1">This is to allow execution of GPU instructions within jupyter lab</span>
 </dd>
 </dl>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-08T15:07:56.627790Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-08T15:07:56.627551Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-08T15:07:56.742704Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-08T15:07:56.741974Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-08T15:07:56.627760Z&quot;}" data-execution_count="2">
+<div id="1f0d76b4-d289-4087-b620-f8db667c77ea" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-08T15:07:56.627790Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-08T15:07:56.627551Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-08T15:07:56.742704Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-08T15:07:56.741974Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-08T15:07:56.627760Z&quot;}" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cat <span class="op">/</span>home<span class="op">/</span>guillaume<span class="op">/</span><span class="bu">bin</span><span class="op">/</span>jupyterlab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#!/bin/bash
@@ -584,7 +592,7 @@ jupyter lab</code></pre>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="attachment:efbeb000-bfc0-4f5d-96fd-cc2e42c0e41b.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 <p>Load bash aliases</p>
@@ -651,14 +659,14 @@ jupyter lab</code></pre>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-12-15-wsl2-fresh-pc_files/figure-html/a23898c4-f3f8-40e6-abf4-e46c06ceaa66-1-f65bdbb3-c8f4-4a30-ac69-54727b96e6e4.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 <p>To allow external websites, import this certificate <code>/usr/local/share/ca-certificates/cert_M_X5C_sase-mob-sslfwd-trust-ca.crt</code> in the certificate manager</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-12-15-wsl2-fresh-pc_files/figure-html/b151c71f-a1b4-4a3f-90cb-f704ad5cee4b-1-a6fce345-70db-4331-ac47-1dd50cb5a69a.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 </section>
@@ -669,7 +677,7 @@ jupyter lab</code></pre>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-12-15-wsl2-fresh-pc_files/figure-html/ddff4bbe-8c2c-44ef-9df8-bdc6c06ba501-1-27246a86-24d7-4131-adad-4a50fd9cbe92.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 </section>
@@ -700,14 +708,14 @@ jupyter lab</code></pre>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-12-15-wsl2-fresh-pc_files/figure-html/ae8205fb-aa09-48c5-9738-a917a104644e-1-1a4c2bac-a4ff-46fb-b5b6-ae40add3390d.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 <p>And impact on nautilus is directly visible</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-12-15-wsl2-fresh-pc_files/figure-html/e15b2c4e-9d7a-42ee-ab9e-8c043cb2810f-1-2f9c1781-e431-46d1-9c92-a8fe8a3a22c2.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 </section>
@@ -815,7 +823,7 @@ jupyter lab</code></pre>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="2022-12-15-wsl2-fresh-pc_files/figure-html/ce9fb9b5-eda2-4d2d-ab54-2923e266bd5d-1-bbf4eacb-20e4-440a-a1bd-c430832000b2.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 <p>Then we can start it by running <code>gnomeshell.sh</code></p>
@@ -869,6 +877,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       } else {
         el.classList.add('notransition');
       }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
     }
   }
   const toggleColorMode = (alternate) => {
@@ -937,13 +972,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  let localAlternateSentinel = 'default';
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -1022,10 +1059,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("^(?:http:|https:)\/\/castorfou\.github\.io\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+          // default icon
+          link.classList.add("external");
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1035,8 +1091,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1049,6 +1114,125 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1092,6 +1276,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1117,6 +1302,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1174,25 +1385,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       });
     }
   }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var filterRegex = new RegExp("^(?:http:|https:)\/\/castorfou\.github\.io\/");
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-          // target, if specified
-          link.setAttribute("target", "_blank");
-          // default icon
-          link.classList.add("external");
-      }
-    }
 });
 </script>
 </div> <!-- /content -->
+
 
 
 

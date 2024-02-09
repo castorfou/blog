@@ -6,15 +6,16 @@
       version="2.0">
 <channel>
 <title>Guillaume&#39;s blog</title>
-<link>https://castorfou.github.io/index.html</link>
+<link>https://castorfou.github.io/</link>
 <atom:link href="https://castorfou.github.io/index.xml" rel="self" type="application/rss+xml"/>
 <description>This is Guillaume Ramelet&#39;s personal blog.</description>
-<generator>quarto-1.3.450</generator>
+<generator>quarto-1.4.549</generator>
 <lastBuildDate>Wed, 13 Dec 2023 00:00:00 GMT</lastBuildDate>
 <item>
   <title>Automount blobfuse2 containers in linux</title>
   <link>https://castorfou.github.io/posts/2023-12-13-blobfuse2.html</link>
   <description><![CDATA[ 
+
 
 
 
@@ -27,7 +28,7 @@
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://castorfou.github.io/posts/2023-12-13-blobfuse2_files/figure-html/9c109e14-a018-41d0-9cf9-e8b490fa8c03-1-928521a8-f031-4826-9f58-27628d5b5b9c.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 <p>In the following page, I will use “my_storage_account”</p>
@@ -35,7 +36,7 @@
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://castorfou.github.io/posts/2023-12-13-blobfuse2_files/figure-html/bbf09530-249c-4442-be2d-9da250c9a1fe-1-4a3a0d22-330b-427c-9ebd-e8f005264c2f.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 <p>In the following page, I will use “my_storage_key”</p>
@@ -56,7 +57,7 @@ font-style: inherit;">pip</span> install bibfuse</span><div class="code-annotati
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-1" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-lines="3" data-code-cell="annotated-cell-1">install in base</span>
+<span data-code-cell="annotated-cell-1" data-code-lines="3" data-code-annotation="1">install in base</span>
 </dd>
 </dl>
 </section>
@@ -158,7 +159,7 @@ font-style: inherit;">--container</span> container_1</span></code></pre></div>
 <li><p><code>mount_azure.conf</code> in <code>~/bin</code> to store BIBFUSE_SECURE_PATH, BLOBFUSE2_SECURE_CONFIG_PASSPHRASE</p></li>
 <li><p><code>bibfuse.service</code> in <code>~/.config/systemd/user</code> with the service logic</p></li>
 </ul>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-12-14T13:52:15.457967Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-12-14T13:52:15.457705Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-12-14T13:52:15.568541Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-12-14T13:52:15.567661Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-12-14T13:52:15.457945Z&quot;}" data-execution_count="7">
+<div id="50bb4dbe-ae09-4a50-866d-6fbef84f8fc3" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-12-14T13:52:15.457967Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-12-14T13:52:15.457705Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-12-14T13:52:15.568541Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-12-14T13:52:15.567661Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-12-14T13:52:15.457945Z&quot;}" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#changed filename for confidentiality reason</span></span>
@@ -181,7 +182,7 @@ conda activate base
 bibfuse mount ~/AZURE/zyoung --account my_storage_account --container container_1</code></pre>
 </div>
 </div>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-12-14T13:52:27.313159Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-12-14T13:52:27.312776Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-12-14T13:52:27.423121Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-12-14T13:52:27.422451Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-12-14T13:52:27.313123Z&quot;}" data-execution_count="8">
+<div id="92b35f74-214f-4f27-ad5c-164d05246423" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-12-14T13:52:27.313159Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-12-14T13:52:27.312776Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-12-14T13:52:27.423121Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-12-14T13:52:27.422451Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-12-14T13:52:27.313123Z&quot;}" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">!</span>cat <span class="op" style="color: #5E5E5E;
@@ -203,7 +204,7 @@ bibfuse unmount --all
 cd -</code></pre>
 </div>
 </div>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-12-14T13:53:33.779237Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-12-14T13:53:33.778618Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-12-14T13:53:33.889149Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-12-14T13:53:33.888500Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-12-14T13:53:33.779218Z&quot;}" data-execution_count="9">
+<div id="620dc255-a753-44d2-baa0-c8742d7b74fd" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-12-14T13:53:33.779237Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-12-14T13:53:33.778618Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-12-14T13:53:33.889149Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-12-14T13:53:33.888500Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-12-14T13:53:33.779218Z&quot;}" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#changed filename for confidentiality reason</span></span>
@@ -221,7 +222,7 @@ font-style: inherit;">/</span>mount_azure\ \(copy\).conf</span></code></pre></di
 BLOBFUSE2_SECURE_CONFIG_PASSPHRASE=anypassphrase&lt;16</code></pre>
 </div>
 </div>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-12-14T13:47:46.199255Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-12-14T13:47:46.199036Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-12-14T13:47:46.309598Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-12-14T13:47:46.309007Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-12-14T13:47:46.199239Z&quot;}" data-execution_count="3">
+<div id="e22cf903-3c99-4190-8b1c-c5280d28fc9b" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-12-14T13:47:46.199255Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-12-14T13:47:46.199036Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-12-14T13:47:46.309598Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-12-14T13:47:46.309007Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-12-14T13:47:46.199239Z&quot;}" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">!</span>cat <span class="op" style="color: #5E5E5E;
@@ -323,6 +324,7 @@ font-style: inherit;">-u</span> bibfuse</span></code></pre></div>
   <title>Logbook for December 23</title>
   <link>https://castorfou.github.io/posts/2023-12-01-logbook-December-23.html</link>
   <description><![CDATA[ 
+
 
 
 
@@ -632,6 +634,7 @@ font-style: inherit;">ESH</span></span></code></pre></div>
 
 
 
+
 <p>When running explorations, and specially when collaborating with colleagues, it may be difficult to use notebooks.</p>
 <p>Here are some issues I encounter regularly:</p>
 <ul>
@@ -646,7 +649,7 @@ font-style: inherit;">ESH</span></span></code></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://castorfou.github.io/posts/2023-11-22-pre-commit-jupyter_files/figure-html/076edce0-1701-4c14-a923-3dd165332a0d-1-c175ce99-e902-42f2-8ae8-8cf40394a903.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 <section id="what-is-it" class="level2">
@@ -674,7 +677,7 @@ font-style: inherit;">pip</span> install pre-commit</span></code></pre></div>
 background-color: null;
 font-style: inherit;">pre-commit</span> install</span></code></pre></div>
 <p>Here is an example of <code>.pre-commit-config.yaml</code></p>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-12-21T15:54:34.403884Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-12-21T15:54:34.403701Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-12-21T15:54:34.520486Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-12-21T15:54:34.519884Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-12-21T15:54:34.403873Z&quot;}" data-execution_count="2">
+<div id="80c84ac4-7535-45c4-a987-a82b30e748f2" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-12-21T15:54:34.403884Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-12-21T15:54:34.403701Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-12-21T15:54:34.520486Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-12-21T15:54:34.519884Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-12-21T15:54:34.403873Z&quot;}" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">!</span>cat ..<span class="op" style="color: #5E5E5E;
@@ -901,7 +904,7 @@ font-style: inherit;">exceeds</span> 90000 KB.</span></code></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://castorfou.github.io/posts/2023-11-22-pre-commit-jupyter_files/figure-html/d9c05f6d-2ec0-416b-8205-89462d1874e2-1-426db974-8a53-4210-933b-16be61cd4404.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 <section id="what-is-it-1" class="level2">
@@ -970,7 +973,7 @@ font-style: inherit;">[I</span> webutil:29] URL: http://127.0.0.1:45967/difftol<
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://castorfou.github.io/posts/2023-11-22-pre-commit-jupyter_files/figure-html/ad07ebe7-422a-48d0-8532-f3798fc4108e-1-80faabdf-8854-4f28-8850-bbfb1a62deed.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 
@@ -991,6 +994,7 @@ font-style: inherit;">[I</span> webutil:29] URL: http://127.0.0.1:45967/difftol<
   <title>Logbook for November 23</title>
   <link>https://castorfou.github.io/posts/2023-11-01-logbook-November-23.html</link>
   <description><![CDATA[ 
+
 
 
 
@@ -1109,11 +1113,12 @@ font-style: inherit;">--</span> ./pip.conf</span></code></pre></div>
 
 
 
+
 <p>As mentionned in <a href="../posts/2023-05-01-logbook-May-23.html#jupyter-4.0-is-out">logbook May-23</a>, jupyter lab v4 is now available.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://castorfou.github.io/posts/2023-10-05-update-jupyterlab-v4_files/figure-html/54534f72-8de8-4202-a9d6-2580890cba5f-1-image.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 <section id="clean-jupyterlab-config-files" class="level1">
@@ -1191,23 +1196,23 @@ font-style: inherit;">pip</span> install jupyterlab-quarto</span><div class="cod
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-1" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-1" data-code-annotation="1" data-code-lines="2">tqdm available for all kernels, nb_conda_kernels kernels are already listed against each conda environment (I won’t manually install kernels anymore <code>python -m ipykernel install --user --name=my_env</code>)</span>
+<span data-code-cell="annotated-cell-1" data-code-lines="2" data-code-annotation="1">tqdm available for all kernels, nb_conda_kernels kernels are already listed against each conda environment (I won’t manually install kernels anymore <code>python -m ipykernel install --user --name=my_env</code>)</span>
 </dd>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-1" data-code-annotation="2" data-code-lines="8">plotly extension</span>
+<span data-code-cell="annotated-cell-1" data-code-lines="8" data-code-annotation="2">plotly extension</span>
 </dd>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-1" data-code-annotation="3" data-code-lines="9">execute time</span>
+<span data-code-cell="annotated-cell-1" data-code-lines="9" data-code-annotation="3">execute time</span>
 </dd>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-1" data-code-annotation="4" data-code-lines="11">in case of holoviz usage (see datashadering), pyviz_comms version &gt;=3.0 required</span>
+<span data-code-cell="annotated-cell-1" data-code-lines="11" data-code-annotation="4">in case of holoviz usage (see datashadering), pyviz_comms version &gt;=3.0 required</span>
 </dd>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-1" data-code-annotation="5" data-code-lines="12">in case of nbdev usage: <a href="https://quarto.org/docs/tools/jupyter-lab-extension.html" class="uri">https://quarto.org/docs/tools/jupyter-lab-extension.html</a></span>
+<span data-code-cell="annotated-cell-1" data-code-lines="12" data-code-annotation="5">in case of nbdev usage: <a href="https://quarto.org/docs/tools/jupyter-lab-extension.html" class="uri">https://quarto.org/docs/tools/jupyter-lab-extension.html</a></span>
 </dd>
 </dl>
 </section>
@@ -1219,7 +1224,7 @@ font-style: inherit;">pip</span> install jupyterlab-quarto</span><div class="cod
 <ul>
 <li><code>~/bin/jupyterlab</code></li>
 </ul>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-08T10:10:54.541505Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-08T10:10:54.541330Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-08T10:10:54.660456Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-08T10:10:54.659882Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-08T10:10:54.541492Z&quot;}" data-execution_count="1">
+<div id="0fc25868-1a83-4bfc-be5a-78c770b84f3b" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-08T10:10:54.541505Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-08T10:10:54.541330Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-08T10:10:54.660456Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-08T10:10:54.659882Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-08T10:10:54.541492Z&quot;}" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">!</span>cat <span class="op" style="color: #5E5E5E;
@@ -1290,7 +1295,7 @@ font-style: inherit;">sudo</span> systemctl start jupyter</span></code></pre></d
 <h1>unit test</h1>
 <section id="tqdm" class="level2">
 <h2 class="anchored" data-anchor-id="tqdm">tqdm</h2>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-08T10:11:30.789994Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-08T10:11:30.789792Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-08T10:11:33.940297Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-08T10:11:33.939744Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-08T10:11:30.789980Z&quot;}" data-execution_count="2">
+<div id="dc01f2a2-7f2e-4077-96b8-f691b7fd1de5" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-08T10:11:30.789994Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-08T10:11:30.789792Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-08T10:11:33.940297Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-08T10:11:33.939744Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-08T10:11:30.789980Z&quot;}" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">from</span> tqdm.notebook <span class="im" style="color: #00769E;
@@ -1353,7 +1358,7 @@ font-style: inherit;">0.01</span>)</span></code></pre></div>
 </section>
 <section id="ipywidgets" class="level2">
 <h2 class="anchored" data-anchor-id="ipywidgets">ipywidgets</h2>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-08T10:11:34.011178Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-08T10:11:34.010974Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-08T10:11:34.014920Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-08T10:11:34.014421Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-08T10:11:34.011164Z&quot;}" data-tags="[]" data-execution_count="3">
+<div id="11792d4b-1eeb-4f8c-b5f2-56f6fdca835a" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-08T10:11:34.011178Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-08T10:11:34.010974Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-08T10:11:34.014920Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-08T10:11:34.014421Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-08T10:11:34.011164Z&quot;}" data-tags="[]" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> ipywidgets</span>
@@ -1362,7 +1367,7 @@ font-style: inherit;">import</span> ipywidgets</span>
 <pre><code>'8.1.1'</code></pre>
 </div>
 </div>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-08T10:11:34.698628Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-08T10:11:34.697892Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-08T10:11:34.704410Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-08T10:11:34.703954Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-08T10:11:34.698587Z&quot;}" data-tags="[]" data-execution_count="4">
+<div id="7cc219ac-032f-45b1-80d8-55cd257c79ba" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-01-08T10:11:34.698628Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-01-08T10:11:34.697892Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-01-08T10:11:34.704410Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-01-08T10:11:34.703954Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-01-08T10:11:34.698587Z&quot;}" data-tags="[]" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1">ipywidgets.widgets.Button(description<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span><span class="st" style="color: #20794D;
@@ -1394,6 +1399,7 @@ font-style: inherit;">"Hello World!"</span>)</span></code></pre></div>
 
 
 
+
 <p>wsl cursor theme, fastai delegates getattr (delegated composition, delegated inheritance)</p>
 <section id="week-41---october-23" class="level1">
 <h1>Week 41 - October 23</h1>
@@ -1412,7 +1418,7 @@ font-style: inherit;">"Hello World!"</span>)</span></code></pre></div>
 <p>I have just seen in fastai code a decorator used in many places: <strong><code>delegates</code></strong>.</p>
 <p>Want to know what it does and why Jeremy used it? And luckily he explained that in <a href="https://www.fast.ai/posts/2019-08-06-delegation.html">Make Delegation Work in Python</a>.</p>
 <p>And can be used for class</p>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-10-19T06:45:12.523744Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-10-19T06:45:12.523635Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-10-19T06:45:12.529824Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-10-19T06:45:12.529381Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-10-19T06:45:12.523733Z&quot;}" data-execution_count="1">
+<div id="043ad180-75cd-4834-b796-219d8849c445" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-10-19T06:45:12.523744Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-10-19T06:45:12.523635Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-10-19T06:45:12.529824Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-10-19T06:45:12.529381Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-10-19T06:45:12.523733Z&quot;}" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">from</span> fastcore.meta <span class="im" style="color: #00769E;
@@ -1487,7 +1493,7 @@ font-style: inherit;">print</span>(inspect.signature(ProductPage))</span></code>
 </div>
 </div>
 <p>Or for functions</p>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-10-19T06:45:12.530900Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-10-19T06:45:12.530676Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-10-19T06:45:12.536114Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-10-19T06:45:12.535676Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-10-19T06:45:12.530889Z&quot;}" data-execution_count="2">
+<div id="1d16ae31-24bd-4736-96fd-f5db43c7d94c" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-10-19T06:45:12.530900Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-10-19T06:45:12.530676Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-10-19T06:45:12.536114Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-10-19T06:45:12.535676Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-10-19T06:45:12.530889Z&quot;}" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">from</span> fastcore.meta <span class="im" style="color: #00769E;
@@ -1546,7 +1552,7 @@ font-style: inherit;">print</span>(inspect.signature(create_product_page))</span
 <p>If you’ll be using the composed object in a few different places, the <strong>delegated composition</strong> approach will probably be best. If you’re adding some functionality to an existing class, <strong>delegated inheritance</strong> might result in a cleaner API for your class users.</p>
 </blockquote>
 <p>In case of delegated composition, Jeremy created <strong><code>GetAttr</code></strong> to allow easily access attributes from your composed class.</p>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-10-19T06:45:25.866040Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-10-19T06:45:25.865844Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-10-19T06:45:25.870592Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-10-19T06:45:25.869855Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-10-19T06:45:25.866027Z&quot;}" data-execution_count="4">
+<div id="a460af71-a50f-4f87-ac69-b06be08b39ec" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-10-19T06:45:25.866040Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-10-19T06:45:25.865844Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-10-19T06:45:25.870592Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-10-19T06:45:25.869855Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-10-19T06:45:25.866027Z&quot;}" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">from</span> fastcore.basics <span class="im" style="color: #00769E;
@@ -1625,11 +1631,12 @@ font-style: inherit;">10.50</span>)</span>
 
 
 
+
 <p>As <a href="https://twitter.com/hellokillian/status/1699156860073640038?s=20https://twitter.com/hellokillian/status/1699156860073640038?s=20">published by Killian</a></p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://castorfou.github.io/posts/2023-09-13-open-interpreter_files/figure-html/891a37e9-25b8-4498-89bc-aca61bccf960-1-f0e3cb75-0997-4253-8153-cff1855c2b93.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 <section id="installation-under-wsl" class="level1">
@@ -1778,7 +1785,7 @@ font-style: inherit;">-vv</span></span></code></pre></div>
 <p>Just run <code>interpreter -y --local</code></p>
 <p>1st tests, this is extremely slow, and it doesn’t seem to use GPU. (that’s maybe why)</p>
 <p>Maybe I can switch to a lighter model, since I have only 16 GB of GPU RAM.</p>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-14T06:34:10.579321Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-14T06:34:10.579115Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-14T06:34:10.585766Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-14T06:34:10.585231Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-09-14T06:34:10.579309Z&quot;}" data-tags="[]" data-execution_count="4">
+<div id="b0c95ca7-3b7e-4267-8882-e425702c4508" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-14T06:34:10.579321Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-14T06:34:10.579115Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-14T06:34:10.585766Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-14T06:34:10.585231Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-09-14T06:34:10.579309Z&quot;}" data-tags="[]" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">%%</span>HTML</span>
@@ -1826,7 +1833,7 @@ font-style: inherit;">&gt;</span></span></code></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://castorfou.github.io/posts/2023-09-13-open-interpreter_files/figure-html/8484143b-6aab-4cbb-9230-8167b5aec02f-1-b547dcd2-8c2a-48d8-bbbb-96ed75d0cee5.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 <section id="with-a-smaller-modele" class="level2">
@@ -1834,7 +1841,7 @@ font-style: inherit;">&gt;</span></span></code></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://castorfou.github.io/posts/2023-09-13-open-interpreter_files/figure-html/6c521df9-0df1-4c53-9eb8-5ad5d294db63-1-ea894976-931e-4e49-a2bb-a8b445d2b853.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 <p>Here this is reasonnably fast but runs in CPU and answers are not what I expect. Is it due to smaller model? Do I have to switch to a bigger one on GPU? Or to GPT-4 ?</p>
@@ -2015,7 +2022,7 @@ font-style: inherit;">: Use custom compiled libllama.so</span></span>
 background-color: null;
 font-style: inherit;">cp</span> ~/temp/llama.cpp/libllama.so /home/guillaume/miniconda/envs/interpreter/lib/python3.11/site-packages/llama_cpp</span></code></pre></div>
 <p>We can know try again, and this time it “technically” works:</p>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-14T09:21:10.711661Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-14T09:21:10.710703Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-14T09:21:10.726187Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-14T09:21:10.725004Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-09-14T09:21:10.711608Z&quot;}" data-tags="[]" data-execution_count="1">
+<div id="4a04ea35-9f67-44f1-ac84-faee72541b1c" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-14T09:21:10.711661Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-14T09:21:10.710703Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-14T09:21:10.726187Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-14T09:21:10.725004Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-09-14T09:21:10.711608Z&quot;}" data-tags="[]" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">%%</span>HTML</span>
@@ -2078,6 +2085,7 @@ font-style: inherit;">&gt;</span></span></code></pre></div>
 
 
 
+
 <p>From time to time I get this alert usually when saving data or installing softwares, creation python environments: <code>no space left</code></p>
 <section id="where-to-clean" class="level1">
 <h1>Where to clean</h1>
@@ -2094,7 +2102,7 @@ font-style: inherit;">&gt;</span></span></code></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://castorfou.github.io/posts/2023-09-04-wsl-no-space-left_files/figure-html/680837bb-3ef2-4440-8113-1f55b937baa7-1-8d1076d8-2e89-4f7a-bef3-d71d0874eca1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 </section>
@@ -2124,7 +2132,7 @@ font-style: inherit;">&gt;</span></span></code></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://castorfou.github.io/posts/2023-09-04-wsl-no-space-left_files/figure-html/b3e88d2c-f37e-4c5f-9c9f-0845c0627958-1-739b8b8a-de65-41af-bd46-305c10800967.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 <p>just looking at Size and last modified date is enough to filter what has to be kept and pruned.</p>
@@ -2145,6 +2153,7 @@ font-style: inherit;">&gt;</span></span></code></pre></div>
   <title>Logbook for September 23</title>
   <link>https://castorfou.github.io/posts/2023-09-01-logbook-September-23.html</link>
   <description><![CDATA[ 
+
 
 
 
@@ -2196,11 +2205,12 @@ font-style: inherit;">-crf</span> 20 output.mp4</span></code></pre></div>
 
 
 
+
 <p>As mentionned in <a href="../posts/2023-05-01-logbook-May-23.html#jupyter-4.0-is-out">logbook May-23</a>, jupyter lab v4 is now available.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://castorfou.github.io/posts/2023-08-24-update-jupyterlab-v4_files/figure-html/54534f72-8de8-4202-a9d6-2580890cba5f-1-image.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 <section id="my-jupyter-lab-v3-config-creation-of-a-test-config-to-update-jupyter-lab-to-v4" class="level1">
@@ -2208,7 +2218,7 @@ font-style: inherit;">-crf</span> 20 output.mp4</span></code></pre></div>
 <section id="base_jupyter-jupyter-lab-v3" class="level2">
 <h2 class="anchored" data-anchor-id="base_jupyter-jupyter-lab-v3">base_jupyter (jupyter lab v3)</h2>
 <p>As I explained in <a href="../posts/2022-12-15-wsl2-fresh-pc.html#jupyter-lab">my WSL setup</a>, I run jupyterlab from <code>base_jupyter</code> a specific python environment with this defintion:</p>
-<div class="cell" data-execution_count="2">
+<div id="25d8b446" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">!</span>cat <span class="op" style="color: #5E5E5E;
@@ -2466,7 +2476,7 @@ font-style: inherit;">$SSL_CERT_FILE</span></span></code></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://castorfou.github.io/posts/2023-08-24-update-jupyterlab-v4_files/figure-html/5757d617-1-image.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 <p>Cannot quit (Ctrl-C ineffective) and after a kill the zsh session is broken. Have to restart.</p>
@@ -2557,6 +2567,7 @@ font-style: inherit;">widgetsnbextension</span>        4.0.8              pyhd8e
   <title>Logbook for August 23</title>
   <link>https://castorfou.github.io/posts/2023-08-01-logbook-August-23.html</link>
   <description><![CDATA[ 
+
 
 
 
@@ -2769,6 +2780,7 @@ font-style: inherit;">sudo</span> systemctl mask systemd-binfmt.service</span></
 
 
 
+
 <section id="week-29---july-23" class="level1">
 <h1>Week 29 - July 23</h1>
 <section id="friday-0721" class="level2">
@@ -2779,7 +2791,7 @@ font-style: inherit;">sudo</span> systemctl mask systemd-binfmt.service</span></
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://castorfou.github.io/posts/2023-07-01-logbook-July-23_files/figure-html/8fd9fc7e-b966-4b51-87d3-15d0a67d46df-1-8c910119-b9b0-4c8c-b884-9eeca7c6afe7.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 <p>I have started to play with the <a href="https://holoviz.org/tutorial/index.html">tutorial</a>, and what I would likely use is this hvplot/datashader combo which allows to quickly display millions of points in a graph without any performance issue. And when zooming in, it gets more details.</p>
@@ -2800,6 +2812,7 @@ font-style: inherit;">sudo</span> systemctl mask systemd-binfmt.service</span></
   <title>Logbook for May 23</title>
   <link>https://castorfou.github.io/posts/2023-05-01-logbook-May-23.html</link>
   <description><![CDATA[ 
+
 
 
 
@@ -2843,9 +2856,11 @@ font-style: inherit;">-c</span> conda-forge jupyterlab</span></code></pre></div>
 
 
 
+
 <section id="list" class="level1">
 <h1>list</h1>
 <ul>
+<li>[0] Jan-24 Mallat 2024. (todo: <a href="https://www.college-de-france.fr/fr/agenda/seminaire/apprentissage-et-generation-par-echantillonnage-aleatoire/challenges-de-donnees-1">video 2</a>)</li>
 <li>[] Jun-23 after ChatGPT Prompt Engineering for Developers, DeepLearning.ai proposes 3 new <a href="https://www.deeplearning.ai/short-courses/">short courses</a>: How Diffusion Models Work, LangChain for LLM Application Development, Building Systems with the ChatGPT API</li>
 <li>[] May-23: adaptive lib for active learning <a href="https://adaptive.readthedocs.io/en/latest/index.html#">page</a></li>
 <li>[] SSL cookbook paper: arxiv <a href="https://arxiv.org/abs/2304.12210">page</a> <a href="https://arxiv.org/pdf/2304.12210.pdf">pdf</a></li>
@@ -2866,7 +2881,7 @@ font-style: inherit;">-c</span> conda-forge jupyterlab</span></code></pre></div>
 <ul>
 <li><p>[] not started</p></li>
 <li><p>[0] started</p></li>
-<li><p><input type="checkbox" checked="">completed</p></li>
+<li><p><label><input type="checkbox" checked="">completed</label></p></li>
 </ul>
 
 
@@ -2882,6 +2897,7 @@ font-style: inherit;">-c</span> conda-forge jupyterlab</span></code></pre></div>
   <title>Python scripts from notebooks</title>
   <link>https://castorfou.github.io/posts/2023-04-24-extract-python-scripts-with-nbdev.html</link>
   <description><![CDATA[ 
+
 
 
 
@@ -2918,7 +2934,7 @@ font-style: inherit;">-c</span> fastai nbdev</span></code></pre></div>
 </section>
 <section id="display-version" class="level2">
 <h2 class="anchored" data-anchor-id="display-version">display version</h2>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-25T08:43:22.604528Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-25T08:43:22.604404Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-25T08:43:22.658861Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-25T08:43:22.658246Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-04-25T08:43:22.604515Z&quot;}" data-tags="[]" data-execution_count="1">
+<div id="98adc680-68d8-4b96-a91e-ca45369be641" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-25T08:43:22.604528Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-25T08:43:22.604404Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-25T08:43:22.658861Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-25T08:43:22.658246Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-04-25T08:43:22.604515Z&quot;}" data-tags="[]" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> nbdev</span>
@@ -3005,7 +3021,7 @@ background-color: null;
 font-style: inherit;">'2023-04-24-extract-python-scripts-with-nbdev.ipynb'</span>, <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'.'</span>)</span></code></pre></div>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-25T09:43:21.910021Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-25T09:43:21.909772Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-25T09:43:22.036762Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-25T09:43:22.035778Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-04-25T09:43:21.910006Z&quot;}" data-tags="[]" data-execution_count="4">
+<div id="be841973-3799-4a00-b3ef-12796c1278b4" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-25T09:43:21.910021Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-25T09:43:21.909772Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-25T09:43:22.036762Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-25T09:43:22.035778Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-04-25T09:43:21.910006Z&quot;}" data-tags="[]" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">!</span>ls <span class="op" style="color: #5E5E5E;
@@ -3020,7 +3036,7 @@ font-style: inherit;">*</span>.py</span></code></pre></div>
 </section>
 <section id="use-this-python-script-1" class="level2">
 <h2 class="anchored" data-anchor-id="use-this-python-script-1">use this python script</h2>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-25T08:44:28.427320Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-25T08:44:28.427046Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-25T08:44:28.430706Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-25T08:44:28.430014Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-04-25T08:44:28.427297Z&quot;}" data-tags="[]" data-execution_count="3">
+<div id="367eaea4-bf8d-4b93-b043-c886202286d7" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-25T08:44:28.427320Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-25T08:44:28.427046Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-25T08:44:28.430706Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-25T08:44:28.430014Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-04-25T08:44:28.427297Z&quot;}" data-tags="[]" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> example_nbdev</span>
@@ -3051,6 +3067,7 @@ font-style: inherit;">import</span> example_nbdev</span>
 
 
 
+
 <section id="week-13---april-23" class="level1">
 <h1>Week 13 - April 23</h1>
 <section id="sunday-0402" class="level2">
@@ -3064,14 +3081,14 @@ font-style: inherit;">gsettings</span> set org.gnome.desktop.calendar show-weekd
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://castorfou.github.io/posts/2023-04-01-logbook-April-23_files/figure-html/58dc67ab-e74f-409d-ad4e-f3fc3891d78a-2-ec69e553-dace-4de8-a212-81392d5d0d71.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 <p>(before)</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://castorfou.github.io/posts/2023-04-01-logbook-April-23_files/figure-html/58dc67ab-e74f-409d-ad4e-f3fc3891d78a-1-d4469405-18dd-465f-a742-c2e7f60c2bc7.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 <p>(after)</p>
@@ -3256,6 +3273,7 @@ font-style: inherit;">-R</span> github.com</span></code></pre></div>
 
 
 
+
 <section id="problem" class="level1">
 <h1>Problem</h1>
 <p>As I have explained in <a href="https://github.com/microsoft/wslg/issues/944" class="uri">https://github.com/microsoft/wslg/issues/944</a></p>
@@ -3263,7 +3281,7 @@ font-style: inherit;">-R</span> github.com</span></code></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://castorfou.github.io/posts/2023-03-03-icon-support-in-wsl_files/figure-html/3ea676dd-6081-440a-baf8-7c82684bd29b-1-f4d20218-2ccb-43bd-9573-084768c881bc.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 </section>
@@ -3273,7 +3291,7 @@ font-style: inherit;">-R</span> github.com</span></code></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://castorfou.github.io/posts/2023-03-03-icon-support-in-wsl_files/figure-html/c55ae26d-da33-487e-bfa3-e5e22a36f382-1-4682db7e-285c-4af4-bdfe-ec2bb804bd2c.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 <p>Here is the <a href="https://github.com/microsoft/WSL/releases/tag/1.2.5">changelog</a> of WSL 1.2.5</p>
@@ -3283,7 +3301,7 @@ font-style: inherit;">-R</span> github.com</span></code></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://castorfou.github.io/posts/2023-03-03-icon-support-in-wsl_files/figure-html/aa74632a-50e6-4fe7-8199-10656250e3f6-1-76b3e1cf-53b7-4cf0-a5ff-ec512a73945d.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 <p>Here is the <a href="https://github.com/microsoft/WSL/releases/tag/1.1.7">changelog</a> of WSL 1.1.7</p>
@@ -3296,7 +3314,7 @@ font-style: inherit;">-R</span> github.com</span></code></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://castorfou.github.io/posts/2023-03-03-icon-support-in-wsl_files/figure-html/27be6838-f3ab-45d9-8eb3-f6847cf887d2-1-a617f802-d178-4441-8528-717398d86a4f.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 <section id="shortcuts-to-x11-apps" class="level3">
@@ -3392,20 +3410,20 @@ font-style: inherit;">png2ico</span> tilix_icon.png</span></code></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://castorfou.github.io/posts/2023-03-03-icon-support-in-wsl_files/figure-html/cd10c035-d476-4065-9bd4-7629e63376a7-1-82712699-c3f4-4b06-8047-be47c0c4adde.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://castorfou.github.io/posts/2023-03-03-icon-support-in-wsl_files/figure-html/cd10c035-d476-4065-9bd4-7629e63376a7-3-e479c3cc-4eb5-49ae-a77b-13e489d3d090.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 <p>but when running them, this is a different story</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://castorfou.github.io/posts/2023-03-03-icon-support-in-wsl_files/figure-html/cd10c035-d476-4065-9bd4-7629e63376a7-2-cd2aefb6-799f-4d0f-b812-fa2f63a7c80f.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 </section>
@@ -3431,6 +3449,7 @@ font-style: inherit;">png2ico</span> tilix_icon.png</span></code></pre></div>
 
 
 
+
 <section id="week-9---march-23" class="level1">
 <h1>Week 9 - March 23</h1>
 <section id="friday-0303" class="level2">
@@ -3441,7 +3460,7 @@ font-style: inherit;">png2ico</span> tilix_icon.png</span></code></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://castorfou.github.io/posts/2023-03-01-logbook-March-23_files/figure-html/2f7664ba-4c8d-4962-939c-e954d08c7d7c-1-bb2339c4-070e-4528-a11f-9e85b3bc3002.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 </section>
@@ -3543,6 +3562,7 @@ font-style: inherit;">brew</span> install glab</span></code></pre></div>
 
 
 
+
 <section id="week-5---february-23" class="level1">
 <h1>Week 5 - February 23</h1>
 <section id="wednesday-0201" class="level2">
@@ -3560,7 +3580,7 @@ font-style: inherit;">brew</span> install glab</span></code></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://castorfou.github.io/posts/2023-02-01-logbook-February-23_files/figure-html/9551a5d2-4224-45a5-93ae-0f86f473e878-1-7f3e4222-4b45-488b-adeb-87935a7ca4c0.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 <p>Would be a perfect activity for the next 2 weeks during shool break!</p>
@@ -3778,7 +3798,7 @@ font-style: inherit;"># https://medium.com/@satriajanaka09/setup-zsh-oh-my-zsh-p
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://castorfou.github.io/posts/2023-02-01-logbook-February-23_files/figure-html/ef4c04eb-4424-42b1-a062-3b60dac5e085-1-45c84897-608b-43bd-a09e-9de26b834b91.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 <p>Will have to modify jupyterlab.service with</p>
@@ -3854,6 +3874,7 @@ font-style: inherit;">jupyter</span> lab build</span></code></pre></div>
 
 
 
+
 <p>From time to time, Jeremy organizes live coding session.</p>
 <p>They are recorded (~1h each) and he takes one subject, and tackle it. They seem to be for beginners. But I am quite sure I can get some tips that I will write down on this page.</p>
 <p>18 sessions so far (jan-23):</p>
@@ -3906,7 +3927,7 @@ background-color: null;
 font-style: inherit;">su</span> <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">-</span> fastai</span></code></pre></div>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-01-25T07:52:19.594985Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-01-25T07:52:19.594797Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-01-25T07:52:19.706752Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-01-25T07:52:19.706103Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-01-25T07:52:19.594972Z&quot;}" data-execution_count="1">
+<div id="e9c2850b-ff9b-4880-8cd8-db19a70faa15" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-01-25T07:52:19.594985Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-01-25T07:52:19.594797Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-01-25T07:52:19.706752Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-01-25T07:52:19.706103Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-01-25T07:52:19.594972Z&quot;}" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">!</span><span class="bu" style="color: null;
@@ -3983,7 +4004,7 @@ font-style: inherit;">popd</span></span></code></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://castorfou.github.io/posts/2023-01-25-fastai-live-coding-sessions_files/figure-html/8d5ba2ab-be63-40e5-8122-928a8cd8f1af-1-b8b7d7cd-34cc-4497-949b-8b783c33f4e5.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 </section>
@@ -4062,7 +4083,7 @@ font-style: inherit;">popd</span></span></code></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://castorfou.github.io/posts/2023-01-25-fastai-live-coding-sessions_files/figure-html/1925ae0a-a0de-4260-89ec-634304313798-1-c1b98dd2-2fda-4d01-9384-1242649888f6.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 <p>and recommandation from Jeremy is to take penultimate one. It looks like ot is what is followed by mambaforge</p>
@@ -4261,7 +4282,7 @@ font-style: inherit;">mamba</span> install ipython</span></code></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://castorfou.github.io/posts/2023-01-25-fastai-live-coding-sessions_files/figure-html/50484f4b-d274-4dfc-822f-c801304fa82d-1-78e53956-1c52-4e38-b09f-ae24c693f29b.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 </section>
@@ -4271,7 +4292,7 @@ font-style: inherit;">mamba</span> install ipython</span></code></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://castorfou.github.io/posts/2023-01-25-fastai-live-coding-sessions_files/figure-html/9b1947d5-b700-422a-8004-85c5ae9b2408-1-8be8e3aa-39ba-4bec-8385-195f900beef4.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 <div class="sourceCode" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><span class="ex" style="color: null;
@@ -4303,7 +4324,7 @@ font-style: inherit;">mamba</span> install jupyterlab</span></code></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://castorfou.github.io/posts/2023-01-25-fastai-live-coding-sessions_files/figure-html/7971a951-b9ee-48bf-ac52-df8225b0a71c-1-10ed3f2d-767c-4351-b733-0a6c9ab02570.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 </section>
@@ -4429,7 +4450,7 @@ font-style: inherit;">jupyter</span> lab</span></code></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://castorfou.github.io/posts/2023-01-25-fastai-live-coding-sessions_files/figure-html/fde3e1bd-5f43-4c11-af9d-e6380e583bf4-1-bf2e3102-85df-4e25-aeaf-56b1af2192a7.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 </section>
@@ -4460,7 +4481,7 @@ font-style: inherit;">jupyter</span> lab</span></code></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://castorfou.github.io/posts/2023-01-25-fastai-live-coding-sessions_files/figure-html/3faf5899-108c-454d-a981-56d916ceab5a-1-a4d029be-d64b-4a1b-832c-530e48d50374.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 </section>
@@ -4603,7 +4624,7 @@ font-style: inherit;">-c</span> fastchan fastai fastbook sentencepiece</span></c
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://castorfou.github.io/posts/2023-01-25-fastai-live-coding-sessions_files/figure-html/f70da639-5fdf-4f57-b803-2b91b2f8a9cf-1-c1ae8d55-0373-4223-80ba-b5b5a7cf1556.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 <p>one can see the limit of <code>from xxx import *</code>, you will have the full variables in this window.</p>
@@ -4615,7 +4636,7 @@ font-style: inherit;">-c</span> fastchan fastai fastbook sentencepiece</span></c
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://castorfou.github.io/posts/2023-01-25-fastai-live-coding-sessions_files/figure-html/7294e959-f4bb-48f9-b469-ed1488947255-1-a547e0c6-4efb-41e8-ac02-272865ee3db4.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 <p>And have access to classic <code>ipdb</code> options</p>
@@ -4626,7 +4647,7 @@ font-style: inherit;">-c</span> fastchan fastai fastbook sentencepiece</span></c
 <p><code>s</code>for step into</p>
 <p><code>q</code>for quit</p>
 <p>or a second way:</p>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-01-30T08:03:33.633249Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-01-30T08:03:33.633024Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-01-30T08:03:33.636364Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-01-30T08:03:33.635848Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-01-30T08:03:33.633235Z&quot;}" data-tags="[]" data-execution_count="2">
+<div id="3da23e5e-d5ff-4030-8e88-c7890ceb8997" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-01-30T08:03:33.633249Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-01-30T08:03:33.633024Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-01-30T08:03:33.636364Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-01-30T08:03:33.635848Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-01-30T08:03:33.633235Z&quot;}" data-tags="[]" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb22" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">from</span> pdb <span class="im" style="color: #00769E;
@@ -4650,7 +4671,7 @@ font-style: inherit;">3</span>):</span>
 background-color: null;
 font-style: inherit;">print</span>(i)</span></code></pre></div>
 </div>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-01-30T08:03:58.887920Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-01-30T08:03:58.887663Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-01-30T08:04:04.580824Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-01-30T08:04:04.579910Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-01-30T08:03:58.887900Z&quot;}" data-tags="[]" data-execution_count="3">
+<div id="0fb6bf6d-4e03-41a9-9d91-c52c86636dfa" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-01-30T08:03:58.887920Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-01-30T08:03:58.887663Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-01-30T08:04:04.580824Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-01-30T08:04:04.579910Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-01-30T08:03:58.887900Z&quot;}" data-tags="[]" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb23" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1">f()</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&gt; /tmp/ipykernel_1682/972468431.py(6)f()
@@ -4682,7 +4703,7 @@ ipdb&gt;  q</code></pre>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://castorfou.github.io/posts/2023-01-25-fastai-live-coding-sessions_files/figure-html/41b204f5-4d6e-4add-9de1-d5504eafc0a4-1-db26c070-cbfa-4ee1-8cc8-df65e53f45ca.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 <p>Actually it may be smarter to include this into <code>/storage/pre-run.sh</code> and not <code>/storage/.bash.local</code>. First one is run once at the start of your server. The last one is run each time you open a terminal</p>
@@ -4690,7 +4711,7 @@ ipdb&gt;  q</code></pre>
 <section id="sys.path" class="level2">
 <h2 class="anchored" data-anchor-id="sys.path">sys.path</h2>
 <p>Jeremy gets some issue because site-packages was not part of sys.path…</p>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-01-30T12:40:35.446423Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-01-30T12:40:35.446225Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-01-30T12:40:35.451312Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-01-30T12:40:35.450822Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-01-30T12:40:35.446410Z&quot;}" data-execution_count="4">
+<div id="76d04bef-853e-43de-90aa-32a9cb3ea55a" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-01-30T12:40:35.446423Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-01-30T12:40:35.446225Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-01-30T12:40:35.451312Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-01-30T12:40:35.450822Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-01-30T12:40:35.446410Z&quot;}" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb26" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> sys</span>
@@ -4742,7 +4763,7 @@ font-style: inherit;">import</span> sys</span>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://castorfou.github.io/posts/2023-01-25-fastai-live-coding-sessions_files/figure-html/62086c74-ca89-4453-b8b5-3e426cbc4573-1-e0c93d1c-7ffc-4157-b5b3-d6c8ab7f2825.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 <p>Jeremy’s vim config file is at <a href="https://github.com/fastai/dotfiles/blob/master/.vimrc" class="uri">https://github.com/fastai/dotfiles/blob/master/.vimrc</a></p>
@@ -4885,7 +4906,7 @@ font-style: inherit;"># it will split the screen in 2 parts</span></span></code>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://castorfou.github.io/posts/2023-01-25-fastai-live-coding-sessions_files/figure-html/2ae7f090-ef94-464d-89f1-5968e7149492-1-ce461459-083b-4fae-ae1a-9b8633445a33.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 <p>Jeremy dives into what happens here:</p>
@@ -5037,7 +5058,7 @@ font-style: inherit;">1738</span> files in directory ./train_images/blast</span>
 background-color: null;
 font-style: inherit;">479</span> files in directory ./train_images/bacterial_leaf_blight</span></code></pre></div>
 <p>And then we can start to work on it.</p>
-<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-02-06T09:05:19.533911Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-02-06T09:05:19.533229Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-02-06T09:05:19.540151Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-02-06T09:05:19.539469Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-02-06T09:05:19.533890Z&quot;}" data-tags="[]" data-execution_count="5">
+<div id="19f6ed2a-575e-4830-90c1-7d8305cdf9a1" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-02-06T09:05:19.533911Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-02-06T09:05:19.533229Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-02-06T09:05:19.540151Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-02-06T09:05:19.539469Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-02-06T09:05:19.533890Z&quot;}" data-tags="[]" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb32" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">from</span> fastai.vision.<span class="bu" style="color: null;
@@ -5084,7 +5105,7 @@ font-style: inherit;">=</span> ssl._create_unverified_context</span></code></pre
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://castorfou.github.io/posts/2023-01-25-fastai-live-coding-sessions_files/figure-html/c816e1ba-87b4-4c66-be60-eed0301cab13-1-19cccd57-7103-4c3e-b6f1-bf6edacc69ef.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 <p>And Jeremy shares some tip about nvidia-smi. He suggests to use <code>nvidia-smi dmon</code> instead of <code>watch nvidia-smi</code> (and monitor <code>sm</code> column and see if io allow it to be high enough)</p>
@@ -5092,7 +5113,7 @@ font-style: inherit;">=</span> ssl._create_unverified_context</span></code></pre
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://castorfou.github.io/posts/2023-01-25-fastai-live-coding-sessions_files/figure-html/67cbea49-7566-401f-9894-6e671efdb256-1-544212c8-91e0-4136-ba57-0cd336898749.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image.png</figcaption>
+<figcaption>image.png</figcaption>
 </figure>
 </div>
 <p><code>Could not load library libcudnn_cnn_infer.so.8. Error: libcuda.so: cannot open shared object file: No such file or directory</code></p>
