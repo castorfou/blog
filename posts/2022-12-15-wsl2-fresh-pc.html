@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.549">
+<meta name="generator" content="quarto-1.4.550">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -512,6 +512,7 @@ mamba update --strict-channel-priority -c conda-forge -c nodefaults  jupyterlab<
 <h3 class="anchored" data-anchor-id="jupyterlab-as-a-service">jupyterlab as a service</h3>
 <p>I now use service as user (you may have to activate it by calling <code>loginctl enable-linger guillaume</code>)</p>
 <p>Service files are in <code>~/.config/systemd/user</code></p>
+<p>And here is <code>jupyter.service</code></p>
 <div class="sourceCode" id="annotated-cell-16"><pre class="sourceCode bash code-annotation-code code-with-copy code-annotated"><code class="sourceCode bash"><span id="annotated-cell-16-1"><a href="#annotated-cell-16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[Unit]</span></span>
 <span id="annotated-cell-16-2"><a href="#annotated-cell-16-2" aria-hidden="true" tabindex="-1"></a><span class="va">Description</span><span class="op">=</span>Jupyter <span class="ex">Notebook</span></span>
 <span id="annotated-cell-16-3"><a href="#annotated-cell-16-3" aria-hidden="true" tabindex="-1"></a><span class="va">After</span><span class="op">=</span>network.target</span>
