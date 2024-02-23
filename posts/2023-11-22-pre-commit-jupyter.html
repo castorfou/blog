@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="dcterms.date" content="2023-11-22">
-<meta name="description" content="with pre-commit and nbdime">
+<meta name="description" content="with pre-commit, nbdime and git (jupyterlab extension)">
 
 <title>Guillaume’s blog - Using notebooks within a team for exploration</title>
 <style>
@@ -118,7 +118,7 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 
 <link rel="stylesheet" href="../styles.css">
 <meta name="twitter:title" content="Guillaume’s blog - Using notebooks within a team for exploration">
-<meta name="twitter:description" content="with pre-commit and nbdime">
+<meta name="twitter:description" content="with pre-commit, nbdime and git (jupyterlab extension)">
 <meta name="twitter:image" content="https://castorfou.github.io/images/icons/jupyter.png">
 <meta name="twitter:image-height" content="290">
 <meta name="twitter:image-width" content="638">
@@ -171,7 +171,7 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
       <h1 class="title">Using notebooks within a team for exploration</h1>
                   <div>
         <div class="description">
-          with pre-commit and nbdime
+          with pre-commit, nbdime and git (jupyterlab extension)
         </div>
       </div>
                           <div class="quarto-categories">
@@ -224,6 +224,12 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
   <li><a href="#in-terminal" id="toc-in-terminal" class="nav-link" data-scroll-target="#in-terminal">in terminal</a></li>
   <li><a href="#more-graphical-one-in-web" id="toc-more-graphical-one-in-web" class="nav-link" data-scroll-target="#more-graphical-one-in-web">more graphical one, in web</a></li>
   </ul></li>
+  </ul></li>
+  <li><a href="#jupyterlab-git-extension" id="toc-jupyterlab-git-extension" class="nav-link" data-scroll-target="#jupyterlab-git-extension">jupyterlab git extension</a>
+  <ul class="collapse">
+  <li><a href="#what-is-it-2" id="toc-what-is-it-2" class="nav-link" data-scroll-target="#what-is-it-2">what is it</a></li>
+  <li><a href="#install" id="toc-install" class="nav-link" data-scroll-target="#install">install</a></li>
+  <li><a href="#how-i-use-it" id="toc-how-i-use-it" class="nav-link" data-scroll-target="#how-i-use-it">how I use it</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -410,9 +416,38 @@ gtag('config', 'G-12YC1FPHWN', { 'anonymize_ip': true});
 <figcaption>image.png</figcaption>
 </figure>
 </div>
-
-
 </section>
+</section>
+</section>
+<section id="jupyterlab-git-extension" class="level1">
+<h1>jupyterlab git extension</h1>
+<section id="what-is-it-2" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-it-2">what is it</h2>
+<p>There is a jupyterlab extension for git located at <a href="https://github.com/jupyterlab/jupyterlab-git" class="uri">https://github.com/jupyterlab/jupyterlab-git</a></p>
+<p>It allows a graphical use of git (click click) to stage, commit, discard changes. You have easy access to history.</p>
+<p>And it allows to visually see diff.</p>
+</section>
+<section id="install" class="level2">
+<h2 class="anchored" data-anchor-id="install">install</h2>
+<p>In case of jupyter lab v4</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">--upgrade</span> jupyterlab-git</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>I don’t know exactly why it cannot be installed using extension manager</p>
+</section>
+<section id="how-i-use-it" class="level2">
+<h2 class="anchored" data-anchor-id="how-i-use-it">how I use it</h2>
+<p><strong>stage</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2023-11-22-pre-commit-jupyter_files/figure-html/065e5c92-8834-4837-967b-24af8cf5ceb4-2-efc57712-3e4d-456d-80b9-e277a1c78128.png" class="img-fluid figure-img"></p>
+<figcaption>image.png</figcaption>
+</figure>
+</div>
+<p><strong>discard</strong></p>
+<p>quite usefull when opening lots of different notebooks but not really to modify them, just reading them <img src="2023-11-22-pre-commit-jupyter_files/figure-html/065e5c92-8834-4837-967b-24af8cf5ceb4-1-ed99d790-2faa-406a-bdb8-43dbaca11bf5.png" class="img-fluid" alt="image.png"></p>
+<p><strong>commit</strong></p>
+<p>once staged, we can commit and this is compliant with pre-commit: great</p>
+
+
 </section>
 </section>
 
