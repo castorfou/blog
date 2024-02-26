@@ -845,7 +845,7 @@ font-style: inherit;">$(</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">git</span> ls-file <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">-ms</span><span class="va" style="color: #111111;
+font-style: inherit;">-s</span><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">)</span><span class="st" style="color: #20794D;
 background-color: null;
