@@ -4228,6 +4228,13 @@
     "text": "conda\n\npkgs\nconda clean -a\n\n\nenvs\nconda env can take huge spaces.\nWhen unused, I can simply remove them:\nconda remove --name &lt;env_name&gt; --all\n\n\n\nimage.png\n\n\njust looking at Size and last modified date is enough to filter what has to be kept and pruned."
   },
   {
+    "objectID": "posts/2023-09-04-wsl-no-space-left.html#docker",
+    "href": "posts/2023-09-04-wsl-no-space-left.html#docker",
+    "title": "WSL no space left",
+    "section": "docker",
+    "text": "docker\nIn /var/lib/docker/overlay2\ndocker system prune -a -f\n&gt; Total reclaimed space: 94.13GB"
+  },
+  {
     "objectID": "posts/2023-11-22-pre-commit-jupyter.html",
     "href": "posts/2023-11-22-pre-commit-jupyter.html",
     "title": "Using notebooks within a team for exploration",
