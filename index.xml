@@ -9,8 +9,411 @@
 <link>https://castorfou.github.io/</link>
 <atom:link href="https://castorfou.github.io/index.xml" rel="self" type="application/rss+xml"/>
 <description>This is Guillaume Ramelet&#39;s personal blog.</description>
-<generator>quarto-1.4.550</generator>
-<lastBuildDate>Wed, 13 Dec 2023 00:00:00 GMT</lastBuildDate>
+<generator>quarto-1.4.551</generator>
+<lastBuildDate>Fri, 01 Mar 2024 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Logbook for March 24</title>
+  <link>https://castorfou.github.io/posts/2024-03-01-logbook-March-24.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>ssl error in jupyter lab extension</p>
+<section id="week-12---march-24" class="level1">
+<h1>Week 12 - March 24</h1>
+<section id="monday-0318" class="level2">
+<h2 class="anchored" data-anchor-id="monday-0318">Monday 03/18</h2>
+<section id="ssl-error-in-jupyter-lab-extension" class="level3">
+<h3 class="anchored" data-anchor-id="ssl-error-in-jupyter-lab-extension">ssl error in jupyter lab extension</h3>
+<p>Using jupyter lab v4.1.5, when tehre are updates in extensions</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://castorfou.github.io/posts/2024-03-01-logbook-March-24_files/figure-html/57487d20-3570-4b0f-a89e-5b9976ef6410-1-137a6227-af25-4651-8307-af929c40d834.png" class="img-fluid figure-img"></p>
+<figcaption>image.png</figcaption>
+</figure>
+</div>
+<p>this is tempting to click on Update</p>
+<p>Unfortunately I have this error after some time</p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1">Error when performing an action.</span>
+<span id="cb1-2"></span>
+<span id="cb1-3">Reason given:</span>
+<span id="cb1-4"></span>
+<span id="cb1-5">Error:   WARNING: Retrying (Retry(total<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4</span>, <span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">connect</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>, read<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>, redirect<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>, status<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>)) after connection broken by <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'SSLError(SSLCertVerificationError(1, '</span>[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">self</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>signed certificate <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">in</span> certificate chain (_ssl.c:<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">992</span>)<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'))'</span>: <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>packages<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">91</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>f0<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>ef2d353d7e44db6215fc18594b2d1da15c81d3d0c1ac0518e6f484f01595<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>jupyterlab_execute_time<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3.1.2</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>py3<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>none<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">any</span>.whl.metadata</span>
+<span id="cb1-6">  WARNING: Retrying (Retry(total<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>, <span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">connect</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>, read<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>, redirect<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>, status<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>)) after connection broken by <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'SSLError(SSLCertVerificationError(1, '</span>[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">self</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>signed certificate <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">in</span> certificate chain (_ssl.c:<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">992</span>)<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'))'</span>: <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>packages<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">91</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>f0<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>ef2d353d7e44db6215fc18594b2d1da15c81d3d0c1ac0518e6f484f01595<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>jupyterlab_execute_time<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3.1.2</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>py3<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>none<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">any</span>.whl.metadata</span>
+<span id="cb1-7">  WARNING: Retrying (Retry(total<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>, <span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">connect</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>, read<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>, redirect<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>, status<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>)) after connection broken by <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'SSLError(SSLCertVerificationError(1, '</span>[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">self</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>signed certificate <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">in</span> certificate chain (_ssl.c:<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">992</span>)<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'))'</span>: <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>packages<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">91</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>f0<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>ef2d353d7e44db6215fc18594b2d1da15c81d3d0c1ac0518e6f484f01595<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>jupyterlab_execute_time<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3.1.2</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>py3<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>none<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">any</span>.whl.metadata</span>
+<span id="cb1-8">  WARNING: Retrying (Retry(total<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">connect</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>, read<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>, redirect<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>, status<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>)) after connection broken by <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'SSLError(SSLCertVerificationError(1, '</span>[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">self</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>signed certificate <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">in</span> certificate chain (_ssl.c:<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">992</span>)<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'))'</span>: <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>packages<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">91</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>f0<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>ef2d353d7e44db6215fc18594b2d1da15c81d3d0c1ac0518e6f484f01595<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>jupyterlab_execute_time<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3.1.2</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>py3<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>none<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">any</span>.whl.metadata</span>
+<span id="cb1-9">  WARNING: Retrying (Retry(total<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">connect</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>, read<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>, redirect<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>, status<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>)) after connection broken by <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'SSLError(SSLCertVerificationError(1, '</span>[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">self</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>signed certificate <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">in</span> certificate chain (_ssl.c:<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">992</span>)<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'))'</span>: <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>packages<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">91</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>f0<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>ef2d353d7e44db6215fc18594b2d1da15c81d3d0c1ac0518e6f484f01595<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>jupyterlab_execute_time<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3.1.2</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>py3<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>none<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">any</span>.whl.metadata</span>
+<span id="cb1-10">ERROR: Could <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">not</span> install packages due to an <span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">OSError</span>: HTTPSConnectionPool(host<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'files.pythonhosted.org'</span>, port<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">443</span>): Max retries exceeded <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">with</span> url: <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>packages<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">91</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>f0<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>ef2d353d7e44db6215fc18594b2d1da15c81d3d0c1ac0518e6f484f01595<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>jupyterlab_execute_time<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3.1.2</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>py3<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>none<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">any</span>.whl.metadata (Caused by SSLError(SSLCertVerificationError(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate in certificate chain (_ssl.c:992)'</span>)))</span></code></pre></div>
+<p>I thought initially it was due to <a href="../posts/2022-09-06-ssl-certificate_verify_failed.html">SSL: CERTIFICATE_VERIFY_FAILED</a> and I applied my own recipe (run <code>~/bin/certifi.sh</code> from my <code>base_jupyter_v4</code> environment)</p>
+<div id="78488086-321c-4521-b421-89c7eba8ea8e" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-03-18T11:08:27.642038Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-03-18T11:08:27.641484Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-03-18T11:08:27.751962Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-03-18T11:08:27.751274Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-03-18T11:08:27.642021Z&quot;}" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">!</span>cat <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~/</span><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">bin</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>certifi.sh</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#!/bin/bash
+pip install -U certifi
+export SSL_CERT_FILE=`python -c 'import certifi;print(certifi.where())'`
+export TMPDIR=`mktemp -d`
+git clone git@gitlab.michelin.com:DEV/bib-certificates.git $TMPDIR
+cd $TMPDIR
+cat *trust-ca.pem &gt;&gt; $SSL_CERT_FILE</code></pre>
+</div>
+</div>
+<p>But it didn’t help</p>
+
+
+</section>
+</section>
+</section>
+
+ ]]></description>
+  <category>logbook</category>
+  <category>wsl</category>
+  <category>wsl_latest</category>
+  <guid>https://castorfou.github.io/posts/2024-03-01-logbook-March-24.html</guid>
+  <pubDate>Fri, 01 Mar 2024 00:00:00 GMT</pubDate>
+  <media:content url="https://castorfou.github.io/images/logbook.jpg" medium="image" type="image/jpeg"/>
+</item>
 <item>
   <title>Automount blobfuse2 containers in linux</title>
   <link>https://castorfou.github.io/posts/2023-12-13-blobfuse2.html</link>
@@ -3998,1276 +4401,6 @@ font-style: inherit;">jupyter</span> lab build</span></code></pre></div>
   <guid>https://castorfou.github.io/posts/2023-02-01-logbook-February-23.html</guid>
   <pubDate>Wed, 01 Feb 2023 00:00:00 GMT</pubDate>
   <media:content url="https://castorfou.github.io/images/logbook.jpg" medium="image" type="image/jpeg"/>
-</item>
-<item>
-  <title>Live coding sessions from fastai</title>
-  <link>https://castorfou.github.io/posts/2023-01-25-fastai-live-coding-sessions.html</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>From time to time, Jeremy organizes live coding session.</p>
-<p>They are recorded (~1h each) and he takes one subject, and tackle it. They seem to be for beginners. But I am quite sure I can get some tips that I will write down on this page.</p>
-<p>18 sessions so far (jan-23):</p>
-<p><a href="https://forums.fast.ai/t/live-coding-aka-walk-thrus/96617">Live-coding (aka walk-thrus) ✅ - Part 1 2022 - fast.ai Course Forums</a></p>
-<blockquote class="blockquote">
-<ul>
-<li><a href="https://forums.fast.ai/t/walk-thru-1/96649">Live-coding 1</a></li>
-<li><a href="https://forums.fast.ai/t/walk-thru-2/96690">Live-coding 2</a></li>
-<li><a href="https://forums.fast.ai/t/walk-thru-3/96707">Live-coding 3</a></li>
-<li><a href="https://forums.fast.ai/t/walk-thru-4/96727">Live-coding 4</a></li>
-<li><a href="https://forums.fast.ai/t/walk-thru-5/96733">Live-coding 5</a></li>
-<li><a href="https://forums.fast.ai/t/walk-thru-6/96794">Live-coding 6</a></li>
-<li><a href="https://forums.fast.ai/t/walk-thru-7/96811">Live-coding 7</a></li>
-<li><a href="https://forums.fast.ai/t/walk-thru-8/96825">Live-coding 8</a></li>
-<li><a href="https://forums.fast.ai/t/session-9/96847">Live-coding 9</a></li>
-<li><a href="https://forums.fast.ai/t/session-10/96874">Live-coding 10</a></li>
-<li><a href="https://forums.fast.ai/t/session-11/96891">Live-coding 11</a></li>
-<li><a href="https://forums.fast.ai/t/session-12/96909">Live-coding 12</a></li>
-<li><a href="https://forums.fast.ai/t/session-13/96924">Live-coding 13</a></li>
-<li><a href="https://forums.fast.ai/t/walk-thru-14/97011">Live-coding 14</a></li>
-<li><a href="https://forums.fast.ai/t/walk-thru-15/97024">Live-coding 15</a></li>
-<li><a href="https://forums.fast.ai/t/session-16/97059">Live-coding 16</a></li>
-<li><a href="https://forums.fast.ai/t/live-coding-17/97166">Live-coding 17</a></li>
-<li><a href="https://forums.fast.ai/t/live-coding-18/97187">Live-coding 18</a></li>
-</ul>
-</blockquote>
-<section id="live-coding-1" class="level1">
-<h1>Live coding 1</h1>
-<ul>
-<li><a href="https://forums.fast.ai/t/walk-thru-1/96649">Live-coding 1 - forum entry</a></li>
-<li><a href="https://www.youtube.com/watch?v=56sIyFjihEc">Live-coding 1 - video</a></li>
-</ul>
-<section id="start-from-a-fresh-user-in-wsl" class="level2">
-<h2 class="anchored" data-anchor-id="start-from-a-fresh-user-in-wsl">start from a fresh user in WSL</h2>
-<p>I try things with a complete fresh new user <code>fastai</code> in WSL</p>
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">sudo</span> adduser <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">--gecos</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">""</span> fastai</span>
-<span id="cb1-2"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">sudo</span> usermod <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-aG</span> sudo,adm fastai</span>
-<span id="cb1-3"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">su</span> <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-</span> fastai</span></code></pre></div>
-<div id="e9c2850b-ff9b-4880-8cd8-db19a70faa15" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-01-25T07:52:19.594985Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-01-25T07:52:19.594797Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-01-25T07:52:19.706752Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-01-25T07:52:19.706103Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-01-25T07:52:19.594972Z&quot;}" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">!</span><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">id</span> fastai</span></code></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>uid=1001(fastai) gid=1001(fastai) groups=1001(fastai),4(adm),27(sudo)</code></pre>
-</div>
-</div>
-<p>if needed, completey delete user and home directory</p>
-<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">sudo</span> userdel <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-rfRZ</span> fastai</span></code></pre></div>
-<section id="and-setup-things-for-this-new-user" class="level3">
-<h3 class="anchored" data-anchor-id="and-setup-things-for-this-new-user">and setup things for this new user</h3>
-<section id="x-apps" class="level4">
-<h4 class="anchored" data-anchor-id="x-apps">X apps</h4>
-<p>To launch X apps</p>
-<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">pushd</span> ~</span>
-<span id="cb5-2"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">tee</span> <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-a</span> .bashrc <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&lt;&lt; EOF</span></span>
-<span id="cb5-3"><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">export DISPLAY=":0"</span></span>
-<span id="cb5-4"><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">EOF</span></span>
-<span id="cb5-5"><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">popd</span></span></code></pre></div>
-<p>Alias <code>terminal</code> <code>explorer (nautilus)</code></p>
-<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">pushd</span> ~</span>
-<span id="cb6-2"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">tee</span> <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-a</span> .bash_aliases <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&lt;&lt; EOF</span></span>
-<span id="cb6-3"><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">alias terminal='dbus-launch gnome-terminal &amp;'</span></span>
-<span id="cb6-4"><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">alias explorer='dbus-launch nautilus &amp;'</span></span>
-<span id="cb6-5"><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">EOF</span></span>
-<span id="cb6-6"><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">popd</span></span></code></pre></div>
-<p>Take it into account</p>
-<div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">pushd</span> ~</span>
-<span id="cb7-2"><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">source</span> .bashrc</span>
-<span id="cb7-3"><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">popd</span></span></code></pre></div>
-<p>Update Ctrl-C Ctrl-V keybindings in gnome-terminal</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://castorfou.github.io/posts/2023-01-25-fastai-live-coding-sessions_files/figure-html/8d5ba2ab-be63-40e5-8122-928a8cd8f1af-1-b8b7d7cd-34cc-4497-949b-8b783c33f4e5.png" class="img-fluid figure-img"></p>
-<figcaption>image.png</figcaption>
-</figure>
-</div>
-</section>
-<section id="ssl-ca-ssh-setups" class="level4">
-<h4 class="anchored" data-anchor-id="ssl-ca-ssh-setups">SSL, CA, SSH setups</h4>
-<p>To avoid “unsafe legacy renegotiation disabled” (linked to my corporate network architecture)</p>
-<p>and “SSL peer certificate or SSH remote key was not OK”</p>
-<div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">pushd</span> ~</span>
-<span id="cb8-2"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">tee</span> <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-a</span> .bashrc <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&lt;&lt; EOF</span></span>
-<span id="cb8-3"><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">export OPENSSL_CONF=/etc/ssl/openssl.cnf</span></span>
-<span id="cb8-4"><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt</span></span>
-<span id="cb8-5"><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">EOF</span></span>
-<span id="cb8-6"><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">source</span> .bashrc</span>
-<span id="cb8-7"><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">popd</span></span></code></pre></div>
-<p>To connect to gitlab</p>
-<p>Not the smartest way to do it but I copy ssh keys from my main user</p>
-<div class="sourceCode" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">sudo</span> bash <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-c</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"cp ~guillaume/.ssh/id_rsa* ~fastai/.ssh/"</span></span>
-<span id="cb9-2"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">sudo</span> bash <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-c</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"chown fastai:fastai ~fastai/.ssh/*"</span></span></code></pre></div>
-</section>
-</section>
-</section>
-<section id="install-python-distribution---mambaforge-the-manual-way" class="level2">
-<h2 class="anchored" data-anchor-id="install-python-distribution---mambaforge-the-manual-way">install python distribution - mambaforge | the manual way</h2>
-<p>This is from <a href="https://github.com/conda-forge/miniforge#mambaforge" class="uri">https://github.com/conda-forge/miniforge#mambaforge</a></p>
-<p>Mambaforge is miniforge but with mamba already setup.</p>
-<div class="sourceCode" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">pushd</span> ~/downloads</span>
-<span id="cb10-2"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">bash</span> Mambaforge-Linux-x86_64.sh</span>
-<span id="cb10-3"><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">popd</span></span></code></pre></div>
-<p>And to this question &gt; Do you wish the installer to initialize Mambaforge by running conda init? [yes|no]</p>
-<p>We answer Yes, and then</p>
-<blockquote class="blockquote">
-<p>==&gt; For changes to take effect, close and re-open your current shell. &lt;==</p>
-</blockquote>
-<p>Jeremy hates to not automate things you could have to do several times.</p>
-<p>To do it we revert everything done here manually (including conda-init in .bashrc)</p>
-</section>
-<section id="about-python-version" class="level2">
-<h2 class="anchored" data-anchor-id="about-python-version">about python version</h2>
-<p>by searching for <code>python eol</code>, you fall into <a href="https://endoflife.date/python" class="uri">https://endoflife.date/python</a></p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://castorfou.github.io/posts/2023-01-25-fastai-live-coding-sessions_files/figure-html/1925ae0a-a0de-4260-89ec-634304313798-1-c1b98dd2-2fda-4d01-9384-1242649888f6.png" class="img-fluid figure-img"></p>
-<figcaption>image.png</figcaption>
-</figure>
-</div>
-<p>and recommandation from Jeremy is to take penultimate one. It looks like ot is what is followed by mambaforge</p>
-</section>
-<section id="install-python-distribution---mambaforge-the-automated-way" class="level2">
-<h2 class="anchored" data-anchor-id="install-python-distribution---mambaforge-the-automated-way">install python distribution - mambaforge | the automated way</h2>
-<p>It is at <a href="https://github.com/fastai/fastsetup" class="uri">https://github.com/fastai/fastsetup</a></p>
-<p>It is Jeremy’s repo that contains anything he uses to setup a new computer</p>
-<p>There is a thing called <code>setup-conda.sh</code></p>
-<div class="sourceCode" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">wget</span> <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">--no-check-certificate</span> <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">--content-disposition</span> <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-O</span> <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-</span> https://raw.githubusercontent.com/fastai/fastsetup/master/setup-conda.sh <span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">|</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">bash</span></span></code></pre></div>
-<p>and run <code>mamba init</code> to allow mamba activate</p>
-</section>
-<section id="and-then-activate-self-certificates-into-ca" class="level2">
-<h2 class="anchored" data-anchor-id="and-then-activate-self-certificates-into-ca">and then activate self-certificates into CA</h2>
-<p>Setup pip, instal certifi and update CA</p>
-<div class="sourceCode" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">pushd</span> ~</span>
-<span id="cb12-2"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># setup pip</span></span>
-<span id="cb12-3"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">mkdir</span> <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-p</span> ~/.config/pip</span>
-<span id="cb12-4"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">tee</span> ~/.config/pip/pip.conf <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&lt;&lt; EOF</span></span>
-<span id="cb12-5"><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">[global]</span></span>
-<span id="cb12-6"><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">timeout = 1000</span></span>
-<span id="cb12-7"><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">index-url = https://pypi.org/simple/</span></span>
-<span id="cb12-8"><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">trusted-host = download.pytorch.org</span></span>
-<span id="cb12-9"><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">               pypi.python.org</span></span>
-<span id="cb12-10"><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">               files.pythonhosted.org</span></span>
-<span id="cb12-11"><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">               pypi.org</span></span>
-<span id="cb12-12"><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">               artifactory.michelin.com</span></span>
-<span id="cb12-13"><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">extra-index-url= https://artifactory.michelin.com/api/pypi/pypi/simple</span></span>
-<span id="cb12-14"><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">EOF</span></span>
-<span id="cb12-15"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># install certifi</span></span>
-<span id="cb12-16"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">pip</span> install <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-U</span> certifi</span>
-<span id="cb12-17"><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">export</span> <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">SSL_CERT_FILE</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">`</span><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">python</span> <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-c</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'import certifi;print(certifi.where())'</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">`</span></span>
-<span id="cb12-18"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># update CA</span></span>
-<span id="cb12-19"><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">export</span> <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">TMPDIR</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">`</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">mktemp</span> <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-d</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">`</span></span>
-<span id="cb12-20"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">git</span> clone git@gitlab.michelin.com:DEV/bib-certificates.git <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">$TMPDIR</span></span>
-<span id="cb12-21"><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">cd</span> <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">$TMPDIR</span></span>
-<span id="cb12-22"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">cat</span> <span class="pp" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">*</span>trust-ca.pem <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&gt;&gt;</span> <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">$SSL_CERT_FILE</span></span>
-<span id="cb12-23"><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">cd</span></span>
-<span id="cb12-24"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># export SSL_CERT_FILE</span></span>
-<span id="cb12-25"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">tee</span> <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-a</span> ~/.bashrc <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&lt;&lt; EOF</span></span>
-<span id="cb12-26"><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">export SSL_CERT_FILE=</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">`</span><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">python</span> <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-c</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'import certifi;print(certifi.where())'</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">`</span></span>
-<span id="cb12-27"><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">export REQUESTS_CA_BUNDLE=</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">`</span><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">python</span> <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-c</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'import certifi;print(certifi.where())'</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">`</span></span>
-<span id="cb12-28"><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">EOF</span></span>
-<span id="cb12-29"><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">source</span> ~/.bashrc</span>
-<span id="cb12-30"><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">popd</span></span></code></pre></div>
-</section>
-<section id="install-packages-in-base" class="level2">
-<h2 class="anchored" data-anchor-id="install-packages-in-base">install packages in base</h2>
-<section id="ipython" class="level3">
-<h3 class="anchored" data-anchor-id="ipython">ipython</h3>
-<div class="sourceCode" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">mamba</span> install ipython</span></code></pre></div>
-<p>Here Jeremy mentionned that Wes McKinney, author of “Python for Data Analysis” does much much things in ipython.</p>
-<p>And this is worthy to be read</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://castorfou.github.io/posts/2023-01-25-fastai-live-coding-sessions_files/figure-html/50484f4b-d274-4dfc-822f-c801304fa82d-1-78e53956-1c52-4e38-b09f-ae24c693f29b.png" class="img-fluid figure-img"></p>
-<figcaption>image.png</figcaption>
-</figure>
-</div>
-</section>
-<section id="pytorch" class="level3">
-<h3 class="anchored" data-anchor-id="pytorch">pytorch</h3>
-<p>Let’s install pytorch (searching pytorch install) <a href="https://pytorch.org/get-started/locally/" class="uri">https://pytorch.org/get-started/locally/</a></p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://castorfou.github.io/posts/2023-01-25-fastai-live-coding-sessions_files/figure-html/9b1947d5-b700-422a-8004-85c5ae9b2408-1-8be8e3aa-39ba-4bec-8385-195f900beef4.png" class="img-fluid figure-img"></p>
-<figcaption>image.png</figcaption>
-</figure>
-</div>
-<div class="sourceCode" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">mamba</span> install pytorch torchvision torchaudio pytorch-cuda=11.7 <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-c</span> pytorch <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-c</span> nvidia</span></code></pre></div>
-<p>from ipython we can test</p>
-<div class="sourceCode" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1">In [<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">2</span>]: torch.cuda.get_device_name()</span>
-<span id="cb15-2">Out[<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">2</span>]: <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'NVIDIA GeForce RTX 3080 Laptop GPU'</span></span></code></pre></div>
-</section>
-<section id="jupyter" class="level3">
-<h3 class="anchored" data-anchor-id="jupyter">jupyter</h3>
-<p>Let’s install jupyter (searching jupyter lab install) <a href="https://jupyterlab.readthedocs.io/en/stable/getting_started/installation.html" class="uri">https://jupyterlab.readthedocs.io/en/stable/getting_started/installation.html</a></p>
-<p>Because we use mamba, conda-forge channel is the default so</p>
-<div class="sourceCode" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">mamba</span> install jupyterlab</span></code></pre></div>
-<p>And we can test by running it <code>jupyter lab</code></p>
-<p>Because I have firefox installed in WSL, I don’t have the same issue Jeremy mentionned. And because I have another instance of jupyter running under my main user (where I blog this), it opens on port 8889</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://castorfou.github.io/posts/2023-01-25-fastai-live-coding-sessions_files/figure-html/7971a951-b9ee-48bf-ac52-df8225b0a71c-1-10ed3f2d-767c-4351-b733-0a6c9ab02570.png" class="img-fluid figure-img"></p>
-<figcaption>image.png</figcaption>
-</figure>
-</div>
-</section>
-<section id="ipywidgets" class="level3">
-<h3 class="anchored" data-anchor-id="ipywidgets">ipywidgets</h3>
-<div class="sourceCode" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">mamba</span> install ipywidgets</span></code></pre></div>
-</section>
-</section>
-<section id="end-of-session---wrap-up" class="level2">
-<h2 class="anchored" data-anchor-id="end-of-session---wrap-up">End of session - wrap-up</h2>
-<p>This was the base environnement setup after installing mambaforge</p>
-<p><code>conda_env/base.txt</code></p>
-<div class="sourceCode" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">pip</span> install <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-U</span> certifi</span>
-<span id="cb18-2"><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">export</span> <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">SSL_CERT_FILE</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">`</span><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">python</span> <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-c</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'import certifi;print(certifi.where())'</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">`</span></span>
-<span id="cb18-3"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># update CA</span></span>
-<span id="cb18-4"><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">export</span> <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">TMPDIR</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">`</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">mktemp</span> <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-d</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">`</span></span>
-<span id="cb18-5"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">git</span> clone git@gitlab.michelin.com:DEV/bib-certificates.git <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">$TMPDIR</span></span>
-<span id="cb18-6"><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">pushd</span> <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">$TMPDIR</span></span>
-<span id="cb18-7"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">cat</span> <span class="pp" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">*</span>trust-ca.pem <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&gt;&gt;</span> <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">$SSL_CERT_FILE</span></span>
-<span id="cb18-8"><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">popd</span></span>
-<span id="cb18-9"></span>
-<span id="cb18-10"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">mamba</span> install ipython</span>
-<span id="cb18-11"></span>
-<span id="cb18-12"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">mamba</span> install pytorch torchvision torchaudio pytorch-cuda=11.7 <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-c</span> pytorch <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-c</span> nvidia</span>
-<span id="cb18-13"></span>
-<span id="cb18-14"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">mamba</span> install jupyterlab ipywidgets</span></code></pre></div>
-<p>Starting from this fresh install, let’s retest stable diffusion and my <a href="../posts/2023-01-12-fastai-stable-diffusion.html#under-wsl">issues on WSL</a>:</p>
-<div class="sourceCode" id="cb19" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">mamba</span> create <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">--name</span> fastai_diffusers <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">--clone</span> base</span>
-<span id="cb19-2"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">mamba</span> activate fastai_diffusers</span>
-<span id="cb19-3"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">pip</span> install <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-Uq</span> diffusers transformers fastcore</span>
-<span id="cb19-4"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">mamba</span> install matplotlib</span>
-<span id="cb19-5"><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">cd</span> ~/nbs</span>
-<span id="cb19-6"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">git</span> clone https://github.com/fastai/diffusion-nbs.git</span>
-<span id="cb19-7"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">jupyter</span> lab</span></code></pre></div>
-<p>and open/run <code>stable_diffusion.ipynb</code></p>
-<p>but this is not better (still on cuda 1.7, this is maybe why)</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://castorfou.github.io/posts/2023-01-25-fastai-live-coding-sessions_files/figure-html/fde3e1bd-5f43-4c11-af9d-e6380e583bf4-1-bf2e3102-85df-4e25-aeaf-56b1af2192a7.png" class="img-fluid figure-img"></p>
-<figcaption>image.png</figcaption>
-</figure>
-</div>
-</section>
-</section>
-<section id="live-coding-2" class="level1">
-<h1>Live coding 2</h1>
-<ul>
-<li><a href="https://forums.fast.ai/t/live-coding-2/96690">Live-coding 2 - forum entry</a></li>
-<li><a href="https://www.youtube.com/watch?v=0pWjZByJ3Lk">Live-coding 2 - video</a></li>
-</ul>
-<p>Jeremy shows stuff such as: - switchi users in Linux, - introduction to git and github - build a website with github - setup and use ssh keys - use tmux - create a notebook in jupyter lab - committing and pushing to git - fork a repo - install fastai and fastbook</p>
-<section id="tmux" class="level2">
-<h2 class="anchored" data-anchor-id="tmux">tmux</h2>
-<p>This is a little bit as <code>screen</code></p>
-<p><strong>installation</strong></p>
-<p><code>sudo snap install tmux --classic</code></p>
-<p><strong>usage</strong></p>
-<p>just run <code>tmux</code> to start a new window.</p>
-<p>From here you have special commands, starting with binding key (default is Ctrl-b)</p>
-<p>Start a new pan (vertical split): <code>C-b %</code></p>
-<p>Start a new pan (horizontal split): <code>C-b "</code></p>
-<p>Close a pan: <code>C-d</code></p>
-<p>Navigate through pans: <code>C-b arrow keys</code></p>
-<p>Zoom-in zoom-out: <code>C-b z</code></p>
-<p>Detach window: <code>C-b d</code></p>
-<p>Navigate in scrillback buffer: <code>C-b [</code> then arrow keys, pg-up, pg-down</p>
-<p>Re-attach window: <code>tmux a</code></p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://castorfou.github.io/posts/2023-01-25-fastai-live-coding-sessions_files/figure-html/3faf5899-108c-454d-a981-56d916ceab5a-1-a4d029be-d64b-4a1b-832c-530e48d50374.png" class="img-fluid figure-img"></p>
-<figcaption>image.png</figcaption>
-</figure>
-</div>
-</section>
-<section id="jupyter-shortcuts" class="level2">
-<h2 class="anchored" data-anchor-id="jupyter-shortcuts">jupyter shortcuts</h2>
-<p>in command mode</p>
-<p><code>1</code> - for titles # (if in code, it auto switches to markdown)</p>
-<p><code>2</code> - for titles ##</p>
-<p><code>3</code> - for titles ###</p>
-<p><code>y</code> to switch to code cells (much used to <code>m</code> for markdown)</p>
-</section>
-<section id="install-fastai" class="level2">
-<h2 class="anchored" data-anchor-id="install-fastai">install fastai</h2>
-<p>from <a href="https://docs.fast.ai/" class="uri">https://docs.fast.ai/</a></p>
-<p><code>mamba install -c fastchan fastai</code></p>
-</section>
-<section id="run-fastbook-notebooks" class="level2">
-<h2 class="anchored" data-anchor-id="run-fastbook-notebooks">run fastbook notebooks</h2>
-<p>And to run notebooks from fastbook, we have to install <code>fastbook</code> and <code>sentencepiece</code> as well</p>
-<section id="untar_data-issues" class="level3">
-<h3 class="anchored" data-anchor-id="untar_data-issues">untar_data issues</h3>
-<p><code>path = untar_data(URLs.MNIST_SAMPLE)</code> fails with &gt; <code>[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate in certificate chain (_ssl.c:997)</code></p>
-<p>not exactly why because my certifi/certs are updated with my corporate CA</p>
-<p>And if I workaround with this preceeding</p>
-<div class="sourceCode" id="cb20" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> ssl</span>
-<span id="cb20-2">ssl._create_default_https_context <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> ssl._create_unverified_context</span></code></pre></div>
-<p>I have another error which is <code>MICHELIN GROUP - Internet Access blocked&lt;/h1&gt;&lt;br&gt;Access denied. You are attempting to access the Internet using an obsolete version of Chrome.</code></p>
-<p>Looking in fastai code, I see something like <a href="https://github.com/fastai/fastai2/blob/master/fastai2/data/external.py#L162" class="uri">https://github.com/fastai/fastai2/blob/master/fastai2/data/external.py#L162</a> <code>s.headers.update({'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0'})</code></p>
-<p>Is it that user-agent is old and considered as dangerous by security agent in my company?</p>
-</section>
-</section>
-<section id="end-of-session---wrap-up-1" class="level2">
-<h2 class="anchored" data-anchor-id="end-of-session---wrap-up-1">End of session - wrap-up</h2>
-<p>Should defintely solve the issue with untar_data</p>
-<p>And at the end of this session, my base environment has been built this way</p>
-<div class="sourceCode" id="cb21" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">pip</span> install <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-U</span> certifi</span>
-<span id="cb21-2"><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">export</span> <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">SSL_CERT_FILE</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">`</span><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">python</span> <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-c</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'import certifi;print(certifi.where())'</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">`</span></span>
-<span id="cb21-3"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># update CA</span></span>
-<span id="cb21-4"><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">export</span> <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">TMPDIR</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">`</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">mktemp</span> <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-d</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">`</span></span>
-<span id="cb21-5"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">git</span> clone git@gitlab.michelin.com:DEV/bib-certificates.git <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">$TMPDIR</span></span>
-<span id="cb21-6"><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">cd</span> <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">$TMPDIR</span></span>
-<span id="cb21-7"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">cat</span> <span class="pp" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">*</span>trust-ca.pem <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&gt;&gt;</span> <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">$SSL_CERT_FILE</span></span>
-<span id="cb21-8"><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">cd</span></span>
-<span id="cb21-9"></span>
-<span id="cb21-10"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">mamba</span> install ipython</span>
-<span id="cb21-11"></span>
-<span id="cb21-12"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">mamba</span> install pytorch torchvision torchaudio pytorch-cuda=11.7 <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-c</span> pytorch <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-c</span> nvidia</span>
-<span id="cb21-13"></span>
-<span id="cb21-14"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">mamba</span> install jupyterlab ipywidgets</span>
-<span id="cb21-15"></span>
-<span id="cb21-16"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">mamba</span> install <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-c</span> fastchan fastai fastbook sentencepiece</span></code></pre></div>
-</section>
-</section>
-<section id="live-coding-3" class="level1">
-<h1>Live coding 3</h1>
-<ul>
-<li><a href="https://forums.fast.ai/t/live-coding-3/96707">Live-coding 3 - forum entry</a></li>
-<li><a href="https://www.youtube.com/watch?v=B6BQiIgiEks">Live-coding 3 - video</a></li>
-</ul>
-<p>From previous session, question from audience about why Jeremy discourages to use multiple mamba environnement. Quite interesting.</p>
-<section id="paperspace-gradient-notebooks" class="level2">
-<h2 class="anchored" data-anchor-id="paperspace-gradient-notebooks">paperspace gradient notebooks</h2>
-<p>I use github to sign-up on paperspace. And create a project, then a notebook (actually a server?)</p>
-<p><a href="https://console.paperspace.com/teox6gpp0/projects/pa3mp7r16wz/notebooks" class="uri">https://console.paperspace.com/teox6gpp0/projects/pa3mp7r16wz/notebooks</a></p>
-</section>
-<section id="graphical-debugger-in-jupyter-lab" class="level2">
-<h2 class="anchored" data-anchor-id="graphical-debugger-in-jupyter-lab">graphical debugger in jupyter lab</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://castorfou.github.io/posts/2023-01-25-fastai-live-coding-sessions_files/figure-html/f70da639-5fdf-4f57-b803-2b91b2f8a9cf-1-c1ae8d55-0373-4223-80ba-b5b5a7cf1556.png" class="img-fluid figure-img"></p>
-<figcaption>image.png</figcaption>
-</figure>
-</div>
-<p>one can see the limit of <code>from xxx import *</code>, you will have the full variables in this window.</p>
-</section>
-<section id="classic-non-graphical-debugger" class="level2">
-<h2 class="anchored" data-anchor-id="classic-non-graphical-debugger">classic, non-graphical debugger</h2>
-<p>Just by adding <code>%%debug</code></p>
-<p>and for a reason it works better when you navigate into a function</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://castorfou.github.io/posts/2023-01-25-fastai-live-coding-sessions_files/figure-html/7294e959-f4bb-48f9-b469-ed1488947255-1-a547e0c6-4efb-41e8-ac02-272865ee3db4.png" class="img-fluid figure-img"></p>
-<figcaption>image.png</figcaption>
-</figure>
-</div>
-<p>And have access to classic <code>ipdb</code> options</p>
-<p><code>h</code>for help</p>
-<p><code>c</code> for continue</p>
-<p><code>n</code> for next</p>
-<p><code>p</code> for print</p>
-<p><code>s</code>for step into</p>
-<p><code>q</code>for quit</p>
-<p>or a second way:</p>
-<div id="3da23e5e-d5ff-4030-8e88-c7890ceb8997" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-01-30T08:03:33.633249Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-01-30T08:03:33.633024Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-01-30T08:03:33.636364Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-01-30T08:03:33.635848Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-01-30T08:03:33.633235Z&quot;}" data-tags="[]" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb22" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">from</span> pdb <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> set_trace</span>
-<span id="cb22-2"></span>
-<span id="cb22-3"><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">def</span> f():</span>
-<span id="cb22-4">    <span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">for</span> i <span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">in</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">range</span>(<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">3</span>):</span>
-<span id="cb22-5">        set_trace()</span>
-<span id="cb22-6">        <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">print</span>(i)</span></code></pre></div>
-</div>
-<div id="0fb6bf6d-4e03-41a9-9d91-c52c86636dfa" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-01-30T08:03:58.887920Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-01-30T08:03:58.887663Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-01-30T08:04:04.580824Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-01-30T08:04:04.579910Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-01-30T08:03:58.887900Z&quot;}" data-tags="[]" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb23" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1">f()</span></code></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>&gt; /tmp/ipykernel_1682/972468431.py(6)f()
-      2 
-      3 def f():
-      4     for i in range(3):
-      5         set_trace()
-----&gt; 6         print(i)
-
-0</code></pre>
-</div>
-<div class="cell-output cell-output-stdin">
-<pre><code>ipdb&gt;  p i
-ipdb&gt;  q</code></pre>
-</div>
-</div>
-</section>
-<section id="persistent-storage-in-paperspace" class="level2">
-<h2 class="anchored" data-anchor-id="persistent-storage-in-paperspace">persistent storage in paperspace</h2>
-<p><code>/storage</code> is following you on all your servers.</p>
-<p>To keep a consistent environment each time you start a paperspace server, Jeremy is following this process:</p>
-<ul>
-<li><p>install additional lib with <code>pip --user</code>. e.g.&nbsp;<code>pip install -U fastcore --user</code>. It will install libs in <code>~/.local</code></p></li>
-<li><p>move <code>.local</code> to <code>/storage</code>: <code>mv ~/.local /storage</code></p></li>
-<li><p>symbolic link back from /storage/.local to ~/.local: <code>ln -s /storage/.local ~/</code></p></li>
-</ul>
-<p>This has to be done once.</p>
-<p>And because paperspace has this nifty thing to call <code>/storage/.bash.local</code> at the start of a session, you can automate things here.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://castorfou.github.io/posts/2023-01-25-fastai-live-coding-sessions_files/figure-html/41b204f5-4d6e-4add-9de1-d5504eafc0a4-1-db26c070-cbfa-4ee1-8cc8-df65e53f45ca.png" class="img-fluid figure-img"></p>
-<figcaption>image.png</figcaption>
-</figure>
-</div>
-<p>Actually it may be smarter to include this into <code>/storage/pre-run.sh</code> and not <code>/storage/.bash.local</code>. First one is run once at the start of your server. The last one is run each time you open a terminal</p>
-</section>
-<section id="sys.path" class="level2">
-<h2 class="anchored" data-anchor-id="sys.path">sys.path</h2>
-<p>Jeremy gets some issue because site-packages was not part of sys.path…</p>
-<div id="76d04bef-853e-43de-90aa-32a9cb3ea55a" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-01-30T12:40:35.446423Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-01-30T12:40:35.446225Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-01-30T12:40:35.451312Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-01-30T12:40:35.450822Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-01-30T12:40:35.446410Z&quot;}" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb26" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> sys</span>
-<span id="cb26-2"></span>
-<span id="cb26-3">sys.path</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="4">
-<pre><code>['/mnt/c/Users/f279814/git/blog/posts',
- '/home/guillaume/miniconda/envs/fastai/lib/python310.zip',
- '/home/guillaume/miniconda/envs/fastai/lib/python3.10',
- '/home/guillaume/miniconda/envs/fastai/lib/python3.10/lib-dynload',
- '',
- '/home/guillaume/miniconda/envs/fastai/lib/python3.10/site-packages']</code></pre>
-</div>
-</div>
-</section>
-</section>
-<section id="live-coding-4" class="level1">
-<h1>Live coding 4</h1>
-<ul>
-<li><a href="https://forums.fast.ai/t/live-coding-4/96727">Live-coding 4 - forum entry</a></li>
-<li><a href="https://www.youtube.com/watch?v=uKUMT6Bj4l8&amp;feature=youtu.be">Live-coding 4 - video</a></li>
-</ul>
-<section id="optimised-config-for-paperspace" class="level2">
-<h2 class="anchored" data-anchor-id="optimised-config-for-paperspace">optimised config for paperspace</h2>
-<p>Essentially Jeremy has been improving his paperspace configuration</p>
-<p>based on paperspace special configuration where</p>
-<ul>
-<li><p><code>/storage</code> is linked to your account (and maybe to your organization account) and will follow you under all your servers (notebooks in paperspace), and</p></li>
-<li><p><code>/notebooks</code> is linked to your server (notebook) and will follow you for this server, whatever is the machine you decide to attach to it.</p></li>
-</ul>
-<p>Jeremy setups <code>.local</code>, <code>.ssh</code>, and then move that to <code>/storage</code>, create symlinks.</p>
-<p>I am less interested by that one, watched at x2 speed…</p>
-</section>
-</section>
-<section id="live-coding-5" class="level1">
-<h1>Live coding 5</h1>
-<ul>
-<li><a href="https://forums.fast.ai/t/live-coding-5/96733">Live-coding 5 - forum entry</a></li>
-<li><a href="https://www.youtube.com/watch?v=gdsa2VawOeM">Live-coding 5 - video</a></li>
-</ul>
-<section id="vim" class="level2">
-<h2 class="anchored" data-anchor-id="vim">vim</h2>
-<p>overview on vim. Nothing new here, except for learning resources</p>
-<ul>
-<li><p><a href="https://www.openvim.com/" class="uri">https://www.openvim.com/</a> that I didn’t know, and</p></li>
-<li><p><code>vimtutor</code> as well</p></li>
-<li><p><a href="https://vim-adventures.com/" class="uri">https://vim-adventures.com/</a> which is a kind of game</p></li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://castorfou.github.io/posts/2023-01-25-fastai-live-coding-sessions_files/figure-html/62086c74-ca89-4453-b8b5-3e426cbc4573-1-e0c93d1c-7ffc-4157-b5b3-d6c8ab7f2825.png" class="img-fluid figure-img"></p>
-<figcaption>image.png</figcaption>
-</figure>
-</div>
-<p>Jeremy’s vim config file is at <a href="https://github.com/fastai/dotfiles/blob/master/.vimrc" class="uri">https://github.com/fastai/dotfiles/blob/master/.vimrc</a></p>
-</section>
-<section id="ctags" class="level2">
-<h2 class="anchored" data-anchor-id="ctags">ctags</h2>
-<p>using a clone of fastai to illustrate, and Jeremy used an option to clone without the full depth which is much much quicker</p>
-<p><code>git clone https://github.com/fastai/fastai.git --depth 1</code></p>
-<p>1st thing is to install universal-ctags:</p>
-<ul>
-<li><p>one option is to use snap: <code>sudo snap install universal-ctags</code>. It is what I used but Jeremy doesn’t lik snap (why?)</p></li>
-<li><p>2nd one is mamba: <code>mamba install universal-ctags</code></p></li>
-</ul>
-<p>And now we can</p>
-<div class="sourceCode" id="cb28" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">cd</span> ~/git/fastai/fastai</span>
-<span id="cb28-2"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">ctags</span> <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-R</span> .</span>
-<span id="cb28-3"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#we can look into tags file with all symbols being used in this repo</span></span>
-<span id="cb28-4"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">less</span> tags</span>
-<span id="cb28-5"></span>
-<span id="cb28-6"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#jump to a tag ArrayMask</span></span>
-<span id="cb28-7"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">vim</span> <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-t</span> ArrayMask</span>
-<span id="cb28-8"></span>
-<span id="cb28-9"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#open a file</span></span>
-<span id="cb28-10"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">vim</span> layers.py</span>
-<span id="cb28-11"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#enter tag to jump to (tj: tag jump)</span></span>
-<span id="cb28-12"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#enter just the 1st letters and press enter, it will suggest matching cases</span></span>
-<span id="cb28-13"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#e.g. Array</span></span>
-<span id="cb28-14"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">:tj</span> Array</span>
-<span id="cb28-15"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># or from code itself, if cursor is on a word, to get to its tag</span></span>
-<span id="cb28-16"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">Ctrl-]</span></span>
-<span id="cb28-17"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#e.g. cursor on Module, Ctrl-]</span></span>
-<span id="cb28-18"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">class</span> View<span class="er" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">(</span><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">Module</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">)</span><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">:</span></span>
-<span id="cb28-19"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># will jump to torch_core.py</span></span>
-<span id="cb28-20"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">class</span> Module<span class="er" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">(</span><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">nn.Module,</span> metaclass=PrePostInitMeta<span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">)</span><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">:</span></span>
-<span id="cb28-21"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># to get back to previous tag</span></span>
-<span id="cb28-22"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">Ctrl-t</span></span></code></pre></div>
-<p>We can create a ctags config file to ignore locations such as .pynb_checkpoints…</p>
-<div class="sourceCode" id="cb29" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># we can use stag (split tag)</span></span>
-<span id="cb29-2"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">:stag</span> DataL <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&lt;</span>enter<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&gt;</span></span>
-<span id="cb29-3"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># it will split the screen in 2 parts</span></span></code></pre></div>
-</section>
-</section>
-<section id="live-coding-6" class="level1">
-<h1>Live coding 6</h1>
-<ul>
-<li><a href="https://forums.fast.ai/t/live-coding-6/96794">Live-coding 6 - forum entry</a></li>
-<li><a href="https://www.youtube.com/watch?v=V3cN-bqFUh4">Live-coding 6 - video</a></li>
-</ul>
-<section id="paperspace-and-ctags-and-other-stuff" class="level2">
-<h2 class="anchored" data-anchor-id="paperspace-and-ctags-and-other-stuff">paperspace and ctags and other stuff</h2>
-<p>One option is to install in a specific directory using mamba</p>
-<p><code>mamba -p ~/conda install universal-ctags</code>, and to move ~/conda to /storage, and link symlinks within /storage/.bash.local</p>
-</section>
-<section id="use-paperspace-with-fastbook" class="level2">
-<h2 class="anchored" data-anchor-id="use-paperspace-with-fastbook">use paperspace with fastbook</h2>
-<p>Steps to setup paperspace:</p>
-<ul>
-<li><p>upload ssh keys for github to paperspace <code>/storage/cfg/.ssh</code> (be sure to copy a key declared to github (yes double check that) and chmod 600 your private key)</p></li>
-<li><p><code>git clone https://github.com/fastai/paperspace-setup.git</code> in <code>/notebooks</code></p></li>
-<li><p>cd paperspace-setup</p></li>
-<li><p>./setup.sh</p></li>
-<li><p>Shutdown your machine and start up a new one</p></li>
-</ul>
-<p>Fork fastbook</p>
-<ul>
-<li><p><code>source ~/.bashrc</code> # don’t know why it is not done automatically</p></li>
-<li><p><code>git clone git@github.com:castorfou/fastbook.git</code> in <code>/notebooks</code></p></li>
-</ul>
-<p>And now we can run notebooks from <code>/fastbook/clean</code> e.g.&nbsp;<code>01_intro.ipynb</code></p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://castorfou.github.io/posts/2023-01-25-fastai-live-coding-sessions_files/figure-html/2ae7f090-ef94-464d-89f1-5968e7149492-1-ce461459-083b-4fae-ae1a-9b8633445a33.png" class="img-fluid figure-img"></p>
-<figcaption>image.png</figcaption>
-</figure>
-</div>
-<p>Jeremy dives into what happens here:</p>
-<ul>
-<li><p>from xxx import *: and link to <code>all.py</code></p></li>
-<li><p>to break down cells into splitted cells (with one command per cell) using key shortcut: <code>Ctrl-Shift -</code></p></li>
-</ul>
-</section>
-</section>
-<section id="live-coding-7" class="level1">
-<h1>Live coding 7</h1>
-<ul>
-<li><a href="https://forums.fast.ai/t/live-coding-7/96811">Live-coding 7 - forum entry</a></li>
-<li><a href="https://www.youtube.com/watch?v=cagqUrHMDJ0">Live-coding 7 - video</a></li>
-</ul>
-<section id="kaggle-competition" class="level2">
-<h2 class="anchored" data-anchor-id="kaggle-competition">kaggle competition</h2>
-<p>It starts with an overview of different types of Kaggle competitions (kudos, knowledge, …, money) and going through a <a href="https://www.kaggle.com/competitions/paddy-disease-classification/overview">competition</a> as suggested by <a href="https://forums.fast.ai/t/practice-walk-thru-6-chp1-on-kaggle/96793">Radek</a>.</p>
-<p>To follow I will switch to my fastai user, install kaggle into base environment. (<code>pip install kaggle</code>)</p>
-<p>Get kaggle json from kaggle website. Account &gt; API &gt; Create New API Token</p>
-<p>You get</p>
-<blockquote class="blockquote">
-<p>Ensure kaggle.json is in the location ~/.kaggle/kaggle.json to use the API.</p>
-</blockquote>
-<p>So download, copy (using upload in jupyter lab), move in right location, change owner and chmod 600</p>
-<p>And I can download paddy dataset with</p>
-<div class="sourceCode" id="cb30" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">cd</span> ~/nbs/kaggle/paddy</span>
-<span id="cb30-2"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">kaggle</span> competitions download <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-c</span> paddy-disease-classification</span></code></pre></div>
-<p>Unzip and then look at directory structure, number of files</p>
-<div class="sourceCode" id="cb31" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">find</span> . <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-type</span> d <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-print0</span> <span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">|</span> </span>
-<span id="cb31-2"><span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">while</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">read</span> <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-d</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">''</span> <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-r</span> <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">dir</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">;</span> <span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">do</span>     </span>
-<span id="cb31-3">    <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">files</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">(</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">$dir</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span>/<span class="pp" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">*</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">)</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">;</span>     </span>
-<span id="cb31-4">    <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">printf</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"%5d files in directory %s\n"</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">${</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">files</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">[@]</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">}</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">$dir</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">;</span> </span>
-<span id="cb31-5"><span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">done</span></span>
-<span id="cb31-6"></span>
-<span id="cb31-7">    <span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">5</span> files in directory .</span>
-<span id="cb31-8"> <span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">3469</span> files in directory ./test_images</span>
-<span id="cb31-9">   <span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">10</span> files in directory ./train_images</span>
-<span id="cb31-10">  <span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">380</span> files in directory ./train_images/bacterial_leaf_streak</span>
-<span id="cb31-11"> <span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">1088</span> files in directory ./train_images/tungro</span>
-<span id="cb31-12">  <span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">965</span> files in directory ./train_images/brown_spot</span>
-<span id="cb31-13"> <span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">1442</span> files in directory ./train_images/dead_heart</span>
-<span id="cb31-14"> <span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">1594</span> files in directory ./train_images/hispa</span>
-<span id="cb31-15"> <span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">1764</span> files in directory ./train_images/normal</span>
-<span id="cb31-16">  <span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">620</span> files in directory ./train_images/downy_mildew</span>
-<span id="cb31-17">  <span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">337</span> files in directory ./train_images/bacterial_panicle_blight</span>
-<span id="cb31-18"> <span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">1738</span> files in directory ./train_images/blast</span>
-<span id="cb31-19">  <span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">479</span> files in directory ./train_images/bacterial_leaf_blight</span></code></pre></div>
-<p>And then we can start to work on it.</p>
-<div id="19f6ed2a-575e-4830-90c1-7d8305cdf9a1" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-02-06T09:05:19.533911Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-02-06T09:05:19.533229Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-02-06T09:05:19.540151Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-02-06T09:05:19.539469Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2023-02-06T09:05:19.533890Z&quot;}" data-tags="[]" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb32" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">from</span> fastai.vision.<span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">all</span> <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">*</span></span>
-<span id="cb32-2"></span>
-<span id="cb32-3">Path.BASE_PATH <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> path <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> Path.home()<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">/</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'git'</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">/</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'kaggle'</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">/</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'paddy'</span></span>
-<span id="cb32-4"></span>
-<span id="cb32-5">path.ls()</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="5">
-<pre><code>(#5) [Path('paddy-disease-classification.zip'),Path('sample_submission.csv'),Path('test_images'),Path('train.csv'),Path('train_images')]</code></pre>
-</div>
-</div>
-<p>Path is neat. Define this <code>BASE_PATH</code> to simplify <code>ls()</code> output.</p>
-<p>Had to insert</p>
-<div class="sourceCode" id="cb34" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> ssl</span>
-<span id="cb34-2">ssl._create_default_https_context <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> ssl._create_unverified_context</span></code></pre></div>
-<p>to be able to download resnet34</p>
-<p>For a reason, surely the same issue as I got with diffusion model, my kernel dies when training</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://castorfou.github.io/posts/2023-01-25-fastai-live-coding-sessions_files/figure-html/c816e1ba-87b4-4c66-be60-eed0301cab13-1-19cccd57-7103-4c3e-b6f1-bf6edacc69ef.png" class="img-fluid figure-img"></p>
-<figcaption>image.png</figcaption>
-</figure>
-</div>
-<p>And Jeremy shares some tip about nvidia-smi. He suggests to use <code>nvidia-smi dmon</code> instead of <code>watch nvidia-smi</code> (and monitor <code>sm</code> column and see if io allow it to be high enough)</p>
-<p>Running it in vscode, I have more information</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://castorfou.github.io/posts/2023-01-25-fastai-live-coding-sessions_files/figure-html/67cbea49-7566-401f-9894-6e671efdb256-1-544212c8-91e0-4136-ba57-0cd336898749.png" class="img-fluid figure-img"></p>
-<figcaption>image.png</figcaption>
-</figure>
-</div>
-<p><code>Could not load library libcudnn_cnn_infer.so.8. Error: libcuda.so: cannot open shared object file: No such file or directory</code></p>
-<p>And to fix it, quite easy</p>
-<p>add this to <code>.bashrc</code></p>
-<blockquote class="blockquote">
-<p><code>export LD_LIBRARY_PATH=/usr/lib/wsl/lib</code></p>
-</blockquote>
-
-
-</section>
-</section>
-
- ]]></description>
-  <category>fastai</category>
-  <category>jupyter</category>
-  <category>python</category>
-  <category>wsl</category>
-  <guid>https://castorfou.github.io/posts/2023-01-25-fastai-live-coding-sessions.html</guid>
-  <pubDate>Wed, 25 Jan 2023 00:00:00 GMT</pubDate>
-  <media:content url="https://castorfou.github.io/images/icons/fastai.png" medium="image" type="image/png" height="59" width="144"/>
 </item>
 </channel>
 </rss>
