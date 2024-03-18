@@ -27,7 +27,7 @@
 <h2 class="anchored" data-anchor-id="monday-0318">Monday 03/18</h2>
 <section id="ssl-error-in-jupyter-lab-extension" class="level3">
 <h3 class="anchored" data-anchor-id="ssl-error-in-jupyter-lab-extension">ssl error in jupyter lab extension</h3>
-<p>Using jupyter lab v4.1.5, when tehre are updates in extensions</p>
+<p>Using jupyter lab v4.1.5, when there are updates in extensions</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://castorfou.github.io/posts/2024-03-01-logbook-March-24_files/figure-html/57487d20-3570-4b0f-a89e-5b9976ef6410-1-137a6227-af25-4651-8307-af929c40d834.png" class="img-fluid figure-img"></p>
@@ -400,6 +400,9 @@ cat *trust-ca.pem &gt;&gt; $SSL_CERT_FILE</code></pre>
 </div>
 </div>
 <p>But it didn’t help</p>
+<p><strong>bug opened in jupyter lab</strong></p>
+<p>found this one <a href="https://github.com/jupyterlab/jupyterlab/issues/15602">SSL Error while fetching extensions #15602</a>, linked to bug in upstream tornadoweb/tornado</p>
+<p>should land in jupyter lab in one of next releases</p>
 
 
 </section>
