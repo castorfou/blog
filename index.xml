@@ -9,7 +9,7 @@
 <link>https://castorfou.github.io/</link>
 <atom:link href="https://castorfou.github.io/index.xml" rel="self" type="application/rss+xml"/>
 <description>This is Guillaume Ramelet&#39;s personal blog.</description>
-<generator>quarto-1.4.551</generator>
+<generator>quarto-1.4.552</generator>
 <lastBuildDate>Fri, 01 Mar 2024 00:00:00 GMT</lastBuildDate>
 <item>
   <title>Logbook for March 24</title>
@@ -3399,7 +3399,7 @@ font-style: inherit;">-c</span> conda-forge jupyterlab</span></code></pre></div>
 <section id="list" class="level1">
 <h1>list</h1>
 <ul>
-<li>[0] Jan-24 Mallat 2024. (todo: <a href="https://www.college-de-france.fr/fr/agenda/cours/apprentissage-et-generation-par-echantillonnage-aleatoire/apprentissage-et-generation-par-echantillonnage-aleatoire-5">video 5</a>) and <a href="https://www.ictp.it/home/salam-distinguished-lectures-series">Abdus Salam colloques</a></li>
+<li>[0] Jan-24 Mallat 2024. (todo: <a href="https://www.college-de-france.fr/fr/agenda/cours/apprentissage-et-generation-par-echantillonnage-aleatoire/apprentissage-et-generation-par-echantillonnage-aleatoire-6">video 6</a>) and <a href="https://www.ictp.it/home/salam-distinguished-lectures-series">Abdus Salam colloques</a> and <a href="https://www.college-de-france.fr/fr/agenda/seminaire/apprentissage-et-generation-par-echantillonnage-aleatoire/apprentissage-de-modele-causal-partir-de-donnees">Apprentissage de modèle causal à partir de données (Michele Sebag)</a></li>
 <li>[] Jun-23 after ChatGPT Prompt Engineering for Developers, DeepLearning.ai proposes 3 new <a href="https://www.deeplearning.ai/short-courses/">short courses</a>: How Diffusion Models Work, LangChain for LLM Application Development, Building Systems with the ChatGPT API</li>
 <li>[] May-23: adaptive lib for active learning <a href="https://adaptive.readthedocs.io/en/latest/index.html#">page</a></li>
 <li>[] SSL cookbook paper: arxiv <a href="https://arxiv.org/abs/2304.12210">page</a> <a href="https://arxiv.org/pdf/2304.12210.pdf">pdf</a></li>
