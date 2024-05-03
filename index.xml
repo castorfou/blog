@@ -9,7 +9,7 @@
 <link>https://castorfou.github.io/</link>
 <atom:link href="https://castorfou.github.io/index.xml" rel="self" type="application/rss+xml"/>
 <description>This is Guillaume Ramelet&#39;s personal blog.</description>
-<generator>quarto-1.4.552</generator>
+<generator>quarto-1.4.554</generator>
 <lastBuildDate>Fri, 01 Mar 2024 00:00:00 GMT</lastBuildDate>
 <item>
   <title>Logbook for March 24</title>
@@ -3398,8 +3398,23 @@ font-style: inherit;">-c</span> conda-forge jupyterlab</span></code></pre></div>
 
 <section id="list" class="level1">
 <h1>list</h1>
+<div id="2a09c172-6a54-49d4-9917-277c263c605b" class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1">https:<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">//</span>www.youtube.com<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>playlist?<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">list</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>PLMrJAkhIeNNR20Mz<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>VpzgfQs5zrYi085m</span></code></pre></div>
+</div>
 <ul>
-<li>[0] Jan-24 Mallat 2024. (todo: <a href="https://www.college-de-france.fr/fr/agenda/cours/apprentissage-et-generation-par-echantillonnage-aleatoire/apprentissage-et-generation-par-echantillonnage-aleatoire-6">video 6</a>) and <a href="https://www.ictp.it/home/salam-distinguished-lectures-series">Abdus Salam colloques</a> and <a href="https://www.college-de-france.fr/fr/agenda/seminaire/apprentissage-et-generation-par-echantillonnage-aleatoire/apprentissage-de-modele-causal-partir-de-donnees">Apprentissage de modèle causal à partir de données (Michele Sebag)</a></li>
+<li>[] Apr-24 data-driven control with machine learning - by Steve Brunton <a href="https://www.youtube.com/playlist?list=PLMrJAkhIeNNQkv98vuPjO2X2qJO_UPeWR">YT playlist</a></li>
+<li>[0] Apr-24 Control bootcamp - by Steve Brunton <a href="https://www.youtube.com/playlist?list=PLMrJAkhIeNNR20Mz-VpzgfQs5zrYi085m">YT playlist</a> <a href="https://www.youtube.com/watch?v=nyqJJdhReiA&amp;list=PLMrJAkhIeNNR20Mz-VpzgfQs5zrYi085m&amp;index=3&amp;t=648s&amp;ab_channel=SteveBrunton">next -2 linear systems</a></li>
+<li>[0] Jan-24 Mallat 2024. (todo: <a href="https://www.college-de-france.fr/fr/agenda/cours/apprentissage-et-generation-par-echantillonnage-aleatoire/apprentissage-et-generation-par-echantillonnage-aleatoire-7">video 7</a>) and <a href="https://www.college-de-france.fr/fr/agenda/seminaire/apprentissage-et-generation-par-echantillonnage-aleatoire/echantillonnage-par-distributions-auxiliaires-de-la-teleportation-echantillonnage-importance-par">Randal Douc seminar</a> and <a href="https://www.ictp.it/home/salam-distinguished-lectures-series">Abdus Salam colloques</a> and <a href="https://www.college-de-france.fr/fr/agenda/seminaire/apprentissage-et-generation-par-echantillonnage-aleatoire/apprentissage-de-modele-causal-partir-de-donnees">Apprentissage de modèle causal à partir de données (Michele Sebag)</a></li>
 <li>[] Jun-23 after ChatGPT Prompt Engineering for Developers, DeepLearning.ai proposes 3 new <a href="https://www.deeplearning.ai/short-courses/">short courses</a>: How Diffusion Models Work, LangChain for LLM Application Development, Building Systems with the ChatGPT API</li>
 <li>[] May-23: adaptive lib for active learning <a href="https://adaptive.readthedocs.io/en/latest/index.html#">page</a></li>
 <li>[] SSL cookbook paper: arxiv <a href="https://arxiv.org/abs/2304.12210">page</a> <a href="https://arxiv.org/pdf/2304.12210.pdf">pdf</a></li>
